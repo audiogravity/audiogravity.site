@@ -8,7 +8,7 @@
     if (!imgs.length) return;
 
     var cur = 0;
-    var playing = true;
+    var playing = false;
     var timer = null;
 
     function show(n) {
@@ -58,7 +58,7 @@
         if (playing) pause(); else play();
     });
 
-    startTimer();
+    pause();
 })();
 
 // Sparklines

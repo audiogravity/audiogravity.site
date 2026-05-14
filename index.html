@@ -43,6 +43,7 @@
                 <a href="#features">Features</a>
                 <a href="#pipeline">Signal path</a>
                 <a href="#rt">RT scheduling</a>
+                <a href="#compare">Compare</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
                 <a href="#install">Install</a>
@@ -175,27 +176,25 @@
     <section class="section" id="features">
         <div class="w">
             <div class="section-label">Features</div>
-            <h2 class="section-title">Built for the<br>listening room.</h2>
-            <p class="section-sub">Twelve modules covering everything from one-click profile switching to
-                microsecond-scale RT latency benchmarks. Starter tier ships with the essentials; Pro unlocks the deep
-                audio-engineering surface.</p>
+            <h2 class="section-title">From the kernel<br>to your Qobuz library.</h2>
+            <p class="section-sub">Twelve modules orchestrating every layer of your streamer — RT kernel tuning,
+                service control, signal-path visualisation, unified transport across MPD, Roon, HQPlayer, AirPlay
+                and UPnP. Starter ships with the essentials; Pro unlocks the deep audio-engineering surface.</p>
 
             <div class="feat-bento">
                 <div class="fb span4 dark">
                     <span class="fb-tier pro">PRO</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <polyline points="3,18 8,10 12,13 17,6 21,6" />
-                            <circle cx="8" cy="10" r="1.4" />
-                            <circle cx="12" cy="13" r="1.4" />
-                            <circle cx="17" cy="6" r="1.4" />
+                            <circle cx="12" cy="12" r="9" />
+                            <polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none" />
                         </svg></div>
-                    <h3>Live signal-path visualisation</h3>
-                    <p>An interactive SVG graph of your entire Hi-Fi chain — source (NAS, UPnP, Qobuz, Tidal) through
-                        every active audio process down to the DAC. Pan, zoom, zoom-to-fit, minimap for complex
-                        topologies. Each link shows the exact stream format (PCM / DSD / MQA · 44.1 kHz → 768 kHz · 16 →
-                        32 bit), a bit-perfect badge, per-link latency, and live play state. Click a link to hot-reroute
-                        MPD, HQPlayer NAA or AirPlay to a different DAC — without interrupting playback.</p>
-                    <span class="fb-chip">DAG · pan · zoom · minimap · hot rerouting</span>
+                    <h3>Unified transport across every player</h3>
+                    <p>One interface, one set of controls, every engine your streamer runs. Transport, volume, seek and
+                        cover art on MPD, Roon, HQPlayer NAA, AirPlay and UPnP simultaneously. Live Hi-Fi readout —
+                        format (PCM / DSD / MQA), sample rate, bit depth, instantaneous bitrate — refreshed on every
+                        track change. Pick the output zone: Roon zone, UPnP renderer or ALSA port. Audiogravity
+                        conducts; your engines play.</p>
+                    <span class="fb-chip">MPD · Roon · HQPlayer · AirPlay · UPnP · live Hi-Fi readout</span>
                 </div>
 
                 <div class="fb span2">
@@ -273,15 +272,18 @@
                 <div class="fb span3 dark">
                     <span class="fb-tier pro">PRO</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="9" />
-                            <polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none" />
+                            <polyline points="3,18 8,10 12,13 17,6 21,6" />
+                            <circle cx="8" cy="10" r="1.4" />
+                            <circle cx="12" cy="13" r="1.4" />
+                            <circle cx="17" cy="6" r="1.4" />
                         </svg></div>
-                    <h3>Unified player across every source</h3>
-                    <p>Transport control over MPD, Roon, AirPlay and UPnP from a single interface. Play, pause, seek,
-                        volume (software or hardware), high-res cover art. Live Hi-Fi readout — format (PCM / DSD /
-                        MQA), sample rate, bit depth, instantaneous bitrate — refreshed on every track change. Pick the
-                        output zone: Roon zone, UPnP renderer or ALSA port.</p>
-                    <span class="fb-chip">MPD · Roon · AirPlay · UPnP · live Hi-Fi readout</span>
+                    <h3>Live signal-path visualisation</h3>
+                    <p>An interactive SVG graph of your entire Hi-Fi chain — source (NAS, UPnP, Qobuz, Tidal) through
+                        every active audio process down to the DAC. Pan, zoom, minimap for complex topologies. Each
+                        link shows the exact stream format (PCM / DSD / MQA · 44.1 kHz → 768 kHz · 16 → 32 bit), a
+                        bit-perfect badge, per-link latency, and live play state. Click a link to hot-reroute MPD,
+                        HQPlayer NAA or AirPlay to a different DAC — without interrupting playback.</p>
+                    <span class="fb-chip">DAG · pan · zoom · minimap · hot rerouting</span>
                 </div>
 
                 <div class="fb span2 dark">
@@ -537,6 +539,242 @@
                         and system state stay on your network.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- LAYERS -->
+    <section class="section alt" id="layers">
+        <div class="w">
+            <div class="section-label">Where it sits</div>
+            <h2 class="section-title">Five layers.<br><em>Audiogravity covers three.</em></h2>
+            <p class="section-sub">A streaming system is a stack. Audiogravity does not compete with audio engines like MPD, Roon Bridge or HQPlayer — it sits above them. The diagram below makes its position explicit.</p>
+
+            <div class="layers">
+                <div class="layer ag">
+                    <div class="layer-tag">Layer 5</div>
+                    <div class="layer-name">User Interface</div>
+                    <div class="layer-sub">How you click play — browser, phone, tablet</div>
+                    <div class="layer-mark">Audiogravity</div>
+                </div>
+                <div class="layer ag">
+                    <div class="layer-tag">Layer 4</div>
+                    <div class="layer-name">Control / Orchestration</div>
+                    <div class="layer-sub">Source switching, transport, volume, monitoring</div>
+                    <div class="layer-mark">Audiogravity</div>
+                </div>
+                <div class="layer">
+                    <div class="layer-tag">Layer 3</div>
+                    <div class="layer-name">Content Sources</div>
+                    <div class="layer-sub">Where files and streams come from</div>
+                    <div class="layer-mark dim">NAS · Qobuz · Tidal · MinimServer · upmpdcli</div>
+                </div>
+                <div class="layer">
+                    <div class="layer-tag">Layer 2</div>
+                    <div class="layer-name">Audio Engine</div>
+                    <div class="layer-sub">Decodes and sends bits to the DAC</div>
+                    <div class="layer-mark dim">MPD · Roon Bridge · HQPlayer NAA · shairport-sync · upmpdcli</div>
+                </div>
+                <div class="layer ag">
+                    <div class="layer-tag">Layer 1</div>
+                    <div class="layer-name">OS / Kernel</div>
+                    <div class="layer-sub">RT scheduling, CPU pinning, IRQs, ALSA</div>
+                    <div class="layer-mark">Audiogravity tunes it</div>
+                </div>
+            </div>
+
+            <div class="layers-takeaway">
+                <p><b>The takeaway:</b> Audiogravity orchestrates the audio engines that audiophiles already trust (Roon, MPD, HQPlayer, AirPlay, UPnP) and adds kernel-level tuning on top — without replacing or hiding any of them.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT COMPARES -->
+    <section class="section" id="compare">
+        <div class="w">
+            <div class="section-label">How it compares</div>
+            <h2 class="section-title">One orchestrator.<br><em>Every audiophile engine.</em></h2>
+            <p class="section-sub">Audiogravity sits at a different layer than the rest. It does not compete with Roon, MPD or HQPlayer — it orchestrates them. The table below clarifies where each solution stops.</p>
+
+            <div class="cmp-scroll">
+                <table class="cmp">
+                    <thead>
+                        <tr>
+                            <th class="cmp-cap">Capability</th>
+                            <th class="cmp-ag">Audiogravity</th>
+                            <th>Roon</th>
+                            <th>Volumio</th>
+                            <th>Moode</th>
+                            <th>HQPlayer Embedded</th>
+                            <th>JPLAY iOS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cmp-cap"><b>Product nature</b></td>
+                            <td class="cmp-ag">Streamer (CP + integrated playback)</td>
+                            <td>Streamer + cloud platform</td>
+                            <td>Streamer</td>
+                            <td>Streamer</td>
+                            <td>Streamer (DSP focus)</td>
+                            <td>Controller only</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Multi-player orchestration (MPD + Roon + HQPlayer + AirPlay)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-part">partial (HQPlayer)</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">UPnP MediaServer browse (Qobuz / Tidal / NAS via MinimServer, upmpdcli)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-yes">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">UPnP MediaRenderer control (push to external streamer)</td>
+                            <td class="cmp-ag cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-yes">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Acts as UPnP MediaRenderer (controllable from JPLAY / BubbleUPnP)</td>
+                            <td class="cmp-ag cmp-yes">✓ via upmpdcli</td>
+                            <td class="cmp-part">partial (RAAT)</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Roon Bridge integration</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td>native</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">HQPlayer integration</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td>as endpoint</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td>native</td>
+                            <td class="cmp-yes">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">AirPlay receiver</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Kernel-level RT tuning (FIFO, MEMLOCK, CPU affinity)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">µs-scale benchmarks (cyclictest from UI)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Live signal-path visualization</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Audio config editor (diff + validation)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Per-source bit-perfect lock (DSD volume protection)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-part">partial</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">PWA / web-installable</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-part">partial</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">WebAuthn / biometric login</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">Self-hosted (no cloud account)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td>account required</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap"><b>Platform</b></td>
+                            <td class="cmp-ag">Linux server · iOS / Android PWA + browser UI</td>
+                            <td>Multi-OS (native apps)</td>
+                            <td>Linux server · browser UI + native apps</td>
+                            <td>Linux server · browser UI</td>
+                            <td>Linux server</td>
+                            <td>iOS only</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap"><b>Pricing model</b></td>
+                            <td class="cmp-ag"><b>Free (Starter) / One-time €29 (Pro)</b></td>
+                            <td>$150 / year</td>
+                            <td>Free / Premium</td>
+                            <td>Free</td>
+                            <td>€265 one-time</td>
+                            <td>Subscription</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="cmp-note">✓ supported · partial = limited · — not available. Comparison based on public information from each vendor's documentation as of 2026.</p>
         </div>
     </section>
 

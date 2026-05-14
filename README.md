@@ -36,14 +36,20 @@ Serves `index.html` on `http://10.0.4.254:8080`. Stops with `Ctrl+C`.
 The release binaries are hosted on a private repo (`ad5030/audiogravity-releases`). The install scripts here are public and accept a Personal Access Token to authenticate downloads via the GitHub API.
 
 ```bash
-# Latest release
+# Backend — latest
 curl -fsSL https://audiogravity.di-marco.net/install-backend.sh | sudo bash -s -- --token ghp_xxx
 
-# Specific version
+# Backend — specific version
 curl -fsSL https://audiogravity.di-marco.net/install-backend.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
+
+# Frontend — latest
+curl -fsSL https://audiogravity.di-marco.net/install-frontend.sh | sudo bash -s -- --token ghp_xxx
+
+# Frontend — specific version
+curl -fsSL https://audiogravity.di-marco.net/install-frontend.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
 ```
 
-The token is delivered to customers after license activation. It requires `Contents: Read` on the private releases repo only.
+The token is shared during the **early access phase** with approved testers. It requires `Contents: Read` on the private releases repo only.
 
 ## Image optimisation
 

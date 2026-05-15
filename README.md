@@ -2,7 +2,7 @@
 
 Public marketing site and token-authenticated install scripts for Audiogravity.
 
-Live at [audiogravity.app](https://audiogravity.app) via GitHub Pages.
+Live at [audiogravity.app](https://audiogravity.app) via Cloudflare Pages.
 
 ## Repository layout
 

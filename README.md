@@ -16,10 +16,11 @@ Live at [audiogravity.app](https://audiogravity.app) via Cloudflare Pages.
 │   └── pics/            App screenshots (WebP, 760px wide)
 ├── install-backend.sh   Token-authenticated backend installer
 ├── install-frontend.sh  Token-authenticated frontend installer
-├── CNAME                GitHub Pages custom domain
 ├── EDITIONS.md          Edition and licensing terms
 └── EULA.md              End-user license agreement
 ```
+
+Custom domain is configured in the Cloudflare Pages dashboard, not via a `CNAME` file.
 
 ## Install scripts
 

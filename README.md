@@ -2,7 +2,7 @@
 
 **Your streamer is your source. Audiogravity is the conductor.**
 
-A single web interface to pilot every audio engine your streamer runs — MPD, Roon Bridge, HQPlayer NAA, AirPlay and UPnP — all the way down to the RT kernel.
+A native iOS / Android app (PWA) — and any modern browser — to pilot every audio engine your streamer runs (MPD, Roon Bridge, HQPlayer NAA, AirPlay, UPnP), all the way down to the RT kernel.
 
 → [audiogravity.app](https://audiogravity.app)
 

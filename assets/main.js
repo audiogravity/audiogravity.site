@@ -110,7 +110,7 @@ spark('ds1', 1.2); spark('ds2', 2.8);
 // Shake ribbon on trial button click
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
-        var btn = document.querySelector('a.cta-primary[href="#install"]');
+        var btn = document.querySelector('a.cta-primary.cta-soon');
         var ribbon = document.querySelector('.ribbon');
         if (!btn || !ribbon) return;
         btn.addEventListener('click', function (e) {

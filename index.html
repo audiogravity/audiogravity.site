@@ -78,9 +78,9 @@
                 Qobuz
                 and Tidal libraries, without replacing any of them. One interface. Total control.</p>
             <div class="hero-cta">
-                <a class="cta-primary cta-soon" href="#install">30-day trial →</a>
+                <a class="cta-primary cta-soon" href="#" style="opacity:.45;cursor:default">30-day trial →</a>
                 <a class="cta-ghost" href="#features">See features</a>
-                <a class="cta-primary"
+                <a class="cta-primary cta-open"
                     href="mailto:audiogravity@di-marco.net?subject=Audiogravity%20-%20Early%20access%20request">Early
                     access</a>
             </div>
@@ -381,7 +381,7 @@
             <div class="label">Now playing · HQPlayer NAA · DSD256</div>
             <div class="track-name">Shameika</div>
             <div class="track-artist">Fiona Apple — Fetch the Bolt Cutters</div>
-            <div class="service-badge"><span class="dot"></span>Roon → HQPlayer → Heed Abacus S → Naim Nait 2</div>
+            <div class="service-badge"><span class="dot"></span>Roon → HQPlayer → Heed Abacus S → Naim Nac 52 / Nap 250</div>
         </div>
         <div class="np-visual">
             <div class="np-bar">
@@ -407,7 +407,7 @@
                 <span class="arr">→</span>
                 <span class="node bitperfect">Heed Abacus</span>
                 <span class="arr">→</span>
-                <span class="node">Naim Nait 2</span>
+                <span class="node">Naim Nac 52 / Nap 250</span>
             </div>
         </div>
     </section>
@@ -480,7 +480,7 @@
                     <g class="pn">
                         <rect x="890" y="120" width="90" height="60" /><text x="935" y="147"
                             text-anchor="middle">Amplifier</text><text x="935" y="162" text-anchor="middle"
-                            class="sub">Naim Nait 2</text>
+                            class="sub">Naim Nac 52 / Nap 250</text>
                     </g>
                     <text x="20" y="280" font-family="Inter,sans-serif" font-size="10.5" fill="#888">Click any link →
                         reroute ALSA output to a different DAC without stopping playback. Latency, RSSI and 802.11
@@ -1085,7 +1085,7 @@
     <section class="section" id="install">
         <div class="w">
             <div class="section-label">Installation</div>
-            <h2 class="section-title">On your streamer<br>in two commands.</h2>
+            <h2 class="section-title">On your streamer<br>in one command.</h2>
             <div class="setup-inner">
                 <div>
                     <p class="setup-lede">No compilation, no dependency hell, no manual configuration. The installer
@@ -1120,16 +1120,24 @@
                 </div>
                 <div>
                     <div class="terminal">
-                        <code><span class="cmt"># 1. Backend</span></code>
-                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://github.com/ad5030/audiogravity-releases/releases/latest/download/install-backend.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span></code>
-                        <code></code>
-                        <code><span class="cmt"># 2. Frontend</span></code>
-                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://github.com/ad5030/audiogravity-releases/releases/latest/download/install-frontend.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span></code>
+                        <code><span class="cmt"># All-in-one (backend + frontend on the same host)</span></code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
+                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
                         <code><span class="cmt"># Then open in your browser:</span></code>
                         <code><span class="url">https://&lt;ip-of-your-streamer&gt;</span></code>
+                    </div>
+
+                    <div class="terminal" style="margin-top:18px">
+                        <code><span class="cmt"># Or install separately on different hosts:</span></code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-backend.sh</span> \</code>
+                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
+                        <code></code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-frontend.sh</span> \</code>
+                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
+                        <code></code>
+                        <code><span class="cmt"># Then open in your browser:</span></code>
+                        <code><span class="url">https://&lt;ip-of-your-streamer-frontend&gt;</span></code>
                     </div>
                 </div>
             </div>

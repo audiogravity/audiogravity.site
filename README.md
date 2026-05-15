@@ -37,6 +37,14 @@ See [EDITIONS.md](EDITIONS.md) for the full edition breakdown and [EULA.md](EULA
 
 The release binaries are hosted on a private repo (`ad5030/audiogravity-releases`). The install scripts here are public and accept a Personal Access Token to authenticate downloads via the GitHub API.
 
+**All-in-one** (backend + frontend on the same host) :
+
+```bash
+curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+```
+
+**Or install each component separately** (e.g. on different hosts):
+
 ```bash
 # Backend
 curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx

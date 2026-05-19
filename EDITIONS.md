@@ -47,7 +47,7 @@ Existing holders receive a **preferential upgrade price** for new major versions
 
 |  | Trial | Starter | Pro |
 |---|:---:|:---:|:---:|
-| **Cost** | Free | Free | One-time (€29) |
+| **Cost** | Free | Free | One-time (€49) |
 | **Duration** | 30 days | Unlimited | Unlimited |
 | **Activation** | Automatic | Automatic | Manual |
 | **Updates** | — | — | v1.x included |

@@ -4,12 +4,12 @@
 
 <table>
   <tr>
-    <td width="420"><img src="assets/pics/ag-hero.png" alt="Audiogravity" width="400" /></td>
     <td>
       A native iOS / Android app (PWA) — and any modern browser — to pilot every audio engine your streamer runs (MPD, Roon Bridge, HQPlayer NAA, AirPlay, UPnP), all the way down to the RT kernel.
       <br/><br/>
       <a href="https://audiogravity.app">→ audiogravity.app</a>
     </td>
+    <td width="300"><img src="assets/pics/ag-hero.png" alt="Audiogravity" width="280" /></td>
   </tr>
 </table>
 

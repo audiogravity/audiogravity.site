@@ -87,6 +87,18 @@ Audiogravity is a Progressive Web App — it installs like a native app from the
 
 > Tip: If Chrome shows an install banner at the bottom of the page, you can tap it directly.
 
+## Test report
+
+| Suite | Tests | Status |
+|-------|------:|--------|
+| Backend (Python) | 65 | ✅ |
+| License Server (Python) | 15 | ✅ |
+| License Server (JS) | 9 | ✅ |
+| Frontend (JS) | 65 | ✅ |
+| **Total** | **154** | ✅ |
+
+Last run: 2026-05-28 11:13 UTC
+
 ## Coming soon
 
 Audiogravity is in early access. Public release scheduled for **Summer 2026**. To get notified, request access at the email above.

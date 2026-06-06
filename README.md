@@ -93,6 +93,17 @@ curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --toke
 
 > The token is shared during **early access** with approved testers. [Request access →](mailto:audiogravity@di-marco.net?subject=Audiogravity%20-%20Early%20access%20request)
 
+### Options
+
+The backend installer accepts an optional contact address for push
+notifications (the VAPID `sub`). If omitted, a generic placeholder is used
+and the installer prints a warning.
+
+```bash
+curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
+    --token ghp_xxx --vapid-email you@example.com
+```
+
 ## Install as PWA
 
 <details>
@@ -119,13 +130,13 @@ curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --toke
 
 | Suite | Tests | Status |
 |-------|------:|--------|
-| Backend (Python) | 53 | ✅ |
-| License Server (Python) | 15 | ✅ |
-| License Server (JS) | 9 | ✅ |
+| Backend (Python) | 102 | ✅ |
+| License Server (Python) | 0 | ✅ |
+| License Server (JS) | 0 | ✅ |
 | Frontend (JS) | 65 | ✅ |
-| **Total** | **142** | ✅ |
+| **Total** | **167** | ✅ |
 
-Last run: 2026-05-28 17:42 UTC
+Last run: 2026-06-05 12:54 UTC
 
 ## Coming soon
 

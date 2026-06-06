@@ -6,6 +6,7 @@
 # Usage:
 #   curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx
 #   curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx --vapid-email you@example.com
 
 set -e
 
@@ -22,10 +23,12 @@ warn() { echo -e "  ${YELLOW}!${NC} $1"; }
 
 TOKEN=""
 VERSION=""
+VAPID_EMAIL=""
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --token)   TOKEN="$2";   shift 2 ;;
-        --version) VERSION="$2"; shift 2 ;;
+        --token)       TOKEN="$2";       shift 2 ;;
+        --version)     VERSION="$2";     shift 2 ;;
+        --vapid-email) VAPID_EMAIL="$2"; shift 2 ;;
         *) fail "Unknown argument: $1" ;;
     esac
 done
@@ -119,4 +122,6 @@ PACKAGE_DIR=$(find "$INSTALL_DIR" -maxdepth 1 -type d -name "audiogravity-backen
 
 info "Running installer..."
 echo ""
-bash "$PACKAGE_DIR/install.sh"
+INSTALL_ARGS=()
+[ -n "$VAPID_EMAIL" ] && INSTALL_ARGS+=(--vapid-email "$VAPID_EMAIL")
+bash "$PACKAGE_DIR/install.sh" "${INSTALL_ARGS[@]}"

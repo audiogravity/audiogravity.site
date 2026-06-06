@@ -95,14 +95,33 @@ curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --toke
 
 ### Options
 
-The backend installer accepts an optional contact address for push
-notifications (the VAPID `sub`). If omitted, a generic placeholder is used
-and the installer prints a warning.
+The backend installer accepts two optional flags:
+
+- **`--vapid-email`** — contact address for Web Push (the VAPID `sub`). If
+  omitted, a generic placeholder is used and the installer prints a warning.
+- **`--public-url`** — the public URL your users open Audiogravity from. The
+  installer derives the WebAuthn origin and Relying Party ID from it, enabling
+  **passkeys** (Face ID / Touch ID / Windows Hello). Passkeys require a real
+  HTTPS **domain** — they do **not** work over a bare IP address, which browsers
+  reject. Omit this flag if you don't use passkeys.
 
 ```bash
 curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
-    --token ghp_xxx --vapid-email you@example.com
+    --token ghp_xxx \
+    --vapid-email you@example.com \
+    --public-url https://audiogravity.example.com
 ```
+
+| Flag            | Sets                                         | Example                            |
+|-----------------|----------------------------------------------|------------------------------------|
+| `--vapid-email` | VAPID `sub` (push contact)                   | `you@example.com`                  |
+| `--public-url`  | `WEBAUTHN_ORIGIN` + derived `WEBAUTHN_RP_ID` | `https://audiogravity.example.com` |
+
+> Use the exact origin your browser shows (scheme + host + port).
+> `--public-url https://ag.example.com:8443` → `WEBAUTHN_ORIGIN=https://ag.example.com:8443`
+> and `WEBAUTHN_RP_ID=ag.example.com`. To share passkeys across sub-domains, set a
+> parent `WEBAUTHN_RP_ID` (e.g. `example.com`) manually in
+> `/opt/audiogravity/backend/.env` and restart the backend.
 
 ## Install as PWA
 
@@ -136,7 +155,7 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 | Frontend (JS) | 65 | ✅ |
 | **Total** | **167** | ✅ |
 
-Last run: 2026-06-05 12:54 UTC
+Last run: 2026-06-06 19:25 UTC
 
 ## Coming soon
 

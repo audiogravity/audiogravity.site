@@ -124,21 +124,3 @@ spark('ds1', 1.2); spark('ds2', 2.8);
         });
     });
 })();
-
-// Shake ribbon on GitHub Releases click
-(function () {
-    document.addEventListener('DOMContentLoaded', function () {
-        var btn = document.querySelector('a.nav-gh');
-        var ribbon = document.querySelector('.ribbon');
-        if (!btn || !ribbon) return;
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            ribbon.classList.remove('shake');
-            void ribbon.offsetWidth;
-            ribbon.classList.add('shake');
-            ribbon.addEventListener('animationend', function () {
-                ribbon.classList.remove('shake');
-            }, { once: true });
-        });
-    });
-})();

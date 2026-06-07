@@ -54,7 +54,7 @@
             <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
                 <svg id="themeIcon" viewBox="0 0 24 24"></svg>
             </button>
-            <a class="nav-gh" href="#" style="opacity:.45;cursor:default">
+            <a class="nav-gh" href="https://github.com/ad5030/audiogravity">
                 <svg viewBox="0 0 24 24">
                     <path
                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -1182,10 +1182,9 @@
                 </div>
                 <div>
                     <div class="terminal">
-                        <code><span class="cmt"># All-in-one (backend + frontend on the same host)</span></code>
+                        <code><span class="cmt"># All-in-one — backend + frontend, works on your LAN (no domain needed)</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span> \</code>
-                        <code>&nbsp;&nbsp;&nbsp;&nbsp;--public-url <span class="url">https://your-domain</span> <span class="cmt"># enable Face ID / passkeys</span></code>
+                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
                         <code><span class="cmt"># Then open in your browser:</span></code>
                         <code><span class="url">https://&lt;ip-of-your-streamer&gt;</span></code>
@@ -1194,14 +1193,22 @@
                     <div class="terminal" style="margin-top:18px">
                         <code><span class="cmt"># Or install separately on different hosts:</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-backend.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span> \</code>
-                        <code>&nbsp;&nbsp;&nbsp;&nbsp;--public-url <span class="url">https://your-domain</span> <span class="cmt"># enable Face ID / passkeys</span></code>
+                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-frontend.sh</span> \</code>
                         <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
                         <code><span class="cmt"># Then open in your browser:</span></code>
                         <code><span class="url">https://&lt;ip-of-your-streamer-frontend&gt;</span></code>
+                    </div>
+
+                    <div class="terminal" style="margin-top:18px">
+                        <code><span class="cmt"># Optional — passkeys (Face ID / Touch ID) + push.</span></code>
+                        <code><span class="cmt"># Only if AG is reachable via a public HTTPS domain:</span></code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
+                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span> \</code>
+                        <code>&nbsp;&nbsp;&nbsp;&nbsp;--public-url <span class="url">https://your-domain</span> \</code>
+                        <code>&nbsp;&nbsp;&nbsp;&nbsp;--vapid-email <span class="url">you@example.com</span></code>
                     </div>
                 </div>
             </div>
@@ -1228,7 +1235,7 @@
                 <div class="footer-col">
                     <h4>Resources</h4>
                     <a href="https://audiogravity.app">Landing</a>
-                    <a href="#" style="pointer-events:none;opacity:.45">Releases <span
+                    <a href="https://github.com/ad5030/audiogravity">Releases <span
                             style="font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--warn)">COMING
                             SOON</span></a>
                     <a href="https://github.com/ad5030/audiogravity/issues">Issues</a>

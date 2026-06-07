@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.9.0_beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.9.1_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
   <img src="https://img.shields.io/badge/license-proprietary-lightgrey" alt="License" />
   <img src="https://img.shields.io/badge/tests-154_passing-brightgreen" alt="Tests" />

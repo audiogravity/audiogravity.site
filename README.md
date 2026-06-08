@@ -150,12 +150,12 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 | Suite | Tests | Status |
 |-------|------:|--------|
 | Backend (Python) | 102 | ✅ |
-| License Server (Python) | 0 | ✅ |
-| License Server (JS) | 0 | ✅ |
+| License Server (Python) | 21 | ✅ |
+| License Server (JS) | 9 | ✅ |
 | Frontend (JS) | 65 | ✅ |
-| **Total** | **167** | ✅ |
+| **Total** | **197** | ✅ |
 
-Last run: 2026-06-06 19:25 UTC
+Last run: 2026-06-08 04:47 UTC
 
 ## Coming soon
 

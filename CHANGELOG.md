@@ -7,6 +7,51 @@ and this landing) are documented here. Format based on
 
 ---
 
+## [Unreleased]
+
+**Focus: Qobuz Hi-Res streaming integration + DSD volume safety.**
+
+### Added
+- **[backend] Qobuz OAuth2 module** (`modules/qobuz/`): full OAuth2 authentication
+  replacing the deprecated username/password login. Bundle credential extraction from
+  the Qobuz web player JS, OAuth URL generation, browser-based login, code-to-token
+  exchange, working secret discovery, and persistent config storage.
+- **[backend] Qobuz search, browse, and playback** (`library/service.py`): header-based
+  API auth (`X-App-Id`/`X-User-Auth-Token`), correct API signature format (float
+  timestamp, ASCII+UTF-8 byte concatenation), 3 parallel single-type search calls,
+  album queueing, cover art on all browse/search methods.
+- **[backend] Qobuz catalog browsing** — featured albums (`album/getFeatured`),
+  editorial playlists (`playlist/getFeatured`, `playlist/get`). Three new endpoints:
+  `GET /library/qobuz-featured`, `GET /library/qobuz-playlists`,
+  `GET /library/qobuz-playlist-tracks`. Playlist queueing support.
+- **[backend] External stream metadata registry** (`now_playing.py`): stable key
+  derivation from `eid` query parameter for Qobuz streams — correct title, artist,
+  album, and cover art in now-playing and queue despite ephemeral signed URLs.
+- **[backend] Qobuz as virtual source** — `src_qobuz` injected in the player when
+  connected; bitrate displayed for Qobuz FLAC streams.
+- **[frontend] Qobuz connection card** (`ag-qobuz-output.js`): OAuth2 connect/disconnect
+  molecule for the Sources view, with polling and events.
+- **[frontend] Qobuz catalog pills** (`ag-library-browse.js`): browse pills switch to
+  Favorites / New Releases / Selection / Playlists when Qobuz is selected.
+- **[frontend] Qobuz icon** on source cards (optimized 56×56 webp).
+- **[tests] DSD volume unit tests** (10 tests).
+
+### Changed
+- **[backend] Qobuz config cleanup** — removed `qobuz_app_id`, `qobuz_app_secret`,
+  `qobuz_username`, `qobuz_password` settings; OAuth2 manages credentials via UI.
+- **[build] `build-backend-package.sh`** — `qobuz` added to `ENABLED_MODULES` template
+  and upgrade migration loop; `QOBUZ_FORMAT_ID=27` in `.env` template.
+- **[frontend] Topbar doc button** opens `audiogravity.app`; internal doc links removed
+  from settings panel.
+
+### Fixed
+- **[backend] DSD volume protection** (`player/service.py`): 6 bugs causing volume to
+  snap to 100% during non-DSD playback — stale HQPlayer cache, race conditions,
+  incorrect restore target.
+- **[backend] HQPlayer stale track** — `_current_track` cleared after 30s stopped.
+
+---
+
 ## [0.9.1] - 2026-06-07
 
 Changes since **0.9.0**. Range: `74a7897` (0.9.0 baseline — *Merge

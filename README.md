@@ -28,6 +28,7 @@
 
 **Audio Control**
 - Unified transport across MPD, Roon, HQPlayer NAA, AirPlay and UPnP
+- Fullscreen Now Playing — cover art, seekable progress bar, transport controls, album tracklist, multi-source swipe, dynamic background
 - HQPlayer DSP remote — filter, shaper, output mode, volume with auto-discovery
 - Output steering — USB, Toslink, HDMI
 - One-tap profile scenarios (switch entire audio chains instantly)
@@ -38,8 +39,8 @@
     <td width="50%">
 
 **Library & Radio**
-- High-resolution browsing — Roon, MPD, MinimServer, Qobuz, Tidal
-- Qobuz Hi-Res streaming up to 24-bit / 192 kHz
+- High-resolution browsing — Roon, MPD, MinimServer, Qobuz
+- Qobuz Hi-Res streaming up to 24-bit / 192 kHz — favourites, new releases, editorial playlists
 - Internet radio — Radio Browser, custom stations, favourites
 - UPnP server auto-discovery & browsing
 
@@ -50,11 +51,13 @@
 
 **System & Performance**
 - Live signal-path visualisation of your entire Hi-Fi chain
+- Config editor — diff preview, backups, conditional restart
 - RT scheduling, CPU pinning, per-core governor control — via systemd drop-ins
 - µs-scale latency benchmarks from the browser
 - Service monitoring with 60s sparklines
 - Audio device inventory (ALSA cards, USB DACs)
 - Audio software manager — install, update, configure
+- Admin terminal — interactive shell in the browser
 
 </td>
     <td>

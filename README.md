@@ -158,7 +158,9 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 | Frontend (JS) | 65 | ✅ |
 | **Total** | **253** | ✅ |
 
-Last run: 2026-06-09 · Full report: [TEST_REPORT.md](TEST_REPORT.md)
+Last run: 2026-06-09 18:17 UTC · Full report: [TEST_REPORT.md](TEST_REPORT.md)
+
+Last run: 2026-06-09 18:17 UTC
 
 ## Documentation
 

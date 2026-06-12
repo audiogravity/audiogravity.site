@@ -5,6 +5,35 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ---
 
+## Unreleased
+
+### Top Bar — Mobile Navigation & Library Shortcut
+
+The top bar gains two buttons. On the left, a navigation toggle opens the
+vertical tab menu on mobile — symmetric to the settings burger on the right. A
+new Library shortcut (left of Logout) jumps straight to the Library tab from
+anywhere; licence gating is preserved, so a locked tab opens the licence modal
+instead. The obsolete documentation and admin "Components" buttons were removed.
+
+### Roon Source Logo
+
+The Roon source dropped its "RN" text placeholder for a proper logo, sized like
+the other source icons (MinimServer, Qobuz, HQPlayer). Because the mark is
+monochrome, it is rendered as a `currentColor` mask, so it stays visible across
+light, dark and the active (selected) card state.
+
+### DRY-RUN Restricted to Admins
+
+The Audio Software DRY-RUN toggle — a command-preview / catalog-validation tool,
+not a dependency-resolving simulation — is now scoped to administrators, and its
+size matches the settings toggles.
+
+### Login Page
+
+The version label now reads `v0.9.2` (lowercase prefix, no space).
+
+---
+
 ## 0.9.2 — 2026-06-09
 
 ### Qobuz Hi-Res Streaming (full stack)
@@ -34,9 +63,6 @@ detection, race conditions corrupting saved volume state. 10 unit tests added.
 ## 0.9.1 — 2026-06-07
 
 **Focus: ARM/Debian (aarch64) portability + production hardening.**
-
-All entries previously labelled v1.0.0 / v1.1.0 / v1.2.0 have been folded back
-into 0.9.1 — that 1.x numbering was an error.
 
 ### ARM64 as First-Class Target
 

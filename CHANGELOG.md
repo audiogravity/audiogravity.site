@@ -32,6 +32,8 @@ and this landing) are documented here. Format based on
 ### Removed
 - **[frontend] Obsolete top-bar buttons** — the documentation (audiogravity.app)
   button and the admin "Components" (bundle stats) button were removed.
+- **[frontend] Tab-bar now-playing** — the vertical tab sidebar no longer displays
+  the current stream (redundant with the mini player).
 
 ---
 

@@ -9,6 +9,30 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[frontend] Top bar — mobile navigation toggle** — a left-side button opens the
+  vertical tab menu on mobile, mirroring the settings burger on the right.
+- **[frontend] Top bar — Library shortcut** — a one-tap button (left of Logout)
+  jumps straight to the Library tab; licence gating is preserved (a locked tab
+  opens the licence modal instead).
+- **[frontend] Roon source logo** — the `RN` text placeholder for Roon sources is
+  replaced by a Roon logo rendered as a `currentColor` mask, so it stays visible in
+  light, dark and the active (selected) state.
+
+### Changed
+- **[frontend] DRY-RUN toggle is now admin-only** — the Audio Software DRY-RUN
+  simulation is scoped to administrators (a command-preview / catalog-validation
+  tool, not a dependency-resolving simulation); its size now matches the settings
+  toggles.
+
+### Fixed
+- **[frontend] Login page version label** — shown as `v0.9.2` (lowercase prefix,
+  no space).
+
+### Removed
+- **[frontend] Obsolete top-bar buttons** — the documentation (audiogravity.app)
+  button and the admin "Components" (bundle stats) button were removed.
+
 ---
 
 ## [0.9.2] - 2026-06-09

@@ -10,6 +10,11 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[backend+frontend] Tidal streaming source** — connect a Tidal HiFi account
+  (PKCE login) and browse Favorites / New Releases / Playlists, plus search;
+  playback streams **lossless FLAC** through a local DASH→FLAC ffmpeg proxy (Tidal
+  delivers FLAC as segmented DASH, not a direct URL). Requires `ffmpeg` (added to
+  the backend installer).
 - **[frontend] Top bar — mobile navigation toggle** — a left-side button opens the
   vertical tab menu on mobile, mirroring the settings burger on the right.
 - **[frontend] Top bar — Library shortcut** — a one-tap button (left of Logout)

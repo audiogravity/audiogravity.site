@@ -7,6 +7,17 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Tidal HiFi Streaming
+
+Tidal joins Qobuz as a streaming source. Connect a Tidal HiFi account via PKCE
+login (open the link, sign in, paste the redirect URL back — Tidal's fixed
+redirect cannot be intercepted in a browser), then browse Favorites, New Releases
+and your Playlists, or search the full catalogue. Playback is **lossless FLAC**:
+unlike Qobuz's direct URL, Tidal delivers FLAC as a segmented DASH manifest, so a
+local proxy remuxes it to a seekable FLAC stream with ffmpeg (`-c:a copy`, no
+re-encoding) that MPD plays natively. Requires `ffmpeg` (installed by the backend
+installer).
+
 ### Top Bar — Mobile Navigation & Library Shortcut
 
 The top bar gains two buttons. On the left, a navigation toggle opens the

@@ -28,6 +28,11 @@ and this landing) are documented here. Format based on
 ### Fixed
 - **[frontend] Login page version label** — shown as `v0.9.2` (lowercase prefix,
   no space).
+- **[backend] AirPlay now-playing on ARM** — shairport-sync track metadata leaked the
+  raw `<dbus_fast…Variant…>` repr in the pipeline now-playing; the `a{sv}` values are
+  now unwrapped (portable, no-op on x86).
+- **[frontend] Fullscreen player volume swipe** — adjusting the volume slider no longer
+  triggers the player's multi-source swipe.
 
 ### Removed
 - **[frontend] Obsolete top-bar buttons** — the documentation (audiogravity.app)

@@ -32,6 +32,16 @@ size matches the settings toggles.
 
 The version label now reads `v0.9.2` (lowercase prefix, no space).
 
+### Bug Fixes
+
+- **AirPlay now-playing on ARM** — shairport-sync track metadata is read from an
+  `a{sv}` D-Bus dict whose values arrived wrapped as Variants on ARM/Debian, leaking
+  the raw `<dbus_fast…Variant…>` repr into the pipeline now-playing. The values are now
+  unwrapped (recursively; no-op on x86 where they are already native).
+- **Fullscreen player volume swipe** — adjusting the volume slider no longer triggers
+  the player's multi-source switch swipe; the volume popover now isolates its own touch
+  gestures.
+
 ---
 
 ## 0.9.2 — 2026-06-09

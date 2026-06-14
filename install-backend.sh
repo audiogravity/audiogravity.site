@@ -36,7 +36,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-[ -n "$TOKEN" ] || fail "Missing --token <PAT>. Request your access token from audiogravity@di-marco.net."
+[ -n "$TOKEN" ] || fail "Missing --token <PAT>. Request your access token from contact@audiogravity.app."
 
 ARCH=$(uname -m)
 case "$ARCH" in

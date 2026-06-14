@@ -91,4 +91,4 @@ Everything in Starter, plus:
 
 ---
 
-*© 2026 Audiogravity — audiogravity@di-marco.net*
+*© 2026 Audiogravity — contact@audiogravity.app*

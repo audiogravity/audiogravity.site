@@ -30,7 +30,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-[ -n "$TOKEN" ] || fail "Missing --token <PAT>. Request your access token from audiogravity@di-marco.net."
+[ -n "$TOKEN" ] || fail "Missing --token <PAT>. Request your access token from contact@audiogravity.app."
 
 for cmd in curl tar sha256sum python3; do
     command -v "$cmd" >/dev/null 2>&1 || fail "'$cmd' is required but not installed."

@@ -94,7 +94,7 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token
 curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --token ghp_xxx
 ```
 
-> The token is shared during **early access** with approved testers. [Request access →](mailto:audiogravity@di-marco.net?subject=Audiogravity%20-%20Early%20access%20request)
+> The token is shared during **early access** with approved testers. [Request access →](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request)
 
 ### Options
 
@@ -152,13 +152,13 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 
 | Suite | Tests | Status |
 |-------|------:|--------|
-| Backend (Python) | 158 | ✅ |
+| Backend (Python) | 193 | ✅ |
 | License Server (Python) | 21 | ✅ |
 | License Server (JS) | 9 | ✅ |
 | Frontend (JS) | 65 | ✅ |
-| **Total** | **253** | ✅ |
+| **Total** | **288** | ✅ |
 
-Last run: 2026-06-09 18:17 UTC · Full report: [TEST_REPORT.md](TEST_REPORT.md)
+Last run: 2026-06-14 06:18 UTC
 
 ## Documentation
 
@@ -169,4 +169,4 @@ Last run: 2026-06-09 18:17 UTC · Full report: [TEST_REPORT.md](TEST_REPORT.md)
 
 Audiogravity is in early access. Public release scheduled for **Summer 2026**.
 
-To get notified: [audiogravity@di-marco.net](mailto:audiogravity@di-marco.net?subject=Audiogravity%20-%20Early%20access%20request)
+To get notified: [contact@audiogravity.app](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request)

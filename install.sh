@@ -25,7 +25,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ -z "$TOKEN" ]; then
-    echo "✗ Missing --token <PAT>. Request your access token from audiogravity@di-marco.net." >&2
+    echo "✗ Missing --token <PAT>. Request your access token from contact@audiogravity.app." >&2
     exit 1
 fi
 

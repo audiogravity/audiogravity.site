@@ -11,8 +11,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 Tidal joins Qobuz as a streaming source. Connect a Tidal HiFi account via PKCE
 login (open the link, sign in, paste the redirect URL back — Tidal's fixed
-redirect cannot be intercepted in a browser), then browse Favorites, New Releases
-and your Playlists, or search the full catalogue. Playback is **lossless FLAC**:
+redirect cannot be intercepted in a browser), then browse Favorites, New Releases,
+Charts (TIDAL's Top Hits, Viral / Rap / R&B / Pop Hits…), Editorial playlists
+(Popular, Trending, TIDAL Rising…) and your own Playlists, or search the full
+catalogue. Playback is **lossless FLAC**:
 unlike Qobuz's direct URL, Tidal delivers FLAC as a segmented DASH manifest, so a
 local proxy remuxes it on the fly with ffmpeg (`-c:a copy`, no re-encoding) and
 streams it to MPD as it is produced — playback starts in about a second. The

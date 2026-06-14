@@ -15,6 +15,10 @@ and this landing) are documented here. Format based on
   playback streams **lossless FLAC** through a local DASH→FLAC ffmpeg proxy (Tidal
   delivers FLAC as segmented DASH, not a direct URL). Requires `ffmpeg` (added to
   the backend installer).
+- **[backend+frontend] Tidal Charts & Editorial browse** — two new browse pills:
+  **Charts** (TIDAL's Top Hits, Viral / Rap / R&B / Pop Hits…) and **Editorial**
+  (Popular, Trending, TIDAL Rising, Podcasts…), extracted from Tidal's home page
+  and rendered as playlists; tapping one opens its tracks like any playlist.
 - **[backend] Tidal in-track seek** — the proxy remuxes each track to a seekable
   FLAC file (served as it is produced, so start-up stays fast) and keeps it in a
   small, disk-backed cache (current track + a couple of recent, wiped at startup).

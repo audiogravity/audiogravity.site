@@ -1,16 +1,16 @@
 # Audiogravity — Test Report
 
-Generated: **2026-06-14 14:33 UTC**
+Generated: **2026-06-14 16:35 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **backend** PASS | 200 | 200 | 0 | 0 | 13.7s |
-| **frontend** PASS | 65 | 65 | 0 | 0 | 0.2s |
+| **backend** PASS | 200 | 200 | 0 | 0 | 14.9s |
+| **frontend** PASS | 65 | 65 | 0 | 0 | 0.3s |
 | **license-js** PASS | 9 | 9 | 0 | 0 | 0.1s |
 | **license-py** PASS | 21 | 21 | 0 | 0 | 1.1s |
-| **Total** PASS | **295** | **295** | **0** | **0** | **15.1s** |
+| **Total** PASS | **295** | **295** | **0** | **0** | **16.3s** |
 
 ## Detail
 
@@ -44,12 +44,12 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
-  - [+] test_now_playing (0.04s)
-  - [+] test_control (0.03s)
+  - [+] test_now_playing (0.06s)
+  - [+] test_control (0.04s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
-  - [+] test_cover_returns_24h_cache (0.03s)
+  - [+] test_cover_returns_24h_cache (0.04s)
   - [+] test_cover_404_no_store (0.03s)
 
 **tests.test_audio_pipeline.TestAirplayNowPlaying**
@@ -65,10 +65,10 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_auth.TestUsersCRUD**
 
-  - [+] test_list_users (0.05s)
-  - [+] test_create_and_delete_user (0.47s)
+  - [+] test_list_users (0.04s)
+  - [+] test_create_and_delete_user (0.46s)
   - [+] test_update_user_role (0.45s)
-  - [+] test_cannot_delete_self (0.04s)
+  - [+] test_cannot_delete_self (0.05s)
 
 **tests.test_config_validation.TestConfigValidation**
 
@@ -107,17 +107,17 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_hqplayer.TestHQPlayer**
 
-  - [+] test_status (0.08s)
-  - [+] test_filters (0.21s)
+  - [+] test_status (0.07s)
+  - [+] test_filters (0.22s)
   - [+] test_shapers (0.07s)
   - [+] test_modes (0.07s)
   - [+] test_discover (0.07s)
 
 **tests.test_library.TestLibrary**
 
-  - [+] test_upnp_known_servers_route_exists (0.17s)
-  - [+] test_search_route_exists (0.19s)
-  - [+] test_queue_route_exists (0.17s)
+  - [+] test_upnp_known_servers_route_exists (0.18s)
+  - [+] test_search_route_exists (0.18s)
+  - [+] test_queue_route_exists (0.16s)
 
 **tests.test_license.TestGetStatus**
 
@@ -125,23 +125,23 @@ Generated: **2026-06-14 14:33 UTC**
   - [+] test_valid_lifetime_license (0.06s)
   - [+] test_beta_version_accepts_v1_scope (0.06s)
   - [+] test_version_expired (0.06s)
-  - [+] test_tampered_license (0.06s)
+  - [+] test_tampered_license (0.07s)
 
 **tests.test_license.TestUploadLicense**
 
-  - [+] test_upload_valid_lic (0.07s)
-  - [+] test_upload_invalid_signature (0.03s)
+  - [+] test_upload_valid_lic (0.06s)
+  - [+] test_upload_invalid_signature (0.04s)
 
 **tests.test_license.TestDeleteLicense**
 
   - [+] test_delete_existing_license (0.07s)
-  - [+] test_delete_wrong_password (0.03s)
+  - [+] test_delete_wrong_password (0.04s)
   - [+] test_delete_no_license (0.03s)
-  - [+] test_no_name_error (0.06s)
+  - [+] test_no_name_error (2.08s)
 
 **tests.test_packages.TestPackages**
 
-  - [+] test_route_exists (0.04s)
+  - [+] test_route_exists (0.05s)
 
 **tests.test_packages.TestRoonArchUrl**
 
@@ -158,7 +158,7 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_packages.TestScriptInstallerStdin**
 
-  - [+] test_install_feeds_affirmative_stdin (0.05s)
+  - [+] test_install_feeds_affirmative_stdin (0.04s)
 
 **tests.test_packages.TestRoonRegistryUninstall**
 
@@ -169,7 +169,7 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (2.04s)
+  - [+] test_runs_standalone_without_package_context (1.34s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -202,12 +202,12 @@ Generated: **2026-06-14 14:33 UTC**
 **tests.test_packages.TestAptDebSingle**
 
   - [+] test_single_deb_dpkg_install
-  - [+] test_single_deb_fixes_deps_on_dpkg_failure
+  - [+] test_single_deb_fixes_deps_on_dpkg_failure (0.01s)
 
 **tests.test_performance.TestPerformance**
 
-  - [+] test_cpu_info_route (0.16s)
-  - [+] test_rt_processes (0.08s)
+  - [+] test_cpu_info_route (0.15s)
+  - [+] test_rt_processes (0.09s)
 
 **tests.test_performance.TestGovernorBootScript**
 
@@ -218,13 +218,13 @@ Generated: **2026-06-14 14:33 UTC**
 **tests.test_player.TestPlayer**
 
   - [+] test_snapshot (0.04s)
-  - [+] test_control (0.05s)
-  - [+] test_sleep_timer_get (0.04s)
+  - [+] test_control (0.06s)
+  - [+] test_sleep_timer_get (0.03s)
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.20s)
-  - [+] test_deactivate (0.05s)
+  - [+] test_activate (0.17s)
+  - [+] test_deactivate (0.06s)
 
 **tests.test_push.TestVapidKey**
 
@@ -240,7 +240,7 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.20s)
+  - [+] test_script_produces_valid_keys (0.21s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -287,7 +287,7 @@ Generated: **2026-06-14 14:33 UTC**
   - [+] test_get_connection_connected (0.02s)
   - [+] test_delete_connection (0.02s)
   - [+] test_get_connection_after_disconnect (0.02s)
-  - [+] test_oauth_callback_no_code (0.03s)
+  - [+] test_oauth_callback_no_code (0.02s)
   - [+] test_oauth_callback_with_code (0.02s)
   - [+] test_oauth_callback_failure (0.02s)
   - [+] test_post_connection_starts_oauth (0.02s)
@@ -325,31 +325,31 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
-  - [+] test_featured_albums (0.22s)
-  - [+] test_featured_albums_default_type (0.16s)
+  - [+] test_featured_albums (0.18s)
+  - [+] test_featured_albums_default_type (0.17s)
   - [+] test_playlists (0.16s)
   - [+] test_playlist_tracks (0.16s)
-  - [+] test_playlist_tracks_missing_id (0.20s)
+  - [+] test_playlist_tracks_missing_id (0.18s)
   - [+] test_featured_service_error (0.16s)
 
 **tests.test_radio.TestRadio**
 
   - [+] test_search_route (0.09s)
   - [+] test_library_route (0.07s)
-  - [+] test_favorites_route (0.07s)
+  - [+] test_favorites_route (0.09s)
 
 **tests.test_services.TestListServices**
 
-  - [+] test_list_all (0.12s)
+  - [+] test_list_all (0.14s)
 
 **tests.test_services.TestServiceInfo**
 
-  - [+] test_get_service (0.09s)
+  - [+] test_get_service (0.08s)
 
 **tests.test_services.TestServiceActions**
 
-  - [+] test_restart_service (0.09s)
-  - [+] test_stop_service (0.09s)
+  - [+] test_restart_service (0.08s)
+  - [+] test_stop_service (0.08s)
   - [+] test_start_service (0.08s)
 
 **tests.test_steering.TestSteeringRoutes**
@@ -359,7 +359,7 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_sysinfo.TestMetrics**
 
-  - [+] test_metrics (0.11s)
+  - [+] test_metrics (0.10s)
 
 **tests.test_sysinfo.TestDetectCpuModel**
 
@@ -420,7 +420,7 @@ Generated: **2026-06-14 14:33 UTC**
   - [+] test_stream_track_discards_incomplete_on_ffmpeg_failure
   - [+] test_cache_keeps_only_most_recent
   - [+] test_cache_rejects_bad_track_id
-  - [+] test_stream_serves_cached_file_with_range (0.05s)
+  - [+] test_stream_serves_cached_file_with_range (0.03s)
 
 **tests.test_tidal_library.TestTidalDiscovery**
 
@@ -441,9 +441,9 @@ Generated: **2026-06-14 14:33 UTC**
 
   - [+] Auth state checkers > isAuthenticated > returns false when not authenticated
   - [+] Auth state checkers > isAuthenticated > returns true when authenticated with valid token
-  - [+] Auth state checkers > isAuthenticated > returns false when token is expired (0.04s)
+  - [+] Auth state checkers > isAuthenticated > returns false when token is expired (0.06s)
   - [+] Auth state checkers > isAuthenticated > returns false when no token
-  - [+] Auth state checkers > getCurrentUser > returns null when not authenticated
+  - [+] Auth state checkers > getCurrentUser > returns null when not authenticated (0.01s)
   - [+] Auth state checkers > getCurrentUser > returns user when authenticated
   - [+] Auth state checkers > isAdmin > returns false when not authenticated
   - [+] Auth state checkers > isAdmin > returns true for admin role
@@ -521,7 +521,7 @@ Generated: **2026-06-14 14:33 UTC**
 
 **js/ls-api.test.js**
 
-  - [+] fmtDate > returns "—" for null
+  - [+] fmtDate > returns "—" for null (0.02s)
   - [+] fmtDate > returns "—" for empty string
   - [+] fmtDate > formats a valid ISO date (0.05s)
   - [+] shortId > returns "—" for null
@@ -535,7 +535,7 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_admin.TestListOrders**
 
-  - [+] test_list_orders (0.59s)
+  - [+] test_list_orders (0.56s)
   - [+] test_list_orders_no_auth (0.01s)
 
 **tests.test_admin.TestStats**
@@ -556,7 +556,7 @@ Generated: **2026-06-14 14:33 UTC**
 
 **tests.test_portal.TestPubConfig**
 
-  - [+] test_returns_config (0.02s)
+  - [+] test_returns_config (0.01s)
 
 **tests.test_portal.TestCheck**
 
@@ -584,5 +584,5 @@ Generated: **2026-06-14 14:33 UTC**
   - [+] test_invalid_pingback_creates_no_order (0.02s)
   - [+] test_non_completed_status_ignored (0.02s)
   - [+] test_receiver_email_mismatch_ignored (0.02s)
-  - [+] test_idempotent_duplicate_txn (0.04s)
+  - [+] test_idempotent_duplicate_txn (0.03s)
   - [+] test_upgrade_price_sets_v2_scope (0.03s)

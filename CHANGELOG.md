@@ -9,6 +9,11 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[landing] FAQ — connecting Qobuz or Tidal** — one entry covering both flows:
+  Qobuz OAuth (auto-redirect, no paste) and Tidal PKCE (copy/paste the redirect
+  URL), noting the required subscription tier for each.
+
 ## [0.9.3] - 2026-06-14
 
 ### Added

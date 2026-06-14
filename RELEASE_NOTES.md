@@ -15,9 +15,12 @@ redirect cannot be intercepted in a browser), then browse Favorites, New Release
 and your Playlists, or search the full catalogue. Playback is **lossless FLAC**:
 unlike Qobuz's direct URL, Tidal delivers FLAC as a segmented DASH manifest, so a
 local proxy remuxes it on the fly with ffmpeg (`-c:a copy`, no re-encoding) and
-streams it progressively to MPD — playback starts in about a second. (In-track
-seek on Tidal tracks isn't available yet.) Requires `ffmpeg` (installed by the
-backend installer).
+streams it to MPD as it is produced — playback starts in about a second. The
+remux is written to a seekable FLAC file and kept in a small, disk-backed cache
+(the current track plus a couple of recent ones, wiped at startup), so replaying
+or reopening a track serves it with HTTP Range and **in-track seek works**. The
+first play of a given track in a session isn't seekable; replays are. Requires
+`ffmpeg` (installed by the backend installer).
 
 ### Top Bar — Mobile Navigation & Library Shortcut
 

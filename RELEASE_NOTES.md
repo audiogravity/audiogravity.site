@@ -14,9 +14,10 @@ login (open the link, sign in, paste the redirect URL back — Tidal's fixed
 redirect cannot be intercepted in a browser), then browse Favorites, New Releases
 and your Playlists, or search the full catalogue. Playback is **lossless FLAC**:
 unlike Qobuz's direct URL, Tidal delivers FLAC as a segmented DASH manifest, so a
-local proxy remuxes it to a seekable FLAC stream with ffmpeg (`-c:a copy`, no
-re-encoding) that MPD plays natively. Requires `ffmpeg` (installed by the backend
-installer).
+local proxy remuxes it on the fly with ffmpeg (`-c:a copy`, no re-encoding) and
+streams it progressively to MPD — playback starts in about a second. (In-track
+seek on Tidal tracks isn't available yet.) Requires `ffmpeg` (installed by the
+backend installer).
 
 ### Top Bar — Mobile Navigation & Library Shortcut
 

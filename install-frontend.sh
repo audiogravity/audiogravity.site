@@ -9,7 +9,7 @@
 
 set -e
 
-REPO="ad5030/audiogravity-releases"
+REPO="audiogravity/audiogravity-releases"
 INSTALL_DIR="/tmp/ag-frontend-install-$$"
 
 GREEN='\033[0;32m'; RED='\033[0;31m'; BLUE='\033[0;34m'; YELLOW='\033[1;33m'; NC='\033[0m'

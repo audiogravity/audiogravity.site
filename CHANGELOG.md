@@ -15,6 +15,11 @@ and this landing) are documented here. Format based on
   URL), noting the required subscription tier for each.
 
 ### Fixed
+- **[backend] Tidal playback skipped every track** — the seek cache pre-created
+  the remux output file, so ffmpeg (run without `-y`) refused to overwrite it and
+  exited having written 0 bytes; MPD received an empty stream and skipped to the
+  next track. ffmpeg now overwrites the placeholder, and a 0-byte remux is never
+  cached.
 - **[frontend] Bundle analysis report no longer deployed** — the Vite `stats.html`
   bundle treemap was copied into the build output and shipped to production
   (reachable at `/stats.html`). It is now opt-in only (`vite build --mode analyze`)

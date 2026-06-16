@@ -14,6 +14,16 @@ and this landing) are documented here. Format based on
   Qobuz OAuth (auto-redirect, no paste) and Tidal PKCE (copy/paste the redirect
   URL), noting the required subscription tier for each.
 
+### Fixed
+- **[frontend] Bundle analysis report no longer deployed** — the Vite `stats.html`
+  bundle treemap was copied into the build output and shipped to production
+  (reachable at `/stats.html`). It is now opt-in only (`vite build --mode analyze`)
+  and written outside the deployed output, so it never ships.
+
+### Removed
+- **[frontend] Standalone styleguide page** — the unused `styleguide.html`
+  design-system gallery was removed (Storybook is the live component reference).
+
 ## [0.9.3] - 2026-06-14
 
 ### Added

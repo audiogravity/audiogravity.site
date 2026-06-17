@@ -7,7 +7,15 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Stream Origin Badge
+
+The Now Playing players (mini bar and fullscreen) now show **where the current
+track is streaming from** — a small logo + label such as Tidal, Qobuz, your
+UPnP/DLNA server (by name, e.g. *MinimServer*), a radio station, a local file,
+Roon or AirPlay. Previously every source that played through MPD looked
+identical ("MPD"), so you couldn't tell a Tidal track from a Qobuz one or from a
+file on your NAS. The badge is derived server-side from the active stream, so it
+stays accurate as you switch sources.
 
 ---
 

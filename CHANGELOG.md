@@ -10,6 +10,11 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[frontend+backend] Stream origin badge in the players** — the mini and
+  fullscreen Now Playing views now show where the audio comes from (Tidal, Qobuz,
+  a UPnP/DLNA server by name, radio, a local file, Roon, AirPlay…) with a logo +
+  label, instead of an undifferentiated "MPD". The backend tags each playing
+  source with its provider, independent of transport.
 - **[landing] FAQ — connecting Qobuz or Tidal** — one entry covering both flows:
   Qobuz OAuth (auto-redirect, no paste) and Tidal PKCE (copy/paste the redirect
   URL), noting the required subscription tier for each.

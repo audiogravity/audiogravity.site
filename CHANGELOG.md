@@ -32,6 +32,12 @@ and this landing) are documented here. Format based on
   Tidal and HQPlayer now render the same status indicator as the other sources.
 
 ### Fixed
+- **[frontend] Qobuz sign-in flow** — the Qobuz OAuth page now opens in a popup
+  (the AG UI stays underneath) that closes itself once authentication succeeds, so
+  you land back in AudioGravity automatically instead of having to close the tab
+  and reopen the app.
+- **[frontend] Missing-cover icon in the fullscreen player** — the "no artwork"
+  placeholder icon was rendered far too small; it now fills the cover area again.
 - **[backend] Tidal playback skipped every track** — the seek cache pre-created
   the remux output file, so ffmpeg (run without `-y`) refused to overwrite it and
   exited having written 0 bytes; MPD received an empty stream and skipped to the

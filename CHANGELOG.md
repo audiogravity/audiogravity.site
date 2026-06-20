@@ -29,6 +29,16 @@ and this landing) are documented here. Format based on
   Qobuz OAuth (auto-redirect, no paste) and Tidal PKCE (copy/paste the redirect
   URL), noting the required subscription tier for each.
 
+### Fixed
+- **[backend] `_ext_stream_key` anchored to URL path/query** — Tidal detection
+  now checks the URL *path* for `/tidal/stream/` and Qobuz detection checks the
+  *query string* for `eid=`, instead of raw substring matching. Prevents a UPnP
+  URL whose path contains `/tidal/stream/` or `eid=` from being misclassified.
+  8 regression tests added.
+- **[frontend] Software tab description** — removed the "dry-run simulation"
+  claim from the Pro feature list; the toggle is admin-only and not visible to
+  regular Pro users.
+
 ### Changed
 - **[frontend] Library search lists UPnP/DLNA servers** — known media servers
   (e.g. MinimServer) now appear as sources in Library search, alongside MPD, Roon,

@@ -23,6 +23,9 @@ and this landing) are documented here. Format based on
 - **[frontend] Library search lists UPnP/DLNA servers** — known media servers
   (e.g. MinimServer) now appear as sources in Library search, alongside MPD, Roon,
   Qobuz and Tidal (previously missing).
+- **[frontend] UPnP/DLNA text search from the Search tab** — selecting a UPnP/DLNA
+  server badge while in the Search tab now stays in search mode and runs a text
+  query against the server (previously always redirected to the UPnP browser).
 - **[frontend] Settings: single version + logout moved in** — the panel now shows
   one unified product version (front and back share it) with the Swagger API link,
   and the Logout button moved from the top bar into the Settings footer.

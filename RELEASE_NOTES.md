@@ -20,7 +20,9 @@ stays accurate as you switch sources.
 ### Library & Settings refinements
 
 - **UPnP/DLNA servers in Library search** — media servers such as MinimServer now
-  appear as search sources next to MPD, Roon, Qobuz and Tidal (they were missing).
+  appear as search sources next to MPD, Roon, Qobuz and Tidal. Selecting one while
+  in the Search tab runs a text query against that server; selecting one elsewhere
+  opens the UPnP browser.
 - **Settings panel** — a single unified product version (front and back share it)
   next to the Swagger API link, and the **Logout** button moved from the top bar
   into the Settings footer for a cleaner top bar.

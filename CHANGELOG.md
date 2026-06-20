@@ -10,6 +10,9 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[backend] sysinfo — `smartctl` `FileNotFoundError` crashes monitor** — caught and degraded gracefully; disk temperature returns `None` when `smartctl` is absent. `SYSLOG_IDENTIFIER` fixed to `_SYSLOG_IDENTIFIER=` (journalctl match syntax). Invalid `grep_pattern` regex now returns 400. `lscpu` absence caught. Admin PTY shell logs an audit entry.
+- **[backend] push — `webpush()` without timeout** — `timeout=10` added to prevent indefinite blocking on unreachable endpoints. Endpoint now validated as HTTPS URL. `endpoint` query param annotated with `Query()`. `logger.error` on successful unsubscribe changed to `logger.info`.
+- **[backend] config_validation — `appconfigfile` path traversal** — paths now validated against `/etc` and `/usr/local/etc` whitelist (mirrors `audio_app_config`). `systemd_unit` bounded to `max_length=255`. Substring match replaced with line-start check. `ValueError` in validation now returns 400 instead of 500.
 - **[backend] Steering — ALSA device injection via config write** — `alsa_device` now validated against `^hw:\d+,\d+$` before any config file substitution; `get_steerability()` no longer hardcodes `upmpdcli`/`roonbridge` as always available; `_verify_alsa_device_exists()` checks `/proc/asound/cardX/pcmYp` (playback subdevice), not just the card directory.
 - **[backend] Performance — cyclictest `IndexError` on trailing token** — bounds check (`i + 1 < len(tokens)`) added to the cyclictest line parser.
 - **[backend] Performance — `$CONFIG_FILE` unquoted in boot script** — config path now passed as `sys.argv[1]` and shell-quoted (`"$CONFIG_FILE"`), preventing word-splitting on paths with spaces.

@@ -10,6 +10,9 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[backend] Packages — shell injection via installer config** — `install_script_args`, `check_command`, `uninstall_commands` and `version_check_command` now use `shlex.split` + `create_subprocess_exec` instead of `shell=True` f-strings. `version_check_url` validated against `ALLOWED_DOWNLOAD_DOMAINS`. `gpg_key_path` and `sources_list_path` validated by `_validate_destination_path()` before any `sudo cp`. `_validate_package_name()` added in `apt_repo.py`. 9 security tests added.
+- **[backend] Player `_poll_loop` NameError on `get_now_playing()` failure** — `items` now initialised to `[]` before the try block, preventing `NameError` when `get_now_playing()` raises.
+- **[backend] Player DSD state inconsistent after partial `gather()` failure** — `_dsd_active` reset to `False` on exception so volumes are not left partially forced.
 - **[backend] Auth `POST /users` returned 200 instead of 201** — corrected to `HTTP_201_CREATED`.
 - **[backend] Auth `PATCH /users/{u}` accepted whitespace-only password** — passwords that are blank after `.strip()` are now rejected with 400.
 - **[backend] Auth `update_user` race condition post-update** — `update_user()` now returns `Optional[User]` directly, eliminating the separate `get_user()` call after write.

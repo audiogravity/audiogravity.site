@@ -10,6 +10,11 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[frontend] XSS — `escapeHtml` imported directly in `ag-admin-page`** — removed `window.escapeHtml ? ... : username` ternary; `escapeHtml` now imported as an ES6 module so username is always escaped in the delete-user confirmation dialog.
+- **[frontend] XSS — `unsafeHTML(this.label)` removed from `ag-metric-detail`** — label prop now bound with Lit's auto-escaping (`${this.label}`); unused `unsafeHTML` import removed.
+- **[frontend] Memory leak — `ag-network-test` jitter Chart.js not destroyed** — `this._jitterChart.destroy()` added to `disconnectedCallback()`.
+- **[frontend] Push unsubscribe used wrong HTTP method** — changed from `POST` with JSON body to `DELETE` with query param (`apiDelete('/push/unsubscribe?endpoint=...')`), matching the backend router.
+- **[frontend] Password trim in user modal** — `this._password` now `.trim()`-ed before validation; whitespace-only passwords are caught by the existing `length < 6` check instead of reaching the backend.
 - **[backend] core — D-Bus proxy cache eviction on error** — stale unit proxies are now removed from `_unit_proxy_cache` on `call_get_all` failure so the next call rebuilds a fresh proxy instead of reusing a dead one indefinitely.
 - **[backend] core — Roon disconnect timeout** — `_roon_api.stop()` wrapped in `asyncio.wait_for(timeout=5)` to prevent indefinite hang; state is always cleaned up in `finally`.
 - **[backend] core — JWT decode error log sanitised** — exception logged as `type(e).__name__` only, preventing any token fragment from appearing in logs.

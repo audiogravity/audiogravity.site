@@ -7,6 +7,19 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Reliability & Security — Backend hardening
+
+An extensive review of all 20 backend modules produced 40+ targeted fixes. None break existing functionality; the most impactful for daily use:
+
+- **Radio station editing now works** — `PUT /radio/{uuid}` was silently returning a coroutine instead of the result; station edits are now persisted correctly.
+- **DSD streams detected in the pipeline** — `audio_str="dsd64:2"` was silently discarded; DSD sample rate and bit depth now appear correctly in the pipeline graph and metrics.
+- **UPnP queue routes to the right output** — when multiple MPD outputs are configured, UPnP queue operations now honour the requested `output_id` instead of always using the first output.
+- **Profile activation resilient to slow services** — stop and start phases are now bounded to 30 s each; a hung service can no longer freeze a profile switch indefinitely.
+- **Player poll loop no longer crashes silently** — a network error during `get_now_playing()` now degrades gracefully instead of causing a `NameError` that killed the SSE stream.
+- **Package installer hardened against injection** — `install_script_args`, `check_command` and `uninstall_commands` now use `shlex.split` + `subprocess_exec` instead of `shell=True`; GPG key and sources-list destination paths are validated before any `sudo cp`.
+- **Steering output switch validated** — ALSA device strings are checked against `hw:<card>,<device>` before being written into any config file, preventing malformed values from corrupting MPD or shairport-sync config.
+- **Auth & JWT tightened** — `POST /auth/users` correctly returns 201; whitespace-only passwords rejected; JWT tokens now carry a `jti` (unique ID) for future revocation; token decode errors no longer expose fragments in logs.
+
 ### HQPlayer — Stop playback
 
 `POST /hqplayer/stop` is now implemented (it was documented but missing). The button in the HQPlayer output card can reliably stop playback and clear the current track metadata.

@@ -23,6 +23,10 @@ stays accurate as you switch sources.
   appear as search sources next to MPD, Roon, Qobuz and Tidal. Selecting one while
   in the Search tab runs a text query against that server; selecting one elsewhere
   opens the UPnP browser.
+- **Config editor — blank file hint** — when a service config has all sections
+  empty (package defaults, e.g. a fresh Debian shairport-sync install), the form
+  view now shows a clear banner instead of a series of empty `{}` boxes, with a
+  direct link to Expert Mode to view and uncomment the full file.
 - **Settings panel** — a single unified product version (front and back share it)
   next to the Swagger API link, and the **Logout** button moved from the top bar
   into the Settings footer for a cleaner top bar.

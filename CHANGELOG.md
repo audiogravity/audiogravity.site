@@ -10,6 +10,16 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[frontend] Config editor — blank configuration hint** — when a service
+  config file has all sections empty (package defaults active), the form view
+  now shows an info banner explaining the state and offering a direct link to
+  Expert Mode to view and uncomment the full file.
+- **[backend] Tidal/Qobuz credential rotation detection** — 401/403 responses
+  from `playbackinfopostpaywall` (Tidal) and `track/getFileUrl` (Qobuz) after
+  token refresh now raise typed exceptions (`TidalClientRotatedError`,
+  `QobuzClientRotatedError`) logged at ERROR level with a remediation hint.
+  The Tidal stream endpoint returns HTTP 503 instead of 404 on rotation. 10
+  unit tests cover both services.
 - **[frontend+backend] Stream origin badge in the players** — the mini and
   fullscreen Now Playing views now show where the audio comes from (Tidal, Qobuz,
   a UPnP/DLNA server by name, radio, a local file, Roon, AirPlay…) with a logo +

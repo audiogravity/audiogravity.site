@@ -7,6 +7,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### HQPlayer — Stop playback
+
+`POST /hqplayer/stop` is now implemented (it was documented but missing). The button in the HQPlayer output card can reliably stop playback and clear the current track metadata.
+
 ### Stream Origin Badge
 
 The Now Playing players (mini bar and fullscreen) now show **where the current

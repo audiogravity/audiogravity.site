@@ -10,6 +10,29 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[backend] HQPlayer `POST /hqplayer/stop`** — endpoint to stop playback (was documented but not implemented); also adds `stop()` service method and `has_dsp_config` public property.
+
+### Fixed
+- **[backend] Radio `PUT /radio/{uuid}` broken** — `edit_station()` was awaited incorrectly (missing `await`), causing `PUT` to always return a coroutine instead of the result.
+- **[backend] Radio `added_at` timezone-unaware** — `datetime.utcnow()` (deprecated Python 3.12) replaced with `datetime.now(timezone.utc)`.
+- **[backend] Audio pipeline DSD stream not detected** — `audio_str="dsd64:2"` caused `int("dsd64")` → ValueError silently swallowed; DSD multiplier now parsed correctly (`dsd_mult × 44100`, 1-bit).
+- **[backend] Audio pipeline cgroup v1 PID→service mapping** — `split("::", 1)` only matched cgroup v2; now uses `fields[-1]` to support both formats.
+- **[backend] Audio pipeline `dbus-send` without timeout** — both subprocess `communicate()` calls now wrapped with `asyncio.wait_for(timeout=3.0)` + `proc.kill()` on expiry.
+- **[backend] Audio pipeline MPD URI control-char filter** — `any(ord(c) < 0x20)` replaces the newline-only check.
+- **[backend] Library UPnP queue ignores `output_id`** — `upnp_search_queue` now honours `req.output_id` like Qobuz/Tidal.
+- **[backend] Library SOAP Browse object_id not XML-escaped** — `_sax.escape(object_id)` applied before template formatting.
+- **[backend] Library Qobuz album/playlist queue duplicated** — extracted `_queue_qobuz_tracks()` helper (~25 lines removed).
+- **[backend] Library `_tidal_cover` crashes on dict uuid** — `isinstance(uuid, str)` guard added.
+- **[backend] Qobuz `private_key` leaked in query string** — `_exchange_code` changed from GET+params to POST+body.
+- **[backend] Qobuz token refresh race condition** — `asyncio.Lock` added to `TidalOAuthService.get_access_token` with double-check pattern.
+- **[backend] Qobuz half-authenticated state** — `handle_callback` returns `False` when `_find_working_secret()` returns None instead of saving an `app_secret=None` state.
+- **[backend] Qobuz `user_id` could be string `"None"`** — `str(user.get("id"))` when id is JSON null now correctly returns `None`.
+- **[backend] Tidal stale token not cleared on network error** — `_access_token` set to `None` when refresh fails and token is past expiry.
+- **[backend] HQPlayer `item_type`/`action` unvalidated** — changed from `str` to `Literal["track","album","artist"]` / `Literal["play","add"]` in `HQPlayerPlayLibraryRequest`.
+- **[backend] HQPlayer XML parsing duplicated** — extracted `_read_xml_response()` static helper used by both `_send()` and `_send_batch()`.
+- **[core] `get_shared_session()` exported** — `LibraryService._http_session()` now delegates to the app-wide shared session (closed on graceful shutdown), eliminating socket leak.
+
+### Added
 - **[frontend] Config editor — blank configuration hint** — when a service
   config file has all sections empty (package defaults active), the form view
   now shows an info banner explaining the state and offering a direct link to

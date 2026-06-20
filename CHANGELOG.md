@@ -10,7 +10,7 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
-- **[backend] HQPlayer `POST /hqplayer/stop`** — endpoint to stop playback (was documented but not implemented); also adds `stop()` service method and `has_dsp_config` public property.
+- **[backend] HQPlayer `POST /hqplayer/stop`** — endpoint to stop playback (was documented but not implemented); also adds `stop()` service method and `has_dsp_config` public property. 13 unit tests added covering stop, Literal validation, `has_dsp_config`, `_read_xml_response` helper, and play request validation.
 
 ### Fixed
 - **[backend] Radio `PUT /radio/{uuid}` broken** — `edit_station()` was awaited incorrectly (missing `await`), causing `PUT` to always return a coroutine instead of the result.

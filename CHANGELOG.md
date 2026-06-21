@@ -9,7 +9,29 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[backend] audio_pipeline — subprocess blocks event loop on NI data fetch** — `_get_local_ni_data()` called `subprocess.run("ip"/"iw")` synchronously from a coroutine, stalling the event loop for up to 3s on every cache miss (TTL was 10s). Calls are now pre-warmed via `asyncio.to_thread` before pipeline construction; TTL raised to 60s.
+- **[backend] audio_pipeline — HQPlayer volume returned negative integers** — formula `100 * (1 + volume_db / 60)` produced negative values for `volume_db < -60` (e.g. `-140` for muted). Now clamped to `[0, 100]`; `None` when `volume_db` is unknown.
+- **[backend] audio_pipeline — `cpu_percent()` always returned 0.0** — a new `psutil.Process` instance was created on every cycle; the first call always returns 0.0 without a prior snapshot. Instances are now reused via `_psutil_procs`.
+- **[backend] audio_pipeline — incoherent double `/proc/asound` read** — `_get_alsa_latency` and `_get_alsa_buffer_fill` each read `status` and `hw_params` independently, yielding different hardware snapshots. A shared `_read_alsa_pcm_state` helper performs a single coherent read.
+- **[backend] audio_pipeline — ALSA pointer wraparound incorrect on ARM64** — `appl_ptr - hw_ptr < 0` was corrected with `+ 2**32`; on ARM64 `snd_pcm_uframes_t` is 64-bit, causing negative or absurd latencies after ~6h. Fixed with `+ 2**64`.
+- **[backend] audio_pipeline — `_pid_identify_cache` unbounded** — raw dict with no TTL or size limit; replaced with `TTLDictCache(300)`.
+- **[backend] audio_pipeline — M4A codec mismatch between modules** — `_enrich_with_topology` mapped `.m4a → ALAC` while `service._query_mpd` mapped `M4A → AAC` for the same file. `_detect_mpd_format` is now the single source of truth; `service.py` imports it directly.
+- **[backend] audio_pipeline — `_mpd_command` duplicated `core.mpd_client.mpd()`** — redundant implementation removed from `now_playing.py`; all calls go through `core.mpd_client`.
+- **[backend] audio_pipeline — `_get_mpd_now_playing` used direct Unix socket** — replaced with `core.mpd_client.mpd_batch` (TCP), consistent with all other MPD consumers. `currentsong` + `status` sent in a single connection via `command_list_ok_begin`.
+- **[backend] audio_pipeline — blocking file I/O in async endpoint** — `open(topology_path)` in `async def get_topology()` blocked the event loop; replaced with `asyncio.to_thread(topology_path.read_bytes)`.
+- **[backend] audio_pipeline — dead variable + deprecated API** — `now = asyncio.get_event_loop().time()` removed (`now` never used; `get_event_loop()` deprecated since Python 3.10).
+- **[backend] audio_hw — blocking I/O in async event loop** — `read_text()`, `exists()`, `iterdir()` called directly from coroutines, stalling the event loop on every scan. All filesystem access moved to `_scan_card_dir()` (synchronous method) called via `asyncio.to_thread`; per-card details now fetched in parallel via `asyncio.gather`.
+- **[backend] audio_hw — exception path poisoned the 60 s cache** — a transient I/O error (e.g. USB hotplug race) fell through to `_cache.set()`, serving an empty or partial device list for the full TTL. The error path now returns without caching.
+- **[backend] audio_hw — subdevice availability always reported as 1/1** — the `if sub_info_file.exists()` block contained only `pass`; `subdevices_total` and `subdevices_available` were always hardcoded to 1 regardless of actual device state. `sub0/info` is now parsed for `subdevices_count` and `subdevices_avail`.
+- **[backend] audio_hw — early return did not cache the negative result** — when `/proc/asound/cards` is absent the empty result was returned without `_cache.set()`, causing a `/proc` stat on every subsequent call with no back-off.
+- **[backend] audio_hw — non-deterministic device ordering** — `iterdir()` returns entries in filesystem order; a `sorted()` call now guarantees stable ordering by `pcmNp` name.
+
 ### Added
+- **[backend] audio_hw — `force_refresh` query parameter on `GET /audio-hw/devices`** — `?force_refresh=true` bypasses the 60 s cache and triggers an immediate rescan, useful after a USB hotplug event.
+- **[backend] audio_hw — `total_cards` as a computed field** — converted to Pydantic v2 `@computed_field`; can no longer diverge from `len(cards)`.
+- **[backend] `requirements-dev.txt`** — test dependencies (`pytest`, `pytest-asyncio`, `httpx`) separated from `requirements.txt` in `audiogravity.core`.
+- **[tests] audio_pipeline** — `TestDetectMpdFormat`, `TestAlsaPcmState` (latency, 2**64 wraparound, closed device), `TestHqplayerVolume` (clamping, None), `TestPidIdentifyCacheType` — 64 tests passing.
 - **[landing] `THIRD_PARTY_NOTICES.md`** — full attribution for all open-source components: frontend (Lit, Cytoscape, dagre, Lucide, Chart.js, CodeMirror, Inter, JetBrains Mono), backend (FastAPI, Pydantic, pywebpush/MPL-2.0, cryptography, roonapi, 15+ libraries), runtime binaries (ffmpeg/LGPL, cyclictest/GPL-2, iperf3/BSD-3, smartctl/GPL-2), external API (Radio Browser), and optionally-installable audio software (MPD, upmpdcli, shairport-sync, HQPlayer NAA, Roon Bridge/Server).
 - **[landing] `index.html`** — announce bar updated to v0.9.4; Features section: title includes Tidal, Unified Transport card adds stream origin badge, High-resolution library card mentions UPnP search playable, MQA removed from signal-path description; Compare table: new row for native Tidal & Qobuz streaming (OAuth2/PKCE), UPnP row updated to mention search + directly playable results; footer version v0.9.4 and "Open Source" link in Legal.
 - **[landing] `README.md`** — reference to `THIRD_PARTY_NOTICES.md` in license paragraph and Documentation section.

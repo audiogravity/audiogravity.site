@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./dev.sh status *)",
+      "Bash(./dev.sh start *)",
+      "Bash(python3 -m venv --upgrade /home/ad/audiogravity.src/backend/venv)",
+      "Bash(/home/ad/audiogravity.src/backend/venv/bin/pip list *)",
+      "Bash(sed -i 's|#!/home/ad/audiogravity/backend/venv/bin/python3|#!/home/ad/audiogravity.src/backend/venv/bin/python3|g' /home/ad/audiogravity.src/backend/venv/bin/* && echo \"done\")",
+      "Bash(python3 -m venv /home/ad/audiogravity.src/backend/venv)",
+      "Bash(/home/ad/audiogravity.src/backend/venv/bin/pip install *)",
+      "Bash(python -m pytest tests/test_tidal.py::TestTidalRotation tests/test_qobuz.py::TestQobuzRotation -v)",
+      "Bash(venv/bin/python -m pytest tests/test_tidal.py::TestTidalRotation tests/test_qobuz.py::TestQobuzRotation -v)",
+      "Bash(venv/bin/python -m pytest tests/test_tidal.py tests/test_qobuz.py -v --tb=short)",
+      "Bash(gh pr *)",
+      "Bash(venv/bin/python -m pytest tests/test_library.py -v --tb=short)",
+      "Bash(./dev-backend.sh stop *)",
+      "Bash(./dev-backend.sh start *)",
+      "Bash(./dev-backend.sh status *)",
+      "Bash(venv/bin/python -m pytest tests/test_library.py -q --tb=short)",
+      "Bash(backend/venv/bin/python -m pytest backend/tests/test_library.py -q --tb=short)",
+      "Bash(venv/bin/python -m pytest tests/test_tidal.py tests/test_qobuz.py tests/test_library.py -q --tb=short)",
+      "Bash(venv/bin/python -m pytest tests/test_tidal.py tests/test_qobuz.py tests/test_tidal_library.py tests/test_qobuz_library.py -q --tb=short)",
+      "Bash(python3 -c \"import pydantic; print\\(pydantic.__version__\\)\")",
+      "Bash(/home/ad/audiogravity.src/backend/venv/bin/python -c \"import pydantic; print\\(pydantic.__version__\\)\")",
+      "Bash(venv/bin/python -m pytest tests/test_tidal.py tests/test_qobuz.py tests/test_tidal_library.py tests/test_qobuz_library.py tests/test_library.py -q --tb=short)",
+      "Bash(venv/bin/python -m pytest tests/test_license.py -q --tb=short)",
+      "Bash(venv/bin/python -m pytest tests/test_license.py tests/test_services.py tests/test_audio_app_config.py -q --tb=short)"
+    ],
+    "additionalDirectories": [
+      "/home/ad/audiogravity.src/backend/venv/bin",
+      "/home/ad/audiogravity.ops"
+    ]
+  }
+}

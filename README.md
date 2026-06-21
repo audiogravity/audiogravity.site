@@ -14,7 +14,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.9.4_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
-  <img src="https://img.shields.io/badge/license-proprietary-lightgrey" alt="License" />
+  <img src="https://img.shields.io/badge/ui-MIT-green" alt="UI License" />
+  <img src="https://img.shields.io/badge/backend-proprietary-lightgrey" alt="Backend License" />
   <img src="https://img.shields.io/badge/tests-508_passing-brightgreen" alt="Tests" />
 </p>
 
@@ -86,7 +87,11 @@
 
 Pro is a lifetime license — no subscription, no renewal. See [EDITIONS.md](EDITIONS.md) and [EULA.md](EULA.md).
 
-Audiogravity incorporates open-source components. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the full list of third-party libraries and their license terms.
+Audiogravity uses a dual-license model:
+- **Interface ([audiogravity.ui](https://github.com/audiogravity/audiogravity.ui))** — [MIT](https://github.com/audiogravity/audiogravity.ui/blob/main/LICENSE). Open source — fork it, contribute, or build on it.
+- **Backend engine ([audiogravity.core](https://github.com/audiogravity/audiogravity.core))** — Proprietary. Distributed as a compiled binary under the [EULA](EULA.md).
+
+Audiogravity also incorporates open-source components. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the full list of third-party libraries and their license terms.
 
 ## Quick install
 

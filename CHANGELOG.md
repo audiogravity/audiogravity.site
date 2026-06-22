@@ -103,6 +103,17 @@ and this landing) are documented here. Format based on
 - **[license-server] `purge_audit` read `db.total_changes` (cumulative) before `commit()`** — now reads `cur.rowcount` after the DELETE for an accurate count.
 - **[license-server] `/deactivate` unprotected when `VERIFY_KEY` is empty** — `@limiter.limit("10/minute")` added.
 - **[license-server] Revoked license could be deactivated, corrupting audit trail** — `AND revoked_at IS NULL` added to the `deactivate_order` UPDATE condition.
+- **[frontend] XSS in license status acquisition steps** — `unsafeHTML(_acquisitionStepsHtml())` replaced with a safe Lit `html` template; `_priceDisplay` (from backend `license_price`) is now a text node.
+- **[frontend] XSS in license status portal URL** — `_portalUrl` from the backend now validated as `https?://` before embedding in `InfoModal` HTML string; `javascript:` and `data:` URLs are rejected.
+- **[frontend] XSS in package update confirm dialog** — `pkg.label`, `pkg.installed_version`, `pkg.available_version` (from package registry) are now HTML-escaped with `escapeHtml()` before injection into `showConfirm` HTML string.
+- **[frontend] `JSON.parse` on corrupted localStorage crashes auth init** — `auth.js:initAuth` now wraps `JSON.parse(userStr)` in `try/catch`; a corrupted `jwt_user` value calls `clearAuth()` and returns `false` instead of throwing.
+- **[frontend] `showToast` without `window.` prefix throws `ReferenceError`** — `ag-config-editor.js:_handleCancel` was calling bare `showToast`; fixed to `window.showToast`.
+- **[frontend] CodeMirror instance leaks on every config editor open/close** — `disconnectedCallback` added to destroy the CodeMirror instance and prevent DOM accumulation over long admin sessions.
+- **[frontend] `@lit/context` imported from CDN (no SRI, supply chain risk)** — replaced with local npm package `@lit/context` (installed as proper dependency).
+- **[frontend] `addToHistory` used as implicit global in `ag-admin-page`** — added to named imports from `common.js`; was silently broken in module-isolated test environments.
+- **[frontend] `this.loading` not reactive in `ag-config-page`** — `loading: { type: Boolean }` added to `static properties`; the loading guard now prevents concurrent service config requests.
+- **[frontend] Stale radio search results overwrote current ones** — `_loadSearch` now uses `AbortController`; results from cancelled requests are discarded.
+- **[frontend] `version.test.js` path broken after monorepo split** — `ROOT` corrected to `audiogravity.ui/` repo root; `VERSION` resolved from sibling `audiogravity.ops/VERSION`; `frontend/` prefix removed from file paths.
 
 ### Added
 - **[backend] audio_hw — `force_refresh` query parameter on `GET /audio-hw/devices`** — `?force_refresh=true` bypasses the 60 s cache and triggers an immediate rescan, useful after a USB hotplug event.

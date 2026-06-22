@@ -7,7 +7,35 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Backend — Audio reliability & under-the-hood fixes
+
+Two backend modules (`audio_pipeline` and `audio_hw`) went through a thorough code review. The fixes are transparent to the end user but protect audio quality under load:
+
+- **Event loop no longer blocked** — all filesystem access in `audio_hw` and `audio_pipeline` is now off the event loop (`asyncio.to_thread`). On the Pi, a scan could stall for 50–200 ms, delaying SSE heartbeats and potentially causing audio glitches.
+- **Accurate ALSA subdevice availability** — `GET /audio-hw/devices` now reflects the real occupation state of ALSA devices (read from `/proc/asound`). Previously `subdevices_available` was always `1` even when MPD or HQPlayer held the device exclusively.
+- **`?force_refresh=true`** — new query parameter on `GET /audio-hw/devices` to force an immediate rescan after a USB hotplug event, without waiting for the 60 s cache to expire.
+- **Cache not corrupted on I/O error** — a transient error during a scan (hotplug race, permission) no longer caches an empty or partial list; the next call retries cleanly.
+- **Pipeline metrics corrected** — HQPlayer volume clamped to `[0, 100]`, `cpu_percent()` initialised correctly, ALSA latency accurate on ARM64 (64-bit wraparound).
+- **HQPlayer "ghost track" in mini player fixed** — after stopping HQPlayer completely (no track loaded), the mini player kept displaying the last played track indefinitely. The now-playing cache is now explicitly cleared when HQPlayer confirms it has nothing to play, while transient stops (DSP transitions, buffering) still show the last known state.
+- **Config backup restore now works** — `restore_backup` was silently rejected by sudoers in production (missing `cp` rule); backups can now be restored from the UI.
+- **Backup files are now private** — backup files (which may contain service passwords) are now correctly set to mode 600; previously the `chmod` silently failed and files were world-readable.
+- **Config editor save/reload no longer stalls** — all blocking I/O in the config service (file reads, sudo commands) now runs off the event loop, preventing audio glitches during a config save or package install.
+- **Config validation no longer freezes the server** — `POST /config_validation/validate` previously ran a `systemctl` subprocess per service synchronously on the event loop (up to N×5 s); checks are now parallel and non-blocking.
+- **Login timing hardened** — disabled accounts and nonexistent accounts now take the same response time, preventing username enumeration by measuring login latency.
+- **Passkey registration and login no longer interfere** — starting a passkey registration and a passkey login simultaneously for the same account no longer causes both flows to fail.
+- **HQPlayer playback now works** — every `play_uri` and `play_library_item` call was silently failing after loading the queue because the `<Play/>` command closes the connection without responding; the batch transport now handles this correctly.
+- **Trial period survives a power loss** — the trial file is now written atomically; a crash mid-write no longer produces corrupted JSON that is misdiagnosed as tampering and locks the user out of their trial.
+- **License gate no longer bypassed at startup** — if the license service fails to initialise, protected endpoints now return HTTP 503 instead of silently allowing all access.
+- **Radio custom stations now actually work** — a missing `await` made `POST /radio/library/custom` always fail with a serialisation error since the feature was introduced.
+- **Tidal login errors are now reported correctly** — previously the callback endpoint returned HTTP 200 even when the token exchange failed; it now returns HTTP 400 with a clear error message.
+- **Server shutdown no longer hangs** — SSE monitoring loops were never cancelled on shutdown due to a type mismatch (`List[Task]` iterated as a single `Task`); fixed so graceful restart is reliable.
+- **Reduced CPU/memory pressure on Pi under load** — several long-running blocking operations (audio ALSA scan, thermal zone reads, governor writes, stddev histogram expansion, `os.fsync`) are now off the event loop, reducing audio dropout risk and RAM pressure under sustained load.
+- **License server XSS fixed** — a crafted license key or server-controlled filename could inject HTML into the portal activation pages; the admin session token could be exfiltrated if the admin panel was open in the same browser session.
+- **License resend and transfer now preserve version scope** — resending or transferring a v1-scoped license was silently upgrading it to an all-versions license; upgrade paywall is now enforced correctly.
+- **All-versions lifetime licenses no longer falsely rejected on AG v2** — licenses issued before version scoping was introduced are now correctly accepted on all AG versions.
+- **Frontend XSS vulnerabilities fixed** — three injection points in the license status and package update UI now HTML-escape or validate server-controlled values before rendering. A crafted backend response could previously exfiltrate the admin JWT token.
+- **Frontend no longer crashes on corrupted browser storage** — auth initialisation handles a malformed `jwt_user` in localStorage gracefully instead of throwing an uncaught `SyntaxError` that left the app blank.
+- **Config editor no longer accumulates memory** — opening and closing the config editor multiple times no longer leaks CodeMirror instances; a `disconnectedCallback` now properly cleans up.
 
 ---
 
@@ -112,9 +140,11 @@ light, dark and the active (selected) card state.
 
 ### DRY-RUN Restricted to Admins
 
-The Audio Software DRY-RUN toggle — a command-preview / catalog-validation tool,
-not a dependency-resolving simulation — is now scoped to administrators, and its
-size matches the settings toggles.
+The Audio Software DRY-RUN toggle is scoped to administrators. It now performs
+real validation: a HEAD request is sent to the download URL before reporting
+success, so a dead URL or unreachable server surfaces as a failure instead of a
+fake `Success`. For APT repository packages, `apt-get install --simulate` is
+also run when possible to surface dependency conflicts.
 
 ### Login Page
 

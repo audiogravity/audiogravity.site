@@ -10,6 +10,8 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[backend] audio_pipeline — HQPlayer stale cache persisted forever after stop** — `_refresh_hqplayer_cache` never wrote `None` to `_hqp_cache` to guard against transient stopped states, but this also prevented clearing the cache when HQPlayer truly stopped (no track loaded). `_get_hqplayer_item` now raises `_HQPlayerTrulyStopped` (private sentinel) on confirmed stop; the cache is explicitly invalidated in that case while network errors keep the stale value.
+- **[backend] license — per-request `aiohttp.ClientSession` in license router** — `check_key`, `activate_license`, `get_public_config` and the deactivate notify in `delete_license` each created a new `ClientSession` (TCP handshake + TLS) per call. Replaced with `core.http.get_shared_session()`, the same pool already used by `library`, `tidal` and `qobuz`.
 - **[backend] audio_pipeline — subprocess blocks event loop on NI data fetch** — `_get_local_ni_data()` called `subprocess.run("ip"/"iw")` synchronously from a coroutine, stalling the event loop for up to 3s on every cache miss (TTL was 10s). Calls are now pre-warmed via `asyncio.to_thread` before pipeline construction; TTL raised to 60s.
 - **[backend] audio_pipeline — HQPlayer volume returned negative integers** — formula `100 * (1 + volume_db / 60)` produced negative values for `volume_db < -60` (e.g. `-140` for muted). Now clamped to `[0, 100]`; `None` when `volume_db` is unknown.
 - **[backend] audio_pipeline — `cpu_percent()` always returned 0.0** — a new `psutil.Process` instance was created on every cycle; the first call always returns 0.0 without a prior snapshot. Instances are now reused via `_psutil_procs`.

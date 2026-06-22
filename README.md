@@ -12,11 +12,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.9.4_beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.9.5_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
   <img src="https://img.shields.io/badge/ui-MIT-green" alt="UI License" />
   <img src="https://img.shields.io/badge/backend-proprietary-lightgrey" alt="Backend License" />
-  <img src="https://img.shields.io/badge/tests-508_passing-brightgreen" alt="Tests" />
+  <img src="https://img.shields.io/badge/tests-645_passing-brightgreen" alt="Tests" />
 </p>
 
 ---
@@ -162,11 +162,11 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 
 | Suite | Tests | Status |
 |-------|------:|--------|
-| Backend (Python) | 399 | ✅ |
-| Frontend (JS) | 109 | ✅ |
-| **Total** | **508** | ✅ |
+| Backend (Python) | 499 | ✅ |
+| Frontend (JS) | 146 | ✅ |
+| **Total** | **645** | ✅ |
 
-Last run: 2026-06-20 15:25 UTC
+Last run: 2026-06-22 17:36 UTC
 
 See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 

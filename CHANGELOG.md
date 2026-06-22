@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.5] - 2026-06-22
+
 ### Fixed
 - **[backend] packages — dry-run always reported success regardless of URL reachability** — `install()` in `ScriptInstaller`, `AptDebInstaller` and `AptRepoInstaller` returned `(True, "Dry-run completed successfully")` unconditionally. Dry-run now sends a HEAD request to the download URL; an unreachable or 4xx/5xx response surfaces as `(False, …)`. `AptRepoInstaller` additionally runs `apt-get install --simulate` to surface dependency conflicts when the package is already in the apt cache.
 - **[backend] audio_pipeline — HQPlayer stale cache persisted forever after stop** — `_refresh_hqplayer_cache` never wrote `None` to `_hqp_cache` to guard against transient stopped states, but this also prevented clearing the cache when HQPlayer truly stopped (no track loaded). `_get_hqplayer_item` now raises `_HQPlayerTrulyStopped` (private sentinel) on confirmed stop; the cache is explicitly invalidated in that case while network errors keep the stale value.

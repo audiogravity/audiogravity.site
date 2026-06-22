@@ -94,6 +94,15 @@ and this landing) are documented here. Format based on
 - **[core] ttl_cache — `TTLCache.get()` always missed for a cached `None` value** — `_value is not None` guard prevented `None` from being representable as a cache hit; replaced with `_UNSET` sentinel.
 - **[core] JWT and auth error messages in French** — `"Token invalide ou expiré"`, `"Accès réservé aux administrateurs"`, `"Les invités ne sont pas autorisés"` translated to English (returned verbatim in JSON API responses).
 - **[packages] `www.lesbonscomptes.com` domain entry did not survive `www.` stripping** — changed to `lesbonscomptes.com` fixing an intermittent test failure.
+- **[license-server] XSS in portal upgrade and download forms** — `filename` from the server `Content-Disposition` header and `newKey` from user input were injected into `.innerHTML` without escaping; a crafted value could exfiltrate the admin session token. HTML-escaping helper `_esc()` added to both components.
+- **[license-server] `version_scope` stripped on license resend, bulk-resend, and transfer** — `generate_lic()` was called without the `version_scope` parameter, silently converting v1-scoped licenses to all-versions licenses and bypassing the upgrade paywall.
+- **[license-server] All-versions lifetime licenses incorrectly rejected on AG v2** — `payload.get('version_scope', '1')` defaulted absent scope to `"1"`, causing `version_expired` for licenses issued before scoping was introduced. Default changed to `None` (no check when field is absent).
+- **[license-server] Admin token comparison was not constant-time** — `!=` string comparison allowed character-by-character brute-force timing attack; replaced with `hmac.compare_digest`.
+- **[license-server] Blocking SMTP calls on the async event loop** — all `mailer.send_*()` in admin handlers now use `await asyncio.to_thread(...)`.
+- **[license-server] Blocking file I/O in `import_db`** — `shutil.copy2` and `Path.write_bytes` wrapped with `asyncio.to_thread`.
+- **[license-server] `purge_audit` read `db.total_changes` (cumulative) before `commit()`** — now reads `cur.rowcount` after the DELETE for an accurate count.
+- **[license-server] `/deactivate` unprotected when `VERIFY_KEY` is empty** — `@limiter.limit("10/minute")` added.
+- **[license-server] Revoked license could be deactivated, corrupting audit trail** — `AND revoked_at IS NULL` added to the `deactivate_order` UPDATE condition.
 
 ### Added
 - **[backend] audio_hw — `force_refresh` query parameter on `GET /audio-hw/devices`** — `?force_refresh=true` bypasses the 60 s cache and triggers an immediate rescan, useful after a USB hotplug event.

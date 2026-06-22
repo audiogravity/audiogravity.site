@@ -140,9 +140,11 @@ light, dark and the active (selected) card state.
 
 ### DRY-RUN Restricted to Admins
 
-The Audio Software DRY-RUN toggle — a command-preview / catalog-validation tool,
-not a dependency-resolving simulation — is now scoped to administrators, and its
-size matches the settings toggles.
+The Audio Software DRY-RUN toggle is scoped to administrators. It now performs
+real validation: a HEAD request is sent to the download URL before reporting
+success, so a dead URL or unreachable server surfaces as a failure instead of a
+fake `Success`. For APT repository packages, `apt-get install --simulate` is
+also run when possible to surface dependency conflicts.
 
 ### Login Page
 

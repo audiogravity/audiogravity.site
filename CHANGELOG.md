@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[backend] player — bitrate no longer displayed for ALAC, FLAC, TIDAL and Roon sources** — a `_LOSSLESS_FILE` filter introduced in the Qobuz commit (78ef364) combined with a codec-detection fix (828ee91) silently hid the bitrate for all lossless and streaming sources. The filter is removed; MPD's reported bitrate is now shown for all MPD sources (ALAC, FLAC, WAV, streaming). For sources with no MPD bitrate (Roon, AirPlay), a PCM-equivalent is computed from bit-depth × sample-rate × 2 ch.
+- **[backend] player — TIDAL bitrate always 0** — MPD reports `bitrate: 0` for the growing FLAC proxy stream (STREAMINFO `total_samples=0` during progressive remux). The DASH manifest's `bandwidth` attribute is now parsed at stream-request time and injected into the format metadata via `ext_stream_meta`, providing the exact bitrate immediately.
+- **[backend] player — TIDAL format strip showed `—` for format and sample rate during warm-up** — `sample_rate_hz` and `codec` from the DASH manifest were stored in `ext_stream_meta` but never consumed. `audio_pipeline/service.py` now builds a partial `source_format` (`"FLAC | 96kHz"`) from the manifest when MPD's `audio` field is not yet available, so sample rate and codec appear immediately.
+- **[backend] audio_pipeline — `ext_stream_meta` LRU contract broken on `merge=True`** — in-place dict update did not reposition the entry; merged entries could be evicted before genuinely older ones. Fixed with delete-then-reinsert.
+- **[backend] tidal — `parse_dash_format` broad `except` could silently drop `bitrate_kbps`** — a `ValueError` on `audioSamplingRate` would discard a successfully parsed `bitrate_kbps`. Each field conversion now has its own try/except; failures are logged at DEBUG level and do not affect other fields.
+
 ### Added
 - **[backend/lic] announcements — broadcast polling** — license server admins can create broadcast announcements (type version/promo/alert/info, optional body/URL/expiry). Active announcements are delivered to AG instances via the existing 24 h `/verify` check-in. A delivery count is shown in the LS admin panel per announcement. AG admin tab shows a Lucide Bell icon (warning color, ring animation) when unread announcements exist; dismissal persists in localStorage.
 - **[lic] ls-announcements — admin panel section** — new `ls-announcements` molecule in the LS admin UI with a creation form (type, title, body, URL, expires_at) and a management table (activate/deactivate/delete, delivered count).

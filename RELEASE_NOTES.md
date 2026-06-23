@@ -7,13 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-### Format strip — bitrate affiché pour toutes les sources
+### Format strip — bitrate now shown for all sources
 
-Le format strip du fullscreen player affiche maintenant le bitrate pour toutes les sources et tous les formats — ALAC, FLAC, WAV en lecture locale, TIDAL, Qobuz, radio, Roon et AirPlay.
+The fullscreen player's format strip now displays a bitrate for every source and format — ALAC, FLAC, WAV local files, TIDAL, Qobuz, radio, Roon and AirPlay.
 
-- **Sources MPD (ALAC, FLAC, WAV, radio, Qobuz)** — bitrate instantané rapporté par MPD.
-- **TIDAL** — bitrate exact lu depuis le manifest DASH, disponible dès le début de la lecture (plus de `—` pendant le chargement).
-- **Roon / AirPlay** — équivalent PCM calculé depuis la profondeur de bits et la fréquence d'échantillonnage (ex : 24bit/96kHz → 4608 kbps).
+- **MPD sources (ALAC, FLAC, WAV, radio, Qobuz)** — instantaneous decode bitrate as reported by MPD.
+- **TIDAL** — exact bitrate read from the DASH manifest, available from the very first second of playback (no more `—` during stream warm-up).
+- **Roon / AirPlay** — PCM-equivalent computed from bit depth × sample rate × 2 ch (e.g. 24bit/96kHz → 4608 kbps).
 
 ### Communications from Audiogravity
 

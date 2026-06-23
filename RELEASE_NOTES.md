@@ -7,6 +7,16 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Campaign Mailing
+
+License server admins can now send HTML campaign emails directly to all active licence holders from the LS admin panel.
+
+- **Compose** — subject, HTML body, optional CTA link
+- **Visual preview** — sandboxed iframe renders the email as it will appear, including the unsubscribe footer, without sending anything
+- **Send to all** — concurrent delivery (up to 5 simultaneous SMTP connections), campaign log with recipient count
+- **RGPD unsubscribe** — every email includes a personalised opt-out link and `List-Unsubscribe` header. Clicking it sets the opt-out flag server-side without requiring a login. The signing secret is independent from the admin token, so credential rotation doesn't break past links
+- **ls_base_url persisted** — the license server URL used for unsubscribe links is saved automatically and pre-filled on the next visit
+
 ### Broadcast Announcements
 
 License server admins can now publish messages that automatically reach all AG instances — no manual distribution needed.

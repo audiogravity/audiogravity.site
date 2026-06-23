@@ -10,12 +10,12 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
-- **[backend/lic] announcements — broadcast polling** — license server admins can create broadcast announcements (type version/promo/alert/info, optional body/URL/expiry). Active announcements are delivered to AG instances via the existing 24 h `/verify` check-in. Delivery is tracked per device (idempotent) and visible in the LS admin panel with a "Delivered" count. AG admin tab shows a Lucide Bell icon (warning color, ring animation) when unread announcements exist; dismissal persists in localStorage.
+- **[backend/lic] announcements — broadcast polling** — license server admins can create broadcast announcements (type version/promo/alert/info, optional body/URL/expiry). Active announcements are delivered to AG instances via the existing 24 h `/verify` check-in. A delivery count is shown in the LS admin panel per announcement. AG admin tab shows a Lucide Bell icon (warning color, ring animation) when unread announcements exist; dismissal persists in localStorage.
 - **[lic] ls-announcements — admin panel section** — new `ls-announcements` molecule in the LS admin UI with a creation form (type, title, body, URL, expires_at) and a management table (activate/deactivate/delete, delivered count).
 - **[ui] ag-announcement-banner** — new light-DOM molecule displaying dismissable banners in the AG Admin tab. Fetches `GET /license/online-status`.
 - **[ui] ag-tabs — Admin tab badge** — animated Lucide Bell icon (--color-warning) on the Admin tab when unread announcements exist. Animation follows the global animations toggle. Admin tab stat now shows total account count instead of the meaningless active/total ratio.
-- **[lic] campaign mailing** — LS admins can compose and send HTML campaign emails to all active licence holders. Features: visual preview iframe (sandboxed, no test send needed), ls_base_url persisted in settings, concurrent SMTP (Semaphore(5)), campaign history log, per-recipient delivery log (idempotent).
-- **[lic] RGPD unsubscribe** — stateless HMAC-signed opt-out link injected in every campaign email (`List-Unsubscribe` header + footer). `GET /ls/portal/unsubscribe` sets `email_opt_out=1` without login. `UNSUBSCRIBE_SECRET` separate from `ADMIN_TOKEN` so token rotation doesn't invalidate past links.
+- **[lic] campaign mailing** — LS admins can compose and send HTML campaign emails to all active licence holders. Features: visual preview iframe (sandboxed, no test send needed), ls_base_url persisted in settings, concurrent SMTP (Semaphore(5)), campaign history log with recipient count.
+- **[lic] GDPR unsubscribe** — stateless HMAC-signed opt-out link injected in every campaign email (`List-Unsubscribe` header + footer). `GET /ls/portal/unsubscribe` sets `email_opt_out=1` without login. `UNSUBSCRIBE_SECRET` separate from `ADMIN_TOKEN` so token rotation doesn't invalidate past links.
 - **[lic] ls-mailing — admin panel section** — new `ls-mailing` molecule: compose form, show/hide preview iframe, send to all button with confirmation, campaign history table.
 
 ## [0.9.5] - 2026-06-22

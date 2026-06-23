@@ -7,29 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-### Campaign Mailing
+### Communications from Audiogravity
 
-License server admins can now send HTML campaign emails directly to all active licence holders from the LS admin panel.
+Two new channels so you never miss important news about the product.
 
-- **Compose** — subject, HTML body, optional CTA link
-- **Visual preview** — sandboxed iframe renders the email as it will appear, including the unsubscribe footer, without sending anything
-- **Send to all** — concurrent delivery (up to 5 simultaneous SMTP connections), campaign log with recipient count
-- **RGPD unsubscribe** — every email includes a personalised opt-out link and `List-Unsubscribe` header. Clicking it sets the opt-out flag server-side without requiring a login. The signing secret is independent from the admin token, so credential rotation doesn't break past links
-- **ls_base_url persisted** — the license server URL used for unsubscribe links is saved automatically and pre-filled on the next visit
+**In-app announcements** — When Audiogravity publishes a notice (new version, maintenance window, special offer), a 🔔 bell appears on your Admin tab. Open it to see the message as a dismissable banner. Dismissal is stored locally — the banner won't come back. Notices are fetched passively during the regular 24 h licence check-in; no additional data is collected.
 
-### Broadcast Announcements
-
-License server admins can now publish messages that automatically reach all AG instances — no manual distribution needed.
-
-**How it works:**
-1. Admin creates an announcement in the LS admin panel (📣 Broadcast Announcements section) — title, optional description, optional link, optional expiry date, and a type (version / promo / alert / info).
-2. AG instances pick it up on their next licence check-in (every 24 h, or immediately after activation).
-3. The AG Admin tab shows a 🔔 bell icon with a ring animation when unread announcements are waiting.
-4. Clicking into the Admin tab reveals dismissable banners — one per announcement. Dismissal is local (localStorage) and persists across sessions.
-
-**Delivery tracking:** the LS admin panel shows a "Delivered" count per announcement — the number of distinct AG installations that have received it.
-
-**Use cases:** new version available, Black Friday promotion, scheduled maintenance notice, security advisory.
+**Email** — Important communications (release announcements, early-access offers) are sent to the email address associated with your licence. Every message includes a one-click unsubscribe link — no account required.
 
 ---
 

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Player auto-follows the active source
+
+The mini-player and fullscreen player now automatically display the currently playing source — no manual dot navigation required when switching between sources (MPD, Roon, AirPlay, TIDAL…).
+
+Tapping a dot or swiping to another source suspends auto-follow so you can browse at your own pace. Auto-follow resumes automatically when the source you selected stops playing.
+
 ### Format strip — bitrate now shown for all sources
 
 The fullscreen player's format strip now displays a bitrate for every source and format — ALAC, FLAC, WAV local files, TIDAL, Qobuz, radio, Roon and AirPlay.

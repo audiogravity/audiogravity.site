@@ -9,6 +9,12 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[backend/lic] announcements — broadcast polling** — license server admins can create broadcast announcements (type version/promo/alert/info, optional body/URL/expiry). Active announcements are delivered to AG instances via the existing 24 h `/verify` check-in. Delivery is tracked per device (idempotent) and visible in the LS admin panel with a "Delivered" count. AG admin tab shows a Lucide Bell icon (warning color, ring animation) when unread announcements exist; dismissal persists in localStorage.
+- **[lic] ls-announcements — admin panel section** — new `ls-announcements` molecule in the LS admin UI with a creation form (type, title, body, URL, expires_at) and a management table (activate/deactivate/delete, delivered count).
+- **[ui] ag-announcement-banner** — new light-DOM molecule displaying dismissable banners in the AG Admin tab. Fetches `GET /license/online-status`.
+- **[ui] ag-tabs — Admin tab badge** — animated Lucide Bell icon (--color-warning) on the Admin tab when unread announcements exist. Animation follows the global animations toggle. Admin tab stat now shows total account count instead of the meaningless active/total ratio.
+
 ## [0.9.5] - 2026-06-22
 
 ### Fixed

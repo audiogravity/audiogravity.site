@@ -7,7 +7,19 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Broadcast Announcements
+
+License server admins can now publish messages that automatically reach all AG instances — no manual distribution needed.
+
+**How it works:**
+1. Admin creates an announcement in the LS admin panel (📣 Broadcast Announcements section) — title, optional description, optional link, optional expiry date, and a type (version / promo / alert / info).
+2. AG instances pick it up on their next licence check-in (every 24 h, or immediately after activation).
+3. The AG Admin tab shows a 🔔 bell icon with a ring animation when unread announcements are waiting.
+4. Clicking into the Admin tab reveals dismissable banners — one per announcement. Dismissal is local (localStorage) and persists across sessions.
+
+**Delivery tracking:** the LS admin panel shows a "Delivered" count per announcement — the number of distinct AG installations that have received it.
+
+**Use cases:** new version available, Black Friday promotion, scheduled maintenance notice, security advisory.
 
 ---
 

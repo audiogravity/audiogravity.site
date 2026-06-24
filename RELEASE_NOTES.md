@@ -7,6 +7,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Cover art when playing via upmpdcli
+
+When an external UPnP control point (BubbleUPnP, Kazoo, Linn app…) pushes music or radio to your streamer via upmpdcli, Audiogravity now displays the correct cover art — including radio station logos — by querying upmpdcli's AVTransport directly to retrieve the artwork the controller originally sent.
+
 ### HQPlayer — accurate connection status
 
 The HQPlayer card in the Sources view now reflects the true state of the full audio chain:

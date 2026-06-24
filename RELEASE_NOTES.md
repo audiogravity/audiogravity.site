@@ -7,6 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### HQPlayer — état de connexion fiable
+
+La carte HQPlayer dans la vue Sources reflète désormais l'état réel de la chaîne audio complète :
+
+- **Connected** — HQPlayer joignable et `networkaudiod` actif (le flux peut atteindre le DAC).
+- **NAA offline** — HQPlayer joignable mais `networkaudiod` inactif (pas de sortie audio possible).
+- **Offline** — HQPlayer inaccessible.
+
+Le toggle "Use as output" n'est visible que lorsque la chaîne est complète. Il est effacé automatiquement si `networkaudiod` tombe en cours de session.
+
+Plusieurs régressions de polling corrigées côté backend : les logs ne génèrent plus de flood de WARNING au démarrage ni pendant le chargement d'un flux DSD.
+
 ### Player auto-follows the active source
 
 The mini-player and fullscreen player now automatically display the currently playing source — no manual dot navigation required when switching between sources (MPD, Roon, AirPlay, TIDAL…).

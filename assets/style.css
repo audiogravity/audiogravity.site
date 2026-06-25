@@ -172,6 +172,11 @@ a {
     opacity: .7;
 }
 
+.announce-date {
+    opacity: .55;
+    font-weight: 400;
+}
+
 @media(max-width:720px) {
     .announce-bar {
         font-size: 12px;

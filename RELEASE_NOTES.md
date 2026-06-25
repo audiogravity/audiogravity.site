@@ -21,7 +21,7 @@ The HQPlayer card in the Sources view now reflects the true state of the full au
 
 The "Use as output" toggle is only shown when the full chain is operational. It is cleared automatically if `networkaudiod` stops during a session.
 
-Several backend polling regressions fixed: logs no longer flood with WARNING messages at startup or during DSD stream loading.
+Several core polling regressions fixed: logs no longer flood with WARNING messages at startup or during DSD stream loading.
 
 ### Player auto-follows the active source
 
@@ -49,9 +49,9 @@ Two new channels so you never miss important news about the product.
 
 ## 0.9.5 — 2026-06-22
 
-### Backend — Audio reliability & under-the-hood fixes
+### Core — Audio reliability & under-the-hood fixes
 
-Two backend modules (`audio_pipeline` and `audio_hw`) went through a thorough code review. The fixes are transparent to the end user but protect audio quality under load:
+Two core modules (`audio_pipeline` and `audio_hw`) went through a thorough code review. The fixes are transparent to the end user but protect audio quality under load:
 
 - **Event loop no longer blocked** — all filesystem access in `audio_hw` and `audio_pipeline` is now off the event loop (`asyncio.to_thread`). On the Pi, a scan could stall for 50–200 ms, delaying SSE heartbeats and potentially causing audio glitches.
 - **Accurate ALSA subdevice availability** — `GET /audio-hw/devices` now reflects the real occupation state of ALSA devices (read from `/proc/asound`). Previously `subdevices_available` was always `1` even when MPD or HQPlayer held the device exclusively.
@@ -75,26 +75,26 @@ Two backend modules (`audio_pipeline` and `audio_hw`) went through a thorough co
 - **License server XSS fixed** — a crafted license key or server-controlled filename could inject HTML into the portal activation pages; the admin session token could be exfiltrated if the admin panel was open in the same browser session.
 - **License resend and transfer now preserve version scope** — resending or transferring a v1-scoped license was silently upgrading it to an all-versions license; upgrade paywall is now enforced correctly.
 - **All-versions lifetime licenses no longer falsely rejected on AG v2** — licenses issued before version scoping was introduced are now correctly accepted on all AG versions.
-- **Frontend XSS vulnerabilities fixed** — three injection points in the license status and package update UI now HTML-escape or validate server-controlled values before rendering. A crafted backend response could previously exfiltrate the admin JWT token.
-- **Frontend no longer crashes on corrupted browser storage** — auth initialisation handles a malformed `jwt_user` in localStorage gracefully instead of throwing an uncaught `SyntaxError` that left the app blank.
+- **UI XSS vulnerabilities fixed** — three injection points in the license status and package update UI now HTML-escape or validate server-controlled values before rendering. A crafted core response could previously exfiltrate the admin JWT token.
+- **UI no longer crashes on corrupted browser storage** — auth initialisation handles a malformed `jwt_user` in localStorage gracefully instead of throwing an uncaught `SyntaxError` that left the app blank.
 - **Config editor no longer accumulates memory** — opening and closing the config editor multiple times no longer leaks CodeMirror instances; a `disconnectedCallback` now properly cleans up.
 
 ---
 
 ## 0.9.4 — 2026-06-20
 
-### Frontend — Security, reliability & code quality
+### UI — Security, reliability & code quality
 
-A targeted frontend review produced the following improvements:
+A targeted UI review produced the following improvements:
 
 - **XSS hardening** — `escapeHtml` now imported as an ES6 module in the admin panel (no more `window.escapeHtml` fallback that could silently skip escaping); metric chart labels use Lit's built-in auto-escaping instead of `unsafeHTML`.
 - **Push notifications fixed** — unsubscribing from push notifications now uses the correct `DELETE` HTTP method with the endpoint as a query parameter, matching the backend router. Previously the call was a `POST` with a JSON body that was silently ignored.
 - **Password validation** — whitespace-only passwords (e.g. 6 spaces) are now rejected in the user modal before reaching the backend.
 - **Memory leak fixed** — the jitter latency Chart.js instance in the network test page is now destroyed when the component is removed from the DOM.
 
-### Reliability & Security — Backend hardening
+### Reliability & Security — Core hardening
 
-An extensive review of all 20 backend modules produced 40+ targeted fixes. None break existing functionality; the most impactful for daily use:
+An extensive review of all 20 core modules produced 40+ targeted fixes. None break existing functionality; the most impactful for daily use:
 
 - **Radio station editing now works** — `PUT /radio/{uuid}` was silently returning a coroutine instead of the result; station edits are now persisted correctly.
 - **DSD streams detected in the pipeline** — `audio_str="dsd64:2"` was silently discarded; DSD sample rate and bit depth now appear correctly in the pipeline graph and metrics.

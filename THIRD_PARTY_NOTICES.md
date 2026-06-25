@@ -6,7 +6,7 @@ reproduced verbatim as required.
 
 ---
 
-## Frontend — bundled in the web application
+## UI — bundled in the web application
 
 ### Lit
 **Copyright** © Google LLC and contributors  
@@ -80,7 +80,7 @@ copyright notice and this permission notice appear in all copies.
 
 ---
 
-## Frontend — loaded via CDN at runtime
+## UI — loaded via CDN at runtime
 
 ### Chart.js 4.4.0
 **Copyright** © 2014–2022 Chart.js Contributors  
@@ -100,7 +100,7 @@ Same MIT terms as above.
 
 ---
 
-## Frontend — fonts loaded via Google Fonts CDN
+## UI — fonts loaded via Google Fonts CDN
 
 ### Inter
 **Copyright** © 2016 The Inter Project Authors  
@@ -122,7 +122,7 @@ Same OFL 1.1 terms as above.
 
 ---
 
-## Backend — bundled in the Audiogravity binary
+## Core — bundled in the Audiogravity binary
 
 ### FastAPI
 **Copyright** © 2018 Sebastián Ramírez  

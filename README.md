@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/badge/version-0.9.5_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
   <img src="https://img.shields.io/badge/ui-MIT-green" alt="UI License" />
-  <img src="https://img.shields.io/badge/backend-proprietary-lightgrey" alt="Backend License" />
+  <img src="https://img.shields.io/badge/core-proprietary-lightgrey" alt="Core License" />
   <img src="https://img.shields.io/badge/tests-645_passing-brightgreen" alt="Tests" />
 </p>
 
@@ -97,7 +97,7 @@ Audiogravity also incorporates open-source components. See [THIRD_PARTY_NOTICES.
 ## Quick install
 
 ```bash
-# All-in-one (backend + frontend)
+# All-in-one (core + ui)
 curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
 
 # Or separately
@@ -109,7 +109,7 @@ curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --toke
 
 ### Options
 
-The backend installer accepts two optional flags:
+The core installer accepts two optional flags:
 
 - **`--vapid-email`** — contact address for Web Push (the VAPID `sub`). If
   omitted, a generic placeholder is used and the installer prints a warning.

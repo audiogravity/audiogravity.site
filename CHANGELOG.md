@@ -9,7 +9,19 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
-_Nothing yet._
+### Added
+- **[ui] PWA — App Shell precaching** — vite-plugin-pwa (injectManifest) precaches all Vite-hashed JS/CSS/image assets at SW install (~1 MiB); first load after install is fully offline-capable on Chrome/Android.
+- **[ui] PWA — differentiated cache strategies** — cache-first for hashed assets and version-pinned CDN (cdn.jsdelivr.net); stale-while-revalidate for Google Fonts and static images; network-first for HTML navigation.
+- **[ui] PWA — `Link: rel=preload` response headers** — `serve_https.py` parses the built HTML and emits preload hints for critical JS/CSS chunks on every page response; browser fetches assets in parallel without waiting for HTML parsing.
+- **[ui] build — granular bundle splitting** — main chunk reduced from 570 KB to 413 KB (−27%); 6 stable independent chunks: `lit`, `icons`, `atoms`, `nowplaying`, `streaming`, `library-core`; better cache hit rate across feature releases.
+
+### Fixed
+- **[ui] PWA — `skipWaiting()` removed from SW install event** — prevented chunk 404s on SW update (new SW was taking control before the page reloaded with new asset hashes).
+- **[ui] PWA — SW update reload loop** — `controllerchange` now triggers a single conditional reload guarded by `sessionStorage`; the update toast correctly says "Updating…" instead of the misleading "Refresh to update" (the reload is automatic).
+- **[ui] PWA — SWR background refresh lifetime** — `fetchPromise` (stale-while-revalidate background update) now covered by `event.waitUntil()` so the SW is not killed before `cache.put()` completes.
+- **[ui] PWA — isCDN over-broad** — replaced `url.origin !== location.origin` with explicit `CDN_SWR` / `CDN_IMMUTABLE` Sets; mutable cross-origin resources (cover art, push endpoints) no longer accidentally routed into stale-while-revalidate.
+- **[ui] PWA — dead `icomoon.woff` path** — removed non-existent `/fonts/icomoon.woff?1zo0jr` from `CACHE_URLS` (was causing a silent install error).
+- **[ui] build — `@lit/context` chunk assignment** — `@lit/context` and `@lit/reactive-element` now correctly land in the stable `lit` chunk instead of `main` (was defeating the caching strategy).
 
 ## [0.9.7] - 2026-06-26
 

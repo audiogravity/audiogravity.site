@@ -10,6 +10,8 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[core] Push notifications — temperature and service-down alerts wired** — `notify_temperature_alert()` fires when CPU exceeds 85°C (cooldown 15 min, cooldown not consumed on push failure); `notify_service_down()` fires on `active → failed` systemd state transition (stale service states pruned each cycle to prevent false positives on re-registration).
+- **[core] Push notifications — `push-manager.js` cleanup** — replaced raw `fetch()` calls with `apiGet`/`apiPost` for consistency; `PushSubscription` destructured explicitly via `toJSON()`.
 - **[ui] PWA — install prompt (Android/Chrome)** — compact banner en bas d'écran quand Chrome propose l'installation (`beforeinstallprompt`). Dismissal persisté 30 jours via `localStorage`. Rewrite complet de `pwa-install-prompt.js` : anglais, tokens CSS, plus de handler SW dupliqué, `showToast` correct.
 - **[ui] PWA — offline UI** — dernier état connu du player persisté dans `localStorage` (debounce 5 s). Rechargement offline : mini-player affiche le dernier état au lieu d'être vide. Badge `Offline` discret dans la source-row quand hors réseau.
 - **[ui] PWA — `apple-mobile-web-app-title`** — label court pour l'icône iOS home screen.

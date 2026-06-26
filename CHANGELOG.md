@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+_Nothing yet._
+
 ## [0.9.7] - 2026-06-26
 
 ### Fixed

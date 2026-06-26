@@ -7,7 +7,17 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### UPnP Control Point — envoyer la musique vers un renderer réseau
+
+AG peut maintenant piloter n'importe quel renderer UPnP/DLNA sur le réseau local (ampli réseau, enceinte DLNA, upmpdcli…). Sélectionne un renderer dans le panneau Sources, connecte-le, puis joue depuis la bibliothèque MinimServer, Qobuz ou Tidal — le flux part directement vers le renderer.
+
+**Ce qui change :**
+- Nouvelle section "UPnP Renderer" dans le panneau Sources : discovery réseau, connexion persistée entre redémarrages, contrôles Play/Pause/Stop/Volume depuis l'interface.
+- Badge `→ renderer` dans le mini player et le fullscreen player pour indiquer le routage actif.
+- MinimServer → renderer : URI handoff (aucun proxy AG, aucune charge CPU supplémentaire).
+- Qobuz → renderer : URL CDN directe auto-authentifiée (HMAC, aucun proxy).
+- Tidal → renderer : proxy DASH→FLAC existant avec IP LAN (même qualité qu'avec MPD).
+- État du renderer mis à jour en temps réel via SSE (SUBSCRIBE/NOTIFY + heartbeat 30 s).
 
 ---
 

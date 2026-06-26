@@ -9,6 +9,23 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core] upnp_renderer — UPnP Control Point** — AG can now send audio to any UPnP/DLNA MediaRenderer on the network. New module `modules/upnp_renderer/`: SSDP discovery, AVTransport control (SetAVTransportURI, Play, Stop, Pause, Seek, Volume), SUBSCRIBE/NOTIFY eventing via AG's own FastAPI callback, connection persistence across restarts. Auto-reconnects to the last renderer on startup.
+- **[core] upnp_renderer — renderer dispatch in library queue** — `upnp_play()`, `qobuz_queue()` and `tidal_queue()` route to the connected renderer when `action='play'`. MinimServer tracks use URI handoff (renderer pulls directly from CDN/MinimServer). Qobuz uses self-authenticated CDN URL (no proxy). Tidal uses the existing DASH→FLAC proxy with LAN-reachable IP.
+- **[core] upnp_renderer — SSE `renderer_status`** — live renderer state published on the `dashboard` SSE channel on every NOTIFY event, with a 30 s heartbeat fallback for renderers that don't SUBSCRIBE reliably.
+- **[core] library — `GET /library/upnp-browse` and `GET /library/search` now use `location` parameter** — replaces `control_url`; `location` is the device description URL used by async-upnp-client. Breaking change for UI clients.
+- **[core] library — `upnp_service.py` rewritten with async-upnp-client** — replaces hand-rolled SOAP/SSDP with `async-upnp-client` (python-didl-lite, defusedxml). Adds `DmsDevice` profile for ContentDirectory Browse/Search with proper DIDL-Lite parsing.
+- **[core] `/tidal/stream/` added to PUBLIC_PATH_PREFIXES** — UPnP renderers can fetch the Tidal proxy without api_key in the URL (avoids key exposure in plaintext AVTransport traffic).
+- **[core] `core/utils/net.py`** — shared `get_local_ip()` helper (cached, replaces 3 duplicates).
+- **[ui] ag-upnp-renderer-card** — new molecule in the Sources panel: discovery, connect/disconnect, live playback status, Play/Pause/Stop/Volume controls.
+- **[ui] renderer routing badge** — `→ music.#1` badge in mini player and fullscreen player when a renderer is connected.
+- **[ui] `subscribeRendererStatus`** — shared SSE subscription in `library-store.js` (replaces 3 independent `window.addEventListener` calls).
+- **[ui] library-api.js `upnpPlay`** — routes MinimServer browser plays through `/library/upnp-play` which now dispatches to renderer when connected.
+
+### Changed
+- **[core] `async-upnp-client`** added to `requirements.txt` (pure Python, `none-any` wheels, Nuitka-compatible).
+- **[core] `upnp-browse` param renamed** — `control_url` → `location` in router and service.
+
 ## [0.9.6] - 2026-06-25
 
 ### Fixed

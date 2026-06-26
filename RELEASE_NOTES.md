@@ -7,6 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Install on your home screen (Android / Chrome)
+
+On Android, Chrome will now offer a compact **Install** banner at the bottom of the screen when Audiogravity is eligible for installation as a standalone app. Tap **Install** to add it to your home screen — the app then opens full-screen without the browser chrome, exactly like a native app. Dismissing the banner suppresses it for 30 days.
+
+On iPhone, use Safari's Share sheet → "Add to Home Screen" as before (iOS does not expose an install event to web apps).
+
+### Player stays visible when offline
+
+If you lose your network connection while Audiogravity is open, the player now keeps showing the last known track and source instead of going blank. A small **Offline** label appears in the source row to make the stale state explicit.
+
+On a cold reload (opening the app while offline), the last known player state is restored from local cache — so you can still see what was playing last, even without a live connection to the streamer.
+
 ### UPnP renderer — bypass mode
 
 A new **Bypass** toggle in the Sources panel lets you route audio back to your local DAC without disconnecting the renderer. The renderer connection stays live and is instantly re-enabled — useful when switching between "network" and "local" listening without having to rediscover and reconnect each time.

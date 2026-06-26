@@ -7,7 +7,15 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### UPnP renderer — bypass mode
+
+A new **Bypass** toggle in the Sources panel lets you route audio back to your local DAC without disconnecting the renderer. The renderer connection stays live and is instantly re-enabled — useful when switching between "network" and "local" listening without having to rediscover and reconnect each time.
+
+When bypass is active the renderer stops playing immediately, the `→ renderer` badge disappears from the player, and all play commands go to MPD. Flipping the toggle off restores routing; the next track you start plays on the renderer.
+
+### UPnP renderer — disconnect now stops playback
+
+Clicking **Disconnect** in the Sources panel now immediately stops the renderer. Previously the renderer kept playing its stream independently until it finished — the control point disconnection had no effect on the audio.
 
 ---
 

@@ -16,6 +16,7 @@ and this landing) are documented here. Format based on
 - **[ui] build — granular bundle splitting** — main chunk reduced from 570 KB to 413 KB (−27%); 6 stable independent chunks: `lit`, `icons`, `atoms`, `nowplaying`, `streaming`, `library-core`; better cache hit rate across feature releases.
 
 ### Fixed
+- **[ui] now-playing — radio cover art fallback** — miniplayer now shows the music-note placeholder instead of the broken image icon when the cover proxy returns 404 (e.g. radio stations without a logo); fullscreen player shows the placeholder instead of a blank area (CSS `background-image` errors are silent — a hidden probe `<img>` detects failures).
 - **[ui] PWA — `skipWaiting()` removed from SW install event** — prevented chunk 404s on SW update (new SW was taking control before the page reloaded with new asset hashes).
 - **[ui] PWA — SW update reload loop** — `controllerchange` now triggers a single conditional reload guarded by `sessionStorage`; the update toast correctly says "Updating…" instead of the misleading "Refresh to update" (the reload is automatic).
 - **[ui] PWA — SWR background refresh lifetime** — `fetchPromise` (stale-while-revalidate background update) now covered by `event.waitUntil()` so the SW is not killed before `cache.put()` completes.

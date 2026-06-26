@@ -10,35 +10,29 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
-- **[core] Push notifications — temperature and service-down alerts wired** — `notify_temperature_alert()` fires when CPU exceeds 85°C (cooldown 15 min, cooldown not consumed on push failure); `notify_service_down()` fires on `active → failed` systemd state transition (stale service states pruned each cycle to prevent false positives on re-registration).
-- **[core] Push notifications — `push-manager.js` cleanup** — replaced raw `fetch()` calls with `apiGet`/`apiPost` for consistency; `PushSubscription` destructured explicitly via `toJSON()`.
-- **[ui] PWA — install prompt (Android/Chrome)** — compact banner en bas d'écran quand Chrome propose l'installation (`beforeinstallprompt`). Dismissal persisté 30 jours via `localStorage`. Rewrite complet de `pwa-install-prompt.js` : anglais, tokens CSS, plus de handler SW dupliqué, `showToast` correct.
-- **[ui] PWA — offline UI** — dernier état connu du player persisté dans `localStorage` (debounce 5 s). Rechargement offline : mini-player affiche le dernier état au lieu d'être vide. Badge `Offline` discret dans la source-row quand hors réseau.
-- **[ui] PWA — `apple-mobile-web-app-title`** — label court pour l'icône iOS home screen.
+- **[core/ui] UPnP renderer — bypass mode** — new toggle in the Settings renderer card keeps the renderer connected (SUBSCRIBE active) but suspends audio routing to MPD. Enabling bypass stops the renderer immediately; disabling does not auto-restart. Badge `→ name` disappears from the player when bypassed. Endpoint: `PUT /upnp-renderer/bypass` body `{bypassed: bool}`. Field `bypassed` added to `RendererStatus`.
+- **[core] Push notifications — temperature and service-down alerts** — `notify_temperature_alert()` fires when CPU exceeds 85°C (15-min cooldown, cooldown not consumed on push failure); `notify_service_down()` fires on `active → failed` systemd state transition (stale states pruned each cycle to prevent false positives on re-registration).
+- **[ui] PWA — App Shell precaching** — vite-plugin-pwa (injectManifest) precaches all Vite-hashed JS/CSS/image assets at SW install (~1 MiB); first load after install is fully offline-capable on Chrome/Android.
+- **[ui] PWA — differentiated cache strategies** — cache-first for hashed Vite assets and version-pinned CDN (cdn.jsdelivr.net); stale-while-revalidate for Google Fonts and static images; network-first for HTML navigation.
+- **[ui] PWA — install prompt (Android/Chrome)** — compact banner when Chrome offers installation (`beforeinstallprompt`); dismissal persisted 30 days via `localStorage`; complete rewrite of `pwa-install-prompt.js` (English, CSS tokens, no duplicate SW handler).
+- **[ui] PWA — offline UI** — last known player state persisted to `localStorage` (5 s debounce); cold offline reload restores the mini-player instead of showing an empty screen; discrete `Offline` badge in the source row.
+- **[ui] PWA — `Link: rel=preload` response headers** — `serve_https.py` emits preload hints for critical JS/CSS chunks so the browser fetches them in parallel without waiting for the HTML parser.
+- **[ui] build — granular bundle splitting** — main chunk reduced from 570 KB to 413 KB (−27%); 6 stable independent chunks: `lit`, `icons`, `atoms`, `nowplaying`, `streaming`, `library-core`.
+- **[ui] PWA — `apple-mobile-web-app-title`** — short label for the iOS home screen icon.
 
 ### Fixed
-- **[ui] PWA manifest — screenshots supprimés** — les fichiers `screenshot-mobile.png` et `screenshot-desktop.png` référencés n'existaient pas (404 silencieux, dialog d'installation Chrome dégradé).
-- **[core/ui] UPnP renderer — bypass mode** — new toggle in the Settings renderer card keeps the renderer connected (SUBSCRIBE active) but suspends audio routing to MPD. Enabling bypass stops the renderer immediately; disabling does not auto-restart. Badge `→ name` disappears in the player when bypassed. Endpoint: `PUT /upnp-renderer/bypass` body `{bypassed: bool}`. Field `bypassed` added to `RendererStatus`.
-
-### Fixed
-- **[core] UPnP renderer — disconnect now stops playback** — `disconnect()` calls `AVTransport Stop` before unsubscribing so the renderer stops playing immediately instead of continuing until the stream ends.
+- **[core] UPnP renderer — disconnect now stops playback** — `disconnect()` calls `AVTransport Stop` before unsubscribing so the renderer stops playing immediately.
 - **[core] UPnP renderer — bypass survives reconnect** — `connect()` unconditionally resets `_bypassed = False` so a bypass set while the DMR was offline never silently persists into the new connection.
 - **[core] UPnP renderer — heartbeat skips SOAP calls when bypassed** — `GetTransportInfo/GetPositionInfo` and SUBSCRIBE renewals are suppressed during bypass, avoiding unnecessary network requests to an idle renderer.
-
-### Added
-- **[ui] PWA — App Shell precaching** — vite-plugin-pwa (injectManifest) precaches all Vite-hashed JS/CSS/image assets at SW install (~1 MiB); first load after install is fully offline-capable on Chrome/Android.
-- **[ui] PWA — differentiated cache strategies** — cache-first for hashed assets and version-pinned CDN (cdn.jsdelivr.net); stale-while-revalidate for Google Fonts and static images; network-first for HTML navigation.
-- **[ui] PWA — `Link: rel=preload` response headers** — `serve_https.py` parses the built HTML and emits preload hints for critical JS/CSS chunks on every page response; browser fetches assets in parallel without waiting for HTML parsing.
-- **[ui] build — granular bundle splitting** — main chunk reduced from 570 KB to 413 KB (−27%); 6 stable independent chunks: `lit`, `icons`, `atoms`, `nowplaying`, `streaming`, `library-core`; better cache hit rate across feature releases.
-
-### Fixed
-- **[ui] now-playing — radio cover art fallback** — miniplayer now shows the music-note placeholder instead of the broken image icon when the cover proxy returns 404 (e.g. radio stations without a logo); fullscreen player shows the placeholder instead of a blank area (CSS `background-image` errors are silent — a hidden probe `<img>` detects failures).
-- **[ui] PWA — `skipWaiting()` removed from SW install event** — prevented chunk 404s on SW update (new SW was taking control before the page reloaded with new asset hashes).
-- **[ui] PWA — SW update reload loop** — `controllerchange` now triggers a single conditional reload guarded by `sessionStorage`; the update toast correctly says "Updating…" instead of the misleading "Refresh to update" (the reload is automatic).
-- **[ui] PWA — SWR background refresh lifetime** — `fetchPromise` (stale-while-revalidate background update) now covered by `event.waitUntil()` so the SW is not killed before `cache.put()` completes.
-- **[ui] PWA — isCDN over-broad** — replaced `url.origin !== location.origin` with explicit `CDN_SWR` / `CDN_IMMUTABLE` Sets; mutable cross-origin resources (cover art, push endpoints) no longer accidentally routed into stale-while-revalidate.
-- **[ui] PWA — dead `icomoon.woff` path** — removed non-existent `/fonts/icomoon.woff?1zo0jr` from `CACHE_URLS` (was causing a silent install error).
-- **[ui] build — `@lit/context` chunk assignment** — `@lit/context` and `@lit/reactive-element` now correctly land in the stable `lit` chunk instead of `main` (was defeating the caching strategy).
+- **[ui] now-playing — radio cover art fallback** — mini-player shows the music-note placeholder instead of the broken image icon when the cover proxy returns 404; fullscreen player uses a hidden probe `<img>` to detect silent CSS `background-image` 404s and shows the placeholder.
+- **[ui] PWA — `skipWaiting()` removed from SW install event** — prevented chunk 404s on update (new SW was taking control before the page reloaded with new asset hashes).
+- **[ui] PWA — SW update reload loop** — `controllerchange` triggers a single conditional reload guarded by `sessionStorage`; toast correctly says "Updating…".
+- **[ui] PWA — SWR background refresh lifetime** — `fetchPromise` now covered by `event.waitUntil()` so the SW is not killed before `cache.put()` completes.
+- **[ui] PWA — isCDN too broad** — replaced `url.origin !== location.origin` with explicit `CDN_SWR` / `CDN_IMMUTABLE` Sets; mutable cross-origin resources no longer routed into stale-while-revalidate.
+- **[ui] PWA — dead `icomoon.woff` path** — removed non-existent `/fonts/icomoon.woff?1zo0jr` from `CACHE_URLS`.
+- **[ui] PWA manifest — broken screenshot references** — removed `screenshots` field pointing to non-existent files (silent 404, degraded Chrome install dialog).
+- **[ui] build — `@lit/context` chunk assignment** — `@lit/context` and `@lit/reactive-element` now land in the stable `lit` chunk instead of `main`.
+- **[ui] push notifications — `push-manager.js`** — replaced raw `fetch()` with `apiGet`/`apiPost` for consistency; `PushSubscription` destructured explicitly via `toJSON()` before posting.
 
 ## [0.9.7] - 2026-06-26
 

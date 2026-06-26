@@ -10,6 +10,12 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[ui] PWA — install prompt (Android/Chrome)** — compact banner en bas d'écran quand Chrome propose l'installation (`beforeinstallprompt`). Dismissal persisté 30 jours via `localStorage`. Rewrite complet de `pwa-install-prompt.js` : anglais, tokens CSS, plus de handler SW dupliqué, `showToast` correct.
+- **[ui] PWA — offline UI** — dernier état connu du player persisté dans `localStorage` (debounce 5 s). Rechargement offline : mini-player affiche le dernier état au lieu d'être vide. Badge `Offline` discret dans la source-row quand hors réseau.
+- **[ui] PWA — `apple-mobile-web-app-title`** — label court pour l'icône iOS home screen.
+
+### Fixed
+- **[ui] PWA manifest — screenshots supprimés** — les fichiers `screenshot-mobile.png` et `screenshot-desktop.png` référencés n'existaient pas (404 silencieux, dialog d'installation Chrome dégradé).
 - **[core/ui] UPnP renderer — bypass mode** — new toggle in the Settings renderer card keeps the renderer connected (SUBSCRIBE active) but suspends audio routing to MPD. Enabling bypass stops the renderer immediately; disabling does not auto-restart. Badge `→ name` disappears in the player when bypassed. Endpoint: `PUT /upnp-renderer/bypass` body `{bypassed: bool}`. Field `bypassed` added to `RendererStatus`.
 
 ### Fixed

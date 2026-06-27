@@ -21,6 +21,11 @@ and this landing) are documented here. Format based on
 - **[ui] PWA — `apple-mobile-web-app-title`** — short label for the iOS home screen icon.
 
 ### Fixed
+- **[core/ui] UPnP renderer — reachability tracking** — renderer card now shows 🟠 Unreachable when the device goes offline (2 consecutive heartbeat failures) and recovers to 🟢 Connected automatically when it comes back. Heartbeat uses `do_ping=True` to detect failures in SUBSCRIBE mode (where `do_ping=False` processes cached NOTIFY events and never fails). Field `reachable` added to `RendererStatus`.
+- **[core] UPnP renderer — auto-reconnect retry loop** — on backend startup, auto-reconnect now retries with exponential backoff (30 s → 60 s → … → 5 min ceiling) instead of giving up after one attempt. Stops when the user disconnects explicitly.
+- **[ui] UPnP renderer — `renderer_status` SSE event missing from worker** — `sse-worker.js` did not register a listener for `renderer_status` events, so the renderer card never received real-time status updates; it only reflected correct state after a page refresh. One-line fix.
+- **[ui] UPnP renderer — renderer card layout matches HQPlayer** — Bypass toggle row reuses `.lib-hqp-output-toggle` (label left, switch right, above Disconnect) for visual consistency. Switch size identical to "Use as output".
+- **[core] library — MPD queue/albums return empty when MPD is stopped** — `GET /library/queue` and `GET /library/albums` now return an empty list instead of HTTP 500 `Queue/Library unavailable` when MPD is unreachable (OSError/ConnectionRefused).
 - **[core] UPnP renderer — disconnect now stops playback** — `disconnect()` calls `AVTransport Stop` before unsubscribing so the renderer stops playing immediately.
 - **[core] UPnP renderer — bypass survives reconnect** — `connect()` unconditionally resets `_bypassed = False` so a bypass set while the DMR was offline never silently persists into the new connection.
 - **[core] UPnP renderer — heartbeat skips SOAP calls when bypassed** — `GetTransportInfo/GetPositionInfo` and SUBSCRIBE renewals are suppressed during bypass, avoiding unnecessary network requests to an idle renderer.

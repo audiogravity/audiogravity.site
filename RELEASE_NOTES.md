@@ -19,6 +19,16 @@ If you lose your network connection while Audiogravity is open, the player now k
 
 On a cold reload (opening the app while offline), the last known player state is restored from local cache — so you can still see what was playing last, even without a live connection to the streamer.
 
+### UPnP renderer — live status indicator
+
+The renderer card in the Sources panel now reflects the true state of the device in real time:
+
+- **Connected** (green) — renderer is reachable and responding
+- **Unreachable** (orange) — the connection object is active but the device stopped responding (powered off, network loss). The card shows "unreachable — check device" and recovers automatically within 30 s when the device comes back — no page refresh, no manual reconnect.
+- **Offline** (red) — no renderer configured
+
+After a backend restart, the auto-reconnect now retries with exponential backoff (30 s → 60 s → … → 5 min cap) instead of giving up after one attempt. If upmpdcli or the renderer starts later than the AG core, the badge goes green as soon as the device responds.
+
 ### UPnP renderer — bypass mode
 
 A new **Bypass** toggle in the Sources panel lets you route audio back to your local DAC without disconnecting the renderer. The renderer connection stays live and is instantly re-enabled — useful when switching between "network" and "local" listening without having to rediscover and reconnect each time.

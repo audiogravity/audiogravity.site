@@ -7,11 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-### UPnP renderer — full album playback and "Up next"
+### UPnP renderer — full album playback, NEXT / PREV and "Up next"
 
-When you play an album from Qobuz, Tidal or a MinimServer library to a UPnP renderer, AG now queues all tracks and chains them automatically — gapless where the renderer supports it, seamless in any case. Tracks are resolved just-in-time (Qobuz HMAC-signed URLs stay fresh), so the whole album plays through without interruption.
+When you play an album from Qobuz, Tidal or a MinimServer library to a UPnP renderer, AG now queues all tracks and chains them automatically — gapless where the renderer supports it, seamless in any case. Qobuz tracks are served through AG's internal proxy so URLs never expire, enabling both uninterrupted album play and manual navigation.
 
-The fullscreen player shows a **Up next** strip at the bottom with the next track's title, artist and cover art, updated in real time as the album progresses.
+The **NEXT** and **PREV** transport buttons in the fullscreen player now skip between tracks in the renderer queue. Buttons are disabled at boundaries (first / last track). Pressing both rapidly is safe — a 409 is returned if a transition is already in progress.
+
+The fullscreen player shows an **Up next** strip at the bottom with the next track's title, artist and cover art, updated in real time as the album progresses.
 
 ### Install on your home screen (Android / Chrome)
 

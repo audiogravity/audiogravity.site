@@ -7,6 +7,23 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Signal path — the real audio chain, in real time
+
+The fullscreen player now shows the full audio chain as it actually exists at any moment, not a static topology.
+
+**With a UPnP renderer active** (e.g. upmpdcli / music.#1):
+`• Qobuz → • music.#1 → • MPD → • USB → • Heed Abacus`
+
+**In bypass mode or without renderer:**
+`• Qobuz → • MPD → • USB → • Heed Abacus`
+
+**With a native network renderer** (Marantz, Linn…) that has its own internal DAC:
+`• Qobuz → • Marantz PM7000N`
+
+The connector (USB / TOSLINK) is inserted automatically based on the active ALSA output and updates live when you switch. The source (Qobuz, Tidal, Radio, Library…) is always the first step. Radio shows "Radio" — not the station name, which is content metadata, not a chain step.
+
+The separate `→ music.#1` overlay in the fullscreen player has been removed — the renderer is now one step among others in the chain. The mini player source row gains a compact `→ renderer_name` badge when a renderer is active.
+
 ### UPnP renderer — seeking within a Qobuz track
 
 UPnP renderers can now seek mid-track within a Qobuz stream. The AG proxy forwards HTTP `Range` requests from the renderer to the Qobuz CDN and relays the `206 Partial Content` response, so transport position scrubbing in the renderer's own UI (or any control point) works without restarting the stream from the beginning.

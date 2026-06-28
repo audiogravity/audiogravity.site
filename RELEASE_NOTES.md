@@ -24,6 +24,18 @@ The connector (USB / TOSLINK) is inserted automatically based on the active ALSA
 
 The separate `→ music.#1` overlay in the fullscreen player has been removed — the renderer is now one step among others in the chain. The mini player source row gains a compact `→ renderer_name` badge when a renderer is active.
 
+### Signal path and player — reliability fixes
+
+Several edge cases addressed in this batch:
+
+- **Cover art on consecutive album tracks** — if a track returned a 404 cover, subsequent tracks on the same album (same `cover_token`) were permanently blocked. The error token is now cleared on every track change.
+- **"Up next" strip cleared on disconnect** — the next-track strip in the fullscreen player now disappears when the renderer disconnects or is bypassed, instead of lingering indefinitely.
+- **Idle renderer badge** — when the renderer is connected but nothing is playing, the fullscreen player now shows the renderer name in the source row so you can confirm the routing without starting playback.
+- **Connector badge for upmpdcli** — the USB/TOSLINK badge was incorrectly hidden when upmpdcli (a local-MPD renderer) was active; it is now always visible since the physical connector is in the chain.
+- **Renderer "offline" after SID recovery** — after a backend restart, the renderer card could stay orange (unreachable) for up to 30 s even after the subscription ID was successfully renewed; now snaps back to green immediately.
+- **Signal path during reconnect window** — the backend no longer includes the renderer step in the signal path while its connection is being established (not yet reachable).
+- **Origin labels — single source of truth** — `GET /player/origins` exposes the canonical `origin → label` map. The UI now fetches it at startup, removing the need to keep two copies in sync across backend and frontend.
+
 ### UPnP renderer — seeking within a Qobuz track
 
 UPnP renderers can now seek mid-track within a Qobuz stream. The AG proxy forwards HTTP `Range` requests from the renderer to the Qobuz CDN and relays the `206 Partial Content` response, so transport position scrubbing in the renderer's own UI (or any control point) works without restarting the stream from the beginning.

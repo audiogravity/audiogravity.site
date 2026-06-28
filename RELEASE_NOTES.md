@@ -74,9 +74,11 @@ The renderer card in the Sources panel now reflects the true state of the device
 
 After a backend restart, the auto-reconnect now retries with exponential backoff (30 s → 60 s → … → 5 min cap) instead of giving up after one attempt. If upmpdcli or the renderer starts later than the AG core, the badge goes green as soon as the device responds.
 
-### UPnP renderer — bypass mode
+### Output selector — switch outputs without leaving the player
 
-A new **Bypass** toggle in the Sources panel lets you route audio back to your local DAC without disconnecting the renderer. The renderer connection stays live and is instantly re-enabled — useful when switching between "network" and "local" listening without having to rediscover and reconnect each time.
+The Sources panel now shows a unified **output selector**: Local DAC at the top, followed by all known network renderers. Tap any entry to switch — the active renderer is highlighted in green, an unreachable one in orange.
+
+Selecting **Local DAC** while a renderer is active disconnects it and routes audio back through MPD locally. Re-selecting the renderer reconnects and resumes. No separate Bypass toggle needed — the output list is the full routing control.
 
 When bypass is active the renderer stops playing immediately, the `→ renderer` badge disappears from the player, and all play commands go to MPD. Flipping the toggle off restores routing; the next track you start plays on the renderer.
 

@@ -9,6 +9,16 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] mini player — cover art popover broken image** — the detail popover (`np-detail-cover`) now applies the same `_brokenCovers` check as the thumbnail; images that failed to load (404 / network error) are skipped in the popover instead of showing a broken image icon. The `@error` handler is also added on the popover `<img>` to capture failures that occur before the thumbnail has had a chance to error.
+
+### Refactored
+- **[core] `mpd_client.fetch_outputs()`** — MPD audio output parsing (previously `_fetch_mpd_outputs()` inline in `modules/player/router.py`) moved to `core/mpd_client.py` as a public `fetch_outputs(pipeline)` function. Router now calls `mpd_client.fetch_outputs()`. Separation of concerns: the router no longer parses MPD wire format directly; the helper is independently testable.
+- **[core] `_try_renderer_control()` — single dispatch block** — removed the two-phase approach (separate `if action == "toggle"` to fetch transport state, then a second `if/elif` dispatch); merged into one `try` block. `transport_state` intermediate variable eliminated.
+- **[core] `LibraryService.is_mpd_source()`** — new public method replacing direct calls to the private `_mpd_port()` from `modules/library/router.py`. Two call-sites in the router updated.
+- **[ui] `fetchActiveRendererStatus()`** — the `known → active UDN → status` bootstrap chain, previously copy-pasted identically in `ag-now-playing.js` and `ag-now-playing-fullscreen.js`, extracted into `library-store.js` as a shared async helper.
+- **[ui] fullscreen player — renderer transport routing** — `_control()` now sends all transport actions (including `next`/`prev`) through `POST /player/control`. The UI-side shortcut that routed renderer queue next/prev directly to `POST /upnp-renderer/{udn}/next|prev` has been removed; the backend's `_try_renderer_control()` handles routing to the correct renderer service.
+
 ### Added
 - **[core] UPnP renderer — DSD detection** — `RendererStatus.format` is set to `"DSD"` when the current URI has a `.dsf` or `.dff` extension (MinimServer DSD tracks). `PlayerState.format` is populated for native renderers so the fullscreen player shows the DSD lock and hides the volume control automatically via the existing `isDsd()` check.
 - **[core] `RendererStatus.renderer_udn`** — new field on `RendererStatus` mirroring the value already injected into the SSE payload; the UI now has the UDN from the HTTP GET response without waiting for the first SSE event.

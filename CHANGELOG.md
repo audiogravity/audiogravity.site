@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Refactored
+- **[core] `_upsert_known()`** — renderer dict built once before the if/else branch instead of duplicated in each arm.
+- **[core] `_make_stream_on_play()`** — extracted shared static method replacing `_make_qobuz_on_play` / `_make_tidal_on_play` copy-paste closures in `library/service.py`.
+- **[core] `_fetch_mpd_outputs()`** — now returns `(outputs, port)` tuple so callers don't need a second `first_mpd_port()` call.
+- **[core] service monitoring — set construction** — replaced `set(dict) - set(dict)` (two allocations per 10 s tick) with a list comprehension over the dict keys.
+- **[ui] `_rendererCanNext` / `_rendererCanPrev` getters** — replaced inline IIFEs in `ag-now-playing-fullscreen.js` template with named getters; return `null` when no renderer queue is active so the template falls back to player state.
+
 ### Fixed
 - **[core] UPnP renderer — `connect()` UDN mismatch** — `POST /upnp-renderer/{udn}/connection` was looking up the service by the path parameter instead of the request body `udn`, causing a KeyError (HTTP 500) when they differed.
 - **[core] player — `PUT /player/mpd-output/{output_id}`** — unknown `output_id` now returns 404 instead of silently disabling all outputs; existence check runs before the batch MPD command.

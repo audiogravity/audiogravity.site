@@ -7,7 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Fullscreen player — source badge on the cover art
+
+The origin badge (❖ QOBUZ, ❖ TIDAL, ❖ UPNP) is now displayed directly on the cover art, top-left. The track badge (A1 · TRACK 01) appears bottom-left. The duplicate source badge that appeared below the cover has been removed.
+
+### Track number badge now shown for all sources
+
+The A1 · TRACK 01 badge was missing for Qobuz, Tidal and MinimServer streams. It now appears correctly for all sources, via both the direct MPD path and the UPnP renderer path.
 
 ---
 

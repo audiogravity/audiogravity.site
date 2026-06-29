@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] UPnP renderer — auto-reconnect race condition** — after `connect()` completes, the manager checks whether the renderer was removed during the async call and tears it down cleanly if so; prevents a connected/disconnecting oscillation when a renderer is removed while a reconnect is in progress.
+- **[core] player — active UDN not persisted when MPD output selection clears it** — `select_mpd_output` now calls `_save_config()` in the else branch so the cleared active UDN survives a restart.
+- **[core] track_number missing for Qobuz, Tidal and MinimServer streams** — `now_playing.py` reads `track_number` from `ext_stream_meta` even when MPD already has a title; `library/service.py` registers `track_number` for all Qobuz, Tidal and UPnP album queue paths; `library/upnp_service.py` extracts `upnp:originalTrackNumber` from DIDL-Lite with a safe `int()` guard against empty strings.
+- **[ui] fullscreen player — source badge moved onto cover art** — the origin badge (❖ QOBUZ / ❖ TIDAL / ❖ UPNP) now appears top-left on the cover art; the track badge (A1 · TRACK 01) appears bottom-left. Duplicate source badge below the cover removed; `• MPD` fallback label removed.
+- **[ui] output panel — wording** — section label "UPnP Renderer" → "Audio Output"; button "Scan network" → "Scan renderers"; "Refresh" → "Reload".
+
 ## [0.9.8] - 2026-06-29
 
 ### Added

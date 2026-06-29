@@ -9,7 +9,25 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core] UPnP renderer — DSD detection** — `RendererStatus.format` is set to `"DSD"` when the current URI has a `.dsf` or `.dff` extension (MinimServer DSD tracks). `PlayerState.format` is populated for native renderers so the fullscreen player shows the DSD lock and hides the volume control automatically via the existing `isDsd()` check.
+- **[core] `RendererStatus.renderer_udn`** — new field on `RendererStatus` mirroring the value already injected into the SSE payload; the UI now has the UDN from the HTTP GET response without waiting for the first SSE event.
+- **[core] `UPnPRendererService.reachable` / `.uses_local_mpd` properties** — expose the two previously-private attributes as public properties; `get_known()` and `_try_renderer_control()` use these properties instead of accessing `_reachable` / `_uses_local_mpd` directly.
+
+### Changed
+- **[core] Steering — renderer pre-disconnect** — `switch_output()` now disconnects a local renderer (`uses_local_mpd=True`, e.g. upmpdcli) before switching the ALSA device. Native/distant renderers (`uses_local_mpd=False`) are left running — their audio stack is independent of AG's ALSA configuration.
+- **[core] `GET /player/outputs` — `local_active` during reconnect window** — MPD outputs now show `active: true` when the persisted renderer is selected but not yet reachable (auto-reconnect still pending at startup), matching actual audio routing.
+- **[core] UPnP NOTIFY after disconnect** — orphaned NOTIFY requests (arriving after `disconnect()` but within the UPnP subscription TTL) now return HTTP 200 instead of 404, preventing upmpdcli from treating the subscription as lost.
+- **[core] `_try_renderer_control()` — uses_local_mpd short-circuit** — `uses_local_mpd` is now checked via the new property before calling `get_status()` (no await); `get_status()` is only called for the `toggle` action which needs `transport_state`.
+- **[core] `select_mpd_output` — stale `_active_udn` guard** — if `_active_udn` is set from persisted config but the service is not yet in `_services` (auto-reconnect pending), `_active_udn` is cleared instead of calling `disconnect()` (which would raise `KeyError`).
+
 ### Refactored
+- **[core] `PlayerService._get_active_renderer_svc()`** — new private helper centralises the `get_container().get(RendererManager).get_active_service()` lookup, previously repeated verbatim in three methods (`_try_renderer_control`, `_build_native_renderer_state`, `_build_state` signal-path block).
+- **[core] `PlayerService._renderer_queue_nav()`** — new static helper returns `(can_next, can_prev)` from a `RendererStatus`, replacing the duplicated `queue_total is not None and queue_position is not None` guards in `_build_native_renderer_state`.
+- **[core] `_save_config()` dict comprehension** — simplified from `{**{k: v for k, v in r.items() if k != "active"}, ...}` to `{**r, "active": ...}` (Python `**` merge semantics already overwrite the key).
+- **[ui] Remove stale `!bypassed` guards** — `bypassed` was removed from `RendererStatus` in the new architecture; all six `!data.bypassed` / `!rs.bypassed` guards in `ag-now-playing.js` and `ag-now-playing-fullscreen.js` replaced with the simpler `connected` check.
+
+### Fixed
 - **[core] `_upsert_known()`** — renderer dict built once before the if/else branch instead of duplicated in each arm.
 - **[core] `_make_stream_on_play()`** — extracted shared static method replacing `_make_qobuz_on_play` / `_make_tidal_on_play` copy-paste closures in `library/service.py`.
 - **[core] `_fetch_mpd_outputs()`** — now returns `(outputs, port)` tuple so callers don't need a second `first_mpd_port()` call.

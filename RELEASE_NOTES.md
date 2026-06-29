@@ -28,6 +28,8 @@ The separate `→ music.#1` overlay in the fullscreen player has been removed �
 
 Several edge cases addressed in this batch:
 
+- **Native renderer — "Nothing playing" fixed** — with a network renderer (Marantz, Linn…) whose audio stack is self-contained (not routed through the local MPD), the fullscreen player was showing "Nothing playing" even when a track was actively playing. AG now reads the renderer's internal state directly: title, artist, album, cover art and transport position all appear correctly without requiring the local MPD to be in the chain.
+- **Native renderer — output bar was showing "No output selected"** — same root cause: when no local source was active the output bar could not determine the routing and showed "No output selected". The output label and signal path (e.g. `• Marantz PM7000N`) now reflect the renderer correctly.
 - **Cover art on consecutive album tracks** — if a track returned a 404 cover, subsequent tracks on the same album (same `cover_token`) were permanently blocked. The error token is now cleared on every track change.
 - **"Up next" strip cleared on disconnect** — the next-track strip in the fullscreen player now disappears when the renderer disconnects or is bypassed, instead of lingering indefinitely.
 - **Idle renderer badge** — when the renderer is connected but nothing is playing, the fullscreen player now shows the renderer name in the source row so you can confirm the routing without starting playback.
@@ -74,13 +76,18 @@ The renderer card in the Sources panel now reflects the true state of the device
 
 After a backend restart, the auto-reconnect now retries with exponential backoff (30 s → 60 s → … → 5 min cap) instead of giving up after one attempt. If upmpdcli or the renderer starts later than the AG core, the badge goes green as soon as the device responds.
 
-### Output selector — switch outputs without leaving the player
+### Output selector — switch between physical outputs and network renderers
 
-The Sources panel now shows a unified **output selector**: Local DAC at the top, followed by all known network renderers. Tap any entry to switch — the active renderer is highlighted in green, an unreachable one in orange.
+The Sources panel now shows a unified **output selector** with every available audio destination in one place:
 
-Selecting **Local DAC** while a renderer is active disconnects it and routes audio back through MPD locally. Re-selecting the renderer reconnects and resumes. No separate Bypass toggle needed — the output list is the full routing control.
+- **Physical outputs** — one row per MPD audio output block (USB DAC, TOSLINK…), named exactly as configured in `mpd.conf`. Tapping one enables it exclusively and disconnects any active renderer.
+- **Network renderers** — all known UPnP renderers (upmpdcli, Marantz, Linn…) listed below. Tap to connect; the active renderer shows a Disconnect button and a volume slider.
 
-When bypass is active the renderer stops playing immediately, the `→ renderer` badge disappears from the player, and all play commands go to MPD. Flipping the toggle off restores routing; the next track you start plays on the renderer.
+The active output is highlighted in green. An unreachable renderer shows orange. Switching between a physical output and a renderer requires no page refresh and fires no extra commands — one tap routes audio.
+
+**Radio cast to renderer** — playing an internet radio station while a UPnP renderer is selected now sends the stream to the renderer via AVTransport, just like Qobuz or library tracks. If no renderer is active, playback falls back to the local MPD output.
+
+**Remove a renderer** — swipe a renderer row to the left to permanently remove it from the list. No need to reconnect or scan again to add it back — use the Scan button.
 
 ### UPnP renderer — disconnect now stops playback
 

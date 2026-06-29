@@ -24,6 +24,17 @@ The connector (USB / TOSLINK) is inserted automatically based on the active ALSA
 
 The separate `→ music.#1` overlay in the fullscreen player has been removed — the renderer is now one step among others in the chain. The mini player source row gains a compact `→ renderer_name` badge when a renderer is active.
 
+### Renderer routing and audio output — code review fixes
+
+A batch of targeted fixes from a code review covering the `feat/output-manager` branch:
+
+- **Renderer `connect()` HTTP 500** — connecting a renderer whose UDN in the route differed from the request body caused a silent KeyError. Fixed: the lookup now uses the body `udn` consistently.
+- **MPD output switch — unknown ID** — selecting an MPD output with an invalid `output_id` would silently disable all outputs. Now returns 404 before issuing any MPD command.
+- **Qobuz single-track to renderer** — playing a single Qobuz track to an active renderer was broken: the internal `play()` call had been removed in the queue refactor. Now correctly routes via `play_queue()` with cover art token forwarded.
+- **Renderer card stale on new session** — if a `renderer_status` SSE event arrived before the renderer list was loaded, the update was silently dropped, leaving the card stale. The card now triggers a reload in that case and applies the event on completion.
+- **Temperature alert spam** — a misconfigured push endpoint could cause the cooldown timestamp to be skipped, generating repeated temperature alerts for a single event. Cooldown now advances unconditionally.
+- **Qobuz proxy HTTP session** — the streaming proxy was opening a new `aiohttp.ClientSession` per request and closing it at the end of each stream, holding an open file descriptor for the duration. Now reuses the shared session pool; headers forwarded per-request.
+
 ### Signal path and player — reliability fixes
 
 Several edge cases addressed in this batch:

@@ -9,6 +9,17 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] UPnP renderer — `connect()` UDN mismatch** — `POST /upnp-renderer/{udn}/connection` was looking up the service by the path parameter instead of the request body `udn`, causing a KeyError (HTTP 500) when they differed.
+- **[core] player — `PUT /player/mpd-output/{output_id}`** — unknown `output_id` now returns 404 instead of silently disabling all outputs; existence check runs before the batch MPD command.
+- **[core] UPnP renderer — queue index underflow** — concurrent `play_queue()` + `_advance_queue()` could decrement `_queue_idx` to −1 on rollback; guard now requires `_queue_idx > 0` before decrementing.
+- **[core] library — Qobuz single-track to renderer** — `qobuz_queue()` now calls `play_queue([QueueEntry(…)])` instead of the removed `play()` method; cover token forwarded.
+- **[core] sysinfo — temperature alert push spam** — cooldown timestamp is advanced before the push attempt so a misconfigured push service cannot trigger repeated alerts on the same event.
+- **[core] Qobuz proxy — shared HTTP session** — `GET /qobuz/stream/{track_id}` reuses the shared `aiohttp.ClientSession` pool; per-request headers forwarded on `.get()` call, no session closed between requests.
+- **[core] player — native renderer detection** — `_try_renderer_control()` and `_build_native_renderer_state()` use the public `status.uses_local_mpd` field from `RendererStatus` instead of the private attribute.
+- **[ui] renderer card — SSE unknown renderer** — when a `renderer_status` SSE event arrives with a `renderer_udn` not yet in the known list, the card now triggers a reload instead of silently discarding the update.
+- **[ui] library sources — CSS tokens** — replaced hardcoded `10px` with `var(--spacing-xs)`, removed duplicate `user-select: none` rule, documented intentional `#ffffff` on error background.
+
 ### Added
 - **[core] `GET /player/origins`** — new endpoint returning the canonical `origin → label` map (`ORIGIN_LABELS`). Clients call it at startup and merge the result into their static fallback, making the backend the single source of truth for origin display labels.
 - **[core] signal path — enriched real-time chain display** — `_build_state()` builds the full audio chain dynamically: Source → [Renderer] → [MPD] → [Connector] → DAC. Connector (USB / TOSLINK) inserted before the DAC. UPnP renderer prepended when active and not bypassed. Audio source (Qobuz, Tidal, Radio, Library…) prepended from `origin`. New `uses_local_mpd: bool` field in `RendererStatus` distinguishes upmpdcli (bridges to local MPD) from native network renderers (Marantz, Linn…) whose local MPD/connector/DAC chain does not exist — for those, the signal path is `Source → Renderer` only.

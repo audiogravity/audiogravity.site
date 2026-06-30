@@ -7,7 +7,11 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Initialize audio stack — guided, zero-config setup
+
+A new **"Initialize audio stack"** panel in *Audio Services Configuration* gets the audio software working on a fresh box in a couple of clicks. AudioGravity detects your audio outputs and pre-selects your USB DAC, you pick where your music lives (a USB drive it mounts for you, an existing network share, or a path you type), and it writes a clean, bit-perfect starting configuration for MPD, UPnP and AirPlay — wiring your DAC and library into the right places. Setting it up is reserved to administrators, and AudioGravity asks for your password before writing anything.
+
+Nothing is overwritten: existing configurations are left as-is. Each service also gets a **"regenerate"** action to reset it to a known-good minimal config (your current one is backed up first, and your music library is preserved). The chosen output is remembered and re-checked at startup, so moving the DAC to another USB port just works.
 
 ---
 

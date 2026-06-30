@@ -9,7 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
-_Nothing yet._
+### Added
+- **[core+ui] Audio-stack minimal-config provisioning** — a guided "Initialize audio stack" panel in AUDIO SERVICES CONFIGURATION generates a minimal, working configuration for `mpd`, `upmpdcli` and `shairport-sync` per box. It detects the audio outputs (pre-selecting the USB DAC), lets you pick a music library (detected USB drive — auto-mounted by UUID, ext4/exFAT — an existing network/local mount, or a manual path), then wires the chosen ALSA device into MPD + AirPlay and the library into MPD. Configs are generated only if absent; each service tile gains a "regenerate to minimal" action (auto-backs up first; MPD keeps its existing library). The pinned output is re-resolved at core startup so it survives USB re-enumeration. The feature is admin-only (`require_admin` on both endpoints) and the initial provision re-authenticates with the admin password (a wrong/missing password returns 401; per-tile regeneration only needs the admin role). New API: `GET /audio-stack/status`, `POST /audio-stack/provision`.
 
 ## [0.9.9] - 2026-06-30
 

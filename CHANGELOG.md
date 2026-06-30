@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.9] - 2026-06-30
+
 ### Changed
 - **[ops] Deployment nomenclature renamed `frontend`→`ui` and `backend`→`core`** — build/packaging scripts (`build-core.sh`, `build-core-package.sh`, `build-ui-package.sh`, `dev-core.sh`), release assets (`audiogravity-core-<ver>-<arch>.tar.gz`, `audiogravity-ui-<ver>.tar.gz`) and public install scripts (`install-core.sh`, `install-ui.sh`) now use the new names. Old release assets from past versions keep their original names.
 - **[core] systemd unit `ag-backend-server` → `ag-core-server`** — data directory `/opt/audiogravity/backend` → `/opt/audiogravity/core` (`AUDIOGRAVITY_HOME`). The service-metrics map key exposed over SSE renamed `backend` → `core`. The `sudo systemctl restart ag-core-server` path is covered by the existing generic `systemctl` sudoers rule (no new alias needed).

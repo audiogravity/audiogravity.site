@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.9 — 2026-06-30
+
 ### Deployment renamed: `core` and `ui` (was `backend` / `frontend`)
 
 The two installable components are now called **core** and **ui** everywhere — packages, systemd services, install scripts and data directories. New installs use `install-core.sh` / `install-ui.sh`, the services are `ag-core-server` / `ag-ui-server`, and data lives under `/opt/audiogravity/core` and `/var/www/audiogravity-ui`.

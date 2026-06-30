@@ -1,6 +1,6 @@
 # Changelog — Audiogravity
 
-All notable changes to Audiogravity (backend, frontend, license server, installers
+All notable changes to Audiogravity (core, ui, license server, installers
 and this landing) are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the project follows
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -8,6 +8,14 @@ and this landing) are documented here. Format based on
 ---
 
 ## [Unreleased]
+
+### Changed
+- **[ops] Deployment nomenclature renamed `frontend`→`ui` and `backend`→`core`** — build/packaging scripts (`build-core.sh`, `build-core-package.sh`, `build-ui-package.sh`, `dev-core.sh`), release assets (`audiogravity-core-<ver>-<arch>.tar.gz`, `audiogravity-ui-<ver>.tar.gz`) and public install scripts (`install-core.sh`, `install-ui.sh`) now use the new names. Old release assets from past versions keep their original names.
+- **[core] systemd unit `ag-backend-server` → `ag-core-server`** — data directory `/opt/audiogravity/backend` → `/opt/audiogravity/core` (`AUDIOGRAVITY_HOME`). The service-metrics map key exposed over SSE renamed `backend` → `core`. The `sudo systemctl restart ag-core-server` path is covered by the existing generic `systemctl` sudoers rule (no new alias needed).
+- **[ui] systemd unit `ag-frontend-server` → `ag-ui-server`** — deploy directory `/var/www/audiogravity-frontend` → `/var/www/audiogravity-ui`; version constant `FRONTEND_VERSION` → `UI_VERSION`; dev proxy env var `BACKEND_PORT` → `CORE_PORT` (`dev.sh` + `vite.config.js`).
+
+### Added
+- **[ops] `scripts/migrate-deploy-layout.sh`** — standalone, idempotent migration for hosts on the old layout. Run once as root *before* reinstalling: it backs up the existing layout (`tar`), stops/removes the old units, renames `/opt/audiogravity/backend`→`/opt/audiogravity/core` and `/var/www/audiogravity-frontend`→`/var/www/audiogravity-ui`, and rewrites `AUDIOGRAVITY_HOME` — preserving `.env`, secrets, users and tokens. Works on single-host and split-host topologies (migrates only the component present locally). `/etc/audiogravity` is left untouched.
 
 ### Fixed
 - **[core] UPnP renderer — auto-reconnect race condition** — after `connect()` completes, the manager checks whether the renderer was removed during the async call and tears it down cleanly if so; prevents a connected/disconnecting oscillation when a renderer is removed while a reconnect is in progress.

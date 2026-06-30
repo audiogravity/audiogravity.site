@@ -90,7 +90,7 @@ Pro is a lifetime license — no subscription, no renewal. See [EDITIONS.md](EDI
 
 Audiogravity uses a dual-license model:
 - **Interface ([audiogravity.ui](https://github.com/audiogravity/audiogravity.ui))** — [MIT](https://github.com/audiogravity/audiogravity.ui/blob/main/LICENSE). Open source — fork it, contribute, or build on it.
-- **Backend engine ([audiogravity.core](https://github.com/audiogravity/audiogravity.core))** — Proprietary. Distributed as a compiled binary under the [EULA](EULA.md).
+- **Core engine ([audiogravity.core](https://github.com/audiogravity/audiogravity.core))** — Proprietary. Distributed as a compiled binary under the [EULA](EULA.md).
 
 Audiogravity also incorporates open-source components. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the full list of third-party libraries and their license terms.
 
@@ -101,8 +101,8 @@ Audiogravity also incorporates open-source components. See [THIRD_PARTY_NOTICES.
 curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
 
 # Or separately
-curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx
-curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --token ghp_xxx
 ```
 
 > The token is shared during **early access** with approved testers. [Request access →](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request)
@@ -120,7 +120,7 @@ The core installer accepts two optional flags:
   reject. Omit this flag if you don't use passkeys.
 
 ```bash
-curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
+curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
     --token ghp_xxx \
     --vapid-email you@example.com \
     --public-url https://audiogravity.example.com
@@ -135,7 +135,7 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 > `--public-url https://ag.example.com:8443` → `WEBAUTHN_ORIGIN=https://ag.example.com:8443`
 > and `WEBAUTHN_RP_ID=ag.example.com`. To share passkeys across sub-domains, set a
 > parent `WEBAUTHN_RP_ID` (e.g. `example.com`) manually in
-> `/opt/audiogravity/backend/.env` and restart the backend.
+> `/opt/audiogravity/core/.env` and restart the core.
 
 ## Install as PWA
 

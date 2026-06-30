@@ -1,16 +1,16 @@
 #!/bin/bash
-# Audiogravity Frontend — Public Bootstrap Installer (token-authenticated)
+# Audiogravity UI — Public Bootstrap Installer (token-authenticated)
 #
 # Downloads release assets from the private GitHub repo via the API.
 #
 # Usage:
-#   curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --token ghp_xxx
-#   curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --token ghp_xxx
+#   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
 
 set -e
 
 REPO="audiogravity/audiogravity-releases"
-INSTALL_DIR="/tmp/ag-frontend-install-$$"
+INSTALL_DIR="/tmp/ag-ui-install-$$"
 
 GREEN='\033[0;32m'; RED='\033[0;31m'; BLUE='\033[0;34m'; YELLOW='\033[1;33m'; NC='\033[0m'
 ok()   { echo -e "  ${GREEN}✓${NC} $1"; }
@@ -41,7 +41,7 @@ API_BASE="https://api.github.com/repos/$REPO"
 
 echo ""
 echo -e "${BLUE}╔═══════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║   Audiogravity Frontend Installer     ║${NC}"
+echo -e "${BLUE}║   Audiogravity UI Installer     ║${NC}"
 echo -e "${BLUE}╚═══════════════════════════════════════╝${NC}"
 echo ""
 
@@ -58,7 +58,7 @@ fi
 VERSION=$(echo "$RELEASE_JSON" | python3 -c "import sys, json; print(json.load(sys.stdin)['tag_name'].lstrip('v'))")
 info "Version  : $VERSION"
 
-TARBALL="audiogravity-frontend-${VERSION}.tar.gz"
+TARBALL="audiogravity-ui-${VERSION}.tar.gz"
 
 asset_url() {
     echo "$RELEASE_JSON" | python3 -c "
@@ -106,7 +106,7 @@ info "Extracting..."
 tar -xzf "$INSTALL_DIR/$TARBALL" -C "$INSTALL_DIR"
 ok "Extracted"
 
-PACKAGE_DIR=$(find "$INSTALL_DIR" -maxdepth 1 -type d -name "audiogravity-frontend-*" | head -1)
+PACKAGE_DIR=$(find "$INSTALL_DIR" -maxdepth 1 -type d -name "audiogravity-ui-*" | head -1)
 [ -n "$PACKAGE_DIR" ] || fail "Could not find package directory after extraction."
 
 info "Running installer..."

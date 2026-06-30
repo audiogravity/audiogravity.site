@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Deployment renamed: `core` and `ui` (was `backend` / `frontend`)
+
+The two installable components are now called **core** and **ui** everywhere — packages, systemd services, install scripts and data directories. New installs use `install-core.sh` / `install-ui.sh`, the services are `ag-core-server` / `ag-ui-server`, and data lives under `/opt/audiogravity/core` and `/var/www/audiogravity-ui`.
+
+Existing systems are not touched automatically. To move an already-installed host to the new layout, run the new `migrate-deploy-layout.sh` once (as root) before reinstalling: it backs everything up first, then renames the layout while preserving your configuration, secrets and user accounts. It works whether core and ui share a host or run on separate machines.
+
 ### Fullscreen player — source badge on the cover art
 
 The origin badge (❖ QOBUZ, ❖ TIDAL, ❖ UPNP) is now displayed directly on the cover art, top-left. The track badge (A1 · TRACK 01) appears bottom-left. The duplicate source badge that appeared below the cover has been removed.

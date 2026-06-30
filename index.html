@@ -970,7 +970,7 @@
                 Starter
                 Edition that activates automatically when the trial ends, and a Pro License — a lifetime license that
                 permanently unlocks all features on one machine.</p>
-            <p class="section-sub" style="font-size:.9em;opacity:.7;">The interface is <a href="https://github.com/audiogravity/audiogravity.ui" style="color:inherit;text-decoration:underline">open source (MIT)</a> — fork it, contribute, or build on it. The backend engine remains proprietary.</p>
+            <p class="section-sub" style="font-size:.9em;opacity:.7;">The interface is <a href="https://github.com/audiogravity/audiogravity.ui" style="color:inherit;text-decoration:underline">open source (MIT)</a> — fork it, contribute, or build on it. The core engine remains proprietary.</p>
 
             <div class="pricing-grid">
 
@@ -1277,7 +1277,7 @@
                 </div>
                 <div>
                     <div class="terminal">
-                        <code><span class="cmt"># All-in-one — backend + frontend, works on your LAN (no domain needed)</span></code>
+                        <code><span class="cmt"># All-in-one — core + ui, works on your LAN (no domain needed)</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
                         <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
@@ -1287,14 +1287,14 @@
 
                     <div class="terminal" style="margin-top:18px">
                         <code><span class="cmt"># Or install separately on different hosts:</span></code>
-                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-backend.sh</span> \</code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-core.sh</span> \</code>
                         <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
-                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-frontend.sh</span> \</code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-ui.sh</span> \</code>
                         <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
                         <code><span class="cmt"># Then open in your browser:</span></code>
-                        <code><span class="url">https://&lt;ip-of-your-streamer-frontend&gt;</span></code>
+                        <code><span class="url">https://&lt;ip-of-your-streamer-ui&gt;</span></code>
                     </div>
 
                     <div class="terminal" style="margin-top:18px">

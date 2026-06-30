@@ -1,13 +1,13 @@
 #!/bin/bash
-# Audiogravity Backend — Public Bootstrap Installer (token-authenticated)
+# Audiogravity Core — Public Bootstrap Installer (token-authenticated)
 #
 # Downloads release assets from the private GitHub repo via the API.
 #
 # Usage:
-#   curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx
-#   curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
-#   curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx --vapid-email you@example.com
-#   curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- --token ghp_xxx --public-url https://audiogravity.example.com
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx --vapid-email you@example.com
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx --public-url https://audiogravity.example.com
 
 set -e
 
@@ -54,7 +54,7 @@ API_BASE="https://api.github.com/repos/$REPO"
 
 echo ""
 echo -e "${BLUE}╔═══════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║   Audiogravity Backend Installer      ║${NC}"
+echo -e "${BLUE}║   Audiogravity Core Installer      ║${NC}"
 echo -e "${BLUE}╚═══════════════════════════════════════╝${NC}"
 echo ""
 
@@ -72,7 +72,7 @@ VERSION=$(echo "$RELEASE_JSON" | python3 -c "import sys, json; print(json.load(s
 info "Version  : $VERSION"
 info "Arch     : $ARCH_TAG"
 
-TARBALL="audiogravity-backend-${VERSION}-${ARCH_TAG}.tar.gz"
+TARBALL="audiogravity-core-${VERSION}-${ARCH_TAG}.tar.gz"
 
 asset_url() {
     echo "$RELEASE_JSON" | python3 -c "
@@ -120,7 +120,7 @@ info "Extracting..."
 tar -xzf "$INSTALL_DIR/$TARBALL" -C "$INSTALL_DIR"
 ok "Extracted"
 
-PACKAGE_DIR=$(find "$INSTALL_DIR" -maxdepth 1 -type d -name "audiogravity-backend-*" | head -1)
+PACKAGE_DIR=$(find "$INSTALL_DIR" -maxdepth 1 -type d -name "audiogravity-core-*" | head -1)
 [ -n "$PACKAGE_DIR" ] || fail "Could not find package directory after extraction."
 
 info "Running installer..."

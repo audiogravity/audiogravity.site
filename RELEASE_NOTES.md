@@ -7,7 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### HIGHRESAUDIO (HRA) — a new hi-res streaming source
+
+Audiogravity now streams from **HIGHRESAUDIO** (HRA-Streaming) through its official API, alongside Qobuz and Tidal. Connect from **Sources** with your HRA email and password; the app keeps the session alive on its own and re-logs in transparently when it expires. Your password is stored encrypted on the device.
+
+Once connected, Highresaudio appears as a library source with several curated views — **Favorites** (your saved albums), **Discover**, **Editor's Picks** and **Bestsellers** — plus full catalog **search**. Albums play on the local MPD output or on a connected UPnP renderer, and the now-playing screen shows an **HRA** source badge.
+
+HRA always delivers each album at its **native master resolution** (up to 24-bit / 352.8 kHz FLAC) — bit-perfect, with no quality downgrade. Note: HRA allows a single active device per account, so connecting Audiogravity signs you out of your other HRA players.
 
 ---
 

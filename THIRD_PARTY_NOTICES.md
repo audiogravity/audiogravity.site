@@ -466,5 +466,22 @@ independently of Audiogravity.
 
 ---
 
+## Trademarks
+
+The following are third-party streaming services that Audiogravity integrates
+with over their networked APIs. **No code or library from these services is
+bundled** in Audiogravity — the integrations use private/official HTTP APIs and
+require the user's own active subscription. Their names and logos are used
+solely to identify the services (nominative use).
+
+- **Qobuz** — Qobuz and the Qobuz logo.
+- **Tidal** — TIDAL and the TIDAL logo.
+- **HIGHRESAUDIO** — HIGHRESAUDIO (HRA) and the HIGHRESAUDIO logo.
+
+These names and logos are trademarks of their respective owners. Audiogravity is
+**not affiliated with, endorsed by, or sponsored by** any of these companies.
+
+---
+
 *This file is provided in compliance with the license terms of the above projects.
 For the full license texts, see the respective project repositories.*

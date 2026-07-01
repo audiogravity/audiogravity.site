@@ -9,7 +9,15 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
-_Nothing yet._
+### Added
+- **HIGHRESAUDIO (HRA) streaming integration** (core + ui): official HRA-Streaming API. New `highresaudio` module — email/password login, lazy session renewal (re-login when the session expires, no polling), password encrypted at rest (Fernet). Browse (Favorites / Discover), search, and playback of native-master 24-bit FLAC via MPD and UPnP renderers.
+  - Core: `modules/highresaudio/` (`GET/POST/DELETE /highresaudio/connection`, `GET /highresaudio/stream/{track_id}` public proxy); `LibraryService` browse/search/queue for `src_highresaudio`; `GET /library/highresaudio-discover`; now-playing origin + source badge (`HRA`); virtual source injection.
+  - UI: `ag-highresaudio-output` login-form card in Sources, source labelled **Highresaudio** in the library/sources list (badge stays **HRA**), HRA browse pills **Favorites / Discover / Editor's Picks / Bestsellers** (+ any HRA shop category via `/library/highresaudio-category`).
+  - New reusable `core/secret_store.py` (Fernet encrypt/decrypt with a local 0600 key) for secrets at rest.
+- Streaming format is always the album's native master (bit-perfect); no quality selector — the HRA API serves master resolution only.
+
+### Fixed
+- Streaming proxy (Qobuz + HIGHRESAUDIO): pre-signed CDN URLs are now fetched byte-for-byte, so a reserved character in the signed token is never re-encoded (which could cause a 403 and a track failing to play). The Qobuz and HRA proxies now share a single `core.http.proxy_cdn_stream` helper.
 
 ## [0.9.9] - 2026-06-30
 

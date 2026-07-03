@@ -15,6 +15,10 @@ Once connected, Highresaudio appears as a library source with several curated vi
 
 HRA always delivers each album at its **native master resolution** (up to 24-bit / 352.8 kHz FLAC) — bit-perfect, with no quality downgrade. Note: HRA allows a single active device per account, so connecting Audiogravity signs you out of your other HRA players.
 
+### More reliable transport controls when casting to a network player
+
+When you cast a streaming source (Qobuz, Tidal or HIGHRESAUDIO) to a UPnP renderer, the transport buttons (**next / previous / play-pause**) now talk to the player that actually holds the playlist. This fixes occasional failures on a manual *next* — an error, or the screen dropping to "Nothing playing" — even though tracks kept advancing on their own. Playback of your local library is unchanged.
+
 ---
 
 ## 0.9.9 — 2026-06-30

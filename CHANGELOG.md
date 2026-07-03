@@ -18,6 +18,7 @@ and this landing) are documented here. Format based on
 
 ### Fixed
 - Streaming proxy (Qobuz + HIGHRESAUDIO): pre-signed CDN URLs are now fetched byte-for-byte, so a reserved character in the signed token is never re-encoded (which could cause a 403 and a track failing to play). The Qobuz and HRA proxies now share a single `core.http.proxy_cdn_stream` helper.
+- **[core] player transport controls now route through the UPnP renderer that owns the queue** — when a streaming source (Qobuz / Tidal / HIGHRESAUDIO) is cast to a renderer, `next` / `prev` / `pause` / `stop` / `seek` / `volume` go through the renderer's AVTransport (`advance_queue` / `pause` / …) instead of driving the underlying MPD directly. Driving MPD directly desynced upmpdcli's AVTransport queue — a manual *next* could leave the UI on "Nothing playing", and a momentarily non-PLAYING renderer with no matching now-playing item returned a 503. Local MPD-library playback is unchanged: with an empty renderer queue the renderer call is skipped and control falls back to MPD.
 
 ## [0.9.9] - 2026-06-30
 

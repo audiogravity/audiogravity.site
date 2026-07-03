@@ -15,6 +15,12 @@ and this landing) are documented here. Format based on
   - UI: `ag-highresaudio-output` login-form card in Sources, source labelled **Highresaudio** in the library/sources list (badge stays **HRA**), HRA browse pills **Favorites / Discover / Editor's Picks / Bestsellers** (+ any HRA shop category via `/library/highresaudio-category`).
   - New reusable `core/secret_store.py` (Fernet encrypt/decrypt with a local 0600 key) for secrets at rest.
 - Streaming format is always the album's native master (bit-perfect); no quality selector — the HRA API serves master resolution only.
+- **Cast the local music library to a UPnP renderer** (core): local files are now HTTP-served (signed, Range-capable) so a *remote* UPnP renderer can pull and play them — `POST /library/queue` with a local source routes to the active remote renderer via `play_queue`, exactly like Qobuz / Tidal / HRA. The local DAC and the on-host upmpdcli renderer stay MPD-direct (bit-perfect, no HTTP round-trip). New public, HMAC-signed endpoints `GET /library/stream/{path}` (audio, HTTP Range/206) and `GET /audio_pipeline/library-cover/{path}` (album art), reachable without an API key by the renderer. New shared `core/library_files.py` (library roots resolved from MPD's `music_directory`, path-traversal guard, Range file serving) + HMAC URL signing in `core/secret_store.py`.
+- Now-playing source badge on a remote renderer is derived from the stream URI (`LIBRARY` / `QOBUZ` / `TIDAL` / `HRA`) instead of always showing `UPNP`.
+
+### Changed
+- **[core] HQPlayer file streaming now honours HTTP `Range`** (206 Partial Content) — the `/hqplayer/stream/` endpoint shares the new `core/library_files.py` file server, which implements real range serving (it previously advertised `Accept-Ranges` without honouring the header).
+- **[core] the streaming renderer-queue paths (Qobuz / Tidal / HIGHRESAUDIO) share a single `_stream_queue_renderer` skeleton** — the local-library cast joins the same base; behaviour-preserving refactor (identical `play_queue` output, covered by tests).
 
 ### Fixed
 - Streaming proxy (Qobuz + HIGHRESAUDIO): pre-signed CDN URLs are now fetched byte-for-byte, so a reserved character in the signed token is never re-encoded (which could cause a 403 and a track failing to play). The Qobuz and HRA proxies now share a single `core.http.proxy_cdn_stream` helper.

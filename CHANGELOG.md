@@ -21,10 +21,12 @@ and this landing) are documented here. Format based on
 ### Changed
 - **[core] HQPlayer file streaming now honours HTTP `Range`** (206 Partial Content) — the `/hqplayer/stream/` endpoint shares the new `core/library_files.py` file server, which implements real range serving (it previously advertised `Accept-Ranges` without honouring the header).
 - **[core] the streaming renderer-queue paths (Qobuz / Tidal / HIGHRESAUDIO) share a single `_stream_queue_renderer` skeleton** — the local-library cast joins the same base; behaviour-preserving refactor (identical `play_queue` output, covered by tests).
+- **[ui] the local music source is labelled "Local Library"** (was "MPD / Music Player Daemon"), with a library icon — "MPD" is the playback engine, not the source. Display only; the internal `src_mpd` id is unchanged. The MPD *service* pages (audio config / services / systemd) are untouched.
 
 ### Fixed
 - Streaming proxy (Qobuz + HIGHRESAUDIO): pre-signed CDN URLs are now fetched byte-for-byte, so a reserved character in the signed token is never re-encoded (which could cause a 403 and a track failing to play). The Qobuz and HRA proxies now share a single `core.http.proxy_cdn_stream` helper.
 - **[core] player transport controls now route through the UPnP renderer that owns the queue** — when a streaming source (Qobuz / Tidal / HIGHRESAUDIO) is cast to a renderer, `next` / `prev` / `pause` / `stop` / `seek` / `volume` go through the renderer's AVTransport (`advance_queue` / `pause` / …) instead of driving the underlying MPD directly. Driving MPD directly desynced upmpdcli's AVTransport queue — a manual *next* could leave the UI on "Nothing playing", and a momentarily non-PLAYING renderer with no matching now-playing item returned a 503. Local MPD-library playback is unchanged: with an empty renderer queue the renderer call is skipped and control falls back to MPD.
+- **[core] play/pause (and seek / volume) had no effect when casting to a `uses_local_mpd` renderer** (on-host upmpdcli, e.g. music.#1) — those commands went through the renderer's AVTransport, whose Pause does not reach the underlying MPD. They now fall through to reliable MPD control; `next` / `prev` stay on the renderer (it owns the queue). Regression from the unified control routing introduced above.
 
 ## [0.9.9] - 2026-06-30
 

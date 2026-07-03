@@ -41,9 +41,10 @@
     <td width="50%">
 
 **Library & Radio**
-- High-resolution browsing — Roon, MPD, MinimServer, Qobuz, Tidal
+- High-resolution browsing — Roon, MPD, MinimServer, Qobuz, Tidal, Highresaudio
 - Qobuz Hi-Res streaming up to 24-bit / 192 kHz — favourites, new releases, editorial playlists
 - Tidal HiFi streaming — lossless FLAC, Favorites, New Releases, Charts, Editorial playlists, in-track seek
+- Highresaudio streaming — native-master FLAC up to 24-bit / 352.8 kHz — Favorites, Discover, Editor's Picks, Bestsellers, search
 - Internet radio — Radio Browser, custom stations, favourites
 - UPnP server auto-discovery & browsing
 
@@ -76,7 +77,7 @@
   </tr>
 </table>
 
-> **Note:** Qobuz and Tidal streaming require an active subscription to their respective services — [Qobuz Studio or Sublime](https://www.qobuz.com) · [Tidal HiFi](https://tidal.com). Audiogravity does not provide access to these services.
+> **Note:** Qobuz, Tidal and Highresaudio streaming require an active subscription to their respective services — [Qobuz Studio or Sublime](https://www.qobuz.com) · [Tidal HiFi](https://tidal.com) · [HIGHRESAUDIO](https://www.highresaudio.com). Audiogravity does not provide access to these services. Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners; Audiogravity is not affiliated with, endorsed by, or sponsored by them.
 
 ## Editions
 

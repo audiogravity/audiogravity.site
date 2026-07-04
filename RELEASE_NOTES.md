@@ -23,6 +23,14 @@ When you cast a streaming source (Qobuz, Tidal or HIGHRESAUDIO) to a UPnP render
 
 Your **local music library** (NAS / USB files) can now be sent to a UPnP network player, just like Qobuz, Tidal or HIGHRESAUDIO. When a network player is your active output, playing a local album streams it to that player over your LAN — seekable, bit-perfect, no re-encoding. Playback on Audiogravity's own local output is untouched and stays direct. And the now-playing screen now shows the real source badge on a network player (**LIBRARY / QOBUZ / TIDAL / HRA**) instead of a generic **UPNP**.
 
+### Set up and tune your audio services, guided
+
+Configuring the audio services (MPD, AirPlay, UPnP) is now guided end-to-end. On a **new box**, a single **Configure audio stack** button detects your DAC and music library and generates a minimal, bit-perfect working configuration for all three services — it asks for your admin password, then gets out of the way (the button disappears once the box is set up).
+
+Afterwards, each service opens in a **Guided** editor where you change its **audio output** or **music library** in a couple of clicks — only the setting you touch is rewritten, so any manual tweaks you made are preserved. Every service can target its **own output**: MPD on your USB hi-res DAC, AirPlay on the optical out, and so on. A **Reset to default** action regenerates a clean working config whenever you need it (your current file is backed up first), and each service tile shows a **CONFIGURED** badge once AudioGravity has set it up.
+
+Under the hood, the box re-checks each service's sound device at startup — ALSA can renumber cards after a USB change — **before** the audio services start, so they always open the right output on the first play, with no restart.
+
 ---
 
 ## 0.9.9 — 2026-06-30

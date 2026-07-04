@@ -19,6 +19,10 @@ HRA always delivers each album at its **native master resolution** (up to 24-bit
 
 When you cast a streaming source (Qobuz, Tidal or HIGHRESAUDIO) to a UPnP renderer, the transport buttons (**next / previous / play-pause**) now talk to the player that actually holds the playlist. This fixes occasional failures on a manual *next* — an error, or the screen dropping to "Nothing playing" — even though tracks kept advancing on their own. Playback of your local library is unchanged.
 
+### Your box's own renderer is shown, but not selectable
+
+Audiogravity advertises itself on the network as a UPnP renderer so other apps — a phone, a control point — can cast music *to* it. That self-entry now appears in the renderer list as a greyed-out **"This device · receives external casts"** row you can't select: playing on the box is exactly what the **Local DAC** output already does, so choosing the box's own renderer would be a pointless duplicate. Real network renderers (Marantz, Linn…) are unaffected. If a box had somehow been set to its own renderer, it falls back to the Local DAC on update — same sound, cleaner state.
+
 ### Cast your local library to a network player
 
 Your **local music library** (NAS / USB files) can now be sent to a UPnP network player, just like Qobuz, Tidal or HIGHRESAUDIO. When a network player is your active output, playing a local album streams it to that player over your LAN — seekable, bit-perfect, no re-encoding. Playback on Audiogravity's own local output is untouched and stays direct. And the now-playing screen now shows the real source badge on a network player (**LIBRARY / QOBUZ / TIDAL / HRA**) instead of a generic **UPNP**.

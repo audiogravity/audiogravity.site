@@ -35,7 +35,7 @@ Configuring the audio services (MPD, AirPlay, UPnP) is now guided end-to-end. On
 
 Afterwards, each service opens in a **Guided** editor where you change its **audio output** or **music library** in a couple of clicks — only the setting you touch is rewritten, so any manual tweaks you made are preserved. Every service can target its **own output**: MPD on your USB hi-res DAC, AirPlay on the optical out, and so on. A **Reset to default** action regenerates a clean working config whenever you need it (your current file is backed up first), and each service tile shows a **CONFIGURED** badge once AudioGravity has set it up.
 
-Under the hood, the box re-checks each service's sound device at startup — ALSA can renumber cards after a USB change — **before** the audio services start, so they always open the right output on the first play, with no restart.
+Under the hood, when you configure a USB DAC the box pins its sound-card number at the system level, so Linux always gives that DAC the same number even after a reboot or a USB re-plug. The audio services therefore always open the right output — nothing to re-check at startup, no restart, and nothing to go stale. (Your own hand-made audio tweaks are left untouched.)
 
 ---
 

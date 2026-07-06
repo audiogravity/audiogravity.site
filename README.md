@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>Your streamer is your source. Audiogravity is the conductor.</strong>
+  <strong>Your streamer is your source. Audiogravi<sup>ty</sup> is the conductor.</strong>
   <br/>
   A native iOS / Android app (PWA) to pilot every audio engine your streamer runs —<br/>
   MPD, Roon Bridge, HQPlayer NAA, AirPlay, UPnP — all the way down to the RT kernel.
@@ -93,13 +93,13 @@
   </tr>
 </table>
 
-> **Note:** Qobuz, Tidal and HIGHRESAUDIO streaming require an active subscription to their respective services — [Qobuz Studio or Sublime](https://www.qobuz.com) · [Tidal HiFi](https://tidal.com) · [HIGHRESAUDIO](https://www.highresaudio.com). Audiogravity does not provide access to these services. Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners; Audiogravity is not affiliated with, endorsed by, or sponsored by them.
+> **Note:** Qobuz, Tidal and HIGHRESAUDIO streaming require an active subscription to their respective services — [Qobuz Studio or Sublime](https://www.qobuz.com) · [Tidal HiFi](https://tidal.com) · [HIGHRESAUDIO](https://www.highresaudio.com). Audiogravi<sup>ty</sup> does not provide access to these services. Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners; Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by them.
 
 ## Architecture
 
-Audiogravity doesn't replace the engines audiophiles trust — it **orchestrates** them across five layers of your streaming stack:
+Audiogravi<sup>ty</sup> doesn't replace the engines audiophiles trust — it **orchestrates** them across five layers of your streaming stack:
 
-| Layer | What | Audiogravity's role |
+| Layer | What | Audiogravi<sup>ty</sup>'s role |
 |-------|------|---------------------|
 | **5 · Interface** | Browser · phone · tablet · PWA | Owns |
 | **4 · Orchestration** | Source switching · transport · volume · UPnP renderer control · monitoring | Owns |
@@ -150,7 +150,7 @@ The core installer accepts two optional flags:
 
 - **`--vapid-email`** — contact address for Web Push (the VAPID `sub`). If
   omitted, a generic placeholder is used and the installer prints a warning.
-- **`--public-url`** — the public URL your users open Audiogravity from. The
+- **`--public-url`** — the public URL your users open Audiogravi<sup>ty</sup> from. The
   installer derives the WebAuthn origin and Relying Party ID from it, enabling
   **passkeys** (Face ID / Touch ID / Windows Hello). Passkeys require a real
   HTTPS **domain** — they do **not** work over a bare IP address, which browsers
@@ -188,7 +188,7 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 <details>
 <summary><strong>iOS (Safari)</strong></summary>
 
-1. Open **Safari** → navigate to your Audiogravity URL
+1. Open **Safari** → navigate to your Audiogravi<sup>ty</sup> URL
 2. Tap **Share** (square with arrow)
 3. **Add to Home Screen** → **Add**
 4. Open from home screen — runs fullscreen
@@ -199,7 +199,7 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 <details>
 <summary><strong>Android (Chrome)</strong></summary>
 
-1. Open **Chrome** → navigate to your Audiogravity URL
+1. Open **Chrome** → navigate to your Audiogravi<sup>ty</sup> URL
 2. Tap **⋮** menu → **Add to Home screen** or **Install app**
 3. Tap **Install**
 4. Open from home screen — runs fullscreen
@@ -216,9 +216,9 @@ Three components, three official logos:
     <td align="center" width="33%"><img src="assets/pics/audiogravity-web.png" width="180" alt="Audiogravity site logo" /></td>
   </tr>
   <tr>
-    <td align="center"><strong>Audiogravity app</strong><br/>The streamer control app — <a href="https://github.com/audiogravity/audiogravity.ui">ui</a> (MIT) + core (proprietary)</td>
-    <td align="center"><strong>Audiogravity admin server</strong><br/>Licence activation, download portal &amp; fleet update signal</td>
-    <td align="center"><strong>Audiogravity site</strong><br/>This landing page &amp; release distribution</td>
+    <td align="center"><strong>Audiogravi<sup>ty</sup> app</strong><br/>The streamer control app — <a href="https://github.com/audiogravity/audiogravity.ui">ui</a> (MIT) + core (proprietary)</td>
+    <td align="center"><strong>Audiogravi<sup>ty</sup> admin server</strong><br/>Licence activation, download portal &amp; fleet update signal</td>
+    <td align="center"><strong>Audiogravi<sup>ty</sup> site</strong><br/>This landing page &amp; release distribution</td>
   </tr>
 </table>
 
@@ -250,7 +250,7 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 ## Roadmap
 
-Audiogravity is in **early access** — **public beta** scheduled for **Summer 2026**. On the horizon: multi-room fanout and an AirPlay sender.
+Audiogravi<sup>ty</sup> is in **early access** — **public beta** scheduled for **Summer 2026**. On the horizon: multi-room fanout and an AirPlay sender.
 
 ## Contributing
 
@@ -258,11 +258,11 @@ The interface — [audiogravity.ui](https://github.com/audiogravity/audiogravity
 
 ## License
 
-Audiogravity uses a **dual-license** model:
+Audiogravi<sup>ty</sup> uses a **dual-license** model:
 
 - **Interface** ([audiogravity.ui](https://github.com/audiogravity/audiogravity.ui)) — [MIT](https://github.com/audiogravity/audiogravity.ui/blob/main/LICENSE). Open source — fork it, contribute, or build on it.
 - **Core engine** ([audiogravity.core](https://github.com/audiogravity/audiogravity.core)) — Proprietary. Distributed as a compiled binary under the [EULA](EULA.md).
 
-Audiogravity also incorporates open-source components — see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Audiogravi<sup>ty</sup> also incorporates open-source components — see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-> [Qobuz](https://www.qobuz.com), [Tidal](https://tidal.com) and [HIGHRESAUDIO](https://www.highresaudio.com), and their respective logos, are trademarks of their respective owners; Audiogravity is not affiliated with, endorsed by, or sponsored by them.
+> [Qobuz](https://www.qobuz.com), [Tidal](https://tidal.com) and [HIGHRESAUDIO](https://www.highresaudio.com), and their respective logos, are trademarks of their respective owners; Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by them.

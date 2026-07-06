@@ -7,6 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Update Audiogravity in one click — no terminal needed
+
+When a newer Audiogravity release is available, the **Admin** page now shows an update banner with the new version, a release-notes link, and a **required** badge when the update is critical. One click — a short confirmation (playback briefly stops) and your admin password — installs it: the box downloads the new version, swaps it in, checks it comes back up healthy on the **right version**, and shows live progress the whole way (downloading → installing → verifying), even across the restart. On a single-box setup, the same click also updates the web interface, so everything lands on the new version together.
+
+Safety first: if anything goes wrong, the box **automatically rolls back** to the previous version and tells you — you're never left on a broken update. The update runs on its own, detached from the app, so it survives the restart it triggers. There's no operating-system reboot; only a brief pause while the audio service restarts.
+
+Under the hood the updater runs with tightly-scoped privileges (a locked-down, root-owned launcher rather than a blanket permission), an interrupted update can't leave the box stuck "updating" forever, and a mistyped version on the licence-server side is refused rather than silently offered to your fleet.
+
 ### HIGHRESAUDIO (HRA) — a new hi-res streaming source
 
 Audiogravity now streams from **HIGHRESAUDIO** (HRA-Streaming) through its official API, alongside Qobuz and Tidal. Connect from **Sources** with your HRA email and password; the app keeps the session alive on its own and re-logs in transparently when it expires. Your password is stored encrypted on the device.

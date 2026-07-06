@@ -48,14 +48,14 @@
     <div class="announce-bar">
         <a href="https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md">
             <span class="announce-badge">NEW</span>
-            v0.9.9 <span class="announce-date">· 30 Jun 2026</span> — Simpler install: core / ui rename, one-step migration · player fixes
+            v0.9.10 <span class="announce-date">· 6 Jul 2026</span> — One-click self-update · HIGHRESAUDIO streaming · guided audio setup
             <span class="announce-arrow">→</span>
         </a>
     </div>
 
     <nav>
         <div class="nav-inner">
-            <a class="nav-logo" href="#">Audiogravi<sup>ty</sup></a>
+            <a class="nav-logo" href="#"><img src="assets/icons/apple-touch-180.png" alt="" class="nav-logo-icon" width="32" height="32" style="width:32px;height:32px;border-radius:6px;margin-right:10px;display:inline-block;vertical-align:middle;flex:none"><span>Audiogravi<sup>ty</sup></span></a>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#pipeline">Signal path</a>
@@ -89,8 +89,8 @@
             <p class="hero-tag">Your streamer is your source. <em>Audiogravi<sup>ty</sup> is the conductor.</em></p>
             <p class="hero-lede">MPD, Roon, HQPlayer, AirPlay, UPnP sources and renderers, internet radio — every
                 player, every source, down to DSD and Hi-Res PCM. Send your library to any network renderer.
-                Audiogravi<sup>ty</sup> coordinates each component of your stack, from the RT kernel to your Qobuz
-                and Tidal libraries, without replacing any of them. One interface. Total control.
+                Audiogravi<sup>ty</sup> coordinates each component of your stack, from the RT kernel to your Qobuz,
+                Tidal and HIGHRESAUDIO libraries, without replacing any of them. One interface. Total control.
             </p>
             <div class="hero-cta">
                 <a class="cta-primary cta-soon" href="#" style="opacity:.45;cursor:default">30-day trial →</a>
@@ -113,7 +113,7 @@
                     <div class="l">Machine · perpetual</div>
                 </div>
                 <div class="hero-proof-item">
-                    <div class="n" style="color:var(--ok)">7/50</div>
+                    <div class="n" style="color:var(--ok)">5/50</div>
                     <div class="l" style="color:var(--ok)">Early access left</div>
                 </div>
             </div>
@@ -169,7 +169,7 @@
             <span>MPD</span><span class="sep">·</span><span>Roon Bridge</span><span class="sep">·</span><span>HQPlayer
                 NAA</span><span class="sep">·</span><span>upmpdcli</span><span
                 class="sep">·</span><span>Shairport-Sync</span><span class="sep">·</span><span>MinimServer</span><span class="sep">·</span><span>UPnP Control Point</span><span
-                class="sep">·</span><span>Qobuz</span><span class="sep">·</span><span>Tidal</span><span
+                class="sep">·</span><span>Qobuz</span><span class="sep">·</span><span>Tidal</span><span class="sep">·</span><span>HIGHRESAUDIO</span><span
                 class="sep">·</span><span>Internet radio</span><span class="sep">·</span><span>DSD256</span><span
                 class="sep">·</span><span>PCM 768/32</span><span class="sep">·</span><span>SCHED_FIFO</span><span
                 class="sep">·</span><span>cyclictest</span><span class="sep">·</span><span>iPerf3</span><span
@@ -179,7 +179,7 @@
             <span>MPD</span><span class="sep">·</span><span>Roon Bridge</span><span class="sep">·</span><span>HQPlayer
                 NAA</span><span class="sep">·</span><span>upmpdcli</span><span
                 class="sep">·</span><span>Shairport-Sync</span><span class="sep">·</span><span>MinimServer</span><span class="sep">·</span><span>UPnP Control Point</span><span
-                class="sep">·</span><span>Qobuz</span><span class="sep">·</span><span>Tidal</span><span
+                class="sep">·</span><span>Qobuz</span><span class="sep">·</span><span>Tidal</span><span class="sep">·</span><span>HIGHRESAUDIO</span><span
                 class="sep">·</span><span>Internet radio</span><span class="sep">·</span><span>DSD256</span><span
                 class="sep">·</span><span>PCM 768/32</span><span class="sep">·</span><span>SCHED_FIFO</span><span
                 class="sep">·</span><span>cyclictest</span><span class="sep">·</span><span>iPerf3</span><span
@@ -201,7 +201,7 @@
     <section class="section" id="features">
         <div class="w">
             <div class="section-label">Features</div>
-            <h2 class="section-title">From the kernel<br>to your Qobuz &amp; Tidal library.</h2>
+            <h2 class="section-title">From the kernel<br>to your Qobuz, Tidal &amp; HIGHRESAUDIO library.</h2>
             <p class="section-sub">Fourteen modules orchestrating every layer of your streamer — RT kernel tuning,
                 service control, signal-path visualisation, unified transport across MPD, Roon, HQPlayer, AirPlay,
                 UPnP and internet radio. Starter ships with the essentials; Pro unlocks the deep audio-engineering
@@ -217,8 +217,8 @@
                     <h3>Unified transport across every player</h3>
                     <p>One interface, one set of controls, every engine your streamer runs. Transport, volume, seek and
                         cover art on MPD, Roon, HQPlayer, AirPlay and UPnP simultaneously. A <b>stream origin badge</b>
-                        in the Now Playing bar always tells you where the audio is coming from — Tidal, Qobuz, your
-                        UPnP server by name, a radio station, a local file or AirPlay. Live Hi-Fi readout —
+                        in the Now Playing bar always tells you where the audio is coming from — Tidal, Qobuz,
+                        HIGHRESAUDIO, your UPnP server by name, a radio station, a local file or AirPlay. Live Hi-Fi readout —
                         format (PCM / DSD), sample rate, bit depth, instantaneous bitrate — refreshed on every
                         track change. Pick the output zone: Roon zone or ALSA port. Built-in sleep timer
                         pauses playback after a set duration. Audiogravi<sup>ty</sup>
@@ -291,12 +291,15 @@
                             <line x1="7" y1="13" x2="17" y2="13" />
                             <line x1="7" y1="16" x2="14" y2="16" />
                         </svg></div>
-                    <h3>Edit audio service configs without breaking them</h3>
-                    <p>Form view for common settings (output, format, buffer). Raw CodeMirror editor with syntax
+                    <h3>Set up and edit audio service configs without breaking them</h3>
+                    <p>New box? A guided first-time setup detects your DAC and music library and generates a minimal,
+                        bit-perfect config for MPD, AirPlay and UPnP; a Guided mode then changes any service's output or
+                        library in a couple of clicks — only what you touch is rewritten. For deeper edits: form view for
+                        common settings (output, format, buffer). Raw CodeMirror editor with syntax
                         highlighting for JSON, INI, XML and libconfig. Live validation before save — syntax, existing
                         systemd units, circular dependencies, duplicates. Side-by-side diff. Automatic timestamped
                         backup before every change.</p>
-                    <span class="fb-chip">mpd.conf · roon · AirPlay · upmpdcli · live diff</span>
+                    <span class="fb-chip">guided setup · mpd.conf · roon · AirPlay · upmpdcli · live diff</span>
                 </div>
 
                 <div class="fb span3 dark">
@@ -308,7 +311,7 @@
                             <circle cx="17" cy="6" r="1.4" />
                         </svg></div>
                     <h3>Live signal-path visualisation</h3>
-                    <p>An interactive SVG graph of your entire Hi-Fi chain — source (NAS, UPnP, Qobuz, Tidal) through
+                    <p>An interactive SVG graph of your entire Hi-Fi chain — source (NAS, UPnP, Qobuz, Tidal, HIGHRESAUDIO) through
                         every active audio process down to the DAC. Pan, zoom, minimap for complex topologies. Each
                         link shows the exact stream format (PCM / DSD · 44.1 kHz → 768 kHz · 16 → 32 bit), a
                         bit-perfect badge, per-link latency, and live play state. Click a link to hot-reroute MPD,
@@ -325,13 +328,14 @@
                             <line x1="11" y1="13" x2="18" y2="13" />
                         </svg></div>
                     <h3>High-resolution library</h3>
-                    <p>Browse Roon, MPD, MinimServer, Qobuz and Tidal from one interface. Album view,
+                    <p>Browse Roon, MPD, MinimServer, Qobuz, Tidal and HIGHRESAUDIO from one interface. Album view,
                         full-text search, queue management. Your UPnP/DLNA music servers appear alongside
                         streaming services — search results are directly playable, with titles and cover art.
-                        Choose a track, choose a renderer: the music flows to the destination at full resolution.
+                        Choose a track, choose a renderer: the music flows to the destination at full resolution —
+                        even your local NAS/USB files cast to a network renderer, exactly like the streaming services.
                         No separate control app needed.
-                        Qobuz and Tidal require an active subscription to their respective services.</p>
-                    <span class="fb-chip">Roon · MPD · UPnP/DLNA · Qobuz · Tidal · UPnP renderers</span>
+                        Qobuz, Tidal and HIGHRESAUDIO require an active subscription to their respective services.</p>
+                    <span class="fb-chip">Roon · MPD · UPnP/DLNA · Qobuz · Tidal · HIGHRESAUDIO · local cast · UPnP renderers</span>
                 </div>
 
                 <div class="fb span2 dark">
@@ -419,7 +423,7 @@
                     <span class="fb-chip">MPD · Roon · UPnP · AirPlay · HQPlayer · SSDP</span>
                 </div>
 
-                <div class="fb span2">
+                <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24">
                             <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -433,7 +437,7 @@
                     <span class="fb-chip">Filter · Shaper · Mode · Volume · Auto-discovery · UPnP play-through</span>
                 </div>
 
-                <div class="fb span2">
+                <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24">
                             <path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" />
@@ -441,13 +445,13 @@
                             <path d="M2 16a5 5 0 0 1 4 4" />
                         </svg></div>
                     <h3>UPnP Control Point — play to any renderer</h3>
-                    <p>Audiogravity becomes your UPnP control point. Discover every renderer on your network —
+                    <p>Audiogravi<sup>ty</sup> becomes your UPnP control point. Discover every renderer on your network —
                         network amplifiers, dedicated streamers, DLNA speakers — and drive them directly from the
-                        interface. Browse MinimServer, Qobuz or Tidal, hit Play: the stream reaches the renderer
+                        interface. Browse MinimServer, Qobuz, Tidal, HIGHRESAUDIO or your local library, hit Play: the stream reaches the renderer
                         at full resolution, bit-perfect, without touching the server's audio path. The output selector
                         switches between your physical DAC outputs and network renderers in one tap. A live
                         <b>"Up next"</b> strip shows the next track in the queue as it is loaded onto the renderer.</p>
-                    <span class="fb-chip">UPnP renderers · DLNA · MinimServer · Qobuz · Tidal · bit-perfect · output selector · Up next</span>
+                    <span class="fb-chip">UPnP renderers · DLNA · MinimServer · Qobuz · Tidal · HIGHRESAUDIO · local library · bit-perfect · output selector · Up next</span>
                 </div>
             </div>
         </div>
@@ -532,8 +536,8 @@
                         <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s" path="M770 150 L850 150" />
                     </circle>
                     <g class="pn">
-                        <rect x="20" y="50" width="120" height="60" /><text x="80" y="77" text-anchor="middle">Qobuz ·
-                            Tidal</text><text x="80" y="92" text-anchor="middle" class="sub">Hi-Res streaming</text>
+                        <rect x="20" y="50" width="120" height="60" /><text x="80" y="77" text-anchor="middle">Qobuz · Tidal ·
+                            HRA</text><text x="80" y="92" text-anchor="middle" class="sub">Hi-Res streaming</text>
                     </g>
                     <g class="pn">
                         <rect x="20" y="120" width="120" height="60" class="active-r" /><text x="80" y="147"
@@ -666,31 +670,31 @@
                         <div class="stack-name">User Interface</div>
                         <div class="stack-sub">Browser · phone · tablet · PWA</div>
                     </div>
-                    <span class="stack-tag">Audiogravity</span>
+                    <span class="stack-tag">Audiogravi<sup>ty</sup></span>
                 </div>
                 <div class="stack-block ag">
                     <span class="stack-num">4</span>
                     <div class="stack-body">
                         <div class="stack-name">Control / Orchestration</div>
-                        <div class="stack-sub">Source switching · transport · volume · monitoring</div>
+                        <div class="stack-sub">Source switching · transport · volume · UPnP renderer control · monitoring</div>
                     </div>
-                    <span class="stack-tag">Audiogravity</span>
+                    <span class="stack-tag">Audiogravi<sup>ty</sup></span>
                 </div>
                 <div class="stack-block ghost">
                     <span class="stack-num">3</span>
                     <div class="stack-body">
                         <div class="stack-name">Content Sources</div>
-                        <div class="stack-sub">NAS · Qobuz · Tidal · MinimServer · upmpdcli</div>
+                        <div class="stack-sub">NAS · Qobuz · Tidal · HIGHRESAUDIO · Internet radio · MinimServer</div>
                     </div>
-                    <span class="stack-tag">Audiogravity manages</span>
+                    <span class="stack-tag">Audiogravi<sup>ty</sup> manages</span>
                 </div>
                 <div class="stack-block ghost">
                     <span class="stack-num">2</span>
                     <div class="stack-body">
                         <div class="stack-name">Audio Engine</div>
-                        <div class="stack-sub">MPD · Roon Bridge · HQPlayer NAA · AirPlay</div>
+                        <div class="stack-sub">MPD · Roon Bridge · HQPlayer NAA · AirPlay · upmpdcli · UPnP renderers</div>
                     </div>
-                    <span class="stack-tag">Audiogravity manages</span>
+                    <span class="stack-tag">Audiogravi<sup>ty</sup> manages</span>
                 </div>
                 <div class="stack-block ag">
                     <span class="stack-num">1</span>
@@ -698,14 +702,15 @@
                         <div class="stack-name">OS / Kernel</div>
                         <div class="stack-sub">RT scheduling · CPU pinning · IRQs · ALSA</div>
                     </div>
-                    <span class="stack-tag">Audiogravity tunes</span>
+                    <span class="stack-tag">Audiogravi<sup>ty</sup> tunes</span>
                 </div>
             </div>
 
             <div class="layers-takeaway">
-                <p><b>The takeaway:</b> Audiogravi<sup>ty</sup> owns the orchestration and UI layers, <b>installs and
-                        configures</b> the audio engines audiophiles already trust (Roon, MPD, HQPlayer, AirPlay, UPnP)
-                    and the UPnP content sources they rely on (MinimServer, upmpdcli), and tunes the OS kernel
+                <p><b>The takeaway:</b> Audiogravi<sup>ty</sup> owns the interface and orchestration layers, <b>installs,
+                        configures and drives</b> the audio engines audiophiles already trust (MPD, upmpdcli, AirPlay,
+                    the HQPlayer NAA + DSP, Roon, network UPnP renderers), <b>connects</b> the content sources they rely
+                    on (NAS, Qobuz, Tidal, HIGHRESAUDIO, internet radio, MinimServer), and <b>tunes</b> the OS kernel
                     underneath — without replacing or hiding any of them.</p>
             </div>
         </div>
@@ -725,7 +730,7 @@
                     <thead>
                         <tr>
                             <th class="cmp-cap">Capability</th>
-                            <th class="cmp-ag">Audiogravity</th>
+                            <th class="cmp-ag">Audiogravi<sup>ty</sup></th>
                             <th>Roon</th>
                             <th>Volumio</th>
                             <th>Moode</th>
@@ -753,7 +758,7 @@
                             <td class="cmp-part">partial (HQPlayer)</td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">Native Tidal &amp; Qobuz streaming (OAuth2 / PKCE, no UPnP required)</td>
+                            <td class="cmp-cap">Native Tidal, Qobuz &amp; HIGHRESAUDIO streaming (official vendor APIs, no UPnP required)</td>
                             <td class="cmp-ag cmp-yes">✓</td>
                             <td class="cmp-yes">✓</td>
                             <td class="cmp-yes">✓ (Premium)</td>
@@ -772,7 +777,7 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">UPnP MediaRenderer control (push to external streamer)</td>
-                            <td class="cmp-ag cmp-no">—</td>
+                            <td class="cmp-ag cmp-yes">✓ control point</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -1034,7 +1039,7 @@
                             <div class="pp-row"><span class="ck">✓</span><span><b>Player</b> — unified transport across
                                     all sources</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span><b>Library</b> — Roon · MPD · UPnP ·
-                                    Qobuz · Tidal</span></div>
+                                    Qobuz · Tidal · HIGHRESAUDIO</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span><b>Audio Services Config</b> — safe
                                     in-place editing + diff</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span><b>Systemd Config</b> — FIFO / RR ·
@@ -1125,15 +1130,15 @@
                 <div class="faq-item">
                     <input type="checkbox" id="faq3">
                     <label class="faq-label" for="faq3">
-                        Do I need a Qobuz or Tidal subscription?
+                        Do I need a Qobuz, Tidal or HIGHRESAUDIO subscription?
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Only if you want to use those services. Qobuz and Tidal browsing in
-                            the Library requires an active subscription to each respective service. Everything else
+                        <div class="faq-body-inner">Only if you want to use those services. Qobuz, Tidal and HIGHRESAUDIO
+                            browsing in the Library requires an active subscription to each respective service. Everything else
                             works without any third-party subscription.</div>
                     </div>
                 </div>
@@ -1150,7 +1155,7 @@
                     <div class="faq-body">
                         <div class="faq-body-inner">Audio playback runs entirely on your local network — no cloud, no
                             telemetry. However, license activation and periodic validation require access to the license
-                            server. Qobuz and Tidal also require an active internet connection for streaming.</div>
+                            server. Qobuz, Tidal and HIGHRESAUDIO also require an active internet connection for streaming.</div>
                     </div>
                 </div>
 
@@ -1189,18 +1194,18 @@
                 <div class="faq-item">
                     <input type="checkbox" id="faq7">
                     <label class="faq-label" for="faq7">
-                        How do I install Audiogravity on my phone?
+                        <span>How do I install Audiogravi<sup>ty</sup> on my phone?</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Audiogravity is a Progressive Web App — it installs from the
+                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the
                             browser, no app store needed.
-                            <b>On iOS</b>: open Safari, navigate to your Audiogravity URL, tap Share → Add to Home
+                            <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home
                             Screen.
-                            <b>On Android</b>: open Chrome, navigate to your Audiogravity URL, tap the three-dot menu →
+                            <b>On Android</b>: open Chrome, navigate to your Audiogravi<sup>ty</sup> URL, tap the three-dot menu →
                             Install app (or Add to Home screen).
                             It then runs fullscreen with its own icon, just like a native app. Note: on iOS, only Safari
                             supports PWA installation.
@@ -1211,7 +1216,7 @@
                 <div class="faq-item">
                     <input type="checkbox" id="faq8">
                     <label class="faq-label" for="faq8">
-                        How do I connect Qobuz or Tidal?
+                        How do I connect Qobuz, Tidal or HIGHRESAUDIO?
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
@@ -1228,8 +1233,10 @@
                             into
                             the Tidal card and tap <b>Finish login</b>. You only do this once; tokens are then stored
                             and
-                            refreshed for you. Streaming requires an active subscription — Qobuz Studio / Sublime for
-                            Hi-Res, Tidal HiFi / HiFi Plus for lossless FLAC.
+                            refreshed for you. <b>HIGHRESAUDIO</b> is simpler — enter your account email and password
+                            directly in its card; no redirect, no copy-paste. Streaming requires an active subscription —
+                            Qobuz Studio / Sublime for Hi-Res, Tidal HiFi / HiFi Plus for lossless FLAC, or an active
+                            HIGHRESAUDIO account.
                         </div>
                     </div>
                 </div>
@@ -1247,7 +1254,7 @@
                 <div>
                     <p class="setup-lede">No compilation, no dependency hell, no manual configuration. The installer
                         detects your architecture, generates security keys, configures the systemd service and starts
-                        everything. Under five minutes from <code
+                        everything — then a guided setup configures your DAC and music library. Under five minutes from <code
                             style="font-family:var(--mono);font-size:13px">curl</code> to listening.</p>
                     <ul class="setup-list">
                         <li><span class="tag">Recommended</span><span>DietPi on x86_64 or Raspberry Pi (aarch64)</span>
@@ -1258,6 +1265,9 @@
                         <li><span class="tag">Network</span><span>Local only. Your data never leaves your home.</span>
                         </li>
                         <li><span class="tag">Trial</span><span>30 days full access · auto-activated on first run</span>
+                        </li>
+                        <li><span class="tag">Updates</span><span>One-click from the UI — no terminal, no re-running the
+                                installer</span>
                         </li>
                     </ul>
                     <div class="platforms">
@@ -1286,18 +1296,6 @@
                     </div>
 
                     <div class="terminal" style="margin-top:18px">
-                        <code><span class="cmt"># Or install separately on different hosts:</span></code>
-                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-core.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
-                        <code></code>
-                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install-ui.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
-                        <code></code>
-                        <code><span class="cmt"># Then open in your browser:</span></code>
-                        <code><span class="url">https://&lt;ip-of-your-streamer-ui&gt;</span></code>
-                    </div>
-
-                    <div class="terminal" style="margin-top:18px">
                         <code><span class="cmt"># Optional — passkeys (Face ID / Touch ID) + push.</span></code>
                         <code><span class="cmt"># Only if AG is reachable via a public HTTPS domain:</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
@@ -1319,7 +1317,7 @@
                     <div class="tagline">The conductor of your streamer. Every player, every source, total control.
                     </div>
                     <div class="version"><a
-                            href="https://github.com/audiogravity/audiogravity.site/blob/main/CHANGELOG.md">v0.9.9
+                            href="https://github.com/audiogravity/audiogravity.site/blob/main/CHANGELOG.md">v0.9.10
                             (Early Access)</a> · Open core</div>
                 </div>
                 <div class="footer-col">

@@ -216,9 +216,19 @@ nav {
 }
 
 .nav-logo {
+    display: inline-flex;
+    align-items: center;
     font-size: 18px;
     font-weight: 900;
     letter-spacing: -.04em
+}
+
+.nav-logo-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    margin-right: 10px
 }
 
 .nav-logo sup {

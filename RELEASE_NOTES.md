@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.10 — 2026-07-06
+
 ### Update Audiogravity in one click — no terminal needed
 
 When a newer Audiogravity release is available, the **Admin** page now shows an update banner with the new version, a release-notes link, and a **required** badge when the update is critical. One click — a short confirmation (playback briefly stops) and your admin password — installs it: the box downloads the new version, swaps it in, checks it comes back up healthy on the **right version**, and shows live progress the whole way (downloading → installing → verifying), even across the restart. On a single-box setup, the same click also updates the web interface, so everything lands on the new version together.

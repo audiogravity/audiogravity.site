@@ -1,7 +1,7 @@
 # 9. Troubleshooting
 
 Most issues come down to a service that isn't running, an output that points at the
-wrong device, or a network hop that's flaky. AudioGravity surfaces all three in the
+wrong device, or a network hop that's flaky. Audiogravi<sup>ty</sup> surfaces all three in the
 interface.
 
 ## No sound / wrong output
@@ -27,7 +27,7 @@ interface.
 - Confirm the service is **Connected** in Library → Sources, and that your
   **subscription** covers Hi-Res (see [5. Library & streaming](05-library-streaming.md)).
 - A track that played before but fails later is usually an **expired streaming link** —
-  AudioGravity refreshes these automatically; retry the track.
+  Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
 
 ## Casting to a renderer stalls
@@ -47,7 +47,7 @@ interface.
 
 ## Passkeys or push notifications unavailable
 
-Passkeys (WebAuthn) and Web Push need AudioGravity reachable over a real HTTPS
+Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS
 **domain** — they do **not** work over a bare IP. Re-install the core with
 `--public-url https://your.domain` (see [2. Installation](02-installation.md)).
 

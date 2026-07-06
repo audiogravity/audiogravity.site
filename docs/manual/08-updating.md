@@ -1,6 +1,6 @@
 # 8. Updating
 
-AudioGravity updates itself from the browser — no terminal, no re-running scripts.
+Audiogravi<sup>ty</sup> updates itself from the browser — no terminal, no re-running scripts.
 
 ## One-click self-update
 

@@ -15,7 +15,7 @@ The Now Playing bar is always at hand; tap it for the fullscreen player:
 
 ## The live hi-fi readout
 
-On every track change, AudioGravity shows exactly what's reaching your DAC:
+On every track change, Audiogravi<sup>ty</sup> shows exactly what's reaching your DAC:
 
 - **Format** (PCM / DSD), **sample rate**, **bit depth**, and instantaneous **bitrate**.
 

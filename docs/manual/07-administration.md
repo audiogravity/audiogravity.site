@@ -59,7 +59,7 @@ Safely edit the real configuration files of your audio services (see also
 
 ## Audio Software
 
-Install, update and uninstall the services AudioGravity uses (MPD, upmpdcli,
+Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, upmpdcli,
 shairport-sync, Roon Bridge…).
 
 - **States** — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.
@@ -80,7 +80,7 @@ Real-time monitoring and box-level actions.
   card, USB interface and subdevice.
 - **Event log** — system events and SSE messages; RUNNING/STOPPED to pause, CLEAR to
   reset.
-- **Actions (admin)** — *Restart Backend* restarts the AudioGravity service without
+- **Actions (admin)** — *Restart Backend* restarts the Audiogravi<sup>ty</sup> service without
   rebooting; *Reboot OS* performs a full reboot (double confirmation). The UI
   reconnects automatically.
 - **Terminal (admin)** — a full interactive bash shell in the browser (runs as the

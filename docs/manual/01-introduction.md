@@ -1,8 +1,8 @@
 # 1. Introduction
 
-## What AudioGravity is
+## What Audiogravi<sup>ty</sup> is
 
-AudioGravity is a **control app for your music streamer**. It runs on the small
+Audiogravi<sup>ty</sup> is a **control app for your music streamer**. It runs on the small
 Linux computer next to your hi-fi (a DietPi box, a Raspberry Pi, a NUC…) and gives
 you a single, beautiful interface — in any browser, on your phone, tablet or
 laptop — to run every part of your listening chain.
@@ -11,19 +11,19 @@ It plays your local library, streams Qobuz, Tidal and HIGHRESAUDIO, tunes intern
 radio, drives HQPlayer, casts to network renderers, and even tunes the Linux kernel
 underneath for bit-perfect, glitch-free playback — all from the same screen.
 
-## What AudioGravity is *not*
+## What Audiogravi<sup>ty</sup> is *not*
 
-AudioGravity does **not replace** the audio engines audiophiles already trust. It
+Audiogravi<sup>ty</sup> does **not replace** the audio engines audiophiles already trust. It
 **orchestrates** them. MPD, Roon Bridge, HQPlayer, AirPlay (shairport-sync), the
-UPnP stack — AudioGravity installs, configures and drives these proven engines
+UPnP stack — Audiogravi<sup>ty</sup> installs, configures and drives these proven engines
 rather than reinventing them. Your signal path stays exactly as pure as the tools
-you already rely on; AudioGravity just gives you one place to conduct them.
+you already rely on; Audiogravi<sup>ty</sup> just gives you one place to conduct them.
 
 ## How it fits together
 
-Think of your streaming setup as five layers. AudioGravity sits across all of them:
+Think of your streaming setup as five layers. Audiogravi<sup>ty</sup> sits across all of them:
 
-| Layer | What lives here | AudioGravity's role |
+| Layer | What lives here | Audiogravi<sup>ty</sup>'s role |
 |-------|-----------------|---------------------|
 | **Interface** | The screens you touch — browser, phone, tablet, installable app (PWA) | **It is the interface** |
 | **Orchestration** | Switching sources, transport, volume, casting, monitoring | **It orchestrates** |
@@ -60,7 +60,7 @@ Pro is a **lifetime licence** — no subscription, no renewal. You can start on 
 free 30-day trial; it activates automatically on first run.
 
 > **Note:** streaming from Qobuz, Tidal or HIGHRESAUDIO requires your own active
-> subscription to each service. AudioGravity does not provide access to them.
+> subscription to each service. Audiogravi<sup>ty</sup> does not provide access to them.
 
 ## What you need
 

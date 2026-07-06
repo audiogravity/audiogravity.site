@@ -1,6 +1,6 @@
 # 3. First run — guided audio setup
 
-The first time you open AudioGravity, a few guided steps take you from a bare box to
+The first time you open Audiogravi<sup>ty</sup>, a few guided steps take you from a bare box to
 music playing — without touching a config file.
 
 ## 1. Your trial activates automatically
@@ -13,7 +13,7 @@ features or buy a **lifetime** licence (see [7. Administration → Licence](07-a
 
 Set up your administrator account and sign in. After a first password login you can
 register a **passkey** on the device — Face ID, Touch ID, a fingerprint or a hardware
-key — and every later login becomes a tap. (Passkeys require AudioGravity to be
+key — and every later login becomes a tap. (Passkeys require Audiogravi<sup>ty</sup> to be
 reachable over a real HTTPS **domain** — see the `--public-url` flag in
 [2. Installation](02-installation.md).)
 
@@ -37,7 +37,7 @@ UPnP tile shows a **CONFIGURED** badge.
 
 ### The DAC stays put
 
-When you configure a USB DAC, AudioGravity **pins its sound-card index** at the OS
+When you configure a USB DAC, Audiogravi<sup>ty</sup> **pins its sound-card index** at the OS
 level. Linux then always gives that DAC the same number, even after a reboot or a
 USB re-plug — so the output your services target never drifts and nothing needs
 re-checking at startup.

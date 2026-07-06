@@ -1,6 +1,6 @@
 # 6. Outputs & engines
 
-AudioGravity can send the same music to very different destinations — a locally
+Audiogravi<sup>ty</sup> can send the same music to very different destinations — a locally
 attached DAC, a network renderer across the room, HQPlayer's DSP engine, or an AirPlay
 receiver. The **output selector** switches between them in one tap.
 
@@ -12,7 +12,7 @@ the one the guided setup wires up first.
 
 ## Network UPnP renderers
 
-AudioGravity is a **UPnP Control Point**: it discovers every renderer on your LAN —
+Audiogravi<sup>ty</sup> is a **UPnP Control Point**: it discovers every renderer on your LAN —
 network amplifiers, dedicated streamers, DLNA speakers (Marantz, Linn…) — and drives
 them directly from the interface. Browse a source, hit **Play**, and the stream
 reaches the renderer at **full resolution, bit-perfect**, without touching the
@@ -25,14 +25,14 @@ server's own audio path.
 - You can **cast your local NAS/USB library** to a network renderer too, exactly like
   a streaming service.
 
-> **Your box's own renderer.** AudioGravity advertises itself on the network (via
+> **Your box's own renderer.** Audiogravi<sup>ty</sup> advertises itself on the network (via
 > upmpdcli) so other apps can cast *to* it. That self-entry appears in the renderer
 > list as a non-selectable *"This device · receives external casts"* row — because
 > playing on the box is what the **Local DAC** output already does.
 
 ## HQPlayer
 
-If you run **HQPlayer** on your network, AudioGravity integrates with it two ways:
+If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with it two ways:
 
 - **DSP remote** — change the interpolation **filter**, **noise shaper**, output
   **mode** and **volume** on your HQPlayer instance from the interface. It's
@@ -45,7 +45,7 @@ engine.
 
 ## Roon
 
-AudioGravity works with a **Roon Bridge** endpoint and connects to your remote **Roon
+Audiogravi<sup>ty</sup> works with a **Roon Bridge** endpoint and connects to your remote **Roon
 Core** for metadata and transport — so a Roon zone can sit alongside your other
 outputs in the same interface.
 

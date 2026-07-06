@@ -1,6 +1,6 @@
-# AudioGravity — User Manual
+# Audiogravi<sup>ty</sup> — User Manual
 
-Welcome to AudioGravity — the conductor of your music streamer. This manual walks
+Welcome to Audiogravi<sup>ty</sup> — the conductor of your music streamer. This manual walks
 you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 
 > **New here?** Read [1. Introduction](01-introduction.md) first, then follow
@@ -9,7 +9,7 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 
 ## Contents
 
-1. [Introduction](01-introduction.md) — what AudioGravity is (and isn't)
+1. [Introduction](01-introduction.md) — what Audiogravi<sup>ty</sup> is (and isn't)
 2. [Installation](02-installation.md) — get it running on your streamer
 3. [First run](03-first-run.md) — guided audio setup: DAC, library, services
 4. [Listening](04-listening.md) — sources, transport, the Now Playing screen
@@ -21,5 +21,5 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 
 ---
 
-*Applies to AudioGravity 0.9.x (early access). For release-by-release changes see
+*Applies to Audiogravi<sup>ty</sup> 0.9.x (early access). For release-by-release changes see
 [RELEASE_NOTES.md](../../RELEASE_NOTES.md).*

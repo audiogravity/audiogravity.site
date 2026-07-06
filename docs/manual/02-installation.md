@@ -1,6 +1,6 @@
 # 2. Installation
 
-AudioGravity installs in a single command. The installer detects your architecture,
+Audiogravi<sup>ty</sup> installs in a single command. The installer detects your architecture,
 generates security keys, configures the systemd service and starts everything —
 usually **under five minutes** from `curl` to listening. No compilation, no
 dependency hell, no manual configuration.
@@ -11,7 +11,7 @@ dependency hell, no manual configuration.
   **aarch64** (Raspberry Pi). See [Requirements](../../README.md#requirements).
 - The host reachable on your **local network**.
 - Your **early-access token** — a GitHub token shared with approved testers during
-  early access. [Request one](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request) if you don't have it.
+  early access. [Request one](mailto:contact@audiogravity.app?subject=Audiogravi<sup>ty</sup>%20-%20Early%20access%20request) if you don't have it.
 
 ## Recommended — all-in-one (one box)
 
@@ -62,7 +62,7 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 
 ## First contact
 
-Open `https://<box-ip>` in a browser. On first run, AudioGravity activates a
+Open `https://<box-ip>` in a browser. On first run, Audiogravi<sup>ty</sup> activates a
 **30-day trial** automatically — no action required — and you can create your admin
 account. Continue to **[3. First run](03-first-run.md)**.
 

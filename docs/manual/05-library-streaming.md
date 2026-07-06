@@ -14,13 +14,13 @@ files to a network renderer**, just like a streaming service (see
 
 ## UPnP / DLNA media servers
 
-AudioGravity auto-discovers UPnP media servers on your network (e.g. **MinimServer**)
+Audiogravi<sup>ty</sup> auto-discovers UPnP media servers on your network (e.g. **MinimServer**)
 and lets you browse and search them; results play directly, with metadata and art.
 
 ## Streaming services
 
 All three deliver native-resolution audio through their **official APIs**. Each
-requires **your own active subscription** — AudioGravity provides no access itself.
+requires **your own active subscription** — Audiogravi<sup>ty</sup> provides no access itself.
 
 Connect them all from **Library → Sources**: open the service's card, sign in, and
 you're done. The session is kept alive and refreshed for you.
@@ -46,7 +46,7 @@ Discover, Editor's Picks, Bestsellers, search. Your password is stored encrypted
 the device.
 
 > **One device per HRA account.** HIGHRESAUDIO allows a single active device — connecting
-> AudioGravity signs you out of your other HRA players.
+> Audiogravi<sup>ty</sup> signs you out of your other HRA players.
 
 ### Subscriptions at a glance
 

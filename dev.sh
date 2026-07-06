@@ -1,7 +1,9 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-PORT="${PORT:-8080}"
+# Default 8081: on a mono-host box the AG UI (ag-ui-server) already owns 8080.
+# Override with PORT=... if needed.
+PORT="${PORT:-8081}"
 
 # Detect the LAN IP just for the printed URL (override with AG_DEV_HOST).
 # The server itself binds to all interfaces, so it starts regardless of the IP.

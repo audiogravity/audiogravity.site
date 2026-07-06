@@ -5,45 +5,65 @@ and the streaming services — Qobuz, Tidal and HIGHRESAUDIO — side by side. S
 results are directly playable, with titles and cover art. Pick a track, pick an
 output, and the music flows at full resolution.
 
+## How the Library tab is organised
+
+The Library tab holds several views:
+
+- **Browse** — albums for the active source, with infinite scroll.
+- **Search** — full-text across artists, albums and tracks.
+- **Sources** — pick the active source (local, streaming, Roon zone, UPnP server).
+- **Outputs** — pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
+- **Queue** — what's playing and coming up.
+
 ## Your local library
 
 Files on your NAS or USB drive (served by MPD) appear as a browsable, searchable
-source — album view, full-text search, queue management. You can also **cast local
-files to a network renderer**, just like a streaming service (see
+source — album view with infinite scroll, full-text search, queue management. You can
+also **cast local files to a network renderer**, just like a streaming service (see
 [6. Outputs & engines](06-outputs-engines.md)).
 
 ## UPnP / DLNA media servers
 
-Audiogravi<sup>ty</sup> auto-discovers UPnP media servers on your network (e.g. **MinimServer**)
-and lets you browse and search them; results play directly, with metadata and art.
+In **Sources**, Audiogravi<sup>ty</sup> lists the UPnP media servers it already knows and lets
+you run a **manual scan** to discover more (e.g. **MinimServer**); found servers are
+saved automatically. Browse any server's tree (ContentDirectory); results play
+directly, with metadata and art.
+
+## Roon
+
+Connect a Roon source in **Sources**; it expands to show the available **zones**.
+A dedicated Roon browser navigates the Roon library hierarchy.
 
 ## Streaming services
 
 All three deliver native-resolution audio through their **official APIs**. Each
 requires **your own active subscription** — Audiogravi<sup>ty</sup> provides no access itself.
 
-Connect them all from **Library → Sources**: open the service's card, sign in, and
-you're done. The session is kept alive and refreshed for you.
+Connect them from **Library → Sources**: open the service's card, sign in, and the
+session is kept alive and refreshed for you. Each card shows its connection state and
+a disconnect action.
 
 ### Qobuz
 
-Tap **Connect**, sign in on the page that opens, and Qobuz redirects back
-automatically — the card switches to **Connected**. Hi-Res up to 24-bit / 192 kHz;
-Favorites, new releases, editorial playlists.
+Tap **Connect** — an **OAuth2** login opens; sign in and Qobuz redirects back
+automatically, and the card switches to **Connected**. Browse via category pills —
+**Favorites**, **New Releases**, **Selection**, **Playlists** — plus full search.
+Hi-Res up to 24-bit / 192 kHz.
 
 ### Tidal
 
-Tap **Connect** and sign in. Tidal redirects to a fixed URL that a web app can't
-intercept, so **copy that full URL** from the address bar, paste it back into the
-Tidal card and tap **Finish login** — you only do this once. Lossless FLAC (HiFi /
-HiFi Plus); Favorites, New Releases, Charts, editorial playlists, in-track seek.
+Tidal uses the **PKCE** flow: tap **Connect**, sign in, and Tidal lands on a fixed
+redirect page (`tidal.com/android/login/auth?code=…`) that a web app can't intercept —
+so **copy that full URL** from the address bar, paste it back into the Tidal card and
+tap **Finish login**. You only do this once. Lossless FLAC (HiFi / HiFi Plus);
+Favorites, New Releases, Charts, editorial playlists, in-track seek.
 
 ### HIGHRESAUDIO
 
-Simpler still — enter your account **email and password** directly in the card (no
-redirect, no copy-paste). Native-master FLAC up to 24-bit / 352.8 kHz; Favorites,
-Discover, Editor's Picks, Bestsellers, search. Your password is stored encrypted on
-the device.
+Simpler still — enter your account **email and password** directly in the card (its
+official API, no redirect, no copy-paste). Native-master FLAC up to 24-bit /
+352.8 kHz; Favorites, Discover, Editor's Picks, Bestsellers, search. Your password is
+stored encrypted on the device.
 
 > **One device per HRA account.** HIGHRESAUDIO allows a single active device — connecting
 > Audiogravi<sup>ty</sup> signs you out of your other HRA players.
@@ -58,7 +78,16 @@ the device.
 
 ## Internet radio
 
-Internet radio is a **first-class source**, not a bolt-on. Stations flow through the
-same transport as your FLAC library, route to the same output, and show the same
-hi-fi readout. Browse the **Radio Browser** catalogue, filter down to Hi-Res, add
-custom stations, and save your favourites.
+Internet radio is a **first-class source** — stations flow through the same transport
+as your FLAC library, route to the same output, and show the same hi-fi readout. The
+radio view has three sub-tabs:
+
+- **My Live Radio** — your own collection (custom stations + saved hits). The default
+  tab; it hosts the **Add custom station** form.
+- **Favorites** — your starred stations.
+- **Search** — a query box with **country**, **genre** and **Hi-Res** filters, backed
+  by the Radio Browser catalogue.
+
+On each station card: **tap** to play, the **star** toggles Favorites, the **+**
+toggles My Live Radio, the **pencil** edits a custom station, and a **left-swipe**
+removes it from the current list.

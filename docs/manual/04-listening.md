@@ -4,14 +4,22 @@ Once your box is set up, playing music is the same whatever the source — local
 Qobuz, Tidal, HIGHRESAUDIO, internet radio or a UPnP server all flow through one set
 of controls.
 
-## The Now Playing screen
+## The Now Playing bar
 
-The Now Playing bar is always at hand; tap it for the fullscreen player:
+A sticky **Now Playing** bar sits above the footer and shows **all active audio
+sources** at once, with quick transport — play/pause, next, and volume. Tap it (or
+swipe up on mobile / the expand button on desktop) to open the **fullscreen player**.
 
-- **Cover art**, a **seekable progress bar**, and full **transport** controls
-  (play/pause, next, previous, seek, volume).
-- The **album tracklist**, and **swipe** between sources.
-- A dynamic background derived from the cover.
+## The fullscreen player
+
+- **Cover art** with a dynamic background derived from it, a **seekable progress
+  bar**, and full **transport**: repeat · previous · play/pause · next · shuffle.
+- **Album details** — Album, Artist, Format, Genre, Year, Position, Source and the
+  full **Tracklist**.
+- A **Queue** view for what's coming up.
+- **Swipe** between active sources; close with the back button or swipe-down.
+- When playing to a network renderer, a **"Routed to UPnP renderer"** indicator makes
+  the destination clear.
 
 ## The live hi-fi readout
 
@@ -20,7 +28,7 @@ On every track change, Audiogravi<sup>ty</sup> shows exactly what's reaching you
 - **Format** (PCM / DSD), **sample rate**, **bit depth**, and instantaneous **bitrate**.
 
 This is your at-a-glance confirmation that a Hi-Res track really is playing at its
-native resolution.
+native resolution. A DSD lock indicator appears for DSD streams.
 
 ## The stream-origin badge
 

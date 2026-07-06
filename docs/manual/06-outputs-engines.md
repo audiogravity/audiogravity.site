@@ -4,6 +4,13 @@ Audiogravi<sup>ty</sup> can send the same music to very different destinations �
 attached DAC, a network renderer across the room, HQPlayer's DSP engine, or an AirPlay
 receiver. The **output selector** switches between them in one tap.
 
+## The output selector
+
+In **Library → Outputs**, Audiogravi<sup>ty</sup> lists every physical output the box exposes
+(USB, optical, HDMI…) alongside the network renderers it has discovered, and switches
+the active output when you pick one. Streaming and HQPlayer connections are managed
+next to it in **Library → Sources**.
+
 ## Local DAC
 
 The default: audio goes straight from MPD to the DAC attached to the box (USB, HAT,

@@ -26,6 +26,7 @@
   <a href="#editions">Editions</a> ·
   <a href="#quick-install">Install</a> ·
   <a href="#updating">Updating</a> ·
+  <a href="docs/manual/">Manual</a> ·
   <a href="#the-audiogravity-ecosystem">Ecosystem</a> ·
   <a href="#support">Support</a> ·
   <a href="#license">License</a>
@@ -236,6 +237,7 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 ## Documentation
 
+- **[User Manual](docs/manual/)** — the complete guide: install, first-run setup, listening, streaming, outputs, administration, updating, troubleshooting
 - [RELEASE_NOTES.md](RELEASE_NOTES.md) — synthesized release notes per version
 - [CHANGELOG.md](CHANGELOG.md) — detailed changelog (single source of truth)
 - [EDITIONS.md](EDITIONS.md) · [EULA.md](EULA.md) — editions and end-user licence agreement

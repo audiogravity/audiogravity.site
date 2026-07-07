@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[license server] Outbound email routed through Resend, with distinct license and communication sender identities.** The transport (single `_smtp_send` SMTP choke point) is unchanged in mechanism, but broadcast/communication mail now uses its own **campaign From** (`SMTP_CAMPAIGN_FROM`, e.g. `news@`) separate from transactional license mail (`SMTP_FROM`, e.g. `license@`), and every message can carry an optional **Reply-To** (`SMTP_REPLY_TO`, e.g. `support@`). The envelope sender (`MAIL FROM`) is now the bare address parsed from the From, so display-name forms (`Name <addr>`) no longer leak into the envelope (RFC 5321). Two new admin settings `smtp_campaign_from` / `smtp_reply_to` on `PUT /ls/admin/settings/smtp` (persisted, applied at runtime, editable in the SMTP admin card) plus the matching env vars; default SMTP host is now `smtp.resend.com`. No new runtime dependency (stdlib `smtplib`); `lit` added as a dev-dependency so the settings component can be unit-tested (Vitest).
+
 ## [0.9.10] - 2026-07-06
 
 ### Added

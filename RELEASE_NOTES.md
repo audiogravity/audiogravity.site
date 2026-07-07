@@ -7,7 +7,9 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### License emails from your own domain, with the right sender
+
+Audiogravity's license server now sends its mail through a proper delivery provider with domain authentication (DKIM/SPF), so license keys and license files land reliably in customers' inboxes instead of spam. License deliveries and broadcast communications carry **distinct sender addresses** (for example `license@` for deliveries and `news@` for announcements), and every message can set a **Reply-To** (such as `support@`) so replies reach the right place. Everything is configurable from the admin SMTP panel.
 
 ---
 

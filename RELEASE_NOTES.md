@@ -11,6 +11,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 Audiogravity's license server now sends its mail through a proper delivery provider with domain authentication (DKIM/SPF), so license keys and license files land reliably in customers' inboxes instead of spam. License deliveries and broadcast communications carry **distinct sender addresses** (for example `license@` for deliveries and `news@` for announcements), and every message can set a **Reply-To** (such as `support@`) so replies reach the right place. Everything is configurable from the admin SMTP panel.
 
+### Large mailing campaigns send themselves, safely, over several days
+
+Broadcast campaigns to your licence holders are no longer fired all at once. The licence server now paces them under your email provider's daily limit, always keeping room for the essential licence-delivery emails that must go out. A big campaign is queued and delivered automatically over the following days — you can close the page and it keeps going. Recipients already emailed are never contacted twice, anyone who unsubscribes before their turn is skipped, and the mailing panel shows each campaign's progress (sent / pending).
+
 ---
 
 ## 0.9.10 — 2026-07-06

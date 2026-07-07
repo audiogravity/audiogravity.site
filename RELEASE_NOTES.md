@@ -15,6 +15,10 @@ Audiogravity's license server now sends its mail through a proper delivery provi
 
 Broadcast campaigns to your licence holders are no longer fired all at once. The licence server now paces them under your email provider's daily limit, always keeping room for the essential licence-delivery emails that must go out. A big campaign is queued and delivered automatically over the following days — you can close the page and it keeps going. Recipients already emailed are never contacted twice, anyone who unsubscribes before their turn is skipped, and the mailing panel shows each campaign's progress (sent / pending).
 
+### Tidier library search on small screens
+
+The row of source-filter chips beneath the library search box now stays on one line and scrolls sideways on narrow screens, instead of wrapping onto several rows — a cleaner, more compact search header.
+
 ---
 
 ## 0.9.10 — 2026-07-06

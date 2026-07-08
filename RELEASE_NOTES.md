@@ -19,6 +19,8 @@ Broadcast campaigns to your licence holders are no longer fired all at once. The
 
 Switching the physical audio output no longer relies on a hand-written device map that could silently point at the wrong sound card after a reboot or a USB re-plug. Audiogravity now detects the real audio hardware and works out the correct output on the fly, so switching between USB, optical and — now also — HDMI outputs stays correct across reboots. The signal-path view's active-output indicator is corrected the same way. Your hi-fi chain description (which amplifier, speakers, cabling) remains yours to declare and edit — Audiogravity reads it, never overwrites it. And when a switch does not take, the Outputs panel now tells you instead of pretending it worked — it shows the reason and rolls back to the real state.
 
+Better still, switching **MPD's** output is now **gapless**: Audiogravity flips the output over MPD's control socket instead of restarting the player, so there is no silence and a cast already playing keeps going on the new output. AirPlay can't be switched without restarting its receiver, so there the Outputs panel warns you first that it will interrupt any AirPlay playback in progress. (After updating an existing box, run "reset to minimal" once on the audio services so MPD picks up the new gapless switching; until then it keeps working the old way.)
+
 ### Tidier library search on small screens
 
 The row of source-filter chips beneath the library search box now stays on one line and scrolls sideways on narrow screens, instead of wrapping onto several rows — a cleaner, more compact search header.

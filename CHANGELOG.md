@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.11] - 2026-07-10
+
 ### Added
 - **[license server] Campaign emails are throttled and drained across days within the provider's daily send cap.** A campaign's recipients are snapshotted into a new `mailing_queue` table; a background loop delivers them in batches, capping campaign sends at `MAILING_CAMPAIGN_QUOTA_PCT`% (default 80) of `MAILING_DAILY_QUOTA` (default 100) **attempts per UTC day** — successes and failures both count, so a failing campaign can't hammer the provider — leaving headroom for transactional license mail, which is never throttled. A large list therefore drains over several days on its own; already-sent recipients are never re-sent, and opt-outs / revocations after the snapshot are honoured (skipped). `POST /ls/admin/mailing` now returns `{total, sent, pending, failed, skipped, daily_cap}` and the admin mailing panel shows per-campaign progress (sent / pending). New env vars `MAILING_DAILY_QUOTA` / `MAILING_CAMPAIGN_QUOTA_PCT` / `MAILING_DRAIN_INTERVAL` / `MAILING_DRAIN_ENABLED`; new module `mailing_drain.py`. No new runtime dependency.
 - **[license server] Operator manual.** A new `docs/manual/` in the license-server repo — an 11-chapter Markdown guide (introduction, installation, getting started, selling & delivering licenses, managing orders, the customer portal, email & campaigns, fleet updates & announcements, maintenance, troubleshooting). The operator README was also refreshed to match the current feature set and API, and a `THIRD_PARTY_NOTICES.md` was added listing the server's open-source components and their licenses.

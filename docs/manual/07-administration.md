@@ -57,6 +57,76 @@ Safely edit the real configuration files of your audio services (see also
 - **Restart after save** — on by default (applies changes immediately); uncheck to
   batch several edits.
 
+## Audio topology (signal-chain map)
+
+The **Audio Pipeline** graph (see [6. Outputs & engines](06-outputs-engines.md)) is drawn
+from a single file you own: **`audio-topology.json`**. It is a plain description of your
+hi-fi chain — which devices you have (streamer, DAC, amplifier, speakers, the app driving
+it…) and how they are wired together. Audiogravi<sup>ty</sup> **reads** it to draw the picture;
+it **never rewrites** it, so the map always reflects exactly what you declared.
+
+- **What it declares vs. what is detected.** The topology describes the *chain* — the boxes
+  downstream of your streamer and how they connect. The streamer's own **physical outputs**
+  (USB, optical, HDMI…) are resolved **live from the real hardware** at playback time, not
+  from the file; the file just tells Audiogravi<sup>ty</sup> which cable feeds which device so the
+  graph and the output labels line up.
+- **Editing it.** Open the **Audio Pipeline** view and click **CONFIG** (Pro, admin/user —
+  guests get a read-only view). The editor opens in **View mode**; hit **Edit** to unlock the
+  JSON, then **Save**.
+- **Download / Upload.** From the same editor, **Download** saves the current
+  `audio-topology.json` to your computer — handy for editing it offline or keeping a copy;
+  **Upload** loads a file back into the editor for review, and the usual save-time validation
+  runs when you click **Save** (nothing is written until you do).
+- **Validation on save.** Before the file is written, Audiogravi<sup>ty</sup> checks it:
+  a malformed file or an unknown device type is an **error** and blocks the save; a broken
+  link (an output pointing at a device that doesn't exist) or a connector that maps to no real
+  output is a **warning** you can review and accept. Once saved, the graph reloads immediately.
+
+### Structure
+
+Everything lives under `hifi_topology.devices` — a map keyed by a device id you choose:
+
+```json
+{
+  "hifi_topology": {
+    "devices": {
+      "streamer_01": {
+        "type": "streamer",
+        "label": "Audiogravity",
+        "outputs": {
+          "usb_out": { "connector": "usb-a", "target_device_id": "dac_01" }
+        }
+      },
+      "dac_01": {
+        "type": "converter",
+        "label": "My DAC",
+        "inputs":  { "usb_in": { "connector": "usb-b" } },
+        "outputs": { "line_out": { "connector": "rca", "target_device_id": "amp_01" } }
+      }
+    }
+  }
+}
+```
+
+- **`type`** — one of `streamer`, `converter` (DAC), `amplifier`, `output` (speakers),
+  `source`, `server`, `storage`, `controller`.
+- **`outputs` / `network_outputs`** — each wired output points at a `target_device_id`
+  (and optionally a `target_input_id` on that device); that's what links the chain together.
+- **`connector`** — on the **streamer**, the output connector (`usb-a`, `toslink`, `hdmi`,
+  `rca`/`jack`…) is what maps the declared output onto a **detected** hardware output. A
+  connector that matches no real output is what the save-time check warns about.
+
+A fully-commented reference file, **`audio-topology.json.example`**, ships with the box and
+validates cleanly — start from it when in doubt (Download the current file, edit against the
+example, then Upload it back).
+
+### Keeping it up to date
+
+Edit the map whenever your physical setup changes — a new DAC, a different amplifier, a cable
+moved from optical to USB. Keep the `target_device_id` values consistent (an output should
+point at a device id that exists), and the save-time validation will flag typos before they
+reach the graph. Every save is backed up automatically, so you can always roll back.
+
 ## Audio Software
 
 Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, upmpdcli,

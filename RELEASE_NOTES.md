@@ -7,7 +7,11 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Describe your hi-fi chain with confidence
+
+Audiogravity draws the **Audio Pipeline** signal-path view from a file you own, `audio-topology.json` — your description of the hi-fi chain (which DAC, amplifier, speakers, and how they're wired). That file is now **checked when you edit it**: open the pipeline's **CONFIG** editor, and saving first validates your changes. A genuinely broken file (bad structure, an unknown device type) is refused with a clear reason; softer issues — an output pointing at a device that no longer exists, or a connector that matches none of the box's real outputs — are shown as warnings you can review and accept. The same check also runs quietly at startup.
+
+You can now also **Download** the topology to your computer and **Upload** it back — handy for editing it offline or keeping a copy — with the same validation applied when you save. A fully-commented example file ships with the box to start from, and the user manual gains a dedicated section explaining what the topology is, how physical outputs are detected live from your hardware, and how to keep the map up to date.
 
 ---
 

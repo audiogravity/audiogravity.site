@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.12] - 2026-07-10
+
 ### Added
 - **[core] `audio-topology.json` is now validated — structurally and semantically.** A new `POST /config_validation/validate-topology` endpoint checks the user-declared hi-fi chain: a malformed file or an unknown device `type` is a blocking **error**; a broken reference (an output pointing at a `target_device_id`/`target_input_id` that doesn't exist) or a streamer output whose `connector` maps to no real audio output is a non-blocking **warning** (the topology only feeds the signal-path view, so it never blocks the app). The same file is validated **at startup** (best-effort — problems are logged, never fatal). The config_validation Pydantic models for the topology (`AudioTopology` / `HiFiTopology` / `AudioDevice` / `AudioInput` / `AudioOutput`) — previously defined but unused — were corrected and wired to this endpoint. A generic, fully-commented **`audio-topology.json.example`** now ships with the box and validates cleanly.
 - **[ui] The topology editor validates before saving, and can download / upload the file.** In **Audio Pipeline → CONFIG**, saving now runs the topology through `validate-topology` first: structural errors block the save and are shown, broken links / unmappable connectors are surfaced as warnings you confirm before writing. New **Download** and **Upload** buttons on the editor let you save `audio-topology.json` to your computer and load a file back in for review (the same save-time validation then applies) — parity with the audio-config editor. The generic JSON config modal gained an opt-in `allowFileTransfer` for this.

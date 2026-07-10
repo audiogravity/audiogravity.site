@@ -68,5 +68,8 @@ The **Audio Pipeline** view (Pro) draws your entire signal chain as a live graph
 controller → server → streamer → converter/amp → output. Animated particles mean audio
 is flowing; **green links** mean lossless, no sample-rate conversion (bit-perfect); a
 **bit-perfect** badge confirms it. On small screens it falls back to a simplified Now
-Playing view with per-stream output steering (USB / Optical). See
-[7. Administration](07-administration.md) for the tuning that keeps this path clean.
+Playing view with per-stream output steering (USB / Optical).
+
+The graph is drawn from a map you own, **`audio-topology.json`** — see
+[7. Administration → Audio topology](07-administration.md#audio-topology-signal-chain-map)
+to edit it, and the same section for the tuning that keeps this path clean.

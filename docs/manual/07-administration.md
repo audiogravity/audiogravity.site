@@ -57,6 +57,35 @@ Safely edit the real configuration files of your audio services (see also
 - **Restart after save** — on by default (applies changes immediately); uncheck to
   batch several edits.
 
+## Audio configuration (services & profiles)
+
+`audio-config.json` is the registry of the audio **services** Audiogravi<sup>ty</sup> manages and
+the **profiles** built on top of them. It's what populates the **Services** tab (each declared
+service becomes a controllable tile) and the **Profiles** tab (each profile a one-tap way to
+start one set of services and stop another). It is a different file from the per-service config
+files edited above — this one lists *which* services exist, not their internal settings.
+
+- **Services** — each entry declares a `label`, its `systemd_unit` (e.g. `mpd.service`), the
+  path of its own config file (`appconfigfile` — the file the *Config editor* above edits) and
+  a `critical` flag. MPD, upmpdcli (UPnP), shairport-sync (AirPlay), Roon Bridge and HQPlayer's
+  NAA are the usual entries.
+- **Profiles** — each entry has a `name`, a `description`, and two lists: the services to
+  **start** and the services to **stop** when you activate it (plus an optional `critical` flag
+  and `depends_on`). "MPD", "Stop All"… are profiles.
+- **`topology_link`** — ties this box to its device in the topology (`host_device_id`, e.g.
+  `streamer_01`), so the signal-chain view knows which streamer the services run on.
+
+- **Managing it.** Open **Settings** (the gear in the top bar). *Export Configuration*
+  downloads the current `audio-config.json`; *Import Configuration* uploads a replacement.
+- **Validation on import.** An imported file is checked before it is applied: bad structure, a
+  missing required field, a wrong type — but also a `systemd_unit` that isn't installed on the
+  box or an `appconfigfile` that doesn't exist — are reported as blocking **errors**; softer
+  issues appear as **warnings** you can review and accept. A reference
+  **`audio-config.json.example`** ships with the box.
+
+See also **Audio topology** below — the *other* file you own, describing the physical hi-fi
+chain that feeds the signal-path view.
+
 ## Audio topology (signal-chain map)
 
 The **Audio Pipeline** graph (see [6. Outputs & engines](06-outputs-engines.md)) is drawn

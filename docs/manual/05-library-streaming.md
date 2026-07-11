@@ -83,7 +83,9 @@ as your FLAC library, route to the same output, and show the same hi-fi readout.
 radio view has three sub-tabs:
 
 - **My Live Radio** — your own collection (custom stations + saved hits). The default
-  tab; it hosts the **Add custom station** form.
+  tab; it hosts the **Add custom station** form. A brand-new box arrives with a few
+  starter stations (FIP, Classic Vinyl HD…) already here — keep them or remove them.
+  An upgrade never touches your collection.
 - **Favorites** — your starred stations.
 - **Search** — a query box with **country**, **genre** and **Hi-Res** filters, backed
   by the Radio Browser catalogue.

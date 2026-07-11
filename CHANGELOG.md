@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core + ops] A fresh box now ships with a few default internet-radio stations.** A `radio.json.example` (FIP, Classic Vinyl HD, Le Son Parisien) is deployed to `/etc/audiogravity/radio.json` on a **first** install when the file is absent — the same copy-if-absent pattern as `audio-config.json` and `audio-topology.json`. An **upgrade never overwrites** it, so your saved stations are preserved. Documented in the manual (Library & streaming, Updating).
+
 ### Fixed
 - **[ui] The mobile navigation sidebar no longer gets stuck hidden after visiting the pipeline screen.** An interrupted edge-swipe (a gesture that turned vertical, or ended without committing — made easy to trigger by the pipeline's horizontally-scrollable output switcher) could leave a leftover inline transform on the sidebar. Because inline styles override the class-based CSS, the menu stayed off-screen while its state said "open" — it then refused to open by button, swipe or the burger icon, and only fully closing and reopening the app fixed it. The leftover transform is now cleared on every drag-end path.
 

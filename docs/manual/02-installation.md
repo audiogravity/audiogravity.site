@@ -60,6 +60,18 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 > `--public-url https://ag.example.com:8443` → `WEBAUTHN_ORIGIN=https://ag.example.com:8443`
 > and `WEBAUTHN_RP_ID=ag.example.com`.
 
+> **For a standard setup you don't edit `.env` by hand.** The installer generates a
+> complete, working configuration: it creates the security secrets (API key, session key)
+> and the Web Push keys for you, so the box is **fully functional out of the box** — you
+> can log in, control audio, browse the library and radio without touching any file. The
+> flags above are simply the recommended way to switch on the two **optional** features
+> (passkeys and a real push contact); skip them and everything else still works. To enable
+> them later, re-run the installer with the flag — or edit `/opt/audiogravity/core/.env`
+> and restart the core (`sudo systemctl restart ag-core-server`).
+>
+> **The one exception is Roon**, which has no installer flag or UI — you enable it in
+> `.env`. See [6. Outputs & engines → Roon](06-outputs-engines.md#roon).
+
 ## First contact
 
 Open `https://<box-ip>` in a browser. On first run, Audiogravi<sup>ty</sup> activates a

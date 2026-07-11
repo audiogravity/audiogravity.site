@@ -33,8 +33,10 @@ action updates the box it runs on.
 
 ## Manual update
 
-You can always update by re-running the installer; your configuration (`.env`) is
-preserved:
+You can always update by re-running the installer; your configuration is preserved —
+both `.env` and the editable files under `/etc/audiogravity` (the audio setup, the
+signal-chain map, and your saved radio stations). A **fresh** install seeds those files
+with sensible defaults; an **upgrade never overwrites them**, so your edits survive:
 
 ```bash
 curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx

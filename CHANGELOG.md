@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] The mobile navigation sidebar no longer gets stuck hidden after visiting the pipeline screen.** An interrupted edge-swipe (a gesture that turned vertical, or ended without committing — made easy to trigger by the pipeline's horizontally-scrollable output switcher) could leave a leftover inline transform on the sidebar. Because inline styles override the class-based CSS, the menu stayed off-screen while its state said "open" — it then refused to open by button, swipe or the burger icon, and only fully closing and reopening the app fixed it. The leftover transform is now cleared on every drag-end path.
+
 ## [0.9.12] - 2026-07-10
 
 ### Added

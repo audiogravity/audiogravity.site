@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core + ops] A fresh box now ships with a few default internet-radio stations.** A `radio.json.example` (FIP, Classic Vinyl HD, Le Son Parisien) is deployed to `/etc/audiogravity/radio.json` on a **first** install when the file is absent — the same copy-if-absent pattern as `audio-config.json` and `audio-topology.json`. An **upgrade never overwrites** it, so your saved stations are preserved. Documented in the manual (Library & streaming, Updating).
+
 ## [0.9.12] - 2026-07-10
 
 ### Added

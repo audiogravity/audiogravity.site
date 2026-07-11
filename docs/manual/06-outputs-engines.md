@@ -56,6 +56,31 @@ Audiogravi<sup>ty</sup> works with a **Roon Bridge** endpoint and connects to yo
 Core** for metadata and transport — so a Roon zone can sit alongside your other
 outputs in the same interface.
 
+**Setting it up.** Roon has no in-app settings screen and no installer flag — you point
+Audiogravi<sup>ty</sup> at your Roon Core in the core's config file, then authorize it once inside
+Roon:
+
+1. **Point AG at the Core.** On the box, edit `/opt/audiogravity/core/.env` and set:
+   ```
+   ROON_ENABLED=true
+   ROON_CORE_HOST=192.168.1.50    # the IP of the machine running Roon Core
+   ```
+   (The Core's control port `9330` is used automatically; leave `ROON_CORE_HOST` at the
+   default only if the Core runs on the same box.)
+2. **Restart the core** so it re-reads the file:
+   ```bash
+   sudo systemctl restart ag-core-server
+   ```
+3. **Authorize the extension in Roon.** Open Roon (the desktop or mobile app connected to
+   your Core) → **Settings → Extensions**. An extension named **“Audiogravity”** appears
+   in the list — click **Enable** next to it. That's the one-time authorization: Roon
+   grants AG a token, AG stores it, and it reconnects on its own afterwards (no need to
+   re-authorize on restarts).
+
+> If `ROON_CORE_HOST` is wrong or the Core is unreachable, the core logs a connection
+> warning and keeps retrying — correct the IP in `.env` and restart. Until you click
+> **Enable** in Roon (step 3), the connection stays unauthorized and Roon data won't appear.
+
 ## AirPlay
 
 The box can act as an **AirPlay receiver** (shairport-sync) — stream to it from an

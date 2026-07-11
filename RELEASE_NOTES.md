@@ -7,7 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Spot a waiting update from the tab bar
+
+The Admin tab now carries a small download marker whenever a newer AudioGravity
+release is available for your box — the same at-a-glance cue the tab already gives
+for new announcements. A **required** update stands out in the warning colour. Open
+the Admin page to install it in one click, as before.
 
 ---
 

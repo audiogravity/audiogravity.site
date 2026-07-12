@@ -11,6 +11,10 @@ _Nothing yet._
 
 ---
 
+## 0.9.14 — 2026-07-12
+
+---
+
 ## 0.9.13 — 2026-07-12
 
 ### Spot a waiting update from the tab bar

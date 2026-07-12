@@ -1,14 +1,14 @@
 # Audiogravity — Test Report
 
-Generated: **2026-07-12 11:23 UTC**
+Generated: **2026-07-12 18:46 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **core** PASS | 1076 | 1076 | 0 | 0 | 40.0s |
-| **ui** PASS | 405 | 405 | 0 | 0 | 0.9s |
-| **Total** PASS | **1481** | **1481** | **0** | **0** | **40.9s** |
+| **core** PASS | 1076 | 1076 | 0 | 0 | 37.6s |
+| **ui** PASS | 411 | 411 | 0 | 0 | 0.8s |
+| **Total** PASS | **1487** | **1487** | **0** | **0** | **38.4s** |
 
 ## Detail
 
@@ -47,7 +47,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_audio_app_config.TestAudioAppConfig**
 
-  - [+] test_services_route (0.48s)
+  - [+] test_services_route (0.53s)
 
 **tests.test_audio_app_config.TestResolveConfigPath**
 
@@ -76,7 +76,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_audio_app_config.TestRunCommandTimeout**
 
-  - [+] test_timeout_kills_hanging_process (1.01s)
+  - [+] test_timeout_kills_hanging_process (1.00s)
   - [+] test_successful_command_returns_output
 
 **tests.test_audio_app_config.TestListBackupsTotalCount**
@@ -215,12 +215,12 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
-  - [+] test_now_playing (0.02s)
-  - [+] test_control (0.02s)
+  - [+] test_now_playing (0.03s)
+  - [+] test_control (0.03s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
-  - [+] test_cover_returns_24h_cache (0.02s)
+  - [+] test_cover_returns_24h_cache (0.03s)
   - [+] test_cover_404_no_store (0.01s)
 
 **tests.test_audio_pipeline.TestAirplayNowPlaying**
@@ -244,7 +244,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_audio_pipeline.TestTopologySaveValidation**
 
-  - [+] test_non_dict_topology_returns_400 (0.02s)
+  - [+] test_non_dict_topology_returns_400 (0.03s)
   - [+] test_valid_dict_topology_is_accepted (0.02s)
 
 **tests.test_audio_pipeline.TestTopologyCycleDetection**
@@ -307,8 +307,8 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.38s)
-  - [+] test_login_wrong_password (0.40s)
+  - [+] test_login_valid (0.39s)
+  - [+] test_login_wrong_password (0.39s)
   - [+] test_login_unknown_user (0.38s)
 
 **tests.test_auth.TestUsersCRUD**
@@ -322,38 +322,38 @@ Generated: **2026-07-12 11:23 UTC**
 
   - [+] test_user_model_has_protected_field
   - [+] test_create_user_accepts_protected_flag (0.38s)
-  - [+] test_unprotected_user_has_protected_false_by_default (0.39s)
-  - [+] test_delete_guard_rejects_protected (0.37s)
+  - [+] test_unprotected_user_has_protected_false_by_default (0.38s)
+  - [+] test_delete_guard_rejects_protected (0.36s)
   - [+] test_update_disable_guard_rejects_protected (0.37s)
-  - [+] test_cannot_delete_self (0.03s)
+  - [+] test_cannot_delete_self (0.02s)
   - [+] test_unprotected_account_can_be_deleted (0.39s)
   - [+] test_unprotected_account_can_be_disabled (0.39s)
 
 **tests.test_auth.TestCreateUserReturns201**
 
-  - [+] test_create_user_returns_201 (0.38s)
+  - [+] test_create_user_returns_201 (0.39s)
 
 **tests.test_auth.TestUpdateUserEmptyPassword**
 
-  - [+] test_short_password_rejected_by_pydantic (0.40s)
-  - [+] test_whitespace_only_password_rejected (0.39s)
+  - [+] test_short_password_rejected_by_pydantic (0.39s)
+  - [+] test_whitespace_only_password_rejected (0.38s)
 
 **tests.test_auth.TestDisabledUserLogin**
 
-  - [+] test_disabled_user_cannot_login (0.76s)
+  - [+] test_disabled_user_cannot_login (0.89s)
 
 **tests.test_auth.TestJwtContainsJti**
 
-  - [+] test_jwt_has_jti_claim (0.01s)
+  - [+] test_jwt_has_jti_claim (0.02s)
 
 **tests.test_auth.TestCreateUserWhitespacePassword**
 
   - [+] test_whitespace_only_password_rejected_on_create (0.02s)
-  - [+] test_normal_password_accepted_on_create (0.39s)
+  - [+] test_normal_password_accepted_on_create (0.40s)
 
 **tests.test_auth.TestDisabledUserTimingOracle**
 
-  - [+] test_disabled_user_returns_401 (0.77s)
+  - [+] test_disabled_user_returns_401 (0.76s)
 
 **tests.test_auth.TestWebAuthnChallengeIsolation**
 
@@ -452,7 +452,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_core.TestRoonDisconnectTimeout**
 
-  - [+] test_disconnect_timeout_does_not_raise (0.01s)
+  - [+] test_disconnect_timeout_does_not_raise
   - [+] test_disconnect_clears_state_on_exception
 
 **tests.test_core.TestRoonServiceGating**
@@ -535,7 +535,7 @@ Generated: **2026-07-12 11:23 UTC**
   - [+] test_valid_session_does_not_relogin
   - [+] test_api_get_not_connected_raises
   - [+] test_relogin_double_checked_under_concurrency
-  - [+] test_stream_redirect_mode_returns_302_to_cdn
+  - [+] test_stream_redirect_mode_returns_302_to_cdn (0.01s)
   - [+] test_relogin_skips_when_session_already_refreshed
 
 **tests.test_highresaudio.TestHighresaudioStream**
@@ -612,8 +612,8 @@ Generated: **2026-07-12 11:23 UTC**
   - [+] test_status (0.04s)
   - [+] test_filters (0.03s)
   - [+] test_shapers (0.03s)
-  - [+] test_modes (0.03s)
-  - [+] test_discover (0.03s)
+  - [+] test_modes (0.04s)
+  - [+] test_discover (0.04s)
 
 **tests.test_hqplayer.TestHQPlayerStop**
 
@@ -665,7 +665,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_hqplayer.TestNaaAvailableInConnection**
 
-  - [+] test_naa_available_true_when_service_active (0.04s)
+  - [+] test_naa_available_true_when_service_active (0.03s)
   - [+] test_naa_available_false_when_service_inactive (0.04s)
 
 **tests.test_hqplayer.TestHQPlayerPlayValidation**
@@ -690,7 +690,7 @@ Generated: **2026-07-12 11:23 UTC**
 
   - [+] test_upnp_known_servers_route_exists (0.07s)
   - [+] test_search_route_exists (0.07s)
-  - [+] test_queue_route_exists (0.09s)
+  - [+] test_queue_route_exists (0.08s)
 
 **tests.test_library.TestUpnpSearchTrackId**
 
@@ -712,8 +712,8 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_library.TestUpnpQueueRouting**
 
-  - [+] test_upnp_source_routes_to_upnp_queue (0.08s)
-  - [+] test_mpd_source_still_routes_to_mpd_queue (0.10s)
+  - [+] test_upnp_source_routes_to_upnp_queue (0.07s)
+  - [+] test_mpd_source_still_routes_to_mpd_queue (0.08s)
 
 **tests.test_library.TestQueueRequestValidation**
 
@@ -733,7 +733,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_library.TestUpnpContentDirectoryClient**
 
-  - [+] test_browse_delegates_to_dms
+  - [+] test_browse_delegates_to_dms (0.01s)
   - [+] test_browse_uses_location_not_control_url
   - [+] test_parse_duration_valid
   - [+] test_parse_duration_invalid
@@ -760,7 +760,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_library.TestQobuzQueueRenderer**
 
-  - [+] test_track_play_routes_to_renderer (0.01s)
+  - [+] test_track_play_routes_to_renderer (0.02s)
   - [+] test_add_bypasses_renderer_goes_to_mpd
   - [+] test_no_renderer_uses_mpd
   - [+] test_album_queues_all_tracks_via_play_queue
@@ -812,7 +812,7 @@ Generated: **2026-07-12 11:23 UTC**
   - [+] test_head_returns_headers_no_body (0.07s)
   - [+] test_bad_signature_rejected (0.07s)
   - [+] test_missing_signature_rejected (0.07s)
-  - [+] test_missing_file_returns_404 (0.07s)
+  - [+] test_missing_file_returns_404 (0.08s)
 
 **tests.test_library_files.TestLibraryCoverEndpoint**
 
@@ -823,20 +823,20 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.05s)
-  - [+] test_valid_lifetime_license (0.05s)
-  - [+] test_beta_version_accepts_v1_scope (2.06s)
-  - [+] test_version_expired (0.04s)
-  - [+] test_tampered_license (0.05s)
+  - [+] test_no_license (0.07s)
+  - [+] test_valid_lifetime_license (0.04s)
+  - [+] test_beta_version_accepts_v1_scope (0.04s)
+  - [+] test_version_expired (0.05s)
+  - [+] test_tampered_license (0.04s)
 
 **tests.test_license.TestUploadLicense**
 
-  - [+] test_upload_valid_lic (0.05s)
+  - [+] test_upload_valid_lic (0.04s)
   - [+] test_upload_invalid_signature (0.01s)
 
 **tests.test_license.TestDeleteLicense**
 
-  - [+] test_delete_existing_license (0.07s)
+  - [+] test_delete_existing_license (0.17s)
   - [+] test_delete_wrong_password (0.02s)
   - [+] test_delete_no_license (0.01s)
   - [+] test_no_name_error (0.05s)
@@ -853,8 +853,8 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_license.TestCheckEndpointStatusHandling**
 
-  - [+] test_server_5xx_returns_502 (0.01s)
-  - [+] test_unexpected_response_shape_returns_502 (0.01s)
+  - [+] test_server_5xx_returns_502 (0.02s)
+  - [+] test_unexpected_response_shape_returns_502 (0.02s)
 
 **tests.test_license.TestRequireFullLicenseServiceNone**
 
@@ -1024,7 +1024,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (8.09s)
+  - [+] test_runs_standalone_without_package_context (7.67s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -1097,7 +1097,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_performance.TestPerformance**
 
-  - [+] test_cpu_info_route (0.05s)
+  - [+] test_cpu_info_route (0.06s)
   - [+] test_rt_processes (0.03s)
 
 **tests.test_performance.TestGovernorBootScript**
@@ -1246,7 +1246,7 @@ Generated: **2026-07-12 11:23 UTC**
   - [+] test_discover_library_sources_usb_and_network
   - [+] test_status_includes_library_sources
   - [+] test_status_reports_outputs_and_config_state
-  - [+] test_patch_output_retargets_device_and_pins
+  - [+] test_patch_output_retargets_device_and_pins (0.01s)
   - [+] test_patch_output_rejects_service_without_output
   - [+] test_patch_output_raises_when_output_absent
   - [+] test_patch_library_changes_music_directory_only
@@ -1267,11 +1267,11 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_push.TestUnsubscribe**
 
-  - [+] test_unsubscribe (0.01s)
+  - [+] test_unsubscribe
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.10s)
+  - [+] test_script_produces_valid_keys (0.09s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -1343,7 +1343,7 @@ Generated: **2026-07-12 11:23 UTC**
   - [+] test_delete_connection
   - [+] test_get_connection_after_disconnect
   - [+] test_stream_redirect_mode_returns_302_to_cdn (0.01s)
-  - [+] test_oauth_callback_no_code (0.01s)
+  - [+] test_oauth_callback_no_code
   - [+] test_oauth_callback_with_code (0.01s)
   - [+] test_oauth_callback_failure
   - [+] test_post_connection_starts_oauth (0.01s)
@@ -1412,7 +1412,7 @@ Generated: **2026-07-12 11:23 UTC**
 
   - [+] test_featured_albums (0.07s)
   - [+] test_featured_albums_default_type (0.07s)
-  - [+] test_playlists (0.08s)
+  - [+] test_playlists (0.07s)
   - [+] test_playlist_tracks (0.07s)
   - [+] test_playlist_tracks_missing_id (0.07s)
   - [+] test_featured_service_error (0.07s)
@@ -1546,7 +1546,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_services.TestServiceNameValidation**
 
-  - [+] test_valid_name_accepted (0.03s)
+  - [+] test_valid_name_accepted (0.04s)
   - [+] test_semicolon_rejected (0.03s)
   - [+] test_slash_rejected (0.03s)
   - [+] test_ampersand_rejected (0.05s)
@@ -1663,7 +1663,7 @@ Generated: **2026-07-12 11:23 UTC**
 **tests.test_sysinfo.TestSysinfoGrepPatternValidation**
 
   - [+] test_invalid_regex_returns_400 (0.02s)
-  - [+] test_valid_regex_accepted (0.42s)
+  - [+] test_valid_regex_accepted (0.17s)
 
 **tests.test_sysinfo.TestSysinfoSyslogIdentifierFormat**
 
@@ -1671,7 +1671,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_sysinfo.TestTemperaturePushAlert**
 
-  - [+] test_cooldown_not_updated_when_push_raises (0.01s)
+  - [+] test_cooldown_not_updated_when_push_raises
   - [+] test_cooldown_below_threshold_no_alert
   - [+] test_cooldown_prevents_second_alert_within_15min
   - [+] test_alert_allowed_after_cooldown_elapsed
@@ -1791,7 +1791,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **tests.test_upmpdcli_cover.TestSoapGetArt**
 
-  - [+] test_extracts_album_art_uri
+  - [+] test_extracts_album_art_uri (0.01s)
   - [+] test_returns_none_when_no_track_metadata
   - [+] test_returns_none_on_soap_error
 
@@ -1870,10 +1870,10 @@ Generated: **2026-07-12 11:23 UTC**
 **tests.test_upnp_renderer.TestRendererRouterEndpoints**
 
   - [+] test_discover_route_exists (0.04s)
-  - [+] test_known_route_exists (0.05s)
+  - [+] test_known_route_exists (0.04s)
   - [+] test_connection_route_exists (0.03s)
-  - [+] test_status_route_exists (0.04s)
-  - [+] test_notify_route_exists (0.03s)
+  - [+] test_status_route_exists (0.03s)
+  - [+] test_notify_route_exists (0.04s)
   - [+] test_bypass_route_removed (0.04s)
   - [+] test_remove_renderer_route_exists (0.03s)
 
@@ -2033,7 +2033,7 @@ Generated: **2026-07-12 11:23 UTC**
   - [+] upnpPlay > routes to /hqplayer/play when hqplayer_output is true
   - [+] upnpPlay > passes duration as null when not provided
   - [+] queueWithFeedback > calls queueFn and shows success toast on success
-  - [+] queueWithFeedback > shows error toast when queueFn throws (0.01s)
+  - [+] queueWithFeedback > shows error toast when queueFn throws
   - [+] queueWithFeedback > uses fallback label when label is empty
 
 **js/library-store.test.js**
@@ -2093,7 +2093,7 @@ Generated: **2026-07-12 11:23 UTC**
 
 **js/version.test.js**
 
-  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.13)
+  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.14)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > js/core/config.js UI_VERSION matches VERSION (UI display)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > sw.js CACHE_NAME matches VERSION (PWA cache busting)
 
@@ -2108,6 +2108,12 @@ Generated: **2026-07-12 11:23 UTC**
   - [+] initOriginLabels > overwrites existing labels with backend values
   - [+] initOriginLabels > keeps static fallbacks intact when the backend is unreachable
   - [+] initOriginLabels > calls GET /player/origins
+  - [+] resolvePlayingSource — SOURCE vs engine > resolves a Qobuz stream (MPD engine) to the Qobuz browse source, not "Local Library"
+  - [+] resolvePlayingSource — SOURCE vs engine > resolves Tidal and HIGHRESAUDIO streams to their own browse source
+  - [+] resolvePlayingSource — SOURCE vs engine > keeps a local-file stream on the MPD engine ("Local Library")
+  - [+] resolvePlayingSource — SOURCE vs engine > leaves non-MPD engines (Roon) on their own source_id
+  - [+] resolvePlayingSource — SOURCE vs engine > prefers an explicit origin_name (e.g. UPnP server) for the label
+  - [+] resolvePlayingSource — SOURCE vs engine > falls back gracefully for an unknown source
   - [+] normalizeSearchSources > maps a pipeline source to {id,label,group,location}
   - [+] normalizeSearchSources > dedups Roon (src_roon + src_mono-sgen → one)
   - [+] normalizeSearchSources > drops mpris receivers (no library API)

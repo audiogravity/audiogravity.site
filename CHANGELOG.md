@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.14] - 2026-07-12
+
 ### Fixed
 - **[ui] The library no longer offers to switch to "Local Library" while you are streaming Qobuz/Tidal/HIGHRESAUDIO.** Those providers (and local files) all play over the MPD *engine*, so the now-playing banner compared the transport engine against the browsed *source* and spuriously prompted a switch to "Local Library" when you played Qobuz from the Qobuz tab. The banner now compares at the source level (using the stream `origin`, like the library view does), so it stays quiet when the playing source matches what you are browsing — and when it does fire (a genuinely different source), "Switch" targets the right browse source (e.g. Tidal, not the MPD engine).
 - **[ui] The mini-player source badge shows the generic origin ("Radio", "Qobuz"…) instead of the station/provider name.** A long radio station name (e.g. "CLASSIC VINYL HD") overflowed the badge; it now shows the generic origin label like the source badge on the fullscreen cover. The full station name stays visible in the track title.

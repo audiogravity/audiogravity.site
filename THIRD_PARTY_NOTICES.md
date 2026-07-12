@@ -1,6 +1,6 @@
-# Third-Party Notices — Audiogravity
+# Third-Party Notices — Audiogravi<sup>ty</sup>
 
-Audiogravity incorporates open-source software. The following notices and
+Audiogravi<sup>ty</sup> incorporates open-source software. The following notices and
 license texts are required by those licenses. All copyright notices are
 reproduced verbatim as required.
 
@@ -122,7 +122,7 @@ Same OFL 1.1 terms as above.
 
 ---
 
-## Core — bundled in the Audiogravity binary
+## Core — bundled in the Audiogravi<sup>ty</sup> binary
 
 ### FastAPI
 **Copyright** © 2018 Sebastián Ramírez  
@@ -366,7 +366,7 @@ Same Apache-2.0 terms as above.
 
 ## Runtime system binaries — invoked at runtime, not bundled
 
-These programs are not distributed with Audiogravity but are required (or
+These programs are not distributed with Audiogravi<sup>ty</sup> but are required (or
 optionally used) at runtime. They must be present on the host system.
 
 ---
@@ -434,7 +434,7 @@ Same GPL-2.0 terms as above.
 ## External API services — called at runtime, no code bundled
 
 These are third-party services accessed over the network. No library or binary
-is bundled in Audiogravity for these — attribution is provided as a courtesy.
+is bundled in Audiogravi<sup>ty</sup> for these — attribution is provided as a courtesy.
 
 ### Radio Browser
 **License** MIT (data and API)  
@@ -449,11 +449,11 @@ contributed by the community under MIT terms.
 
 ## Audio software — installable via the Audio Software Manager
 
-The following software can be installed on the host by Audiogravity's Audio
+The following software can be installed on the host by Audiogravi<sup>ty</sup>'s Audio
 Software Manager. Each package is fetched from the official Debian/DietPi
 repositories or from the vendor's official installer — none are bundled in
-Audiogravity's distribution tarballs. Their respective licenses apply
-independently of Audiogravity.
+Audiogravi<sup>ty</sup>'s distribution tarballs. Their respective licenses apply
+independently of Audiogravi<sup>ty</sup>.
 
 | Software | License | Source |
 |---|---|---|
@@ -468,9 +468,9 @@ independently of Audiogravity.
 
 ## Trademarks
 
-The following are third-party streaming services that Audiogravity integrates
+The following are third-party streaming services that Audiogravi<sup>ty</sup> integrates
 with over their networked APIs. **No code or library from these services is
-bundled** in Audiogravity — the integrations use private/official HTTP APIs and
+bundled** in Audiogravi<sup>ty</sup> — the integrations use private/official HTTP APIs and
 require the user's own active subscription. Their names and logos are used
 solely to identify the services (nominative use).
 
@@ -478,7 +478,7 @@ solely to identify the services (nominative use).
 - **Tidal** — TIDAL and the TIDAL logo.
 - **HIGHRESAUDIO** — HIGHRESAUDIO (HRA) and the HIGHRESAUDIO logo.
 
-These names and logos are trademarks of their respective owners. Audiogravity is
+These names and logos are trademarks of their respective owners. Audiogravi<sup>ty</sup> is
 **not affiliated with, endorsed by, or sponsored by** any of these companies.
 
 ---

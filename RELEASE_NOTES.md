@@ -1,4 +1,4 @@
-# Audiogravity — Release Notes
+# Audiogravi<sup>ty</sup> — Release Notes
 
 Synthesized overview of each release. For the full line-by-line changelog, see
 [CHANGELOG.md](CHANGELOG.md).
@@ -9,7 +9,7 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### Spot a waiting update from the tab bar
 
-The Admin tab now carries a small download marker whenever a newer AudioGravity
+The Admin tab now carries a small download marker whenever a newer Audiogravi<sup>ty</sup>
 release is available for your box — the same at-a-glance cue the tab already gives
 for new announcements. A **required** update stands out in the warning colour. Open
 the Admin page to install it in one click, as before.
@@ -20,7 +20,7 @@ the Admin page to install it in one click, as before.
 
 ### Describe your hi-fi chain with confidence
 
-Audiogravity draws the **Audio Pipeline** signal-path view from a file you own, `audio-topology.json` — your description of the hi-fi chain (which DAC, amplifier, speakers, and how they're wired). That file is now **checked when you edit it**: open the pipeline's **CONFIG** editor, and saving first validates your changes. A genuinely broken file (bad structure, an unknown device type) is refused with a clear reason; softer issues — an output pointing at a device that no longer exists, or a connector that matches none of the box's real outputs — are shown as warnings you can review and accept. The same check also runs quietly at startup.
+Audiogravi<sup>ty</sup> draws the **Audio Pipeline** signal-path view from a file you own, `audio-topology.json` — your description of the hi-fi chain (which DAC, amplifier, speakers, and how they're wired). That file is now **checked when you edit it**: open the pipeline's **CONFIG** editor, and saving first validates your changes. A genuinely broken file (bad structure, an unknown device type) is refused with a clear reason; softer issues — an output pointing at a device that no longer exists, or a connector that matches none of the box's real outputs — are shown as warnings you can review and accept. The same check also runs quietly at startup.
 
 You can now also **Download** the topology to your computer and **Upload** it back — handy for editing it offline or keeping a copy — with the same validation applied when you save. A fully-commented example file ships with the box to start from, and the user manual gains a dedicated section explaining what the topology is, how physical outputs are detected live from your hardware, and how to keep the map up to date.
 
@@ -30,7 +30,7 @@ You can now also **Download** the topology to your computer and **Upload** it ba
 
 ### License emails from your own domain, with the right sender
 
-Audiogravity's license server now sends its mail through a proper delivery provider with domain authentication (DKIM/SPF), so license keys and license files land reliably in customers' inboxes instead of spam. License deliveries and broadcast communications carry **distinct sender addresses** (for example `license@` for deliveries and `news@` for announcements), and every message can set a **Reply-To** (such as `support@`) so replies reach the right place. Everything is configurable from the admin SMTP panel.
+Audiogravi<sup>ty</sup>'s license server now sends its mail through a proper delivery provider with domain authentication (DKIM/SPF), so license keys and license files land reliably in customers' inboxes instead of spam. License deliveries and broadcast communications carry **distinct sender addresses** (for example `license@` for deliveries and `news@` for announcements), and every message can set a **Reply-To** (such as `support@`) so replies reach the right place. Everything is configurable from the admin SMTP panel.
 
 ### Large mailing campaigns send themselves, safely, over several days
 
@@ -38,9 +38,9 @@ Broadcast campaigns to your licence holders are no longer fired all at once. The
 
 ### More reliable physical output switching (USB / optical / HDMI)
 
-Switching the physical audio output no longer relies on a hand-written device map that could silently point at the wrong sound card after a reboot or a USB re-plug. Audiogravity now detects the real audio hardware and works out the correct output on the fly, so switching between USB, optical and — now also — HDMI outputs stays correct across reboots. The signal-path view's active-output indicator is corrected the same way. Your hi-fi chain description (which amplifier, speakers, cabling) remains yours to declare and edit — Audiogravity reads it, never overwrites it. And when a switch does not take, the Outputs panel now tells you instead of pretending it worked — it shows the reason and rolls back to the real state.
+Switching the physical audio output no longer relies on a hand-written device map that could silently point at the wrong sound card after a reboot or a USB re-plug. Audiogravi<sup>ty</sup> now detects the real audio hardware and works out the correct output on the fly, so switching between USB, optical and — now also — HDMI outputs stays correct across reboots. The signal-path view's active-output indicator is corrected the same way. Your hi-fi chain description (which amplifier, speakers, cabling) remains yours to declare and edit — Audiogravi<sup>ty</sup> reads it, never overwrites it. And when a switch does not take, the Outputs panel now tells you instead of pretending it worked — it shows the reason and rolls back to the real state.
 
-Better still, switching **MPD's** output is now **gapless**: Audiogravity flips the output over MPD's control socket instead of restarting the player, so there is no silence and a cast already playing keeps going on the new output. AirPlay can't be switched without restarting its receiver, so there the Outputs panel warns you first that it will interrupt any AirPlay playback in progress. (After updating an existing box, run "reset to minimal" once on the audio services so MPD picks up the new gapless switching; until then it keeps working the old way.)
+Better still, switching **MPD's** output is now **gapless**: Audiogravi<sup>ty</sup> flips the output over MPD's control socket instead of restarting the player, so there is no silence and a cast already playing keeps going on the new output. AirPlay can't be switched without restarting its receiver, so there the Outputs panel warns you first that it will interrupt any AirPlay playback in progress. (After updating an existing box, run "reset to minimal" once on the audio services so MPD picks up the new gapless switching; until then it keeps working the old way.)
 
 ### Tidier library search on small screens
 
@@ -50,9 +50,9 @@ The row of source-filter chips beneath the library search box now stays on one l
 
 ## 0.9.10 — 2026-07-06
 
-### Update Audiogravity in one click — no terminal needed
+### Update Audiogravi<sup>ty</sup> in one click — no terminal needed
 
-When a newer Audiogravity release is available, the **Admin** page now shows an update banner with the new version, a release-notes link, and a **required** badge when the update is critical. One click — a short confirmation (playback briefly stops) and your admin password — installs it: the box downloads the new version, swaps it in, checks it comes back up healthy on the **right version**, and shows live progress the whole way (downloading → installing → verifying), even across the restart. On a single-box setup, the same click also updates the web interface, so everything lands on the new version together.
+When a newer Audiogravi<sup>ty</sup> release is available, the **Admin** page now shows an update banner with the new version, a release-notes link, and a **required** badge when the update is critical. One click — a short confirmation (playback briefly stops) and your admin password — installs it: the box downloads the new version, swaps it in, checks it comes back up healthy on the **right version**, and shows live progress the whole way (downloading → installing → verifying), even across the restart. On a single-box setup, the same click also updates the web interface, so everything lands on the new version together.
 
 Safety first: if anything goes wrong, the box **automatically rolls back** to the previous version and tells you — you're never left on a broken update. The update runs on its own, detached from the app, so it survives the restart it triggers. There's no operating-system reboot; only a brief pause while the audio service restarts.
 
@@ -60,31 +60,31 @@ Under the hood the updater runs with tightly-scoped privileges (a locked-down, r
 
 ### HIGHRESAUDIO (HRA) — a new hi-res streaming source
 
-Audiogravity now streams from **HIGHRESAUDIO** (HRA-Streaming) through its official API, alongside Qobuz and Tidal. Connect from **Sources** with your HRA email and password; the app keeps the session alive on its own and re-logs in transparently when it expires. Your password is stored encrypted on the device.
+Audiogravi<sup>ty</sup> now streams from **HIGHRESAUDIO** (HRA-Streaming) through its official API, alongside Qobuz and Tidal. Connect from **Sources** with your HRA email and password; the app keeps the session alive on its own and re-logs in transparently when it expires. Your password is stored encrypted on the device.
 
 Once connected, Highresaudio appears as a library source with several curated views — **Favorites** (your saved albums), **Discover**, **Editor's Picks** and **Bestsellers** — plus full catalog **search**. Albums play on the local MPD output or on a connected UPnP renderer, and the now-playing screen shows an **HRA** source badge.
 
-HRA always delivers each album at its **native master resolution** (up to 24-bit / 352.8 kHz FLAC) — bit-perfect, with no quality downgrade. Note: HRA allows a single active device per account, so connecting Audiogravity signs you out of your other HRA players.
+HRA always delivers each album at its **native master resolution** (up to 24-bit / 352.8 kHz FLAC) — bit-perfect, with no quality downgrade. Note: HRA allows a single active device per account, so connecting Audiogravi<sup>ty</sup> signs you out of your other HRA players.
 
 ### More reliable transport controls when casting to a network player
 
 When you cast a streaming source (Qobuz, Tidal or HIGHRESAUDIO) to a UPnP renderer, the transport buttons (**next / previous / play-pause**) now talk to the player that actually holds the playlist. This fixes occasional failures on a manual *next* — an error, or the screen dropping to "Nothing playing" — even though tracks kept advancing on their own. Playback of your local library is unchanged.
 
-A related fix: a Qobuz or HIGHRESAUDIO track played to your **local output** used to fail after about an hour — the streaming link it queued expired. Queued tracks now carry a stable link that Audiogravity refreshes the moment the track actually plays, so a paused track, a long queue or a resumed session plays without a hitch (and without routing the audio through Audiogravity — it streams straight from the source).
+A related fix: a Qobuz or HIGHRESAUDIO track played to your **local output** used to fail after about an hour — the streaming link it queued expired. Queued tracks now carry a stable link that Audiogravi<sup>ty</sup> refreshes the moment the track actually plays, so a paused track, a long queue or a resumed session plays without a hitch (and without routing the audio through Audiogravi<sup>ty</sup> — it streams straight from the source).
 
 ### Your box's own renderer is shown, but not selectable
 
-Audiogravity advertises itself on the network as a UPnP renderer so other apps — a phone, a control point — can cast music *to* it. That self-entry now appears in the renderer list as a greyed-out **"This device · receives external casts"** row you can't select: playing on the box is exactly what the **Local DAC** output already does, so choosing the box's own renderer would be a pointless duplicate. Real network renderers (Marantz, Linn…) are unaffected. If a box had somehow been set to its own renderer, it falls back to the Local DAC on update — same sound, cleaner state.
+Audiogravi<sup>ty</sup> advertises itself on the network as a UPnP renderer so other apps — a phone, a control point — can cast music *to* it. That self-entry now appears in the renderer list as a greyed-out **"This device · receives external casts"** row you can't select: playing on the box is exactly what the **Local DAC** output already does, so choosing the box's own renderer would be a pointless duplicate. Real network renderers (Marantz, Linn…) are unaffected. If a box had somehow been set to its own renderer, it falls back to the Local DAC on update — same sound, cleaner state.
 
 ### Cast your local library to a network player
 
-Your **local music library** (NAS / USB files) can now be sent to a UPnP network player, just like Qobuz, Tidal or HIGHRESAUDIO. When a network player is your active output, playing a local album streams it to that player over your LAN — seekable, bit-perfect, no re-encoding. Playback on Audiogravity's own local output is untouched and stays direct. And the now-playing screen now shows the real source badge on a network player (**LIBRARY / QOBUZ / TIDAL / HRA**) instead of a generic **UPNP**.
+Your **local music library** (NAS / USB files) can now be sent to a UPnP network player, just like Qobuz, Tidal or HIGHRESAUDIO. When a network player is your active output, playing a local album streams it to that player over your LAN — seekable, bit-perfect, no re-encoding. Playback on Audiogravi<sup>ty</sup>'s own local output is untouched and stays direct. And the now-playing screen now shows the real source badge on a network player (**LIBRARY / QOBUZ / TIDAL / HRA**) instead of a generic **UPNP**.
 
 ### Set up and tune your audio services, guided
 
 Configuring the audio services (MPD, AirPlay, UPnP) is now guided end-to-end. On a **new box**, a single **Configure audio stack** button detects your DAC and music library and generates a minimal, bit-perfect working configuration for all three services — it asks for your admin password, then gets out of the way (the button disappears once the box is set up).
 
-Afterwards, each service opens in a **Guided** editor where you change its **audio output** or **music library** in a couple of clicks — only the setting you touch is rewritten, so any manual tweaks you made are preserved. Every service can target its **own output**: MPD on your USB hi-res DAC, AirPlay on the optical out, and so on. A **Reset to default** action regenerates a clean working config whenever you need it (your current file is backed up first), and each service tile shows a **CONFIGURED** badge once AudioGravity has set it up.
+Afterwards, each service opens in a **Guided** editor where you change its **audio output** or **music library** in a couple of clicks — only the setting you touch is rewritten, so any manual tweaks you made are preserved. Every service can target its **own output**: MPD on your USB hi-res DAC, AirPlay on the optical out, and so on. A **Reset to default** action regenerates a clean working config whenever you need it (your current file is backed up first), and each service tile shows a **CONFIGURED** badge once Audiogravi<sup>ty</sup> has set it up.
 
 Under the hood, when you configure a USB DAC the box pins its sound-card number at the system level, so Linux always gives that DAC the same number even after a reboot or a USB re-plug. The audio services therefore always open the right output — nothing to re-check at startup, no restart, and nothing to go stale. (Your own hand-made audio tweaks are left untouched.)
 
@@ -164,13 +164,13 @@ After a backend restart, the auto-reconnect now retries with exponential backoff
 
 ### Install on your home screen (Android / Chrome)
 
-On Android, Chrome will now offer a compact **Install** banner at the bottom of the screen when Audiogravity is eligible for installation as a standalone app. Tap **Install** to add it to your home screen — the app then opens full-screen without the browser chrome, exactly like a native app. Dismissing the banner suppresses it for 30 days.
+On Android, Chrome will now offer a compact **Install** banner at the bottom of the screen when Audiogravi<sup>ty</sup> is eligible for installation as a standalone app. Tap **Install** to add it to your home screen — the app then opens full-screen without the browser chrome, exactly like a native app. Dismissing the banner suppresses it for 30 days.
 
 On iPhone, use Safari's Share sheet → "Add to Home Screen" as before (iOS does not expose an install event to web apps).
 
 ### Player stays visible when offline
 
-If you lose your network connection while Audiogravity is open, the player now keeps showing the last known track and source instead of going blank. A small **Offline** label appears in the source row to make the stale state explicit.
+If you lose your network connection while Audiogravi<sup>ty</sup> is open, the player now keeps showing the last known track and source instead of going blank. A small **Offline** label appears in the source row to make the stale state explicit.
 
 On a cold reload (opening the app while offline), the last known player state is restored from local cache — so you can still see what was playing last, even without a live connection to the streamer.
 
@@ -211,7 +211,7 @@ AG can now control any UPnP/DLNA MediaRenderer on the local network (network amp
 
 ### Cover art when playing via upmpdcli
 
-When an external UPnP control point (BubbleUPnP, Kazoo, Linn app…) pushes music or radio to your streamer via upmpdcli, Audiogravity now displays the correct cover art — including radio station logos — by querying upmpdcli's AVTransport directly to retrieve the artwork the controller originally sent.
+When an external UPnP control point (BubbleUPnP, Kazoo, Linn app…) pushes music or radio to your streamer via upmpdcli, Audiogravi<sup>ty</sup> now displays the correct cover art — including radio station logos — by querying upmpdcli's AVTransport directly to retrieve the artwork the controller originally sent.
 
 ### HQPlayer — accurate connection status
 
@@ -239,11 +239,11 @@ The fullscreen player's format strip now displays a bitrate for every source and
 - **TIDAL** — exact bitrate read from the DASH manifest, available from the very first second of playback (no more `—` during stream warm-up).
 - **Roon / AirPlay** — PCM-equivalent computed from bit depth × sample rate × 2 ch (e.g. 24bit/96kHz → 4608 kbps).
 
-### Communications from Audiogravity
+### Communications from Audiogravi<sup>ty</sup>
 
 Two new channels so you never miss important news about the product.
 
-**In-app announcements** — When Audiogravity publishes a notice (new version, maintenance window, special offer), a 🔔 bell appears on your Admin tab. Open it to see the message as a dismissable banner. Dismissal is stored locally — the banner won't come back. Notices are fetched passively during the regular 24 h licence check-in; no additional data is collected.
+**In-app announcements** — When Audiogravi<sup>ty</sup> publishes a notice (new version, maintenance window, special offer), a 🔔 bell appears on your Admin tab. Open it to see the message as a dismissable banner. Dismissal is stored locally — the banner won't come back. Notices are fetched passively during the regular 24 h licence check-in; no additional data is collected.
 
 **Email** — Important communications (release announcements, early-access offers) are sent to the email address associated with your licence. Every message includes a one-click unsubscribe link — no account required.
 
@@ -444,7 +444,7 @@ detection, race conditions corrupting saved volume state. 10 unit tests added.
 
 ### ARM64 as First-Class Target
 
-Audiogravity now installs and runs on aarch64 (Raspberry Pi 4 / Debian)
+Audiogravi<sup>ty</sup> now installs and runs on aarch64 (Raspberry Pi 4 / Debian)
 alongside x86/DietPi. Backend, frontend, license server, and audio-software
 installs validated end-to-end on both architectures.
 

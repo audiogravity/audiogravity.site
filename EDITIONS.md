@@ -1,6 +1,6 @@
-# Editions / Plans — Audiogravity
+# Editions / Plans — Audiogravi<sup>ty</sup>
 
-Audiogravity is available in three tiers: a **30-day trial** with full access,
+Audiogravi<sup>ty</sup> is available in three tiers: a **30-day trial** with full access,
 a free **Starter Edition** that activates automatically when the trial ends,
 and a **Pro License** — a one-time purchase that permanently unlocks all features.
 
@@ -91,4 +91,4 @@ Everything in Starter, plus:
 
 ---
 
-*© 2026 Audiogravity — contact@audiogravity.app*
+*© 2026 Audiogravi<sup>ty</sup> — contact@audiogravity.app*

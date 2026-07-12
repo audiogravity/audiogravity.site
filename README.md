@@ -206,7 +206,14 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 4. Open from home screen — runs fullscreen
 </details>
 
-## The AudioGravity ecosystem
+## The Audiogravi<sup>ty</sup> ecosystem
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/pics/audiogravity-dark.svg">
+    <img src="assets/pics/audiogravity.svg" width="320" alt="Audiogravity wordmark" />
+  </picture>
+</p>
 
 Three components, three official logos:
 

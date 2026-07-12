@@ -1,9 +1,9 @@
-# End-User License Agreement (EULA) — Audiogravity
+# End-User License Agreement (EULA) — Audiogravi<sup>ty</sup>
 
 By downloading, installing, or using this software, you agree to the following terms.
 If you do not accept them, you must not install or use the software.
 
-**"Software"** — Audiogravity and all its components.
+**"Software"** — Audiogravi<sup>ty</sup> and all its components.
 **"Starter Edition"** — the free tier activated after trial expiry.
 **"Pro License"** — the paid, perpetual single-machine license.
 **"License File"** — the cryptographically signed `.lic` file bound to your device.
@@ -14,7 +14,7 @@ If you do not accept them, you must not install or use the software.
 ## 1. Ownership
 
 The Software is licensed, not sold. All title, copyright, and intellectual property rights
-remain the exclusive property of the Licensor (Audiogravity).
+remain the exclusive property of the Licensor (Audiogravi<sup>ty</sup>).
 
 ## 2. Grant of License
 
@@ -56,4 +56,4 @@ All rights not expressly granted are reserved by the Licensor.
 
 ---
 
-*© 2026 Audiogravity — contact@audiogravity.app*
+*© 2026 Audiogravi<sup>ty</sup> — contact@audiogravity.app*

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.13 — 2026-07-12
+
 ### Spot a waiting update from the tab bar
 
 The Admin tab now carries a small download marker whenever a newer Audiogravi<sup>ty</sup>

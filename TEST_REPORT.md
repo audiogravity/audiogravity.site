@@ -1,14 +1,14 @@
 # Audiogravity — Test Report
 
-Generated: **2026-07-10 21:46 UTC**
+Generated: **2026-07-12 11:23 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **core** PASS | 1069 | 1069 | 0 | 0 | 37.2s |
-| **ui** PASS | 388 | 388 | 0 | 0 | 0.8s |
-| **Total** PASS | **1457** | **1457** | **0** | **0** | **38.0s** |
+| **core** PASS | 1076 | 1076 | 0 | 0 | 40.0s |
+| **ui** PASS | 405 | 405 | 0 | 0 | 0.9s |
+| **Total** PASS | **1481** | **1481** | **0** | **0** | **40.9s** |
 
 ## Detail
 
@@ -76,7 +76,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_audio_app_config.TestRunCommandTimeout**
 
-  - [+] test_timeout_kills_hanging_process (1.00s)
+  - [+] test_timeout_kills_hanging_process (1.01s)
   - [+] test_successful_command_returns_output
 
 **tests.test_audio_app_config.TestListBackupsTotalCount**
@@ -156,7 +156,7 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] test_devices_returns_200
   - [+] test_devices_response_shape
   - [+] test_devices_returns_empty_when_no_proc
-  - [+] test_force_refresh_param_accepted (0.01s)
+  - [+] test_force_refresh_param_accepted
   - [+] test_mock_route_via_conftest_fixture
 
 **tests.test_audio_hw.TestClassifyOutputType**
@@ -216,7 +216,7 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_audio_pipeline.TestAudioPipeline**
 
   - [+] test_now_playing (0.02s)
-  - [+] test_control (0.01s)
+  - [+] test_control (0.02s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
@@ -296,10 +296,10 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] test_provision_initial_requires_valid_password (0.01s)
   - [+] test_provision_wrong_password_returns_401 (0.01s)
   - [+] test_provision_missing_password_returns_401 (0.01s)
-  - [+] test_provision_regenerate_missing_password_returns_401 (0.02s)
-  - [+] test_provision_passes_library_usb_fields (0.04s)
+  - [+] test_provision_regenerate_missing_password_returns_401 (0.01s)
+  - [+] test_provision_passes_library_usb_fields (0.02s)
   - [+] test_provision_value_error_returns_400 (0.01s)
-  - [+] test_provision_missing_card_name_returns_422 (0.02s)
+  - [+] test_provision_missing_card_name_returns_422 (0.01s)
   - [+] test_patch_output_200_no_password_required (0.01s)
   - [+] test_patch_output_missing_card_name_returns_422 (0.01s)
   - [+] test_patch_output_value_error_returns_400 (0.01s)
@@ -308,34 +308,34 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_auth.TestLogin**
 
   - [+] test_login_valid (0.38s)
-  - [+] test_login_wrong_password (0.38s)
+  - [+] test_login_wrong_password (0.40s)
   - [+] test_login_unknown_user (0.38s)
 
 **tests.test_auth.TestUsersCRUD**
 
   - [+] test_list_users (0.02s)
   - [+] test_create_and_delete_user (0.39s)
-  - [+] test_update_user_role (0.40s)
+  - [+] test_update_user_role (0.39s)
   - [+] test_cannot_delete_self (0.02s)
 
 **tests.test_auth.TestProtectedFlag**
 
   - [+] test_user_model_has_protected_field
-  - [+] test_create_user_accepts_protected_flag (0.36s)
-  - [+] test_unprotected_user_has_protected_false_by_default (0.36s)
-  - [+] test_delete_guard_rejects_protected (0.36s)
+  - [+] test_create_user_accepts_protected_flag (0.38s)
+  - [+] test_unprotected_user_has_protected_false_by_default (0.39s)
+  - [+] test_delete_guard_rejects_protected (0.37s)
   - [+] test_update_disable_guard_rejects_protected (0.37s)
-  - [+] test_cannot_delete_self (0.02s)
+  - [+] test_cannot_delete_self (0.03s)
   - [+] test_unprotected_account_can_be_deleted (0.39s)
   - [+] test_unprotected_account_can_be_disabled (0.39s)
 
 **tests.test_auth.TestCreateUserReturns201**
 
-  - [+] test_create_user_returns_201 (0.40s)
+  - [+] test_create_user_returns_201 (0.38s)
 
 **tests.test_auth.TestUpdateUserEmptyPassword**
 
-  - [+] test_short_password_rejected_by_pydantic (0.38s)
+  - [+] test_short_password_rejected_by_pydantic (0.40s)
   - [+] test_whitespace_only_password_rejected (0.39s)
 
 **tests.test_auth.TestDisabledUserLogin**
@@ -349,11 +349,11 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_auth.TestCreateUserWhitespacePassword**
 
   - [+] test_whitespace_only_password_rejected_on_create (0.02s)
-  - [+] test_normal_password_accepted_on_create (0.38s)
+  - [+] test_normal_password_accepted_on_create (0.39s)
 
 **tests.test_auth.TestDisabledUserTimingOracle**
 
-  - [+] test_disabled_user_returns_401 (0.75s)
+  - [+] test_disabled_user_returns_401 (0.77s)
 
 **tests.test_auth.TestWebAuthnChallengeIsolation**
 
@@ -362,7 +362,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_auth.TestUpdateUserReturnsUpdatedState**
 
-  - [+] test_update_returns_new_role (0.38s)
+  - [+] test_update_returns_new_role (0.39s)
 
 **tests.test_auth.TestVerifyAdminPassword**
 
@@ -452,7 +452,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_core.TestRoonDisconnectTimeout**
 
-  - [+] test_disconnect_timeout_does_not_raise
+  - [+] test_disconnect_timeout_does_not_raise (0.01s)
   - [+] test_disconnect_clears_state_on_exception
 
 **tests.test_core.TestRoonServiceGating**
@@ -596,6 +596,17 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] test_single_track_resolves_metadata_once_and_enqueues_proxy
   - [+] test_rejects_unsupported_item_type
 
+**tests.test_highresaudio_library.TestHraArtistAlbums**
+
+  - [+] test_quicksearch_by_name_keeps_only_exact_artist_albums
+  - [+] test_searches_leading_token_but_filters_full_name
+  - [+] test_short_name_returns_empty_without_calling_api
+  - [+] test_nonzero_offset_returns_empty
+
+**tests.test_highresaudio_library.TestHraSearchArtistId**
+
+  - [+] test_artist_result_id_is_name
+
 **tests.test_hqplayer.TestHQPlayer**
 
   - [+] test_status (0.04s)
@@ -613,7 +624,7 @@ Generated: **2026-07-10 21:46 UTC**
 
   - [+] test_invalid_item_type_returns_422 (0.03s)
   - [+] test_invalid_action_returns_422 (0.03s)
-  - [+] test_valid_item_type_accepted (0.04s)
+  - [+] test_valid_item_type_accepted (0.03s)
 
 **tests.test_hqplayer.TestHQPlayerHasDspConfig**
 
@@ -654,7 +665,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_hqplayer.TestNaaAvailableInConnection**
 
-  - [+] test_naa_available_true_when_service_active (0.03s)
+  - [+] test_naa_available_true_when_service_active (0.04s)
   - [+] test_naa_available_false_when_service_inactive (0.04s)
 
 **tests.test_hqplayer.TestHQPlayerPlayValidation**
@@ -679,7 +690,7 @@ Generated: **2026-07-10 21:46 UTC**
 
   - [+] test_upnp_known_servers_route_exists (0.07s)
   - [+] test_search_route_exists (0.07s)
-  - [+] test_queue_route_exists (0.07s)
+  - [+] test_queue_route_exists (0.09s)
 
 **tests.test_library.TestUpnpSearchTrackId**
 
@@ -701,8 +712,8 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_library.TestUpnpQueueRouting**
 
-  - [+] test_upnp_source_routes_to_upnp_queue (0.07s)
-  - [+] test_mpd_source_still_routes_to_mpd_queue (0.07s)
+  - [+] test_upnp_source_routes_to_upnp_queue (0.08s)
+  - [+] test_mpd_source_still_routes_to_mpd_queue (0.10s)
 
 **tests.test_library.TestQueueRequestValidation**
 
@@ -797,11 +808,11 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_library_files.TestStreamEndpoint**
 
   - [+] test_full_get_returns_all_bytes (0.07s)
-  - [+] test_range_returns_206_partial (0.19s)
+  - [+] test_range_returns_206_partial (0.17s)
   - [+] test_head_returns_headers_no_body (0.07s)
-  - [+] test_bad_signature_rejected (0.06s)
-  - [+] test_missing_signature_rejected (0.06s)
-  - [+] test_missing_file_returns_404 (0.08s)
+  - [+] test_bad_signature_rejected (0.07s)
+  - [+] test_missing_signature_rejected (0.07s)
+  - [+] test_missing_file_returns_404 (0.07s)
 
 **tests.test_library_files.TestLibraryCoverEndpoint**
 
@@ -813,15 +824,15 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_license.TestGetStatus**
 
   - [+] test_no_license (0.05s)
-  - [+] test_valid_lifetime_license (0.04s)
-  - [+] test_beta_version_accepts_v1_scope (0.05s)
+  - [+] test_valid_lifetime_license (0.05s)
+  - [+] test_beta_version_accepts_v1_scope (2.06s)
   - [+] test_version_expired (0.04s)
-  - [+] test_tampered_license (0.07s)
+  - [+] test_tampered_license (0.05s)
 
 **tests.test_license.TestUploadLicense**
 
-  - [+] test_upload_valid_lic (0.10s)
-  - [+] test_upload_invalid_signature (0.04s)
+  - [+] test_upload_valid_lic (0.05s)
+  - [+] test_upload_invalid_signature (0.01s)
 
 **tests.test_license.TestDeleteLicense**
 
@@ -1013,7 +1024,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (7.92s)
+  - [+] test_runs_standalone_without_package_context (8.09s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -1182,7 +1193,7 @@ Generated: **2026-07-10 21:46 UTC**
 
   - [+] test_returns_mpd_and_renderer_outputs (0.02s)
   - [+] test_local_active_true_when_no_renderer (0.02s)
-  - [+] test_local_active_false_when_renderer_reachable (0.03s)
+  - [+] test_local_active_false_when_renderer_reachable (0.02s)
   - [+] test_local_active_true_when_renderer_not_reachable (0.02s)
 
 **tests.test_player.TestSelectMpdOutput**
@@ -1260,7 +1271,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.08s)
+  - [+] test_script_produces_valid_keys (0.10s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -1332,7 +1343,7 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] test_delete_connection
   - [+] test_get_connection_after_disconnect
   - [+] test_stream_redirect_mode_returns_302_to_cdn (0.01s)
-  - [+] test_oauth_callback_no_code
+  - [+] test_oauth_callback_no_code (0.01s)
   - [+] test_oauth_callback_with_code (0.01s)
   - [+] test_oauth_callback_failure
   - [+] test_post_connection_starts_oauth (0.01s)
@@ -1369,6 +1380,7 @@ Generated: **2026-07-10 21:46 UTC**
 
   - [+] test_returns_url_token
   - [+] test_returns_none_when_no_image
+  - [+] test_returns_none_when_image_is_null
   - [+] test_returns_none_when_no_size
   - [+] test_respects_size_param
 
@@ -1485,7 +1497,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_renderer_manager.TestDisconnect**
 
-  - [+] test_disconnect_raises_for_unknown_udn (0.13s)
+  - [+] test_disconnect_raises_for_unknown_udn (0.11s)
   - [+] test_disconnect_clears_active_udn
   - [+] test_disconnect_keeps_renderer_in_known
 
@@ -1529,14 +1541,14 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_services.TestServiceActions**
 
   - [+] test_restart_service (0.04s)
-  - [+] test_stop_service (0.05s)
+  - [+] test_stop_service (0.04s)
   - [+] test_start_service (0.04s)
 
 **tests.test_services.TestServiceNameValidation**
 
   - [+] test_valid_name_accepted (0.03s)
   - [+] test_semicolon_rejected (0.03s)
-  - [+] test_slash_rejected (0.04s)
+  - [+] test_slash_rejected (0.03s)
   - [+] test_ampersand_rejected (0.05s)
 
 **tests.test_services.TestEnumComparison**
@@ -1651,7 +1663,7 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_sysinfo.TestSysinfoGrepPatternValidation**
 
   - [+] test_invalid_regex_returns_400 (0.02s)
-  - [+] test_valid_regex_accepted (0.11s)
+  - [+] test_valid_regex_accepted (0.42s)
 
 **tests.test_sysinfo.TestSysinfoSyslogIdentifierFormat**
 
@@ -1659,7 +1671,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **tests.test_sysinfo.TestTemperaturePushAlert**
 
-  - [+] test_cooldown_not_updated_when_push_raises
+  - [+] test_cooldown_not_updated_when_push_raises (0.01s)
   - [+] test_cooldown_below_threshold_no_alert
   - [+] test_cooldown_prevents_second_alert_within_15min
   - [+] test_alert_allowed_after_cooldown_elapsed
@@ -1767,6 +1779,10 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] test_returns_none_for_empty_string
   - [+] test_returns_url_for_valid_uuid
 
+**tests.test_tidal_library.TestTidalArtistAlbums**
+
+  - [+] test_hits_artist_endpoint_and_maps
+
 **tests.test_upmpdcli_cover.TestParseAvtUrl**
 
   - [+] test_returns_control_url_for_avt_service
@@ -1854,7 +1870,7 @@ Generated: **2026-07-10 21:46 UTC**
 **tests.test_upnp_renderer.TestRendererRouterEndpoints**
 
   - [+] test_discover_route_exists (0.04s)
-  - [+] test_known_route_exists (0.04s)
+  - [+] test_known_route_exists (0.05s)
   - [+] test_connection_route_exists (0.03s)
   - [+] test_status_route_exists (0.04s)
   - [+] test_notify_route_exists (0.03s)
@@ -2051,7 +2067,7 @@ Generated: **2026-07-10 21:46 UTC**
 
 **js/push-manager.test.js**
 
-  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.19s)
+  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.20s)
   - [+] push-manager unsubscribe (Fix P3) > passes endpoint as query param in the URL
   - [+] push-manager unsubscribe (Fix P3) > URLSearchParams encodes the endpoint correctly
 
@@ -2073,11 +2089,11 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] validation.js > validateAudioConfig > posts the config to the audio-config validation route
   - [+] validation.js > validateTopologyConfig > posts the topology to the topology validation route
   - [+] validation.js > validateTopologyConfig > returns the validation response verbatim (errors + warnings)
-  - [+] validation.js > validateTopologyConfig > rethrows when the API call fails
+  - [+] validation.js > validateTopologyConfig > rethrows when the API call fails (0.01s)
 
 **js/version.test.js**
 
-  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.12)
+  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.13)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > js/core/config.js UI_VERSION matches VERSION (UI display)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > sw.js CACHE_NAME matches VERSION (PWA cache busting)
 
@@ -2216,6 +2232,21 @@ Generated: **2026-07-10 21:46 UTC**
 
   - [+] _select > sets selected to the candidate hw and emits output-select with the candidate
 
+**js/components/molecules/ag-rt-monitor.test.js**
+
+  - [+] ag-rt-monitor — _load array coercion > keeps an array response as-is
+  - [+] ag-rt-monitor — _load array coercion > coerces an undefined response to [] (no .map crash)
+  - [+] ag-rt-monitor — _load array coercion > coerces a non-array object response to []
+  - [+] ag-rt-monitor — _load array coercion > leaves _processes an array and records the error when apiGet throws
+
+**js/components/molecules/ag-tabs.test.js**
+
+  - [+] ag-tabs — drag transform cleanup > _clearDragTransform > removes the inline transform from the sidebar and the toggle button
+  - [+] ag-tabs — drag transform cleanup > _clearDragTransform > also resets the config modal when present
+  - [+] ag-tabs — drag transform cleanup > _clearDragTransform > is safe when the toggle button is not present
+  - [+] ag-tabs — drag transform cleanup > _handleTouchMove — edge-swipe turned vertical > clears the inline transform instead of leaving it stuck
+  - [+] ag-tabs — drag transform cleanup > _handleTouchEnd — ends with no active/opening drag > clears any orphaned transform before the early return
+
 **js/components/molecules/ag-update-banner.test.js**
 
   - [+] ag-update-banner — isUpdateAvailable > is false for null / undefined / empty
@@ -2226,6 +2257,9 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] ag-update-banner — updatePhaseLabel > falls back to a generic label for unknown/empty phases
   - [+] ag-update-banner — terminal phases > treats done/rolled_back/failed as terminal
   - [+] ag-update-banner — terminal phases > does not treat in-progress phases as terminal
+  - [+] ag-update-banner — _emitBadge (update-badge event) > emits available:true for an available update, clearing on none
+  - [+] ag-update-banner — _emitBadge (update-badge event) > flags a mandatory update
+  - [+] ag-update-banner — _emitBadge (update-badge event) > emits available:false when available but latest is missing
 
 **js/components/molecules/ag-upnp-renderer-card.test.js**
 
@@ -2337,6 +2371,14 @@ Generated: **2026-07-10 21:46 UTC**
   - [+] ag-json-config-modal file transfer > _handleFileSelected > loads the file content into the editor and enters edit mode
   - [+] ag-json-config-modal file transfer > _handleFileSelected > does nothing when no file is picked
   - [+] ag-json-config-modal file transfer > _handleFileSelected > surfaces a read error without throwing
+
+**js/components/organisms/ag-library-browse.test.js**
+
+  - [+] ag-library-browse — artist drill-down > _fetchPage hits /library/albums?artist_id=… when an artist is set
+  - [+] ag-library-browse — artist drill-down > _fetchPage bypasses the streaming pill routing in artist mode (Tidal)
+  - [+] ag-library-browse — artist drill-down > _fetchPage carries the name-as-id for HRA (name-based backend)
+  - [+] ag-library-browse — artist drill-down > _sectionLabel shows "Albums by <name>" in artist mode
+  - [+] ag-library-browse — artist drill-down > _sectionLabel falls back to "artist" when the name is missing
 
 **js/components/organisms/ag-library-outputs.test.js**
 

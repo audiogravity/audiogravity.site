@@ -14,6 +14,21 @@ release is available for your box — the same at-a-glance cue the tab already g
 for new announcements. A **required** update stands out in the warning colour. Open
 the Admin page to install it in one click, as before.
 
+### Tap an artist in search to see their albums
+
+Searching your library and tapping an **artist** now opens that artist's albums —
+across your local library, **Qobuz**, **Tidal** and **HIGHRESAUDIO** — with a back
+control to return to browsing. Previously an artist row tried (and failed) to queue,
+since an artist isn't something you can play directly; now it's a proper way in to
+their discography.
+
+### Qobuz search works again
+
+Qobuz library search had begun returning an error for **every** query — an empty
+image field coming back from Qobuz was enough to break the whole search. Fixed:
+searches with missing artwork, compilation credits or other absent fields now come
+back cleanly.
+
 ---
 
 ## 0.9.12 — 2026-07-10

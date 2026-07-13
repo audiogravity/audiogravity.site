@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.16] - 2026-07-13
+
 ### Added
 - **[core + ui] Add or remove favorites for Qobuz, Tidal and HIGHRESAUDIO albums.** A star toggle on streaming album cards (browse grid) and search rows adds/removes the album to your account's favorites on that service. The star shows the accurate state (filled when already a favorite), updates instantly (optimistic, reverts if the service call fails), and stays in sync across the browse and search views. New backend routes `POST`/`DELETE /library/favorite` and `GET /library/favorite-ids` dispatch to each service's favorites API (Qobuz `favorite/create|delete`, Tidal `favorites`, HRA `MyAlbum`).
 - **[core + ui] Swipe a queue row left to remove it.** Up-next tracks can now be removed with a left-swipe (in addition to the Remove button), on the queue and — through the same shared gesture — the radio, UPnP-server and UPnP-renderer lists. Removal is keyed on the stable MPD song id (`deleteid` / `QueueItem.queue_id`), so it is reindex-safe: the intended track is always the one removed, even if the queue reordered. Internally the four previously hand-copied swipe implementations are unified into one shared controller + Lit directive.

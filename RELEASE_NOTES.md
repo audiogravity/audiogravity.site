@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.16 — 2026-07-13
+
 ### Favorite your streaming albums
 
 You can now star a Qobuz, Tidal or HIGHRESAUDIO album to add it to your favorites

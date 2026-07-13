@@ -2322,6 +2322,21 @@ footer {
     color: #fff
 }
 
+/* "Made with care" + the Made-in-EU badge, kept inline and baseline-aligned
+   with the surrounding footer text. */
+.footer-made {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px
+}
+
+.footer-made img {
+    height: 24px;
+    width: auto;
+    border-radius: 3px;
+    display: block
+}
+
 /* FAQ */
 .faq { max-width: 720px; margin: 0 auto; }
 

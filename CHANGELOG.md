@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.15] - 2026-07-13
+
 ### Added
 - **[ui] An in-app user manual.** A new **Manual** entry at the end of the tab bar (far right in the horizontal layout, bottom in the vertical sidebar) opens a full-screen reader: a chapter sidebar plus a reading pane that fetches the Markdown manual published at audiogravity.app and renders it in place. The Markdown renderer (`marked`) is lazy-loaded on first open, so it adds nothing to the app's startup. Links inside the manual never navigate the app away — chapter links switch chapters in the reader, in-page anchors scroll, and external/other-doc links open in a new tab (and resolve correctly for middle-click / "copy link address"). The manual base URL is repointable per box via `AG_CONFIG.manualBase`.
 - **[site] A "Made in EU" badge and a manual link in the landing footer.** The footer now shows a *Made in EU* badge after "Made with care". The **Resources** column drops the redundant "Landing" link, leads with *Releases*, and adds a **User manual** link to the GitHub-rendered manual.

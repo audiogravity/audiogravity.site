@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.15 — 2026-07-13
+
 ### Read the user manual without leaving Audiogravi<sup>ty</sup>
 
 A new **Manual** button in the tab bar opens the full user manual right inside the

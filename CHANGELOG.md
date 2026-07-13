@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[ui] A portrait orientation lock.** A new **Portrait Lock** switch in Settings (on by default, phones + tablets) keeps Audiogravi<sup>ty</sup> in portrait. On Android the installed PWA is locked via the web app manifest; on iOS — which has no orientation-lock API — a full-screen "Rotate your device" overlay blocks landscape, with a *Continue in landscape* escape that turns the lock off (so a device physically fixed in landscape is never stranded). Desktop/mouse installs are unaffected (the toggle and the OS lock are scoped to touch devices), and the overlay marks the rest of the app `inert` while shown so keyboard / assistive tech can't reach the hidden UI behind it.
+
 ## [0.9.15] - 2026-07-13
 
 ### Added

@@ -7,7 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Keep the app in portrait
+
+Audiogravi<sup>ty</sup> now stays in portrait by default on phones and tablets. A new
+**Portrait Lock** switch in Settings turns it off if you prefer landscape, and on a
+device you can't rotate a *Continue in landscape* button on the rotate screen lets
+you carry on. Desktop installs are unaffected.
 
 ---
 

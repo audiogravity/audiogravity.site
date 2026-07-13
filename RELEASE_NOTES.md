@@ -7,7 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Read the user manual without leaving Audiogravi<sup>ty</sup>
+
+A new **Manual** button in the tab bar opens the full user manual right inside the
+app — a chapter list on the side, the page on the right. It always shows the latest
+published manual, and links between chapters work in place without losing your spot.
+
+### The queue shows what you are actually playing
+
+Playing internet radio while browsing your library used to label the queue "Queue of
+Local Library" with no artwork, because radio (like Qobuz or Tidal) rides the same
+playback engine as your local files. The queue now reads by the real source —
+"Radio" — and shows the station's logo.
 
 ---
 

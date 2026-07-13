@@ -9,7 +9,16 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
-_Nothing yet._
+### Added
+- **[ui] An in-app user manual.** A new **Manual** entry at the end of the tab bar (far right in the horizontal layout, bottom in the vertical sidebar) opens a full-screen reader: a chapter sidebar plus a reading pane that fetches the Markdown manual published at audiogravity.app and renders it in place. The Markdown renderer (`marked`) is lazy-loaded on first open, so it adds nothing to the app's startup. Links inside the manual never navigate the app away — chapter links switch chapters in the reader, in-page anchors scroll, and external/other-doc links open in a new tab (and resolve correctly for middle-click / "copy link address"). The manual base URL is repointable per box via `AG_CONFIG.manualBase`.
+- **[site] A "Made in EU" badge and a manual link in the landing footer.** The footer now shows a *Made in EU* badge after "Made with care". The **Resources** column drops the redundant "Landing" link, leads with *Releases*, and adds a **User manual** link to the GitHub-rendered manual.
+
+### Fixed
+- **[core + ui] The playback queue is labelled by what is actually playing, not the transport engine.** Radio, Qobuz, Tidal and HIGHRESAUDIO all play over the MPD *engine*, so a radio stream queued from the library showed the header "Queue of Local Library" with a missing cover. Queue items now carry the stream `origin` (`GET /library/queue` gains an `origin` field, mirroring now-playing), so the header reads by the real source (e.g. "Radio") and a recognised radio stream uses the station logo as its cover.
+- **[core] A stuck "update already in progress" no longer blocks the self-update.** `is_in_progress()` judged staleness from `started_at`, which the detached shell updater never writes (it only refreshes `updated_at`), so a killed update could leave the state file reading "installing" forever and every later update returned "An update is already in progress". Staleness now anchors on `updated_at` (the shell's heartbeat) with a `started_at` fallback, so a dead update self-recovers after the stale window. Recovery is documented in the manual (Troubleshooting).
+- **[ui] The admin *About licensing* info modal opens again.** Its handler still called a helper removed by an earlier XSS-hardening refactor and threw; it now builds the modal content as a Lit template.
+- **[ui] Loading spinners keep animating with reduced-motion (or animations off).** The global motion-reduction rules froze every animation, including functional loaders — so a real operation (e.g. a self-update) looked stuck. The icon spinner (`.ag-spin`) and the CSS loader (`.spinner`) are now exempted.
+- **[ops] The core service is packaged with `NotifyAccess=main`.** With `NotifyAccess=all`, a stray `sd_notify(ERRNO=…)` from any child that inherited `$NOTIFY_SOCKET` could leak into the unit's status and surface as a misleading "Error: code: N" in `systemctl status`.
 
 ## [0.9.14] - 2026-07-12
 

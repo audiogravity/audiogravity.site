@@ -7,6 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### See your streaming queue — and where each track comes from
+
+Selecting a Qobuz, Tidal or HIGHRESAUDIO album now fills the Queue with its tracks,
+titles and all — where before it looked empty (those services play through the same
+engine as your local library, and the queue simply wasn't reading them back). Titles
+stick around across a restart, too.
+
+When a queue mixes sources — say a radio station followed by a Qobuz album — each
+upcoming track shows a small badge telling you where it comes from, and a filter lets
+you show just one source at a time. Filtering only changes what you see; nothing moves
+or stops playing, and the current track always stays in view.
+
 ### Keep the app in portrait
 
 Audiogravi<sup>ty</sup> now stays in portrait by default on phones and tablets. A new

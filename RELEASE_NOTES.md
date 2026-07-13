@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Favorite your streaming albums
+
+You can now star a Qobuz, Tidal or HIGHRESAUDIO album to add it to your favorites
+on that service — straight from the browse grid or search, with one tap. The star
+shows whether an album is already a favorite and updates instantly.
+
 ### Swipe to remove
 
 You can now swipe a queued track to the left to remove it — the same familiar gesture

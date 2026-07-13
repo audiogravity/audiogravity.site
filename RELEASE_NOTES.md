@@ -7,6 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Swipe to remove
+
+You can now swipe a queued track to the left to remove it — the same familiar gesture
+already used for radio stations and UPnP devices, now on the Queue too (the Remove
+button stays if you prefer it). It always removes the track you swiped, even if the
+queue has since reordered.
+
 ### See your streaming queue — and where each track comes from
 
 Selecting a Qobuz, Tidal or HIGHRESAUDIO album now fills the Queue with its tracks,

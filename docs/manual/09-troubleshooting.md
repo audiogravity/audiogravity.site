@@ -56,6 +56,22 @@ Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a r
 The interface and core are on different versions — update the other component. See
 [8. Updating](08-updating.md).
 
+## "Update failed to start — An update is already in progress"
+
+A previous update was interrupted (power loss, reboot, or a crash mid-install) and
+left a stale "in progress" marker, so the core refuses to start a new one.
+
+- **No action needed in most cases** — the core treats a stuck update as dead after
+  **15 minutes** and frees the lock automatically. Wait, then retry from the update
+  banner.
+- **To unblock immediately**, an admin can clear the marker from the Terminal and retry:
+  ```bash
+  sudo rm -f /etc/audiogravity/self-update.state
+  ```
+  This only resets the *status* flag; it does not touch the installed version. Check
+  the current versions afterwards (App title / login screen) — if the core moved but
+  the interface did not, re-run the interface installer (see [8. Updating](08-updating.md)).
+
 ## Getting help
 
 - **Bug reports & questions** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues).

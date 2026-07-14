@@ -10,6 +10,7 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[ui] Swiping in from the right edge to open Settings no longer also deletes a queue track.** On the queue (and the other swipe lists), a right-edge swipe to open the settings panel could simultaneously trigger a row's swipe-to-remove and delete an item. A touch gesture that starts in the screen-edge band is now reserved for the panel-open swipes (Settings from the right, sidebar from the left), so it opens the panel only; a mouse drag is unaffected. The reserved-band width is shared between the tab-swipe and the row-swipe guards so it can't drift.
 - **[ui] iOS Safari no longer zooms in when you tap a text field (login and throughout the app).** Per-component field styling (14px) was overriding the rule that keeps mobile fields at 16px to prevent the zoom; the anti-zoom rule now takes precedence, so iOS stops auto-zooming on focus.
 - **[ui] The self-update banner no longer renders the product name as "Audiogravi ty".** A flex layout on the "Updating…" title split the superscript with a gap; the title is kept inline again.
 

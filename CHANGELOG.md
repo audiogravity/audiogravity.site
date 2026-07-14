@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] iOS Safari no longer zooms in when you tap a text field (login and throughout the app).** Per-component field styling (14px) was overriding the rule that keeps mobile fields at 16px to prevent the zoom; the anti-zoom rule now takes precedence, so iOS stops auto-zooming on focus.
+- **[ui] The self-update banner no longer renders the product name as "Audiogravi ty".** A flex layout on the "Updating…" title split the superscript with a gap; the title is kept inline again.
+
 ## [0.9.16] - 2026-07-13
 
 ### Added

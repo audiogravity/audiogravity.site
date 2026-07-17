@@ -23,6 +23,38 @@ effect immediately on current sessions.
 persistent (stay logged in across browser restarts) or session-only (log out when
 the tab closes). Takes effect on your next login.
 
+## The Settings panel
+
+The **gear** in the top bar opens the app-wide Settings panel:
+
+- **Export / Import Configuration** — download or replace `audio-config.json`, the
+  services-and-profiles registry (see *Audio configuration* below).
+- **API Key** — the key this interface uses to talk to the core. It is set for you at
+  install time; the field (with a reveal button) is here for advanced setups.
+- **Theme** — three looks: *Minimal (Classic)*, *Slate (Modern)* and *Gravity (Bold &
+  Cosmic)* — plus a **Light/Dark Mode** toggle.
+- **Notifications** — subscribe this device to **push notifications** (see below).
+- **Compact Mode** — a denser layout. **Animations** — turns UI motion off
+  (functional loading spinners keep animating so an operation never looks stuck).
+- **Portrait Lock** — phones and tablets only; see
+  [4. Listening](04-listening.md#portrait-lock).
+- **Face ID / Touch ID** — register this device as a **passkey** in one tap; each
+  registered device appears as a chip you can remove individually. (These are the
+  same credentials as the *Passkeys* button on your user card above.)
+
+### Push notifications
+
+With **Notifications** on, the box sends this device a system notification when
+something needs attention — even with the app closed:
+
+- a monitored **service goes down**;
+- the **CPU reaches a critical temperature**;
+- a **software package update** is available;
+- a **profile** is activated.
+
+Like passkeys, push needs Audiogravi<sup>ty</sup> reachable over a real HTTPS **domain** —
+it does not work over a bare IP (see [2. Installation](02-installation.md)).
+
 ## Services
 
 Monitor and control individual systemd services in real time.
@@ -163,7 +195,8 @@ shairport-sync, Roon Bridge…).
 
 - **States** — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.
 - **Actions** — INSTALL, UPDATE (to the latest version), UNINSTALL.
-- **Version check** — per-card or **CHECK UPDATES** in the header to refresh all.
+- **Version check** — per-card or **CHECK UPDATES** in the header to refresh all. When
+  updates are pending, an **UPDATE ALL** badge appears next to it to run them in one go.
 - **Restart required** — a pulsing badge appears when a service needs a restart after
   install/update; click to restart it.
 - **Architecture** — the CPU badge shows supported architectures (amd64, arm64…);
@@ -215,6 +248,14 @@ Low-level, per-service OS tuning using systemd **drop-in overrides** — the nat
   LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).
 - **Safety** — a diff preview before applying, automatic backups (*Restore Backup*),
   and *Remove Override* to roll a service back to factory behaviour instantly.
+
+## Announcements
+
+From time to time Audiogravi<sup>ty</sup> broadcasts a short announcement — early-access
+news, an important notice. Unread announcements appear as **dismissible banners** at
+the top of the **Admin** page, and the Admin tab carries a small marker until you have
+seen them (the same cue it uses for a [waiting update](08-updating.md)). Dismissals
+are remembered per device.
 
 ## Licence
 

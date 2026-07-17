@@ -16,10 +16,28 @@ swipe up on mobile / the expand button on desktop) to open the **fullscreen play
   bar**, and full **transport**: repeat · previous · play/pause · next · shuffle.
 - **Album details** — Album, Artist, Format, Genre, Year, Position, Source and the
   full **Tracklist**.
-- A **Queue** view for what's coming up.
+- A **Queue** view for what's coming up (see below).
 - **Swipe** between active sources; close with the back button or swipe-down.
 - When playing to a network renderer, a **"Routed to UPnP renderer"** indicator makes
   the destination clear.
+
+## The Queue
+
+The **Queue** view shows the current track and what's coming up — for every source,
+including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and artists
+(they survive a restart of the box, too).
+
+- The header names the **actual source** — playing internet radio reads "Radio" and
+  shows the **station's logo**, not the underlying playback engine.
+- When the queue **mixes sources** — say a radio station followed by a Qobuz album —
+  each upcoming track carries a small **source badge** telling you where it comes
+  from, and a **filter bar** lets you view one source at a time. Filtering only
+  changes what you *see*: nothing moves or stops playing, and the current track
+  always stays in view.
+- Remove an upcoming track with its **Remove** button or a **left-swipe** — the same
+  gesture used across the app's lists. It always removes the track you swiped, even
+  if the queue has reordered meanwhile. **Clear** empties the queue, and respects the
+  active filter.
 
 ## The live hi-fi readout
 
@@ -52,6 +70,14 @@ last activated. Activation is atomic, with a detailed toast on failure.
 
 A built-in sleep timer pauses playback after a set duration — for falling asleep to
 music without leaving the system running all night.
+
+## Portrait lock
+
+On phones and tablets, Audiogravi<sup>ty</sup> stays in **portrait** by default. A
+**Portrait Lock** switch in **Settings** (the gear in the top bar) turns it off if
+you prefer landscape — and on a device you can't rotate, the *Continue in landscape*
+button on the rotate screen lets you carry on (it switches the lock off for you).
+Desktop installs are unaffected.
 
 ## Where the audio goes
 

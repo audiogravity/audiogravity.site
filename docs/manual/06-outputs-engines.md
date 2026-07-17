@@ -11,6 +11,14 @@ In **Library → Outputs**, Audiogravi<sup>ty</sup> lists every physical output 
 the active output when you pick one. Streaming and HQPlayer connections are managed
 next to it in **Library → Sources**.
 
+Switching is designed to be seamless. **MPD's output flips gapless** — over MPD's
+control socket, without restarting the player — so there is no silence, and a cast
+already playing keeps going on the new output. **AirPlay** is the exception: its
+receiver has to restart to change output, so the panel warns you first that it will
+interrupt any AirPlay session in progress. And when a switch does not take, the panel
+tells you instead of pretending it worked — it shows the reason and rolls back to the
+real state.
+
 ## Local DAC
 
 The default: audio goes straight from MPD to the DAC attached to the box (USB, HAT,
@@ -26,6 +34,8 @@ reaches the renderer at **full resolution, bit-perfect**, without touching the
 server's own audio path.
 
 - The output selector switches between physical DAC outputs and network renderers.
+  A **left-swipe** on a renderer removes it from the known list (a renderer still on
+  the network simply reappears at the next scan).
 - A live **"Up next"** strip shows the track being loaded onto the renderer.
 - Transport (next / prev / pause / seek / volume) is routed through the renderer that
   owns the queue.

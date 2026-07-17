@@ -10,7 +10,9 @@ output, and the music flows at full resolution.
 The Library tab holds several views:
 
 - **Browse** — albums for the active source, with infinite scroll.
-- **Search** — full-text across artists, albums and tracks.
+- **Search** — full-text across artists, albums and tracks. Tapping an **artist**
+  opens that artist's albums — across your local library, Qobuz, Tidal and
+  HIGHRESAUDIO — with a back control to return to your results.
 - **Sources** — pick the active source (local, streaming, Roon zone, UPnP server).
 - **Outputs** — pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
 - **Queue** — what's playing and coming up.
@@ -26,8 +28,9 @@ also **cast local files to a network renderer**, just like a streaming service (
 
 In **Sources**, Audiogravi<sup>ty</sup> lists the UPnP media servers it already knows and lets
 you run a **manual scan** to discover more (e.g. **MinimServer**); found servers are
-saved automatically. Browse any server's tree (ContentDirectory); results play
-directly, with metadata and art.
+saved automatically, and a **left-swipe** removes a saved server you no longer use.
+Browse any server's tree (ContentDirectory); results play directly, with metadata
+and art.
 
 ## Roon
 
@@ -67,6 +70,13 @@ stored encrypted on the device.
 
 > **One device per HRA account.** HIGHRESAUDIO allows a single active device — connecting
 > Audiogravi<sup>ty</sup> signs you out of your other HRA players.
+
+### Favorites — star an album from the app
+
+On Qobuz, Tidal and HIGHRESAUDIO albums, a **star** — on the album card in the browse
+grid and on search results — adds the album to (or removes it from) **your favorites
+on that service**, with one tap. The star is filled when the album is already a
+favorite, updates instantly, and stays in sync between browsing and search.
 
 ### Subscriptions at a glance
 

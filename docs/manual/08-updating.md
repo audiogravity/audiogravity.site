@@ -6,6 +6,9 @@ Audiogravi<sup>ty</sup> updates itself from the browser — no terminal, no re-r
 
 When a newer release is available, the **Admin** page shows an update banner with the
 new version, a release-notes link, and a **required** badge if the update is critical.
+You don't need the page open to notice: the **Admin tab** itself carries a small
+download marker whenever an update is waiting — in the warning colour when it is
+**required**.
 
 Installing it is one action:
 

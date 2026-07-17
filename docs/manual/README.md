@@ -7,6 +7,10 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 > [2. Installation](02-installation.md) and [3. First run](03-first-run.md) in order.
 > Everything else is reference — dip in as you need it.
 
+> **Read it in the app.** The **Manual** tab (at the end of the tab bar) opens this
+> manual inside Audiogravi<sup>ty</sup> itself — a chapter list on the side, the page
+> beside it, always showing the latest published version.
+
 ## Contents
 
 1. [Introduction](01-introduction.md) — what Audiogravi<sup>ty</sup> is (and isn't)
@@ -22,4 +26,4 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 ---
 
 *Applies to Audiogravi<sup>ty</sup> 0.9.x (early access). For release-by-release changes see
-[RELEASE_NOTES.md](../../RELEASE_NOTES.md).*
+[RELEASE_NOTES.md](https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md).*

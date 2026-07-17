@@ -17,7 +17,23 @@ key — and every later login becomes a tap. (Passkeys require Audiogravi<sup>ty
 reachable over a real HTTPS **domain** — see the `--public-url` flag in
 [2. Installation](02-installation.md).)
 
-## 3. Configure the audio stack (guided)
+## 3. Install the audio engines
+
+The installer sets up Audiogravi<sup>ty</sup> itself — **not** the audio engines it
+conducts. On a fresh box, install those first from the **Software** tab (see
+[7. Administration → Audio Software](07-administration.md#audio-software)): each
+engine has a card with an **INSTALL** button.
+
+- **Music Player Daemon (MPD)** — the core player. Install this one first: it plays
+  your local library **and** carries Qobuz, Tidal, HIGHRESAUDIO and internet radio.
+- **Shairport Sync** — to receive **AirPlay**.
+- **UPnP Bridge** (upmpdcli) — to expose the box as a **UPnP renderer** other apps
+  can cast to.
+- **Roon Bridge / Roon Server / HQPlayer NAA** — only if you use Roon or HQPlayer.
+
+Install what you need now — you can always come back for the rest later.
+
+## 4. Configure the audio stack (guided)
 
 On a new box, the **Config** tab shows an **Initialize audio stack** panel
 (administrators only). It:
@@ -48,7 +64,7 @@ Each service can target its **own** output. For example: MPD on your USB hi-res 
 AirPlay on the optical out. Change any service's output later from the **Guided**
 editor (see below) in a couple of clicks.
 
-## 4. Change output or library later (Guided mode)
+## 5. Change output or library later (Guided mode)
 
 For MPD, AirPlay and UPnP, the Config editor opens in a **Guided** view where you
 change the **audio output** or **music library** in a couple of clicks. Only the

@@ -2,13 +2,18 @@
 
 Audiogravi<sup>ty</sup> installs in a single command. The installer detects your architecture,
 generates security keys, configures the systemd service and starts everything —
-usually **under five minutes** from `curl` to listening. No compilation, no
+usually **under five minutes** from `curl` to the interface. No compilation, no
 dependency hell, no manual configuration.
+
+> The installer sets up **Audiogravi<sup>ty</sup> itself**. The audio engines it conducts
+> (MPD, AirPlay, UPnP…) are installed afterwards, in a few clicks **from the
+> interface** — that's step 3 of [3. First run](03-first-run.md).
 
 ## Before you start
 
 - A **Linux host** next to your hi-fi — DietPi or Debian/Ubuntu, on **x86-64** or
-  **aarch64** (Raspberry Pi). See [Requirements](../../README.md#requirements).
+  **aarch64** (Raspberry Pi). See
+  [1. Introduction → What you need](01-introduction.md#what-you-need).
 - The host reachable on your **local network**.
 - Your **early-access token** — a GitHub token shared with approved testers during
   early access. [Request one](mailto:contact@audiogravity.app?subject=Audiogravi<sup>ty</sup>%20-%20Early%20access%20request) if you don't have it.

@@ -77,11 +77,54 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 > **The one exception is Roon**, which has no installer flag or UI — you enable it in
 > `.env`. See [6. Outputs & engines → Roon](06-outputs-engines.md#roon).
 
+## Getting HTTPS — for passkeys and push
+
+Passkeys (WebAuthn) and push notifications both require the browser to see
+Audiogravi<sup>ty</sup> on a **real HTTPS domain** — a bare IP or a self-signed
+certificate won't do. The recipe that works well for a home box, without exposing
+anything to the internet:
+
+1. **A domain name** you control (any cheap domain works), with a record pointing at
+   the box's **LAN address** — e.g. `ag.example.com → 192.168.1.30`. The name only
+   has to resolve on your network; nothing needs to be reachable from outside.
+2. **A real certificate** via Let's Encrypt using the **DNS-01** challenge (supported
+   by certbot and most DNS providers' APIs) — it proves domain ownership through a
+   DNS record, so **no port needs opening** to the internet.
+3. **A reverse proxy** in front of Audiogravi<sup>ty</sup> that terminates TLS —
+   nginx, Caddy or Traefik, on the box itself or another always-on host. The proxy
+   now owns TLS, so first re-run the **ui installer** and pick **plain HTTP** mode
+   (it serves on port **8080** by default — this also frees port 443 if the proxy
+   runs on the box):
+
+   ```nginx
+   server {
+       listen 443 ssl;
+       server_name ag.example.com;
+       ssl_certificate     /etc/letsencrypt/live/ag.example.com/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/ag.example.com/privkey.pem;
+       location / {
+           proxy_pass http://127.0.0.1:8080;    # the interface, in plain-HTTP mode
+           proxy_set_header Host $host;
+       }
+   }
+   ```
+   (Proxy on another host? Use the box's LAN IP instead of `127.0.0.1`.)
+
+4. **Tell Audiogravi<sup>ty</sup> its public origin** — re-run the core installer with
+   `--public-url https://ag.example.com` (see the flags above). From then on, open
+   the app through that URL and the passkey / notification features light up.
+
+Caddy users get steps 2–3 in two lines (`caddy` obtains and renews certificates
+automatically). This is the standard self-hosting pattern — any guide on "Let's
+Encrypt DNS-01 + reverse proxy" applies as-is.
+
 ## First contact
 
 Open `https://<box-ip>` in a browser. On first run, Audiogravi<sup>ty</sup> activates a
-**30-day trial** automatically — no action required — and you can create your admin
-account. Continue to **[3. First run](03-first-run.md)**.
+**30-day trial** automatically — no action required — and you sign in with the
+**default admin account** (then change its password right away — see
+[3. First run](03-first-run.md#2-sign-in--and-secure-your-account)). Continue to
+**[3. First run](03-first-run.md)**.
 
 ## Uninstalling
 

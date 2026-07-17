@@ -21,11 +21,17 @@ swipe up on mobile / the expand button on desktop) to open the **fullscreen play
 - When playing to a network renderer, a **"Routed to UPnP renderer"** indicator makes
   the destination clear.
 
+<img src="images/ios-fullscreen.png" alt="The fullscreen player: cover art, signal path, hi-fi format strip, transport, next track and output bar" width="360">
+
+
 ## The Queue
 
 The **Queue** view shows the current track and what's coming up — for every source,
 including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and artists
 (they survive a restart of the box, too).
+
+<img src="images/ios-queue-mixed.png" alt="A mixed queue: Qobuz, radio and local-library tracks with per-source badges and the source filter bar" width="360">
+
 
 - The header names the **actual source** — playing internet radio reads "Radio" and
   shows the **station's logo**, not the underlying playback engine.

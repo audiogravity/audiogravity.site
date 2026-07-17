@@ -7,7 +7,24 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The manual grows up — quick start, glossary, and real screenshots
+
+The user manual now covers the whole journey, illustrated. A one-page **Quick
+start** takes you from a bare box to music — and it's the first thing the in-app
+reader shows — while a new **Glossary** decodes the audiophile and UPnP vocabulary
+in two lines per term. Eleven **real screenshots** (phone rendering, light theme)
+show the screens the chapters describe: the fullscreen player, the mixed queue with
+its source badges, the output selector, first-run setup, Services, Settings and the
+update banner.
+
+The guides you were missing are there too: **mounting a NAS share** step by step,
+**installing Audiogravi<sup>ty</sup> as an app** on your phone (required for push
+notifications on iPhone), **getting HTTPS** at home so passkeys and notifications
+light up, **backing up and restoring** your box, recovering a **lost admin
+password**, and fixing the classic network traps that hide AirPlay and UPnP
+devices. First-run now tells the whole truth as well — including the audio-engine
+installation step and the default `admin` account you sign in with (change that
+password!).
 
 ---
 

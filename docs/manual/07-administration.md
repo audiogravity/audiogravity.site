@@ -1,12 +1,21 @@
 # 7. Administration
 
 Everything you need to run the box lives in the interface — no SSH required. Most of
-this section is **Pro**; a few tabs (System, Services, Users, Software) are available
-on **Starter** too. Every tab has an **INFO** badge that opens an in-app explanation.
+this section is **Pro**; a few tabs (Profiles, Services, Audio Software, System,
+Admin) are available on **Starter** too. Every tab has an **INFO** badge that opens
+an in-app explanation.
+
+## The Admin tab
+
+The **Admin** tab gathers everything about accounts and the box's relationship with
+Audiogravi<sup>ty</sup>: the **user cards** (below), unread
+[announcements](#announcements), the [update banner](08-updating.md) — and the
+**licence** panel, which also opens when a Starter install taps a locked Pro tab.
 
 ## Users & access
 
-Three roles control who can do what:
+User management lives on the **Admin** tab — one card per account, with an online
+indicator for users currently connected. Three roles control who can do what:
 
 - **Admin** — full access to all features and user management. Cannot be deleted or
   demoted by others, and cannot delete their own account.
@@ -42,6 +51,8 @@ The **gear** in the top bar opens the app-wide Settings panel:
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
+<img src="images/ios-settings.png" alt="The Settings panel: configuration export/import, API key, theme, display toggles and passkeys" width="360">
+
 ### Push notifications
 
 With **Notifications** on, the box sends this device a system notification when
@@ -69,6 +80,8 @@ Monitor and control individual systemd services in real time.
   disk) and the session action history. Metrics are colour-coded LOW / MEDIUM / HIGH,
   tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, >20 % high).
 - **Filter** — ALL / RUNNING / STOPPED / FAILED.
+
+<img src="images/ios-services.png" alt="The Services tab: per-service cards with live metrics, health bar and start/stop controls" width="360">
 
 ## Config editor
 
@@ -258,6 +271,9 @@ seen them (the same cue it uses for a [waiting update](08-updating.md)). Dismiss
 are remembered per device.
 
 ## Licence
+
+The licence panel opens from the **Admin** tab (and automatically when a **Starter**
+install taps a Pro tab — those carry a small lock icon in the tab bar).
 
 - **Trial** — 30 days of full access, auto-activated on first run.
 - **Lifetime** — a single-device `.lic` file cryptographically tied to this device's

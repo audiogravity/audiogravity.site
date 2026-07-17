@@ -36,6 +36,29 @@ interface.
 - Network renderers depend on your local network — run the **Network Test**
   (Performance tab) to check jitter/loss.
 
+## A UPnP renderer or media server isn't discovered
+
+UPnP discovery rides on **multicast** (SSDP). If a device you know is on doesn't
+show up after a **manual scan**:
+
+- Make sure the box and the device are on the **same subnet / VLAN** — multicast
+  rarely crosses network segments.
+- On managed switches or mesh Wi-Fi, look for **IGMP snooping** settings — snooping
+  without an IGMP querier silently eats multicast; either enable the querier or
+  disable snooping for that LAN.
+- Some Wi-Fi access points ship with **multicast filtering / "IGMP proxy"** enabled —
+  try the device on Ethernet to isolate the cause.
+
+## The box doesn't appear as an AirPlay speaker
+
+AirPlay is announced over **mDNS/Bonjour** (UDP 5353 multicast):
+
+- Confirm the **shairport-sync** service is RUNNING (Services tab).
+- The sender (iPhone/Mac) must be on the **same subnet** — mDNS does not cross
+  VLANs without an mDNS repeater on the router.
+- The same **multicast filtering** culprits as above (IGMP snooping, AP isolation,
+  "client/guest isolation" on the Wi-Fi network) also hide AirPlay devices.
+
 ## Audio glitches / dropouts
 
 - Watch for a **THROTTLED** badge on a CPU core (Performance tab) — sustained thermal
@@ -45,11 +68,22 @@ interface.
 - Run the **Latency test** (`cyclictest`) — a high max latency points at scheduling
   contention.
 
+## Locked out — no admin can log in
+
+Accounts live in `/opt/audiogravity/core/users.json` on the box. If the admin
+password is lost, connect over SSH, remove that file, and re-run the installer
+(see [8. Updating → Manual update](08-updating.md#manual-update)): when no user file exists, the
+install seeds the default **`admin` / `admin123`** account again. This resets **all**
+accounts and their passkeys — your audio configuration is untouched. Sign in, set a
+fresh password immediately, and re-create the other accounts.
+
 ## Passkeys or push notifications unavailable
 
 Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS
-**domain** — they do **not** work over a bare IP. Re-install the core with
-`--public-url https://your.domain` (see [2. Installation](02-installation.md)).
+**domain** — they do **not** work over a bare IP, and `--public-url` alone is not
+enough: you also need the domain, a valid certificate and a reverse proxy. The full
+recipe is in
+[2. Installation → Getting HTTPS](02-installation.md#getting-https--for-passkeys-and-push).
 
 ## Version-mismatch banner
 

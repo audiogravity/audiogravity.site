@@ -3,6 +3,9 @@
 Welcome to Audiogravi<sup>ty</sup> — the conductor of your music streamer. This manual walks
 you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 
+> **In a hurry?** The **[Quick start](00-quick-start.md)** takes you from a bare box
+> to music on one page.
+>
 > **New here?** Read [1. Introduction](01-introduction.md) first, then follow
 > [2. Installation](02-installation.md) and [3. First run](03-first-run.md) in order.
 > Everything else is reference — dip in as you need it.
@@ -13,6 +16,7 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 
 ## Contents
 
+0. [Quick start](00-quick-start.md) — from zero to music, on one page
 1. [Introduction](01-introduction.md) — what Audiogravi<sup>ty</sup> is (and isn't)
 2. [Installation](02-installation.md) — get it running on your streamer
 3. [First run](03-first-run.md) — guided audio setup: DAC, library, services
@@ -20,8 +24,9 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 5. [Library & streaming](05-library-streaming.md) — Qobuz, Tidal, HIGHRESAUDIO, radio, UPnP servers
 6. [Outputs & engines](06-outputs-engines.md) — local DAC, network renderers, HQPlayer, AirPlay
 7. [Administration](07-administration.md) — users, services, config editor, performance tuning
-8. [Updating](08-updating.md) — one-click self-update
+8. [Updating](08-updating.md) — one-click self-update, backup & restore
 9. [Troubleshooting](09-troubleshooting.md) — common issues, logs, FAQ
+10. [Glossary](10-glossary.md) — the audiophile and UPnP vocabulary, in two lines each
 
 ---
 

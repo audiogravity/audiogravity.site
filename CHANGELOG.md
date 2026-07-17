@@ -17,6 +17,7 @@ and this landing) are documented here. Format based on
 - **[ui] Manual screenshots ship as WebP at 2× — ~0.3 MB instead of 1.65 MB.** All eleven illustrations are re-encoded (visually identical in their 360-px slots), and the capture pipeline that generates them is now committed (`tools/shoot-manual.cjs`: Storybook stories + the login page, iPhone viewport, Minimal light theme, demo covers, in-browser WebP encoding) so they can be regenerated reproducibly after any restyle.
 
 ### Fixed
+- **[ui] The dev-server CSP allows the manual's illustrations.** The `img-src` directive of the development Content-Security-Policy (index.html meta) now includes `https://audiogravity.app`, so the in-app manual's screenshots render on the Vite dev server instead of being refused (a box repointing `AG_CONFIG.manualBase` must allow its origin the same way).
 - **[ui] Components import the child elements their templates use.** `ag-config-panel` (ag-switch) and the fullscreen player (ag-volume-popover) relied on the app-wide registration in `main.js` and rendered without their toggles/volume control when mounted standalone (Storybook, isolated tests). The same gap was then fixed across the board — 30 more components — and a **guard test** now enforces the invariant: every `<ag-*>` tag used in a component's template must be reachable through that component's own import graph.
 
 ### Changed

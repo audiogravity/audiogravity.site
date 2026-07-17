@@ -78,7 +78,7 @@ grid and on search results — adds the album to (or removes it from) **your fav
 on that service**, with one tap. The star is filled when the album is already a
 favorite, updates instantly, and stays in sync between browsing and search.
 
-<img src="images/ios-browse.png" alt="The streaming browse grid: category pills, album covers, add-to-queue and the favorite star" width="360">
+<img src="images/ios-browse.webp" alt="The streaming browse grid: category pills, album covers, add-to-queue and the favorite star" width="360">
 
 
 ### Subscriptions at a glance

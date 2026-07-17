@@ -11,7 +11,7 @@ In **Library → Outputs**, Audiogravi<sup>ty</sup> lists every physical output 
 the active output when you pick one. Streaming and HQPlayer connections are managed
 next to it in **Library → Sources**.
 
-<img src="images/ios-outputs.png" alt="The output selector: the active USB DAC and the ready optical and HDMI outputs" width="360">
+<img src="images/ios-outputs.webp" alt="The output selector: the active USB DAC and the ready optical and HDMI outputs" width="360">
 
 
 Switching is designed to be seamless. **MPD's output flips gapless** — over MPD's

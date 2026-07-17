@@ -25,7 +25,7 @@ and asks for the passkey directly, with *Use password instead* as the fallback.
 More accounts — family members, a read-only guest — can be added later from the
 **Admin** tab (see [7. Administration](07-administration.md#users--access)).
 
-<img src="images/ios-login.png" alt="The login screen: username and password, or one-tap sign-in with a passkey" width="360">
+<img src="images/ios-login.webp" alt="The login screen: username and password, or one-tap sign-in with a passkey" width="360">
 
 ## 3. Install the audio engines
 
@@ -43,7 +43,7 @@ engine has a card with an **INSTALL** button.
 
 Install what you need now — you can always come back for the rest later.
 
-<img src="images/ios-software.png" alt="The Audio Software tab: engine cards with install, update and uninstall actions" width="360">
+<img src="images/ios-software.webp" alt="The Audio Software tab: engine cards with install, update and uninstall actions" width="360">
 
 ## 4. Configure the audio stack (guided)
 
@@ -59,7 +59,7 @@ On a new box, the **Config** tab shows an **Initialize audio stack** panel
 Once at least one service is set up, the panel disappears and each MPD / AirPlay /
 UPnP tile shows a **CONFIGURED** badge.
 
-<img src="images/ios-provisioning.png" alt="The Initialize audio stack panel: detected DAC outputs and music library sources" width="360">
+<img src="images/ios-provisioning.webp" alt="The Initialize audio stack panel: detected DAC outputs and music library sources" width="360">
 
 > **Why "bit-perfect"?** The generated configs send audio to your DAC untouched — no
 > resampling, no volume math in the digital domain — so what your DAC receives is
@@ -119,7 +119,7 @@ setting you touch is rewritten — the rest of your config is preserved. A **Res
 default** action regenerates a clean minimal config (admin password required; your
 current file is backed up first).
 
-<img src="images/ios-guided.png" alt="The Guided editor: pick the audio output and the music library in a couple of clicks" width="360">
+<img src="images/ios-guided.webp" alt="The Guided editor: pick the audio output and the music library in a couple of clicks" width="360">
 
 ## 6. Find your way around
 

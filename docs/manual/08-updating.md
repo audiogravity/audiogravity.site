@@ -10,7 +10,7 @@ You don't need the page open to notice: the **Admin tab** itself carries a small
 download marker whenever an update is waiting — in the warning colour when it is
 **required**.
 
-<img src="images/ios-update-banner.png" alt="The update banner: new version, release-notes link and the one-click Update now button" width="360">
+<img src="images/ios-update-banner.webp" alt="The update banner: new version, release-notes link and the one-click Update now button" width="360">
 
 Installing it is one action:
 

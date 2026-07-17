@@ -51,7 +51,7 @@ The **gear** in the top bar opens the app-wide Settings panel:
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
-<img src="images/ios-settings.png" alt="The Settings panel: configuration export/import, API key, theme, display toggles and passkeys" width="360">
+<img src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, API key, theme, display toggles and passkeys" width="360">
 
 ### Push notifications
 
@@ -81,7 +81,7 @@ Monitor and control individual systemd services in real time.
   tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, >20 % high).
 - **Filter** — ALL / RUNNING / STOPPED / FAILED.
 
-<img src="images/ios-services.png" alt="The Services tab: per-service cards with live metrics, health bar and start/stop controls" width="360">
+<img src="images/ios-services.webp" alt="The Services tab: per-service cards with live metrics, health bar and start/stop controls" width="360">
 
 ## Config editor
 

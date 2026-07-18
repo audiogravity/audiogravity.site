@@ -33,6 +33,11 @@ stuck at full volume if a volume adjustment hiccups at the start of playback
 — a valid device is no longer dropped over a transient error, and the stored
 subscriptions file is written privately.
 
+Finally, a system-internals pass: changing the CPU governor no longer briefly
+stalls the audio pipeline, a self-update that can't start is reported as failed
+right away instead of appearing to hang, and the critical-temperature alert is
+guaranteed to be sent.
+
 ---
 
 ## 0.9.17 — 2026-07-18

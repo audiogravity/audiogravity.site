@@ -85,7 +85,7 @@ username=nasuser
 password=naspass
 EOF
 sudo chmod 600 /root/.smbcredentials
-echo "//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,vers=3.0,_netdev 0 0" \
+echo "//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,_netdev 0 0" \
     | sudo tee -a /etc/fstab
 
 # 2b. — or NFS (requires: sudo apt-get install nfs-common)
@@ -96,8 +96,12 @@ sudo systemctl daemon-reload && sudo mount -a && ls /mnt/music
 ```
 
 `_netdev` makes the mount wait for the network at boot, and `ro` (read-only) is
-a sensible default for a music library. Back in the picker, hit refresh — the
-share appears as a library choice.
+a sensible default for a music library. The SMB version is best left
+unpinned — the kernel negotiates the highest dialect both ends support (SMB 2.1
+to 3.1.1). As a **last resort** for legacy NAS firmware you can add `vers=2.0`;
+avoid `vers=1.0` (SMB1) unless you have no other option — it is deprecated and
+insecure, and modern kernels disable it by default. Back in the picker, hit
+refresh — the share appears as a library choice.
 
 ## Locked out — no admin can log in
 

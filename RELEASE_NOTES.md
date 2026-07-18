@@ -18,8 +18,16 @@ password, unreachable box) it tells you exactly what and leaves nothing behind. 
 same panel lists the shares you've added and lets you remove them, warning you
 before it pulls the one your music is currently playing from. It survives reboots
 (the share mounts on first access, even if the NAS was off at boot). CIFS/SMB —
-what Synology, QNAP and every mainstream NAS speak; for NFS or a hand-managed
-mount, the manual's NAS section still has you covered.
+what Synology, QNAP and every mainstream NAS speak, and it now negotiates whatever
+SMB dialect your NAS does, so a share that refused a strict SMB3 handshake mounts
+cleanly; for NFS or a hand-managed mount, the manual's NAS section still has you
+covered.
+
+Once a share — or any library change — is applied, Audiogravi<sup>ty</sup> re-scans
+its music database for you and shows a live **"Indexing library…"** indicator until
+it's done, so you're never left wondering whether the new library has been picked
+up. Leave and come back to the Config tab mid-scan and the indicator is still there;
+it disappears on its own the moment indexing finishes.
 
 ### The manual grows up — quick start, glossary, and real screenshots
 

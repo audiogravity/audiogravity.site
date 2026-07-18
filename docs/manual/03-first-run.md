@@ -91,7 +91,18 @@ unreachable host) and nothing is left behind.
 
 Under the hood this creates a systemd *mount-on-access* unit — robust to a NAS
 that is off at boot — with the credentials in a root-only file, mounted
-read-only by default. Remove a share any time from the same panel.
+read-only by default.
+
+Adding a share **mounts and selects it**, but does not yet make it MPD's
+library on its own — that's the same two-step rule as any source: pick it in
+the picker, then **confirm** — click **INITIALIZE** (in the panel) or **Apply**
+(in the Guided editor) to actually point MPD at it. That confirm step also
+**starts a library scan** so the new music is indexed and shows up in the
+Library view (a large NAS keeps indexing in the background — give it a moment).
+To **remove** a share,
+reopen the panel: each one it created is listed with its state (mounted /
+on-demand) and a **trash** button — removing one it isn't currently using takes
+effect immediately; if the share is MPD's active library, it warns you first.
 
 <img src="images/ios-network-mount.webp" alt="The Add network share panel: existing AG shares with their state, and the CIFS form" width="360">
 

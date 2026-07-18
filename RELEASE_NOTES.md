@@ -27,6 +27,12 @@ the album on the now-playing card for a single track and no longer chokes on an
 odd status value; and network-renderer control is a touch more robust around
 reconnects.
 
+A third pass covered playback and notifications: DSD tracks can no longer get
+stuck at full volume if a volume adjustment hiccups at the start of playback
+(your level is restored when DSD ends), and push notifications are more reliable
+— a valid device is no longer dropped over a transient error, and the stored
+subscriptions file is written privately.
+
 ---
 
 ## 0.9.17 — 2026-07-18

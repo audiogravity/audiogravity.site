@@ -38,6 +38,10 @@ stalls the audio pipeline, a self-update that can't start is reported as failed
 right away instead of appearing to hang, and the critical-temperature alert is
 guaranteed to be sent.
 
+Security hardening: installing an audio engine now only ever downloads over
+HTTPS, with a size cap and timeouts, so the install step can't be tampered with
+in transit or made to hang or fill the disk.
+
 ---
 
 ## 0.9.17 — 2026-07-18

@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] Streaming modules hardened after a code review (Tidal / Qobuz / HIGHRESAUDIO / Radio).** A batch of reliability fixes with no user-visible feature change: Tidal now drops an expired access token whenever a refresh fails (revoked session, network error) instead of replaying a dead token — this stops a per-request re-login storm and the misleading "client credentials rotated" error it caused; Qobuz sign-in no longer leaves a half-open connection (reported "connected" while streaming has no working secret) when the app-secret probe fails, and a bundle/network failure during sign-in now shows the styled error page (HTTP 502) instead of a raw *Internal Server Error* in the browser popup; the Qobuz app-bundle cache is now genuinely single-flight (concurrent cold-cache callers no longer each download the ~200 KB bundle); the Tidal remux proxy always cleans up its temporary files when a client disconnects mid-track (previously an orphan `.mpd`/`.part` could leak on cancellation); Radio favourites/library mutations no longer serialise behind a slow catalogue lookup, and the *Hi-Res only* search over-fetches so a page isn't starved down to a handful of stations. Hardened along the way: MPD argument escaping now strips newlines at the single choke point every MPD write passes through (defence-in-depth against control-character injection via a stream URL). Tidal also reuses the shared pooled HTTP session (keep-alive) instead of opening a fresh connection per track.
+
 ## [0.9.17] - 2026-07-18
 
 ### Added

@@ -7,7 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Streaming reliability pass
+
+A round of fixes makes the streaming services steadier without changing how they
+look. **Tidal** stops showing a misleading "client credentials rotated" message
+(and quietly hammering the login endpoint) when a session simply expires — it
+now recognises the expired session and asks you to reconnect cleanly. **Qobuz**
+sign-in no longer ends up "half-connected" — reported as connected while playback
+silently fails — when the last step can't complete, and if the sign-in can't
+reach Qobuz you get a clear error page instead of a raw *Internal Server Error*
+in the pop-up. **Hi-Res only** radio search returns a full page of stations again
+instead of collapsing to a handful, and adding radio favourites no longer stalls
+behind a slow catalogue lookup.
 
 ---
 

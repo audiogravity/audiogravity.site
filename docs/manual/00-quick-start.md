@@ -27,9 +27,10 @@ plus **Shairport Sync** (AirPlay) and **UPnP Bridge** if you want them.
 ## 4. Initialize the audio stack
 
 **Config** tab → **Initialize audio stack**: pick your **DAC** and your **music
-library** (USB drive or NAS share — a NAS must be
-[mounted first](03-first-run.md#music-on-a-nas-mount-the-share-first)), confirm with
-your admin password. The generated configs are minimal and **bit-perfect**.
+library** — a USB drive, or a NAS share
+[added right from the picker](03-first-run.md#music-on-a-nas-add-the-share-from-the-picker)
+(mounted and tested on the spot) — and confirm with your admin password. The
+generated configs are minimal and **bit-perfect**.
 
 ## 5. Connect your music
 

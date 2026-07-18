@@ -78,38 +78,29 @@ Each service can target its **own** output. For example: MPD on your USB hi-res 
 AirPlay on the optical out. Change any service's output later from the **Guided**
 editor (see below) in a couple of clicks.
 
-### Music on a NAS? Mount the share first
+### Music on a NAS? Add the share from the picker
 
 The **Music library** picker lists what the box can already see: **USB drives**
-(ext4 / exFAT) and **existing mounts** — any network share (CIFS/SMB, NFS) plus
-local mounts under `/mnt`. A NAS share must therefore be **mounted at the OS level
-first**; Audiogravi<sup>ty</sup> then detects it automatically. One-time setup, from
-a terminal on the box:
+(ext4 / exFAT) and **existing mounts**. For a NAS share (CIFS/SMB — what
+Synology, QNAP and every mainstream NAS speak), use **Add network share (NAS)**
+at the bottom of the picker: give it a name, the NAS host, the share name and —
+unless it's a guest share — its username and password. Audiogravi<sup>ty</sup>
+**mounts and tests the share on the spot**: on success it appears in the list,
+pre-selected; on failure you get the actual mount error (wrong password,
+unreachable host) and nothing is left behind.
 
-```bash
-# 1. Create a mount point
-sudo mkdir -p /mnt/music
+Under the hood this creates a systemd *mount-on-access* unit — robust to a NAS
+that is off at boot — with the credentials in a root-only file, mounted
+read-only by default. Remove a share any time from the same panel.
 
-# 2a. CIFS / SMB (a typical NAS share) — the quoted heredoc keeps
-#     special characters in the password intact
-sudo tee /root/.smbcredentials >/dev/null <<'EOF'
-username=nasuser
-password=naspass
-EOF
-sudo chmod 600 /root/.smbcredentials
-echo "//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,vers=3.0,_netdev 0 0" \
-    | sudo tee -a /etc/fstab
+<img src="images/ios-network-mount.webp" alt="The Add network share panel: existing AG shares with their state, and the CIFS form" width="360">
 
-# 2b. — or NFS
-echo "192.168.1.20:/volume1/music /mnt/music nfs ro,_netdev 0 0" | sudo tee -a /etc/fstab
-
-# 3. Mount and verify
-sudo systemctl daemon-reload && sudo mount -a && ls /mnt/music
-```
-
-`_netdev` makes the mount wait for the network at boot, and `ro` (read-only) is a
-sensible default for a music library. Back in the **Initialize** panel (or the
-Guided editor), hit refresh — the share now appears as a library choice.
+> **Prefer the terminal, or need NFS?** Any share you mount yourself at the OS
+> level (fstab or systemd units, CIFS or NFS) under `/mnt` is detected exactly
+> the same way — see [9. Troubleshooting → Manual NAS mount](09-troubleshooting.md#manual-nas-mount-terminal)
+> for the recipe. NFS is terminal-only by design: mounting it from the UI would
+> require RPC daemons on the box, which Audiogravi<sup>ty</sup> refuses on an
+> audio appliance.
 
 ## 5. Change output or library later (Guided mode)
 

@@ -68,6 +68,37 @@ AirPlay is announced over **mDNS/Bonjour** (UDP 5353 multicast):
 - Run the **Latency test** (`cyclictest`) — a high max latency points at scheduling
   contention.
 
+## Manual NAS mount (terminal)
+
+The library picker's **Add network share** covers CIFS/SMB. If you prefer the
+terminal, or need **NFS**, mount at the OS level — anything mounted under
+`/mnt` is detected as a library source:
+
+```bash
+# 1. Create a mount point
+sudo mkdir -p /mnt/music
+
+# 2a. CIFS / SMB — the quoted heredoc keeps special characters
+#     in the password intact
+sudo tee /root/.smbcredentials >/dev/null <<'EOF'
+username=nasuser
+password=naspass
+EOF
+sudo chmod 600 /root/.smbcredentials
+echo "//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,vers=3.0,_netdev 0 0" \
+    | sudo tee -a /etc/fstab
+
+# 2b. — or NFS (requires: sudo apt-get install nfs-common)
+echo "192.168.1.20:/volume1/music /mnt/music nfs ro,_netdev 0 0" | sudo tee -a /etc/fstab
+
+# 3. Mount and verify
+sudo systemctl daemon-reload && sudo mount -a && ls /mnt/music
+```
+
+`_netdev` makes the mount wait for the network at boot, and `ro` (read-only) is
+a sensible default for a music library. Back in the picker, hit refresh — the
+share appears as a library choice.
+
 ## Locked out — no admin can log in
 
 Accounts live in `/opt/audiogravity/core/users.json` on the box. If the admin

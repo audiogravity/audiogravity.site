@@ -7,6 +7,20 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Add a NAS to your library without touching a terminal
+
+Pointing Audiogravi<sup>ty</sup> at music on a network drive used to mean an SSH
+session and an `/etc/fstab` line. Now there's an **Add network share (NAS)** panel
+right in the music-library picker: type the NAS address, the share name and your
+credentials, and Audiogravi<sup>ty</sup> mounts it, **tests it on the spot**, and
+selects it as your library — read-only by default, and if anything is wrong (wrong
+password, unreachable box) it tells you exactly what and leaves nothing behind. The
+same panel lists the shares you've added and lets you remove them, warning you
+before it pulls the one your music is currently playing from. It survives reboots
+(the share mounts on first access, even if the NAS was off at boot). CIFS/SMB —
+what Synology, QNAP and every mainstream NAS speak; for NFS or a hand-managed
+mount, the manual's NAS section still has you covered.
+
 ### The manual grows up — quick start, glossary, and real screenshots
 
 The user manual now covers the whole journey, illustrated. A one-page **Quick

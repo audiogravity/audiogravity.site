@@ -43,7 +43,9 @@ HTTPS, with a size cap and timeouts, so the install step can't be tampered with
 in transit or made to hang or fill the disk. The album-art proxy can no longer
 be pointed at internal addresses, passkey sign-in no longer reveals which
 usernames exist, and the config backups it keeps are capped instead of growing
-forever.
+forever. The service-tuning panel now strictly validates every value it writes
+to systemd (closing a way to run code as root) and only ever touches
+Audiogravity's own services, never system units like SSH or networking.
 
 ---
 

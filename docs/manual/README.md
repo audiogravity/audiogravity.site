@@ -27,6 +27,7 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 8. [Updating](08-updating.md) — one-click self-update, backup & restore
 9. [Troubleshooting](09-troubleshooting.md) — common issues, logs, FAQ
 10. [Glossary](10-glossary.md) — the audiophile and UPnP vocabulary, in two lines each
+11. [FAQ](11-faq.md) — quick answers: trial, licence, subscriptions, phone install, updating
 
 ---
 

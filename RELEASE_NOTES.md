@@ -20,6 +20,13 @@ in the pop-up. **Hi-Res only** radio search returns a full page of stations agai
 instead of collapsing to a handful, and adding radio favourites no longer stalls
 behind a slow catalogue lookup.
 
+A second review pass covered the playback engines: **Qobuz** browsing now
+recovers on its own when your session has simply expired (it re-signs in and
+retries) instead of telling you the app credentials rotated; **HQPlayer** keeps
+the album on the now-playing card for a single track and no longer chokes on an
+odd status value; and network-renderer control is a touch more robust around
+reconnects.
+
 ---
 
 ## 0.9.17 — 2026-07-18

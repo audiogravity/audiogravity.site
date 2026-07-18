@@ -40,7 +40,10 @@ guaranteed to be sent.
 
 Security hardening: installing an audio engine now only ever downloads over
 HTTPS, with a size cap and timeouts, so the install step can't be tampered with
-in transit or made to hang or fill the disk.
+in transit or made to hang or fill the disk. The album-art proxy can no longer
+be pointed at internal addresses, passkey sign-in no longer reveals which
+usernames exist, and the config backups it keeps are capped instead of growing
+forever.
 
 ---
 

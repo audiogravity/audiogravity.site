@@ -202,7 +202,7 @@
         <div class="w">
             <div class="section-label">Features</div>
             <h2 class="section-title">From the kernel<br>to your Qobuz, Tidal &amp; HIGHRESAUDIO library.</h2>
-            <p class="section-sub">Fourteen modules orchestrating every layer of your streamer — RT kernel tuning,
+            <p class="section-sub">Twenty-one modules orchestrating every layer of your streamer — RT kernel tuning,
                 service control, signal-path visualisation, unified transport across MPD, Roon, HQPlayer, AirPlay,
                 UPnP and internet radio. Starter ships with the essentials; Pro unlocks the deep audio-engineering
                 surface.</p>
@@ -220,10 +220,11 @@
                         in the Now Playing bar always tells you where the audio is coming from — Tidal, Qobuz,
                         HIGHRESAUDIO, your UPnP server by name, a radio station, a local file or AirPlay. Live Hi-Fi readout —
                         format (PCM / DSD), sample rate, bit depth, instantaneous bitrate — refreshed on every
-                        track change. Pick the output zone: Roon zone or ALSA port. Built-in sleep timer
-                        pauses playback after a set duration. Audiogravi<sup>ty</sup>
+                        track change. The queue reads every source — a Qobuz album, a radio station, local files —
+                        with <b>per-source badges and a filter</b> when they mix. Pick the output zone: Roon zone or
+                        ALSA port. Built-in sleep timer pauses playback after a set duration. Audiogravi<sup>ty</sup>
                         conducts; your engines play.</p>
-                    <span class="fb-chip">MPD · Roon · HQPlayer · AirPlay · UPnP · stream origin · sleep timer · live Hi-Fi readout</span>
+                    <span class="fb-chip">MPD · Roon · HQPlayer · AirPlay · UPnP · stream origin · queue by source · sleep timer · live Hi-Fi readout</span>
                 </div>
 
                 <div class="fb span2">
@@ -314,8 +315,9 @@
                     <p>An interactive SVG graph of your entire Hi-Fi chain — source (NAS, UPnP, Qobuz, Tidal, HIGHRESAUDIO) through
                         every active audio process down to the DAC. Pan, zoom, minimap for complex topologies. Each
                         link shows the exact stream format (PCM / DSD · 44.1 kHz → 768 kHz · 16 → 32 bit), a
-                        bit-perfect badge, per-link latency, and live play state. Click a link to hot-reroute MPD,
-                        HQPlayer NAA or AirPlay to a different DAC — without interrupting playback.</p>
+                        bit-perfect badge, per-link latency, and live play state. Click a link to hot-reroute the
+                        audio to a different DAC — gapless on MPD (no silence, a live cast keeps playing); AirPlay
+                        warns you first, since its receiver has to restart.</p>
                     <span class="fb-chip">DAG · pan · zoom · minimap · hot rerouting</span>
                 </div>
 
@@ -329,13 +331,15 @@
                         </svg></div>
                     <h3>High-resolution library</h3>
                     <p>Browse Roon, MPD, MinimServer, Qobuz, Tidal and HIGHRESAUDIO from one interface. Album view,
-                        full-text search, queue management. Your UPnP/DLNA music servers appear alongside
+                        full-text search, queue management. <b>Star an album</b> to favourite it on Qobuz, Tidal or
+                        HIGHRESAUDIO, straight from the grid; tap an <b>artist</b> in search to open their albums
+                        across every source. Your UPnP/DLNA music servers appear alongside
                         streaming services — search results are directly playable, with titles and cover art.
                         Choose a track, choose a renderer: the music flows to the destination at full resolution —
                         even your local NAS/USB files cast to a network renderer, exactly like the streaming services.
                         No separate control app needed.
                         Qobuz, Tidal and HIGHRESAUDIO require an active subscription to their respective services.</p>
-                    <span class="fb-chip">Roon · MPD · UPnP/DLNA · Qobuz · Tidal · HIGHRESAUDIO · local cast · UPnP renderers</span>
+                    <span class="fb-chip">Roon · MPD · UPnP/DLNA · Qobuz · Tidal · HIGHRESAUDIO · favorites ★ · local cast · UPnP renderers</span>
                 </div>
 
                 <div class="fb span2 dark">
@@ -405,13 +409,14 @@
                             <path d="M10.27 21a1.94 1.94 0 0 0 3.46 0" />
                         </svg></div>
                     <h3>Push notifications</h3>
-                    <p>Get notified the instant a critical service fails, a DAC disconnects, or temperature
-                        crosses your threshold. Even when the PWA is closed.</p>
-                    <span class="fb-chip">Service down · DAC disconnect · Temperature · Background push</span>
+                    <p>Get notified the instant a critical service fails, the CPU crosses the critical
+                        temperature, a software update is available or a profile is activated. Even when the
+                        PWA is closed.</p>
+                    <span class="fb-chip">Service down · Critical temperature · Update available · Background push</span>
                 </div>
 
-                <div class="fb span2">
-                    <span class="fb-tier starter">STARTER</span>
+                <div class="fb span2 dark">
+                    <span class="fb-tier pro">PRO</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24">
                             <circle cx="11" cy="11" r="7" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -452,6 +457,21 @@
                         switches between your physical DAC outputs and network renderers in one tap. A live
                         <b>"Up next"</b> strip shows the next track in the queue as it is loaded onto the renderer.</p>
                     <span class="fb-chip">UPnP renderers · DLNA · MinimServer · Qobuz · Tidal · HIGHRESAUDIO · local library · bit-perfect · output selector · Up next</span>
+                </div>
+
+                <div class="fb span6">
+                    <span class="fb-tier starter">STARTER</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7,10 12,15 17,10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg></div>
+                    <h3>One-click self-update, with automatic rollback</h3>
+                    <p>When a new release ships, the Admin tab shows a banner: one click and your password —
+                        the box downloads, swaps and health-checks the new version, with live progress across the
+                        restart. If anything goes wrong it <b>rolls back automatically</b> to the previous version.
+                        Never left on a broken update, never a terminal.</p>
+                    <span class="fb-chip">Update banner · health-check · auto rollback · no terminal</span>
                 </div>
             </div>
         </div>
@@ -503,7 +523,8 @@
             <p class="section-sub">The pipeline graph is the signature view of Audiogravi<sup>ty</sup>. It renders your
                 <code style="font-family:var(--mono); font-size:15px">audio-topology.json</code> — the physical and
                 virtual map of your Hi-Fi chain — as a live, interactive SVG you can pan, zoom and steer from. Click any
-                link to open the steering popover and reroute ALSA output without interrupting playback.
+                link to open the steering popover and reroute the ALSA output — gapless on MPD; AirPlay warns
+                before restarting its receiver.
             </p>
             <div class="pipeline-frame">
                 <svg viewBox="0 0 1000 300" aria-label="Audio pipeline">
@@ -567,7 +588,7 @@
                             class="sub">Naim Nac 52 / Nap 250</text>
                     </g>
                     <text x="20" y="280" font-family="Inter,sans-serif" font-size="10.5" fill="#888">Click any link →
-                        reroute ALSA output to a different DAC without stopping playback. Latency, RSSI and 802.11
+                        reroute the ALSA output to a different DAC (gapless on MPD). Latency, RSSI and 802.11
                         protocol shown for every network hop.</text>
                 </svg>
                 <div class="pipeline-legend">
@@ -647,8 +668,9 @@
                 <div class="detail-col">
                     <div class="n">0</div>
                     <h4>Cloud dependencies</h4>
-                    <p>Everything runs on your local machine. No account. No telemetry. Your music metadata, credentials
-                        and system state stay on your network.</p>
+                    <p>Playback runs entirely on your local machine. No account. No telemetry. Your credentials and
+                        system state stay on your network — only cover-art and radio-catalogue lookups query public
+                        metadata services.</p>
                 </div>
             </div>
         </div>
@@ -952,8 +974,9 @@
                                 Windows Hello, YubiKey</span></div>
                         <div class="item"><span class="tag">Multi-device</span><span>Several passkeys per user, managed
                                 one-by-one in your profile</span></div>
-                        <div class="item"><span class="tag">Push</span><span>Notification when a service fails,
-                                temperature crosses threshold, critical event — even with the app closed</span></div>
+                        <div class="item"><span class="tag">Push</span><span>Notification when a service fails, the
+                                CPU hits the critical temperature or an update is available — even with the app
+                                closed</span></div>
                         <div class="item"><span class="tag">Touch targets</span><span>WCAG 2.1 AA · 44 px minimum ·
                                 responsive layout</span></div>
                     </div>
@@ -1241,6 +1264,43 @@
                     </div>
                 </div>
 
+                <div class="faq-item">
+                    <input type="checkbox" id="faq9">
+                    <label class="faq-label" for="faq9">
+                        Where is the documentation?
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                    </label>
+                    <div class="faq-body">
+                        <div class="faq-body-inner">A full illustrated <a
+                                href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/README.md"
+                                style="color:var(--warn)">user manual</a> covers the whole journey — installation,
+                            first run, listening, streaming, outputs, administration, updating, troubleshooting —
+                            with a one-page quick start, real screenshots and a glossary. It is also readable
+                            <b>inside the app</b>: the <b>Manual</b> tab opens it in place, always up to date.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq10">
+                    <label class="faq-label" for="faq10">
+                        <span>How do I update Audiogravi<sup>ty</sup>?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                    </label>
+                    <div class="faq-body">
+                        <div class="faq-body-inner">From the interface. When a new release is available, the
+                            <b>Admin</b> tab shows an update banner — one click and your admin password, and the box
+                            downloads, installs and health-checks the new version with live progress, even across the
+                            service restart. If anything goes wrong it <b>automatically rolls back</b> to the previous
+                            version. No terminal, no re-running the installer.</div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1254,7 +1314,8 @@
                 <div>
                     <p class="setup-lede">No compilation, no dependency hell, no manual configuration. The installer
                         detects your architecture, generates security keys, configures the systemd service and starts
-                        everything — then a guided setup configures your DAC and music library. Under five minutes from <code
+                        everything. Then install your audio engines in one click from the interface (MPD, AirPlay,
+                        UPnP…) and let the guided setup wire your DAC and music library. A few minutes from <code
                             style="font-family:var(--mono);font-size:13px">curl</code> to listening.</p>
                     <ul class="setup-list">
                         <li><span class="tag">Recommended</span><span>DietPi on x86_64 or Raspberry Pi (aarch64)</span>

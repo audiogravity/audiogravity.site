@@ -1198,6 +1198,10 @@ nav {
     grid-column: span 4
 }
 
+.fb.span6 {
+    grid-column: span 6
+}
+
 .fb.dark {
     background: var(--inv);
     color: #fff
@@ -1228,7 +1232,8 @@ nav {
 @media(max-width:900px) {
     .fb.span2,
     .fb.span3,
-    .fb.span4 {
+    .fb.span4,
+    .fb.span6 {
         grid-column: span 6
     }
 }

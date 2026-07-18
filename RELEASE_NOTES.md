@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.17 — 2026-07-18
+
 ### Add a NAS to your library without touching a terminal
 
 Pointing Audiogravi<sup>ty</sup> at music on a network drive used to mean an SSH

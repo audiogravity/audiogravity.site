@@ -7,7 +7,19 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The renderer is now an output — casts show their true source
+
+Sending music to a network renderer used to make the renderer itself appear as
+the "source" in the player. That never matched reality: the music comes *from*
+Qobuz or your library and *plays on* the renderer. The player now says exactly
+that — the now-playing card is badged with the real origin (**Qobuz**,
+**Library**, your UPnP server's name, or **External** when another app drives
+the renderer), and the renderer appears where it belongs: as the **output**
+("→ renderer name" badge and the output bar). Play/pause, next, seek and volume
+keep working exactly as before — commands are always routed to the device that
+actually plays the music. When the renderer is your selected output but nothing
+is playing, it still stays on screen as the selected output. (This refines the
+0.9.18 "renderer as a source" presentation into the final model.)
 
 ---
 

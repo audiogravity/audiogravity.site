@@ -7,6 +7,26 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Casting to a network renderer, done right
+
+Sending audio to a network renderer — a Marantz or Linn streamer, another
+AudioGravity box, any UPnP device — now feels like playing to any local output.
+The renderer shows up as a full **now-playing** entry in both the mini-player and
+the fullscreen player: cover art, track info, the source badge, the signal path,
+and transport controls that actually work. When the renderer is your selected
+output but nothing is playing, it stays on screen as **Stopped** (named after the
+renderer) instead of the player going blank.
+
+Under the hood this fixed two long-standing problems with renderer playback.
+**Play/pause now works**: it was silently doing nothing on many renderers because
+of an unreliable internal check — AudioGravity now sends the pause/play command
+straight to the device. And **the renderer's state now updates live** (play,
+pause, track, position) within about a second, instead of lagging up to a minute:
+the device's own status events were being rejected before they ever reached
+AudioGravity, so it had been falling back on slow polling. The player's output
+name and signal path now correctly show the renderer, and casting a DSD file to a
+network amplifier no longer forces its volume to full.
+
 ### Streaming reliability pass
 
 A round of fixes makes the streaming services steadier without changing how they

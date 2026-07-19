@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Refactored
+- **[core] The Now Playing service is split into focused modules (behaviour-preserving).** The ~1550-line `now_playing.py` — which mixed playback-state aggregation, transport control, cover-art resolution and album tracklists — is broken into `stream_meta.py`, `album_tracks.py`, `cover_art.py` and `transport_control.py`; `now_playing.py` (now ~630 lines) only orchestrates and delegates. No API, event or behaviour change. The split adds 29 unit tests for the previously untested cover-art, album-tracklist and transport-dispatch paths, and folds the two duplicated MPD-escape helpers onto the canonical `core.mpd_client.escape`.
+
 ## [0.9.18] - 2026-07-19
 
 ### Added

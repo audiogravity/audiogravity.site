@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.18] - 2026-07-19
+
 ### Added
 - **[core+ui] Casting to a network renderer now shows a full player.** When you cast audio to a native UPnP renderer (a Marantz/Linn network player, another AudioGravity box, any AVTransport device), it now appears as a first-class *now-playing source* in both the mini-player and the fullscreen player, with working transport controls, cover art, format/origin badges and signal path — the same experience as any local source. When the renderer is the selected output but stopped, it stays visible as **Stopped** (with the renderer as the output label) instead of the player collapsing to an empty state. Previously, casting to such a renderer showed no mini-player and its controls were routed through a fragile, inconsistent side-path.
 

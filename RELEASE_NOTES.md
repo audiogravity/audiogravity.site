@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.18 — 2026-07-19
+
 ### Casting to a network renderer, done right
 
 Sending audio to a network renderer — a Marantz or Linn streamer, another

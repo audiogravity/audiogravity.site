@@ -7,6 +7,16 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### HQPlayer takes its true place: a processor in your chain
+
+HQPlayer no longer masquerades as a music source. When AudioGravity streams
+your library through it, the player shows **Library** as the source and the
+signal path tells the real story — Library → HQPlayer → NAA streamer → your
+DAC. If you drive HQPlayer from its own remote instead, AudioGravity shows an
+**External** playback with the live sample rate and DSD/PCM mode (HQPlayer's
+API doesn't reveal the track title in that case). Play/pause, volume and the
+DSD safeguards all keep working exactly as before.
+
 ### The renderer is now an output — casts show their true source
 
 Sending music to a network renderer used to make the renderer itself appear as

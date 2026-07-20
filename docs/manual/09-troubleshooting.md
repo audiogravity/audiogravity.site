@@ -6,6 +6,25 @@ interface.
 
 ## No sound / wrong output
 
+**Read the message first.** Audiogravi<sup>ty</sup> now tells you why a track will not play,
+as a notification and under the output in the fullscreen player. Start there — the
+answer is usually on screen:
+
+<img src="images/ios-output-busy.webp" alt="The fullscreen player showing, under the output, the reason playback will not start: the output is in use by another player" width="360">
+
+- *"Output in use by another player"* — your sound card is **exclusive** (that is what
+  makes bit-perfect playback possible), so only one player can hold it at a time.
+  Stop the other one — often HQPlayer: turn its **Use as output** switch off and the
+  card is released (see [6. Outputs & engines](06-outputs-engines.md)).
+- *"its network audio daemon (NAA) is not running"* — HQPlayer is your output but the
+  piece that feeds your DAC is stopped. Start it in **Services**, or turn the switch
+  off to play locally.
+- *"cannot be decoded"* — the track's format is not one HQPlayer handles (AAC, ALAC,
+  OGG, WMA). Turn the switch off to play it on the local output.
+- *"Both HQPlayer and a network renderer are selected"* — pick one.
+
+If nothing is displayed:
+
 - Check the **output selector** — is the right destination (Local DAC vs a network
   renderer) selected?
 - In **Config**, confirm the service's **audio output** badge points at your DAC. If
@@ -29,12 +48,17 @@ interface.
 - A track that played before but fails later is usually an **expired streaming link** —
   Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
+- **With HQPlayer as your output**, streaming services and AAC radio stations are
+  refused on purpose — Audiogravi<sup>ty</sup> names the reason. Turn **Use as output** off to
+  play them locally (see [6. Outputs & engines](06-outputs-engines.md)).
 
 ## Casting to a renderer stalls
 
 - Check the renderer is reachable on the LAN and appears in the output selector.
 - Network renderers depend on your local network — run the **Network Test**
   (Performance tab) to check jitter/loss.
+
+<img src="images/ios-network-test.webp" alt="The network stability test after a ping run: an EXCELLENT verdict with min, average, max latency, jitter and packet loss" width="360">
 
 ## A UPnP renderer or media server isn't discovered
 

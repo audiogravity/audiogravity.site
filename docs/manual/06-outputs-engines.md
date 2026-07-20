@@ -52,16 +52,51 @@ server's own audio path.
 
 ## HQPlayer
 
-If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with it two ways:
+If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with it three ways:
 
 - **DSP remote** — change the interpolation **filter**, **noise shaper**, output
   **mode** and **volume** on your HQPlayer instance from the interface. It's
   auto-discovered on the LAN — connect in one tap.
 - **NAA endpoint** — the box can run HQPlayer's Network Audio Adapter so HQPlayer
   streams to it and out to your DAC.
+- **As your output** — the **Use as output** switch on the HQPlayer card sends your
+  library through HQPlayer's DSP engine instead of straight to the local DAC.
 
-You can also play any track from your UPnP library straight through HQPlayer's DSP
-engine.
+### Use as output
+
+<img src="images/ios-hqplayer-output.webp" alt="The HQPlayer card: connected, with the Use as output switch turned on" width="360">
+
+With the switch on, playing an album routes it to HQPlayer, which processes it and
+sends it back to your DAC through the NAA. The player badges the track with where the
+music actually comes from — **Library** — and the signal path shows the full chain:
+*Library → HQPlayer → NAA → your DAC*. HQPlayer is a **processor** in that chain, not
+the source of the music.
+
+The setting lives **on the box, not in your browser**: turn it on from your phone and
+your laptop shows it on too. Turning it off releases the sound card so local playback
+works again immediately.
+
+Audiogravi<sup>ty</sup> refuses to turn the switch on when nothing would come out — no HQPlayer
+configured, or its NAA not running on the box — and tells you which of the two is
+missing rather than sending your music into silence.
+
+### What can and cannot go through HQPlayer
+
+HQPlayer plays **FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF**. It does
+**not** decode **AAC, ALAC, OGG/Opus, APE or WMA**.
+
+This matters most for **internet radio**: many Hi-Res stations broadcast in AAC. When
+you pick one while HQPlayer is your output, Audiogravi<sup>ty</sup> tells you straight away that
+the station's format cannot be decoded — turn the switch off to listen to it on the
+local output.
+
+**Streaming services** (Qobuz, Tidal, HIGHRESAUDIO) cannot be routed through HQPlayer
+yet either; you get the same clear message rather than silence. **Roon is unaffected** —
+a Roon zone is its own output chain and never uses the sound card HQPlayer replaces.
+
+> **One output at a time.** HQPlayer and a network renderer cannot both be your
+> output. If both are selected, Audiogravi<sup>ty</sup> asks you to turn one off instead of
+> guessing which device you meant.
 
 ## Roon
 

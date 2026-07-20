@@ -50,11 +50,21 @@ hardware key) via the WebAuthn standard. Requires HTTPS on a real domain.
 **PCM** — Pulse-Code Modulation, the "normal" digital audio representation (CD,
 FLAC, streaming). Contrast with DSD.
 
+**Output** — where the sound physically comes out: your local DAC, or a network
+speaker. Not to be confused with the *player* that drives it (MPD, AirPlay…) — a DAC
+does not take a "pause" command. Only one output carries the music at a time.
+
+**Processor** — a step that *transforms* the audio between the source and the output,
+without being either. **HQPlayer** is the processor in an Audiogravi<sup>ty</sup> chain: the
+music still comes from your library, and still ends at your DAC.
+
 **PWA** — Progressive Web App: the Audiogravi<sup>ty</sup> interface installed from
 the browser onto your home screen, running fullscreen like a native app.
 
 **Renderer** — the UPnP role that *plays* audio. Network amplifiers and streamers
 are renderers; the box itself is one too (via upmpdcli) so other apps can cast to it.
+In Audiogravi<sup>ty</sup> a renderer is an **output**: what you cast keeps its own identity
+(Qobuz, your library…) and the renderer is where it comes out.
 
 **Sample rate / bit depth** — how often the signal is measured (44.1–384 kHz) and
 how finely each measurement is stored (16/24/32-bit). Shown live in the hi-fi

@@ -34,7 +34,15 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
 
 
 - The header names the **actual source** — playing internet radio reads "Radio" and
-  shows the **station's logo**, not the underlying playback engine.
+  shows the **station's logo**, not the underlying playback engine. The same holds
+  when you **cast to a network speaker**: the badge names where the music comes from
+  (**Qobuz**, **Library**, your media server's name), and the speaker appears as the
+  **output** — because it is the destination, not the source.
+- A badge reading **External** means the music was **not started from
+  Audiogravi<sup>ty</sup>** — someone is driving your speaker, or HQPlayer, from another app
+  or its own remote. Audiogravi<sup>ty</sup> shows what it can see and stays out of the way.
+
+<img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a Marantz: the card is badged Qobuz, the signal path reads Qobuz then Marantz, and the output bar names the speaker" width="360">
 - When the queue **mixes sources** — say a radio station followed by a Qobuz album —
   each upcoming track carries a small **source badge** telling you where it comes
   from, and a **filter bar** lets you view one source at a time. Filtering only

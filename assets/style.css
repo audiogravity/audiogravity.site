@@ -1487,6 +1487,12 @@ nav {
     align-items: baseline
 }
 
+.rt-list em {
+    font-style: normal;
+    color: var(--text4);
+    white-space: nowrap
+}
+
 .rt-list li:last-child {
     border-bottom: 0
 }

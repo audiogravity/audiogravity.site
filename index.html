@@ -59,7 +59,7 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#pipeline">Signal path</a>
-                <a href="#rt">RT scheduling</a>
+                <a href="#rt">Audio priority</a>
                 <a href="#compare">Compare</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
@@ -83,13 +83,13 @@
         <div class="hero-left">
             <div class="hero-kicker">
                 <span>The audiophile streamer interface</span>
-                <span class="live">Live SSE</span>
+                <span class="live">Live</span>
             </div>
             <h1 class="hero-h1">Audiogravi<sup>ty</sup></h1>
             <p class="hero-tag">Your streamer is your source. <em>Audiogravi<sup>ty</sup> is the conductor.</em></p>
             <p class="hero-lede">MPD, Roon, HQPlayer, AirPlay, UPnP sources and renderers, internet radio — every
                 player, every source, down to DSD and Hi-Res PCM. Send your library to any network renderer.
-                Audiogravi<sup>ty</sup> coordinates each component of your stack, from the RT kernel to your Qobuz,
+                Audiogravi<sup>ty</sup> coordinates each component of your stack, from the system to your Qobuz,
                 Tidal and HIGHRESAUDIO libraries, without replacing any of them. One interface. Total control.
             </p>
             <div class="hero-cta">
@@ -200,8 +200,8 @@
     <section class="section" id="features">
         <div class="w">
             <div class="section-label">Features</div>
-            <h2 class="section-title">From the kernel<br>to your Qobuz, Tidal &amp; HIGHRESAUDIO library.</h2>
-            <p class="section-sub">Twenty-one modules orchestrating every layer of your streamer — RT kernel tuning,
+            <h2 class="section-title">From the machine<br>to your Qobuz, Tidal &amp; HIGHRESAUDIO library.</h2>
+            <p class="section-sub">Twenty-one modules orchestrating every layer of your streamer — system tuning,
                 service control, signal-path visualisation, unified transport across MPD, Roon, HQPlayer, AirPlay,
                 UPnP and internet radio. Starter ships with the essentials; Pro unlocks the deep audio-engineering
                 surface.</p>
@@ -244,9 +244,10 @@
                             <line x1="3" y1="9" x2="21" y2="9" />
                             <line x1="9" y1="3" x2="9" y2="21" />
                         </svg></div>
-                    <h3>Pin audio threads to dedicated CPU cores</h3>
-                    <p>SCHED_FIFO or SCHED_RR with priority 1–99. CPU affinity per service. MEMLOCK locks pages in RAM —
-                        no swap during playback. All written as systemd drop-ins. Reversible. Upgrade-safe.</p>
+                    <h3>Give your music its own CPU cores</h3>
+                    <p>Your player gets the processor before anything else, on cores reserved for it, with its audio held
+                        in memory — never pushed to disk mid-track. Written as system overrides that survive updates
+                        and can be undone at any time.</p>
                     <span class="fb-chip">FIFO · RR · MEMLOCK · RTPRIO</span>
                 </div>
 
@@ -258,9 +259,10 @@
                             <circle cx="10" cy="12" r=".8" fill="currentColor" />
                             <circle cx="14" cy="16" r=".8" fill="currentColor" />
                         </svg></div>
-                    <h3>µs-scale latency benchmarks</h3>
-                    <p>Cyclictest from the browser. Histograms at the microsecond — the definitive proof that your RT
-                        kernel is operational, not just installed. Compare before/after, timestamped, archived.</p>
+                    <h3>Measure the stability, don't assume it</h3>
+                    <p>Run the test from your browser and read the result in microseconds: proof that the machine really
+                        holds a steady beat, not just that the software is installed. Compare before and after, each
+                        run timestamped and kept.</p>
                     <span class="fb-chip">cyclictest · iPerf3 · jitter histograms</span>
                 </div>
 
@@ -272,12 +274,12 @@
                             <circle cx="12" cy="12" r="1.5" />
                             <circle cx="17" cy="12" r="1.5" />
                         </svg></div>
-                    <h3>Per-core governor control</h3>
-                    <p>Performance governor on audio cores, powersave elsewhere. Per-core thermal map. A
-                        <b>THROTTLED</b> badge fires the instant the kernel reports throttling — before your ear hears
-                        anything.
+                    <h3>Full speed where it plays, quiet elsewhere</h3>
+                    <p>The cores playing music run flat out; the others stay quiet and cool. A per-core heat map shows
+                        where the warmth is, and a <b>THROTTLED</b> badge appears the moment the machine slows itself
+                        down to cope — before your ear catches it.
                     </p>
-                    <span class="fb-chip">Performance · Powersave · thermal map</span>
+                    <span class="fb-chip">governor · Performance · Powersave · thermal map</span>
                 </div>
 
                 <div class="fb span3 dark">
@@ -291,8 +293,8 @@
                     <h3>Set up and edit audio service configs without breaking them</h3>
                     <p>New box? The guided setup detects your DAC and music library and generates a minimal,
                         <b>bit-perfect</b> config for MPD, AirPlay and UPnP; Guided mode then changes an output or
-                        library in two clicks — only what you touch is rewritten. For deeper edits: form view, raw
-                        CodeMirror editor (JSON, INI, XML, libconfig), live validation before save, side-by-side
+                        library in two clicks — only what you touch is rewritten. For deeper edits: form view, a full text
+                        editor with syntax highlighting (JSON, INI, XML, libconfig), live validation before save, side-by-side
                         diff, automatic timestamped backup before every change.</p>
                     <span class="fb-chip">guided setup · mpd.conf · roon · AirPlay · upmpdcli · live diff</span>
                 </div>
@@ -311,7 +313,7 @@
                         16 → 32 bit), a <b>bit-perfect badge</b>, per-link latency and live play state. Click a
                         link to hot-reroute the audio to a different DAC — gapless on MPD; AirPlay warns you first,
                         since its receiver has to restart.</p>
-                    <span class="fb-chip">DAG · pan · zoom · minimap · hot rerouting</span>
+                    <span class="fb-chip">interactive graph · pan · zoom · minimap · hot rerouting</span>
                 </div>
 
                 <div class="fb span2 dark">
@@ -426,7 +428,7 @@
                             <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
                         </svg></div>
                     <h3>HQPlayer DSP remote</h3>
-                    <p>Change interpolation filter, noise shaper, output mode and volume on your HQPlayer instance
+                    <p>Change HQPlayer's sound-shaping settings — interpolation filter, noise shaper, output mode and volume — on your HQPlayer instance
                         without leaving the couch. Auto-discovered on your local network — connect in one tap.
                         Play any track from your UPnP library directly through HQPlayer's DSP engine.</p>
                     <span class="fb-chip">Filter · Shaper · Mode · Volume · Auto-discovery · UPnP play-through</span>
@@ -592,29 +594,25 @@
     <!-- RT SCHEDULING -->
     <section class="section" id="rt">
         <div class="w">
-            <div class="section-label">Real-time scheduling · Pro</div>
+            <div class="section-label">Audio priority · Pro</div>
             <h2 class="section-title">End the jitter.</h2>
             <p class="section-sub">A 200 µs interrupt is enough to make a DSD256 stream audibly grainy.
                 Audiogravi<sup>ty</sup>
-                configures the kernel scheduling parameters of every audio service through systemd drop-ins — never
-                touching the original unit files. Upgrade-safe. Reversible. Verifiable with cyclictest.</p>
+                gives each audio service the priority it needs, and writes those settings <em>beside</em> the
+                originals rather than over them — an update cannot undo your work, and one click puts everything
+                back. Then measure the result yourself, in microseconds.</p>
 
             <div class="rt-grid">
                 <div class="rt-col">
                     <h3>What you control, per service</h3>
                     <ul class="rt-list">
-                        <li><span class="tag">Policy</span><span>SCHED_FIFO (strict) or SCHED_RR (round-robin RT)</span>
+                        <li><span class="tag">Scheduling</span><span>Audio threads run ahead of everything else — strict or round-robin. <em>(SCHED_FIFO / SCHED_RR)</em></span>
                         </li>
-                        <li><span class="tag">Priority</span><span>1 → 99. MPD at FIFO/80, AirPlay at FIFO/60,
-                                workers below.</span></li>
-                        <li><span class="tag">Affinity</span><span>Pin each service to one or more dedicated cores,
-                                isolated from the rest of the system.</span></li>
-                        <li><span class="tag">MEMLOCK</span><span>Lock memory pages in RAM — no swap during
-                                playback.</span></li>
-                        <li><span class="tag">RTPRIO</span><span>Cap RT priority for internal threads of the
-                                process.</span></li>
-                        <li><span class="tag">Governor</span><span>Performance on audio cores, powersave on idle cores,
-                                re-applied at boot.</span></li>
+                        <li><span class="tag">Priority</span><span>Who gets the CPU first: your player, then AirPlay, then the rest. <em>(1 → 99 — MPD at 80, AirPlay at 60)</em></span></li>
+                        <li><span class="tag">Dedicated cores</span><span>Each service gets its own CPU cores, shielded from the rest of the system. <em>(affinity)</em></span></li>
+                        <li><span class="tag">Memory</span><span>Audio stays in RAM — never pushed to disk mid-track. <em>(MEMLOCK)</em></span></li>
+                        <li><span class="tag">Internal threads</span><span>A ceiling so a single service cannot starve the others. <em>(RTPRIO)</em></span></li>
+                        <li><span class="tag">CPU speed</span><span>Full speed on the cores playing music, low power on the idle ones — re-applied at boot. <em>(governor)</em></span></li>
                     </ul>
                 </div>
                 <div class="rt-col" style="padding:0">
@@ -832,7 +830,7 @@
                             <td class="cmp-no">—</td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">Kernel-level RT tuning (FIFO, MEMLOCK, CPU affinity)</td>
+                            <td class="cmp-cap">System tuning for audio (FIFO, MEMLOCK, CPU affinity)</td>
                             <td class="cmp-ag cmp-yes">✓</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -841,7 +839,7 @@
                             <td class="cmp-no">—</td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">µs-scale benchmarks (cyclictest from UI)</td>
+                            <td class="cmp-cap">Latency measured in microseconds (cyclictest, from the interface)</td>
                             <td class="cmp-ag cmp-yes">✓</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -1003,7 +1001,7 @@
                             <div class="pp-row"><span class="ck">✓</span><span>All Starter features</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span>All Pro features</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span>Pipeline · Player · Library</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span>RT scheduling · cyclictest</span></div>
+                            <div class="pp-row"><span class="ck">✓</span><span>Audio priority · latency test</span></div>
                             <div class="pp-row"><span class="na">·</span><span style="color:var(--text4)">After 30 d →
                                     Starter</span></div>
                         </div>
@@ -1046,7 +1044,7 @@
                         v1.x updates. Pro holders get a preferential upgrade price for new major versions.</p>
                     <div class="pp-border">
                         <div class="pp-rows">
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Audio Pipeline</b> — interactive DAG,
+                            <div class="pp-row"><span class="ck">✓</span><span><b>Audio Pipeline</b> — interactive map,
                                     hot rerouting</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span><b>Player</b> — unified transport across
                                     all sources</span></div>
@@ -1054,7 +1052,7 @@
                                     Qobuz · Tidal · HIGHRESAUDIO</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span><b>Audio Services Config</b> — safe
                                     in-place editing + diff</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Systemd Config</b> — FIFO / RR ·
+                            <div class="pp-row"><span class="ck">✓</span><span><b>Audio priority</b> — FIFO / RR ·
                                     affinity · MEMLOCK</span></div>
                             <div class="pp-row"><span class="ck">✓</span><span><b>Performance</b> — cyclictest · RT
                                     monitor · iPerf3</span></div>
@@ -1322,7 +1320,7 @@
                     <h4>Product</h4>
                     <a href="#features">Features</a>
                     <a href="#pipeline">Signal path</a>
-                    <a href="#rt">RT scheduling</a>
+                    <a href="#rt">Audio priority</a>
                     <a href="#pricing">Editions</a>
                 </div>
                 <div class="footer-col">

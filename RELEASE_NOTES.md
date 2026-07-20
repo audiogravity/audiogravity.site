@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.19 — 2026-07-20
+
 ### HQPlayer takes its true place: a processor in your chain
 
 HQPlayer no longer masquerades as a music source. When AudioGravity streams

@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.19] - 2026-07-20
+
 ### Added
 - **[core + ui] When an output can't play, AudioGravity now says why instead of staying silent.** The sound card is exclusive by design (that is what makes bit-perfect playback possible), so only one player can hold it at a time. If you press play while another one still holds it, a **notification** tells you straight away — *"Output in use by another player — stop it to play here"* — and the fullscreen player repeats it under the output, with the engine's exact message as a tooltip. Previously you got silence and no explanation, and the reason was only readable if you thought to open the fullscreen player. The notification appears once when the problem starts, not on every refresh. Costs nothing: the reason was already in the data AudioGravity reads every second, it was simply discarded.
 - **[ui] A refused playback now tells you why, instead of looking like a click that did nothing.** When AudioGravity cannot start a track, the backend explains the reason precisely — but the three places you start playback from (browse, search, UPnP browser) dropped that explanation into the browser console, which nobody reads. All three now surface it as a notification, in the server's own words. This covers every refusal, not one case: an unreachable UPnP server, an expired stream, a source that cannot reach the current output. Enqueueing from the UPnP browser gets the same feedback as everywhere else too — it was the last place where adding a track could fail in complete silence. Successful playback stays silent by design: the music starting is the feedback.

@@ -225,6 +225,8 @@ Real-time monitoring and box-level actions.
   over SSE (the **LIVE** badge shows the stream is active).
 - **System & audio hardware** — hostname, OS, kernel, CPU model/cores; every audio
   card, USB interface and subdevice.
+
+<img src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
 - **Event log** — system events and SSE messages; RUNNING/STOPPED to pause, CLEAR to
   reset.
 - **Actions (admin)** — *Restart Backend* restarts the Audiogravi<sup>ty</sup> service without
@@ -286,6 +288,8 @@ install taps a Pro tab — those carry a small lock icon in the tab bar).
 - **Import / re-download** — import a `.lic` file, or re-download yours from the
   self-service portal (purchase email + Device ID, no account needed) after an OS
   reinstall.
+
+<img src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
 
 ## Related
 

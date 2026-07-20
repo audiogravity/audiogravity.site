@@ -17,6 +17,25 @@ DAC. If you drive HQPlayer from its own remote instead, AudioGravity shows an
 API doesn't reveal the track title in that case). Play/pause, volume and the
 DSD safeguards all keep working exactly as before.
 
+### Silence now comes with an explanation
+
+Your sound card is exclusive on purpose — that is what makes bit-perfect
+playback possible — so only one player can hold it at a time. Until now, if you
+pressed play while another player still had it, nothing happened and nothing
+said why. AudioGravity now tells you on the spot with a notification: *"Output
+in use by another player — stop it to play here"*. The fullscreen player shows
+the same message under the output, with the engine's exact wording available as
+a tooltip if you want the technical detail. The message always describes what
+you are trying to play right now, and appears once when the problem starts
+rather than repeating while it lasts.
+
+The same goes for a refused playback. AudioGravity always knew why a track
+would not start — an unreachable server, an expired stream, a source that
+cannot reach the output you selected — but the places you start playback from
+kept that reason to themselves, so the tap simply appeared to do nothing. They
+now tell you, in plain words. Playback that works stays quiet: the music is the
+confirmation.
+
 ### The renderer is now an output — casts show their true source
 
 Sending music to a network renderer used to make the renderer itself appear as

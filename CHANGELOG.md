@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core + ui] When an output can't play, AudioGravity now says why instead of staying silent.** The sound card is exclusive by design (that is what makes bit-perfect playback possible), so only one player can hold it at a time. If you press play while another one still holds it, the player now shows *"Output in use by another player — stop it to play here"* under the output, with the engine's exact message as a tooltip — previously you got silence and no explanation. Costs nothing: the reason was already in the data AudioGravity reads every second, it was simply discarded.
+
 ### Fixed
 - **[ui] Turning off "Use as output" for HQPlayer now gives the DAC back — local playback works again.** The toggle only changed where AudioGravity *sent* new plays; HQPlayer stayed loaded and its network audio daemon (NAA) kept the sound card open, so playing locally afterwards failed silently (`Failed to open ALSA device "hw:0,0": Device or resource busy`). Switching the toggle off — or disconnecting HQPlayer — now stops HQPlayer so the card is released. Casting to a network renderer was unaffected (it never uses the local card).
 - **[core] Pausing a cast no longer makes the mini-player vanish.** A network-renderer cast (and any virtual source such as HQPlayer) is now kept visible in the mini-player while **Paused** — it was treated as "not playing" and filtered out, so pausing it collapsed the mini-player (the fullscreen was unaffected).

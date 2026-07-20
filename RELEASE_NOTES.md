@@ -15,10 +15,10 @@ _Nothing yet._
 
 ### HQPlayer takes its true place: a processor in your chain
 
-HQPlayer no longer masquerades as a music source. When AudioGravity streams
+HQPlayer no longer masquerades as a music source. When Audiogravi<sup>ty</sup> streams
 your library through it, the player shows **Library** as the source and the
 signal path tells the real story — Library → HQPlayer → NAA streamer → your
-DAC. If you drive HQPlayer from its own remote instead, AudioGravity shows an
+DAC. If you drive HQPlayer from its own remote instead, Audiogravi<sup>ty</sup> shows an
 **External** playback with the live sample rate and DSD/PCM mode (HQPlayer's
 API doesn't reveal the track title in that case). Play/pause, volume and the
 DSD safeguards all keep working exactly as before.
@@ -28,14 +28,14 @@ DSD safeguards all keep working exactly as before.
 Your sound card is exclusive on purpose — that is what makes bit-perfect
 playback possible — so only one player can hold it at a time. Until now, if you
 pressed play while another player still had it, nothing happened and nothing
-said why. AudioGravity now tells you on the spot with a notification: *"Output
+said why. Audiogravi<sup>ty</sup> now tells you on the spot with a notification: *"Output
 in use by another player — stop it to play here"*. The fullscreen player shows
 the same message under the output, with the engine's exact wording available as
 a tooltip if you want the technical detail. The message always describes what
 you are trying to play right now, and appears once when the problem starts
 rather than repeating while it lasts.
 
-The same goes for a refused playback. AudioGravity always knew why a track
+The same goes for a refused playback. Audiogravi<sup>ty</sup> always knew why a track
 would not start — an unreachable server, an expired stream, a source that
 cannot reach the output you selected — but the places you start playback from
 kept that reason to themselves, so the tap simply appeared to do nothing. They
@@ -63,7 +63,7 @@ is playing, it still stays on screen as the selected output. (This refines the
 ### Casting to a network renderer, done right
 
 Sending audio to a network renderer — a Marantz or Linn streamer, another
-AudioGravity box, any UPnP device — now feels like playing to any local output.
+Audiogravi<sup>ty</sup> box, any UPnP device — now feels like playing to any local output.
 The renderer shows up as a full **now-playing** entry in both the mini-player and
 the fullscreen player: cover art, track info, the source badge, the signal path,
 and transport controls that actually work. When the renderer is your selected
@@ -72,11 +72,11 @@ renderer) instead of the player going blank.
 
 Under the hood this fixed two long-standing problems with renderer playback.
 **Play/pause now works**: it was silently doing nothing on many renderers because
-of an unreliable internal check — AudioGravity now sends the pause/play command
+of an unreliable internal check — Audiogravi<sup>ty</sup> now sends the pause/play command
 straight to the device. And **the renderer's state now updates live** (play,
 pause, track, position) within about a second, instead of lagging up to a minute:
 the device's own status events were being rejected before they ever reached
-AudioGravity, so it had been falling back on slow polling. The player's output
+Audiogravi<sup>ty</sup>, so it had been falling back on slow polling. The player's output
 name and signal path now correctly show the renderer, and casting a DSD file to a
 network amplifier no longer forces its volume to full.
 
@@ -118,7 +118,7 @@ be pointed at internal addresses, passkey sign-in no longer reveals which
 usernames exist, and the config backups it keeps are capped instead of growing
 forever. The service-tuning panel now strictly validates every value it writes
 to systemd (closing a way to run code as root) and only ever touches
-Audiogravity's own services, never system units like SSH or networking.
+Audiogravi<sup>ty</sup>'s own services, never system units like SSH or networking.
 
 ---
 

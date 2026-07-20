@@ -10,6 +10,7 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[ui] Turning off "Use as output" for HQPlayer now gives the DAC back — local playback works again.** The toggle only changed where AudioGravity *sent* new plays; HQPlayer stayed loaded and its network audio daemon (NAA) kept the sound card open, so playing locally afterwards failed silently (`Failed to open ALSA device "hw:0,0": Device or resource busy`). Switching the toggle off — or disconnecting HQPlayer — now stops HQPlayer so the card is released. Casting to a network renderer was unaffected (it never uses the local card).
 - **[core] Pausing a cast no longer makes the mini-player vanish.** A network-renderer cast (and any virtual source such as HQPlayer) is now kept visible in the mini-player while **Paused** — it was treated as "not playing" and filtered out, so pausing it collapsed the mini-player (the fullscreen was unaffected).
 - **[core + ui] Seeking on a network renderer is more robust, and the progress bar follows.** A seek now tries both `ABS_TIME` and `REL_TIME` (some renderers advertise both but honour only one, e.g. upmpdcli); the new position is refreshed immediately so the progress bar jumps to it instead of appearing stuck for up to the 5-second poll interval (with an optimistic bar update for instant feedback). If the device rejects every seek method (UPnP 501 for an HTTP stream it can't seek) AudioGravity disables the seek control for that track instead of erroring repeatedly — it re-enables automatically on the next track.
 

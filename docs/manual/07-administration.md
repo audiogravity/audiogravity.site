@@ -17,13 +17,13 @@ Audiogravi<sup>ty</sup>: the **user cards** (below), unread
 User management lives on the **Admin** tab — one card per account, with an online
 indicator for users currently connected. Three roles control who can do what:
 
-<img src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle and the edit and delete actions" width="360">
-
 - **Admin** — full access to all features and user management. Cannot be deleted or
   demoted by others, and cannot delete their own account.
 - **User** — standard access to features, but cannot manage users or core settings.
 - **Guest** — read-only: can view status and logs but not change settings or toggle
   services.
+
+<img src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle and the edit and delete actions" width="360">
 
 **Passkeys** — the *Passkeys* button on your own card registers WebAuthn credentials
 (Face ID, Touch ID, a hardware key). Each passkey is tied to one device and can be
@@ -225,17 +225,17 @@ Real-time monitoring and box-level actions.
   over SSE (the **LIVE** badge shows the stream is active).
 - **System & audio hardware** — hostname, OS, kernel, CPU model/cores; every audio
   card, USB interface and subdevice.
-
-<img src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
-- **Event log** — system events and SSE messages; RUNNING/STOPPED to pause, CLEAR to
+- **Event log** — system events and live updates; RUNNING/STOPPED to pause, CLEAR to
   reset.
 - **Actions (admin)** — *Restart Backend* restarts the Audiogravi<sup>ty</sup> service without
   rebooting; *Reboot OS* performs a full reboot (double confirmation). The UI
   reconnects automatically.
-
-<img src="images/ios-system-actions.webp" alt="System actions: Restart Backend in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
 - **Terminal (admin)** — a full interactive bash shell in the browser (runs as the
   backend user — use with care).
+
+<img src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
+
+<img src="images/ios-system-actions.webp" alt="System actions: Restart Backend in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
 
 ## Performance tuning (Pro)
 

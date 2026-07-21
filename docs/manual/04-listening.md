@@ -41,8 +41,6 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
 - A badge reading **External** means the music was **not started from
   Audiogravi<sup>ty</sup>** — someone is driving your speaker, or HQPlayer, from another app
   or its own remote. Audiogravi<sup>ty</sup> shows what it can see and stays out of the way.
-
-<img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a Marantz: the card is badged Qobuz, the signal path reads Qobuz then Marantz, and the output bar names the speaker" width="360">
 - When the queue **mixes sources** — say a radio station followed by a Qobuz album —
   each upcoming track carries a small **source badge** telling you where it comes
   from, and a **filter bar** lets you view one source at a time. Filtering only
@@ -52,6 +50,8 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   gesture used across the app's lists. It always removes the track you swiped, even
   if the queue has reordered meanwhile. **Clear** empties the queue, and respects the
   active filter.
+
+<img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a Marantz: the card is badged Qobuz, the signal path reads Qobuz then Marantz, and the output bar names the speaker" width="360">
 
 ## The live hi-fi readout
 

@@ -10,8 +10,6 @@ interface.
 as a notification and under the output in the fullscreen player. Start there — the
 answer is usually on screen:
 
-<img src="images/ios-output-busy.webp" alt="The fullscreen player showing, under the output, the reason playback will not start: the output is in use by another player" width="360">
-
 - *"Output in use by another player"* — your sound card is **exclusive** (that is what
   makes bit-perfect playback possible), so only one player can hold it at a time.
   Stop the other one — often HQPlayer: turn its **Use as output** switch off and the
@@ -22,6 +20,8 @@ answer is usually on screen:
 - *"cannot be decoded"* — the track's format is not one HQPlayer handles (AAC, ALAC,
   OGG, WMA). Turn the switch off to play it on the local output.
 - *"Both HQPlayer and a network renderer are selected"* — pick one.
+
+<img src="images/ios-output-busy.webp" alt="The fullscreen player showing, under the output, the reason playback will not start: the output is in use by another player" width="360">
 
 If nothing is displayed:
 

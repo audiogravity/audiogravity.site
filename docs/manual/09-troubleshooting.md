@@ -17,8 +17,11 @@ answer is usually on screen:
 - *"its network audio daemon (NAA) is not running"* — HQPlayer is your output but the
   piece that feeds your DAC is stopped. Start it in **Services**, or turn the switch
   off to play locally.
-- *"cannot be decoded"* — the track's format is not one HQPlayer handles (AAC, ALAC,
-  OGG, WMA). Turn the switch off to play it on the local output.
+- *"which HQPlayer cannot decode"* — the track's format is not one HQPlayer handles
+  (AAC, ALAC, OGG/Opus, WMA, APE); the message names it. Turn the switch off to play
+  it on the local output. A whole album is refused if **any** of its tracks is in such
+  a format — the message names that track — so you get one clear answer instead of
+  music stopping partway through.
 - *"Both HQPlayer and a network renderer are selected"* — pick one.
 
 <img src="images/ios-output-busy.webp" alt="The fullscreen player showing, under the output, the reason playback will not start: the output is in use by another player" width="360">
@@ -48,9 +51,11 @@ If nothing is displayed:
 - A track that played before but fails later is usually an **expired streaming link** —
   Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
-- **With HQPlayer as your output**, streaming services and AAC radio stations are
-  refused on purpose — Audiogravi<sup>ty</sup> names the reason. Turn **Use as output** off to
-  play them locally (see [6. Outputs & engines](06-outputs-engines.md)).
+- **With HQPlayer as your output**, streaming services are refused on purpose, and so
+  is anything in a format it cannot decode (AAC, ALAC, OGG/Opus, WMA, APE) — wherever
+  it comes from: your library, a media server or a radio station. Audiogravi<sup>ty</sup> names
+  the reason. Turn **Use as output** off to play them locally (see
+  [6. Outputs & engines](06-outputs-engines.md)).
 
 ## Casting to a renderer stalls
 

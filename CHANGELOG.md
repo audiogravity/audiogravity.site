@@ -9,6 +9,12 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] A track HQPlayer cannot decode is now refused straight away, whatever it came from.** HQPlayer does not handle ALAC, AAC, OGG, Opus, WMA or APE — and until now only **internet radio** checked. Send it an ALAC album from your library, or an AAC track from your media server, and HQPlayer accepted the request, then failed to start: several seconds later Audiogravi<sup>ty</sup> reported it as a sound-card problem, which it never was. The check now sits on the one path every source goes through, so the answer is instant and names the real cause — *"…is M4A, which HQPlayer cannot decode. Turn HQPlayer off as output to play it on the local output."* An album is checked **before** anything is sent, so a single unplayable track is caught up front instead of stopping the music halfway through — with the trade-off that a mixed album (say a FLAC record with one ALAC bonus track) is refused whole rather than played without that track; the message names the offending track. Formats Audiogravi<sup>ty</sup> cannot identify are still attempted rather than blocked on a guess: only what HQPlayer is documented not to handle is refused.
+
+### Removed
+- **[core] The two leftover routes that pushed music straight to HQPlayer are gone.** They dated from before Audiogravi<sup>ty</sup> decided server-side where each track should play: back then the app had to pick HQPlayer itself. Since that decision moved to the box, nothing called them any more — the app even had a test forbidding their use, because going through them would skip the arbitration and let content reach HQPlayer that it cannot decode. Nothing changes for you: every way you start music already went through the normal path. Removing them means there is now exactly **one** door into HQPlayer, so a rule applied there cannot be bypassed.
+
 ## [0.9.19] - 2026-07-20
 
 ### Added

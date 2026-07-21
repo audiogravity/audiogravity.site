@@ -85,10 +85,14 @@ missing rather than sending your music into silence.
 HQPlayer plays **FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF**. It does
 **not** decode **AAC, ALAC, OGG/Opus, APE or WMA**.
 
-This matters most for **internet radio**: many Hi-Res stations broadcast in AAC. When
-you pick one while HQPlayer is your output, Audiogravi<sup>ty</sup> tells you straight away that
-the station's format cannot be decoded — turn the switch off to listen to it on the
-local output.
+Whenever a track is in one of those formats — an ALAC album in your library, an AAC
+track on your media server, a station broadcasting in AAC — Audiogravi<sup>ty</sup> tells you
+straight away rather than letting playback fail obscurely, and names the format.
+Turn the switch off to play it on the local output. An album is checked before
+anything is sent, so a single unplayable track is caught up front instead of
+stopping the music halfway through.
+
+This matters most for **internet radio**, where many Hi-Res stations broadcast in AAC.
 
 **Streaming services** (Qobuz, Tidal, HIGHRESAUDIO) cannot be routed through HQPlayer
 yet either; you get the same clear message rather than silence. **Roon is unaffected** —

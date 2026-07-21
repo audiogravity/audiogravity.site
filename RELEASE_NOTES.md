@@ -7,7 +7,28 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A format HQPlayer can't play is now refused up front — from every source
+
+HQPlayer does not decode ALAC, AAC, OGG/Opus, WMA or APE. Until now only internet
+radio checked, because that is where the problem was first met. But the limit has
+nothing to do with radio: an ALAC album sitting in your own library failed exactly
+the same way — HQPlayer accepted the request, then never started, and several
+seconds later Audiogravi<sup>ty</sup> blamed the sound card. The wrong culprit, after a wait.
+
+The check now sits on the single path every source goes through, so it holds for
+your library, your media server and radio alike. The answer is immediate and names
+the format, and an album is checked before anything is sent — one unplayable track
+is caught up front rather than stopping the music halfway through. Formats
+Audiogravi<sup>ty</sup> cannot identify are still attempted: only what HQPlayer is documented
+not to handle is refused.
+
+An album is treated as a whole, deliberately. A record where a single bonus track is
+ALAC is refused entirely rather than played without it: an album missing a track you
+never noticed was dropped is a worse answer than a clear refusal naming the track.
+
+One case remains unguarded, deliberately: some media servers publish tracks at
+addresses that reveal nothing about the format. There, Audiogravi<sup>ty</sup> has nothing to
+go on and lets the attempt through rather than refusing on a guess.
 
 ---
 

@@ -7,6 +7,23 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Setting your machine up is no longer a paid feature
+
+Editing a service's configuration file, and the guided setup that generates the
+whole audio stack in a few clicks, were both reserved for Trial and Pro. A
+Starter user could run the box, monitor it, switch profiles — but not configure
+it. That line was in the wrong place: configuring the machine is part of owning
+it, not part of paying for it.
+
+Both are now open, and the **Config** tab is no longer greyed out in Starter.
+The guided setup stays **administrator-only** — it rewrites every service's
+configuration and mounts network shares, so it is gated on who you are, not on
+what you paid.
+
+What Pro still unlocks is unchanged: the player controls, the library, internet
+radio, the HQPlayer DSP remote, the pipeline view, systemd tuning, performance
+optimisation, DSD protection and the sleep timer.
+
 ### A play that makes no sound now tells you — without making you wait for it
 
 Sending music to HQPlayer and getting silence is the failure this release keeps

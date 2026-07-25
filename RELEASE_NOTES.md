@@ -7,6 +7,34 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A play that makes no sound now tells you — without making you wait for it
+
+Sending music to HQPlayer and getting silence is the failure this release keeps
+chasing. Audiogravi<sup>ty</sup> already checked that playback had really started; the
+problem was **when** it checked, and **what it accepted as proof**.
+
+It checked while your click waited — up to twelve seconds before you got an
+answer — and it gave up too early. Measured here: a DSD128 track upsampled to DSD
+starts **twenty-eight seconds** after being sent, and HQPlayer stops answering
+altogether while it warms up. A perfectly good album was announced as failed
+fifteen seconds before the first note.
+
+The check now runs behind you. Playback starts immediately, and if nothing comes
+out, the reason appears under the output — the same line that already tells you
+the sound card is held by another player. The message lifts on its own as soon as
+the music really plays, whichever way you restarted it.
+
+And the proof changed. Audiogravi<sup>ty</sup> no longer takes HQPlayer's word for it: it
+watches the **position advance**. With the sound card held elsewhere, HQPlayer
+reports "playing" with its position frozen at zero for as long as you leave it —
+nine seconds of that were being read as a success. A position that moves is sound
+coming out; nothing else is.
+
+The trade is deliberate: a play that genuinely never starts now takes longer to be
+declared failed, because "stopped" is also what a heavy chain reports while it
+warms up. Only time tells the two apart, and crying wolf on working music is the
+worse mistake.
+
 ### A format HQPlayer can't play is now refused up front — from every source
 
 HQPlayer does not decode ALAC, AAC, OGG/Opus, WMA or APE. Until now only internet

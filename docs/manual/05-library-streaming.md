@@ -14,6 +14,9 @@ The Library tab holds several views:
   opens that artist's albums — across your local library, Qobuz, Tidal and
   HIGHRESAUDIO — with a back control to return to your results.
 - **Sources** — pick the active source (local, streaming, Roon zone, UPnP server).
+  Connecting or disconnecting a service updates this list straight away. Outputs
+  never appear here: a network speaker and HQPlayer are destinations, not places to
+  browse — they live in **Outputs**.
 - **Outputs** — pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
 - **Queue** — what's playing and coming up.
 

@@ -23,6 +23,20 @@ answer is usually on screen:
   a format — the message names that track — so you get one clear answer instead of
   music stopping partway through.
 - *"Both HQPlayer and a network renderer are selected"* — pick one.
+- *"The speaker you selected is not answering"* — the renderer is asleep, off the
+  network, or still reconnecting. Wake it up, or pick another output. Audiogravi<sup>ty</sup>
+  refuses rather than playing out of the local DAC behind your back.
+- *"says it is playing but its position is not moving"* — HQPlayer accepted the track
+  and reports playing, but nothing is coming out: the sound card is held elsewhere.
+  Same fix as the first entry.
+- *"accepted the track but never started playing it"* — either the sound card is busy,
+  or HQPlayer cannot decode that format.
+
+> **A message can arrive a few seconds after you press play.** Whether sound really
+> came out of HQPlayer cannot be known instantly — a heavy chain takes time to start.
+> Playback begins immediately and the check runs behind it, so a problem shows up
+> under the output shortly after, not at the moment of the tap. It clears on its own
+> as soon as the music plays.
 
 <img src="images/ios-output-busy.webp" alt="The fullscreen player showing, under the output, the reason playback will not start: the output is in use by another player" width="360">
 

@@ -45,6 +45,11 @@ server's own audio path.
 - You can **cast your local NAS/USB library** to a network renderer too, exactly like
   a streaming service.
 
+> **A speaker that does not answer stops the play.** If the renderer you selected is
+> asleep, off the network or still reconnecting, Audiogravi<sup>ty</sup> refuses the play and
+> says so, rather than quietly sending the music out of the local DAC — the wrong
+> room, with no explanation. Wake the speaker up, or pick another output.
+
 > **Your box's own renderer.** Audiogravi<sup>ty</sup> advertises itself on the network (via
 > upmpdcli) so other apps can cast *to* it. That self-entry appears in the renderer
 > list as a non-selectable *"This device · receives external casts"* row — because
@@ -75,6 +80,12 @@ the source of the music.
 The setting lives **on the box, not in your browser**: turn it on from your phone and
 your laptop shows it on too. Turning it off releases the sound card so local playback
 works again immediately.
+
+**Playback starts without making you wait.** A heavy processing chain can take half a
+minute to produce its first note — upsampling a DSD album, for instance — so
+Audiogravi<sup>ty</sup> does not hold your tap while it checks. It watches in the background,
+and if no sound actually comes out it tells you under the output, a few seconds
+later. A track that plays normally shows nothing: silence there means it worked.
 
 Audiogravi<sup>ty</sup> refuses to turn the switch on when nothing would come out — no HQPlayer
 configured, or its NAA not running on the box — and tells you which of the two is

@@ -53,8 +53,8 @@ though everything remains open and inspectable if you want to.
 | Edition | Price | What you get |
 |---------|-------|--------------|
 | **Trial** | Free · 30 days | Everything, including all Pro features |
-| **Starter** | Free · forever | Profiles, Services, Audio Software, System, Users |
-| **Pro** | €49 · lifetime, one machine | Audio Pipeline, Player, Library, Config editor, Performance tuning |
+| **Starter** | Free · forever | Profiles, Services, Audio Software, System, Users, **Config** (editor + guided setup) |
+| **Pro** | €49 · lifetime, one machine | Audio Pipeline, Player, Library, Performance tuning |
 
 Pro is a **lifetime licence** — no subscription, no renewal. You can start on the
 free 30-day trial; it activates automatically on first run.

@@ -140,7 +140,10 @@ map:
 - **Manual** — this manual, readable inside the app.
 
 On a **Starter** licence the Pro tabs carry a small lock — tapping one opens the
-licence panel. The sticky **Now Playing bar** sits above the footer whatever the
+licence panel. **Config is not one of them**: editing a service's configuration
+file and the guided setup are available on every edition — configuring the
+machine is part of owning it. The sticky **Now Playing bar** sits above the
+footer whatever the
 tab, and the **gear** in the top bar opens
 [Settings](07-administration.md#the-settings-panel).
 

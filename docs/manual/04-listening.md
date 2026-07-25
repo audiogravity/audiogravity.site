@@ -95,6 +95,11 @@ Desktop installs are unaffected.
 
 ## Where the audio goes
 
+The output line at the bottom of the fullscreen player always names your
+destination — your DAC or the speaker you selected — even when nothing is playing,
+and marks it **Stopped** when it sits idle or **Unreachable** when it cannot be
+contacted. Any reason the sound is not coming out appears on that same line.
+
 Choosing **where** music plays — your local DAC, a network renderer, HQPlayer or
 AirPlay — is covered in **[6. Outputs & engines](06-outputs-engines.md)**. Connecting
 streaming services and browsing your library is in

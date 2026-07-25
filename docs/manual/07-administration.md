@@ -1,8 +1,10 @@
 # 7. Administration
 
 Everything you need to run the box lives in the interface — no SSH required. Most of
-this section is **Pro**; a few tabs (Profiles, Services, Audio Software, System,
-Admin) are available on **Starter** too. Every tab has an **INFO** badge that opens
+this section is available on **Starter**: Profiles, Services, Audio Software, System,
+Admin — and **Config**, the configuration editor and its guided setup. Only the
+Audio Pipeline map and Performance tuning are **Pro**. Every tab has an **INFO**
+badge that opens
 an in-app explanation.
 
 ## The Admin tab

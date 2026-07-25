@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.20 — 2026-07-25
+
 ### Setting your machine up is no longer a paid feature
 
 Editing a service's configuration file, and the guided setup that generates the

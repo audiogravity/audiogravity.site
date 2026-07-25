@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.20] - 2026-07-25
+
 ### Fixed
 - **[core] A track sent to HQPlayer that never makes a sound now says so — and no longer holds up your click.** Audiogravi<sup>ty</sup> checks that playback really started, but that check used to run while you waited: up to twelve seconds before the answer came back. Worse, it gave up too early on a heavy chain — measured on a DSD128 track upsampled to DSD, playback starts **twenty-eight seconds** after being sent, and HQPlayer stops answering at all while it warms up, so a perfectly good play was announced as failed fifteen seconds before the music started. The check now runs in the background: playback starts at once, and if no sound comes out the reason appears under the output, where a busy sound card is already explained. What counts as proof changed too — **a position that advances**, not HQPlayer's word: with the sound card held by another player it reports "playing" with its position frozen for as long as you leave it, which used to be taken as success. The message clears on its own as soon as the music really plays, however you restarted it.
 - **[core + ui] Setting your machine up no longer needs a licence.** Editing a service's configuration file, and the guided setup that generates the whole audio stack, were both reserved for Trial and Pro — so a Starter user could run the box but not configure it. Both are now open, and the **Config** tab is no longer greyed out. The guided setup stays **administrator-only**: it rewrites every service's configuration and mounts network shares, which is a question of role, not of edition.

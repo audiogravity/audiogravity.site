@@ -50,6 +50,7 @@
 - One-tap profile scenarios (switch entire audio chains instantly)
 - Bit-perfect lock with DSD volume protection
 - Sleep timer
+- Never a silent failure — when a track will not play, the reason is named: the sound card held by another player, a format HQPlayer cannot decode, a speaker that does not answer
 
 </td>
     <td width="50%">
@@ -70,7 +71,7 @@
 
 **System & Performance**
 - Live signal-path visualisation of your entire Hi-Fi chain
-- Config editor — diff preview, backups, conditional restart
+- Config editor — diff preview, backups, conditional restart (available on every edition)
 - RT scheduling, CPU pinning, per-core governor control — via systemd drop-ins
 - µs-scale latency benchmarks from the browser
 - Service monitoring with 60s sparklines
@@ -123,8 +124,8 @@ It **installs and configures** the on-host daemons (MPD, upmpdcli, AirPlay), **d
 | Edition | Price | What it unlocks |
 |---------|-------|-----------------|
 | **Trial** | Free · 30 days | Full access to every Pro feature |
-| **Starter** | Free · forever | Profiles, Services, Audio Software, System, Users |
-| **Pro** | €49 lifetime · 1 machine | Pipeline, Player, Library, Config, Performance |
+| **Starter** | Free · forever | Profiles, Services, Audio Software, System, Users, Config (editor + guided setup) |
+| **Pro** | €49 lifetime · 1 machine | Pipeline, Player, Library, Performance |
 
 Pro is a lifetime license — no subscription, no renewal. See [EDITIONS.md](EDITIONS.md) and [EULA.md](EULA.md). Licensing details in [License](#license) below.
 

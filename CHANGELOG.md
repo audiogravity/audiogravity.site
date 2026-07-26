@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] Asking for a real-time stream that does not exist now says so, instead of going silent.** The live updates Audiogravi<sup>ty</sup> pushes travel on named streams — one for the machine, one for the player, and a few narrower ones. Asking for a name that does not exist used to open the connection and then send nothing at all, for ever: no event, no error, nothing to say the name was wrong. Audiogravi<sup>ty</sup>'s own documentation even offered one of those wrong names as an example. An unknown name is now refused immediately, and the refusal lists the names that work.
+
 ## [0.9.20] - 2026-07-25
 
 ### Fixed

@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.21] - 2026-07-26
+
 ### Fixed
 - **[core] A track a media server names `.mp4` is now refused up front, like the same track named `.m4a`.** HQPlayer decodes neither — they are two names for one container — but only the second spelling was on the refusal list. Serve your library through Plex, which publishes every M4A as `file.mp4`, and Audiogravi<sup>ty</sup> pushed the track anyway: HQPlayer accepted it, then failed, and you were told about a sound-card problem that did not exist. The same file served by MinimServer was correctly refused. On a library that is largely M4A, this was the common case rather than an edge one. The player also showed an empty format for those tracks, and now names the codec.
 - **[ui] The handle that brings the player back no longer needs several attempts.** The small tab at the bottom of the screen restores the Now Playing bar, and it used to ignore roughly one touch in two. Two reasons, both fixed: it only reacted to a movement under 10 px or an upward swipe past 30 px — doing nothing in between, which is exactly what a finger produces on a target 18 px tall — and that target was less than half the size Apple and Google recommend. The tab looks identical, but the area that answers the finger now extends above it, and any touch that is not a deliberate downward drag brings the player back.

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.21 — 2026-07-26
+
 ### A track that cannot play says so before trying
 
 If you browse your music through a media server and send it to HQPlayer, you may have met

@@ -235,11 +235,11 @@ Three components, three official logos:
 
 | Suite | Tests | Status |
 |-------|------:|--------|
-| Core | 1440 | ✅ |
-| UI | 630 | ✅ |
-| **Total** | **2070** | ✅ |
+| Core | 1454 | ✅ |
+| UI | 645 | ✅ |
+| **Total** | **2099** | ✅ |
 
-Last run: 2026-07-25 19:07 UTC
+Last run: 2026-07-26 20:39 UTC
 
 See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 

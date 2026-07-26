@@ -94,11 +94,16 @@ missing rather than sending your music into silence.
 ### What can and cannot go through HQPlayer
 
 HQPlayer plays **FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF**. It does
-**not** decode **AAC, ALAC, OGG/Opus, APE or WMA**.
+**not** decode **AAC, ALAC, M4A/MP4, OGG/Opus, APE or WMA**.
 
 Whenever a track is in one of those formats — an ALAC album in your library, an AAC
 track on your media server, a station broadcasting in AAC — Audiogravi<sup>ty</sup> tells you
 straight away rather than letting playback fail obscurely, and names the format.
+
+> **The same file can be named two ways.** M4A and MP4 are one container under two
+> names, and media servers disagree: MinimServer publishes a track as `.m4a`, Plex
+> publishes the very same file as `.mp4`. Both are refused, and the message names
+> whichever spelling your server used — it is one format, not two problems.
 Turn the switch off to play it on the local output. An album is checked before
 anything is sent, so a single unplayable track is caught up front instead of
 stopping the music halfway through.

@@ -12,11 +12,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.9.20_beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.9.21_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
   <img src="https://img.shields.io/badge/ui-MIT-green" alt="UI License" />
   <img src="https://img.shields.io/badge/core-proprietary-lightgrey" alt="Core License" />
-  <img src="https://img.shields.io/badge/tests-2070_passing-brightgreen" alt="Tests" />
+  <img src="https://img.shields.io/badge/tests-2099_passing-brightgreen" alt="Tests" />
 </p>
 
 <p align="center">

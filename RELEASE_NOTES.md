@@ -7,7 +7,22 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Fewer tracks that fail halfway
+
+When HQPlayer is your output and a track is in a format it cannot read,
+Audiogravi<sup>ty</sup> refuses it straight away and names the format. That has been true
+for a while — but only for the formats it had been told about, one at a time. Anything
+else went through, HQPlayer took it, and playback failed a moment later with an error
+pointing at your sound card instead of your file.
+
+The refusal list has been checked against Signalyst's own list of what HQPlayer accepts.
+Twelve more formats are now caught before anything is sent: concert rips in AC3 or DTS,
+older lossless collections in Musepack, TAK, TTA or Shorten, Matroska files, and the
+compressed flavour of AIFF.
+
+Nothing you can actually play was added to that list. The ten formats HQPlayer accepts —
+and the M3U, M3U8 and PLS playlists it reads — are held in place by tests, because
+refusing a track that would have played is worse than letting one fail late.
 
 ---
 

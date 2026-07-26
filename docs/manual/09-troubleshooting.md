@@ -18,7 +18,7 @@ answer is usually on screen:
   piece that feeds your DAC is stopped. Start it in **Services**, or turn the switch
   off to play locally.
 - *"which HQPlayer cannot decode"* — the track's format is not one HQPlayer handles
-  (AAC, ALAC, M4A/MP4, OGG/Opus, WMA, APE); the message names it. M4A and MP4 are the
+  (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM, AIFC); the message names it. M4A and MP4 are the
   same container under two names — media servers disagree on which to publish — so the
   same file may be named either way depending on where you browsed it. Turn the switch off to play
   it on the local output. A whole album is refused if **any** of its tracks is in such
@@ -68,7 +68,8 @@ If nothing is displayed:
   Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
 - **With HQPlayer as your output**, streaming services are refused on purpose, and so
-  is anything in a format it cannot decode (AAC, ALAC, M4A/MP4, OGG/Opus, WMA, APE) — wherever
+  is anything in a format it cannot decode (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM,
+  AIFC) — wherever
   it comes from: your library, a media server or a radio station. Audiogravi<sup>ty</sup> names
   the reason. Turn **Use as output** off to play them locally (see
   [6. Outputs & engines](06-outputs-engines.md)).

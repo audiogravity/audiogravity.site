@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] Twelve more formats HQPlayer cannot read are refused up front instead of failing halfway.** Audiogravi<sup>ty</sup> only refused the formats it had been told about one at a time; anything else was pushed to HQPlayer, accepted, and failed a moment later — pointing at the sound card rather than the file. Checked against Signalyst's own list of accepted formats, the refusal list now also covers **AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM and AIFC** (compressed AIFF). Nothing HQPlayer actually reads was added: the ten accepted source formats and the M3U/M3U8/PLS playlists are pinned by tests, because refusing a track that would have played is worse than a late failure.
+
 ## [0.9.21] - 2026-07-26
 
 ### Fixed

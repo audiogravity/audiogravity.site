@@ -94,7 +94,8 @@ missing rather than sending your music into silence.
 ### What can and cannot go through HQPlayer
 
 HQPlayer plays **FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF**. It does
-**not** decode **AAC, ALAC, M4A/MP4, OGG/Opus, APE or WMA**.
+**not** decode anything else — **AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM** — nor AIFC, the compressed flavour of AIFF.
+DFF is read uncompressed only: its compressed form, DST, is refused.
 
 Whenever a track is in one of those formats — an ALAC album in your library, an AAC
 track on your media server, a station broadcasting in AAC — Audiogravi<sup>ty</sup> tells you

@@ -7,7 +7,36 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A track that cannot play says so before trying
+
+If you browse your music through a media server and send it to HQPlayer, you may have met
+a puzzling failure: nothing plays, and Audiogravi<sup>ty</sup> blames the sound card.
+
+The cause was a naming difference between servers. M4A files — most lossless libraries are
+full of them — are refused up front, because HQPlayer cannot decode them: you get an
+immediate message telling you to switch HQPlayer off for this track. But Plex publishes
+those very same files under another name, `.mp4`, and that spelling was missing from the
+list. So the track went through, HQPlayer took it, and failed a moment later — with an
+error pointing at the wrong culprit.
+
+The same file, refused from one server and pushed from the other. Both now give the same
+answer, immediately and for the right reason. Those tracks also used to show a blank
+format in the player; they now name their codec.
+
+### The player comes back on the first try
+
+The small tab at the bottom of the screen — the one that brings the Now Playing bar
+back once you have pushed it away — ignored about one touch in two. You pressed, and
+nothing happened, so you pressed again.
+
+Two causes, both now fixed. The tab reacted to a short tap or to a long upward swipe,
+but to nothing in between — and "in between" is precisely what a finger does when it
+slides a couple of millimetres on the way down. And the tab was smaller than any touch
+target should be: barely a third of the height Apple and Google both recommend.
+
+It looks exactly the same. What changed is invisible: the area that listens for your
+finger now extends above the visible tab, where touches actually land, and anything
+that is not a deliberate downward drag brings the player back.
 
 ---
 

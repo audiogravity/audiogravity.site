@@ -7,6 +7,21 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A start that no longer waits on your queue
+
+The list of tracks waiting to play shows a small cover beside each one. That list sits in
+the Library tab, which is built into the page from the very first moment — even when you
+are looking at something else entirely. A hidden image is still fetched, so every cover in
+that list was downloaded before you had touched anything.
+
+With sixty-seven tracks queued, that meant sixty-seven requests to the box for the same
+album cover, sixty-seven times over — half of everything the app asked for while starting.
+And the cost grew with the queue: a few hundred tracks waiting meant a few hundred
+requests, on a phone, over Wi-Fi, at the exact moment the app was trying to become usable.
+
+Covers are now fetched only when they are about to come into view. The screen is
+identical; the app simply asks for half as much in order to show it.
+
 ### A screen you can leave open
 
 The Pipeline tab on a phone shows what is playing and the whole chain the sound travels

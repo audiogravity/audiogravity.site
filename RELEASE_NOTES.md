@@ -9,7 +9,8 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### A first install that no longer depends on what the machine already had
 
-Setting up a new box is meant to be one command. Two things quietly undermined that.
+Setting up a new box is meant to be one command. Three things quietly undermined that,
+and each of them reported success or said nothing at all.
 
 The command checked that Python was installed and stopped if it was not — even though
 the installer it was about to download would have installed Python itself. That
@@ -22,12 +23,21 @@ library. Audiogravi<sup>ty</sup> fetched it with `pip` — a tool that is simply
 installed on a stock ARM machine. There, the step failed and moved on, and notifications
 worked only on boxes that happened to already carry the library for some other reason.
 
-Both are now handled the same way as everything else the box needs: through the system's
-own package manager, on both architectures. On machines where `pip` did exist, this also
-stops Audiogravi<sup>ty</sup> from writing into the system's Python installation and
-hiding the version the operating system had put there — something Debian goes out of its
-way to prevent, and which had no business happening on a machine whose job is to play
-music without interference.
+The third was the one that would have been hardest to diagnose. The interface is served
+over HTTPS, which needs a certificate, which the installer creates with a tool Debian
+does not promise is installed. When it was absent, the installation stopped the instant
+it tried — and the error was thrown away, so the screen showed the line announcing the
+certificate and then nothing. No message, no reason, no obvious next step.
+
+All three are now handled the same way as everything else the box needs: through the
+system's own package manager, on both architectures, and only when the box will actually
+use them — an installation behind a reverse proxy is never made to fetch a certificate
+tool it will never run. Where a step still cannot complete, it now says so.
+
+On machines where `pip` did exist, this also stops Audiogravi<sup>ty</sup> from writing
+into the system's Python installation and hiding the version the operating system had
+put there — something Debian goes out of its way to prevent, and which had no business
+happening on a machine whose job is to play music without interference.
 
 Nothing changes on a box that is already running.
 

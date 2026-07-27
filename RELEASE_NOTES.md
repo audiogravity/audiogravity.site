@@ -29,10 +29,18 @@ does not promise is installed. When it was absent, the installation stopped the 
 it tried — and the error was thrown away, so the screen showed the line announcing the
 certificate and then nothing. No message, no reason, no obvious next step.
 
+Underneath all three sat the same habit: the installer decided whether a step had worked
+by asking the package manager, rather than by looking at the machine. When it could not
+even refresh its package lists, it skipped the installation and announced "System
+dependencies installed" anyway — a box could finish setup, with a clean-looking log,
+missing every one of those tools.
+
 All three are now handled the same way as everything else the box needs: through the
 system's own package manager, on both architectures, and only when the box will actually
 use them — an installation behind a reverse proxy is never made to fetch a certificate
-tool it will never run. Where a step still cannot complete, it now says so.
+tool it will never run. And success is now judged by what is on the machine at the end,
+not by what a command reported along the way. Anything still missing is named, with the
+feature it takes with it. Where a step cannot complete, it says so.
 
 On machines where `pip` did exist, this also stops Audiogravi<sup>ty</sup> from writing
 into the system's Python installation and hiding the version the operating system had

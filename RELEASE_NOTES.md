@@ -7,7 +7,29 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A first install that no longer depends on what the machine already had
+
+Setting up a new box is meant to be one command. Two things quietly undermined that.
+
+The command checked that Python was installed and stopped if it was not — even though
+the installer it was about to download would have installed Python itself. That
+installer never got the chance: the check came first. So the one thing that could have
+repaired the machine sat inside a package the command refused to fetch.
+
+The second was subtler, because nothing appeared to go wrong. Every box generates its
+own keys for push notifications when it is first set up, and that needs one cryptography
+library. Audiogravi<sup>ty</sup> fetched it with `pip` — a tool that is simply not
+installed on a stock ARM machine. There, the step failed and moved on, and notifications
+worked only on boxes that happened to already carry the library for some other reason.
+
+Both are now handled the same way as everything else the box needs: through the system's
+own package manager, on both architectures. On machines where `pip` did exist, this also
+stops Audiogravi<sup>ty</sup> from writing into the system's Python installation and
+hiding the version the operating system had put there — something Debian goes out of its
+way to prevent, and which had no business happening on a machine whose job is to play
+music without interference.
+
+Nothing changes on a box that is already running.
 
 ---
 

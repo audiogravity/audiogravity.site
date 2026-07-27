@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ops] Installing on a bare machine no longer stops at a missing prerequisite.** The one-line install command checked that Python was present and gave up if it was not — while the installer inside the package it was about to download would have installed Python itself. That installer was never reached: the check runs first, so the repair was unreachable from the only install path anyone is ever told about. The command now installs what is missing before carrying on. It always could — it already runs with administrator rights.
+- **[ops] Push notifications no longer depend on which packages a machine happened to already carry.** Setting up a new box generates the keys that let it send notifications, and that step needs one cryptography library. It was fetched with `pip`, which is **not installed** on a stock ARM machine — so on ARM the step failed without saying so, and notifications worked only where that library happened to be present for an unrelated reason. It now comes from the machine's own package manager, which carries it on both architectures. Where `pip` did exist, this also stops Audiogravi<sup>ty</sup> from writing into the system's Python installation and hiding the version the operating system put there — something Debian deliberately protects against.
+
 ## [0.9.22] - 2026-07-27
 
 ### Changed

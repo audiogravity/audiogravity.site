@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.22 — 2026-07-27
+
 ### A start that no longer waits on your queue
 
 The list of tracks waiting to play shows a small cover beside each one. That list sits in

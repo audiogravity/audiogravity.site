@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui] The Pipeline tab on a phone no longer keeps the box busy while you look at it.** Left open, it asked the server for the entire pipeline every five seconds — and that answer is expensive to produce: measured at around 570 ms of work each time, which adds up to close to **seven minutes of processor time every hour**, on the very machine that is playing the music. It was also pointless: the core already recomputes the pipeline when it actually changes and announces it. The tab now reads the pipeline once when it opens and is told about every change afterwards, so an open tab costs nothing. The only thing still asked for on a timer is which output each source is steered to, which has no announcement of its own and is now checked every fifteen seconds instead of every five. Nothing on screen changes, and the pulsing dot next to each active source now fades in colour rather than shrinking — one less permanent drawing layer per stream on the devices least able to spare them.
+- **[core] The message shown when the box refuses to start is now in English, like the rest of Audiogravi<sup>ty</sup>.** When a security key is missing or too weak, the core refuses to start and prints what is wrong and how to repair it. That message — and only that one — was still in French.
+
 ### Fixed
 - **[core] Twelve more formats HQPlayer cannot read are refused up front instead of failing halfway.** Audiogravi<sup>ty</sup> only refused the formats it had been told about one at a time; anything else was pushed to HQPlayer, accepted, and failed a moment later — pointing at the sound card rather than the file. Checked against Signalyst's own list of accepted formats, the refusal list now also covers **AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM and AIFC** (compressed AIFF). Nothing HQPlayer actually reads was added: the ten accepted source formats and the M3U/M3U8/PLS playlists are pinned by tests, because refusing a track that would have played is worse than a late failure.
 

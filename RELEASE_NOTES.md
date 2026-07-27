@@ -7,6 +7,24 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A screen you can leave open
+
+The Pipeline tab on a phone shows what is playing and the whole chain the sound travels
+through. Watching it was not free: every five seconds it asked the box to work out the
+entire pipeline again and send it back. That calculation takes around half a second of
+the machine's attention, so a tab left open on a phone on the side quietly consumed close
+to seven minutes of processor time every hour — on the machine whose only job is to play
+your music without a hitch.
+
+None of that work was needed. Audiogravi<sup>ty</sup> already notices when the pipeline
+changes and says so. The tab now listens for that instead of asking again and again: it
+reads the state once when you open it, and is told the moment anything moves. Left open,
+it costs nothing.
+
+The screen itself is unchanged. The one visible difference is the small dot beside each
+active source, which now pulses by fading rather than by shrinking — the same signal,
+drawn in a way that does not tie up a phone's graphics for as long as the tab is open.
+
 ### Fewer tracks that fail halfway
 
 When HQPlayer is your output and a track is in a format it cannot read,

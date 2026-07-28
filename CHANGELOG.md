@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.25] - 2026-07-28
+
 ### Fixed
 - **[core + ui] The window that shows an installation no longer stays stuck on "Installing…" after the work is done.** Its log lines only ever reached the browser as they happened, and nothing was kept for a browser that missed them — a reconnection, a phone that put the page to sleep, a second of bad network. The window then froze on the last line it had received and stayed there, while the installation carried on and finished without it. Measured on a real box: the package was installed in **six seconds**, and the panel was still announcing work in progress six minutes later. Audiogravi<sup>ty</sup> now keeps the log of the operation in progress and the interface asks for what it missed — when it reconnects, and each time the operation moves on. Nothing is lost any more, and nothing is shown twice.
 - **[core] An installation no longer stays silent for as long as it lasts.** Everything the package manager printed was collected and only written to the log once the command had finished, so between "Installing…" and the end there was **nothing at all** — a healthy installation looked exactly like a dead one, which is what made the previous problem impossible to tell apart from a real failure. Lines now appear as they are produced.

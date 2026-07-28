@@ -1,14 +1,14 @@
 # Audiogravi<sup>ty</sup> — Test Report
 
-Generated: **2026-07-28 10:22 UTC**
+Generated: **2026-07-28 16:28 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **core** PASS | 1500 | 1500 | 0 | 0 | 41.5s |
-| **ui** PASS | 655 | 655 | 0 | 0 | 1.9s |
-| **Total** PASS | **2155** | **2155** | **0** | **0** | **43.4s** |
+| **core** PASS | 1519 | 1519 | 0 | 0 | 44.8s |
+| **ui** PASS | 667 | 667 | 0 | 0 | 1.8s |
+| **Total** PASS | **2186** | **2186** | **0** | **0** | **46.6s** |
 
 ## Detail
 
@@ -63,12 +63,12 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_app**
 
-  - [+] test_coreapp_uses_default_json_response_class
+  - [+] test_coreapp_uses_default_json_response_class (0.01s)
   - [+] test_responses_serialize_to_json
 
 **tests.test_audio_app_config.TestAudioAppConfig**
 
-  - [+] test_services_route (0.48s)
+  - [+] test_services_route (0.50s)
 
 **tests.test_audio_app_config.TestPackageEventReload**
 
@@ -90,7 +90,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_audio_app_config.TestRunCommandTimeout**
 
-  - [+] test_timeout_kills_hanging_process (1.00s)
+  - [+] test_timeout_kills_hanging_process (1.01s)
   - [+] test_successful_command_returns_output
 
 **tests.test_audio_app_config.TestListBackupsTotalCount**
@@ -111,7 +111,7 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_audio_app_config.TestMapDeviceToName**
 
   - [+] test_uses_get_card_by_id
-  - [+] test_non_hw_device_passthrough
+  - [+] test_non_hw_device_passthrough (0.01s)
 
 **tests.test_audio_app_config.TestShairportIndent**
 
@@ -126,19 +126,19 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_audio_app_config**
 
-  - [+] test_extract_mpd_output_map_parses_all_blocks
+  - [+] test_extract_mpd_output_map_parses_all_blocks (0.01s)
 
 **tests.test_audio_app_config.TestBackupPruneAndOwnership**
 
-  - [+] test_prune_removes_oldest_beyond_cap
+  - [+] test_prune_removes_oldest_beyond_cap (0.01s)
   - [+] test_prune_noop_under_cap
   - [+] test_write_file_sudo_forces_root_ownership
 
 **tests.test_audio_app_config.TestLicenceGate**
 
-  - [+] test_config_editing_works_without_a_licence (0.02s)
-  - [+] test_guided_provisioning_works_without_a_licence_too (0.02s)
-  - [+] test_guided_provisioning_stays_admin_only (0.03s)
+  - [+] test_config_editing_works_without_a_licence (0.03s)
+  - [+] test_guided_provisioning_works_without_a_licence_too (0.03s)
+  - [+] test_guided_provisioning_stays_admin_only (0.02s)
 
 **tests.test_audio_hw.TestAudioDeviceListModel**
 
@@ -241,13 +241,13 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
-  - [+] test_now_playing (0.01s)
+  - [+] test_now_playing (0.02s)
   - [+] test_control (0.02s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
-  - [+] test_cover_returns_24h_cache (0.01s)
-  - [+] test_cover_404_no_store (0.02s)
+  - [+] test_cover_returns_24h_cache (0.02s)
+  - [+] test_cover_404_no_store (0.01s)
 
 **tests.test_audio_pipeline.TestAirplayNowPlaying**
 
@@ -271,7 +271,7 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_audio_pipeline.TestTopologySaveValidation**
 
   - [+] test_non_dict_topology_returns_400 (0.02s)
-  - [+] test_valid_dict_topology_is_accepted (0.03s)
+  - [+] test_valid_dict_topology_is_accepted (0.02s)
 
 **tests.test_audio_pipeline.TestTopologyCycleDetection**
 
@@ -324,8 +324,8 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_provision_missing_password_returns_401 (0.02s)
   - [+] test_provision_regenerate_missing_password_returns_401 (0.02s)
   - [+] test_provision_passes_library_usb_fields (0.02s)
-  - [+] test_provision_value_error_returns_400 (0.02s)
-  - [+] test_provision_missing_card_name_returns_422 (0.03s)
+  - [+] test_provision_value_error_returns_400 (0.03s)
+  - [+] test_provision_missing_card_name_returns_422 (0.02s)
   - [+] test_patch_output_200_no_password_required (0.02s)
   - [+] test_patch_output_missing_card_name_returns_422 (0.02s)
   - [+] test_patch_output_value_error_returns_400 (0.02s)
@@ -347,16 +347,16 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_auth.TestUsersCRUD**
 
   - [+] test_list_users (0.02s)
-  - [+] test_create_and_delete_user (0.39s)
+  - [+] test_create_and_delete_user (0.46s)
   - [+] test_update_user_role (0.40s)
-  - [+] test_cannot_delete_self (0.03s)
+  - [+] test_cannot_delete_self (0.02s)
 
 **tests.test_auth.TestProtectedFlag**
 
   - [+] test_user_model_has_protected_field
   - [+] test_create_user_accepts_protected_flag (0.36s)
   - [+] test_unprotected_user_has_protected_false_by_default (0.36s)
-  - [+] test_delete_guard_rejects_protected (0.37s)
+  - [+] test_delete_guard_rejects_protected (0.36s)
   - [+] test_update_disable_guard_rejects_protected (0.36s)
   - [+] test_cannot_delete_self (0.02s)
   - [+] test_unprotected_account_can_be_deleted (0.39s)
@@ -369,11 +369,11 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_auth.TestUpdateUserEmptyPassword**
 
   - [+] test_short_password_rejected_by_pydantic (0.39s)
-  - [+] test_whitespace_only_password_rejected (0.39s)
+  - [+] test_whitespace_only_password_rejected (0.38s)
 
 **tests.test_auth.TestDisabledUserLogin**
 
-  - [+] test_disabled_user_cannot_login (0.76s)
+  - [+] test_disabled_user_cannot_login (0.77s)
 
 **tests.test_auth.TestJwtContainsJti**
 
@@ -381,12 +381,12 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_auth.TestCreateUserWhitespacePassword**
 
-  - [+] test_whitespace_only_password_rejected_on_create (0.02s)
+  - [+] test_whitespace_only_password_rejected_on_create (0.01s)
   - [+] test_normal_password_accepted_on_create (0.38s)
 
 **tests.test_auth.TestDisabledUserTimingOracle**
 
-  - [+] test_disabled_user_returns_401 (0.75s)
+  - [+] test_disabled_user_returns_401 (0.77s)
 
 **tests.test_auth.TestWebAuthnChallengeIsolation**
 
@@ -395,7 +395,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_auth.TestUpdateUserReturnsUpdatedState**
 
-  - [+] test_update_returns_new_role (0.38s)
+  - [+] test_update_returns_new_role (0.41s)
 
 **tests.test_auth.TestVerifyAdminPassword**
 
@@ -406,11 +406,11 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_auth.TestWebauthnLoginBeginNoEnumeration**
 
-  - [+] test_uniform_response_for_known_and_unknown_user (0.03s)
+  - [+] test_uniform_response_for_known_and_unknown_user (0.02s)
 
 **tests.test_auth.TestUsersFilePermissions**
 
-  - [+] test_users_json_is_0600 (0.38s)
+  - [+] test_users_json_is_0600 (0.36s)
 
 **tests.test_auth.TestApiKeyNonAscii**
 
@@ -429,7 +429,7 @@ Generated: **2026-07-28 10:22 UTC**
 
   - [+] test_config_validation_works_without_a_licence
   - [+] test_topology_validation_still_needs_one
-  - [+] test_topology_validation_passes_with_a_licence (0.01s)
+  - [+] test_topology_validation_passes_with_a_licence
 
 **tests.test_config_validation.TestAppconfigFileIsInert**
 
@@ -698,8 +698,8 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_status (0.03s)
   - [+] test_filters (0.03s)
   - [+] test_shapers (0.03s)
-  - [+] test_modes (0.03s)
-  - [+] test_discover (0.04s)
+  - [+] test_modes (0.04s)
+  - [+] test_discover (0.03s)
 
 **tests.test_hqplayer.TestHQPlayerStop**
 
@@ -750,8 +750,8 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_hqplayer.TestHQPlayerHasNoDirectPushRoute**
 
-  - [+] test_play_route_is_gone (0.03s)
-  - [+] test_play_library_route_is_gone (0.04s)
+  - [+] test_play_route_is_gone (0.04s)
+  - [+] test_play_library_route_is_gone (0.03s)
 
 **tests.test_hqplayer.TestNaaLiveness**
 
@@ -794,11 +794,11 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_a_stopped_ending_is_not_blamed_on_the_sound_card (0.31s)
   - [+] test_the_window_covers_the_measured_dsd_warm_up
   - [+] test_the_patience_covers_the_measured_radio_start
-  - [+] test_a_frozen_position_is_still_caught_before_the_window_ends (0.34s)
+  - [+] test_a_frozen_position_is_still_caught_before_the_window_ends (0.42s)
 
 **tests.test_hqplayer.TestPlaybackWatchLifecycle**
 
-  - [+] test_a_new_push_clears_the_previous_verdict (0.03s)
+  - [+] test_a_new_push_clears_the_previous_verdict (0.02s)
   - [+] test_a_new_push_cancels_the_running_watch (0.02s)
   - [+] test_a_moving_position_clears_a_stale_verdict
   - [+] test_a_frozen_position_leaves_the_verdict_in_place
@@ -807,7 +807,7 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_hqplayer.TestUseAsOutputFlag**
 
   - [+] test_enabling_persists_the_flag
-  - [+] test_disabling_releases_the_sound_card (0.11s)
+  - [+] test_disabling_releases_the_sound_card
   - [+] test_toggling_to_the_same_value_is_a_no_op
   - [+] test_a_failing_stop_does_not_break_the_toggle
   - [+] test_flag_survives_a_restart
@@ -948,7 +948,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_library.TestLibrary**
 
-  - [+] test_upnp_known_servers_route_exists (0.09s)
+  - [+] test_upnp_known_servers_route_exists (0.08s)
   - [+] test_search_route_exists (0.08s)
   - [+] test_queue_route_exists (0.07s)
 
@@ -1155,26 +1155,26 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_library_files.TestStreamEndpoint**
 
   - [+] test_full_get_returns_all_bytes (0.07s)
-  - [+] test_range_returns_206_partial (0.08s)
-  - [+] test_head_returns_headers_no_body (0.09s)
+  - [+] test_range_returns_206_partial (0.07s)
+  - [+] test_head_returns_headers_no_body (0.08s)
   - [+] test_bad_signature_rejected (0.07s)
   - [+] test_missing_signature_rejected (0.08s)
-  - [+] test_missing_file_returns_404 (0.08s)
+  - [+] test_missing_file_returns_404 (0.10s)
 
 **tests.test_library_files.TestLibraryCoverEndpoint**
 
-  - [+] test_valid_sig_returns_cover (0.02s)
+  - [+] test_valid_sig_returns_cover (0.01s)
   - [+] test_bad_sig_rejected_without_resolving (0.01s)
   - [+] test_missing_sig_rejected (0.01s)
   - [+] test_cover_not_found_returns_404 (0.01s)
 
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.05s)
-  - [+] test_valid_lifetime_license (0.04s)
+  - [+] test_no_license (0.04s)
+  - [+] test_valid_lifetime_license (0.05s)
   - [+] test_beta_version_accepts_v1_scope (0.05s)
-  - [+] test_version_expired (0.05s)
-  - [+] test_tampered_license (0.04s)
+  - [+] test_version_expired (0.04s)
+  - [+] test_tampered_license (0.05s)
 
 **tests.test_license.TestUploadLicense**
 
@@ -1183,7 +1183,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_license.TestDeleteLicense**
 
-  - [+] test_delete_existing_license (0.05s)
+  - [+] test_delete_existing_license (0.04s)
   - [+] test_delete_wrong_password (0.01s)
   - [+] test_delete_no_license (0.01s)
   - [+] test_no_name_error (0.05s)
@@ -1200,7 +1200,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_license.TestCheckEndpointStatusHandling**
 
-  - [+] test_server_5xx_returns_502 (0.01s)
+  - [+] test_server_5xx_returns_502 (0.02s)
   - [+] test_unexpected_response_shape_returns_502 (0.02s)
 
 **tests.test_license.TestRequireFullLicenseServiceNone**
@@ -1225,7 +1225,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_license.TestActivateEndpointLicContentValidation**
 
-  - [+] test_non_json_lic_content_returns_502 (0.01s)
+  - [+] test_non_json_lic_content_returns_502 (0.02s)
 
 **tests.test_license.TestAnnouncementModel**
 
@@ -1280,7 +1280,7 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_mpd_client.TestClearErrorInjectionCommandList**
 
   - [+] test_clear_add_play_gets_a_leading_clearerror
-  - [+] test_read_only_list_is_not_prefixed
+  - [+] test_read_only_list_is_not_prefixed (0.01s)
   - [+] test_fault_tolerant_lists_are_never_prefixed
   - [+] test_only_one_clearerror_for_several_playback_starters
 
@@ -1320,7 +1320,7 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_delete_force_removes_all_artifacts
   - [+] test_delete_unknown_slug_raises
   - [+] test_wake_touches_only_idle_autofs_mounts_and_runs_once
-  - [+] test_wake_survives_unreachable_share
+  - [+] test_wake_survives_unreachable_share (0.01s)
 
 **tests.test_no_lab_addresses**
 
@@ -1453,7 +1453,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (7.41s)
+  - [+] test_runs_standalone_without_package_context (8.09s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -1491,7 +1491,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_packages.TestScriptInstallerNoShellInjection**
 
-  - [+] test_install_script_args_passed_as_exec_tokens
+  - [+] test_install_script_args_passed_as_exec_tokens (0.01s)
   - [+] test_version_check_url_validated_against_whitelist
   - [+] test_version_check_url_allowed_domain_accepted
 
@@ -1511,6 +1511,37 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_packages.TestPackagesManagerLogBuffer**
 
   - [+] test_log_buffer_caps_at_500
+  - [+] test_reset_keeps_the_maxlen_cap
+
+**tests.test_packages.TestPackageLogRecovery**
+
+  - [+] test_entries_are_numbered_and_filtered_by_after_seq
+  - [+] test_response_reports_last_seq_even_when_caught_up
+  - [+] test_unknown_package_raises_value_error
+  - [+] test_new_operation_keeps_counting_up
+
+**tests.test_packages.TestPackageLogsRoute**
+
+  - [+] test_returns_entries_and_last_seq (0.02s)
+  - [+] test_after_seq_returns_only_the_missing_lines (0.02s)
+  - [+] test_success_level_does_not_break_the_route (0.02s)
+  - [+] test_unknown_package_is_404 (0.02s)
+
+**tests.test_packages.TestLogEntryFromWorkerThread**
+
+  - [+] test_publish_from_worker_thread_reaches_the_event_bus (0.05s)
+  - [+] test_publish_without_a_loop_is_dropped_not_raised
+  - [+] test_dry_run_install_completes
+
+**tests.test_packages.TestCommandOutputStreaming**
+
+  - [+] test_lines_are_relayed_as_they_arrive
+  - [+] test_silent_by_default_so_probes_do_not_flood_the_log
+  - [+] test_third_party_failure_wording_is_not_promoted_to_error
+  - [+] test_timeout_returns_a_verdict_instead_of_raising (1.01s)
+  - [+] test_timeout_holds_when_the_command_forks (1.01s)
+  - [+] test_newline_less_output_does_not_grow_without_bound (0.06s)
+  - [+] test_reading_the_log_while_a_worker_appends_never_raises (0.08s)
 
 **tests.test_packages.TestPackagesManagerCleanup**
 
@@ -1537,8 +1568,8 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_performance.TestPerformance**
 
-  - [+] test_cpu_info_route (0.06s)
-  - [+] test_rt_processes (0.03s)
+  - [+] test_cpu_info_route (0.05s)
+  - [+] test_rt_processes (0.18s)
 
 **tests.test_performance.TestGovernorBootScript**
 
@@ -1586,12 +1617,12 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_source_prepended_from_origin
   - [+] test_full_chain_no_renderer
   - [+] test_radio_shows_canonical_label_not_station_name
-  - [+] test_upnp_uses_server_name_from_origin_name (0.01s)
-  - [+] test_renderer_active_output_label_is_renderer_not_local_dac (0.11s)
+  - [+] test_upnp_uses_server_name_from_origin_name
+  - [+] test_renderer_active_output_label_is_renderer_not_local_dac
   - [+] test_upnp_falls_back_to_upnp_label_when_no_server_name
   - [+] test_native_renderer_signal_path_ends_at_renderer
   - [+] test_native_renderer_with_source_prepended
-  - [+] test_renderer_unreachable_does_not_appear_in_signal_path
+  - [+] test_renderer_unreachable_does_not_appear_in_signal_path (0.01s)
 
 **tests.test_player.TestBuildSourcesVirtual**
 
@@ -1623,13 +1654,13 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_returns_mpd_and_renderer_outputs (0.02s)
   - [+] test_local_active_true_when_no_renderer (0.02s)
   - [+] test_local_active_false_when_renderer_reachable (0.02s)
-  - [+] test_local_active_true_when_renderer_not_reachable (0.02s)
+  - [+] test_local_active_true_when_renderer_not_reachable (0.03s)
 
 **tests.test_player.TestSelectMpdOutput**
 
   - [+] test_switch_succeeds (0.02s)
-  - [+] test_unknown_output_id_returns_404 (0.02s)
-  - [+] test_stale_active_udn_cleared_not_raised (0.02s)
+  - [+] test_unknown_output_id_returns_404 (0.03s)
+  - [+] test_stale_active_udn_cleared_not_raised (0.03s)
   - [+] test_stale_active_udn_calls_save_config (0.02s)
 
 **tests.test_player.TestDsdRendererExcluded**
@@ -1643,7 +1674,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_player.TestControlIdRouting**
 
-  - [+] test_control_id_wins_over_source_id (0.01s)
+  - [+] test_control_id_wins_over_source_id
   - [+] test_rebadged_item_found_by_control_id
   - [+] test_source_id_fallback_dispatches_driver_handle
   - [+] test_stopped_renderer_still_controllable_by_handle
@@ -1656,7 +1687,7 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_unreachable_renderer_kept_with_unknown_state_local_active
   - [+] test_playing_local_wins_over_an_idle_renderer
   - [+] test_a_local_error_stays_visible_when_the_renderer_is_idle
-  - [+] test_a_playing_renderer_still_wins_over_local
+  - [+] test_a_playing_renderer_still_wins_over_local (0.01s)
   - [+] test_idle_everywhere_keeps_the_selected_renderer_visible
   - [+] test_a_paused_local_source_also_holds_the_active_spot
   - [+] test_queue_next_populated_from_renderer_queue
@@ -1686,7 +1717,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.05s)
+  - [+] test_activate (0.04s)
   - [+] test_deactivate (0.02s)
 
 **tests.test_profiles.TestProfilesGatherTimeout**
@@ -1837,21 +1868,21 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_qobuz.TestQobuzRouter**
 
-  - [+] test_get_connection_connected (0.01s)
+  - [+] test_get_connection_connected
   - [+] test_delete_connection (0.01s)
   - [+] test_get_connection_after_disconnect
-  - [+] test_stream_redirect_mode_returns_302_to_cdn (0.02s)
-  - [+] test_oauth_callback_no_code
-  - [+] test_oauth_callback_with_code
+  - [+] test_stream_redirect_mode_returns_302_to_cdn
+  - [+] test_oauth_callback_no_code (0.01s)
+  - [+] test_oauth_callback_with_code (0.01s)
   - [+] test_oauth_callback_failure (0.01s)
-  - [+] test_post_connection_starts_oauth (0.01s)
+  - [+] test_post_connection_starts_oauth
 
 **tests.test_qobuz.TestQobuzStreamProxy**
 
   - [+] test_stream_full_returns_200 (0.01s)
   - [+] test_stream_range_request_relayed_to_cdn (0.01s)
-  - [+] test_stream_cdn_error_raises_503 (0.01s)
-  - [+] test_presigned_url_sent_byte_for_byte (0.01s)
+  - [+] test_stream_cdn_error_raises_503 (0.02s)
+  - [+] test_presigned_url_sent_byte_for_byte (0.02s)
 
 **tests.test_qobuz.TestQobuzRotation**
 
@@ -1918,11 +1949,11 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
   - [+] test_featured_albums (0.08s)
-  - [+] test_featured_albums_default_type (0.07s)
+  - [+] test_featured_albums_default_type (0.08s)
   - [+] test_playlists (0.07s)
   - [+] test_playlist_tracks (0.08s)
-  - [+] test_playlist_tracks_missing_id (0.08s)
-  - [+] test_featured_service_error (0.07s)
+  - [+] test_playlist_tracks_missing_id (0.09s)
+  - [+] test_featured_service_error (0.08s)
 
 **tests.test_qobuz_library.TestQobuzQueueHelper**
 
@@ -1944,9 +1975,9 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_radio.TestRadio**
 
-  - [+] test_search_route (0.05s)
+  - [+] test_search_route (0.04s)
   - [+] test_library_route (0.03s)
-  - [+] test_favorites_route (0.03s)
+  - [+] test_favorites_route (0.04s)
 
 **tests.test_radio.TestRadioEditStation**
 
@@ -2097,27 +2128,27 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_update_rejects_bad_password (0.03s)
   - [+] test_update_conflict_when_in_progress (0.03s)
   - [+] test_update_happy_path_launches (0.03s)
-  - [+] test_update_status_reflects_state (0.03s)
+  - [+] test_update_status_reflects_state (0.02s)
 
 **tests.test_services.TestListServices**
 
-  - [+] test_list_all (0.04s)
+  - [+] test_list_all (0.05s)
 
 **tests.test_services.TestServiceInfo**
 
-  - [+] test_get_service (0.03s)
+  - [+] test_get_service (0.04s)
 
 **tests.test_services.TestServiceActions**
 
   - [+] test_restart_service (0.03s)
-  - [+] test_stop_service (0.03s)
-  - [+] test_start_service (0.03s)
+  - [+] test_stop_service (0.04s)
+  - [+] test_start_service (0.04s)
 
 **tests.test_services.TestServiceNameValidation**
 
-  - [+] test_valid_name_accepted (0.04s)
+  - [+] test_valid_name_accepted (0.03s)
   - [+] test_semicolon_rejected (0.03s)
-  - [+] test_slash_rejected (0.03s)
+  - [+] test_slash_rejected (0.05s)
   - [+] test_ampersand_rejected (0.03s)
 
 **tests.test_services.TestEnumComparison**
@@ -2160,13 +2191,13 @@ Generated: **2026-07-28 10:22 UTC**
 
   - [+] test_allowlist_covers_every_published_channel (0.01s)
   - [+] test_unknown_channel_is_refused (0.01s)
-  - [+] test_refusal_names_the_valid_channels
-  - [+] test_sysinfo_is_refused_because_it_is_an_event_not_a_channel (0.01s)
+  - [+] test_refusal_names_the_valid_channels (0.01s)
+  - [+] test_sysinfo_is_refused_because_it_is_an_event_not_a_channel
   - [+] test_every_known_channel_passes_the_guard (0.01s)
 
 **tests.test_steering.TestSteeringRoutes**
 
-  - [+] test_outputs_route_exists (0.01s)
+  - [+] test_outputs_route_exists
   - [+] test_status_route_exists (0.01s)
 
 **tests.test_steering.TestAlsaDeviceValidation**
@@ -2183,9 +2214,9 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_steering.TestSwitchDispatch**
 
   - [+] test_mpd_uses_native_switch_no_restart
-  - [+] test_mpd_native_error_reports_failure_no_fallback (0.01s)
+  - [+] test_mpd_native_error_reports_failure_no_fallback
   - [+] test_mpd_fallback_uses_restart
-  - [+] test_airplay_uses_restart_path (0.13s)
+  - [+] test_airplay_uses_restart_path
 
 **tests.test_steering.TestVerifyAlsaDevice**
 
@@ -2241,7 +2272,7 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_local_library_tracks_album_uses_find_album
   - [+] test_local_library_tracks_rejects_bad_item_type
   - [+] test_local_signed_url_keeps_slashes_signs_path
-  - [+] test_build_renderer_entries_signs_and_registers
+  - [+] test_build_renderer_entries_signs_and_registers (0.13s)
   - [+] test_mpd_queue_routes_to_remote_renderer
   - [+] test_mpd_queue_no_renderer_stays_direct
   - [+] test_mpd_queue_add_action_never_routes_to_renderer
@@ -2259,11 +2290,11 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_sysinfo.TestSysinfoSmartctlSafe**
 
-  - [+] test_smartctl_not_found_returns_none (0.04s)
+  - [+] test_smartctl_not_found_returns_none (0.03s)
 
 **tests.test_sysinfo.TestSysinfoGrepPatternValidation**
 
-  - [+] test_invalid_regex_returns_400 (0.03s)
+  - [+] test_invalid_regex_returns_400 (0.02s)
   - [+] test_valid_regex_accepted (0.11s)
 
 **tests.test_sysinfo.TestSysinfoSyslogIdentifierFormat**
@@ -2272,7 +2303,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_sysinfo.TestTemperaturePushAlert**
 
-  - [+] test_cooldown_not_updated_when_push_raises (0.01s)
+  - [+] test_cooldown_not_updated_when_push_raises
   - [+] test_cooldown_below_threshold_no_alert
   - [+] test_cooldown_prevents_second_alert_within_15min
   - [+] test_alert_allowed_after_cooldown_elapsed
@@ -2339,7 +2370,7 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_tidal.TestTidalRefreshClearsOnAllFailures**
 
   - [+] test_expired_token_cleared_on_401
-  - [+] test_expired_token_cleared_on_network_exception
+  - [+] test_expired_token_cleared_on_network_exception (0.01s)
   - [+] test_get_access_token_returns_none_after_failed_refresh
 
 **tests.test_tidal.TestTidalStreamCleanup**
@@ -2491,7 +2522,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **tests.test_upnp_renderer.TestPublishStatus**
 
-  - [+] test_publish_calls_event_bus (0.01s)
+  - [+] test_publish_calls_event_bus
   - [+] test_publish_dedup_suppresses_identical_payload
   - [+] test_publish_skipped_when_no_event_bus
   - [+] test_disconnect_event_not_suppressed_by_previous_hash
@@ -2516,11 +2547,11 @@ Generated: **2026-07-28 10:22 UTC**
 **tests.test_upnp_renderer.TestRendererRouterEndpoints**
 
   - [+] test_discover_route_exists (0.04s)
-  - [+] test_known_route_exists (0.04s)
+  - [+] test_known_route_exists (0.03s)
   - [+] test_connection_route_exists (0.04s)
   - [+] test_status_route_exists (0.04s)
-  - [+] test_notify_route_exists (0.04s)
-  - [+] test_bypass_route_removed (0.04s)
+  - [+] test_notify_route_exists (0.03s)
+  - [+] test_bypass_route_removed (0.05s)
   - [+] test_remove_renderer_route_exists (0.04s)
 
 **tests.test_upnp_renderer.TestRendererManagerRemove**
@@ -2540,7 +2571,7 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_play_queue_lazy_resolver_called_at_play_time
   - [+] test_play_queue_on_play_called_with_resolved_uri
   - [+] test_advance_queue_stopped_plays_next
-  - [+] test_advance_queue_uri_changed_registers_metadata_only (0.01s)
+  - [+] test_advance_queue_uri_changed_registers_metadata_only
   - [+] test_advance_queue_at_end_clears_queue
   - [+] test_advance_queue_guard_prevents_concurrent_advances
   - [+] test_check_queue_advance_playing_to_stopped_schedules_task
@@ -2550,7 +2581,7 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] test_check_queue_advance_creates_task_when_previous_done
   - [+] test_stop_clears_queue
   - [+] test_direct_play_clears_queue
-  - [+] test_advance_queue_resolver_failure_rolls_back_queue_idx
+  - [+] test_advance_queue_resolver_failure_rolls_back_queue_idx (0.01s)
   - [+] test_play_queue_entry_always_re_resolves_with_resolver
   - [+] test_advance_queue_uri_changed_re_resolves_for_on_play
   - [+] test_stop_resets_prev_transport_state_and_uri
@@ -2649,8 +2680,8 @@ Generated: **2026-07-28 10:22 UTC**
 
 **js/auth-init.test.js**
 
-  - [+] initAuth — corrupted localStorage (JSON.parse regression) > returns false without throwing when jwt_user is malformed JSON (0.10s)
-  - [+] initAuth — corrupted localStorage (JSON.parse regression) > clears auth state when jwt_user is invalid JSON (0.01s)
+  - [+] initAuth — corrupted localStorage (JSON.parse regression) > returns false without throwing when jwt_user is malformed JSON (0.02s)
+  - [+] initAuth — corrupted localStorage (JSON.parse regression) > clears auth state when jwt_user is invalid JSON
   - [+] initAuth — corrupted localStorage (JSON.parse regression) > returns true for a valid unexpired token
   - [+] initAuth — corrupted localStorage (JSON.parse regression) > does not authenticate with an expired token
   - [+] clearAuth > removes all auth keys from localStorage
@@ -2786,7 +2817,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **js/push-manager.test.js**
 
-  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.10s)
+  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.15s)
   - [+] push-manager unsubscribe (Fix P3) > passes endpoint as query param in the URL
   - [+] push-manager unsubscribe (Fix P3) > URLSearchParams encodes the endpoint correctly
 
@@ -2808,11 +2839,11 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] validation.js > validateAudioConfig > posts the config to the audio-config validation route
   - [+] validation.js > validateTopologyConfig > posts the topology to the topology validation route
   - [+] validation.js > validateTopologyConfig > returns the validation response verbatim (errors + warnings)
-  - [+] validation.js > validateTopologyConfig > rethrows when the API call fails (0.01s)
+  - [+] validation.js > validateTopologyConfig > rethrows when the API call fails
 
 **js/version.test.js**
 
-  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.24)
+  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.25)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > js/core/config.js UI_VERSION matches VERSION (UI display)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > sw.js CACHE_NAME matches VERSION (PWA cache busting)
 
@@ -2948,10 +2979,327 @@ Generated: **2026-07-28 10:22 UTC**
 
 **js/components/atoms/ag-library-cover.test.js**
 
-  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.04s)
+  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.05s)
   - [+] ag-library-cover — deferred image loading > still points at the requested cover
   - [+] ag-library-cover — deferred image loading > renders no image at all when there is no cover, so nothing is requested
-  - [+] ag-library-cover — deferred image loading > drops the image once it has failed, instead of retrying on every render
+  - [+] ag-library-cover — deferred image loading > drops the image once it has failed, instead of retrying on every render (0.01s)
+
+**js/components/organisms/ag-audio-software-logs.test.js**
+
+  - [+] live log events > advances the cursor so a later catch-up cannot duplicate the line
+  - [+] live log events > ignores lines from a package the modal is not showing
+  - [+] opening the modal > does not fetch the log before the operation has started
+  - [+] catch-up after missed events > asks only for what is missing and appends it in order
+  - [+] catch-up after missed events > recovers the closing burst when the stream comes back (0.05s)
+  - [+] catch-up after missed events > does nothing while the stream is still down
+  - [+] catch-up after missed events > skips the request when no operation is being watched
+  - [+] catch-up after missed events > skips the request when the modal is closed
+  - [+] catch-up after missed events > leaves the modal usable when the catch-up request fails
+  - [+] catch-up after missed events > does not duplicate lines when two catch-ups overlap
+  - [+] catch-up after missed events > never moves the cursor backwards when a live line overtook the fetch
+  - [+] catch-up after missed events > leaves the cursor alone when the server has nothing new
+
+**js/components/organisms/ag-audio-software-page.test.js**
+
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes a malicious package label
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes malicious version strings
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > renders a normal package correctly after escaping
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > handles undefined version gracefully
+
+**js/components/organisms/ag-audio-stack-provisioning.test.js**
+
+  - [+] _libraryPayload > manual path → music_directory
+  - [+] _libraryPayload > manual with empty path → null
+  - [+] _libraryPayload > usb source → library_usb_uuid + fstype
+  - [+] _libraryPayload > mount source → music_directory
+  - [+] _libraryPayload > no choice → null
+  - [+] _canProvision > false without a library
+  - [+] _canProvision > true with output + library
+  - [+] _canProvision > false while provisioning
+  - [+] _disabledReason > asks to select an output when none is selected
+  - [+] _disabledReason > asks to select a library when output is set but no library
+  - [+] _disabledReason > empty once output + library are chosen
+  - [+] _provision > posts the selected output + usb library (with the admin password) and reports success
+  - [+] _provision > aborts without posting when the password prompt is cancelled
+  - [+] _provision > posts music_directory for a manual library
+  - [+] _provision > sets error state on failure
+  - [+] _provision > re-fetches status after success so the page refreshes its selected output
+  - [+] _loadStatus > loads outputs/sources, pre-selects the recommended output, emits status-loaded
+  - [+] _onMountCreated > refreshes sources then selects the new share via the manual path
+  - [+] _onMountCreated > still refreshes, but selects nothing, on a malformed event
+  - [+] _onMountRemoved > clears a manual selection pointing at the removed share, and refreshes
+  - [+] _onMountRemoved > keeps a manual selection pointing elsewhere, but still refreshes
+  - [+] _refreshSources > preserves the user DAC pick and never flips the loading flag
+  - [+] _refreshSources > re-anchors a card selection by identity when the list shifts
+  - [+] _refreshSources > clears a card selection whose source is gone
+  - [+] _refreshSources > keeps the current view on a transient fetch failure (0.01s)
+
+**js/components/organisms/ag-config-editor.test.js**
+
+  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > calls toTextArea() on the CodeMirror instance and nulls the reference
+  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not throw when _cmInstance is null (never initialised)
+  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not call toTextArea after a second disconnectedCallback
+  - [+] AgConfigEditor — guided/structured/expert mode switching > _applyMode sets the mode and reverts unsaved changes
+  - [+] AgConfigEditor — guided/structured/expert mode switching > _setMode is a no-op when already in that mode
+  - [+] AgConfigEditor — guided/structured/expert mode switching > _setMode applies directly when not dirty
+  - [+] AgConfigEditor — guided/structured/expert mode switching > _setMode confirms before applying when there are unsaved changes
+  - [+] AgConfigEditor — guided/structured/expert mode switching > willUpdate opens a provisionable service in guided mode
+  - [+] AgConfigEditor — guided/structured/expert mode switching > willUpdate opens a non-provisionable service in form mode
+  - [+] AgConfigEditor — originals capture on parent reload (guided-apply safety) > re-captures originals when the parent reloads the config (both props change)
+  - [+] AgConfigEditor — originals capture on parent reload (guided-apply safety) > does not re-capture originals on a single-mode edit (only one prop changes)
+
+**js/components/organisms/ag-guided-config.test.js**
+
+  - [+] descriptor > mpd has output + library, airplay has output, upmpdcli none
+  - [+] _initialOutputId > matches the pinned output
+  - [+] _initialOutputId > falls back to the recommended output when no pin
+  - [+] _outputChanged > false when selection equals the pin
+  - [+] _outputChanged > true when selection differs from the pin
+  - [+] _canApply > false with no changes
+  - [+] _canApply > true when the output changed
+  - [+] _canApply > true when a library is chosen
+  - [+] _canApply > false while busy
+  - [+] _apply > patches only the output when only the output changed (airplay)
+  - [+] _apply > patches output AND library for mpd, and clears the library choice
+  - [+] _apply > does nothing when there is no change
+  - [+] _apply > reports an error and does not emit on failure
+  - [+] _reset > regenerates with the admin password and emits guided-changed
+  - [+] _reset > aborts when the password prompt is cancelled
+  - [+] _onMountCreated > selects the freshly mounted share via the manual path (index-proof)
+  - [+] _onMountCreated > ignores a malformed event
+  - [+] _onMountRemoved > clears the selection when it pointed at the removed share
+  - [+] _onMountRemoved > leaves a selection that pointed elsewhere untouched
+  - [+] willUpdate — library selection re-anchor > re-anchors a card selection when the parent re-fetches librarySources
+  - [+] willUpdate — library selection re-anchor > clears a card selection whose source disappeared
+  - [+] willUpdate — library selection re-anchor > leaves a manual selection untouched
+
+**js/components/organisms/ag-json-config-modal.test.js**
+
+  - [+] ag-json-config-modal file transfer > _handleDownload > downloads the live editor content under the configured filename
+  - [+] ag-json-config-modal file transfer > _handleDownload > falls back to configText when there is no editor yet
+  - [+] ag-json-config-modal file transfer > _handleUploadClick > clicks the hidden file input
+  - [+] ag-json-config-modal file transfer > _handleFileSelected > loads the file content into the editor and enters edit mode
+  - [+] ag-json-config-modal file transfer > _handleFileSelected > does nothing when no file is picked
+  - [+] ag-json-config-modal file transfer > _handleFileSelected > surfaces a read error without throwing
+
+**js/components/organisms/ag-library-browse.test.js**
+
+  - [+] ag-library-browse — artist drill-down > _fetchPage hits /library/albums?artist_id=… when an artist is set
+  - [+] ag-library-browse — artist drill-down > _fetchPage bypasses the streaming pill routing in artist mode (Tidal)
+  - [+] ag-library-browse — artist drill-down > _fetchPage carries the name-as-id for HRA (name-based backend)
+  - [+] ag-library-browse — artist drill-down > _sectionLabel shows "Albums by <name>" in artist mode
+  - [+] ag-library-browse — artist drill-down > _sectionLabel falls back to "artist" when the name is missing
+
+**js/components/organisms/ag-library-outputs.test.js**
+
+  - [+] ag-library-outputs _activate > success → posts, dispatches change, re-fetches, no toast
+  - [+] ag-library-outputs _activate > not applied (backend raises) → surfaces the backend message, no dispatch, still re-fetches (0.01s)
+  - [+] ag-library-outputs _activate > network error → toast with fallback message, re-fetch runs in finally
+  - [+] ag-library-outputs _activate > clicking the already-active output is a no-op
+  - [+] ag-library-outputs _activate > ignores clicks while a switch is already in flight
+  - [+] ag-library-outputs _activate > derives the roonbridge service from a roon source
+  - [+] ag-library-outputs _activate > MPD switch does not prompt for confirmation
+  - [+] ag-library-outputs _activate > AirPlay switch confirms first, then posts when accepted
+  - [+] ag-library-outputs _activate > AirPlay switch is aborted when the user cancels the confirm
+
+**js/components/organisms/ag-library-queue.test.js**
+
+  - [+] ag-library-queue — source filter > _distinctOrigins dedups, preserves first-seen order, ignores empties
+  - [+] ag-library-queue — source filter > single-source up-next is not "mixed" and offers no filter options
+  - [+] ag-library-queue — source filter > mixed up-next defaults to showing every source, with All + one option per origin
+  - [+] ag-library-queue — source filter > origins come from up-next only — a current-only origin is not a filter option
+  - [+] ag-library-queue — source filter > filtering keeps only the chosen source and preserves real MPD positions
+  - [+] ag-library-queue — source filter > a stale filter (its source gone from up-next) falls back to all for display
+  - [+] ag-library-queue — source filter > _onFilterChange updates the active filter
+  - [+] ag-library-queue — Clear respects the filter > _clear removes only the shown (filtered) items, not the whole queue
+  - [+] ag-library-queue — Clear respects the filter > _clear with no filter clears every up-next item
+  - [+] ag-library-queue — _load prunes a stale filter > drops a filter whose source is no longer up-next
+  - [+] ag-library-queue — _load prunes a stale filter > keeps a filter whose source is still up-next
+
+**js/components/organisms/ag-library-radio.test.js**
+
+  - [+] AbortController — race condition guard > creates a new AbortController on each call
+  - [+] AbortController — race condition guard > aborts the previous controller when called a second time
+  - [+] AbortController — race condition guard > ignores results from a cancelled request (signal.aborted guard)
+  - [+] AbortController — race condition guard > clears loading flag after a successful non-aborted search
+  - [+] AbortController — race condition guard > does not clear loading flag when the request is aborted
+
+**js/components/organisms/ag-manual-modal.test.js**
+
+  - [+] ag-manual-modal > fallback chapters are structurally sound (unique ids, NN-prefix order, labels) (0.01s)
+  - [+] ag-manual-modal > parseToc (live TOC from README.md) > parses numbered contents entries, including chapter 0, stripping label markup
+  - [+] ag-manual-modal > parseToc (live TOC from README.md) > returns empty for markdown with no contents list
+  - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > replaces the fallback with the parsed live TOC
+  - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback (and allows a retry) when the fetch fails
+  - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback when the README has no parsable contents list
+  - [+] ag-manual-modal > starts closed
+  - [+] ag-manual-modal > open() shows the modal and loads the default (first) chapter (0.04s)
+  - [+] ag-manual-modal > open(id) loads the requested chapter (0.01s)
+  - [+] ag-manual-modal > auto-loads a chapter when opened via the is-open property (not open())
+  - [+] ag-manual-modal > does not double-load: open() sets _loading so updated() skips the auto-load (0.01s)
+  - [+] ag-manual-modal > fetches the right URL, renders via marked, and caches (no refetch) (0.04s)
+  - [+] ag-manual-modal > de-duplicates concurrent loads of the same uncached chapter (single fetch)
+  - [+] ag-manual-modal > shows an error state on a non-OK response and logs it (not swallowed)
+  - [+] ag-manual-modal > shows an error state when the network throws (offline box)
+  - [+] ag-manual-modal > close() hides the modal and emits manual-close
+  - [+] ag-manual-modal > Escape closes an open modal but is ignored when closed
+  - [+] ag-manual-modal > renders one TOC item per fallback chapter and the rendered chapter body (0.02s)
+  - [+] ag-manual-modal > click handling (never navigate the host app away) > switches chapter in place for a tagged intra-manual link
+  - [+] ag-manual-modal > click handling (never navigate the host app away) > passes the anchor for a tagged chapter+anchor link
+  - [+] ag-manual-modal > click handling (never navigate the host app away) > scrolls for an in-page anchor without loading a chapter
+  - [+] ag-manual-modal > click handling (never navigate the host app away) > leaves rewritten external links to the browser (no preventDefault, no in-modal load)
+  - [+] ag-manual-modal > click handling (never navigate the host app away) > leaves mailto: links to the OS
+  - [+] ag-manual-modal > click handling (never navigate the host app away) > ignores clicks that are not on a link
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > tags an intra-manual chapter link and points it at the published URL
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > carries the anchor on a chapter+anchor link
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > absolutises a sibling repo doc and opens it in a new tab
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > leaves in-page anchors and mailto untouched
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — a second pass does not re-rewrite a chapter link
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > absolutises a manual-relative image against the manual base, lazily
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > keeps absolute and data: image sources as authored (still lazy)
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — a second pass leaves an already-absolutised image unchanged
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > stamps GitHub-style slug ids (punctuation, duplicate dedup, unicode) (0.01s)
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > enhances at cache time: cached HTML already has ids, absolute lazy images
+
+**js/components/organisms/ag-mobile-pipeline.test.js**
+
+  - [+] ag-mobile-pipeline data acquisition > requests the pipeline exactly once, then listens
+  - [+] ag-mobile-pipeline data acquisition > never polls the pipeline endpoint again, however long the tab stays open
+  - [+] ag-mobile-pipeline data acquisition > takes its updates from the SSE event instead
+  - [+] ag-mobile-pipeline data acquisition > still polls steering, which has no event on the dashboard channel
+  - [+] ag-mobile-pipeline data acquisition > stops listening and polling once disconnected
+  - [+] ag-mobile-pipeline data acquisition > survives a failing backend without leaving the tab on the loader
+
+**js/components/organisms/ag-network-test.test.js**
+
+  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > destroys _jitterChart when component is disconnected (0.06s)
+  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > does not throw when _jitterChart is null
+
+**js/components/organisms/ag-now-playing-fullscreen.test.js**
+
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows when the backend switches to a new active source
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not reconnect SSE when source_id already matches targetSourceId
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not auto-follow when playing is false
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows across multiple source changes
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource sets userOverride and updates targetSourceId
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource is a no-op when already on the target source
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > respects override — does not auto-follow after manual navigation
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > override is not lifted while user-chosen source is still playing
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and auto-follows when user-chosen source stops playing
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and follows new active after chosen source stops
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > SSE reconnects once when override is lifted and source switches
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > immediately follows new source when override is lifted on a playing:false tick
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not crash when override lifts and no source is playing
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: true when an active renderer output is present
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: false when the renderer entry is inactive (unreachable)
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: false with local-only outputs
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: false when no outputs yet
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > hasSignal: true with non-empty signal_path
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > hasSignal: true with output_label only
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > hasSignal: false with empty path and no label
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > signal path shown when renderer inactive and signal present
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > signal path shown when no renderer and signal present
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > renderer step present in signal_path when renderer active (backend enrichment)
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > idle renderer badge shown when renderer active but signal_path is empty
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > idle renderer badge NOT shown when renderer inactive and no signal
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack set from renderer queue when connected
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack set to null when queue_next_title is null
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack cleared when renderer disconnects
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack cleared when renderer is bypassed
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack not touched when renderer is connected but queue_total is null
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when track title changes
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when source changes
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token preserved when same track and source
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token null when no error was set
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when title changes to null (track ends)
+  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > formats track 5 as A1 · TRACK 05
+  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > formats track 10 as A1 · TRACK 10 (ceiling boundary: last track of side A)
+  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > formats track 11 as A2 · TRACK 11 (next vinyl side)
+  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > returns null when track_number is null (backend did not populate it)
+  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > returns null when track_number is absent from the state object
+  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > returns null when state is null (nothing playing)
+  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > renderer cast: up-next comes from state.queue_next, no fetch
+  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > renderer cast at end of queue: up-next cleared, no fetch
+  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > local playback: falls back to the queue fetch
+  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > a local item shown while a cast runs elsewhere keeps its own queue
+  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > a state without played_on falls back to the local path
+  - [+] AgNowPlayingFullscreen — control body routing handle > sends the displayed state control_id when it matches the target
+  - [+] AgNowPlayingFullscreen — control body routing handle > does not send a mismatched handle after a source switch
+  - [+] AgNowPlayingFullscreen — control body routing handle > sends control_id with no explicit target (active-source control)
+  - [+] AgNowPlayingFullscreen — output error > reads the error from the ACTIVE output entry
+  - [+] AgNowPlayingFullscreen — output error > ignores an error on an inactive output
+  - [+] AgNowPlayingFullscreen — output error > no error in the normal case
+  - [+] AgNowPlayingFullscreen — output error > a busy device gets an actionable plain-language label
+  - [+] AgNowPlayingFullscreen — output error > any other failure falls back to a generic label
+  - [+] fullscreen — Up next source selection > uses the renderer queue when the displayed item IS the cast
+  - [+] fullscreen — Up next source selection > does NOT use it for another source while a cast runs elsewhere
+  - [+] fullscreen — Up next source selection > falls back to source_id when control_id is absent
+  - [+] fullscreen — Up next source selection > is false for a plain local source with no outputs listed
+
+**js/components/organisms/ag-now-playing.test.js**
+
+  - [+] AgNowPlaying — auto-follow (_onState) > follows the active source on first state
+  - [+] AgNowPlaying — auto-follow (_onState) > auto-switches when the active source changes
+  - [+] AgNowPlaying — auto-follow (_onState) > stays on active source when it remains active across ticks
+  - [+] AgNowPlaying — auto-follow (_onState) > clamps index to 0 when item count shrinks (no override)
+  - [+] AgNowPlaying — auto-follow (_onState) > shows first item when no source is flagged active
+  - [+] AgNowPlaying — auto-follow (_onState) > respects override — does not auto-switch after manual navigation
+  - [+] AgNowPlaying — auto-follow (_onState) > override is not lifted while user-chosen source is still playing
+  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and auto-follows when user-chosen source stops playing
+  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and follows new active source after chosen source stops
+  - [+] AgNowPlaying — auto-follow (_onState) > clamping also lifts override when items shrink below user index
+  - [+] AgNowPlaying — auto-follow (_onState) > prevShownId uses old items — override is lifted when chosen source disappears even after clamp
+  - [+] AgNowPlaying — auto-follow (_onState) > dot-click sets userOverride — next auto-follow tick respects it
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: true when an active renderer output is present
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: false when the renderer entry is inactive (unreachable)
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: false with local-only outputs
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: false when no outputs yet
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > renderer badge name comes from the outputs entry
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge hidden when a renderer is active (renderer = own DAC stack)
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge visible when no renderer
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge hidden when output_connector absent (no renderer)
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge hidden when output_connector absent (renderer active)
+  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge visible with TOSLINK when renderer entry inactive
+  - [+] AgNowPlaying — control body routing handle > sends control_id from the item alongside source_id
+  - [+] AgNowPlaying — control body routing handle > omits control_id when the item has none (legacy fallback)
+  - [+] AgNowPlaying — control body routing handle > seek still maps to seek_position with the handle present
+
+**js/components/organisms/ag-orientation-gate.test.js**
+
+  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.18s)
+  - [+] ag-orientation-gate > renders the rotate prompt and a landscape escape hatch (0.01s)
+  - [+] ag-orientation-gate > _dismiss turns the lock off (state + persisted) and applies it
+  - [+] ag-orientation-gate > _setBackgroundInert inerts sibling top-level elements but never itself
+
+**js/components/organisms/ag-pipeline-page.test.js**
+
+  - [+] ag-pipeline-page topology save > persists directly when the topology is valid with no warnings
+  - [+] ag-pipeline-page topology save > blocks the save and shows the modal on structural errors
+  - [+] ag-pipeline-page topology save > asks for confirmation before persisting when there are warnings
+  - [+] ag-pipeline-page topology save > persists once the warning confirmation callback runs
+  - [+] ag-pipeline-page topology save > falls through to the save when validation is unreachable
+  - [+] ag-pipeline-page topology save > reports a backend save failure without closing the modal
+
+**js/components/organisms/ag-pull-tab.test.js**
+
+  - [+] ag-pull-tab — restore gesture > restores on a clean tap
+  - [+] ag-pull-tab — restore gesture > restores on an upward swipe
+  - [+] ag-pull-tab — restore gesture > restores on a -12 px travel — the band that used to do nothing
+  - [+] ag-pull-tab — restore gesture > restores on a -15 px travel — the band that used to do nothing
+  - [+] ag-pull-tab — restore gesture > restores on a -20 px travel — the band that used to do nothing
+  - [+] ag-pull-tab — restore gesture > restores on a -29 px travel — the band that used to do nothing
+  - [+] ag-pull-tab — restore gesture > restores on a sloppy tap that drifts downward within the slop
+  - [+] ag-pull-tab — restore gesture > ignores a deliberate downward drag
+  - [+] ag-pull-tab — restore gesture > suppresses the synthetic click it would otherwise duplicate
+  - [+] ag-pull-tab — restore gesture > leaves the click path alone when it ignores the gesture
+
+**js/components/organisms/ag-user-modal.test.js**
+
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.02s)
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (tabs) is rejected
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > valid password passes validation
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > password with surrounding spaces is trimmed before sending
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > short username is rejected regardless of password
 
 **js/components/molecules/ag-announcement-banner.test.js**
 
@@ -3081,7 +3429,7 @@ Generated: **2026-07-28 10:22 UTC**
 
 **js/components/molecules/ag-tabs.test.js**
 
-  - [+] ag-tabs — drag transform cleanup > _clearDragTransform > removes the inline transform from the sidebar and the toggle button (0.01s)
+  - [+] ag-tabs — drag transform cleanup > _clearDragTransform > removes the inline transform from the sidebar and the toggle button
   - [+] ag-tabs — drag transform cleanup > _clearDragTransform > also resets the config modal when present
   - [+] ag-tabs — drag transform cleanup > _clearDragTransform > is safe when the toggle button is not present
   - [+] ag-tabs — drag transform cleanup > _handleTouchMove — edge-swipe turned vertical > clears the inline transform instead of leaving it stuck
@@ -3146,305 +3494,3 @@ Generated: **2026-07-28 10:22 UTC**
   - [+] ag-version-skew-banner — versionsMatch > flags a minor-level difference (0.x treats minor as breaking)
   - [+] ag-version-skew-banner — versionsMatch > flags a major-level difference
   - [+] ag-version-skew-banner — versionsMatch > treats unknown versions as compatible (no false warning)
-
-**js/components/organisms/ag-audio-software-page.test.js**
-
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes a malicious package label
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes malicious version strings
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > renders a normal package correctly after escaping
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > handles undefined version gracefully
-
-**js/components/organisms/ag-audio-stack-provisioning.test.js**
-
-  - [+] _libraryPayload > manual path → music_directory
-  - [+] _libraryPayload > manual with empty path → null
-  - [+] _libraryPayload > usb source → library_usb_uuid + fstype
-  - [+] _libraryPayload > mount source → music_directory
-  - [+] _libraryPayload > no choice → null
-  - [+] _canProvision > false without a library
-  - [+] _canProvision > true with output + library
-  - [+] _canProvision > false while provisioning
-  - [+] _disabledReason > asks to select an output when none is selected
-  - [+] _disabledReason > asks to select a library when output is set but no library
-  - [+] _disabledReason > empty once output + library are chosen
-  - [+] _provision > posts the selected output + usb library (with the admin password) and reports success
-  - [+] _provision > aborts without posting when the password prompt is cancelled
-  - [+] _provision > posts music_directory for a manual library
-  - [+] _provision > sets error state on failure
-  - [+] _provision > re-fetches status after success so the page refreshes its selected output
-  - [+] _loadStatus > loads outputs/sources, pre-selects the recommended output, emits status-loaded
-  - [+] _onMountCreated > refreshes sources then selects the new share via the manual path
-  - [+] _onMountCreated > still refreshes, but selects nothing, on a malformed event
-  - [+] _onMountRemoved > clears a manual selection pointing at the removed share, and refreshes
-  - [+] _onMountRemoved > keeps a manual selection pointing elsewhere, but still refreshes
-  - [+] _refreshSources > preserves the user DAC pick and never flips the loading flag
-  - [+] _refreshSources > re-anchors a card selection by identity when the list shifts
-  - [+] _refreshSources > clears a card selection whose source is gone
-  - [+] _refreshSources > keeps the current view on a transient fetch failure
-
-**js/components/organisms/ag-config-editor.test.js**
-
-  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > calls toTextArea() on the CodeMirror instance and nulls the reference
-  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not throw when _cmInstance is null (never initialised)
-  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not call toTextArea after a second disconnectedCallback
-  - [+] AgConfigEditor — guided/structured/expert mode switching > _applyMode sets the mode and reverts unsaved changes
-  - [+] AgConfigEditor — guided/structured/expert mode switching > _setMode is a no-op when already in that mode
-  - [+] AgConfigEditor — guided/structured/expert mode switching > _setMode applies directly when not dirty
-  - [+] AgConfigEditor — guided/structured/expert mode switching > _setMode confirms before applying when there are unsaved changes
-  - [+] AgConfigEditor — guided/structured/expert mode switching > willUpdate opens a provisionable service in guided mode
-  - [+] AgConfigEditor — guided/structured/expert mode switching > willUpdate opens a non-provisionable service in form mode
-  - [+] AgConfigEditor — originals capture on parent reload (guided-apply safety) > re-captures originals when the parent reloads the config (both props change)
-  - [+] AgConfigEditor — originals capture on parent reload (guided-apply safety) > does not re-capture originals on a single-mode edit (only one prop changes)
-
-**js/components/organisms/ag-guided-config.test.js**
-
-  - [+] descriptor > mpd has output + library, airplay has output, upmpdcli none
-  - [+] _initialOutputId > matches the pinned output
-  - [+] _initialOutputId > falls back to the recommended output when no pin
-  - [+] _outputChanged > false when selection equals the pin
-  - [+] _outputChanged > true when selection differs from the pin
-  - [+] _canApply > false with no changes
-  - [+] _canApply > true when the output changed
-  - [+] _canApply > true when a library is chosen
-  - [+] _canApply > false while busy
-  - [+] _apply > patches only the output when only the output changed (airplay)
-  - [+] _apply > patches output AND library for mpd, and clears the library choice
-  - [+] _apply > does nothing when there is no change
-  - [+] _apply > reports an error and does not emit on failure
-  - [+] _reset > regenerates with the admin password and emits guided-changed
-  - [+] _reset > aborts when the password prompt is cancelled
-  - [+] _onMountCreated > selects the freshly mounted share via the manual path (index-proof)
-  - [+] _onMountCreated > ignores a malformed event
-  - [+] _onMountRemoved > clears the selection when it pointed at the removed share
-  - [+] _onMountRemoved > leaves a selection that pointed elsewhere untouched
-  - [+] willUpdate — library selection re-anchor > re-anchors a card selection when the parent re-fetches librarySources
-  - [+] willUpdate — library selection re-anchor > clears a card selection whose source disappeared
-  - [+] willUpdate — library selection re-anchor > leaves a manual selection untouched
-
-**js/components/organisms/ag-json-config-modal.test.js**
-
-  - [+] ag-json-config-modal file transfer > _handleDownload > downloads the live editor content under the configured filename
-  - [+] ag-json-config-modal file transfer > _handleDownload > falls back to configText when there is no editor yet
-  - [+] ag-json-config-modal file transfer > _handleUploadClick > clicks the hidden file input
-  - [+] ag-json-config-modal file transfer > _handleFileSelected > loads the file content into the editor and enters edit mode
-  - [+] ag-json-config-modal file transfer > _handleFileSelected > does nothing when no file is picked
-  - [+] ag-json-config-modal file transfer > _handleFileSelected > surfaces a read error without throwing
-
-**js/components/organisms/ag-library-browse.test.js**
-
-  - [+] ag-library-browse — artist drill-down > _fetchPage hits /library/albums?artist_id=… when an artist is set
-  - [+] ag-library-browse — artist drill-down > _fetchPage bypasses the streaming pill routing in artist mode (Tidal)
-  - [+] ag-library-browse — artist drill-down > _fetchPage carries the name-as-id for HRA (name-based backend)
-  - [+] ag-library-browse — artist drill-down > _sectionLabel shows "Albums by <name>" in artist mode
-  - [+] ag-library-browse — artist drill-down > _sectionLabel falls back to "artist" when the name is missing
-
-**js/components/organisms/ag-library-outputs.test.js**
-
-  - [+] ag-library-outputs _activate > success → posts, dispatches change, re-fetches, no toast
-  - [+] ag-library-outputs _activate > not applied (backend raises) → surfaces the backend message, no dispatch, still re-fetches (0.01s)
-  - [+] ag-library-outputs _activate > network error → toast with fallback message, re-fetch runs in finally
-  - [+] ag-library-outputs _activate > clicking the already-active output is a no-op
-  - [+] ag-library-outputs _activate > ignores clicks while a switch is already in flight
-  - [+] ag-library-outputs _activate > derives the roonbridge service from a roon source
-  - [+] ag-library-outputs _activate > MPD switch does not prompt for confirmation
-  - [+] ag-library-outputs _activate > AirPlay switch confirms first, then posts when accepted
-  - [+] ag-library-outputs _activate > AirPlay switch is aborted when the user cancels the confirm
-
-**js/components/organisms/ag-library-queue.test.js**
-
-  - [+] ag-library-queue — source filter > _distinctOrigins dedups, preserves first-seen order, ignores empties
-  - [+] ag-library-queue — source filter > single-source up-next is not "mixed" and offers no filter options
-  - [+] ag-library-queue — source filter > mixed up-next defaults to showing every source, with All + one option per origin
-  - [+] ag-library-queue — source filter > origins come from up-next only — a current-only origin is not a filter option
-  - [+] ag-library-queue — source filter > filtering keeps only the chosen source and preserves real MPD positions
-  - [+] ag-library-queue — source filter > a stale filter (its source gone from up-next) falls back to all for display
-  - [+] ag-library-queue — source filter > _onFilterChange updates the active filter
-  - [+] ag-library-queue — Clear respects the filter > _clear removes only the shown (filtered) items, not the whole queue
-  - [+] ag-library-queue — Clear respects the filter > _clear with no filter clears every up-next item
-  - [+] ag-library-queue — _load prunes a stale filter > drops a filter whose source is no longer up-next
-  - [+] ag-library-queue — _load prunes a stale filter > keeps a filter whose source is still up-next
-
-**js/components/organisms/ag-library-radio.test.js**
-
-  - [+] AbortController — race condition guard > creates a new AbortController on each call
-  - [+] AbortController — race condition guard > aborts the previous controller when called a second time
-  - [+] AbortController — race condition guard > ignores results from a cancelled request (signal.aborted guard)
-  - [+] AbortController — race condition guard > clears loading flag after a successful non-aborted search
-  - [+] AbortController — race condition guard > does not clear loading flag when the request is aborted
-
-**js/components/organisms/ag-manual-modal.test.js**
-
-  - [+] ag-manual-modal > fallback chapters are structurally sound (unique ids, NN-prefix order, labels) (0.01s)
-  - [+] ag-manual-modal > parseToc (live TOC from README.md) > parses numbered contents entries, including chapter 0, stripping label markup
-  - [+] ag-manual-modal > parseToc (live TOC from README.md) > returns empty for markdown with no contents list
-  - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > replaces the fallback with the parsed live TOC
-  - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback (and allows a retry) when the fetch fails
-  - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback when the README has no parsable contents list
-  - [+] ag-manual-modal > starts closed
-  - [+] ag-manual-modal > open() shows the modal and loads the default (first) chapter (0.04s)
-  - [+] ag-manual-modal > open(id) loads the requested chapter (0.01s)
-  - [+] ag-manual-modal > auto-loads a chapter when opened via the is-open property (not open())
-  - [+] ag-manual-modal > does not double-load: open() sets _loading so updated() skips the auto-load
-  - [+] ag-manual-modal > fetches the right URL, renders via marked, and caches (no refetch) (0.04s)
-  - [+] ag-manual-modal > de-duplicates concurrent loads of the same uncached chapter (single fetch)
-  - [+] ag-manual-modal > shows an error state on a non-OK response and logs it (not swallowed)
-  - [+] ag-manual-modal > shows an error state when the network throws (offline box)
-  - [+] ag-manual-modal > close() hides the modal and emits manual-close
-  - [+] ag-manual-modal > Escape closes an open modal but is ignored when closed
-  - [+] ag-manual-modal > renders one TOC item per fallback chapter and the rendered chapter body (0.02s)
-  - [+] ag-manual-modal > click handling (never navigate the host app away) > switches chapter in place for a tagged intra-manual link
-  - [+] ag-manual-modal > click handling (never navigate the host app away) > passes the anchor for a tagged chapter+anchor link
-  - [+] ag-manual-modal > click handling (never navigate the host app away) > scrolls for an in-page anchor without loading a chapter
-  - [+] ag-manual-modal > click handling (never navigate the host app away) > leaves rewritten external links to the browser (no preventDefault, no in-modal load)
-  - [+] ag-manual-modal > click handling (never navigate the host app away) > leaves mailto: links to the OS
-  - [+] ag-manual-modal > click handling (never navigate the host app away) > ignores clicks that are not on a link
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > tags an intra-manual chapter link and points it at the published URL
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > carries the anchor on a chapter+anchor link
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > absolutises a sibling repo doc and opens it in a new tab
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > leaves in-page anchors and mailto untouched
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — a second pass does not re-rewrite a chapter link
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > absolutises a manual-relative image against the manual base, lazily
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > keeps absolute and data: image sources as authored (still lazy)
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — a second pass leaves an already-absolutised image unchanged
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > stamps GitHub-style slug ids (punctuation, duplicate dedup, unicode) (0.01s)
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > enhances at cache time: cached HTML already has ids, absolute lazy images
-
-**js/components/organisms/ag-mobile-pipeline.test.js**
-
-  - [+] ag-mobile-pipeline data acquisition > requests the pipeline exactly once, then listens
-  - [+] ag-mobile-pipeline data acquisition > never polls the pipeline endpoint again, however long the tab stays open
-  - [+] ag-mobile-pipeline data acquisition > takes its updates from the SSE event instead
-  - [+] ag-mobile-pipeline data acquisition > still polls steering, which has no event on the dashboard channel
-  - [+] ag-mobile-pipeline data acquisition > stops listening and polling once disconnected
-  - [+] ag-mobile-pipeline data acquisition > survives a failing backend without leaving the tab on the loader
-
-**js/components/organisms/ag-network-test.test.js**
-
-  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > destroys _jitterChart when component is disconnected (0.07s)
-  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > does not throw when _jitterChart is null
-
-**js/components/organisms/ag-now-playing-fullscreen.test.js**
-
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows when the backend switches to a new active source
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not reconnect SSE when source_id already matches targetSourceId
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not auto-follow when playing is false
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows across multiple source changes
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource sets userOverride and updates targetSourceId
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource is a no-op when already on the target source
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > respects override — does not auto-follow after manual navigation
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > override is not lifted while user-chosen source is still playing
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and auto-follows when user-chosen source stops playing
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and follows new active after chosen source stops
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > SSE reconnects once when override is lifted and source switches
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > immediately follows new source when override is lifted on a playing:false tick
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not crash when override lifts and no source is playing
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: true when an active renderer output is present
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: false when the renderer entry is inactive (unreachable)
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: false with local-only outputs
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > rendererActive: false when no outputs yet
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > hasSignal: true with non-empty signal_path
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > hasSignal: true with output_label only
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > hasSignal: false with empty path and no label
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > signal path shown when renderer inactive and signal present
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > signal path shown when no renderer and signal present
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > renderer step present in signal_path when renderer active (backend enrichment)
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > idle renderer badge shown when renderer active but signal_path is empty
-  - [+] AgNowPlayingFullscreen — _rendererActive + signal path (outputs[]-based) > idle renderer badge NOT shown when renderer inactive and no signal
-  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack set from renderer queue when connected
-  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack set to null when queue_next_title is null
-  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack cleared when renderer disconnects
-  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack cleared when renderer is bypassed
-  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack not touched when renderer is connected but queue_total is null
-  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when track title changes
-  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when source changes
-  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token preserved when same track and source
-  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token null when no error was set
-  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when title changes to null (track ends)
-  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > formats track 5 as A1 · TRACK 05
-  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > formats track 10 as A1 · TRACK 10 (ceiling boundary: last track of side A)
-  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > formats track 11 as A2 · TRACK 11 (next vinyl side)
-  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > returns null when track_number is null (backend did not populate it)
-  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > returns null when track_number is absent from the state object
-  - [+] AgNowPlayingFullscreen — track number badge (tnLabel) > returns null when state is null (nothing playing)
-  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > renderer cast: up-next comes from state.queue_next, no fetch
-  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > renderer cast at end of queue: up-next cleared, no fetch
-  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > local playback: falls back to the queue fetch
-  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > a local item shown while a cast runs elsewhere keeps its own queue
-  - [+] AgNowPlayingFullscreen — Up next from PlayerState.queue_next > a state without played_on falls back to the local path
-  - [+] AgNowPlayingFullscreen — control body routing handle > sends the displayed state control_id when it matches the target
-  - [+] AgNowPlayingFullscreen — control body routing handle > does not send a mismatched handle after a source switch
-  - [+] AgNowPlayingFullscreen — control body routing handle > sends control_id with no explicit target (active-source control)
-  - [+] AgNowPlayingFullscreen — output error > reads the error from the ACTIVE output entry
-  - [+] AgNowPlayingFullscreen — output error > ignores an error on an inactive output
-  - [+] AgNowPlayingFullscreen — output error > no error in the normal case
-  - [+] AgNowPlayingFullscreen — output error > a busy device gets an actionable plain-language label
-  - [+] AgNowPlayingFullscreen — output error > any other failure falls back to a generic label
-  - [+] fullscreen — Up next source selection > uses the renderer queue when the displayed item IS the cast
-  - [+] fullscreen — Up next source selection > does NOT use it for another source while a cast runs elsewhere
-  - [+] fullscreen — Up next source selection > falls back to source_id when control_id is absent
-  - [+] fullscreen — Up next source selection > is false for a plain local source with no outputs listed
-
-**js/components/organisms/ag-now-playing.test.js**
-
-  - [+] AgNowPlaying — auto-follow (_onState) > follows the active source on first state
-  - [+] AgNowPlaying — auto-follow (_onState) > auto-switches when the active source changes
-  - [+] AgNowPlaying — auto-follow (_onState) > stays on active source when it remains active across ticks
-  - [+] AgNowPlaying — auto-follow (_onState) > clamps index to 0 when item count shrinks (no override)
-  - [+] AgNowPlaying — auto-follow (_onState) > shows first item when no source is flagged active
-  - [+] AgNowPlaying — auto-follow (_onState) > respects override — does not auto-switch after manual navigation
-  - [+] AgNowPlaying — auto-follow (_onState) > override is not lifted while user-chosen source is still playing
-  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and auto-follows when user-chosen source stops playing
-  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and follows new active source after chosen source stops
-  - [+] AgNowPlaying — auto-follow (_onState) > clamping also lifts override when items shrink below user index
-  - [+] AgNowPlaying — auto-follow (_onState) > prevShownId uses old items — override is lifted when chosen source disappears even after clamp
-  - [+] AgNowPlaying — auto-follow (_onState) > dot-click sets userOverride — next auto-follow tick respects it
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: true when an active renderer output is present
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: false when the renderer entry is inactive (unreachable)
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: false with local-only outputs
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > rendererActive: false when no outputs yet
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > renderer badge name comes from the outputs entry
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge hidden when a renderer is active (renderer = own DAC stack)
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge visible when no renderer
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge hidden when output_connector absent (no renderer)
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge hidden when output_connector absent (renderer active)
-  - [+] AgNowPlaying — _rendererActive + connector badge (outputs[]-based) > connector badge visible with TOSLINK when renderer entry inactive
-  - [+] AgNowPlaying — control body routing handle > sends control_id from the item alongside source_id
-  - [+] AgNowPlaying — control body routing handle > omits control_id when the item has none (legacy fallback)
-  - [+] AgNowPlaying — control body routing handle > seek still maps to seek_position with the handle present
-
-**js/components/organisms/ag-orientation-gate.test.js**
-
-  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.22s)
-  - [+] ag-orientation-gate > renders the rotate prompt and a landscape escape hatch (0.01s)
-  - [+] ag-orientation-gate > _dismiss turns the lock off (state + persisted) and applies it (0.02s)
-  - [+] ag-orientation-gate > _setBackgroundInert inerts sibling top-level elements but never itself (0.02s)
-
-**js/components/organisms/ag-pipeline-page.test.js**
-
-  - [+] ag-pipeline-page topology save > persists directly when the topology is valid with no warnings
-  - [+] ag-pipeline-page topology save > blocks the save and shows the modal on structural errors
-  - [+] ag-pipeline-page topology save > asks for confirmation before persisting when there are warnings
-  - [+] ag-pipeline-page topology save > persists once the warning confirmation callback runs
-  - [+] ag-pipeline-page topology save > falls through to the save when validation is unreachable
-  - [+] ag-pipeline-page topology save > reports a backend save failure without closing the modal
-
-**js/components/organisms/ag-pull-tab.test.js**
-
-  - [+] ag-pull-tab — restore gesture > restores on a clean tap
-  - [+] ag-pull-tab — restore gesture > restores on an upward swipe
-  - [+] ag-pull-tab — restore gesture > restores on a -12 px travel — the band that used to do nothing
-  - [+] ag-pull-tab — restore gesture > restores on a -15 px travel — the band that used to do nothing
-  - [+] ag-pull-tab — restore gesture > restores on a -20 px travel — the band that used to do nothing
-  - [+] ag-pull-tab — restore gesture > restores on a -29 px travel — the band that used to do nothing
-  - [+] ag-pull-tab — restore gesture > restores on a sloppy tap that drifts downward within the slop
-  - [+] ag-pull-tab — restore gesture > ignores a deliberate downward drag
-  - [+] ag-pull-tab — restore gesture > suppresses the synthetic click it would otherwise duplicate
-  - [+] ag-pull-tab — restore gesture > leaves the click path alone when it ignores the gesture
-
-**js/components/organisms/ag-user-modal.test.js**
-
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.02s)
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (tabs) is rejected
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > valid password passes validation
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > password with surrounding spaces is trimmed before sending
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > short username is rejected regardless of password

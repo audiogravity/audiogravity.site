@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.25 — 2026-07-28
+
 ### A window that stops lying to you
 
 Installing or removing an audio service opens a window that shows the work as it happens.

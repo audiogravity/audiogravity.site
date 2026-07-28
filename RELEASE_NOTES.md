@@ -7,7 +7,41 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A window that stops lying to you
+
+Installing or removing an audio service opens a window that shows the work as it happens.
+It had a habit of freezing: the progress bar stayed where it was, the last line stayed on
+screen, and nothing else ever came. People waited, then cancelled, then tried again — on a
+box where the work had in fact finished long before.
+
+On a real machine the numbers were plain: the package was installed in **six seconds**, and
+six minutes later the window was still announcing an installation in progress.
+
+The cause was that those log lines only existed in flight. Audiogravi<sup>ty</sup> sent each
+one to the browser at the moment it appeared, and kept nothing for a browser that was not
+listening. A reconnection, a phone that had put the page to sleep, a second of poor Wi-Fi —
+and the missing lines were gone for good. The window had no way of finding out, and no way of
+asking. So it stayed on the last thing it had heard.
+
+Two things changed. Audiogravi<sup>ty</sup> now keeps the log of the operation under way, and
+the interface claims what it missed — when the connection comes back, and each time the
+operation moves on. And the log no longer arrives all at once at the very end: lines appear as
+the package manager produces them. That second part matters more than it sounds, because until
+now a perfectly healthy installation and a dead one looked **identical** for as long as they
+lasted.
+
+### Red means something again
+
+Removing AirPlay used to finish on a red error: `rmdir: failed to remove
+'/var/lib/shairport-sync'`. The removal had worked. That line comes from the shairport-sync
+package itself, which prints it on purpose and ignores it — the directory is an old leftover
+and is usually not there at all.
+
+Audiogravi<sup>ty</sup> was deciding how serious a line was by looking at its wording, so
+anything containing the word "failed" was shown as an error, whoever had written it and
+whatever they meant by it. What the package manager prints is now shown as plain information.
+Whether an operation succeeded is decided by its result, not by the vocabulary of a third
+party — so a red line is once again worth reading.
 
 ---
 

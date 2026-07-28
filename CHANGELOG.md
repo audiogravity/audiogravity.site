@@ -9,6 +9,15 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core + ui] The window that shows an installation no longer stays stuck on "Installing…" after the work is done.** Its log lines only ever reached the browser as they happened, and nothing was kept for a browser that missed them — a reconnection, a phone that put the page to sleep, a second of bad network. The window then froze on the last line it had received and stayed there, while the installation carried on and finished without it. Measured on a real box: the package was installed in **six seconds**, and the panel was still announcing work in progress six minutes later. Audiogravi<sup>ty</sup> now keeps the log of the operation in progress and the interface asks for what it missed — when it reconnects, and each time the operation moves on. Nothing is lost any more, and nothing is shown twice.
+- **[core] An installation no longer stays silent for as long as it lasts.** Everything the package manager printed was collected and only written to the log once the command had finished, so between "Installing…" and the end there was **nothing at all** — a healthy installation looked exactly like a dead one, which is what made the previous problem impossible to tell apart from a real failure. Lines now appear as they are produced.
+- **[core] A successful removal no longer reports an error.** Removing AirPlay ended on a red **ERROR** — `rmdir: failed to remove '/var/lib/shairport-sync'` — while the removal had worked perfectly. That line comes from the shairport-sync package's own removal script, which produces it deliberately and ignores it (the directory is obsolete and usually absent). Audiogravi<sup>ty</sup> was reading the severity of each line from its wording, so anything containing "failed" was painted red, whoever had written it. What the package manager prints is now shown as plain information; the verdict comes from the result of the operation itself.
+- **[core] Simulation mode works again.** Asking to simulate an installation instead of performing it failed every time, on both architectures, with an internal error message that said nothing about it.
+- **[core] An installation that exceeds its time limit now says so.** It reported an internal error instead of the timeout, so a package manager stuck waiting on something looked like a defect in Audiogravi<sup>ty</sup>. The limit itself is also enforced again: it had stopped applying to commands that spawn others — which is every installation.
+- **[core] The log of a long installation no longer grows without limit in memory.** The cap of 500 lines was silently dropped at the start of each operation, and output arriving without a line break was accumulated with no bound at all.
+- **[core] Reading an installation log while it is being written no longer fails.** Consulting the log of an operation in progress could fail outright, at the exact moment it is of any use.
+
 ## [0.9.24] - 2026-07-28
 
 ### Fixed

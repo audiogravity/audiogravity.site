@@ -144,10 +144,20 @@ a {
 .announce-bar a {
     color: inherit;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    /* Not inline-flex. This is a sentence, and a flex container turns every inline
+       element inside it into a flex item — so the <sup> of `Audiogravi<sup>ty</sup>`
+       picked up `gap` as 8px of blank on each side and split the brand in two. The
+       badge and the arrow get their spacing from margins instead. */
+    display: inline-block;
     transition: opacity var(--ease);
+}
+
+/* The brand appears here as soon as a tagline names the product. Same treatment as
+   .nav-logo sup / .hero-h1 sup, scaled for the 13px of this bar. */
+.announce-bar sup {
+    font-size: .5em;
+    font-weight: 900;
+    vertical-align: super;
 }
 
 .announce-bar a:hover {
@@ -165,11 +175,15 @@ a {
     padding: 3px 7px;
     border-radius: 3px;
     line-height: 1;
+    margin-right: 6px;
+    vertical-align: middle;
 }
 
 .announce-arrow {
     font-size: 15px;
     opacity: .7;
+    margin-left: 6px;
+    vertical-align: middle;
 }
 
 .announce-date {

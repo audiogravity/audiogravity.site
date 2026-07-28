@@ -7,7 +7,28 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Removing it means removing it
+
+Uninstalling is meant to give you your machine back. It nearly did.
+
+Performance tuning installs a small service that re-applies your chosen CPU governor at
+every boot. The uninstaller removed the programs, the services, the privileged rules and
+the system account — but not that one. So a machine you had removed
+Audiogravi<sup>ty</sup> from kept having its processor scheduling changed at every start,
+by a service that no longer had anything on the machine to explain it. It is now removed
+with the rest.
+
+`--purge`, which is meant to leave nothing at all, also kept the backups of your audio
+services' configuration files — copies that can hold your MPD password or your Shairport
+authentication keys. Those go too now.
+
+And the manual has been rewritten on this point, because it was the real problem: it gave
+two commands and stopped there. Following it to the letter, you would believe the machine
+was clean while your entire configuration was still sitting in `/etc/audiogravity`. It now
+says what each form removes, what it keeps and why, how to remove everything — and what is
+deliberately never touched: the audio software you installed from the Audio Software page
+is made of ordinary system packages that go on working without Audiogravi<sup>ty</sup>, so
+removing them stays your decision.
 
 ---
 

@@ -129,6 +129,24 @@ Open `https://<box-ip>` in a browser. On first run, Audiogravi<sup>ty</sup> acti
 ## Uninstalling
 
 ```bash
-sudo /opt/audiogravity/uninstall.sh          # core
+sudo /opt/audiogravity/uninstall.sh          # core — keeps your configuration
 sudo /var/www/audiogravity-ui/uninstall.sh   # ui
 ```
+
+This removes the services, the programs, the privileged rules Audiogravi<sup>ty</sup>
+granted itself and its system account — but **keeps your configuration** in
+`/etc/audiogravity` (your topology, profiles and audio settings) and the backups of
+your audio services' configuration files in `/var/backups/audiogravity`. Reinstalling
+afterwards picks up where you left off.
+
+To remove those too:
+
+```bash
+sudo /opt/audiogravity/uninstall.sh --purge
+```
+
+**What is never removed, on purpose:** the audio software you installed from the
+**Audio Software** page — MPD, Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge —
+and their own configuration files. They are ordinary system packages that keep working
+without Audiogravi<sup>ty</sup>; remove them with your package manager if you want them
+gone.

@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ops] Uninstalling no longer leaves a service running on the machine.** Performance tuning installs a small service that re-applies the CPU governor at every boot; the uninstaller never removed it. A machine you had removed Audiogravi<sup>ty</sup> from therefore kept having its processor scheduling changed at each start, by a service with nothing left on the machine to explain where it came from. It and its helper script are now removed with everything else.
+- **[ops] `--purge` now really removes everything.** It left behind the backups of your audio services' configuration files in `/var/backups/audiogravity` — copies that can contain your MPD password or Shairport authentication keys — along with the CPU governor setting and the box's state directory. All three now go with the rest.
+
+### Documentation
+- **[site] The manual now says what uninstalling actually leaves behind.** It gave two commands and nothing else, so following it to the letter left you believing the machine was clean while your whole configuration was still there. It now states what each form removes, documents `--purge`, and names what is deliberately kept: the audio software installed from the Audio Software page — MPD, Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge — which are ordinary system packages that keep working on their own.
+
 ## [0.9.25] - 2026-07-28
 
 ### Fixed

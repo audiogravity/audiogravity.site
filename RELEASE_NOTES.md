@@ -7,7 +7,31 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### One less thing to get right
+
+Every audio service keeps its settings in a file, and Audiogravi<sup>ty</sup> lets you edit
+it from the Config tab. Where that file sits is not up to us: `/etc` when the service came
+from the distribution's packages, `/usr/local/etc` when it was compiled from source. The same
+service, two places, depending on the machine.
+
+That location used to be written down in the box's own configuration file — which can only
+name one of the two. So the value shipped with Audiogravi<sup>ty</sup> was, by construction,
+wrong on the other kind of machine. Every ARM box had the wrong path for AirPlay, and always
+had.
+
+Nothing appeared broken, because the Config tab was tolerant: it looked in both places and
+opened the right file anyway. But the configuration check was not, and reported the file as
+missing — on the very machine that was editing it a moment earlier. Two parts of the software
+looking at the same line and disagreeing about it.
+
+Audiogravi<sup>ty</sup> now works it out on its own, and both parts ask the same question of
+the same source. The line in your configuration file is ignored; new installations no longer
+carry one at all. If yours has one, it does nothing and can stay.
+
+The same reasoning settled a second question. How a settings file is read — its format — was
+being guessed from its name, which worked until a file was named unexpectedly. It now follows
+from which service the file belongs to, which is something the software knows rather than
+infers.
 
 ---
 

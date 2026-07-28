@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] The configuration check no longer reports a file as missing while the editor has it open.** Each audio service keeps its settings in a file, and where that file sits depends on how the service was installed: `/etc` when it came from the distribution's packages, `/usr/local/etc` when it was built from source. The location was written down in `/etc/audiogravity/audio-config.json`, which can only name **one** of them — so it was wrong on the other kind of machine. The Config tab coped by looking in both places; the configuration check did not, and flagged the file as absent on the very machine that was editing it. **Every ARM box was in that situation for AirPlay.** Both now ask the same question of the same source.
+- **[core] A profile that starts one delicate service is no longer reported as inconsistent.** Marking a profile as requiring care warned as soon as it also started an ordinary service — "Roon + HQPlayer" is delicate because of HQPlayer, and Roon Bridge beside it is ordinary. The only way to silence it was to mark those services delicate too, which changes how the box behaves when one of them refuses to stop. A warning you can only clear by degrading behaviour is one people learn to ignore. It now appears only when a profile asks for care while starting nothing that warrants it.
+
+### Changed
+- **[core] Audiogravi<sup>ty</sup> now knows by itself where each service keeps its configuration.** The path no longer has to be written in `audio-config.json`: the `appconfigfile` field is **ignored**, and new installations ship without it. Boxes set up earlier still carry the line — it does nothing, breaks nothing, and can be deleted. The way the file is read is decided the same way: a file is parsed according to the service it belongs to, rather than guessed from its name.
+
 ## [0.9.23] - 2026-07-28
 
 ### Fixed

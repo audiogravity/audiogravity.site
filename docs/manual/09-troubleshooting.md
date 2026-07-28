@@ -187,6 +187,37 @@ left a stale "in progress" marker, so the core refuses to start a new one.
   the current versions afterwards (App title / login screen) — if the core moved but
   the interface did not, re-run the interface installer (see [8. Updating](08-updating.md)).
 
+## The Config tab ignores the `appconfigfile` path I set
+
+It is meant to. Audiogravi<sup>ty</sup> now knows by itself where each service keeps
+its configuration — `/etc/mpd.conf`, `/etc/shairport-sync.conf` and so on — and
+finds the file whether the service came from your distribution's packages or was
+built from source. The path in `/etc/audiogravity/audio-config.json` is **no longer
+read**.
+
+It used to be, and it was a poor arrangement: the same file has to serve machines
+where it lives in different places, so the value shipped in the template was simply
+wrong on one of them. Worse, a stale line could point at a file that happened to
+exist, and the Config tab would edit *that* one while the service went on reading
+another — changes appearing to save with no effect.
+
+Boxes **set up before this version** still carry the line. It does nothing, breaks
+nothing, and can be left alone. If you would rather tidy it up, an admin can remove
+it from the Terminal:
+
+```bash
+sudo cp /etc/audiogravity/audio-config.json /etc/audiogravity/audio-config.json.bak
+sudo nano /etc/audiogravity/audio-config.json    # delete the "appconfigfile" lines
+sudo systemctl restart ag-core-server
+```
+
+New installations ship without it.
+
+> If a service on your machine really does keep its configuration somewhere
+> unexpected, there is currently no way to tell Audiogravi<sup>ty</sup> about it —
+> [open an issue](https://github.com/audiogravity/audiogravity.site/issues) and
+> describe your setup.
+
 ## Getting help
 
 - **Bug reports & questions** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues).

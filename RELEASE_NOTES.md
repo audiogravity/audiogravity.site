@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.23 — 2026-07-28
+
 ### A first install that no longer depends on what the machine already had
 
 Setting up a new box is meant to be one command. Three things quietly undermined that,

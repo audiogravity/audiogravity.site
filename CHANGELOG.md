@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.23] - 2026-07-28
+
 ### Fixed
 - **[ops] Installing on a bare machine no longer stops at a missing prerequisite.** The one-line install command checked that Python was present and gave up if it was not — while the installer inside the package it was about to download would have installed Python itself. That installer was never reached: the check runs first, so the repair was unreachable from the only install path anyone is ever told about. The command now installs what is missing before carrying on. It always could — it already runs with administrator rights.
 - **[ops] The installer no longer reports installing things it did not install.** Setting up a box pulls in a few system tools — the latency benchmark, the network test, the component that makes Tidal playable. If the machine could not refresh its package lists (no network, an unreachable mirror), the installation step was skipped entirely and the installer still printed **"System dependencies installed"**. The box finished setup believing it had those tools and discovered otherwise much later, somewhere unrelated. The opposite case was no better: if the installation itself failed, the whole setup stopped dead on the package manager's raw error, before the service had even been created. Each step is now reported on its own, and what counts as success is **what is actually on the machine afterwards**, not what the package manager claimed. Anything still missing is named, together with the feature that will be unavailable — and the setup finishes either way.

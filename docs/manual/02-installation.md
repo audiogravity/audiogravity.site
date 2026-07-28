@@ -16,7 +16,7 @@ dependency hell, no manual configuration.
   [1. Introduction → What you need](01-introduction.md#what-you-need).
 - The host reachable on your **local network**.
 - Your **early-access token** — a GitHub token shared with approved testers during
-  early access. [Request one](mailto:contact@audiogravity.app?subject=Audiogravi<sup>ty</sup>%20-%20Early%20access%20request) if you don't have it.
+  early access. [Request one](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request) if you don't have it.
 
 ## Recommended — all-in-one (one box)
 

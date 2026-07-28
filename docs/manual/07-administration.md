@@ -114,10 +114,12 @@ service becomes a controllable tile) and the **Profiles** tab (each profile a on
 start one set of services and stop another). It is a different file from the per-service config
 files edited above — this one lists *which* services exist, not their internal settings.
 
-- **Services** — each entry declares a `label`, its `systemd_unit` (e.g. `mpd.service`), the
-  path of its own config file (`appconfigfile` — the file the *Config editor* above edits) and
-  a `critical` flag. MPD, upmpdcli (UPnP), shairport-sync (AirPlay), Roon Bridge and HQPlayer's
-  NAA are the usual entries.
+- **Services** — each entry declares a `label`, its `systemd_unit` (e.g. `mpd.service`) and a
+  `critical` flag. MPD, upmpdcli (UPnP), shairport-sync (AirPlay), Roon Bridge and HQPlayer's
+  NAA are the usual entries. Where a service keeps its own settings file is **not** declared
+  here — Audiogravi<sup>ty</sup> finds it by itself, on any machine. Files written before this
+  version carry an `appconfigfile` line; it is ignored (see
+  [9. Troubleshooting](09-troubleshooting.md)).
 - **Profiles** — each entry has a `name`, a `description`, and two lists: the services to
   **start** and the services to **stop** when you activate it (plus an optional `critical` flag
   and `depends_on`). "MPD", "Stop All"… are profiles.
@@ -128,7 +130,7 @@ files edited above — this one lists *which* services exist, not their internal
   downloads the current `audio-config.json`; *Import Configuration* uploads a replacement.
 - **Validation on import.** An imported file is checked before it is applied: bad structure, a
   missing required field, a wrong type — but also a `systemd_unit` that isn't installed on the
-  box or an `appconfigfile` that doesn't exist — are reported as blocking **errors**; softer
+  box — are reported as blocking **errors**; softer
   issues appear as **warnings** you can review and accept. A reference
   **`audio-config.json.example`** ships with the box.
 

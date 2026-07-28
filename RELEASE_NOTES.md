@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.24 — 2026-07-28
+
 ### One less thing to get right
 
 Every audio service keeps its settings in a file, and Audiogravi<sup>ty</sup> lets you edit

@@ -32,9 +32,38 @@ done
 
 [ -n "$TOKEN" ] || fail "Missing --token <PAT>. Request your access token from contact@audiogravity.app."
 
+# Prerequisites. python3 is not optional for the ui either: the deployed HTTPS proxy
+# IS a python3 process (`ExecStart=/usr/bin/python3 .../server.py`), and unlike the core
+# package the ui installer has no system-dependency block of its own. It used to be a
+# hard failure here. We are root (asserted above), so install what is missing.
+#
+# Duplicated verbatim in scripts/bootstrap-core-install.sh, and it has to be: both are
+# standalone single-file scripts piped straight into bash from a URL, so they cannot
+# source a shared helper. Change one, change the other.
+MISSING_CMDS=""
+MISSING_PKGS=""
 for cmd in curl tar sha256sum python3; do
-    command -v "$cmd" >/dev/null 2>&1 || fail "'$cmd' is required but not installed."
+    command -v "$cmd" >/dev/null 2>&1 && continue
+    MISSING_CMDS="$MISSING_CMDS $cmd"
+    # Command name != package name for sha256sum (coreutils); apt would 404 on the rest.
+    case "$cmd" in
+        sha256sum) MISSING_PKGS="$MISSING_PKGS coreutils" ;;
+        *)         MISSING_PKGS="$MISSING_PKGS $cmd" ;;
+    esac
 done
+
+if [ -n "$MISSING_CMDS" ]; then
+    info "Installing missing prerequisites:$MISSING_CMDS"
+    DEBIAN_FRONTEND=noninteractive apt-get update -qq \
+        && DEBIAN_FRONTEND=noninteractive apt-get install -y $MISSING_PKGS \
+        || fail "Could not install:$MISSING_PKGS — install them manually and re-run."
+    # apt-get can succeed while still not providing the command (wrong package, held
+    # back, alternative provider). Verify what we actually need, not what apt reported.
+    for cmd in $MISSING_CMDS; do
+        command -v "$cmd" >/dev/null 2>&1 \
+            || fail "'$cmd' is still missing after installing:$MISSING_PKGS"
+    done
+fi
 
 AUTH_HEADER="Authorization: Bearer $TOKEN"
 API_BASE="https://api.github.com/repos/$REPO"

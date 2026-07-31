@@ -464,6 +464,51 @@ that uses it, Audiogravi<sup>ty</sup> reports the stations it plays so the catal
 popularity ranking stays meaningful; the station identifier is all that is sent, and
 `RADIO_REPORT_PLAYS=false` switches it off.
 
+### MusicBrainz
+**License** CC0 1.0 for the core data — supplementary data is CC BY-NC-SA 3.0  
+**Source** https://musicbrainz.org  
+**Used by** Cover art — a release is looked up to obtain its MusicBrainz identifier,
+which the Cover Art Archive is then queried with  
+
+Audiogravi<sup>ty</sup> queries the release database (`/ws/2/release`), which is core
+data placed in the public domain under CC0; attribution is therefore not required and is
+given here as a courtesy. MusicBrainz asks every client to send a User-Agent identifying
+the application and offering a way to reach its maintainers, and measures each IP address
+against an average of one request per second. Audiogravi<sup>ty</sup> identifies itself as
+`Audiogravity/<version> (https://github.com/audiogravity)`, which follows the recommended
+form, caps itself at three concurrent external cover lookups and caches every answer for
+24 hours — including the answers that found nothing, so a missing cover is not asked for
+twice.
+
+---
+
+### Cover Art Archive
+**License** No licence is asserted over the images themselves; the archive is governed by
+the Internet Archive's terms — https://archive.org/about/terms.php  
+**Source** https://coverartarchive.org  
+**Used by** Cover art — the front cover of the release identified through MusicBrainz  
+
+The archive is a cooperation between the Internet Archive and MusicBrainz. Its images are
+collected for archival purposes and offered as-is, at the user's own risk; copyright in
+each cover remains with its owner. Audiogravi<sup>ty</sup> fetches a front cover to display
+beside the track being played and redistributes nothing.
+
+---
+
+### iTunes Search API
+**License** Apple's terms of use for the Search API — no licence is granted over the
+content returned  
+**Source** https://performance-partners.apple.com/search-api  
+**Used by** Cover art — last-resort lookup when neither the local file nor the
+MusicBrainz / Cover Art Archive path yields a cover  
+
+No API key is required. Apple states the Search API is limited to approximately twenty
+calls per minute and asks that promotional material obtained through it — album artwork
+included — be presented in connection with the corresponding store content. Audiogravi<sup>ty</sup>
+requests artwork only, never audio previews, and caches it for 24 hours. Apple, iTunes and
+the iTunes logo are trademarks of Apple Inc.; Audiogravi<sup>ty</sup> is not affiliated
+with, endorsed by or sponsored by Apple.
+
 ---
 
 ## Audio software — installable via the Audio Software Manager

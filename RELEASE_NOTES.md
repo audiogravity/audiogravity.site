@@ -51,10 +51,12 @@ got no answer at all, waits longer before searching as you type, and goes silent
 long as the catalogue asks if it ever says it is being queried too often.
 
 Two things also changed for you rather than for the catalogue. A search you have already
-run keeps showing its results while the catalogue is unreachable, instead of an error. And
-when something does fail, the message says whether the problem is at the provider or on
-your box — the previous "Search failed" was the same three words for both, which sent
-people hunting through their own settings for an outage happening elsewhere.
+run keeps showing its results while the catalogue is unreachable, instead of an error —
+and those stations still play, which took a second fix: they were listed, but starting one
+asked the catalogue again and came back with "station not found" for a station right there
+on screen. And when something does fail, the message says whether the problem is at the
+provider or on your box — the previous "Search failed" was the same three words for both,
+which sent people hunting through their own settings for an outage happening elsewhere.
 
 Finally, Audiogravi<sup>ty</sup> now does what the catalogue asks of the software that uses
 it: report which stations get played. That count is what makes the popularity ranking —

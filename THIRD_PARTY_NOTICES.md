@@ -456,10 +456,13 @@ is bundled in Audiogravi<sup>ty</sup> for these — attribution is provided as a
 **License** MIT (data and API)  
 **Source** https://www.radio-browser.info  
 **Used by** Internet radio module — community-driven catalogue of radio stations;
-auto-discovers the nearest mirror via `all.api.radio-browser.info/json/servers`  
+servers are discovered by DNS, as the service's documentation prescribes  
 
 The Radio Browser API is free and open. No API key is required. Data is
-contributed by the community under MIT terms.
+contributed by the community under MIT terms. As the service asks of the software
+that uses it, Audiogravi<sup>ty</sup> reports the stations it plays so the catalogue's
+popularity ranking stays meaningful; the station identifier is all that is sent, and
+`RADIO_REPORT_PLAYS=false` switches it off.
 
 ---
 

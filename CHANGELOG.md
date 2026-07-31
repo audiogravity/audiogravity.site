@@ -19,6 +19,7 @@ and this landing) are documented here. Format based on
 - **[core] The catalogue's servers are now found the way its documentation prescribes.** Audiogravi<sup>ty</sup> asked an address **on the catalogue's own server** which servers were available — so when that machine went down, the mechanism meant to route around it went down with it. It now resolves them by DNS, which is served by separate infrastructure and answers even when the catalogue does not.
 - **[core] A radio search you have already run keeps working while the catalogue is down.** Rather than an error, Audiogravi<sup>ty</sup> shows you the result it last obtained for that exact search, for up to a day.
 - **[core + ui] "Search failed" now says what actually failed.** Every radio search failure showed the same three words, whether the fault was on your box or at the provider — so an outage two thousand kilometres away sent people looking through their own settings. The message now distinguishes a catalogue that is down from one asking to be queried less often, and says when to try again.
+- **[ui] The key your box publishes is now the one that wins.** The interface preferred a copy kept in the browser over the key the installer publishes, so a wrong value stored once outranked it for good: every upgrade republished the right key and lost, and the interface stayed locked out with nothing on screen to explain why. The published key is now authoritative, and a leftover copy is discarded.
 - **[ui] Typing in radio search no longer sends a query for almost every letter.** The pause before a search left the box was shorter than the gap between two letters typed with a thumb: one session sent sixteen queries for a handful of words.
 
 ### Added
@@ -28,7 +29,13 @@ and this landing) are documented here. Format based on
 - **[ops] Uninstalling no longer leaves a service running on the machine.** Performance tuning installs a small service that re-applies the CPU governor at every boot; the uninstaller never removed it. A machine you had removed Audiogravi<sup>ty</sup> from therefore kept having its processor scheduling changed at each start, by a service with nothing left on the machine to explain where it came from. It and its helper script are now removed with everything else.
 - **[ops] `--purge` now really removes everything.** It left behind the backups of your audio services' configuration files in `/var/backups/audiogravity` — copies that can contain your MPD password or Shairport authentication keys — along with the CPU governor setting and the box's state directory. All three now go with the rest.
 
+### Removed
+- **[ui] The API key is gone from the Settings panel.** It was offered as a field, with a reveal button, to every logged-in user. It protected nothing — the key is already inside the page your browser loads, because the installer puts it there — and it was the only thing on a running box that could store a wrong key and cut that browser off from your music. It has no replacement: nothing needs to be typed there any more.
+
 ### Documentation
+- **[site] The manual explains where radio stations come from, and what is sent back.** A new section says that search depends on an outside catalogue Audiogravi<sup>ty</sup> does not run, that your own stations keep playing when it is down, what a play report contains — the station's identifier, nothing else — and how to switch it off.
+- **[site] The Radio Browser notice describes what Audiogravi<sup>ty</sup> actually does.** It claimed the box auto-discovers the nearest mirror through an HTTP endpoint; discovery is now by DNS, there is no nearest mirror to pick from, and the play reporting was undocumented.
+- **[site] The manual no longer documents the API key field removed above.**
 - **[site] The manual now says what uninstalling actually leaves behind.** It gave two commands and nothing else, so following it to the letter left you believing the machine was clean while your whole configuration was still there. It now states what each form removes, documents `--purge`, and names what is deliberately kept: the audio software installed from the Audio Software page — MPD, Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge — which are ordinary system packages that keep working on their own.
 
 ## [0.9.25] - 2026-07-28

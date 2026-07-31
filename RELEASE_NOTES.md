@@ -63,6 +63,24 @@ without giving anything back. Only catalogue stations are reported, never the on
 enter yourself, and never a play that failed to start. It does mean a station identifier
 leaves your box, so it can be switched off: `RADIO_REPORT_PLAYS=false`.
 
+### The API key leaves the Settings panel
+
+The Settings panel offered your box's API key in a field, behind a reveal button, to
+anyone logged in. It looked like a secret being guarded. It was not: the key is already
+inside the page your browser downloads — the installer writes it there, because the
+interface needs it to talk to your box at all. Hiding it behind a padlock protected
+nothing that was not already in plain view.
+
+What the field could do was break things. It was the only thing on a running box able to
+store a key in your browser, and a browser that had stored a wrong one stayed cut off from
+your music for good: the value kept locally outranked the one your box publishes, so every
+upgrade republished the right key and lost, silently. The field was, in other words, the
+sole cause of the problem it existed to repair.
+
+It is gone, and the key your box publishes is now the one that wins. A leftover copy from
+before is discarded on the way. Nothing replaces the field — there was nothing left to type
+into it.
+
 ### Removing it means removing it
 
 Uninstalling is meant to give you your machine back. It nearly did.

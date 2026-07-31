@@ -42,8 +42,6 @@ The **gear** in the top bar opens the app-wide Settings panel:
 
 - **Export / Import Configuration** — download or replace `audio-config.json`, the
   services-and-profiles registry (see *Audio configuration* below).
-- **API Key** — the key this interface uses to talk to the core. It is set for you at
-  install time; the field (with a reveal button) is here for advanced setups.
 - **Theme** — three looks: *Minimal (Classic)*, *Slate (Modern)* and *Gravity (Bold &
   Cosmic)* — plus a **Light/Dark Mode** toggle.
 - **Notifications** — subscribe this device to **push notifications** (see below).
@@ -55,7 +53,7 @@ The **gear** in the top bar opens the app-wide Settings panel:
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
-<img src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, API key, theme, display toggles and passkeys" width="360">
+<img src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, theme, display toggles and passkeys" width="360">
 
 ### Push notifications
 

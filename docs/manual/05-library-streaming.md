@@ -109,3 +109,25 @@ radio view has three sub-tabs:
 On each station card: **tap** to play, the **star** toggles Favorites, the **+**
 toggles My Live Radio, the **pencil** edits a custom station, and a **left-swipe**
 removes it from the current list.
+
+### Where the stations come from, and what is sent back
+
+Search results come from [Radio Browser](https://www.radio-browser.info), a free,
+community-run catalogue. It is not a service Audiogravi<sup>ty</sup> operates: it runs on
+a single machine, and when it is unavailable — which does happen — search stops working
+for as long as its own outage lasts. Your own stations are unaffected: **My Live Radio**
+and **Favorites** are stored on your box and keep playing regardless. A search you have
+already run also keeps showing its last results while the catalogue is unreachable, for
+up to a day.
+
+That catalogue ranks stations by how often they are played, and Audiogravi<sup>ty</sup>
+sorts your search results by that ranking. Its documentation asks the software that uses
+it to report each play, so it does: when you start a station, its identifier is sent to
+Radio Browser, and nothing else — no account, no listening history, no information about
+you or your box. Stations you added by hand are never reported, and neither is a station
+that failed to start.
+
+If you would rather nothing left your box at all, set `RADIO_REPORT_PLAYS=false` in
+`/opt/audiogravity/core/.env` and restart the core
+(`sudo systemctl restart ag-core-server`). Search and playback are unchanged by this;
+only the report stops.

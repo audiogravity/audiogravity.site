@@ -7,6 +7,62 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The button you could not reach
+
+Installing an update from a phone asks for your password. On an iPhone, tapping that
+field zoomed the page in, and the dialog's Confirm button ended up somewhere off the
+right edge of the screen. The update could not be validated at all — the only way
+through was to pinch the page back out, if you thought of it.
+
+Safari zooms in on any field whose text is smaller than 16 pixels. Audiogravi<sup>ty</sup>
+has carried a rule against exactly this since 0.9.20, but that one field described its own
+size directly on the element, where no rule can reach it. The same protection turned out
+to be tied to narrow screens rather than to touch ones, so it also stopped applying on
+every iPad, and on any iPhone held sideways. Both are fixed.
+
+### Editing a radio station without fighting for it
+
+The pencil that opens a station's settings was, in the reporter's words, practically
+impossible to click — and there were two separate reasons, not one. It was drawn smaller
+than the two icons beside it and, with compact mode on, its target measured 24 pixels
+across. And the gesture that removes a station armed after 8 pixels of sideways travel
+anywhere on the row, buttons included, so a thumb that drifted while aiming started
+removing the station instead.
+
+The three icons are now the same size, the buttons are half again as tall as they are
+wide — height costs nothing on a row that is already 60 pixels deep, while width would
+have pushed the icons visibly apart — and a gesture that begins on a button belongs to
+that button. That last part applies to every list you can swipe: stations, the queue,
+UPnP servers and renderers.
+
+### Radio search, and being a good neighbour
+
+Radio search stopped working twice in one day. Neither time was a fault in
+Audiogravi<sup>ty</sup>: the catalogue it queries, the community-run Radio Browser, was
+answering that it had no server available. What the episode exposed was how badly
+Audiogravi<sup>ty</sup> behaved around it.
+
+It believed it had five mirror servers. It has one — three of those names no longer
+resolve, the other two point at the same machine, and the catalogue itself advertises a
+single server. So every failed search fired four requests at the one machine that had just
+refused, in a third of a second, while the interface sent a fresh search for almost every
+letter typed. Audiogravi<sup>ty</sup> now sends one request, asks again only when the first
+got no answer at all, waits longer before searching as you type, and goes silent for as
+long as the catalogue asks if it ever says it is being queried too often.
+
+Two things also changed for you rather than for the catalogue. A search you have already
+run keeps showing its results while the catalogue is unreachable, instead of an error. And
+when something does fail, the message says whether the problem is at the provider or on
+your box — the previous "Search failed" was the same three words for both, which sent
+people hunting through their own settings for an outage happening elsewhere.
+
+Finally, Audiogravi<sup>ty</sup> now does what the catalogue asks of the software that uses
+it: report which stations get played. That count is what makes the popularity ranking —
+the ranking Audiogravi<sup>ty</sup> sorts your search results by, and had been taking
+without giving anything back. Only catalogue stations are reported, never the ones you
+enter yourself, and never a play that failed to start. It does mean a station identifier
+leaves your box, so it can be switched off: `RADIO_REPORT_PLAYS=false`.
+
 ### Removing it means removing it
 
 Uninstalling is meant to give you your machine back. It nearly did.

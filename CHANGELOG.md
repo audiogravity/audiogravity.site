@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Security
+- **[lic] The licence server's privileged routes fail closed when their secret is missing.** The endpoints only Audiogravi<sup>ty</sup>'s own backend should reach — recording a box's last-seen, releasing a device binding, checking a key, verifying a licence — are guarded by a shared secret. If that secret was left unconfigured the guard did nothing and the routes stood open to anyone who could reach the server, which is internet-facing. They now refuse every call when the secret is unset, and the secret is compared in constant time. The installer now requires the key rather than offering to skip it, and warns on upgrade if an existing server was left without one.
+
+### Fixed
+- **[core] A box no longer reports its licence as *invalid* when the licence server is merely unreachable.** The online check only ever receives its verdict — valid, revoked, expired, not-found — as a normal reply. A rejected shared secret, a rate limit or a server error would arrive differently, and the box mistook that for a definitive "invalid" instead of "could not reach the server", so a transient hiccup could grey out a perfectly good licence. Those cases now read as unreachable and the last known state is kept.
+- **[lic] A licence-email campaign no longer loses recipients on a passing provider hiccup, nor double-sends after a crash.** A send that failed once — a rate limit, a timeout — was marked failed for good and never retried, while the progress showed nothing missing. Each recipient is now retried on a later day, up to three attempts, before being given up on. And because an attempt is now stamped before the send rather than after the whole batch, a restart midway no longer leaves rows looking un-sent and re-sending them the same day. An upgrade also no longer briefly doubles the day's send allowance.
+
 ## [0.9.26] - 2026-08-01
 
 ### Fixed

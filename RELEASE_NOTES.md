@@ -57,6 +57,17 @@ asked the catalogue again and came back with "station not found" for a station r
 on screen. And when something does fail, the message says whether the problem is at the
 provider or on your box — the previous "Search failed" was the same three words for both,
 which sent people hunting through their own settings for an outage happening elsewhere.
+That now holds wherever the catalogue is involved, not only in search: starring a station
+and adding one to My Live Radio used to answer "Could not update" for every cause alike,
+and a station that would not start pointed at the local player by name — while the local
+player was working, and the catalogue was the thing that had not answered.
+
+Waiting longer before searching had one consequence worth naming, because it was found in
+review rather than in use. A search still on its way could arrive after you had left the
+Search tab and replace what the tab you had opened was showing — your saved stations
+swapped for hits on what you had typed, under the wrong heading, and swipeable, so a swipe
+asked the box to remove a station that list never held. Leaving Search now abandons the
+search with it.
 
 Finally, Audiogravi<sup>ty</sup> now does what the catalogue asks of the software that uses
 it: report which stations get played. That count is what makes the popularity ranking —

@@ -75,7 +75,7 @@ left as the failed version: the service definition, the package registry, the pr
 helpers — and the update mechanism itself. A bad update could leave a box that could no
 longer update, while its own log said all was well.
 
-The undo now restores everything the update overwrote — measured, eight files — reloads
+The undo now restores everything the update overwrote — measured, nine files — reloads
 the service definition, and tells the truth: if any part cannot be put back, it says so
 rather than claiming success. And after undoing a failed update, the box can update again,
 which is the whole point.

@@ -65,6 +65,33 @@ without giving anything back. Only catalogue stations are reported, never the on
 enter yourself, and never a play that failed to start. It does mean a station identifier
 leaves your box, so it can be switched off: `RADIO_REPORT_PLAYS=false`.
 
+### The self-update safety net, made real
+
+Audiogravi<sup>ty</sup> can update itself, and an update that fails is supposed to undo
+itself and leave the box exactly as it was. Tested on real hardware — by deliberately
+breaking an update — it did not. The undo restored the core program and nothing else,
+then wrote *previous version restored* in its log. Everything else an update rewrites was
+left as the failed version: the service definition, the package registry, the privileged
+helpers — and the update mechanism itself. A bad update could leave a box that could no
+longer update, while its own log said all was well.
+
+The undo now restores everything the update overwrote — measured, eight files — reloads
+the service definition, and tells the truth: if any part cannot be put back, it says so
+rather than claiming success. And after undoing a failed update, the box can update again,
+which is the whole point.
+
+Fixing this surfaced a second, sharper problem in the same machinery. The privileged
+helper that carries out an update runs with administrator rights, and it used to take the
+address it downloaded-and-ran, and the path it wrote, from whoever asked. Anything already
+running under Audiogravi<sup>ty</sup>'s own limited account could hand it a malicious
+address and have it run as administrator — a local escalation to full control of the box.
+The helper now owns those values and refuses to take them from its caller; it accepts only
+a checked list of the rest. Proven on real hardware: an injected address is dropped and
+never runs.
+
+Neither is reachable from the network, and neither changes anything you see. They are the
+kind of thing that has to be right before a box is trusted to update itself unattended.
+
 ### The API key leaves the Settings panel
 
 The Settings panel offered your box's API key in a field, behind a reveal button, to

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.26 — 2026-08-01
+
 ### The button you could not reach
 
 Installing an update from a phone asks for your password. On an iPhone, tapping that

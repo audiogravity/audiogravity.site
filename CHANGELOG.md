@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.26] - 2026-08-01
+
 ### Fixed
 - **[ui] The window that asks for your password no longer pushes its Confirm button off the screen.** On an iPhone, tapping the field to type zoomed the whole page in — Safari does that to any field whose text is smaller than 16px — and the dialog's right-hand side, Confirm included, ended up outside the visible area. The update simply could not be validated. Audiogravi<sup>ty</sup> has carried a rule since 0.9.20 that lifts every field to 16px on a phone precisely to prevent this, but that one field had its size written directly on the element, where no rule can reach it.
 - **[ui] Text fields no longer zoom the page on a tablet, or on a phone held sideways.** The protection above was tied to narrow screens rather than to touch ones, so it stopped applying past 768 pixels — which is every iPad, and every iPhone in landscape. It now follows the pointer: a finger gets it, a mouse does not.

@@ -11,6 +11,10 @@ and this landing) are documented here. Format based on
 
 ### Security
 - **[lic] The licence server's privileged routes fail closed when their secret is missing.** The endpoints only Audiogravi<sup>ty</sup>'s own backend should reach — recording a box's last-seen, releasing a device binding, checking a key, verifying a licence — are guarded by a shared secret. If that secret was left unconfigured the guard did nothing and the routes stood open to anyone who could reach the server, which is internet-facing. They now refuse every call when the secret is unset, and the secret is compared in constant time. The installer now requires the key rather than offering to skip it, and warns on upgrade if an existing server was left without one.
+- **[lic] The box heartbeat endpoint is now rate-limited per client.** The shared secret that guards it filters random traffic but is present on every box, so it cannot be treated as private forever. The heartbeat is now capped at 30 calls a minute per source — plenty for a real box, which checks in about once a day — so the endpoint cannot be used to flood the device table.
+
+### Changed
+- **[core + ops] The licence server moved to its own domain, `lic.audiogravity.app`.** New installs point there, and an upgrade rewrites an existing box's endpoint (host only — same port, same behaviour). The previous address stays live in parallel, so a box that has not upgraded keeps working until it does; nothing is required of the user.
 
 ### Fixed
 - **[core] A box no longer reports its licence as *invalid* when the licence server is merely unreachable.** The online check only ever receives its verdict — valid, revoked, expired, not-found — as a normal reply. A rejected shared secret, a rate limit or a server error would arrive differently, and the box mistook that for a definitive "invalid" instead of "could not reach the server", so a transient hiccup could grey out a perfectly good licence. Those cases now read as unreachable and the last known state is kept.

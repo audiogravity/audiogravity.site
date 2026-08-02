@@ -11,6 +11,23 @@ _Nothing yet._
 
 ---
 
+## 0.9.27 — 2026-08-02
+
+### A network blip no longer looks like a licence problem
+
+The box checks in with the licence service now and then to confirm everything is in
+order. When that check could not get through — a brief network drop, the service busy
+for a moment — the box treated the silence as a verdict and showed the licence as
+*invalid*, greyed out and alarming, until the next check hours later. Nothing was
+actually wrong.
+
+It now tells the two apart: a reply it can read is honoured, and anything else reads as
+"could not reach the service right now" — the last known-good state stays and the box
+keeps playing. Behind the scenes the licence service also moved to its own address and
+had its plumbing tightened; none of it asks anything of you.
+
+---
+
 ## 0.9.26 — 2026-08-01
 
 ### The button you could not reach

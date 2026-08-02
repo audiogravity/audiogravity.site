@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.27] - 2026-08-02
+
 ### Security
 - **[lic] The licence server's privileged routes fail closed when their secret is missing.** The endpoints only Audiogravi<sup>ty</sup>'s own backend should reach — recording a box's last-seen, releasing a device binding, checking a key, verifying a licence — are guarded by a shared secret. If that secret was left unconfigured the guard did nothing and the routes stood open to anyone who could reach the server, which is internet-facing. They now refuse every call when the secret is unset, and the secret is compared in constant time. The installer now requires the key rather than offering to skip it, and warns on upgrade if an existing server was left without one.
 - **[lic] The box heartbeat endpoint is now rate-limited per client.** The shared secret that guards it filters random traffic but is present on every box, so it cannot be treated as private forever. The heartbeat is now capped at 30 calls a minute per source — plenty for a real box, which checks in about once a day — so the endpoint cannot be used to flood the device table.

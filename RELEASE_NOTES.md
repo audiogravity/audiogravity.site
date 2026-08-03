@@ -7,7 +7,17 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A longer trial is now a switch, not a release
+
+The free trial was fixed at 30 days, baked into the app — changing it meant building and
+shipping a new version. It is now a length the licence server can raise on its own: set a
+number in the admin, and every box picks it up at its next check-in and runs the longer
+trial, with the licence panel counting down against the real total.
+
+It stays tamper-proof. The server signs the value with the same key it uses for licence
+files, and the box refuses anything not genuinely signed by the server, or that tries to
+shorten the trial below the built-in floor — so a box owner cannot lengthen their own
+trial, and a box that never reaches the server simply keeps the built-in length.
 
 ---
 

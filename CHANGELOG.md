@@ -11,12 +11,14 @@ and this landing) are documented here. Format based on
 
 ### Fixed
 - **[core + lic] Licences with an expiry date are accepted again — they never were.** The licence server writes the expiry under one name and the app read another, so a time-limited licence could not be validated: the app found no date, assumed the licence had lapsed, and — since the file was there but refused — reported it as tampered with. Anyone given an evaluation licence would have been told their own licence was forged. The app now reads the right field and lapses a licence on the same day the server does. No customer was affected: none had been issued. A test on each side now locks the field names, so a rename breaks a build instead of an install.
+- **[lic] Campaign emails can no longer go out with dead unsubscribe links.** The address those links are built on had to be typed by hand, the example beside the field still named the licence server's former domain, and nothing checked what was entered — a wrong value only showed itself once the mail had left, in other people's mailboxes. A fresh install now starts with the right address, and an unusable one is refused wherever it is saved, not only when a campaign is sent. An address already configured is never overwritten.
 
 ### Added
 - **[lic] The installations table sorts by any column.** Click a heading to order by device, status, version, address or dates. Versions and addresses compare part by part rather than as text, so v0.9.9 comes before v0.9.30 and 192.168.1.9 before 192.168.1.254 — the order you actually want when looking for the box left behind on an old build. Devices missing a value stay at the bottom either way.
 - **[lic] The trial start date the server holds for a device is now visible, and can be forgotten.** That date decides how long a box's free trial runs, and until now nothing showed it: a support question about a trial could not be answered, and a date recorded from a device whose clock was wrong could never be corrected. It appears in the installations table, and an administrator can clear it — an audited action. Clearing it repairs a wrong date; it does not hand out a new trial, which is what a licence with an expiry date is for.
-- **[lic] The admin interface shows the app icon beside its name.**
 - **[lic + ops] The licence server reports its own version.** It carried a hardcoded `1.0.0` that had never moved and contradicted the releases it was cut from, so establishing which build was live meant probing the API's behaviour. Its version now comes from the same single source as the app and the interface, its health endpoint returns it, and the admin header shows it next to the title — the answer is now a glance, or a single request. The version badges of the licence-server and interface READMEs are propagated along with it, instead of being edited by hand every release.
+- **[lic] The admin interface shows the app icon beside its name.**
+
 
 ## [0.9.30] - 2026-08-03
 

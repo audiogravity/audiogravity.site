@@ -11,6 +11,21 @@ _Nothing yet._
 
 ---
 
+## 0.9.30 — 2026-08-03
+
+### The free trial is kept in one place
+
+The trial start date used to be mirrored to a second, system-level file. That copy never
+worked on an installed box — nothing ever created it with the right ownership — and where
+an old one happened to linger, the two dates disagreed and the app logged a licence error
+every few seconds.
+
+There is now a single record, and the licence server remains the authority: it remembers
+the date a box genuinely started its trial and restores it, so a trial reflects real first
+use. Upgrading removes the obsolete file; nothing is asked of you.
+
+---
+
 ## 0.9.29 — 2026-08-03
 
 ### Announcements and updates now reach every box

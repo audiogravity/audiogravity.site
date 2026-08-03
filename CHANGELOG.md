@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.30] - 2026-08-03
+
 ### Fixed
 - **[core] The free trial is kept in a single place, ending the licence-state noise on upgraded boxes.** The trial start used to be mirrored to a second, system-level file that no installer had ever created — so it never worked on a deployed box, and where a leftover copy did exist the two disagreed and the core logged a licence error every few seconds. The trial now lives in one file, and the licence server remains the authority that restores a box's true start date. The obsolete file is removed on upgrade.
 - **[core] The test suite can no longer write outside its sandbox.** Two paths escaped it: the obsolete trial file, and the data directory holding the key that encrypts stored service passwords — on a machine where that directory was writable, running the suite could have overwritten a live installation's key. Both are sandboxed, and any future escape now fails the build instead of silently touching the system.

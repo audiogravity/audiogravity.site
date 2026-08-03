@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.28] - 2026-08-03
+
 ### Added
 - **[core + lic + ui] The free-trial length can be changed for the whole fleet without shipping an update.** The 30-day trial is now a floor the licence server can lengthen: set a number in the admin, the server signs it, and every box adopts it at its next check-in — a promo or a longer beta becomes a setting, not a release. It cannot be abused locally: the value must carry the server's signature and can only *extend* beyond the built-in floor, never shorten below it, so an unreachable server or an edited cache falls back to the built-in length. The licence panel now counts down against the real total (*N / total days*).
 

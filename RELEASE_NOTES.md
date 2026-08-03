@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.28 — 2026-08-03
+
 ### A longer trial is now a switch, not a release
 
 The free trial was fixed at 30 days, baked into the app — changing it meant building and

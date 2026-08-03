@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.29] - 2026-08-03
+
 ### Added
 - **[core + lic] The free-trial period is anchored to a device's genuine first-use date.** The licence server records, per device, the earliest trial start it has seen and returns it signed on each check-in; the box adopts it. The trial length therefore reflects real first use and stays consistent across a reinstall, rather than restarting from local state alone. Tamper-proof: the anchor is signed and bound to the device, so a box can neither forge it nor move it forward.
 

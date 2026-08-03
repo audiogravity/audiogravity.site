@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.29 — 2026-08-03
+
 ### Announcements and updates now reach every box
 
 In-app announcements and "a new version is available" notices are broadcast from the

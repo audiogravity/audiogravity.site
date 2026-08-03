@@ -7,7 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Announcements and updates now reach every box
+
+In-app announcements and "a new version is available" notices are broadcast from the
+licence server. Until now they only reached a box with a currently-valid licence: a box
+on its free trial — which never presents a licence — and a box whose licence has expired
+were both left out, so they could stay on an old version without ever being told a newer
+one exists.
+
+Both now travel over the public channel every box already checks, so a trial or expired
+box is notified just like a licensed one. The update notice is bounded to the box's own
+major version, so it is only ever offered a newer release it can run — moving to a new
+major stays a deliberate upgrade, never an automatic one.
 
 ---
 

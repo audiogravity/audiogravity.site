@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core + lic] Trial and expired boxes now receive announcements and update notifications.** These fleet broadcasts previously reached only a box with a currently-valid licence — a box on its free trial (which never contacts the verify endpoint) and an expired one (whose verification stops short) were silently cut off and could sit on an obsolete version with no notice. They now ride the public config channel every box already polls, so every box is notified. The update offer is bounded to the box's own major (derived server-side from the reported version), so a box is never pushed across a major — that stays a deliberate paid upgrade.
+- **[ui] The announcement banner shows proper icons instead of emoji.** Version/promo/alert/info announcements, the dismiss button and the "Learn more" link now render Lucide SVG icons, coloured per type, consistent with the rest of the interface.
+
+### Changed
+- **[core] The public licence config (PayPal URL, prices, contact) is served from the 24 h cache instead of re-querying the licence server every time the licence panel opens** — this config is near-static, so the per-open round-trip was wasteful.
+
 ## [0.9.28] - 2026-08-03
 
 ### Added

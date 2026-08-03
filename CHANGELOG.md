@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core + lic] Licences with an expiry date are accepted again — they never were.** The licence server writes the expiry under one name and the app read another, so a time-limited licence could not be validated: the app found no date, assumed the licence had lapsed, and — since the file was there but refused — reported it as tampered with. Anyone given an evaluation licence would have been told their own licence was forged. The app now reads the right field and lapses a licence on the same day the server does. No customer was affected: none had been issued. A test on each side now locks the field names, so a rename breaks a build instead of an install.
+
 ### Added
 - **[lic + ops] The licence server reports its own version.** It carried a hardcoded `1.0.0` that had never moved and contradicted the releases it was cut from, so establishing which build was live meant probing the API's behaviour. Its version now comes from the same single source as the app and the interface, its health endpoint returns it, and the admin header shows it next to the title — the answer is now a glance, or a single request. The version badges of the licence-server and interface READMEs are propagated along with it, instead of being edited by hand every release.
 

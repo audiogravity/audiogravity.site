@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core + lic] The free-trial period is anchored to a device's genuine first-use date.** The licence server records, per device, the earliest trial start it has seen and returns it signed on each check-in; the box adopts it. The trial length therefore reflects real first use and stays consistent across a reinstall, rather than restarting from local state alone. Tamper-proof: the anchor is signed and bound to the device, so a box can neither forge it nor move it forward.
+
 ### Fixed
 - **[core + lic] Trial and expired boxes now receive announcements and update notifications.** These fleet broadcasts previously reached only a box with a currently-valid licence — a box on its free trial (which never contacts the verify endpoint) and an expired one (whose verification stops short) were silently cut off and could sit on an obsolete version with no notice. They now ride the public config channel every box already polls, so every box is notified. The update offer is bounded to the box's own major (derived server-side from the reported version), so a box is never pushed across a major — that stays a deliberate paid upgrade.
 - **[ui] The announcement banner shows proper icons instead of emoji.** Version/promo/alert/info announcements, the dismiss button and the "Learn more" link now render Lucide SVG icons, coloured per type, consistent with the rest of the interface.

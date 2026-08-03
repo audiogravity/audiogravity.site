@@ -10,7 +10,7 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
-- **[lic + ops] The licence server reports its own version.** It carried a hardcoded `1.0.0` that had never moved and contradicted the releases it was cut from, so establishing which build was live meant probing the API's behaviour. Its version now comes from the same single source as the app and the interface, `GET /health` returns it, and the admin header shows it next to the title — the answer is now a glance, or a single request. The version badges of the licence-server and interface READMEs are propagated along with it, instead of being edited by hand every release.
+- **[lic + ops] The licence server reports its own version.** It carried a hardcoded `1.0.0` that had never moved and contradicted the releases it was cut from, so establishing which build was live meant probing the API's behaviour. Its version now comes from the same single source as the app and the interface, its health endpoint returns it, and the admin header shows it next to the title — the answer is now a glance, or a single request. The version badges of the licence-server and interface READMEs are propagated along with it, instead of being edited by hand every release.
 
 ## [0.9.30] - 2026-08-03
 

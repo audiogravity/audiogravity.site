@@ -20,6 +20,16 @@ administration side remains closed.
 The same fix repairs the unsubscribe link at the bottom of our emails, which arrived
 without the values identifying your order and reported them as missing.
 
+### The licence pages work on a phone
+
+Now that the portal opens, it had to be usable where you are most likely to open it — from
+the link in an email, on a phone. The pages were laid out for a desktop window: fields
+rendered as white rectangles on a black page, tapping one zoomed the page in and never back
+out, and nothing was reserved for the notch or the home indicator.
+
+Both the portal and the administration side were rebuilt to fit, and checked across screen
+sizes from the smallest iPhone to a tablet.
+
 ---
 
 ## 0.9.30 — 2026-08-03

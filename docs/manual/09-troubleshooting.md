@@ -51,6 +51,97 @@ If nothing is displayed:
   index is normally pinned automatically — see [3. First run](03-first-run.md)).
 - In **Services**, confirm the relevant service (mpd, shairport-sync…) is **RUNNING**.
 
+## My DAC is not in the output list (Raspberry Pi HAT)
+
+A **HAT** — a DAC board stacked on the Pi's GPIO header (HiFiBerry, IQaudIO, Allo,
+Pi-DAC…) — is not plug-and-play the way a USB DAC is. Linux creates a sound card for it
+only once `/boot/firmware/config.txt` names its **device-tree overlay**. Until then the
+board is invisible to the entire system, and no setting in Audiogravi<sup>ty</sup> can reveal
+it: the output list mirrors the sound cards Linux exposes, nothing more. This is a
+one-time manual step, and it is the same on every Pi-based music player.
+
+> **Why is it not automatic?** The HAT standard lets a board carry a small memory chip
+> describing itself, which the Pi's firmware reads at boot and acts on with no
+> configuration at all. Many audio HATs ship that chip blank, so there is nothing to
+> read — and the board's own chips sit on a bus that stays powered off until an overlay
+> declares it. Nothing can be probed before the declaration exists.
+
+**1. Confirm the board really is missing.** Over SSH, or in the browser **Terminal**
+(System tab, admin):
+
+```bash
+cat /proc/asound/cards
+```
+
+If your DAC is not in that list, this section applies. If it *is* listed, the problem
+lies elsewhere — go back to [No sound / wrong output](#no-sound--wrong-output).
+
+**2. Find the overlay name for your board.** Every Raspberry Pi OS image ships the full
+catalogue — around forty audio boards — and your kernel version, because some vendors
+changed their overlay names at kernel **6.1.77**:
+
+```bash
+grep -iE "^Name:.*(hifiberry|iqaudio|allo|dac|digi|audio)" /boot/firmware/overlays/README
+uname -r
+```
+
+Cross-check the name against your manufacturer's own documentation. HiFiBerry, for
+instance, publishes one line per board and splits it by kernel version: a **DAC+ Pro /
+DAC2 Pro** takes `hifiberry-dacplus` below 6.1.77 and `hifiberry-dacplus-pro` at or
+above it — the wrong one still produces sound, but drives the clock from the Pi instead
+of the board's own oscillators, which is precisely what you paid the Pro version for.
+
+**3. Declare the board, then reboot.**
+
+```bash
+# Back the file up first — a broken boot file leaves the box unreachable
+sudo cp /boot/firmware/config.txt /boot/firmware/config.txt.bak-$(date +%F)
+sudo nano /boot/firmware/config.txt
+```
+
+Make three changes at the **top** of the file, before the first `[…]` line — settings
+placed after one apply only to that model of Pi:
+
+| Change | Line | Effect |
+|---|---|---|
+| Required | `dtoverlay=hifiberry-dacplus-pro` *(your board's line)* | Declares the DAC |
+| Recommended | `dtparam=audio=on` → `dtparam=audio=off` | Turns the Pi's own headphone jack off |
+| Optional | `dtoverlay=vc4-kms-v3d` → `dtoverlay=vc4-kms-v3d,noaudio` | Turns HDMI audio off |
+
+The last two are not cosmetic: with the jack and both HDMI outputs still active, your
+DAC is one candidate among four and Audiogravi<sup>ty</sup> will not presume which one you
+meant. Silence them and it selects your DAC on its own. Skip them only if you actually
+use the jack or HDMI sound.
+
+Then reboot:
+
+```bash
+sudo reboot
+```
+
+**4. Verify, then point Audiogravi<sup>ty</sup> at it.**
+
+```bash
+aplay -l
+```
+
+Your DAC should now be listed — under its real name, `HiFiBerry DAC+ Pro` and the like,
+not a generic label. Back in the interface, run **Guided → output** (see
+[3. First run](03-first-run.md)) and pick it: that is the step that writes the output
+into each service's configuration. Detection alone routes nothing.
+
+> **If nothing appears after the reboot**, the board is declared but not answering.
+> Check that it is fully seated on the header, and — a documented quirk on some
+> installs — try adding `force_eeprom_read=0` to the same file.
+>
+> **If the box does not come back on the network**, the boot file is at fault. Power it
+> off, read the SD card on another computer, and rename your `config.txt.bak-…` back to
+> `config.txt`. This is why step 3 starts with a backup.
+
+> **On an older image**, this file lives at `/boot/config.txt` instead. Recent Raspberry
+> Pi OS releases leave a stub there pointing to the new location — if you open it and it
+> says the file has moved, follow it.
+
 ## A service won't start
 
 - Open **Services** → click the service name for its detail modal (live metrics + the

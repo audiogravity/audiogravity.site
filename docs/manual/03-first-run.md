@@ -65,6 +65,12 @@ UPnP tile shows a **CONFIGURED** badge.
 > resampling, no volume math in the digital domain — so what your DAC receives is
 > exactly what the file contains.
 
+> **Raspberry Pi with a HAT DAC?** A board stacked on the GPIO header is not detected
+> until Linux is told it exists, so it will be missing from this panel. Declare it once
+> at the OS level — see
+> [9. Troubleshooting → My DAC is not in the output list](09-troubleshooting.md#my-dac-is-not-in-the-output-list-raspberry-pi-hat) —
+> then come back here.
+
 ### The DAC stays put
 
 When you configure a USB DAC, Audiogravi<sup>ty</sup> **pins its sound-card index** at the OS

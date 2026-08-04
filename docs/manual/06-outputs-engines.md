@@ -28,6 +28,10 @@ The default: audio goes straight from MPD to the DAC attached to the box (USB, H
 HDMI, S/PDIF), bit-perfect and with no network round-trip. This is the purest path and
 the one the guided setup wires up first.
 
+A **HAT** — a DAC board stacked on a Raspberry Pi's GPIO header — is the one case that
+needs a manual step before it can be selected: Linux does not detect it on its own. See
+[9. Troubleshooting → My DAC is not in the output list](09-troubleshooting.md#my-dac-is-not-in-the-output-list-raspberry-pi-hat).
+
 ## Network UPnP renderers
 
 Audiogravi<sup>ty</sup> is a **UPnP Control Point**: it discovers every renderer on your LAN —

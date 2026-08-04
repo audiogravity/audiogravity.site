@@ -7,7 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Getting your licence back after a reinstall
+
+Audiogravi<sup>ty</sup> offers two buttons that open the licence portal: "Download .lic",
+to fetch your licence file again, and the v1 → v2 upgrade. Neither had ever actually
+opened — the page they point to was not published, so both ended on a redirect to an
+unrelated site. Reinstalling a box meant asking us for the file by hand.
+
+The portal now opens as intended. Only that page and what it needs is public; the
+administration side remains closed.
+
+The same fix repairs the unsubscribe link at the bottom of our emails, which arrived
+without the values identifying your order and reported them as missing.
 
 ---
 

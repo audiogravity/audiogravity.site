@@ -2740,10 +2740,23 @@ footer {
 .cmp .cmp-ag.cmp-part { color: #000; }
 
 /* Drawn check marks. These replace a ✓ character, which Inter does not carry — every one of
-   the fifty-seven on this page was drawn by whatever font the visitor's system offered, so
-   the comparison table, the page that has to persuade, rendered differently on macOS, iOS,
+   those on this page was drawn by whatever font the visitor's system offered, so the
+   comparison table, the page that has to persuade, rendered differently on macOS, iOS,
    Windows and Android. Sized here because an inline <svg> with no dimensions falls back to
-   300x150. */
+   300x150.
+
+   The shape itself is defined once, as #ic-check in the sprite at the top of the document.
+   Stroke width is the one thing that differs between call sites, so it stays here rather
+   than on the <symbol>: an inherited property set on the referencing <svg> crosses into the
+   shadow tree, whereas a presentation attribute on the <symbol> would override every caller. */
+.cmp-ic {
+    stroke-width: 2.5
+}
+
+.ck-ic {
+    stroke-width: 3
+}
+
 .cmp .cmp-ic {
     width: 15px;
     height: 15px;

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.31 — 2026-08-04
+
 ### Getting your licence back after a reinstall
 
 Audiogravi<sup>ty</sup> offers two buttons that open the licence portal: "Download .lic",

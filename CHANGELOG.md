@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.31] - 2026-08-04
+
 ### Added
 - **[lic] The licence administration can be installed on a phone.** Added to a home screen it opens as its own app: it starts on its own mark over a black field rather than the browser's blank white page, keeps its own copy of the pages so a launch does not wait on the network, and answers a lost connection with a readable page instead of the browser's error. Orders, licences and installations are never kept — those are read live every time, because a cached copy would show a state the server no longer holds. Signing in now lasts twelve hours rather than until the app is closed: iOS ends a backgrounded app freely, which meant re-entering the token at every launch. The token is erased automatically once the twelve hours are up.
 - **[lic] The installations table sorts by any column.** Click a heading to order by device, status, version, address or dates. Versions and addresses compare part by part rather than as text, so v0.9.9 comes before v0.9.30 and 192.168.1.9 before 192.168.1.254 — the order you actually want when looking for the box left behind on an old build. Devices missing a value stay at the bottom either way.

@@ -78,8 +78,8 @@ spark('ds1', 1.2); spark('ds2', 2.8);
 (function () {
     var root = document.documentElement;
     var KEY = 'ag-theme';
-    var SUN = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-    var MOON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    var SUN = '<circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" />';
+    var MOON = '<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />';
 
     function isDark() {
         var t = root.getAttribute('data-theme');
@@ -122,5 +122,34 @@ spark('ds1', 1.2); spark('ds2', 2.8);
                 ribbon.classList.remove('shake');
             }, { once: true });
         });
+    });
+})();
+
+// Right-edge scroll cue on the comparison table.
+//
+// The cue must vanish once there is nothing left to reveal: at the end of the scroll no
+// column is cut any more, so the gradient stops hinting and simply paints over the last
+// column's text. Measured at that position, it wiped characters outright rather than
+// dimming them. Whether more content exists to the right is scroll state, which CSS alone
+// cannot read on iOS, so a class carries it.
+//
+// Listener is passive and reads two properties already computed by the layout, so a swipe
+// costs no measurable work; it only ever runs while this one table is being scrolled.
+(function () {
+    document.addEventListener('DOMContentLoaded', function () {
+        var box = document.querySelector('.cmp-scroll');
+        var wrap = document.querySelector('.cmp-scroll-wrap');
+        if (!box || !wrap) return;
+
+        /** Flags the wrapper while the table still hides content past its right edge. */
+        function update() {
+            // 1px of slack: sub-pixel layout keeps scrollLeft just short of the true maximum.
+            var more = box.scrollWidth - box.clientWidth - box.scrollLeft > 1;
+            wrap.classList.toggle('has-more', more);
+        }
+
+        box.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update, { passive: true });
+        update();
     });
 })();

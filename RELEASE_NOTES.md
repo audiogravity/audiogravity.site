@@ -7,7 +7,25 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### This page works on a phone
+
+Most people meet Audiogravi<sup>ty</sup> here first, and until now that page had to be
+dragged sideways on every iPhone made: it wanted 470 pixels and the narrowest current
+model offers 375. Several things held it open at once — a button kept beside the logo long
+after the menu had been hidden, a comparison table with a fixed label column that left the
+text beside it under a hundred pixels to wrap in, and the title itself, one unbreakable
+word set wider than the smallest screen.
+
+All of it now fits, on six screen sizes in both light and dark, portrait and landscape. The
+comparison table gained about a fifth more room for its content, keeps the capability name
+pinned on the left while you swipe through the products, and stops each swipe on a whole
+column instead of halfway through one. Added to a home screen the page runs full-screen and
+keeps clear of the notch and the home indicator.
+
+Every icon on the page is now a drawn shape from the same set the interface uses. The ticks
+in the comparison table were plain text characters, which meant each visitor's own machine
+chose how to draw them — a different shape and weight on a Mac, an iPhone, a PC or an
+Android device, in the column where we invite you to compare.
 
 ---
 

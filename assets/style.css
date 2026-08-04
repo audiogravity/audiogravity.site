@@ -4,6 +4,15 @@
     box-sizing: border-box
 }
 
+/* Tells the browser which scheme to draw its OWN widgets in — scrollbars, form controls,
+   the caret. Without it they stay light whatever the theme, which shows on a dark page. The
+   value follows the theme the same way the tokens do. */
+:root { color-scheme: light }
+:root[data-theme="dark"] { color-scheme: dark }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { color-scheme: dark }
+}
+
 :root {
     --bg: #fff;
     --bg2: #f7f7f7;
@@ -111,12 +120,15 @@ a {
 .w {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 48px
+    /* max() rather than an addition: the inset is zero everywhere but a notched phone held
+       sideways, where the rounded corner would otherwise clip the first characters of every
+       line. */
+    padding: 0 max(48px, env(safe-area-inset-left)) 0 max(48px, env(safe-area-inset-right))
 }
 
 @media(max-width:720px) {
     .w {
-        padding: 0 24px
+        padding: 0 max(20px, env(safe-area-inset-left)) 0 max(20px, env(safe-area-inset-right))
     }
 }
 
@@ -194,7 +206,11 @@ a {
 @media(max-width:720px) {
     .announce-bar {
         font-size: 12px;
-        padding: 8px 16px;
+        /* Room on the right for the "Coming soon" ribbon. It is fixed to the top-right
+           corner and sits above everything, so on a narrow screen — where this text wraps
+           onto three lines instead of one — it landed squarely on the words. */
+        padding: 8px 92px 8px 16px;
+        text-align: left;
     }
 }
 
@@ -204,13 +220,18 @@ nav {
     top: 0;
     z-index: 100;
     width: 100%;
-    height: 60px;
+    /* The inset is zero in a browser tab and only grows once the page runs from a home
+       screen, where a sticky bar would otherwise sit beneath the clock. */
+    height: calc(60px + env(safe-area-inset-top, 0px));
+    padding-top: env(safe-area-inset-top, 0px);
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center
 }
+
+.nav-inner > * { min-width: 0 }
 
 .nav-inner {
     width: 100%;
@@ -220,7 +241,11 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px
+    gap: 24px;
+    /* A flex item refuses to shrink below its content unless told otherwise, and this bar
+       held 436px of it — logo, links, theme toggle, GitHub button — on a 390px phone. The
+       page widened to fit, which reads as a site you have to drag sideways. */
+    min-width: 0
 }
 
 @media(max-width:720px) {
@@ -332,11 +357,21 @@ nav {
     .nav-links {
         display: none
     }
+
+    /* Goes with the links. 180px of button beside a 148px logo is what kept the bar from
+       fitting once the links were already hidden; the same link lives in the footer. */
+    .nav-gh {
+        display: none
+    }
 }
 
 /* HERO */
 .hero {
+    /* dvh, not vh: on iOS 100vh counts the strip the address bar sits over, so the hero is
+       taller than the screen and its lower edge is never where it looks. vh stays first as
+       the fallback for anything that does not know the dynamic unit. */
     min-height: calc(100vh - 60px);
+    min-height: calc(100dvh - 60px);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
@@ -409,6 +444,16 @@ nav {
     letter-spacing: -.05em;
     line-height: .9;
     margin-bottom: 28px
+}
+
+/* "Audiogravity" is a single unbreakable word, so the title's own min-content width is the
+   floor of the whole page. At 54px that floor is 299px — wider than the 272px a 320px
+   screen leaves once the column padding is taken, which widens the page rather than
+   wrapping. Shrink the title on those screens; every other size already fits. */
+@media(max-width:360px) {
+    .hero-h1 {
+        font-size: 46px
+    }
 }
 
 .hero-h1 sup {
@@ -493,24 +538,47 @@ nav {
     color: var(--inv)
 }
 
+/* Grid rather than a wrapping flex row, and the divider on the LEFT of each item.
+   With border-right on a wrapping row, whichever item happens to end a row keeps a divider
+   with nothing after it — visible at every phone width and again at ~1100px, where the hero
+   splits into two columns and this bar narrows. Anchoring the divider to the left lets a
+   :nth-child rule suppress it for the first item of each row, which holds however many
+   rows the items land on. */
 .hero-proof {
-    display: flex;
-    gap: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 0;
     border-top: 1px solid var(--border);
-    padding-top: 28px;
-    flex-wrap: wrap
+    padding-top: 28px
 }
 
 .hero-proof-item {
-    padding: 0 32px 0 0;
-    margin-right: 32px;
-    border-right: 1px solid var(--border)
+    min-width: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--border)
 }
 
-.hero-proof-item:last-child {
-    border-right: 0;
-    padding-right: 0;
-    margin-right: 0
+.hero-proof-item:nth-child(2n+1) {
+    padding-left: 0;
+    border-left: 0
+}
+
+/* Only the single-column hero is wide enough for all four on one row; the two-column
+   layout above 900px leaves this bar too narrow, so it stays on two columns there. */
+@media(min-width:660px) and (max-width:900px) {
+    .hero-proof {
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    }
+
+    .hero-proof-item:nth-child(2n+1) {
+        padding-left: 24px;
+        border-left: 1px solid var(--border)
+    }
+
+    .hero-proof-item:first-child {
+        padding-left: 0;
+        border-left: 0
+    }
 }
 
 .hero-proof-item .n {
@@ -994,8 +1062,12 @@ nav {
 }
 
 @media(max-width:720px) {
+    /* No horizontal padding here: every section wraps its content in .w, which already
+       supplies it, and the two were stacking. On a 390px phone that spent 96px — a quarter
+       of the screen — on margins alone, which is why the cards read so narrow. The gutter
+       is .w's alone below this width, and it holds the safe-area insets. */
     .section {
-        padding: 60px 24px
+        padding: 60px 0
     }
 }
 
@@ -1444,7 +1516,8 @@ nav {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     gap: 0;
-    border: 1px solid var(--border)
+    border: 1px solid var(--border);
+    min-width: 0
 }
 
 @media(max-width:820px) {
@@ -1455,7 +1528,8 @@ nav {
 
 .rt-col {
     padding: 36px 32px;
-    border-right: 1px solid var(--border)
+    border-right: 1px solid var(--border);
+    min-width: 0
 }
 
 .rt-col:last-child {
@@ -1505,6 +1579,20 @@ nav {
     font-style: normal;
     color: var(--text4);
     white-space: nowrap
+}
+
+/* The label column is 120px, which on a phone leaves under 100px for the sentence beside
+   it — so the text could not wrap and pushed the whole page wider than the screen. Placed after the rule it overrides, or the cascade
+   simply ignores it — which is exactly what happened first. Below this width the label sits above its line instead of beside it. */
+@media(max-width:600px) {
+    .rt-list li {
+        grid-template-columns: 1fr;
+        gap: 4px
+    }
+
+    .rt-col {
+        padding: 28px 20px
+    }
 }
 
 .rt-list li:last-child {
@@ -2529,6 +2617,15 @@ footer {
     box-shadow: 0 2px 8px rgba(0,0,0,.18);
 }
 
+@media(max-width:720px) {
+    .ribbon {
+        top: 26px;
+        right: -46px;
+        font-size: 9px;
+        padding: 5px 48px;
+    }
+}
+
 @keyframes ribbon-shake {
     0%   { transform: rotate(45deg) translateX(0); }
     15%  { transform: rotate(45deg) translateX(-8px); }
@@ -2642,6 +2739,31 @@ footer {
 .cmp .cmp-ag.cmp-no,
 .cmp .cmp-ag.cmp-part { color: #000; }
 
+/* Drawn check marks. These replace a ✓ character, which Inter does not carry — every one of
+   the fifty-seven on this page was drawn by whatever font the visitor's system offered, so
+   the comparison table, the page that has to persuade, rendered differently on macOS, iOS,
+   Windows and Android. Sized here because an inline <svg> with no dimensions falls back to
+   300x150. */
+.cmp .cmp-ic {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: -.2em
+}
+
+.cmp-note .cmp-ic {
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    vertical-align: -.15em
+}
+
+.pp-row .ck .ck-ic {
+    width: 13px;
+    height: 13px;
+    display: block
+}
+
 .cmp-note {
     margin-top: 12px;
     font-family: var(--mono);
@@ -2655,6 +2777,26 @@ footer {
     .cmp { font-size: var(--font-size-xs); }
     .cmp th, .cmp td { padding: 10px 12px; }
 
+    /* Product columns capped so one of them fits entirely beside the sticky label. Left to
+       themselves the long values — "Streamer (orchestrates audio engines)" and the like —
+       set a 182px column, wider than the 152px the label leaves, so every value was read
+       half at a time. They wrap instead. */
+    .cmp th:not(.cmp-cap),
+    .cmp td:not(.cmp-cap) {
+        max-width: 140px;
+        overflow-wrap: anywhere;
+        /* A free swipe stops wherever the finger left off, which is usually mid-column and
+           reads as a column cut in half. Snapping lands it on a boundary, so each swipe
+           shows one product whole. The offset is the sticky label's width — without it the
+           column would snap underneath the label instead of beside it. */
+        scroll-snap-align: start;
+        scroll-margin-left: 140px;
+    }
+
+    .cmp-scroll {
+        scroll-snap-type: x proximity;
+    }
+
     /* Sticky first column — keeps the capability label visible while the
        user horizontally swipes the comparison columns. Without this the
        table just looks like it's overflowing into nothing. */
@@ -2663,18 +2805,35 @@ footer {
         position: sticky;
         left: 0;
         z-index: 2;
-        min-width: 160px;
+        /* Fixed, not a minimum. A minimum alone let the longest labels push this column to
+           200px of a 292px frame, leaving under 100px — narrower than one product column,
+           so no value could ever be read whole beside the label it belongs to. Pinning the
+           width lets a full column sit next to it. */
+        width: 140px;
+        min-width: 140px;
+        max-width: 140px;
     }
 
     /* Visual scroll-hint: gradient fade on the right edge of the scroll
        container so users know the table continues past the viewport. iOS
        Safari hides scrollbars by default — without this cue the table just
        looks broken / clipped. ``pointer-events: none`` so the fade doesn't
-       intercept swipes. */
-    .cmp-scroll {
+       intercept swipes.
+
+       It hangs off the WRAPPER, never off the scroller. An absolutely positioned child of a
+       scroll container resolves against that container's padding box, which is the scrolled
+       coordinate system: the fade starts correctly at the right edge, then travels left with
+       the content and sits on top of the cells, blanking a character out of every line it
+       crosses. The wrapper does not scroll, so the fade stays where it belongs.
+
+       Drawn only while ``has-more`` is set, i.e. while content really does continue past the
+       right edge. At the end of the scroll nothing is cut off, and the gradient would then be
+       painting over the last column's own text instead of hinting at anything. */
+    .cmp-scroll-wrap {
         position: relative;
     }
-    .cmp-scroll::after {
+
+    .cmp-scroll-wrap.has-more::after {
         content: '';
         position: absolute;
         top: 0;

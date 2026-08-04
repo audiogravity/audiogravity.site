@@ -3,7 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- viewport-fit=cover is what gives env(safe-area-inset-*) a value other than zero. The
+         manifest asks for standalone, so this page can be pinned to a home screen, and there
+         the sticky bar would otherwise sit under the status bar and the footer under the home
+         indicator. The apple-* tags mirror what the app and the licence admin declare. -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Audiogravity">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Audiogravity — Your audio chain, fully controlled</title>
     <meta name="description"
         content="Your streamer is your source. Audiogravity is the conductor. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every player, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
@@ -141,23 +148,14 @@
             </div>
             <div class="hero-controls">
                 <button class="hero-ctrl" id="heroPrev" aria-label="Previous">
-                    <svg viewBox="0 0 24 24">
-                        <polyline points="15,18 9,12 15,6" />
-                    </svg>
+                    <svg viewBox="0 0 24 24"> <path d="m15 18-6-6 6-6" /></svg>
                 </button>
                 <button class="hero-ctrl" id="heroPlay" aria-label="Pause">
-                    <svg class="ic-pause" viewBox="0 0 24 24">
-                        <rect x="6" y="4" width="4" height="16" />
-                        <rect x="14" y="4" width="4" height="16" />
-                    </svg>
-                    <svg class="ic-play" viewBox="0 0 24 24">
-                        <polygon points="5,3 19,12 5,21" />
-                    </svg>
+                    <svg class="ic-pause" viewBox="0 0 24 24"> <rect x="14" y="3" width="5" height="18" rx="1" /> <rect x="5" y="3" width="5" height="18" rx="1" /></svg>
+                    <svg class="ic-play" viewBox="0 0 24 24"> <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></svg>
                 </button>
                 <button class="hero-ctrl" id="heroNext" aria-label="Next">
-                    <svg viewBox="0 0 24 24">
-                        <polyline points="9,18 15,12 9,6" />
-                    </svg>
+                    <svg viewBox="0 0 24 24"> <path d="m9 18 6-6-6-6" /></svg>
                 </button>
             </div>
         </div>
@@ -209,10 +207,7 @@
             <div class="feat-bento">
                 <div class="fb span4 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="9" />
-                            <polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z" /> <circle cx="12" cy="12" r="10" /></svg></div>
                     <h3>Unified transport across every player</h3>
                     <p>One interface, one set of controls, every engine your streamer runs — MPD, Roon, HQPlayer,
                         AirPlay and UPnP, simultaneously. A <b>stream origin badge</b> always tells you where the
@@ -225,10 +220,7 @@
 
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M3 12l4-7h10l4 7-4 7H7z" />
-                            <circle cx="12" cy="12" r="3" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></svg></div>
                     <h3>One-tap profile scenarios</h3>
                     <p>"Roon + HQPlayer" for serious listening. "MPD + upmpdcli" to expose your streamer as a UPnP
                         renderer — controllable from BubbleUPnP, Kazoo or any OpenHome app. "AirPlay only" for
@@ -239,11 +231,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <rect x="3" y="3" width="18" height="18" rx="1" />
-                            <line x1="3" y1="9" x2="21" y2="9" />
-                            <line x1="9" y1="3" x2="9" y2="21" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M12 20v2" /> <path d="M12 2v2" /> <path d="M17 20v2" /> <path d="M17 2v2" /> <path d="M2 12h2" /> <path d="M2 17h2" /> <path d="M2 7h2" /> <path d="M20 12h2" /> <path d="M20 17h2" /> <path d="M20 7h2" /> <path d="M7 20v2" /> <path d="M7 2v2" /> <rect x="4" y="4" width="16" height="16" rx="2" /> <rect x="8" y="8" width="8" height="8" rx="1" /></svg></div>
                     <h3>Give your music its own CPU cores</h3>
                     <p>Your player gets the processor before anything else, on cores reserved for it, with its audio held
                         in memory — never pushed to disk mid-track. Written as system overrides that survive updates
@@ -253,12 +241,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M2 12 Q6 4 10 12 Q14 20 18 12 Q20 8 22 12" />
-                            <circle cx="6" cy="8" r=".8" fill="currentColor" />
-                            <circle cx="10" cy="12" r=".8" fill="currentColor" />
-                            <circle cx="14" cy="16" r=".8" fill="currentColor" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></svg></div>
                     <h3>Measure the stability, don't assume it</h3>
                     <p>Run the test from your browser and read the result in microseconds: proof that the machine really
                         holds a steady beat, not just that the software is installed. Compare before and after, each
@@ -268,12 +251,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <rect x="3" y="6" width="18" height="12" rx="1" />
-                            <circle cx="7" cy="12" r="1.5" />
-                            <circle cx="12" cy="12" r="1.5" />
-                            <circle cx="17" cy="12" r="1.5" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg></div>
                     <h3>Full speed where it plays, quiet elsewhere</h3>
                     <p>The cores playing music run flat out; the others stay quiet and cool. A per-core heat map shows
                         where the warmth is, and a <b>THROTTLED</b> badge appears the moment the machine slows itself
@@ -284,12 +262,7 @@
 
                 <div class="fb span3 dark">
                     <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4z" />
-                            <polyline points="15,4 15,9 20,9" />
-                            <line x1="7" y1="13" x2="17" y2="13" />
-                            <line x1="7" y1="16" x2="14" y2="16" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></svg></div>
                     <h3>Set up and edit audio service configs without breaking them</h3>
                     <p>New box? The guided setup detects your DAC and music library and generates a minimal,
                         <b>bit-perfect</b> config for MPD, AirPlay and UPnP; Guided mode then changes an output or
@@ -301,12 +274,7 @@
 
                 <div class="fb span3 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <polyline points="3,18 8,10 12,13 17,6 21,6" />
-                            <circle cx="8" cy="10" r="1.4" />
-                            <circle cx="12" cy="13" r="1.4" />
-                            <circle cx="17" cy="6" r="1.4" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="m19 9-5 5-4-4-3 3" /></svg></div>
                     <h3>Live signal-path visualisation</h3>
                     <p>An interactive graph of your entire Hi-Fi chain — every source, every active audio process,
                         down to the DAC. Each link shows the exact stream format (PCM / DSD · 44.1 kHz → 768 kHz ·
@@ -318,12 +286,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <rect x="3" y="4" width="18" height="14" rx="1" />
-                            <line x1="3" y1="9" x2="21" y2="9" />
-                            <circle cx="7" cy="13" r="1.5" />
-                            <line x1="11" y1="13" x2="18" y2="13" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="m16 6 4 14" /> <path d="M12 6v14" /> <path d="M8 8v12" /> <path d="M4 4v16" /></svg></div>
                     <h3>High-resolution library</h3>
                     <p>Browse Roon, MPD, MinimServer, Qobuz, Tidal and HIGHRESAUDIO from one interface — album
                         view, full-text search, direct playback with cover art. <b>Star an album</b> to favourite
@@ -336,13 +299,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <rect x="3" y="9" width="18" height="11" rx="1" />
-                            <circle cx="8" cy="14.5" r="2" />
-                            <line x1="13" y1="13" x2="19" y2="13" />
-                            <line x1="13" y1="16" x2="19" y2="16" />
-                            <path d="M7 9 L12 4 L17 9" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M16.247 7.761a6 6 0 0 1 0 8.478" /> <path d="M19.075 4.933a10 10 0 0 1 0 14.134" /> <path d="M4.925 19.067a10 10 0 0 1 0-14.134" /> <path d="M7.753 16.239a6 6 0 0 1 0-8.478" /> <circle cx="12" cy="12" r="2" /></svg></div>
                     <h3>Internet radio without a parallel signal path</h3>
                     <p>Most apps treat radio as a second-class source — a different player, a degraded path to the DAC,
                         no metadata, no cover art. Here it isn't. Stations flow through the same transport as your FLAC
@@ -353,9 +310,7 @@
 
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M3 12 Q6 6 9 12 Q12 18 15 12 Q18 8 21 12" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2" /></svg></div>
                     <h3>Service tile + 60 s sparklines</h3>
                     <p>Live systemd state. Instantaneous CPU, memory, network and disk with LOW/MEDIUM/HIGH thresholds.
                         Expected throughput reference (CD ≈ 1.4 MB/s, Hi-Res ≈ 10 MB/s, DSD64 ≈ 22 MB/s). Uptime shown.
@@ -365,12 +320,7 @@
 
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <rect x="4" y="4" width="16" height="16" rx="1" />
-                            <line x1="4" y1="9" x2="20" y2="9" />
-                            <circle cx="7" cy="13" r=".8" fill="currentColor" />
-                            <line x1="11" y1="13" x2="17" y2="13" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></div>
                     <h3>Complete audio device inventory</h3>
                     <p>Every ALSA card, USB interface, subdevice and hardware capability your kernel sees — without
                         <code style="font-family:var(--mono);font-size:12px">aplay -l</code> or <code
@@ -382,12 +332,7 @@
 
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <circle cx="9" cy="9" r="4" />
-                            <path d="M9 13v8l2-2 2 2v-4" />
-                            <path d="M14 10h7" />
-                            <path d="M18 10v3" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg></div>
                     <h3>WebAuthn passkeys</h3>
                     <p>Face ID, Touch ID, fingerprint, YubiKey. Multiple devices per user, managed individually.
                         Role-based access — Admin, User, Guest — with session history.</p>
@@ -396,10 +341,7 @@
 
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-                            <path d="M10.27 21a1.94 1.94 0 0 0 3.46 0" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M10.268 21a2 2 0 0 0 3.464 0" /> <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></svg></div>
                     <h3>Push notifications</h3>
                     <p>Get notified the instant a critical service fails, the CPU crosses the critical
                         temperature, a software update is available or a profile is activated. Even when the
@@ -409,11 +351,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="7" />
-                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                            <path d="M11 8v6M8 11h6" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg></div>
                     <h3>Auto-discovery</h3>
                     <p>Audiogravi<sup>ty</sup> scans your network on demand. MPD instances, Roon Bridges, UPnP servers,
                         AirPlay receivers — all picked up automatically.</p>
@@ -422,11 +360,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /> <path d="M16 9a5 5 0 0 1 0 6" /> <path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></svg></div>
                     <h3>HQPlayer DSP remote</h3>
                     <p>Change HQPlayer's sound-shaping settings — interpolation filter, noise shaper, output mode and volume — on your HQPlayer instance
                         without leaving the couch. Auto-discovered on your local network — connect in one tap.
@@ -436,11 +370,7 @@
 
                 <div class="fb span2 dark">
                     <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" />
-                            <path d="M2 12a9 9 0 0 1 8 8" />
-                            <path d="M2 16a5 5 0 0 1 4 4" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" /> <path d="M2 12a9 9 0 0 1 8 8" /> <path d="M2 16a5 5 0 0 1 4 4" /> <line x1="2" x2="2.01" y1="20" y2="20" /></svg></div>
                     <h3>UPnP Control Point — play to any renderer</h3>
                     <p>Audiogravi<sup>ty</sup> becomes your UPnP control point: discover every renderer on your
                         network — network amplifiers, dedicated streamers, DLNA speakers — and drive them directly
@@ -452,11 +382,7 @@
 
                 <div class="fb span6">
                     <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7,10 12,15 17,10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg></div>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg></div>
                     <h3>One-click self-update, with automatic rollback</h3>
                     <p>When a new release ships, the Admin tab shows a banner: one click and your password —
                         the box downloads, swaps and health-checks the new version, with live progress across the
@@ -734,6 +660,10 @@
                 with Roon, MPD or HQPlayer — it orchestrates them. The table below clarifies where each solution stops.
             </p>
 
+            <!-- The wrapper exists only to anchor the right-edge scroll cue: an absolutely
+                 positioned child of the scroller itself is placed in the scrolled coordinate
+                 system, so it travels left with the content and lands on the cells. -->
+            <div class="cmp-scroll-wrap">
             <div class="cmp-scroll">
                 <table class="cmp">
                     <thead>
@@ -759,7 +689,7 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">Multi-player orchestration (MPD + Roon + HQPlayer + AirPlay)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-part">partial</td>
                             <td class="cmp-part">partial</td>
                             <td class="cmp-part">partial</td>
@@ -768,70 +698,70 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">Native Tidal, Qobuz &amp; HIGHRESAUDIO streaming (official vendor APIs, no UPnP required)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓ (Premium)</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg> (Premium)</td>
                             <td class="cmp-part">partial (via upmpdcli)</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">UPnP MediaServer browse &amp; search (NAS via MinimServer, upmpdcli — results directly playable)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">UPnP MediaRenderer control (push to external streamer)</td>
-                            <td class="cmp-ag cmp-yes">✓ control point</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg> control point</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">Acts as UPnP MediaRenderer (controllable from JPLAY / BubbleUPnP)</td>
-                            <td class="cmp-ag cmp-yes">✓ via upmpdcli</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg> via upmpdcli</td>
                             <td class="cmp-part">partial (RAAT)</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">Roon Bridge integration</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td>native</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">HQPlayer integration</td>
-                            <td class="cmp-ag cmp-yes">✓ DSP remote + NAA</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg> DSP remote + NAA</td>
                             <td>as endpoint</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td>native</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">AirPlay receiver</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">System tuning for audio (FIFO, MEMLOCK, CPU affinity)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -840,7 +770,7 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">Latency measured in microseconds (cyclictest, from the interface)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -849,7 +779,7 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">Live signal-path visualization</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-part">partial</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -858,7 +788,7 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">Audio config editor (diff + validation)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-part">partial</td>
                             <td class="cmp-part">partial</td>
@@ -867,25 +797,25 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">Per-source bit-perfect lock (DSD volume protection)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-part">partial</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-part">partial</td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">Internet radio (Radio Browser + custom stations)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">PWA / web-installable</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-part">partial</td>
                             <td class="cmp-part">partial</td>
@@ -894,7 +824,7 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">WebAuthn / biometric login</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -903,12 +833,12 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap">Self-hosted (no cloud account)</td>
-                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                             <td>account required</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
-                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></td>
                         </tr>
                         <tr>
                             <td class="cmp-cap"><b>Platform</b></td>
@@ -931,7 +861,8 @@
                     </tbody>
                 </table>
             </div>
-            <p class="cmp-note">✓ supported · partial = limited · — not available. Comparison based on public
+            </div>
+            <p class="cmp-note"><svg class="cmp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg> supported · partial = limited · — not available. Comparison based on public
                 information from each vendor's documentation as of 2026.</p>
         </div>
     </section>
@@ -998,10 +929,10 @@
                         shown in Admin › License.</p>
                     <div class="pp-border">
                         <div class="pp-rows">
-                            <div class="pp-row"><span class="ck">✓</span><span>All Starter features</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span>All Pro features</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span>Pipeline · Player · Library</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span>Audio priority · latency test</span></div>
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span>All Starter features</span></div>
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span>All Pro features</span></div>
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span>Pipeline · Player · Library</span></div>
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span>Audio priority · latency test</span></div>
                             <div class="pp-row"><span class="na">·</span><span style="color:var(--text4)">After 30 d →
                                     Starter</span></div>
                         </div>
@@ -1018,19 +949,19 @@
                         you need to run and monitor your audio system.</p>
                     <div class="pp-border">
                         <div class="pp-rows">
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Profiles</b> — one-click chain
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Profiles</b> — one-click chain
                                     switching</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Services</b> — live monitoring · start
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Services</b> — live monitoring · start
                                     / stop / restart</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Software</b> — install · update ·
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Software</b> — install · update ·
                                     dry-run</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>System</b> — hardware dashboard +
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>System</b> — hardware dashboard +
                                     audio inventory</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Users</b> — Admin / User / Guest
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Users</b> — Admin / User / Guest
                                     roles</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Audio Services Config</b> — safe
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Audio Services Config</b> — safe
                                     in-place editing + diff</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Guided provisioning</b> — set the
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Guided provisioning</b> — set the
                                     audio stack up in a few clicks</span></div>
                             <div class="pp-row"><span class="na">·</span><span style="color:var(--text4)">Pro features
                                     locked</span></div>
@@ -1048,15 +979,15 @@
                         v1.x updates. Pro holders get a preferential upgrade price for new major versions.</p>
                     <div class="pp-border">
                         <div class="pp-rows">
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Audio Pipeline</b> — interactive map,
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Audio Pipeline</b> — interactive map,
                                     hot rerouting</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Player</b> — unified transport across
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Player</b> — unified transport across
                                     all sources</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Library</b> — Roon · MPD · UPnP ·
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Library</b> — Roon · MPD · UPnP ·
                                     Qobuz · Tidal · HIGHRESAUDIO</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Audio priority</b> — FIFO / RR ·
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Audio priority</b> — FIFO / RR ·
                                     affinity · MEMLOCK</span></div>
-                            <div class="pp-row"><span class="ck">✓</span><span><b>Performance</b> — cyclictest · RT
+                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="yes" role="img"><path d="M20 6 9 17l-5-5" /></svg></span><span><b>Performance</b> — cyclictest · RT
                                     monitor · iPerf3</span></div>
                         </div>
                     </div>
@@ -1110,10 +1041,7 @@
                     <input type="checkbox" id="faq1">
                     <label class="faq-label" for="faq1">
                         <span>What happens after the 30-day trial?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/07-administration.md#licence" style="color:var(--warn)">7. Administration → Licence</a>).</div>
@@ -1123,10 +1051,7 @@
                     <input type="checkbox" id="faq2">
                     <label class="faq-label" for="faq2">
                         <span>Does it work without Roon?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli, Shairport-Sync and AirPlay are all optional — install whichever you want in one click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from there (configuration, tuning, orchestration). See <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/03-first-run.md#3-install-the-audio-engines" style="color:var(--warn)">3. First run</a>.</div>
@@ -1136,10 +1061,7 @@
                     <input type="checkbox" id="faq3">
                     <label class="faq-label" for="faq3">
                         <span>Do I need a Qobuz, Tidal or HIGHRESAUDIO subscription?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">Only if you want to use those services. Qobuz, Tidal and HIGHRESAUDIO browsing in the Library requires an active subscription to each respective service. Everything else works without any third-party subscription.</div>
@@ -1149,10 +1071,7 @@
                     <input type="checkbox" id="faq4">
                     <label class="faq-label" for="faq4">
                         <span>Does it work without an internet connection?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">Audio playback runs entirely on your local network — no cloud, no telemetry. However, licence activation and periodic validation require access to the licence server, and Qobuz, Tidal and HIGHRESAUDIO require an active internet connection for streaming.</div>
@@ -1162,10 +1081,7 @@
                     <input type="checkbox" id="faq5">
                     <label class="faq-label" for="faq5">
                         <span>Can I use one licence on multiple machines?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">No. A Pro licence is bound to one installation. If you move to a new machine, a licence reset is available on request — contact us at <a href="mailto:contact@audiogravity.app" style="color:var(--warn)">contact@audiogravity.app</a>.</div>
@@ -1175,10 +1091,7 @@
                     <input type="checkbox" id="faq6">
                     <label class="faq-label" for="faq6">
                         <span>Are updates included?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">All v1.x updates are included with the Pro licence. Pro holders receive a preferential upgrade price for future major versions.</div>
@@ -1188,10 +1101,7 @@
                     <input type="checkbox" id="faq7">
                     <label class="faq-label" for="faq7">
                         <span>How do I install Audiogravi<sup>ty</sup> on my phone?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/03-first-run.md#7-install-it-as-an-app-recommended-on-phones" style="color:var(--warn)">3. First run</a>.</div>
@@ -1201,10 +1111,7 @@
                     <input type="checkbox" id="faq8">
                     <label class="faq-label" for="faq8">
                         <span>How do I connect Qobuz, Tidal or HIGHRESAUDIO?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">All three connect from <b>Library → Sources</b>: open the service's card and tap <b>Connect</b>. <b>Qobuz</b> signs in and redirects back automatically. <b>Tidal</b> lands on a fixed URL that a web app can't intercept — copy that full URL from the address bar, paste it back into the Tidal card and tap <b>Finish login</b>, once. <b>HIGHRESAUDIO</b> is simpler: enter your account email and password directly in its card. Tokens are then stored and refreshed for you. The full walkthroughs are in <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/05-library-streaming.md#streaming-services" style="color:var(--warn)">5. Library & streaming</a>.</div>
@@ -1214,10 +1121,7 @@
                     <input type="checkbox" id="faq9">
                     <label class="faq-label" for="faq9">
                         <span>Where is the documentation?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">A fully illustrated manual covers the whole journey — from installation to troubleshooting — with a one-page <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/00-quick-start.md" style="color:var(--warn)">quick start</a> and a <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/10-glossary.md" style="color:var(--warn)">glossary</a>. It is readable <b>inside the app</b> (the <b>Manual</b> tab, always up to date) and online.</div>
@@ -1227,10 +1131,7 @@
                     <input type="checkbox" id="faq10">
                     <label class="faq-label" for="faq10">
                         <span>How do I update Audiogravi<sup>ty</sup>?</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"> <path d="M5 12h14" /> <path d="M12 5v14" /></svg>
                     </label>
                     <div class="faq-body">
                         <div class="faq-body-inner">From the interface. When a new release is available, the <b>Admin</b> tab shows an update banner — one click and your admin password, and the box downloads, installs and health-checks the new version with live progress. If anything goes wrong it <b>automatically rolls back</b> to the previous version. No terminal, no re-running the installer. See <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/08-updating.md" style="color:var(--warn)">8. Updating</a>.</div>

@@ -2305,6 +2305,13 @@ nav {
     line-height: 1.65
 }
 
+/* The signature closing the "Who I am" note. `white-space: nowrap` so the dash never ends a
+   line with the name orphaned on the next one — a signature broken in two reads as a typo. */
+.pricing-note .txt .sig {
+    white-space: nowrap;
+    color: var(--text)
+}
+
 /* HOW TO PURCHASE */
 .howto {
     display: grid;

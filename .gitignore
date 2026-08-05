@@ -2,3 +2,8 @@
 # ── Claude Code context (local only) ────────────────────────────────────────
 .claude/
 CLAUDE.md
+
+# ── Python bytecode, from the manual generator and its tests ────────────────
+__pycache__/
+*.pyc
+.pytest_cache/

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Listening — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Listening.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/04-listening.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item active" href="04-listening.html" aria-current="page"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>4. Listening</h1>
+<p>Once your box is set up, playing music is the same whatever the source — local files,
+Qobuz, Tidal, HIGHRESAUDIO, internet radio or a UPnP server all flow through one set
+of controls.</p>
+<h2 id="the-now-playing-bar">The Now Playing bar</h2>
+<p>A sticky <strong>Now Playing</strong> bar sits above the footer and shows <strong>all active audio
+sources</strong> at once, with quick transport — play/pause, next, and volume. Tap it (or
+swipe up on mobile / the expand button on desktop) to open the <strong>fullscreen player</strong>.</p>
+<h2 id="the-fullscreen-player">The fullscreen player</h2>
+<ul>
+<li><strong>Cover art</strong> with a dynamic background derived from it, a <strong>seekable progress
+bar</strong>, and full <strong>transport</strong>: repeat · previous · play/pause · next · shuffle.</li>
+<li><strong>Album details</strong> — Album, Artist, Format, Genre, Year, Position, Source and the
+full <strong>Tracklist</strong>.</li>
+<li>A <strong>Queue</strong> view for what's coming up (see below).</li>
+<li><strong>Swipe</strong> between active sources; close with the back button or swipe-down.</li>
+<li>When playing to a network renderer, a <strong>&quot;Routed to UPnP renderer&quot;</strong> indicator makes
+the destination clear.</li>
+</ul>
+<img loading="lazy" src="images/ios-fullscreen.webp" alt="The fullscreen player: cover art, signal path, hi-fi format strip, transport, next track and output bar" width="360">
+<h2 id="the-queue">The Queue</h2>
+<p>The <strong>Queue</strong> view shows the current track and what's coming up — for every source,
+including <strong>Qobuz, Tidal and HIGHRESAUDIO</strong> albums, with their real titles and artists
+(they survive a restart of the box, too).</p>
+<img loading="lazy" src="images/ios-queue-mixed.webp" alt="A mixed queue: Qobuz, radio and local-library tracks with per-source badges and the source filter bar" width="360">
+<ul>
+<li>The header names the <strong>actual source</strong> — playing internet radio reads &quot;Radio&quot; and
+shows the <strong>station's logo</strong>, not the underlying playback engine. The same holds
+when you <strong>cast to a network speaker</strong>: the badge names where the music comes from
+(<strong>Qobuz</strong>, <strong>Library</strong>, your media server's name), and the speaker appears as the
+<strong>output</strong> — because it is the destination, not the source.</li>
+<li>A badge reading <strong>External</strong> means the music was <strong>not started from
+Audiogravi<sup>ty</sup></strong> — someone is driving your speaker, or HQPlayer, from another app
+or its own remote. Audiogravi<sup>ty</sup> shows what it can see and stays out of the way.</li>
+<li>When the queue <strong>mixes sources</strong> — say a radio station followed by a Qobuz album —
+each upcoming track carries a small <strong>source badge</strong> telling you where it comes
+from, and a <strong>filter bar</strong> lets you view one source at a time. Filtering only
+changes what you <em>see</em>: nothing moves or stops playing, and the current track
+always stays in view.</li>
+<li>Remove an upcoming track with its <strong>Remove</strong> button or a <strong>left-swipe</strong> — the same
+gesture used across the app's lists. It always removes the track you swiped, even
+if the queue has reordered meanwhile. <strong>Clear</strong> empties the queue, and respects the
+active filter.</li>
+</ul>
+<img loading="lazy" src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a Marantz: the card is badged Qobuz, the signal path reads Qobuz then Marantz, and the output bar names the speaker" width="360">
+<h2 id="the-live-hi-fi-readout">The live hi-fi readout</h2>
+<p>On every track change, Audiogravi<sup>ty</sup> shows exactly what's reaching your DAC:</p>
+<ul>
+<li><strong>Format</strong> (PCM / DSD), <strong>sample rate</strong>, <strong>bit depth</strong>, and instantaneous <strong>bitrate</strong>.</li>
+</ul>
+<p>This is your at-a-glance confirmation that a Hi-Res track really is playing at its
+native resolution. A DSD lock indicator appears for DSD streams.</p>
+<h2 id="the-stream-origin-badge">The stream-origin badge</h2>
+<p>A badge in the Now Playing bar always tells you <strong>where the audio is coming from</strong> —
+Tidal, Qobuz, HIGHRESAUDIO, your UPnP server (by name), a radio station, a local file,
+or AirPlay. No guessing which source is live.</p>
+<h2 id="profiles-switch-whole-chains-in-one-tap">Profiles — switch whole chains in one tap</h2>
+<p>A <strong>profile</strong> is a saved scenario for your audio system. Switching one automatically
+<strong>starts the services it needs and stops the conflicting ones</strong>, so the chain is
+always coherent and bit-perfect. Typical profiles: <em>Roon + HQPlayer</em> for serious
+listening, <em>MPD + upmpdcli</em> to expose the box as a UPnP renderer, <em>AirPlay only</em> for
+background music.</p>
+<p>Each profile tile shows the services it starts/stops, the resolved output port (e.g.
+<code>usb</code>, <code>toslink</code>), a live <strong>health bar</strong> (active / failed / idle), and when it was
+last activated. Activation is atomic, with a detailed toast on failure.</p>
+<h2 id="sleep-timer">Sleep timer</h2>
+<p>A built-in sleep timer pauses playback after a set duration — for falling asleep to
+music without leaving the system running all night.</p>
+<h2 id="portrait-lock">Portrait lock</h2>
+<p>On phones and tablets, Audiogravi<sup>ty</sup> stays in <strong>portrait</strong> by default. A
+<strong>Portrait Lock</strong> switch in <strong>Settings</strong> (the gear in the top bar) turns it off if
+you prefer landscape — and on a device you can't rotate, the <em>Continue in landscape</em>
+button on the rotate screen lets you carry on (it switches the lock off for you).
+Desktop installs are unaffected.</p>
+<h2 id="where-the-audio-goes">Where the audio goes</h2>
+<p>The output line at the bottom of the fullscreen player always names your
+destination — your DAC or the speaker you selected — even when nothing is playing,
+and marks it <strong>Stopped</strong> when it sits idle or <strong>Unreachable</strong> when it cannot be
+contacted. Any reason the sound is not coming out appears on that same line.</p>
+<p>Choosing <strong>where</strong> music plays — your local DAC, a network renderer, HQPlayer or
+AirPlay — is covered in <strong><a href="06-outputs-engines.html">6. Outputs &amp; engines</a></strong>. Connecting
+streaming services and browsing your library is in
+<strong><a href="05-library-streaming.html">5. Library &amp; streaming</a></strong>.</p>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

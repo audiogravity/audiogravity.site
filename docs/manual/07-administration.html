@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Administration — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Administration.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/07-administration.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item active" href="07-administration.html" aria-current="page"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>7. Administration</h1>
+<p>Everything you need to run the box lives in the interface — no SSH required. Most of
+this section is available on <strong>Starter</strong>: Profiles, Services, Audio Software, System,
+Admin — and <strong>Config</strong>, the configuration editor and its guided setup. Only the
+Audio Pipeline map and Performance tuning are <strong>Pro</strong>. Every tab has an <strong>INFO</strong>
+badge that opens
+an in-app explanation.</p>
+<h2 id="the-admin-tab">The Admin tab</h2>
+<p>The <strong>Admin</strong> tab gathers everything about accounts and the box's relationship with
+Audiogravi<sup>ty</sup>: the <strong>user cards</strong> (below), unread
+<a href="#announcements">announcements</a>, the <a href="08-updating.html">update banner</a> — and the
+<strong>licence</strong> panel, which also opens when a Starter install taps a locked Pro tab.</p>
+<h2 id="users-amp-access">Users &amp; access</h2>
+<p>User management lives on the <strong>Admin</strong> tab — one card per account, with an online
+indicator for users currently connected. Three roles control who can do what:</p>
+<ul>
+<li><strong>Admin</strong> — full access to all features and user management. Cannot be deleted or
+demoted by others, and cannot delete their own account.</li>
+<li><strong>User</strong> — standard access to features, but cannot manage users or core settings.</li>
+<li><strong>Guest</strong> — read-only: can view status and logs but not change settings or toggle
+services.</li>
+</ul>
+<img loading="lazy" src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle and the edit and delete actions" width="360">
+<p><strong>Passkeys</strong> — the <em>Passkeys</em> button on your own card registers WebAuthn credentials
+(Face ID, Touch ID, a hardware key). Each passkey is tied to one device and can be
+removed individually; use it instead of a password at login. Password changes take
+effect immediately on current sessions.</p>
+<p><strong>Session persistence</strong> — the <em>Persist</em> toggle chooses how your session is stored:
+persistent (stay logged in across browser restarts) or session-only (log out when
+the tab closes). Takes effect on your next login.</p>
+<h2 id="the-settings-panel">The Settings panel</h2>
+<p>The <strong>gear</strong> in the top bar opens the app-wide Settings panel:</p>
+<ul>
+<li><strong>Export / Import Configuration</strong> — download or replace <code>audio-config.json</code>, the
+services-and-profiles registry (see <em>Audio configuration</em> below).</li>
+<li><strong>Theme</strong> — three looks: <em>Minimal (Classic)</em>, <em>Slate (Modern)</em> and <em>Gravity (Bold &amp;
+Cosmic)</em> — plus a <strong>Light/Dark Mode</strong> toggle.</li>
+<li><strong>Notifications</strong> — subscribe this device to <strong>push notifications</strong> (see below).</li>
+<li><strong>Compact Mode</strong> — a denser layout. <strong>Animations</strong> — turns UI motion off
+(functional loading spinners keep animating so an operation never looks stuck).</li>
+<li><strong>Portrait Lock</strong> — phones and tablets only; see
+<a href="04-listening.html#portrait-lock">4. Listening</a>.</li>
+<li><strong>Face ID / Touch ID</strong> — register this device as a <strong>passkey</strong> in one tap; each
+registered device appears as a chip you can remove individually. (These are the
+same credentials as the <em>Passkeys</em> button on your user card above.)</li>
+</ul>
+<img loading="lazy" src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, theme, display toggles and passkeys" width="360">
+<h3 id="push-notifications">Push notifications</h3>
+<p>With <strong>Notifications</strong> on, the box sends this device a system notification when
+something needs attention — even with the app closed:</p>
+<ul>
+<li>a monitored <strong>service goes down</strong>;</li>
+<li>the <strong>CPU reaches a critical temperature</strong>;</li>
+<li>a <strong>software package update</strong> is available;</li>
+<li>a <strong>profile</strong> is activated.</li>
+</ul>
+<p>Like passkeys, push needs Audiogravi<sup>ty</sup> reachable over a real HTTPS <strong>domain</strong> —
+it does not work over a bare IP (see <a href="02-installation.html">2. Installation</a>).</p>
+<h2 id="services">Services</h2>
+<p>Monitor and control individual systemd services in real time.</p>
+<ul>
+<li><strong>Status</strong> — active (green), inactive (grey) or failed (red); the dot blinks orange
+while a start/stop is pending. A segmented <strong>health bar</strong> shows the running / stopped
+/ failed proportions at a glance.</li>
+<li><strong>Control</strong> — start, stop or restart any service from its tile. The <strong>ENABLED /
+DISABLED</strong> badge controls whether it starts at boot. Uptime is shown next to the
+unit name.</li>
+<li><strong>Detail</strong> — click a service name for live metrics (CPU, memory, tasks, network,
+disk) and the session action history. Metrics are colour-coded LOW / MEDIUM / HIGH,
+tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, &gt;20 % high).</li>
+<li><strong>Filter</strong> — ALL / RUNNING / STOPPED / FAILED.</li>
+</ul>
+<img loading="lazy" src="images/ios-services.webp" alt="The Services tab: per-service cards with live metrics, health bar and start/stop controls" width="360">
+<h2 id="config-editor">Config editor</h2>
+<p>Safely edit the real configuration files of your audio services (see also
+<a href="03-first-run.html">3. First run</a> for the guided setup).</p>
+<ul>
+<li><strong>Guided mode</strong> (MPD / AirPlay / UPnP) — change output or library in a couple of
+clicks; only the changed setting is rewritten. <em>Reset to default</em> regenerates a
+minimal config (current file backed up first).</li>
+<li><strong>Form mode</strong> — edit common settings through a friendly interface with field
+descriptions and validation.</li>
+<li><strong>Expert (Raw) mode</strong> — edit the raw file directly, with syntax validation before
+save.</li>
+<li><strong>Preview changes (Diff)</strong> — a unified diff (raw) or a before/after field table
+(form) of your unsaved edits.</li>
+<li><strong>Automatic backups</strong> — every save creates a timestamped backup; the <strong>Backups</strong>
+button browses and restores any previous version.</li>
+<li><strong>Restart after save</strong> — on by default (applies changes immediately); uncheck to
+batch several edits.</li>
+</ul>
+<h2 id="audio-configuration-services-amp-profiles">Audio configuration (services &amp; profiles)</h2>
+<p><code>audio-config.json</code> is the registry of the audio <strong>services</strong> Audiogravi<sup>ty</sup> manages and
+the <strong>profiles</strong> built on top of them. It's what populates the <strong>Services</strong> tab (each declared
+service becomes a controllable tile) and the <strong>Profiles</strong> tab (each profile a one-tap way to
+start one set of services and stop another). It is a different file from the per-service config
+files edited above — this one lists <em>which</em> services exist, not their internal settings.</p>
+<ul>
+<li>
+<p><strong>Services</strong> — each entry declares a <code>label</code>, its <code>systemd_unit</code> (e.g. <code>mpd.service</code>) and a
+<code>critical</code> flag. MPD, upmpdcli (UPnP), shairport-sync (AirPlay), Roon Bridge and HQPlayer's
+NAA are the usual entries. Where a service keeps its own settings file is <strong>not</strong> declared
+here — Audiogravi<sup>ty</sup> finds it by itself, on any machine. Files written before this
+version carry an <code>appconfigfile</code> line; it is ignored (see
+<a href="09-troubleshooting.html">9. Troubleshooting</a>).</p>
+</li>
+<li>
+<p><strong>Profiles</strong> — each entry has a <code>name</code>, a <code>description</code>, and two lists: the services to
+<strong>start</strong> and the services to <strong>stop</strong> when you activate it (plus an optional <code>critical</code> flag
+and <code>depends_on</code>). &quot;MPD&quot;, &quot;Stop All&quot;… are profiles.</p>
+</li>
+<li>
+<p><strong><code>topology_link</code></strong> — ties this box to its device in the topology (<code>host_device_id</code>, e.g.
+<code>streamer_01</code>), so the signal-chain view knows which streamer the services run on.</p>
+</li>
+<li>
+<p><strong>Managing it.</strong> Open <strong>Settings</strong> (the gear in the top bar). <em>Export Configuration</em>
+downloads the current <code>audio-config.json</code>; <em>Import Configuration</em> uploads a replacement.</p>
+</li>
+<li>
+<p><strong>Validation on import.</strong> An imported file is checked before it is applied: bad structure, a
+missing required field, a wrong type — but also a <code>systemd_unit</code> that isn't installed on the
+box — are reported as blocking <strong>errors</strong>; softer
+issues appear as <strong>warnings</strong> you can review and accept. A reference
+<strong><code>audio-config.json.example</code></strong> ships with the box.</p>
+</li>
+</ul>
+<p>See also <strong>Audio topology</strong> below — the <em>other</em> file you own, describing the physical hi-fi
+chain that feeds the signal-path view.</p>
+<h2 id="audio-topology-signal-chain-map">Audio topology (signal-chain map)</h2>
+<p>The <strong>Audio Pipeline</strong> graph (see <a href="06-outputs-engines.html">6. Outputs &amp; engines</a>) is drawn
+from a single file you own: <strong><code>audio-topology.json</code></strong>. It is a plain description of your
+hi-fi chain — which devices you have (streamer, DAC, amplifier, speakers, the app driving
+it…) and how they are wired together. Audiogravi<sup>ty</sup> <strong>reads</strong> it to draw the picture;
+it <strong>never rewrites</strong> it, so the map always reflects exactly what you declared.</p>
+<ul>
+<li><strong>What it declares vs. what is detected.</strong> The topology describes the <em>chain</em> — the boxes
+downstream of your streamer and how they connect. The streamer's own <strong>physical outputs</strong>
+(USB, optical, HDMI…) are resolved <strong>live from the real hardware</strong> at playback time, not
+from the file; the file just tells Audiogravi<sup>ty</sup> which cable feeds which device so the
+graph and the output labels line up.</li>
+<li><strong>Editing it.</strong> Open the <strong>Audio Pipeline</strong> view and click <strong>CONFIG</strong> (Pro, admin/user —
+guests get a read-only view). The editor opens in <strong>View mode</strong>; hit <strong>Edit</strong> to unlock the
+JSON, then <strong>Save</strong>.</li>
+<li><strong>Download / Upload.</strong> From the same editor, <strong>Download</strong> saves the current
+<code>audio-topology.json</code> to your computer — handy for editing it offline or keeping a copy;
+<strong>Upload</strong> loads a file back into the editor for review, and the usual save-time validation
+runs when you click <strong>Save</strong> (nothing is written until you do).</li>
+<li><strong>Validation on save.</strong> Before the file is written, Audiogravi<sup>ty</sup> checks it:
+a malformed file or an unknown device type is an <strong>error</strong> and blocks the save; a broken
+link (an output pointing at a device that doesn't exist) or a connector that maps to no real
+output is a <strong>warning</strong> you can review and accept. Once saved, the graph reloads immediately.</li>
+</ul>
+<h3 id="structure">Structure</h3>
+<p>Everything lives under <code>hifi_topology.devices</code> — a map keyed by a device id you choose:</p>
+<pre><code class="language-json">{
+  &quot;hifi_topology&quot;: {
+    &quot;devices&quot;: {
+      &quot;streamer_01&quot;: {
+        &quot;type&quot;: &quot;streamer&quot;,
+        &quot;label&quot;: &quot;Audiogravity&quot;,
+        &quot;outputs&quot;: {
+          &quot;usb_out&quot;: { &quot;connector&quot;: &quot;usb-a&quot;, &quot;target_device_id&quot;: &quot;dac_01&quot; }
+        }
+      },
+      &quot;dac_01&quot;: {
+        &quot;type&quot;: &quot;converter&quot;,
+        &quot;label&quot;: &quot;My DAC&quot;,
+        &quot;inputs&quot;:  { &quot;usb_in&quot;: { &quot;connector&quot;: &quot;usb-b&quot; } },
+        &quot;outputs&quot;: { &quot;line_out&quot;: { &quot;connector&quot;: &quot;rca&quot;, &quot;target_device_id&quot;: &quot;amp_01&quot; } }
+      }
+    }
+  }
+}
+</code></pre>
+<ul>
+<li><strong><code>type</code></strong> — one of <code>streamer</code>, <code>converter</code> (DAC), <code>amplifier</code>, <code>output</code> (speakers),
+<code>source</code>, <code>server</code>, <code>storage</code>, <code>controller</code>.</li>
+<li><strong><code>outputs</code> / <code>network_outputs</code></strong> — each wired output points at a <code>target_device_id</code>
+(and optionally a <code>target_input_id</code> on that device); that's what links the chain together.</li>
+<li><strong><code>connector</code></strong> — on the <strong>streamer</strong>, the output connector (<code>usb-a</code>, <code>toslink</code>, <code>hdmi</code>,
+<code>rca</code>/<code>jack</code>…) is what maps the declared output onto a <strong>detected</strong> hardware output. A
+connector that matches no real output is what the save-time check warns about.</li>
+</ul>
+<p>A fully-commented reference file, <strong><code>audio-topology.json.example</code></strong>, ships with the box and
+validates cleanly — start from it when in doubt (Download the current file, edit against the
+example, then Upload it back).</p>
+<h3 id="keeping-it-up-to-date">Keeping it up to date</h3>
+<p>Edit the map whenever your physical setup changes — a new DAC, a different amplifier, a cable
+moved from optical to USB. Keep the <code>target_device_id</code> values consistent (an output should
+point at a device id that exists), and the save-time validation will flag typos before they
+reach the graph. Every save is backed up automatically, so you can always roll back.</p>
+<h2 id="audio-software">Audio Software</h2>
+<p>Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, upmpdcli,
+shairport-sync, Roon Bridge…).</p>
+<ul>
+<li><strong>States</strong> — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.</li>
+<li><strong>Actions</strong> — INSTALL, UPDATE (to the latest version), UNINSTALL.</li>
+<li><strong>Version check</strong> — per-card or <strong>CHECK UPDATES</strong> in the header to refresh all. When
+updates are pending, an <strong>UPDATE ALL</strong> badge appears next to it to run them in one go.</li>
+<li><strong>Restart required</strong> — a pulsing badge appears when a service needs a restart after
+install/update; click to restart it.</li>
+<li><strong>Architecture</strong> — the CPU badge shows supported architectures (amd64, arm64…);
+unsupported cards are dimmed. A <strong>DRY-RUN</strong> mode simulates operations safely.</li>
+</ul>
+<h2 id="system">System</h2>
+<p>Real-time monitoring and box-level actions.</p>
+<ul>
+<li><strong>Metrics</strong> — CPU, temperature, memory, disk and network, updated every few seconds
+over SSE (the <strong>LIVE</strong> badge shows the stream is active).</li>
+<li><strong>System &amp; audio hardware</strong> — hostname, OS, kernel, CPU model/cores; every audio
+card, USB interface and subdevice.</li>
+<li><strong>Event log</strong> — system events and live updates; RUNNING/STOPPED to pause, CLEAR to
+reset.</li>
+<li><strong>Actions (admin)</strong> — <em>Restart Backend</em> restarts the Audiogravi<sup>ty</sup> service without
+rebooting; <em>Reboot OS</em> performs a full reboot (double confirmation). The UI
+reconnects automatically.</li>
+<li><strong>Terminal (admin)</strong> — a full interactive bash shell in the browser (runs as the
+backend user — use with care).</li>
+</ul>
+<img loading="lazy" src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
+<img loading="lazy" src="images/ios-system-actions.webp" alt="System actions: Restart Backend in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
+<h2 id="performance-tuning-pro">Performance tuning (Pro)</h2>
+<p>Tune CPU scheduling for bit-perfect, glitch-free playback.</p>
+<ul>
+<li><strong>CPU governor</strong> — <em>performance</em> (max frequency always, lowest latency),
+<em>schedutil</em> (adapts to load), <em>powersave</em> (not recommended for audio). <em>Apply All</em>
+sets it on every core; <em>Save Conf</em> persists it; <em>Create Service</em> restores it at boot.</li>
+<li><strong>THROTTLED badge</strong> — appears on a core when the kernel reports thermal throttling;
+sustained throttling during playback causes glitches.</li>
+<li><strong>Latency test</strong> — runs <code>cyclictest</code> to measure real-time scheduling latency (µs);
+lower max = fewer dropouts. History of the last 10 runs.</li>
+<li><strong>Network test</strong> — ping jitter/loss or iperf3 throughput; useful for Roon, AirPlay
+or NAS playback.</li>
+<li><strong>RT process monitor</strong> — shows the scheduling policy of audio processes: SCHED_FIFO
+/ SCHED_RR = real-time (green); NON-RT = risk of glitches under load (red).</li>
+</ul>
+<h2 id="systemd-tuning-pro">Systemd tuning (Pro)</h2>
+<p>Low-level, per-service OS tuning using systemd <strong>drop-in overrides</strong> — the native
+<code>.service</code> files are <strong>never modified</strong>; everything lives in an isolated
+<code>.d/override.conf</code>.</p>
+<ul>
+<li><strong>CPU affinity</strong> — pin a service to specific cores to cut context-switching jitter.</li>
+<li><strong>RT scheduling</strong> — FIFO/RR policy and priority (1–99) for guaranteed CPU time.</li>
+<li><strong>CPU weight / I/O priority / OOM score</strong> — bias the scheduler, disk/network I/O and
+the out-of-memory killer in favour of audio.</li>
+<li><strong>RT preset</strong> — <em>Audio Optimized</em> pre-fills a battle-tested config (SCHED_FIFO 80,
+LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).</li>
+<li><strong>Safety</strong> — a diff preview before applying, automatic backups (<em>Restore Backup</em>),
+and <em>Remove Override</em> to roll a service back to factory behaviour instantly.</li>
+</ul>
+<h2 id="announcements">Announcements</h2>
+<p>From time to time Audiogravi<sup>ty</sup> broadcasts a short announcement — early-access
+news, an important notice. Unread announcements appear as <strong>dismissible banners</strong> at
+the top of the <strong>Admin</strong> page, and the Admin tab carries a small marker until you have
+seen them (the same cue it uses for a <a href="08-updating.html">waiting update</a>). Dismissals
+are remembered per device.</p>
+<h2 id="licence">Licence</h2>
+<p>The licence panel opens from the <strong>Admin</strong> tab (and automatically when a <strong>Starter</strong>
+install taps a Pro tab — those carry a small lock icon in the tab bar).</p>
+<ul>
+<li><strong>Trial</strong> — 30 days of full access, auto-activated on first run.</li>
+<li><strong>Lifetime</strong> — a single-device <code>.lic</code> file cryptographically tied to this device's
+hardware fingerprint (the <strong>Device ID</strong>). One-time payment, no expiry, no
+subscription.</li>
+<li><strong>Import / re-download</strong> — import a <code>.lic</code> file, or re-download yours from the
+self-service portal (purchase email + Device ID, no account needed) after an OS
+reinstall.</li>
+</ul>
+<img loading="lazy" src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="08-updating.html">8. Updating</a> — keeping the box current</li>
+<li><a href="09-troubleshooting.html">9. Troubleshooting</a> — when something misbehaves</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

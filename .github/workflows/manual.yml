@@ -1,0 +1,66 @@
+# Keeps the published manual pages in step with the Markdown they come from.
+#
+# The manual is authored as Markdown and read in two places. The interface fetches the .md
+# files live, so a push updates it at once. The website serves pre-rendered HTML — for search
+# engines, for a page that paints without waiting on a script, and because the landing loads no
+# third-party JavaScript at all. That HTML is the only copy that can fall behind, and nothing
+# regenerated it automatically: the release procedure is the wrong place, since this repo is
+# GitHub Pages and every push publishes immediately.
+#
+# So it runs here, on the push itself. Both copies move together again.
+#
+# No loop: a push made with GITHUB_TOKEN does not start another workflow run, and the paths
+# filter watches the sources, never the generated .html.
+name: Manual
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/manual/*.md'
+      - 'scripts/gen_manual_html.py'
+      - '.github/workflows/manual.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  # Two manual edits in quick succession would otherwise race to commit the same files.
+  group: manual-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Pinned. This job commits its own output unreviewed, so an unpinned dependency means a
+      # new major release of the renderer could rewrite every page of the manual and push it
+      # with nobody reading the diff. Bump it deliberately.
+      - run: pip install --quiet markdown-it-py==3.0.0 pytest==8.3.4
+
+      # The generator is the only thing standing between the Markdown and the published site,
+      # and nothing else reviews what it emits — so its tests run before it does.
+      - name: Test the generator
+        run: python3 -m pytest scripts/ -q
+
+      - name: Render the manual
+        run: python3 scripts/gen_manual_html.py
+
+      - name: Commit any change
+        run: |
+          if git diff --quiet -- docs/manual; then
+            echo "Manual pages already match their source — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/manual
+          git commit -m "docs: regenerate the manual pages from their Markdown"
+          git push

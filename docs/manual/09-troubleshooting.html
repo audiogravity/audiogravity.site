@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Troubleshooting — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Troubleshooting.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/09-troubleshooting.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item active" href="09-troubleshooting.html" aria-current="page"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>9. Troubleshooting</h1>
+<p>Most issues come down to a service that isn't running, an output that points at the
+wrong device, or a network hop that's flaky. Audiogravi<sup>ty</sup> surfaces all three in the
+interface.</p>
+<h2 id="no-sound-wrong-output">No sound / wrong output</h2>
+<p><strong>Read the message first.</strong> Audiogravi<sup>ty</sup> now tells you why a track will not play,
+as a notification and under the output in the fullscreen player. Start there — the
+answer is usually on screen:</p>
+<ul>
+<li><em>&quot;Output in use by another player&quot;</em> — your sound card is <strong>exclusive</strong> (that is what
+makes bit-perfect playback possible), so only one player can hold it at a time.
+Stop the other one — often HQPlayer: turn its <strong>Use as output</strong> switch off and the
+card is released (see <a href="06-outputs-engines.html">6. Outputs &amp; engines</a>).</li>
+<li><em>&quot;its network audio daemon (NAA) is not running&quot;</em> — HQPlayer is your output but the
+piece that feeds your DAC is stopped. Start it in <strong>Services</strong>, or turn the switch
+off to play locally.</li>
+<li><em>&quot;which HQPlayer cannot decode&quot;</em> — the track's format is not one HQPlayer handles
+(AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM, AIFC); the message names it. M4A and MP4 are the
+same container under two names — media servers disagree on which to publish — so the
+same file may be named either way depending on where you browsed it. Turn the switch off to play
+it on the local output. A whole album is refused if <strong>any</strong> of its tracks is in such
+a format — the message names that track — so you get one clear answer instead of
+music stopping partway through.</li>
+<li><em>&quot;Both HQPlayer and a network renderer are selected&quot;</em> — pick one.</li>
+<li><em>&quot;The speaker you selected is not answering&quot;</em> — the renderer is asleep, off the
+network, or still reconnecting. Wake it up, or pick another output. Audiogravi<sup>ty</sup>
+refuses rather than playing out of the local DAC behind your back.</li>
+<li><em>&quot;says it is playing but its position is not moving&quot;</em> — HQPlayer accepted the track
+and reports playing, but nothing is coming out: the sound card is held elsewhere.
+Same fix as the first entry.</li>
+<li><em>&quot;accepted the track but never started playing it&quot;</em> — either the sound card is busy,
+or HQPlayer cannot decode that format.</li>
+</ul>
+<blockquote>
+<p><strong>A message can arrive a few seconds after you press play.</strong> Whether sound really
+came out of HQPlayer cannot be known instantly — a heavy chain takes time to start.
+Playback begins immediately and the check runs behind it, so a problem shows up
+under the output shortly after, not at the moment of the tap. It clears on its own
+as soon as the music plays.</p>
+</blockquote>
+<img loading="lazy" src="images/ios-output-busy.webp" alt="The fullscreen player showing, under the output, the reason playback will not start: the output is in use by another player" width="360">
+<p>If nothing is displayed:</p>
+<ul>
+<li>Check the <strong>output selector</strong> — is the right destination (Local DAC vs a network
+renderer) selected?</li>
+<li>In <strong>Config</strong>, confirm the service's <strong>audio output</strong> badge points at your DAC. If
+the card index drifted after a hardware change, re-run <strong>Guided → output</strong> (the DAC
+index is normally pinned automatically — see <a href="03-first-run.html">3. First run</a>).</li>
+<li>In <strong>Services</strong>, confirm the relevant service (mpd, shairport-sync…) is <strong>RUNNING</strong>.</li>
+</ul>
+<h2 id="my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</h2>
+<p>A <strong>HAT</strong> — a DAC board stacked on the Pi's GPIO header (HiFiBerry, IQaudIO, Allo,
+Pi-DAC…) — is not plug-and-play the way a USB DAC is. Linux creates a sound card for it
+only once <code>/boot/firmware/config.txt</code> names its <strong>device-tree overlay</strong>. Until then the
+board is invisible to the entire system, and no setting in Audiogravi<sup>ty</sup> can reveal
+it: the output list mirrors the sound cards Linux exposes, nothing more. This is a
+one-time manual step, and it is the same on every Pi-based music player.</p>
+<blockquote>
+<p><strong>Why is it not automatic?</strong> The HAT standard lets a board carry a small memory chip
+describing itself, which the Pi's firmware reads at boot and acts on with no
+configuration at all. Many audio HATs ship that chip blank, so there is nothing to
+read — and the board's own chips sit on a bus that stays powered off until an overlay
+declares it. Nothing can be probed before the declaration exists.</p>
+</blockquote>
+<p><strong>1. Confirm the board really is missing.</strong> Over SSH, or in the browser <strong>Terminal</strong>
+(System tab, admin):</p>
+<pre><code class="language-bash">cat /proc/asound/cards
+</code></pre>
+<p>If your DAC is not in that list, this section applies. If it <em>is</em> listed, the problem
+lies elsewhere — go back to <a href="#no-sound--wrong-output">No sound / wrong output</a>.</p>
+<p><strong>2. Find the overlay name for your board.</strong> Every Raspberry Pi OS image ships the full
+catalogue — around forty audio boards — and your kernel version, because some vendors
+changed their overlay names at kernel <strong>6.1.77</strong>:</p>
+<pre><code class="language-bash">grep -iE &quot;^Name:.*(hifiberry|iqaudio|allo|dac|digi|audio)&quot; /boot/firmware/overlays/README
+uname -r
+</code></pre>
+<p>Cross-check the name against your manufacturer's own documentation. HiFiBerry, for
+instance, publishes one line per board and splits it by kernel version: a <strong>DAC+ Pro /
+DAC2 Pro</strong> takes <code>hifiberry-dacplus</code> below 6.1.77 and <code>hifiberry-dacplus-pro</code> at or
+above it — the wrong one still produces sound, but drives the clock from the Pi instead
+of the board's own oscillators, which is precisely what you paid the Pro version for.</p>
+<p><strong>3. Declare the board, then reboot.</strong></p>
+<pre><code class="language-bash"># Back the file up first — a broken boot file leaves the box unreachable
+sudo cp /boot/firmware/config.txt /boot/firmware/config.txt.bak-$(date +%F)
+sudo nano /boot/firmware/config.txt
+</code></pre>
+<p>Make three changes at the <strong>top</strong> of the file, before the first <code>[…]</code> line — settings
+placed after one apply only to that model of Pi:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Line</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Required</td>
+<td><code>dtoverlay=hifiberry-dacplus-pro</code> <em>(your board's line)</em></td>
+<td>Declares the DAC</td>
+</tr>
+<tr>
+<td>Recommended</td>
+<td><code>dtparam=audio=on</code> → <code>dtparam=audio=off</code></td>
+<td>Turns the Pi's own headphone jack off</td>
+</tr>
+<tr>
+<td>Optional</td>
+<td><code>dtoverlay=vc4-kms-v3d</code> → <code>dtoverlay=vc4-kms-v3d,noaudio</code></td>
+<td>Turns HDMI audio off</td>
+</tr>
+</tbody>
+</table></div>
+<p>The last two are not cosmetic: with the jack and both HDMI outputs still active, your
+DAC is one candidate among four and Audiogravi<sup>ty</sup> will not presume which one you
+meant. Silence them and it selects your DAC on its own. Skip them only if you actually
+use the jack or HDMI sound.</p>
+<p>Then reboot:</p>
+<pre><code class="language-bash">sudo reboot
+</code></pre>
+<p><strong>4. Verify, then point Audiogravi<sup>ty</sup> at it.</strong></p>
+<pre><code class="language-bash">aplay -l
+</code></pre>
+<p>Your DAC should now be listed — under its real name, <code>HiFiBerry DAC+ Pro</code> and the like,
+not a generic label. Back in the interface, run <strong>Guided → output</strong> (see
+<a href="03-first-run.html">3. First run</a>) and pick it: that is the step that writes the output
+into each service's configuration. Detection alone routes nothing.</p>
+<blockquote>
+<p><strong>If nothing appears after the reboot</strong>, the board is declared but not answering.
+Check that it is fully seated on the header, and — a documented quirk on some
+installs — try adding <code>force_eeprom_read=0</code> to the same file.</p>
+<p><strong>If the box does not come back on the network</strong>, the boot file is at fault. Power it
+off, read the SD card on another computer, and rename your <code>config.txt.bak-…</code> back to
+<code>config.txt</code>. This is why step 3 starts with a backup.</p>
+</blockquote>
+<blockquote>
+<p><strong>On an older image</strong>, this file lives at <code>/boot/config.txt</code> instead. Recent Raspberry
+Pi OS releases leave a stub there pointing to the new location — if you open it and it
+says the file has moved, follow it.</p>
+</blockquote>
+<h2 id="a-service-wont-start">A service won't start</h2>
+<ul>
+<li>Open <strong>Services</strong> → click the service name for its detail modal (live metrics + the
+session action history), then <strong>restart</strong> it.</li>
+<li>If a <strong>Systemd</strong> tuning override made it unstable, use <strong>Restore Backup</strong> or <strong>Remove
+Override</strong> on the Systemd tab to roll it back to factory behaviour instantly.</li>
+<li>For deeper output, use the browser <strong>Terminal</strong> (System tab, admin) — e.g.
+<code>systemctl status mpd</code> / <code>journalctl -u mpd -e</code>.</li>
+</ul>
+<h2 id="streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</h2>
+<ul>
+<li>Confirm the service is <strong>Connected</strong> in Library → Sources, and that your
+<strong>subscription</strong> covers Hi-Res (see <a href="05-library-streaming.html">5. Library &amp; streaming</a>).</li>
+<li>A track that played before but fails later is usually an <strong>expired streaming link</strong> —
+Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.</li>
+<li><strong>HIGHRESAUDIO</strong> allows a single active device — if it signed out, reconnect.</li>
+<li><strong>With HQPlayer as your output</strong>, streaming services are refused on purpose, and so
+is anything in a format it cannot decode (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM,
+AIFC) — wherever
+it comes from: your library, a media server or a radio station. Audiogravi<sup>ty</sup> names
+the reason. Turn <strong>Use as output</strong> off to play them locally (see
+<a href="06-outputs-engines.html">6. Outputs &amp; engines</a>).</li>
+</ul>
+<h2 id="casting-to-a-renderer-stalls">Casting to a renderer stalls</h2>
+<ul>
+<li>Check the renderer is reachable on the LAN and appears in the output selector.</li>
+<li>Network renderers depend on your local network — run the <strong>Network Test</strong>
+(Performance tab) to check jitter/loss.</li>
+</ul>
+<img loading="lazy" src="images/ios-network-test.webp" alt="The network stability test after a ping run: an EXCELLENT verdict with min, average, max latency, jitter and packet loss" width="360">
+<h2 id="a-upnp-renderer-or-media-server-isnt-discovered">A UPnP renderer or media server isn't discovered</h2>
+<p>UPnP discovery rides on <strong>multicast</strong> (SSDP). If a device you know is on doesn't
+show up after a <strong>manual scan</strong>:</p>
+<ul>
+<li>Make sure the box and the device are on the <strong>same subnet / VLAN</strong> — multicast
+rarely crosses network segments.</li>
+<li>On managed switches or mesh Wi-Fi, look for <strong>IGMP snooping</strong> settings — snooping
+without an IGMP querier silently eats multicast; either enable the querier or
+disable snooping for that LAN.</li>
+<li>Some Wi-Fi access points ship with <strong>multicast filtering / &quot;IGMP proxy&quot;</strong> enabled —
+try the device on Ethernet to isolate the cause.</li>
+</ul>
+<h2 id="the-box-doesnt-appear-as-an-airplay-speaker">The box doesn't appear as an AirPlay speaker</h2>
+<p>AirPlay is announced over <strong>mDNS/Bonjour</strong> (UDP 5353 multicast):</p>
+<ul>
+<li>Confirm the <strong>shairport-sync</strong> service is RUNNING (Services tab).</li>
+<li>The sender (iPhone/Mac) must be on the <strong>same subnet</strong> — mDNS does not cross
+VLANs without an mDNS repeater on the router.</li>
+<li>The same <strong>multicast filtering</strong> culprits as above (IGMP snooping, AP isolation,
+&quot;client/guest isolation&quot; on the Wi-Fi network) also hide AirPlay devices.</li>
+</ul>
+<h2 id="audio-glitches-dropouts">Audio glitches / dropouts</h2>
+<ul>
+<li>Watch for a <strong>THROTTLED</strong> badge on a CPU core (Performance tab) — sustained thermal
+throttling causes glitches; improve cooling or ease the CPU governor.</li>
+<li>In the <strong>RT process monitor</strong>, audio processes should show <strong>SCHED_FIFO / SCHED_RR</strong>
+(green), not NON-RT (red). Apply the <em>Audio Optimized</em> preset on the Systemd tab.</li>
+<li>Run the <strong>Latency test</strong> (<code>cyclictest</code>) — a high max latency points at scheduling
+contention.</li>
+</ul>
+<h2 id="manual-nas-mount-terminal">Manual NAS mount (terminal)</h2>
+<p>The library picker's <strong>Add network share</strong> covers CIFS/SMB. If you prefer the
+terminal, or need <strong>NFS</strong>, mount at the OS level — anything mounted under
+<code>/mnt</code> is detected as a library source:</p>
+<pre><code class="language-bash"># 1. Create a mount point
+sudo mkdir -p /mnt/music
+
+# 2a. CIFS / SMB — the quoted heredoc keeps special characters
+#     in the password intact
+sudo tee /root/.smbcredentials &gt;/dev/null &lt;&lt;'EOF'
+username=nasuser
+password=naspass
+EOF
+sudo chmod 600 /root/.smbcredentials
+echo &quot;//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,_netdev 0 0&quot; \
+    | sudo tee -a /etc/fstab
+
+# 2b. — or NFS (requires: sudo apt-get install nfs-common)
+echo &quot;192.168.1.20:/volume1/music /mnt/music nfs ro,_netdev 0 0&quot; | sudo tee -a /etc/fstab
+
+# 3. Mount and verify
+sudo systemctl daemon-reload &amp;&amp; sudo mount -a &amp;&amp; ls /mnt/music
+</code></pre>
+<p><code>_netdev</code> makes the mount wait for the network at boot, and <code>ro</code> (read-only) is
+a sensible default for a music library. The SMB version is best left
+unpinned — the kernel negotiates the highest dialect both ends support (SMB 2.1
+to 3.1.1). As a <strong>last resort</strong> for legacy NAS firmware you can add <code>vers=2.0</code>;
+avoid <code>vers=1.0</code> (SMB1) unless you have no other option — it is deprecated and
+insecure, and modern kernels disable it by default. Back in the picker, hit
+refresh — the share appears as a library choice.</p>
+<h2 id="locked-out-no-admin-can-log-in">Locked out — no admin can log in</h2>
+<p>Accounts live in <code>/opt/audiogravity/core/users.json</code> on the box. If the admin
+password is lost, connect over SSH, remove that file, and re-run the installer
+(see <a href="08-updating.html#manual-update">8. Updating → Manual update</a>): when no user file exists, the
+install seeds the default <strong><code>admin</code> / <code>admin123</code></strong> account again. This resets <strong>all</strong>
+accounts and their passkeys — your audio configuration is untouched. Sign in, set a
+fresh password immediately, and re-create the other accounts.</p>
+<h2 id="passkeys-or-push-notifications-unavailable">Passkeys or push notifications unavailable</h2>
+<p>Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS
+<strong>domain</strong> — they do <strong>not</strong> work over a bare IP, and <code>--public-url</code> alone is not
+enough: you also need the domain, a valid certificate and a reverse proxy. The full
+recipe is in
+<a href="02-installation.html#getting-https--for-passkeys-and-push">2. Installation → Getting HTTPS</a>.</p>
+<h2 id="version-mismatch-banner">Version-mismatch banner</h2>
+<p>The interface and core are on different versions — update the other component. See
+<a href="08-updating.html">8. Updating</a>.</p>
+<h2 id="quotupdate-failed-to-start-an-update-is-already-in-progressquot">&quot;Update failed to start — An update is already in progress&quot;</h2>
+<p>A previous update was interrupted (power loss, reboot, or a crash mid-install) and
+left a stale &quot;in progress&quot; marker, so the core refuses to start a new one.</p>
+<ul>
+<li><strong>No action needed in most cases</strong> — the core treats a stuck update as dead after
+<strong>15 minutes</strong> and frees the lock automatically. Wait, then retry from the update
+banner.</li>
+<li><strong>To unblock immediately</strong>, an admin can clear the marker from the Terminal and retry:<pre><code class="language-bash">sudo rm -f /etc/audiogravity/self-update.state
+</code></pre>
+This only resets the <em>status</em> flag; it does not touch the installed version. Check
+the current versions afterwards (App title / login screen) — if the core moved but
+the interface did not, re-run the interface installer (see <a href="08-updating.html">8. Updating</a>).</li>
+</ul>
+<h2 id="the-config-tab-ignores-the-appconfigfile-path-i-set">The Config tab ignores the <code>appconfigfile</code> path I set</h2>
+<p>It is meant to. Audiogravi<sup>ty</sup> now knows by itself where each service keeps
+its configuration — <code>/etc/mpd.conf</code>, <code>/etc/shairport-sync.conf</code> and so on — and
+finds the file whether the service came from your distribution's packages or was
+built from source. The path in <code>/etc/audiogravity/audio-config.json</code> is <strong>no longer
+read</strong>.</p>
+<p>It used to be, and it was a poor arrangement: the same file has to serve machines
+where it lives in different places, so the value shipped in the template was simply
+wrong on one of them. Worse, a stale line could point at a file that happened to
+exist, and the Config tab would edit <em>that</em> one while the service went on reading
+another — changes appearing to save with no effect.</p>
+<p>Boxes <strong>set up before this version</strong> still carry the line. It does nothing, breaks
+nothing, and can be left alone. If you would rather tidy it up, an admin can remove
+it from the Terminal:</p>
+<pre><code class="language-bash">sudo cp /etc/audiogravity/audio-config.json /etc/audiogravity/audio-config.json.bak
+sudo nano /etc/audiogravity/audio-config.json    # delete the &quot;appconfigfile&quot; lines
+sudo systemctl restart ag-core-server
+</code></pre>
+<p>New installations ship without it.</p>
+<blockquote>
+<p>If a service on your machine really does keep its configuration somewhere
+unexpected, there is currently no way to tell Audiogravi<sup>ty</sup> about it —
+<a href="https://github.com/audiogravity/audiogravity.site/issues">open an issue</a> and
+describe your setup.</p>
+</blockquote>
+<h2 id="getting-help">Getting help</h2>
+<ul>
+<li><strong>Bug reports &amp; questions</strong> — <a href="https://github.com/audiogravity/audiogravity.site/issues">open an issue</a>.</li>
+<li><strong>Logs</strong> — the System event log (in-app) and <code>journalctl -u ag-core-server</code> /
+<code>journalctl -u &lt;service&gt;</code> from the Terminal.</li>
+<li>More answers on the <a href="https://audiogravity.app/#faq">website FAQ</a>.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

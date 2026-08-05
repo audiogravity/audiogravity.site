@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Outputs &amp; engines — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Outputs &amp; engines.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/06-outputs-engines.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item active" href="06-outputs-engines.html" aria-current="page"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>6. Outputs &amp; engines</h1>
+<p>Audiogravi<sup>ty</sup> can send the same music to very different destinations — a locally
+attached DAC, a network renderer across the room, HQPlayer's DSP engine, or an AirPlay
+receiver. The <strong>output selector</strong> switches between them in one tap.</p>
+<h2 id="the-output-selector">The output selector</h2>
+<p>In <strong>Library → Outputs</strong>, Audiogravi<sup>ty</sup> lists every physical output the box exposes
+(USB, optical, HDMI…) alongside the network renderers it has discovered, and switches
+the active output when you pick one. Streaming and HQPlayer connections are managed
+next to it in <strong>Library → Sources</strong>.</p>
+<img loading="lazy" src="images/ios-outputs.webp" alt="The output selector: the active USB DAC and the ready optical and HDMI outputs" width="360">
+<p>Switching is designed to be seamless. <strong>MPD's output flips gapless</strong> — over MPD's
+control socket, without restarting the player — so there is no silence, and a cast
+already playing keeps going on the new output. <strong>AirPlay</strong> is the exception: its
+receiver has to restart to change output, so the panel warns you first that it will
+interrupt any AirPlay session in progress. And when a switch does not take, the panel
+tells you instead of pretending it worked — it shows the reason and rolls back to the
+real state.</p>
+<h2 id="local-dac">Local DAC</h2>
+<p>The default: audio goes straight from MPD to the DAC attached to the box (USB, HAT,
+HDMI, S/PDIF), bit-perfect and with no network round-trip. This is the purest path and
+the one the guided setup wires up first.</p>
+<p>A <strong>HAT</strong> — a DAC board stacked on a Raspberry Pi's GPIO header — is the one case that
+needs a manual step before it can be selected: Linux does not detect it on its own. See
+<a href="09-troubleshooting.html#my-dac-is-not-in-the-output-list-raspberry-pi-hat">9. Troubleshooting → My DAC is not in the output list</a>.</p>
+<h2 id="network-upnp-renderers">Network UPnP renderers</h2>
+<p>Audiogravi<sup>ty</sup> is a <strong>UPnP Control Point</strong>: it discovers every renderer on your LAN —
+network amplifiers, dedicated streamers, DLNA speakers (Marantz, Linn…) — and drives
+them directly from the interface. Browse a source, hit <strong>Play</strong>, and the stream
+reaches the renderer at <strong>full resolution, bit-perfect</strong>, without touching the
+server's own audio path.</p>
+<ul>
+<li>The output selector switches between physical DAC outputs and network renderers.
+A <strong>left-swipe</strong> on a renderer removes it from the known list (a renderer still on
+the network simply reappears at the next scan).</li>
+<li>A live <strong>&quot;Up next&quot;</strong> strip shows the track being loaded onto the renderer.</li>
+<li>Transport (next / prev / pause / seek / volume) is routed through the renderer that
+owns the queue.</li>
+<li>You can <strong>cast your local NAS/USB library</strong> to a network renderer too, exactly like
+a streaming service.</li>
+</ul>
+<blockquote>
+<p><strong>A speaker that does not answer stops the play.</strong> If the renderer you selected is
+asleep, off the network or still reconnecting, Audiogravi<sup>ty</sup> refuses the play and
+says so, rather than quietly sending the music out of the local DAC — the wrong
+room, with no explanation. Wake the speaker up, or pick another output.</p>
+</blockquote>
+<blockquote>
+<p><strong>Your box's own renderer.</strong> Audiogravi<sup>ty</sup> advertises itself on the network (via
+upmpdcli) so other apps can cast <em>to</em> it. That self-entry appears in the renderer
+list as a non-selectable <em>&quot;This device · receives external casts&quot;</em> row — because
+playing on the box is what the <strong>Local DAC</strong> output already does.</p>
+</blockquote>
+<h2 id="hqplayer">HQPlayer</h2>
+<p>If you run <strong>HQPlayer</strong> on your network, Audiogravi<sup>ty</sup> integrates with it three ways:</p>
+<ul>
+<li><strong>DSP remote</strong> — change the interpolation <strong>filter</strong>, <strong>noise shaper</strong>, output
+<strong>mode</strong> and <strong>volume</strong> on your HQPlayer instance from the interface. It's
+auto-discovered on the LAN — connect in one tap.</li>
+<li><strong>NAA endpoint</strong> — the box can run HQPlayer's Network Audio Adapter so HQPlayer
+streams to it and out to your DAC.</li>
+<li><strong>As your output</strong> — the <strong>Use as output</strong> switch on the HQPlayer card sends your
+library through HQPlayer's DSP engine instead of straight to the local DAC.</li>
+</ul>
+<h3 id="use-as-output">Use as output</h3>
+<img loading="lazy" src="images/ios-hqplayer-output.webp" alt="The HQPlayer card: connected, with the Use as output switch turned on" width="360">
+<p>With the switch on, playing an album routes it to HQPlayer, which processes it and
+sends it back to your DAC through the NAA. The player badges the track with where the
+music actually comes from — <strong>Library</strong> — and the signal path shows the full chain:
+<em>Library → HQPlayer → NAA → your DAC</em>. HQPlayer is a <strong>processor</strong> in that chain, not
+the source of the music.</p>
+<p>The setting lives <strong>on the box, not in your browser</strong>: turn it on from your phone and
+your laptop shows it on too. Turning it off releases the sound card so local playback
+works again immediately.</p>
+<p><strong>Playback starts without making you wait.</strong> A heavy processing chain can take half a
+minute to produce its first note — upsampling a DSD album, for instance — so
+Audiogravi<sup>ty</sup> does not hold your tap while it checks. It watches in the background,
+and if no sound actually comes out it tells you under the output, a few seconds
+later. A track that plays normally shows nothing: silence there means it worked.</p>
+<p>Audiogravi<sup>ty</sup> refuses to turn the switch on when nothing would come out — no HQPlayer
+configured, or its NAA not running on the box — and tells you which of the two is
+missing rather than sending your music into silence.</p>
+<h3 id="what-can-and-cannot-go-through-hqplayer">What can and cannot go through HQPlayer</h3>
+<p>HQPlayer plays <strong>FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF</strong>. It does
+<strong>not</strong> decode anything else — <strong>AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM</strong> — nor AIFC, the compressed flavour of AIFF.
+DFF is read uncompressed only: its compressed form, DST, is refused.</p>
+<p>Whenever a track is in one of those formats — an ALAC album in your library, an AAC
+track on your media server, a station broadcasting in AAC — Audiogravi<sup>ty</sup> tells you
+straight away rather than letting playback fail obscurely, and names the format.</p>
+<blockquote>
+<p><strong>The same file can be named two ways.</strong> M4A and MP4 are one container under two
+names, and media servers disagree: MinimServer publishes a track as <code>.m4a</code>, Plex
+publishes the very same file as <code>.mp4</code>. Both are refused, and the message names
+whichever spelling your server used — it is one format, not two problems.
+Turn the switch off to play it on the local output. An album is checked before
+anything is sent, so a single unplayable track is caught up front instead of
+stopping the music halfway through.</p>
+</blockquote>
+<p>This matters most for <strong>internet radio</strong>, where many Hi-Res stations broadcast in AAC.</p>
+<p><strong>Streaming services</strong> (Qobuz, Tidal, HIGHRESAUDIO) cannot be routed through HQPlayer
+yet either; you get the same clear message rather than silence. <strong>Roon is unaffected</strong> —
+a Roon zone is its own output chain and never uses the sound card HQPlayer replaces.</p>
+<blockquote>
+<p><strong>One output at a time.</strong> HQPlayer and a network renderer cannot both be your
+output. If both are selected, Audiogravi<sup>ty</sup> asks you to turn one off instead of
+guessing which device you meant.</p>
+</blockquote>
+<h2 id="roon">Roon</h2>
+<p>Audiogravi<sup>ty</sup> works with a <strong>Roon Bridge</strong> endpoint and connects to your remote <strong>Roon
+Core</strong> for metadata and transport — so a Roon zone can sit alongside your other
+outputs in the same interface.</p>
+<p><strong>Setting it up.</strong> Roon has no in-app settings screen and no installer flag — you point
+Audiogravi<sup>ty</sup> at your Roon Core in the core's config file, then authorize it once inside
+Roon:</p>
+<ol>
+<li><strong>Point AG at the Core.</strong> On the box, edit <code>/opt/audiogravity/core/.env</code> and set:<pre><code>ROON_ENABLED=true
+ROON_CORE_HOST=192.168.1.50    # the IP of the machine running Roon Core
+</code></pre>
+(The Core's control port <code>9330</code> is used automatically; leave <code>ROON_CORE_HOST</code> at the
+default only if the Core runs on the same box.)</li>
+<li><strong>Restart the core</strong> so it re-reads the file:<pre><code class="language-bash">sudo systemctl restart ag-core-server
+</code></pre>
+</li>
+<li><strong>Authorize the extension in Roon.</strong> Open Roon (the desktop or mobile app connected to
+your Core) → <strong>Settings → Extensions</strong>. An extension named <strong>“Audiogravity”</strong> appears
+in the list — click <strong>Enable</strong> next to it. That's the one-time authorization: Roon
+grants AG a token, AG stores it, and it reconnects on its own afterwards (no need to
+re-authorize on restarts).</li>
+</ol>
+<blockquote>
+<p>If <code>ROON_CORE_HOST</code> is wrong or the Core is unreachable, the core logs a connection
+warning and keeps retrying — correct the IP in <code>.env</code> and restart. Until you click
+<strong>Enable</strong> in Roon (step 3), the connection stays unauthorized and Roon data won't appear.</p>
+</blockquote>
+<h2 id="airplay">AirPlay</h2>
+<p>The box can act as an <strong>AirPlay receiver</strong> (shairport-sync) — stream to it from an
+iPhone, iPad or Mac, and it plays through the same output chain, with the same
+now-playing readout.</p>
+<h2 id="seeing-the-whole-chain">Seeing the whole chain</h2>
+<p>The <strong>Audio Pipeline</strong> view (Pro) draws your entire signal chain as a live graph —
+controller → server → streamer → converter/amp → output. Animated particles mean audio
+is flowing; <strong>green links</strong> mean lossless, no sample-rate conversion (bit-perfect); a
+<strong>bit-perfect</strong> badge confirms it. On small screens it falls back to a simplified Now
+Playing view with per-stream output steering (USB / Optical).</p>
+<p>The graph is drawn from a map you own, <strong><code>audio-topology.json</code></strong> — see
+<a href="07-administration.html#audio-topology-signal-chain-map">7. Administration → Audio topology</a>
+to edit it, and the same section for the tuning that keeps this path clean.</p>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -86,6 +86,7 @@
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
                 <a href="#install">Install</a>
+                <a href="docs/manual/index.html">Manual</a>
             </div>
             <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
                 <svg id="themeIcon" viewBox="0 0 24 24"></svg>
@@ -134,7 +135,7 @@
                     <div class="l">Machine · perpetual</div>
                 </div>
                 <div class="hero-proof-item">
-                    <div class="n" style="color:var(--ok)">5/50</div>
+                    <div class="n" style="color:var(--ok)">4/50</div>
                     <div class="l" style="color:var(--ok)">Early access left</div>
                 </div>
             </div>
@@ -712,7 +713,7 @@
                             <td class="cmp-part">partial (HQPlayer)</td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">Native Tidal, Qobuz &amp; HIGHRESAUDIO streaming (official vendor APIs, no UPnP required)</td>
+                            <td class="cmp-cap">Native Tidal, Qobuz &amp; HIGHRESAUDIO streaming</td>
                             <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg> (Premium)</td>
@@ -730,7 +731,7 @@
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">UPnP MediaRenderer control (push to external streamer)</td>
+                            <td class="cmp-cap">UPnP MediaRenderer control</td>
                             <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg> control point</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
@@ -739,7 +740,7 @@
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">Acts as UPnP MediaRenderer (controllable from JPLAY / BubbleUPnP)</td>
+                            <td class="cmp-cap">UPnP MediaRenderer (controllable from JPLAY / BubbleUPnP…)</td>
                             <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg> via upmpdcli</td>
                             <td class="cmp-part">partial (RAAT)</td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
@@ -1018,11 +1019,22 @@
                     requires a license reset, available on request.</div>
             </div>
 
+            <!-- The one first-person note on the page. It reuses the pricing-note idiom rather
+                 than claiming a section of its own: a lone paragraph in an empty band reads as a
+                 blog post dropped into a product page. Kept to two sentences — past that, a
+                 personal note gets skipped. -->
+            <div class="pricing-note">
+                <div class="lbl">Who I am</div>
+                <div class="txt">I'm <b>Alexandre</b>. I built Audiogravi<sup>ty</sup> for my own chain — MPD, Roon and
+                    HQPlayer into a Heed Abacus and a Naim NAC 52 / NAP 250 — and I still develop and support it from
+                    that machine.</div>
+            </div>
+
             <!-- HOW TO PURCHASE -->
             <div class="howto">
                 <div class="howto-step">
                     <span class="n">01</span>
-                    <span class="t">Pay with PayPal</span>
+                    <span class="t">Pay from the interface</span>
                     <span class="d">Click "Pay with PayPal" in Admin › License. €49 lifetime.</span>
                 </div>
                 <div class="howto-step">
@@ -1059,7 +1071,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/07-administration.md#licence" style="color:var(--warn)">7. Administration → Licence</a>).</div>
+                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="docs/manual/07-administration.html#licence" style="color:var(--warn)">7. Administration → Licence</a>).</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1069,7 +1081,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli, Shairport-Sync and AirPlay are all optional — install whichever you want in one click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from there (configuration, tuning, orchestration). See <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/03-first-run.md#3-install-the-audio-engines" style="color:var(--warn)">3. First run</a>.</div>
+                        <div class="faq-body-inner">Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli, Shairport-Sync and AirPlay are all optional — install whichever you want in one click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from there (configuration, tuning, orchestration). See <a href="docs/manual/03-first-run.html#3-install-the-audio-engines" style="color:var(--warn)">3. First run</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1119,7 +1131,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/03-first-run.md#7-install-it-as-an-app-recommended-on-phones" style="color:var(--warn)">3. First run</a>.</div>
+                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="docs/manual/03-first-run.html#7-install-it-as-an-app-recommended-on-phones" style="color:var(--warn)">3. First run</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1129,7 +1141,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">All three connect from <b>Library → Sources</b>: open the service's card and tap <b>Connect</b>. <b>Qobuz</b> signs in and redirects back automatically. <b>Tidal</b> lands on a fixed URL that a web app can't intercept — copy that full URL from the address bar, paste it back into the Tidal card and tap <b>Finish login</b>, once. <b>HIGHRESAUDIO</b> is simpler: enter your account email and password directly in its card. Tokens are then stored and refreshed for you. The full walkthroughs are in <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/05-library-streaming.md#streaming-services" style="color:var(--warn)">5. Library & streaming</a>.</div>
+                        <div class="faq-body-inner">All three connect from <b>Library → Sources</b>: open the service's card and tap <b>Connect</b>. <b>Qobuz</b> signs in and redirects back automatically. <b>Tidal</b> lands on a fixed URL that a web app can't intercept — copy that full URL from the address bar, paste it back into the Tidal card and tap <b>Finish login</b>, once. <b>HIGHRESAUDIO</b> is simpler: enter your account email and password directly in its card. Tokens are then stored and refreshed for you. The full walkthroughs are in <a href="docs/manual/05-library-streaming.html#streaming-services" style="color:var(--warn)">5. Library & streaming</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1139,7 +1151,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">A fully illustrated manual covers the whole journey — from installation to troubleshooting — with a one-page <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/00-quick-start.md" style="color:var(--warn)">quick start</a> and a <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/10-glossary.md" style="color:var(--warn)">glossary</a>. It is readable <b>inside the app</b> (the <b>Manual</b> tab, always up to date) and online.</div>
+                        <div class="faq-body-inner">A fully illustrated manual covers the whole journey — from installation to troubleshooting — with a one-page <a href="docs/manual/00-quick-start.html" style="color:var(--warn)">quick start</a> and a <a href="docs/manual/10-glossary.html" style="color:var(--warn)">glossary</a>. It is readable <b>inside the app</b> (the <b>Manual</b> tab, always up to date) and online.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1149,7 +1161,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">From the interface. When a new release is available, the <b>Admin</b> tab shows an update banner — one click and your admin password, and the box downloads, installs and health-checks the new version with live progress. If anything goes wrong it <b>automatically rolls back</b> to the previous version. No terminal, no re-running the installer. See <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/08-updating.md" style="color:var(--warn)">8. Updating</a>.</div>
+                        <div class="faq-body-inner">From the interface. When a new release is available, the <b>Admin</b> tab shows an update banner — one click and your admin password, and the box downloads, installs and health-checks the new version with live progress. If anything goes wrong it <b>automatically rolls back</b> to the previous version. No terminal, no re-running the installer. See <a href="docs/manual/08-updating.html" style="color:var(--warn)">8. Updating</a>.</div>
                     </div>
                 </div>
 
@@ -1201,7 +1213,7 @@
                 </div>
                 <div>
                     <div class="terminal">
-                        <code><span class="cmt"># All-in-one — core + ui, works on your LAN (no domain needed)</span></code>
+                        <code><span class="cmt"># All-in-one — core + ui, works on your LAN</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
                         <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
                         <code></code>
@@ -1246,7 +1258,7 @@
                     <a href="https://github.com/audiogravity/audiogravity.site">Releases <span
                             style="font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--warn)">COMING
                             SOON</span></a>
-                    <a href="https://github.com/audiogravity/audiogravity.site/blob/main/docs/manual/README.md">User
+                    <a href="docs/manual/index.html">User
                         manual</a>
                     <a href="https://github.com/audiogravity/audiogravity.site/issues">Issues</a>
                     <a href="https://github.com/audiogravity/audiogravity.ui">UI — open source</a>

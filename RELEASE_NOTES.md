@@ -7,6 +7,20 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The manual is now part of the site
+
+Until now, every link to the documentation left audiogravity.app for GitHub. That is a fine
+place for source code and a poor one for a manual: raw files, a developer's interface, and our
+own documentation earning its search results for someone else.
+
+The twelve chapters are now pages of this site, with the chapters listed alongside, working
+links between them, and the same typography and light or dark theme as the rest. There is a
+**Manual** entry in the top bar.
+
+Nothing was rewritten: the pages are built from the same text the manual inside
+Audiogravi<sup>ty</sup> displays, and rebuilt automatically whenever a chapter is edited — so
+what you read on the site and what you read in the app cannot drift apart.
+
 ### The manual reads on a phone
 
 The user manual opens inside Audiogravi<sup>ty</sup> itself, and any chapter with a

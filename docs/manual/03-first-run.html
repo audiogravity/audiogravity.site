@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>First run — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — First run.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/03-first-run.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item active" href="03-first-run.html" aria-current="page"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>3. First run — guided audio setup</h1>
+<p>The first time you open Audiogravi<sup>ty</sup>, a few guided steps take you from a bare box to
+music playing — without touching a config file.</p>
+<h2 id="1-your-trial-activates-automatically">1. Your trial activates automatically</h2>
+<p>A <strong>30-day trial</strong> — full access to every Pro feature — is activated on first run.
+No action required, no card. When it ends you can keep using the free <strong>Starter</strong>
+features or buy a <strong>lifetime</strong> licence (see <a href="07-administration.html">7. Administration → Licence</a>).</p>
+<h2 id="2-sign-in-and-secure-your-account">2. Sign in — and secure your account</h2>
+<p>Audiogravi<sup>ty</sup> ships with one administrator account: username <strong><code>admin</code></strong>,
+password <strong><code>admin123</code></strong>. Sign in with it, then <strong>change the password right away</strong>
+(<strong>Admin</strong> tab → your user card) — the default is public knowledge.</p>
+<p>After your first password login, Audiogravi<sup>ty</sup> offers to register a
+<strong>passkey</strong> on the device — Face ID, Touch ID, a fingerprint or a hardware key.
+Accept, and every later login becomes a tap: the login screen recognises the device
+and asks for the passkey directly, with <em>Use password instead</em> as the fallback.
+(Passkeys require Audiogravi<sup>ty</sup> to be reachable over a real HTTPS
+<strong>domain</strong> — see the <code>--public-url</code> flag in <a href="02-installation.html">2. Installation</a>.)</p>
+<p>More accounts — family members, a read-only guest — can be added later from the
+<strong>Admin</strong> tab (see <a href="07-administration.html#users--access">7. Administration</a>).</p>
+<img loading="lazy" src="images/ios-login.webp" alt="The login screen: username and password, or one-tap sign-in with a passkey" width="360">
+<h2 id="3-install-the-audio-engines">3. Install the audio engines</h2>
+<p>The installer sets up Audiogravi<sup>ty</sup> itself — <strong>not</strong> the audio engines it
+conducts. On a fresh box, install those first from the <strong>Audio Software</strong> tab (see
+<a href="07-administration.html#audio-software">7. Administration → Audio Software</a>): each
+engine has a card with an <strong>INSTALL</strong> button.</p>
+<ul>
+<li><strong>Music Player Daemon (MPD)</strong> — the core player. Install this one first: it plays
+your local library <strong>and</strong> carries Qobuz, Tidal, HIGHRESAUDIO and internet radio.</li>
+<li><strong>Shairport Sync</strong> — to receive <strong>AirPlay</strong>.</li>
+<li><strong>UPnP Bridge</strong> (upmpdcli) — to expose the box as a <strong>UPnP renderer</strong> other apps
+can cast to.</li>
+<li><strong>Roon Bridge / Roon Server / HQPlayer NAA</strong> — only if you use Roon or HQPlayer.</li>
+</ul>
+<p>Install what you need now — you can always come back for the rest later.</p>
+<img loading="lazy" src="images/ios-software.webp" alt="The Audio Software tab: engine cards with install, update and uninstall actions" width="360">
+<h2 id="4-configure-the-audio-stack-guided">4. Configure the audio stack (guided)</h2>
+<p>On a new box, the <strong>Config</strong> tab shows an <strong>Initialize audio stack</strong> panel
+(administrators only). It:</p>
+<ol>
+<li><strong>Auto-detects</strong> your DAC and your music library.</li>
+<li><strong>Generates a minimal, bit-perfect configuration</strong> for the three audio services —
+<strong>MPD</strong> (local library), <strong>AirPlay</strong> (shairport-sync) and <strong>UPnP</strong> (upmpdcli) —
+all wired to the output you choose.</li>
+<li>Asks for your <strong>admin password</strong> before applying.</li>
+</ol>
+<p>Once at least one service is set up, the panel disappears and each MPD / AirPlay /
+UPnP tile shows a <strong>CONFIGURED</strong> badge.</p>
+<img loading="lazy" src="images/ios-provisioning.webp" alt="The Initialize audio stack panel: detected DAC outputs and music library sources" width="360">
+<blockquote>
+<p><strong>Why &quot;bit-perfect&quot;?</strong> The generated configs send audio to your DAC untouched — no
+resampling, no volume math in the digital domain — so what your DAC receives is
+exactly what the file contains.</p>
+</blockquote>
+<blockquote>
+<p><strong>Raspberry Pi with a HAT DAC?</strong> A board stacked on the GPIO header is not detected
+until Linux is told it exists, so it will be missing from this panel. Declare it once
+at the OS level — see
+<a href="09-troubleshooting.html#my-dac-is-not-in-the-output-list-raspberry-pi-hat">9. Troubleshooting → My DAC is not in the output list</a> —
+then come back here.</p>
+</blockquote>
+<h3 id="the-dac-stays-put">The DAC stays put</h3>
+<p>When you configure a USB DAC, Audiogravi<sup>ty</sup> <strong>pins its sound-card index</strong> at the OS
+level. Linux then always gives that DAC the same number, even after a reboot or a
+USB re-plug — so the output your services target never drifts and nothing needs
+re-checking at startup.</p>
+<h3 id="per-service-outputs">Per-service outputs</h3>
+<p>Each service can target its <strong>own</strong> output. For example: MPD on your USB hi-res DAC,
+AirPlay on the optical out. Change any service's output later from the <strong>Guided</strong>
+editor (see below) in a couple of clicks.</p>
+<h3 id="music-on-a-nas-add-the-share-from-the-picker">Music on a NAS? Add the share from the picker</h3>
+<p>The <strong>Music library</strong> picker lists what the box can already see: <strong>USB drives</strong>
+(ext4 / exFAT) and <strong>existing mounts</strong>. For a NAS share (CIFS/SMB — what
+Synology, QNAP and every mainstream NAS speak), use <strong>Add network share (NAS)</strong>
+at the bottom of the picker: give it a name, the NAS host, the share name and —
+unless it's a guest share — its username and password. Audiogravi<sup>ty</sup>
+<strong>mounts and tests the share on the spot</strong>: on success it appears in the list,
+pre-selected; on failure you get the actual mount error (wrong password,
+unreachable host) and nothing is left behind.</p>
+<p>Under the hood this creates a systemd <em>mount-on-access</em> unit — robust to a NAS
+that is off at boot — with the credentials in a root-only file, mounted
+read-only by default.</p>
+<p>Adding a share <strong>mounts and selects it</strong>, but does not yet make it MPD's
+library on its own — that's the same two-step rule as any source: pick it in
+the picker, then <strong>confirm</strong> — click <strong>INITIALIZE</strong> (in the panel) or <strong>Apply</strong>
+(in the Guided editor) to actually point MPD at it. That confirm step also
+<strong>starts a library scan</strong> so the new music is indexed and shows up in the
+Library view (a large NAS keeps indexing in the background — give it a moment).
+To <strong>remove</strong> a share,
+reopen the panel: each one it created is listed with its state (mounted /
+on-demand) and a <strong>trash</strong> button — removing one it isn't currently using takes
+effect immediately; if the share is MPD's active library, it warns you first.</p>
+<img loading="lazy" src="images/ios-network-mount.webp" alt="The Add network share panel: existing AG shares with their state, and the CIFS form" width="360">
+<blockquote>
+<p><strong>Prefer the terminal, or need NFS?</strong> Any share you mount yourself at the OS
+level (fstab or systemd units, CIFS or NFS) under <code>/mnt</code> is detected exactly
+the same way — see <a href="09-troubleshooting.html#manual-nas-mount-terminal">9. Troubleshooting → Manual NAS mount</a>
+for the recipe. NFS is terminal-only by design: mounting it from the UI would
+require RPC daemons on the box, which Audiogravi<sup>ty</sup> refuses on an
+audio appliance.</p>
+</blockquote>
+<h2 id="5-change-output-or-library-later-guided-mode">5. Change output or library later (Guided mode)</h2>
+<p>For MPD, AirPlay and UPnP, the Config editor opens in a <strong>Guided</strong> view where you
+change the <strong>audio output</strong> or <strong>music library</strong> in a couple of clicks. Only the
+setting you touch is rewritten — the rest of your config is preserved. A <strong>Reset to
+default</strong> action regenerates a clean minimal config (admin password required; your
+current file is backed up first).</p>
+<img loading="lazy" src="images/ios-guided.webp" alt="The Guided editor: pick the audio output and the music library in a couple of clicks" width="360">
+<h2 id="6-find-your-way-around">6. Find your way around</h2>
+<p>The <strong>tab bar</strong> (across the top, or a sidebar in the vertical layout) is the app's
+map:</p>
+<ul>
+<li><strong>Profiles · Services · Audio Software · Systemd · Performance · Config ·
+System</strong> — running the box: audio scenarios, service control, engine installs,
+OS tuning, config files and monitoring (all covered in
+<a href="07-administration.html">7. Administration</a>).</li>
+<li><strong>Pipeline</strong> — the live signal-path view (Pro; see
+<a href="06-outputs-engines.html">6. Outputs &amp; engines</a>).</li>
+<li><strong>Library</strong> (Pro) — browse, search, queue, sources and outputs: where you play
+music.</li>
+<li><strong>Admin</strong> — users and access, announcements, updates and the licence.</li>
+<li><strong>Manual</strong> — this manual, readable inside the app.</li>
+</ul>
+<p>On a <strong>Starter</strong> licence the Pro tabs carry a small lock — tapping one opens the
+licence panel. <strong>Config is not one of them</strong>: editing a service's configuration
+file and the guided setup are available on every edition — configuring the
+machine is part of owning it. The sticky <strong>Now Playing bar</strong> sits above the
+footer whatever the
+tab, and the <strong>gear</strong> in the top bar opens
+<a href="07-administration.html#the-settings-panel">Settings</a>.</p>
+<h2 id="7-install-it-as-an-app-recommended-on-phones">7. Install it as an app (recommended on phones)</h2>
+<p>Audiogravi<sup>ty</sup> is an installable web app (PWA): added to your home screen it
+opens <strong>fullscreen</strong>, in its own window, with the app icon.</p>
+<ul>
+<li><strong>Android</strong> — open the site in Chrome and accept the <strong>Install app</strong> prompt (or
+browser menu → <em>Add to Home screen</em>). The installed app also honours the
+<a href="04-listening.html#portrait-lock">Portrait Lock</a> at the OS level.</li>
+<li><strong>iPhone / iPad</strong> — in Safari, tap <strong>Share → Add to Home Screen</strong>. On iOS this is
+also <strong>required for push notifications</strong>: Safari tabs can't receive them, the
+installed app can (see
+<a href="07-administration.html#push-notifications">7. Administration → Push notifications</a>).</li>
+<li><strong>Desktop</strong> — Chrome and Edge offer an install icon in the address bar; handy for
+a dedicated always-open controller window.</li>
+</ul>
+<h2 id="next">Next</h2>
+<p>Your box now plays. Head to <strong><a href="04-listening.html">4. Listening</a></strong> to start playing
+music, or <strong><a href="05-library-streaming.html">5. Library &amp; streaming</a></strong> to connect Qobuz,
+Tidal, HIGHRESAUDIO and internet radio.</p>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

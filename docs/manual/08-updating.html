@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Updating — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Updating.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/08-updating.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item active" href="08-updating.html" aria-current="page"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>8. Updating</h1>
+<p>Audiogravi<sup>ty</sup> updates itself from the browser — no terminal, no re-running scripts.</p>
+<h2 id="one-click-self-update">One-click self-update</h2>
+<p>When a newer release is available, the <strong>Admin</strong> page shows an update banner with the
+new version, a release-notes link, and a <strong>required</strong> badge if the update is critical.
+You don't need the page open to notice: the <strong>Admin tab</strong> itself carries a small
+download marker whenever an update is waiting — in the warning colour when it is
+<strong>required</strong>.</p>
+<img loading="lazy" src="images/ios-update-banner.webp" alt="The update banner: new version, release-notes link and the one-click Update now button" width="360">
+<p>Installing it is one action:</p>
+<ol>
+<li>A short confirmation (playback briefly stops) and your <strong>admin password</strong>.</li>
+<li>The box <strong>downloads</strong> the new version, <strong>swaps</strong> the binary, and <strong>health-checks</strong>
+that it comes back up on the <strong>right version</strong>.</li>
+<li>Live progress the whole way — <em>downloading → installing → verifying</em> — even across
+the service restart.</li>
+</ol>
+<p>On an <strong>all-in-one</strong> box, the same click updates the <strong>core and the interface
+together</strong>, so everything lands on the new version at once.</p>
+<h3 id="safety-automatic-rollback">Safety: automatic rollback</h3>
+<p>If anything goes wrong, the box <strong>automatically rolls back</strong> to the previous version
+and tells you — you're never left on a broken update. The updater runs detached from
+the app, so it survives the restart it triggers. There's <strong>no OS reboot</strong>; only a
+brief pause while the audio service restarts.</p>
+<h2 id="split-installs-different-hosts">Split installs (different hosts)</h2>
+<p>One-click self-update covers a <strong>co-located</strong> core + ui. If your core and interface
+run on <strong>different hosts</strong>, update each side separately (see below) — the one-click
+action updates the box it runs on.</p>
+<h2 id="manual-update">Manual update</h2>
+<p>You can always update by re-running the installer; your configuration is preserved —
+both <code>.env</code> and the editable files under <code>/etc/audiogravity</code> (the audio setup, the
+signal-chain map, and your saved radio stations). A <strong>fresh</strong> install seeds those files
+with sensible defaults; an <strong>upgrade never overwrites them</strong>, so your edits survive:</p>
+<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+</code></pre>
+<h2 id="version-mismatch-banner">Version-mismatch banner</h2>
+<p>If the interface and the core end up on different versions (for example after a
+partial or multi-host update), a banner appears in the Admin tab prompting you to
+update the other component. It's silent when the two match.</p>
+<h2 id="backup-amp-restore">Backup &amp; restore</h2>
+<p>Everything that makes your box <em>yours</em> lives in a handful of files. Copy them before
+an OS reinstall (or on a schedule) and you can rebuild the box in minutes:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>What</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audio setup — services &amp; profiles registry, hi-fi chain map, saved radio stations</td>
+<td><code>/etc/audiogravity/</code> (<code>audio-config.json</code>, <code>audio-topology.json</code>, <code>radio.json</code>)</td>
+</tr>
+<tr>
+<td>Your <strong>licence</strong> and its public key</td>
+<td><code>/etc/audiogravity/audiogravity.lic</code>, <code>license.pub</code></td>
+</tr>
+<tr>
+<td><strong>Accounts</strong> — users, roles, password hashes, passkeys</td>
+<td><code>/opt/audiogravity/core/users.json</code></td>
+</tr>
+<tr>
+<td>Core <strong>runtime config</strong> — API key, security secrets, enabled modules</td>
+<td><code>/opt/audiogravity/core/.env</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The simplest habit — grab everything in one archive:</p>
+<pre><code class="language-bash">sudo tar -czf ag-backup-$(hostname)-$(date +%F).tar.gz \
+    /etc/audiogravity \
+    /var/backups/audiogravity \
+    /opt/audiogravity/core/users.json \
+    /opt/audiogravity/core/.env
+</code></pre>
+<p><strong>Restore</strong> on a fresh install: run the installer first
+(see <a href="02-installation.html">2. Installation</a>), then unpack the archive over the new
+files (<code>sudo tar -xzf ag-backup-….tar.gz -C /</code>) and restart the core
+(<code>sudo systemctl restart ag-core-server</code>). Service config files regenerate through
+the guided setup, and streaming-service logins are simply re-entered in
+<strong>Library → Sources</strong>. Your music itself lives on the NAS/USB drive — it is never
+stored on the box.</p>
+<blockquote>
+<p>Editor-level backups (the timestamped copies the Config editor keeps before every
+save) live under <code>/var/backups/audiogravity</code> — that's why the archive above
+includes it.</p>
+</blockquote>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

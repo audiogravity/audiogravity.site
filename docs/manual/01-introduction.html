@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Introduction — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Introduction.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/01-introduction.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item active" href="01-introduction.html" aria-current="page"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>1. Introduction</h1>
+<h2 id="what-audiogravity-is">What Audiogravi<sup>ty</sup> is</h2>
+<p>Audiogravi<sup>ty</sup> is a <strong>control app for your music streamer</strong>. It runs on the small
+Linux computer next to your hi-fi (a DietPi box, a Raspberry Pi, a NUC…) and gives
+you a single, beautiful interface — in any browser, on your phone, tablet or
+laptop — to run every part of your listening chain.</p>
+<p>It plays your local library, streams Qobuz, Tidal and HIGHRESAUDIO, tunes internet
+radio, drives HQPlayer, casts to network renderers, and even tunes the Linux kernel
+underneath for bit-perfect, glitch-free playback — all from the same screen.</p>
+<h2 id="what-audiogravity-is-not">What Audiogravi<sup>ty</sup> is <em>not</em></h2>
+<p>Audiogravi<sup>ty</sup> does <strong>not replace</strong> the audio engines audiophiles already trust. It
+<strong>orchestrates</strong> them. MPD, Roon Bridge, HQPlayer, AirPlay (shairport-sync), the
+UPnP stack — Audiogravi<sup>ty</sup> installs, configures and drives these proven engines
+rather than reinventing them. Your signal path stays exactly as pure as the tools
+you already rely on; Audiogravi<sup>ty</sup> just gives you one place to conduct them.</p>
+<h2 id="how-it-fits-together">How it fits together</h2>
+<p>Think of your streaming setup as five layers. Audiogravi<sup>ty</sup> sits across all of them:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What lives here</th>
+<th>Audiogravi<sup>ty</sup>'s role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interface</strong></td>
+<td>The screens you touch — browser, phone, tablet, installable app (PWA)</td>
+<td><strong>It is the interface</strong></td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>Switching sources, transport, volume, casting, monitoring</td>
+<td><strong>It orchestrates</strong></td>
+</tr>
+<tr>
+<td><strong>Content sources</strong></td>
+<td>Your NAS, Qobuz, Tidal, HIGHRESAUDIO, internet radio, UPnP media servers</td>
+<td><strong>It connects to them</strong></td>
+</tr>
+<tr>
+<td><strong>Audio engine</strong></td>
+<td>MPD, Roon Bridge, HQPlayer, AirPlay, UPnP renderers</td>
+<td><strong>It installs, configures &amp; drives them</strong></td>
+</tr>
+<tr>
+<td><strong>OS / kernel</strong></td>
+<td>Real-time scheduling, CPU pinning, ALSA</td>
+<td><strong>It tunes it</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>You never have to touch a config file or a terminal to get any of this working —
+though everything remains open and inspectable if you want to.</p>
+<h2 id="what-you-can-do-with-it">What you can do with it</h2>
+<ul>
+<li><strong>Play everything from one place</strong> — local files, Qobuz / Tidal / HIGHRESAUDIO,
+internet radio, and your UPnP/DLNA media servers, with unified transport,
+cover art and a live hi-fi readout (format, sample rate, bit depth, bitrate).</li>
+<li><strong>Send music where you want</strong> — your local DAC, a network UPnP renderer
+(Marantz, Linn, DLNA speakers), HQPlayer's DSP engine, or an AirPlay receiver.</li>
+<li><strong>Set up your audio stack in a few clicks</strong> — a guided setup detects your DAC
+and music library and generates minimal, bit-perfect configurations for you.</li>
+<li><strong>Tune for sound quality</strong> — real-time kernel scheduling, per-core CPU pinning,
+latency benchmarks, and a live view of your entire signal path (Pro).</li>
+<li><strong>Manage the box</strong> — services, users with passkeys, config editing with backups,
+and one-click updates — no SSH required.</li>
+</ul>
+<h2 id="editions">Editions</h2>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Edition</th>
+<th>Price</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trial</strong></td>
+<td>Free · 30 days</td>
+<td>Everything, including all Pro features</td>
+</tr>
+<tr>
+<td><strong>Starter</strong></td>
+<td>Free · forever</td>
+<td>Profiles, Services, Audio Software, System, Users, <strong>Config</strong> (editor + guided setup)</td>
+</tr>
+<tr>
+<td><strong>Pro</strong></td>
+<td>€49 · lifetime, one machine</td>
+<td>Audio Pipeline, Player, Library, Performance tuning</td>
+</tr>
+</tbody>
+</table></div>
+<p>Pro is a <strong>lifetime licence</strong> — no subscription, no renewal. You can start on the
+free 30-day trial; it activates automatically on first run.</p>
+<blockquote>
+<p><strong>Note:</strong> streaming from Qobuz, Tidal or HIGHRESAUDIO requires your own active
+subscription to each service. Audiogravi<sup>ty</sup> does not provide access to them.</p>
+</blockquote>
+<h2 id="what-you-need">What you need</h2>
+<ul>
+<li>A <strong>Linux box</strong> (DietPi or Debian/Ubuntu, x86-64 or ARM/Raspberry Pi) next to your hi-fi</li>
+<li>A <strong>DAC or audio output</strong> the box can see (USB, HAT, HDMI, S/PDIF…)</li>
+<li>Your <strong>home network</strong>, and any device with a browser to control it</li>
+</ul>
+<p>Ready? Head to <strong><a href="02-installation.html">2. Installation</a></strong>.</p>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

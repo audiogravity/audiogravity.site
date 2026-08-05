@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Contents — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Contents.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Audiogravi<sup>ty</sup> — User Manual</h1>
+<p>Welcome to Audiogravi<sup>ty</sup> — the conductor of your music streamer. This manual walks
+you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.</p>
+<blockquote>
+<p><strong>In a hurry?</strong> The <strong><a href="00-quick-start.html">Quick start</a></strong> takes you from a bare box
+to music on one page.</p>
+<p><strong>New here?</strong> Read <a href="01-introduction.html">1. Introduction</a> first, then follow
+<a href="02-installation.html">2. Installation</a> and <a href="03-first-run.html">3. First run</a> in order.
+Everything else is reference — dip in as you need it.</p>
+</blockquote>
+<blockquote>
+<p><strong>Read it in the app.</strong> The <strong>Manual</strong> tab (at the end of the tab bar) opens this
+manual inside Audiogravi<sup>ty</sup> itself — a chapter list on the side, the page
+beside it, always showing the latest published version.</p>
+</blockquote>
+<h2 id="contents">Contents</h2>
+<ol start="0">
+<li><a href="00-quick-start.html">Quick start</a> — from zero to music, on one page</li>
+<li><a href="01-introduction.html">Introduction</a> — what Audiogravi<sup>ty</sup> is (and isn't)</li>
+<li><a href="02-installation.html">Installation</a> — get it running on your streamer</li>
+<li><a href="03-first-run.html">First run</a> — guided audio setup: DAC, library, services</li>
+<li><a href="04-listening.html">Listening</a> — sources, transport, the Now Playing screen</li>
+<li><a href="05-library-streaming.html">Library &amp; streaming</a> — Qobuz, Tidal, HIGHRESAUDIO, radio, UPnP servers</li>
+<li><a href="06-outputs-engines.html">Outputs &amp; engines</a> — local DAC, network renderers, HQPlayer, AirPlay</li>
+<li><a href="07-administration.html">Administration</a> — users, services, config editor, performance tuning</li>
+<li><a href="08-updating.html">Updating</a> — one-click self-update, backup &amp; restore</li>
+<li><a href="09-troubleshooting.html">Troubleshooting</a> — common issues, logs, FAQ</li>
+<li><a href="10-glossary.html">Glossary</a> — the audiophile and UPnP vocabulary, in two lines each</li>
+<li><a href="11-faq.html">FAQ</a> — quick answers: trial, licence, subscriptions, phone install, updating</li>
+</ol>
+<hr />
+<p><em>Applies to Audiogravi<sup>ty</sup> 0.9.x (early access). For release-by-release changes see
+<a href="https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md">RELEASE_NOTES.md</a>.</em></p>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

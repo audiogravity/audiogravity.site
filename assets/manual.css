@@ -1,0 +1,319 @@
+/* ==========================================================================
+   USER MANUAL — static pages generated from docs/manual/*.md
+   Loaded after style.css, which supplies the tokens, the theme and the font. Nothing here
+   redefines a colour or a size of its own: a manual that drifts from the landing reads as a
+   different product, and the theme toggle has to keep working across both.
+   ========================================================================== */
+
+.man-body {
+    background: var(--bg);
+    color: var(--text2)
+}
+
+/* style.css dresses the landing's own bars through BARE ELEMENT selectors — `nav { height:
+   60px; background; backdrop-filter; … }` and `footer { background: var(--inv); color: #fff }`.
+   The manual reuses that stylesheet for the tokens, the theme and the font, so its <nav> and
+   <footer> inherit that costume whether or not they want it: the chapter list was clipped to a
+   single row inside a 60px bar. Class beats element on specificity, but only for the properties
+   actually restated — so they are restated here, in full, rather than one at a time as each
+   symptom shows up. */
+nav.man-nav {
+    z-index: auto;
+    width: auto;
+    height: auto;
+    padding-top: 0;
+    background: none;
+    backdrop-filter: none;
+    border-bottom: 0;
+    align-items: stretch
+}
+
+footer.man-foot {
+    background: none;
+    color: inherit
+}
+
+/* Top bar — deliberately thinner than the landing's nav. This is a reading page; the chrome
+   should get out of the way, while still offering the way back. */
+.man-top {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: calc(52px + env(safe-area-inset-top, 0px));
+    padding: env(safe-area-inset-top, 0px) max(20px, env(safe-area-inset-left)) 0 max(20px, env(safe-area-inset-right));
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px)
+}
+
+.man-home {
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: -.04em;
+    color: var(--text);
+    text-decoration: none
+}
+
+.man-home sup {
+    font-size: .42em;
+    vertical-align: super
+}
+
+.man-crumb {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: var(--text4)
+}
+
+.man-shell {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 0;
+    max-width: 1180px;
+    margin: 0 auto
+}
+
+/* Sidebar. Sticky under the top bar on a desktop; above the text on a phone, where a column
+   of chapters would push the reading down the page. */
+.man-nav {
+    position: sticky;
+    top: calc(52px + env(safe-area-inset-top, 0px));
+    align-self: start;
+
+    /* The same inset the offset above uses. Counting only the bar's 52px let the column run
+       past the bottom of the screen by the height of the notch. */
+    max-height: calc(100dvh - 52px - env(safe-area-inset-top, 0px));
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 0;
+    border-right: 1px solid var(--border)
+}
+
+.man-nav-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px 20px;
+    border-left: 2px solid transparent;
+    font-size: 14px;
+    color: var(--text3);
+    text-decoration: none;
+    transition: color var(--ease), background var(--ease)
+}
+
+.man-nav-item:hover {
+    background: var(--bg2);
+    color: var(--text)
+}
+
+.man-nav-item.active {
+    border-left-color: var(--ok);
+    color: var(--text);
+    font-weight: 600
+}
+
+.man-nav-n {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text4)
+}
+
+.man-main {
+    min-width: 0;
+    padding: 40px max(24px, env(safe-area-inset-left)) 80px max(24px, env(safe-area-inset-right))
+}
+
+/* Rendered Markdown — width-constrained for readability, not for the grid. */
+.man-md {
+    max-width: 760px;
+    font-size: 16px;
+    line-height: 1.7
+}
+
+.man-md h1 {
+    margin: 0 0 24px;
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 900;
+    letter-spacing: -.03em;
+    line-height: 1.1;
+    color: var(--text)
+}
+
+.man-md h2 {
+    margin: 48px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--text)
+}
+
+.man-md h3 {
+    margin: 32px 0 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text)
+}
+
+.man-md p,
+.man-md li {
+    color: var(--text2)
+}
+
+.man-md a {
+    color: var(--ok);
+    text-decoration: none
+}
+
+.man-md a:hover {
+    text-decoration: underline
+}
+
+.man-md strong {
+    color: var(--text)
+}
+
+.man-md ul,
+.man-md ol {
+    padding-left: 22px
+}
+
+.man-md li {
+    margin: 6px 0
+}
+
+/* Screenshots are authored with a fixed width in the Markdown. Without a cap that width is a
+   floor the page cannot go under, and it drags the layout sideways on any narrower screen —
+   the same defect the in-app reader had. */
+.man-md img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px
+}
+
+.man-md code {
+    padding: .1em .35em;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: .88em;
+
+    /* `anywhere`, not `break-word`: both wrap a long token, but only `anywhere` also lowers the
+       reported min-content width. A command line in inline code otherwise sets a floor its
+       paragraph cannot go under, which is what pushes a page wider than the screen. */
+    overflow-wrap: anywhere
+}
+
+.man-md pre {
+    margin: 18px 0;
+    padding: 16px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow-x: auto
+}
+
+.man-md pre code {
+    padding: 0;
+    background: none;
+    border: 0;
+    overflow-wrap: normal
+}
+
+.man-md blockquote {
+    margin: 18px 0;
+    padding: 2px 0 2px 16px;
+    border-left: 3px solid var(--border2);
+    color: var(--text3)
+}
+
+/* A table is the one block that cannot be reflowed for a narrow screen without destroying what
+   it says, so it scrolls inside its own box rather than taking the page with it. */
+.man-md .man-table {
+    margin: 18px 0;
+    overflow-x: auto
+}
+
+.man-md table {
+    min-width: 100%;
+    width: max-content;
+    border-collapse: collapse;
+    font-size: 14px
+}
+
+.man-md th,
+.man-md td {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    text-align: left
+}
+
+.man-md th {
+    background: var(--bg2);
+    color: var(--text);
+    white-space: nowrap
+}
+
+/* Padding is fully restated, not just the top: `footer` sets 64px/48px/40px by element, and a
+   class only wins on the properties it names. Stating one side left the other three inherited
+   from the landing's own footer. */
+.man-foot {
+    max-width: 760px;
+    margin-top: 56px;
+    padding: 20px 0 0;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 12px
+}
+
+.man-foot a {
+    color: var(--text3);
+    text-decoration: none
+}
+
+.man-foot a:hover {
+    color: var(--text)
+}
+
+@media(max-width:860px) {
+    .man-shell {
+        grid-template-columns: 1fr
+    }
+
+    /* The chapter list becomes a scrolling strip above the text: a stacked column of twelve
+       entries would push the chapter itself off the first screen. */
+    .man-nav {
+        position: static;
+        max-height: none;
+        flex-direction: row;
+        gap: 4px;
+        padding: 10px max(16px, env(safe-area-inset-left));
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+        overflow-x: auto
+    }
+
+    .man-nav-item {
+        padding: 6px 10px;
+        border-left: 0;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap
+    }
+
+    .man-nav-item.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--ok)
+    }
+
+    .man-main {
+        padding-top: 28px
+    }
+}

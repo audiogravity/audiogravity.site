@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Library &amp; streaming — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Library &amp; streaming.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/05-library-streaming.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item active" href="05-library-streaming.html" aria-current="page"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>5. Library &amp; streaming</h1>
+<p>Browse everything from one interface: your local files, your UPnP/DLNA media servers,
+and the streaming services — Qobuz, Tidal and HIGHRESAUDIO — side by side. Search
+results are directly playable, with titles and cover art. Pick a track, pick an
+output, and the music flows at full resolution.</p>
+<h2 id="how-the-library-tab-is-organised">How the Library tab is organised</h2>
+<p>The Library tab holds several views:</p>
+<ul>
+<li><strong>Browse</strong> — albums for the active source, with infinite scroll.</li>
+<li><strong>Search</strong> — full-text across artists, albums and tracks. Tapping an <strong>artist</strong>
+opens that artist's albums — across your local library, Qobuz, Tidal and
+HIGHRESAUDIO — with a back control to return to your results.</li>
+<li><strong>Sources</strong> — pick the active source (local, streaming, Roon zone, UPnP server).
+Connecting or disconnecting a service updates this list straight away. Outputs
+never appear here: a network speaker and HQPlayer are destinations, not places to
+browse — they live in <strong>Outputs</strong>.</li>
+<li><strong>Outputs</strong> — pick where the audio goes (see <a href="06-outputs-engines.html">6. Outputs &amp; engines</a>).</li>
+<li><strong>Queue</strong> — what's playing and coming up.</li>
+</ul>
+<h2 id="your-local-library">Your local library</h2>
+<p>Files on your NAS or USB drive (served by MPD) appear as a browsable, searchable
+source — album view with infinite scroll, full-text search, queue management. You can
+also <strong>cast local files to a network renderer</strong>, just like a streaming service (see
+<a href="06-outputs-engines.html">6. Outputs &amp; engines</a>).</p>
+<h2 id="upnp-dlna-media-servers">UPnP / DLNA media servers</h2>
+<p>In <strong>Sources</strong>, Audiogravi<sup>ty</sup> lists the UPnP media servers it already knows and lets
+you run a <strong>manual scan</strong> to discover more (e.g. <strong>MinimServer</strong>); found servers are
+saved automatically, and a <strong>left-swipe</strong> removes a saved server you no longer use.
+Browse any server's tree (ContentDirectory); results play directly, with metadata
+and art.</p>
+<h2 id="roon">Roon</h2>
+<p>Connect a Roon source in <strong>Sources</strong>; it expands to show the available <strong>zones</strong>.
+A dedicated Roon browser navigates the Roon library hierarchy.</p>
+<h2 id="streaming-services">Streaming services</h2>
+<p>All three deliver native-resolution audio through their <strong>official APIs</strong>. Each
+requires <strong>your own active subscription</strong> — Audiogravi<sup>ty</sup> provides no access itself.</p>
+<p>Connect them from <strong>Library → Sources</strong>: open the service's card, sign in, and the
+session is kept alive and refreshed for you. Each card shows its connection state and
+a disconnect action.</p>
+<h3 id="qobuz">Qobuz</h3>
+<p>Tap <strong>Connect</strong> — an <strong>OAuth2</strong> login opens; sign in and Qobuz redirects back
+automatically, and the card switches to <strong>Connected</strong>. Browse via category pills —
+<strong>Favorites</strong>, <strong>New Releases</strong>, <strong>Selection</strong>, <strong>Playlists</strong> — plus full search.
+Hi-Res up to 24-bit / 192 kHz.</p>
+<h3 id="tidal">Tidal</h3>
+<p>Tidal uses the <strong>PKCE</strong> flow: tap <strong>Connect</strong>, sign in, and Tidal lands on a fixed
+redirect page (<code>tidal.com/android/login/auth?code=…</code>) that a web app can't intercept —
+so <strong>copy that full URL</strong> from the address bar, paste it back into the Tidal card and
+tap <strong>Finish login</strong>. You only do this once. Lossless FLAC (HiFi / HiFi Plus);
+Favorites, New Releases, Charts, editorial playlists, in-track seek.</p>
+<h3 id="highresaudio">HIGHRESAUDIO</h3>
+<p>Simpler still — enter your account <strong>email and password</strong> directly in the card (its
+official API, no redirect, no copy-paste). Native-master FLAC up to 24-bit /
+352.8 kHz; Favorites, Discover, Editor's Picks, Bestsellers, search. Your password is
+stored encrypted on the device.</p>
+<blockquote>
+<p><strong>One device per HRA account.</strong> HIGHRESAUDIO allows a single active device — connecting
+Audiogravi<sup>ty</sup> signs you out of your other HRA players.</p>
+</blockquote>
+<h3 id="favorites-star-an-album-from-the-app">Favorites — star an album from the app</h3>
+<p>On Qobuz, Tidal and HIGHRESAUDIO albums, a <strong>star</strong> — on the album card in the browse
+grid and on search results — adds the album to (or removes it from) <strong>your favorites
+on that service</strong>, with one tap. The star is filled when the album is already a
+favorite, updates instantly, and stays in sync between browsing and search.</p>
+<img loading="lazy" src="images/ios-browse.webp" alt="The streaming browse grid: category pills, album covers, add-to-queue and the favorite star" width="360">
+<h3 id="subscriptions-at-a-glance">Subscriptions at a glance</h3>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Service</th>
+<th>For Hi-Res you need</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qobuz</td>
+<td>Qobuz <strong>Studio</strong> or <strong>Sublime</strong></td>
+</tr>
+<tr>
+<td>Tidal</td>
+<td>Tidal <strong>HiFi</strong> or <strong>HiFi Plus</strong></td>
+</tr>
+<tr>
+<td>HIGHRESAUDIO</td>
+<td>an active <strong>HIGHRESAUDIO</strong> subscription</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="internet-radio">Internet radio</h2>
+<p>Internet radio is a <strong>first-class source</strong> — stations flow through the same transport
+as your FLAC library, route to the same output, and show the same hi-fi readout. The
+radio view has three sub-tabs:</p>
+<ul>
+<li><strong>My Live Radio</strong> — your own collection (custom stations + saved hits). The default
+tab; it hosts the <strong>Add custom station</strong> form. A brand-new box arrives with a few
+starter stations (FIP, Classic Vinyl HD…) already here — keep them or remove them.
+An upgrade never touches your collection.</li>
+<li><strong>Favorites</strong> — your starred stations.</li>
+<li><strong>Search</strong> — a query box with <strong>country</strong>, <strong>genre</strong> and <strong>Hi-Res</strong> filters, backed
+by the Radio Browser catalogue.</li>
+</ul>
+<p>On each station card: <strong>tap</strong> to play, the <strong>star</strong> toggles Favorites, the <strong>+</strong>
+toggles My Live Radio, the <strong>pencil</strong> edits a custom station, and a <strong>left-swipe</strong>
+removes it from the current list.</p>
+<h3 id="where-the-stations-come-from-and-what-is-sent-back">Where the stations come from, and what is sent back</h3>
+<p>Search results come from <a href="https://www.radio-browser.info">Radio Browser</a>, a free,
+community-run catalogue. It is not a service Audiogravi<sup>ty</sup> operates: it runs on
+a single machine, and when it is unavailable — which does happen — search stops working
+for as long as its own outage lasts. Your own stations are unaffected: <strong>My Live Radio</strong>
+and <strong>Favorites</strong> are stored on your box and keep playing regardless. A search you have
+already run also keeps showing its last results while the catalogue is unreachable, for
+up to a day.</p>
+<p>That catalogue ranks stations by how often they are played, and Audiogravi<sup>ty</sup>
+sorts your search results by that ranking. Its documentation asks the software that uses
+it to report each play, so it does: when you start a station, its identifier is sent to
+Radio Browser, and nothing else — no account, no listening history, no information about
+you or your box. Stations you added by hand are never reported, and neither is a station
+that failed to start.</p>
+<p>If you would rather nothing left your box at all, set <code>RADIO_REPORT_PLAYS=false</code> in
+<code>/opt/audiogravity/core/.env</code> and restart the core
+(<code>sudo systemctl restart ag-core-server</code>). Search and playback are unchanged by this;
+only the report stops.</p>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

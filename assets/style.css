@@ -353,14 +353,26 @@ nav {
     stroke-linejoin: round
 }
 
-@media(max-width:680px) {
-    .nav-links {
+/* Between the two breakpoints the bar has more in it than it has room for. `.nav-links` is a
+   flex item, so it gets squeezed below its own content width — and because its links do not
+   wrap, they spill straight out of it and sit on top of the theme toggle and the GitHub button.
+   Nothing reports an overflow: the page is not wider, the elements simply overlap.
+
+   The room is taken back from the two places that can spare it — the GitHub button, whose link
+   also lives in the footer, and the spacing between links. The alternative, hiding the section
+   links this high up, would cost the navigation on every tablet and small laptop. */
+@media(max-width:1100px) {
+    .nav-gh {
         display: none
     }
 
-    /* Goes with the links. 180px of button beside a 148px logo is what kept the bar from
-       fitting once the links were already hidden; the same link lives in the footer. */
-    .nav-gh {
+    .nav-links {
+        gap: 16px
+    }
+}
+
+@media(max-width:680px) {
+    .nav-links {
         display: none
     }
 }

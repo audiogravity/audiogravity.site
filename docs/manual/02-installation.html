@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Installation — Audiogravity manual</title>
+    <meta name="description" content="Audiogravity user manual — Installation.">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/02-installation.html">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/manual.css">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">User manual</span>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Manual chapters">
+            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item active" href="02-installation.html" aria-current="page"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>2. Installation</h1>
+<p>Audiogravi<sup>ty</sup> installs in a single command. The installer detects your architecture,
+generates security keys, configures the systemd service and starts everything —
+usually <strong>under five minutes</strong> from <code>curl</code> to the interface. No compilation, no
+dependency hell, no manual configuration.</p>
+<blockquote>
+<p>The installer sets up <strong>Audiogravi<sup>ty</sup> itself</strong>. The audio engines it conducts
+(MPD, AirPlay, UPnP…) are installed afterwards, in a few clicks <strong>from the
+interface</strong> — that's step 3 of <a href="03-first-run.html">3. First run</a>.</p>
+</blockquote>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li>A <strong>Linux host</strong> next to your hi-fi — DietPi or Debian/Ubuntu, on <strong>x86-64</strong> or
+<strong>aarch64</strong> (Raspberry Pi). See
+<a href="01-introduction.html#what-you-need">1. Introduction → What you need</a>.</li>
+<li>The host reachable on your <strong>local network</strong>.</li>
+<li>Your <strong>early-access token</strong> — a GitHub token shared with approved testers during
+early access. <a href="mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request">Request one</a> if you don't have it.</li>
+</ul>
+<h2 id="recommended-all-in-one-one-box">Recommended — all-in-one (one box)</h2>
+<p>Installs the <strong>core</strong> (the engine) and the <strong>ui</strong> (the interface) on the same box.
+This is the standard setup and the one one-click self-update fully supports.</p>
+<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+</code></pre>
+<p>Then open the interface in any browser on your network:</p>
+<pre><code>https://&lt;ip-of-your-streamer&gt;
+</code></pre>
+<h2 id="advanced-core-and-ui-separately">Advanced — core and ui separately</h2>
+<p>You can install the two parts independently — for example to run the interface on a
+different machine. Run each installer on its target host:</p>
+<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash -s -- --token ghp_xxx
+</code></pre>
+<blockquote>
+<p><strong>Split installs and updates.</strong> One-click self-update updates a <strong>co-located</strong>
+core + ui together. If core and ui live on <strong>different hosts</strong>, update each side
+separately (see <a href="08-updating.html">8. Updating</a>).</p>
+</blockquote>
+<h2 id="optional-flags-core-installer">Optional flags (core installer)</h2>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--vapid-email you@example.com</code></td>
+<td>Contact address for Web Push notifications (the VAPID <code>sub</code>). Omitted → a placeholder is used and push stays basic.</td>
+</tr>
+<tr>
+<td><code>--public-url https://your.domain</code></td>
+<td>Enables <strong>passkeys</strong> (WebAuthn) and derives the WebAuthn origin / RP ID. Passkeys need a real HTTPS <strong>domain</strong> — they do <strong>not</strong> work over a bare IP.</td>
+</tr>
+</tbody>
+</table></div>
+<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
+    --token ghp_xxx \
+    --vapid-email you@example.com \
+    --public-url https://audiogravity.example.com
+</code></pre>
+<blockquote>
+<p>Use the exact origin your browser shows (scheme + host + port). Example:
+<code>--public-url https://ag.example.com:8443</code> → <code>WEBAUTHN_ORIGIN=https://ag.example.com:8443</code>
+and <code>WEBAUTHN_RP_ID=ag.example.com</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>For a standard setup you don't edit <code>.env</code> by hand.</strong> The installer generates a
+complete, working configuration: it creates the security secrets (API key, session key)
+and the Web Push keys for you, so the box is <strong>fully functional out of the box</strong> — you
+can log in, control audio, browse the library and radio without touching any file. The
+flags above are simply the recommended way to switch on the two <strong>optional</strong> features
+(passkeys and a real push contact); skip them and everything else still works. To enable
+them later, re-run the installer with the flag — or edit <code>/opt/audiogravity/core/.env</code>
+and restart the core (<code>sudo systemctl restart ag-core-server</code>).</p>
+<p><strong>The one exception is Roon</strong>, which has no installer flag or UI — you enable it in
+<code>.env</code>. See <a href="06-outputs-engines.html#roon">6. Outputs &amp; engines → Roon</a>.</p>
+</blockquote>
+<h2 id="getting-https-for-passkeys-and-push">Getting HTTPS — for passkeys and push</h2>
+<p>Passkeys (WebAuthn) and push notifications both require the browser to see
+Audiogravi<sup>ty</sup> on a <strong>real HTTPS domain</strong> — a bare IP or a self-signed
+certificate won't do. The recipe that works well for a home box, without exposing
+anything to the internet:</p>
+<ol>
+<li>
+<p><strong>A domain name</strong> you control (any cheap domain works), with a record pointing at
+the box's <strong>LAN address</strong> — e.g. <code>ag.example.com → 192.168.1.30</code>. The name only
+has to resolve on your network; nothing needs to be reachable from outside.</p>
+</li>
+<li>
+<p><strong>A real certificate</strong> via Let's Encrypt using the <strong>DNS-01</strong> challenge (supported
+by certbot and most DNS providers' APIs) — it proves domain ownership through a
+DNS record, so <strong>no port needs opening</strong> to the internet.</p>
+</li>
+<li>
+<p><strong>A reverse proxy</strong> in front of Audiogravi<sup>ty</sup> that terminates TLS —
+nginx, Caddy or Traefik, on the box itself or another always-on host. The proxy
+now owns TLS, so first re-run the <strong>ui installer</strong> and pick <strong>plain HTTP</strong> mode
+(it serves on port <strong>8080</strong> by default — this also frees port 443 if the proxy
+runs on the box):</p>
+<pre><code class="language-nginx">server {
+    listen 443 ssl;
+    server_name ag.example.com;
+    ssl_certificate     /etc/letsencrypt/live/ag.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ag.example.com/privkey.pem;
+    location / {
+        proxy_pass http://127.0.0.1:8080;    # the interface, in plain-HTTP mode
+        proxy_set_header Host $host;
+    }
+}
+</code></pre>
+<p>(Proxy on another host? Use the box's LAN IP instead of <code>127.0.0.1</code>.)</p>
+</li>
+<li>
+<p><strong>Tell Audiogravi<sup>ty</sup> its public origin</strong> — re-run the core installer with
+<code>--public-url https://ag.example.com</code> (see the flags above). From then on, open
+the app through that URL and the passkey / notification features light up.</p>
+</li>
+</ol>
+<p>Caddy users get steps 2–3 in two lines (<code>caddy</code> obtains and renews certificates
+automatically). This is the standard self-hosting pattern — any guide on &quot;Let's
+Encrypt DNS-01 + reverse proxy&quot; applies as-is.</p>
+<h2 id="first-contact">First contact</h2>
+<p>Open <code>https://&lt;box-ip&gt;</code> in a browser. On first run, Audiogravi<sup>ty</sup> activates a
+<strong>30-day trial</strong> automatically — no action required — and you sign in with the
+<strong>default admin account</strong> (then change its password right away — see
+<a href="03-first-run.html#2-sign-in--and-secure-your-account">3. First run</a>). Continue to
+<strong><a href="03-first-run.html">3. First run</a></strong>.</p>
+<h2 id="uninstalling">Uninstalling</h2>
+<pre><code class="language-bash">sudo /opt/audiogravity/uninstall.sh          # core — keeps your configuration
+sudo /var/www/audiogravity-ui/uninstall.sh   # ui
+</code></pre>
+<p>This removes the services, the programs, the privileged rules Audiogravi<sup>ty</sup>
+granted itself and its system account — but <strong>keeps your configuration</strong> in
+<code>/etc/audiogravity</code> (your topology, profiles and audio settings) and the backups of
+your audio services' configuration files in <code>/var/backups/audiogravity</code>. Reinstalling
+afterwards picks up where you left off.</p>
+<p>To remove those too:</p>
+<pre><code class="language-bash">sudo /opt/audiogravity/uninstall.sh --purge
+</code></pre>
+<p><strong>What is never removed, on purpose:</strong> the audio software you installed from the
+<strong>Audio Software</strong> page — MPD, Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge —
+and their own configuration files. They are ordinary system packages that keep working
+without Audiogravi<sup>ty</sup>; remove them with your package manager if you want them
+gone.</p>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

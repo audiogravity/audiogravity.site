@@ -162,6 +162,14 @@ class TestPage:
         out = page("Contents", "", TOC, "", "")
         assert out.count('class="man-nav-item') == len(TOC)
 
+    def test_the_way_back_carries_the_app_icon_and_names_itself(self):
+        """Two ways home per page: this one and the footer link. The icon is decorative — the
+        link is named by aria-label, not by an alt text repeating the wordmark beside it."""
+        out = page("Listening", "", TOC, "04-listening", "04-listening.html")
+        assert 'href="../../index.html" aria-label="Audiogravity home"' in out
+        assert 'class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""' in out
+        assert out.count('href="../../index.html"') == 2  # top bar and footer
+
     def test_strips_markup_from_the_document_title(self):
         out = page("About Audiogravi<sup>ty</sup>", "", TOC, "", "")
         assert "<title>About Audiogravity — Audiogravity manual</title>" in out

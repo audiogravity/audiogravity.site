@@ -50,11 +50,25 @@ footer.man-foot {
 }
 
 .man-home {
+    display: inline-flex;
+    align-items: center;
     font-size: 17px;
     font-weight: 900;
     letter-spacing: -.04em;
     color: var(--text);
     text-decoration: none
+}
+
+/* The landing's own mark, at the same rounding, so the way back is recognisable as the way
+   back rather than as a piece of decoration. 28px against the landing's 32: this bar is 52px
+   tall where the landing's is 60. `flex: none` because a flex item with an intrinsic width
+   will otherwise be squeezed by the wordmark beside it on a narrow screen. */
+.man-home-icon {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    margin-right: 9px;
+    border-radius: 6px
 }
 
 .man-home sup {

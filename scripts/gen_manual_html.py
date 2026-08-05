@@ -238,7 +238,9 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
 
 <body class="man-body">
     <header class="man-top">
-        <a class="man-home" href="../../index.html">{BRAND}</a>
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">{BRAND}</a>
         <span class="man-crumb">User manual</span>
     </header>
 

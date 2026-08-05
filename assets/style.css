@@ -359,8 +359,7 @@ nav {
    Nothing reports an overflow: the page is not wider, the elements simply overlap.
 
    The room is taken back from the two places that can spare it — the GitHub button, whose link
-   also lives in the footer, and the spacing between links. The alternative, hiding the section
-   links this high up, would cost the navigation on every tablet and small laptop. */
+   also lives in the footer, and the spacing between links. */
 @media(max-width:1100px) {
     .nav-gh {
         display: none
@@ -371,9 +370,48 @@ nav {
     }
 }
 
-@media(max-width:680px) {
+/* Below this the links used to be hidden outright, which left a phone with no navigation at
+   all: eight sections and no way to reach any of them but scrolling the whole page. They now
+   take a row of their own under the lockup and scroll sideways, the same answer the licence
+   server's header uses — a bar that has run out of room should still be reachable.
+
+   The threshold is where the single row stops being clean, not where a phone stops: measured,
+   two of the labels break onto a second line inside the bar below 850px, which is what a
+   landscape phone gets. Picking 680 covered portrait and left landscape looking broken.
+
+   `min-width: 0` is what actually lets the row scroll: a flex item refuses to shrink below its
+   content without it, and would push the theme toggle off the bar instead. */
+@media(max-width:850px) {
+    .nav-inner {
+        flex-wrap: wrap;
+        row-gap: 4px;
+        padding: 0 16px
+    }
+
+    nav {
+        height: auto;
+        padding-bottom: 6px
+    }
+
     .nav-links {
+        order: 3;
+        flex-basis: 100%;
+        min-width: 0;
+        gap: 18px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        white-space: nowrap
+    }
+
+    .nav-links::-webkit-scrollbar {
         display: none
+    }
+
+    /* The bar is sticky and now two rows tall, so a section scrolled to the very top would sit
+       underneath it. */
+    .section[id],
+    .hero {
+        scroll-margin-top: 104px
     }
 }
 

@@ -7,6 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The manual reads on a phone
+
+The user manual opens inside Audiogravi<sup>ty</sup> itself, and any chapter with a
+screenshot used to push the reader off to one side — you had to drag it back to carry on
+reading. The screenshots are phone captures at their own size, and nothing was stopping
+them from being wider than the screen you were reading on. An iPhone 13 happened to be
+wide enough; anything narrower was not.
+
+Screenshots now fit whatever they are read on. Wide tables scroll on their own instead of
+taking the page with them, and a long command written in the middle of a sentence no longer
+holds the text open. Checked chapter by chapter, from the smallest iPhone up.
+
 ### This page works on a phone
 
 Most people meet Audiogravi<sup>ty</sup> here first, and until now that page had to be

@@ -13,6 +13,10 @@ HOST="${AG_DEV_HOST:-$(ip route get 1.1.1.1 2>/dev/null | awk '{for (i=1;i<=NF;i
 
 echo "Landing page: http://${HOST}:${PORT}"
 
+# ThreadingHTTPServer, not HTTPServer: the plain one handles a single connection at a time
+# behind a queue of five, so a client that dies mid-request wedges it and every later request
+# hangs until it is restarted. A browser opening the landing fires a dozen parallel requests
+# for the screenshots alone, and an automated pass over the manual walks it much harder.
 python3 -c "
 import http.server, os
 os.chdir('$(dirname "$0")')
@@ -21,5 +25,5 @@ class H(http.server.SimpleHTTPRequestHandler):
         if self.path == '/': self.path = '/index.html'
         return super().do_GET()
     def log_message(self, *a): pass
-http.server.HTTPServer(('', $PORT), H).serve_forever()
+http.server.ThreadingHTTPServer(('', $PORT), H).serve_forever()
 "

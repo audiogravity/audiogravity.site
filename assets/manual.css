@@ -158,6 +158,16 @@ footer.man-foot {
     color: var(--text)
 }
 
+/* Which release the manual describes. Contents page only — a fact about the document, sitting
+   just under its title, not a banner repeated on every chapter. */
+.man-version {
+    margin: -12px 0 28px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .06em;
+    color: var(--text4)
+}
+
 .man-md h2 {
     margin: 48px 0 14px;
     padding-bottom: 8px;

@@ -145,6 +145,53 @@ def link_between_pages(rendered: str, known: set[str]) -> str:
     return MD_LINK.sub(swap, rendered)
 
 
+def read_version() -> str:
+    """Read the published version from the repository README's badge.
+
+    Two places in this repo carry a version: the landing's footer, which is maintained by hand
+    as a release checklist item, and this badge, which ``update-test-report.sh`` rewrites during
+    ``release.sh prepare``. The automated one is the source, so the manual follows a release
+    without anyone remembering it.
+
+    Deliberately not ``audiogravity.ops/VERSION``: that file carries ``-dev`` between releases,
+    and the manual is published, so it must state what was released, not what is being built.
+
+    Returns:
+        The version string, e.g. ``0.9.31``.
+
+    Raises:
+        SystemExit: if the badge is gone or reshaped. Failing here is the point — a silently
+            omitted version is the drift this line exists to prevent, and it would be invisible.
+    """
+    readme = (REPO_DIR / "README.md").read_text(encoding="utf-8")
+    m = re.search(r"badge/version-(\d+\.\d+\.\d+)", readme)
+    if not m:
+        sys.exit("no version badge found in README.md — has update-test-report.sh changed shape?")
+    return m.group(1)
+
+
+def stamp_version(rendered: str, version: str) -> str:
+    """State which release the manual describes, once, on the contents page.
+
+    On the contents page only, and not on all thirteen: a version on every chapter invites
+    "where is the manual for MY version?", which has no answer while only one is published. At
+    the entrance it reads as a fact about the document rather than a promise of an archive.
+
+    Args:
+        rendered: The contents page body.
+        version: Released version, from :func:`read_version`.
+
+    Returns:
+        The body with the line inserted after the title.
+    """
+    # The "v" is presentation and belongs here, not in read_version: the badge carries a bare
+    # number, and the landing's footer writes it as v0.9.31 — the manual reads the same way.
+    line = f'<p class="man-version">Describes {BRAND} v{html.escape(version)}</p>'
+    if "</h1>" in rendered:
+        return rendered.replace("</h1>", f"</h1>\n{line}", 1)
+    return line + rendered
+
+
 def lazy_load_images(rendered: str) -> str:
     """Defer images that are not on screen yet.
 
@@ -295,7 +342,8 @@ def build() -> dict[Path, str]:
     # The README becomes the manual's front page, on the same shell as the chapters. Its
     # canonical address is the directory: that is what a visitor reaches, and what the landing
     # and the chapters link to.
-    out[MANUAL_DIR / "index.html"] = page("Contents", render(readme), toc, "", "")
+    out[MANUAL_DIR / "index.html"] = page(
+        "Contents", stamp_version(render(readme), read_version()), toc, "", "")
     return out
 
 

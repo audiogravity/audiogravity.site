@@ -21,6 +21,7 @@ from gen_manual_html import (  # noqa: E402
     parse_toc,
     slugify,
     stamp_heading_ids,
+    stamp_version,
     wrap_tables,
 )
 
@@ -135,6 +136,38 @@ class TestLazyLoadImages:
     def test_handles_every_image_on_a_page(self):
         html = '<img src="a.webp"><p>x</p><img src="b.webp">'
         assert lazy_load_images(html).count('loading="lazy"') == 2
+
+
+class TestStampVersion:
+    def test_states_the_release_under_the_title(self):
+        out = stamp_version("<h1>Manual</h1><p>body</p>", "0.9.31")
+        assert ('<h1>Manual</h1>\n'
+                '<p class="man-version">Describes Audiogravi<sup>ty</sup> v0.9.31</p>') in out
+
+    def test_inserts_once_even_with_later_headings(self):
+        out = stamp_version("<h1>A</h1><h1>B</h1>", "1.0.0")
+        assert out.count("man-version") == 1
+
+    def test_falls_back_to_the_top_when_there_is_no_title(self):
+        out = stamp_version("<p>body</p>", "0.9.31")
+        assert out.startswith('<p class="man-version">')
+
+
+class TestReadVersion:
+    def test_reads_the_badge_the_release_script_writes(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text(
+            'x <img src="https://img.shields.io/badge/version-0.9.31_beta-blue" /> y')
+        monkeypatch.setattr(g, "REPO_DIR", tmp_path)
+        assert g.read_version() == "0.9.31"
+
+    def test_fails_loudly_when_the_badge_is_gone(self, tmp_path, monkeypatch):
+        """Silently omitting the version is the drift this line exists to prevent."""
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("no badge here")
+        monkeypatch.setattr(g, "REPO_DIR", tmp_path)
+        with pytest.raises(SystemExit):
+            g.read_version()
 
 
 class TestPage:

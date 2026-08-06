@@ -7,6 +7,29 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Licences bought for a period now say so
+
+Audiogravi<sup>ty</sup> can issue a licence that runs for a fixed period rather than for ever.
+None had been issued yet, and it is as well: the whole path told the customer the wrong
+thing, twice.
+
+While the licence ran, the panel announced *"Lifetime license active"* and showed the end
+date nowhere at all — so someone who had bought a year believed he had bought the software
+outright. On the day it ended, that same panel told him his licence file was *"invalid or
+bound to a different device"*. Read plainly, that says corrupted or stolen. It is the sort of
+message that costs a support exchange, and an apology.
+
+The panel now names the end date for as long as the licence runs. On the day it ends it says
+what happened — the licence ended on that date, and Audiogravi<sup>ty</sup> keeps running in
+Starter Edition — and offers to renew, with the order number still on screen where it is
+needed. A licence bought for a period is also no longer called a trial, which is the word
+three different screens were using, one of them right after payment.
+
+Two things behind the scenes go with it. A mistyped end date is refused the moment it is
+entered, instead of being discovered months later by the customer whose box stops accepting
+his licence. And both ends now settle expiry in UTC: a box in New Zealand and the server in
+Europe used to disagree, for about thirteen hours a day, on whether a licence had run out.
+
 ### The manual is now part of the site
 
 Until now, every link to the documentation left audiogravity.app for GitHub. That is a fine

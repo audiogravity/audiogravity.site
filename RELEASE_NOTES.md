@@ -7,7 +7,19 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The System tab shows the core's logs again
+
+The log panel on the System tab had been empty for some time, and nothing said why. It was
+asking the system journal for a service under a name that no longer exists. A journal asked
+for a service it does not know does not report an error — it answers with an empty log — so
+the panel looked as though there was simply nothing to show. It now asks for the service that
+is running, and the logs are back.
+
+Alongside it, the interface has stopped calling the core "the backend". The System tab's
+button now reads **Restart Core**, and so do the confirmation, the notice that follows it, the
+title above the logs and the connection indicator. The site, the manual and the documentation
+have said "core" all along; the interface was the last place using a second word for the same
+thing.
 
 ---
 

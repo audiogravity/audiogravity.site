@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] The System tab shows the core's logs again.** The log panel asked the system journal for a service named `audiogravity-backend`, which was renamed some time ago. A journal asked for a unit that does not exist does not complain — it answers with an empty log — so the panel showed nothing at all, with no sign that anything was wrong. It now asks for the service that is actually running.
+- **[ui] The interface calls the core "the core", as the rest of Audiogravi<sup>ty</sup> does.** The System tab's action was labelled "Restart Backend", and the confirmation, the notification that followed it, the log panel's title and the connection indicator all used the same word — one component for which the documentation, the site and the manual have said "core" throughout. The indicator's tooltip was also the only text in the interface still written in French, and the development-mode prompt for an API key pointed at a `backend/.env` that does not exist. Nothing changes in behaviour; the addresses the interface calls are untouched.
+
 ## [0.9.32] - 2026-08-06
 
 ### Added

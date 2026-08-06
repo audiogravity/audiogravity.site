@@ -309,6 +309,21 @@ New installations ship without it.
 > [open an issue](https://github.com/audiogravity/audiogravity.site/issues) and
 > describe your setup.
 
+## "License ended on …" in the licence panel
+
+Your licence was issued to run until a date, and that date has passed. Nothing is broken
+and nothing was tampered with: Audiogravi<sup>ty</sup> keeps running in **Starter Edition**,
+your music and settings are untouched, and the Pro features come back the moment a current
+licence is installed.
+
+The panel keeps your **Order ID** on screen — you need it to renew. Use **License portal**
+to download a `.lic` for an order you have already paid for, or **Upload new license** if
+you have the file already.
+
+> A licence that has ended is not the same as *"License file is invalid or bound to a
+> different device"*. That message means the file does not match this machine, or was
+> altered — see below.
+
 ## Getting help
 
 - **Bug reports & questions** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues).

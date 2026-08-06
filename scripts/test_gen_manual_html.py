@@ -87,14 +87,17 @@ class TestLinkBetweenPages:
     KNOWN = {"00-quick-start", "04-listening", "README"}
 
     def test_rewrites_a_known_chapter(self):
-        assert link_between_pages('href="04-listening.md"', self.KNOWN) == 'href="04-listening.html"'
+        # No suffix: GitHub Pages serves the page at the extension-less address and
+        # 308-redirects the .html one, so linking with it costs a round trip on every click
+        # and shows search engines two addresses for one page.
+        assert link_between_pages('href="04-listening.md"', self.KNOWN) == 'href="04-listening"'
 
     def test_carries_the_anchor(self):
         assert (link_between_pages('href="04-listening.md#queue"', self.KNOWN)
-                == 'href="04-listening.html#queue"')
+                == 'href="04-listening#queue"')
 
-    def test_readme_becomes_the_index(self):
-        assert link_between_pages('href="README.md"', self.KNOWN) == 'href="index.html"'
+    def test_readme_becomes_the_directory(self):
+        assert link_between_pages('href="README.md"', self.KNOWN) == 'href=""'
 
     def test_leaves_a_sibling_document_alone(self):
         """No page is generated for ../../RELEASE_NOTES.md — rewriting it would make a 404."""
@@ -171,10 +174,10 @@ class TestReadVersion:
 
 
 class TestPage:
-    def test_canonical_of_a_chapter_is_its_own_file(self):
-        out = page("Listening", "<p>x</p>", TOC, "04-listening", "04-listening.html")
+    def test_canonical_is_written_exactly_as_given(self):
+        out = page("Listening", "<p>x</p>", TOC, "04-listening", "04-listening")
         assert ('<link rel="canonical" '
-                'href="https://audiogravity.app/docs/manual/04-listening.html">') in out
+                'href="https://audiogravity.app/docs/manual/04-listening">') in out
 
     def test_canonical_of_the_contents_page_is_the_directory(self):
         """Derived from the chapter id, this produced `/docs/manual/.html` — a 404, which is
@@ -184,8 +187,8 @@ class TestPage:
         assert "/docs/manual/.html" not in out
 
     def test_marks_the_active_chapter_for_assistive_technology(self):
-        out = page("Listening", "", TOC, "04-listening", "04-listening.html")
-        assert 'href="04-listening.html" aria-current="page"' in out
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert 'href="04-listening" aria-current="page"' in out
         assert out.count('aria-current="page"') == 1
 
     def test_contents_page_marks_no_chapter_active(self):
@@ -198,7 +201,7 @@ class TestPage:
     def test_the_way_back_carries_the_app_icon_and_names_itself(self):
         """Two ways home per page: this one and the footer link. The icon is decorative — the
         link is named by aria-label, not by an alt text repeating the wordmark beside it."""
-        out = page("Listening", "", TOC, "04-listening", "04-listening.html")
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
         assert 'href="../../index.html" aria-label="Audiogravity home"' in out
         assert 'class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""' in out
         assert out.count('href="../../index.html"') == 2  # top bar and footer
@@ -206,3 +209,34 @@ class TestPage:
     def test_strips_markup_from_the_document_title(self):
         out = page("About Audiogravi<sup>ty</sup>", "", TOC, "", "")
         assert "<title>About Audiogravity — Audiogravity manual</title>" in out
+
+
+class TestBuildCanonicals:
+    """What build() actually puts in the canonical, as opposed to what page() echoes back.
+
+    Every other test here calls page() directly, so all of them passed while build() was
+    handing it an address that redirects — GitHub Pages serves these pages without the
+    ``.html`` suffix and 308s the suffixed one to them. A canonical naming a redirect is the
+    one thing a canonical must never do, and nothing in the suite could see it.
+    """
+
+    def test_no_canonical_carries_a_suffix_that_redirects(self):
+        import gen_manual_html as g
+        for path, content in g.build().items():
+            m = re.search(r'<link rel="canonical" href="([^"]+)">', content)
+            assert m, f"{path.name} has no canonical"
+            assert not m.group(1).endswith(".html"), (
+                f"{path.name} points at {m.group(1)}, which GitHub Pages redirects"
+            )
+
+    def test_each_chapter_names_its_own_address(self):
+        import gen_manual_html as g
+        pages = g.build()
+        chapter = next(p for p in pages if p.name == "04-listening.html")
+        assert 'href="https://audiogravity.app/docs/manual/04-listening">' in pages[chapter]
+
+    def test_the_contents_page_names_the_directory(self):
+        import gen_manual_html as g
+        pages = g.build()
+        index = next(p for p in pages if p.name == "index.html")
+        assert 'href="https://audiogravity.app/docs/manual/">' in pages[index]

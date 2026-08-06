@@ -140,7 +140,10 @@ def link_between_pages(rendered: str, known: set[str]) -> str:
         if target not in known:
             return m.group(0)
         stem = "index" if target == "README" else target
-        return f'href="{stem}.html{m.group("anchor") or ""}"'
+        # No .html: GitHub Pages serves these pages at the extension-less address
+        # and 308-redirects the suffixed one. "index" is the directory itself.
+        target_href = "" if stem == "index" else stem
+        return f'href="{target_href}{m.group("anchor") or ""}"'
 
     return MD_LINK.sub(swap, rendered)
 
@@ -236,16 +239,18 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         toc: Chapter list for the sidebar.
         active: Id of the chapter being rendered, highlighted in the sidebar. Empty on the
             contents page, which is not itself a chapter.
-        canonical: Path of this page under the site root. Passed in rather than derived from
-            ``active``: the contents page has no chapter id, and deriving it produced a
-            canonical link pointing at ``/docs/manual/.html`` — an address that does not exist,
-            which is the one thing a canonical link must never be.
+        canonical: Path of this page under the site root, **without the .html suffix**.
+            GitHub Pages serves these pages at the extension-less address and 308-redirects
+            the ``.html`` one to it, so a canonical carrying the suffix names an address that
+            redirects — the one thing a canonical link must never do. Passed in rather than
+            derived from ``active``, which has no value on the contents page and produced a
+            canonical pointing at ``/docs/manual/.html``.
 
     Returns:
         A complete HTML document.
     """
     links = "\n".join(
-        '            <a class="man-nav-item{cls}" href="{cid}.html"{cur}>'
+        '            <a class="man-nav-item{cls}" href="{cid}"{cur}>'
         '<span class="man-nav-n">{n:02d}</span>{label}</a>'.format(
             cls=" active" if cid == active else "",
             # Assistive technology reads aria-current; the class only paints a border.
@@ -336,8 +341,9 @@ def build() -> dict[Path, str]:
         src = MANUAL_DIR / f"{cid}.md"
         if not src.exists():
             sys.exit(f"{src} is listed in the Contents but does not exist")
+        # Canonical without the suffix: that is the address Pages actually serves.
         out[MANUAL_DIR / f"{cid}.html"] = page(
-            label, render(src.read_text(encoding="utf-8")), toc, cid, f"{cid}.html")
+            label, render(src.read_text(encoding="utf-8")), toc, cid, cid)
 
     # The README becomes the manual's front page, on the same shell as the chapters. Its
     # canonical address is the directory: that is what a visitor reaches, and what the landing

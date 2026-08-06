@@ -70,7 +70,7 @@
     <div class="announce-bar">
         <a href="https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md">
             <span class="announce-badge">NEW</span>
-            v0.9.31 <span class="announce-date">· 4 Aug 2026</span> — Lost your licence file after a reinstall? The self-service portal now opens from the app, so you can fetch it back yourself
+            v0.9.32 <span class="announce-date">· 6 Aug 2026</span> — The user manual is now available on the website. Fixes have also been made — see the changelog
             <span class="announce-arrow">→</span>
         </a>
     </div>
@@ -86,7 +86,7 @@
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
                 <a href="#install">Install</a>
-                <a href="docs/manual/index.html">Manual</a>
+                <a href="docs/manual/">Manual</a>
             </div>
             <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
                 <svg id="themeIcon" viewBox="0 0 24 24"></svg>
@@ -1071,7 +1071,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="docs/manual/07-administration.html#licence" style="color:var(--warn)">7. Administration → Licence</a>).</div>
+                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="docs/manual/07-administration#licence" style="color:var(--warn)">7. Administration → Licence</a>).</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1081,7 +1081,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli, Shairport-Sync and AirPlay are all optional — install whichever you want in one click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from there (configuration, tuning, orchestration). See <a href="docs/manual/03-first-run.html#3-install-the-audio-engines" style="color:var(--warn)">3. First run</a>.</div>
+                        <div class="faq-body-inner">Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli, Shairport-Sync and AirPlay are all optional — install whichever you want in one click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from there (configuration, tuning, orchestration). See <a href="docs/manual/03-first-run#3-install-the-audio-engines" style="color:var(--warn)">3. First run</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1131,7 +1131,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="docs/manual/03-first-run.html#7-install-it-as-an-app-recommended-on-phones" style="color:var(--warn)">3. First run</a>.</div>
+                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="docs/manual/03-first-run#7-install-it-as-an-app-recommended-on-phones" style="color:var(--warn)">3. First run</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1141,7 +1141,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">All three connect from <b>Library → Sources</b>: open the service's card and tap <b>Connect</b>. <b>Qobuz</b> signs in and redirects back automatically. <b>Tidal</b> lands on a fixed URL that a web app can't intercept — copy that full URL from the address bar, paste it back into the Tidal card and tap <b>Finish login</b>, once. <b>HIGHRESAUDIO</b> is simpler: enter your account email and password directly in its card. Tokens are then stored and refreshed for you. The full walkthroughs are in <a href="docs/manual/05-library-streaming.html#streaming-services" style="color:var(--warn)">5. Library & streaming</a>.</div>
+                        <div class="faq-body-inner">All three connect from <b>Library → Sources</b>: open the service's card and tap <b>Connect</b>. <b>Qobuz</b> signs in and redirects back automatically. <b>Tidal</b> lands on a fixed URL that a web app can't intercept — copy that full URL from the address bar, paste it back into the Tidal card and tap <b>Finish login</b>, once. <b>HIGHRESAUDIO</b> is simpler: enter your account email and password directly in its card. Tokens are then stored and refreshed for you. The full walkthroughs are in <a href="docs/manual/05-library-streaming#streaming-services" style="color:var(--warn)">5. Library & streaming</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1151,7 +1151,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">A fully illustrated manual covers the whole journey — from installation to troubleshooting — with a one-page <a href="docs/manual/00-quick-start.html" style="color:var(--warn)">quick start</a> and a <a href="docs/manual/10-glossary.html" style="color:var(--warn)">glossary</a>. It is readable <b>inside the app</b> (the <b>Manual</b> tab, always up to date) and online.</div>
+                        <div class="faq-body-inner">A fully illustrated manual covers the whole journey — from installation to troubleshooting — with a one-page <a href="docs/manual/00-quick-start" style="color:var(--warn)">quick start</a> and a <a href="docs/manual/10-glossary" style="color:var(--warn)">glossary</a>. It is readable <b>inside the app</b> (the <b>Manual</b> tab, always up to date) and online.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1161,7 +1161,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">From the interface. When a new release is available, the <b>Admin</b> tab shows an update banner — one click and your admin password, and the box downloads, installs and health-checks the new version with live progress. If anything goes wrong it <b>automatically rolls back</b> to the previous version. No terminal, no re-running the installer. See <a href="docs/manual/08-updating.html" style="color:var(--warn)">8. Updating</a>.</div>
+                        <div class="faq-body-inner">From the interface. When a new release is available, the <b>Admin</b> tab shows an update banner — one click and your admin password, and the box downloads, installs and health-checks the new version with live progress. If anything goes wrong it <b>automatically rolls back</b> to the previous version. No terminal, no re-running the installer. See <a href="docs/manual/08-updating" style="color:var(--warn)">8. Updating</a>.</div>
                     </div>
                 </div>
 
@@ -1243,7 +1243,7 @@
                     <div class="tagline">The conductor of your streamer. Every engine, every source, total control.
                     </div>
                     <div class="version"><a
-                            href="https://github.com/audiogravity/audiogravity.site/blob/main/CHANGELOG.md">v0.9.31
+                            href="https://github.com/audiogravity/audiogravity.site/blob/main/CHANGELOG.md">v0.9.32
                             (Early Access)</a> · Open core</div>
                 </div>
                 <div class="footer-col">
@@ -1258,7 +1258,7 @@
                     <a href="https://github.com/audiogravity/audiogravity.site">Releases <span
                             style="font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--warn)">COMING
                             SOON</span></a>
-                    <a href="docs/manual/index.html">User
+                    <a href="docs/manual/">User
                         manual</a>
                     <a href="https://github.com/audiogravity/audiogravity.site/issues">Issues</a>
                     <a href="https://github.com/audiogravity/audiogravity.ui">UI — open source</a>

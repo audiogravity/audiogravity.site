@@ -287,6 +287,9 @@ install taps a Pro tab — those carry a small lock icon in the tab bar).
 - **Lifetime** — a single-device `.lic` file cryptographically tied to this device's
   hardware fingerprint (the **Device ID**). One-time payment, no expiry, no
   subscription.
+- **Time-limited** — the same file, issued to run until a given date. The panel shows
+  that date while the licence is valid, and the plan reads *Time-limited* rather than
+  *Perpetual*. Every Pro feature is unlocked exactly as with a lifetime licence.
 - **Import / re-download** — import a `.lic` file, or re-download yours from the
   self-service portal (purchase email + Device ID, no account needed) after an OS
   reinstall.

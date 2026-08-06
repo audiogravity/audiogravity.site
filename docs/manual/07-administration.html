@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Administration — Audiogravity manual</title>
     <meta name="description" content="Audiogravity user manual — Administration.">
-    <link rel="canonical" href="https://audiogravity.app/docs/manual/07-administration.html">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/07-administration">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,18 +34,18 @@
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="Manual chapters">
-            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
-            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
-            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
-            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
-            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
-            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
-            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
-            <a class="man-nav-item active" href="07-administration.html" aria-current="page"><span class="man-nav-n">07</span>Administration</a>
-            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
-            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
-            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
-            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+            <a class="man-nav-item" href="00-quick-start"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item active" href="07-administration" aria-current="page"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq"><span class="man-nav-n">11</span>FAQ</a>
         </nav>
 
         <main class="man-main">
@@ -60,7 +60,7 @@ an in-app explanation.</p>
 <h2 id="the-admin-tab">The Admin tab</h2>
 <p>The <strong>Admin</strong> tab gathers everything about accounts and the box's relationship with
 Audiogravi<sup>ty</sup>: the <strong>user cards</strong> (below), unread
-<a href="#announcements">announcements</a>, the <a href="08-updating.html">update banner</a> — and the
+<a href="#announcements">announcements</a>, the <a href="08-updating">update banner</a> — and the
 <strong>licence</strong> panel, which also opens when a Starter install taps a locked Pro tab.</p>
 <h2 id="users-amp-access">Users &amp; access</h2>
 <p>User management lives on the <strong>Admin</strong> tab — one card per account, with an online
@@ -91,7 +91,7 @@ Cosmic)</em> — plus a <strong>Light/Dark Mode</strong> toggle.</li>
 <li><strong>Compact Mode</strong> — a denser layout. <strong>Animations</strong> — turns UI motion off
 (functional loading spinners keep animating so an operation never looks stuck).</li>
 <li><strong>Portrait Lock</strong> — phones and tablets only; see
-<a href="04-listening.html#portrait-lock">4. Listening</a>.</li>
+<a href="04-listening#portrait-lock">4. Listening</a>.</li>
 <li><strong>Face ID / Touch ID</strong> — register this device as a <strong>passkey</strong> in one tap; each
 registered device appears as a chip you can remove individually. (These are the
 same credentials as the <em>Passkeys</em> button on your user card above.)</li>
@@ -107,7 +107,7 @@ something needs attention — even with the app closed:</p>
 <li>a <strong>profile</strong> is activated.</li>
 </ul>
 <p>Like passkeys, push needs Audiogravi<sup>ty</sup> reachable over a real HTTPS <strong>domain</strong> —
-it does not work over a bare IP (see <a href="02-installation.html">2. Installation</a>).</p>
+it does not work over a bare IP (see <a href="02-installation">2. Installation</a>).</p>
 <h2 id="services">Services</h2>
 <p>Monitor and control individual systemd services in real time.</p>
 <ul>
@@ -125,7 +125,7 @@ tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, &gt;20 % high).<
 <img loading="lazy" src="images/ios-services.webp" alt="The Services tab: per-service cards with live metrics, health bar and start/stop controls" width="360">
 <h2 id="config-editor">Config editor</h2>
 <p>Safely edit the real configuration files of your audio services (see also
-<a href="03-first-run.html">3. First run</a> for the guided setup).</p>
+<a href="03-first-run">3. First run</a> for the guided setup).</p>
 <ul>
 <li><strong>Guided mode</strong> (MPD / AirPlay / UPnP) — change output or library in a couple of
 clicks; only the changed setting is rewritten. <em>Reset to default</em> regenerates a
@@ -154,7 +154,7 @@ files edited above — this one lists <em>which</em> services exist, not their i
 NAA are the usual entries. Where a service keeps its own settings file is <strong>not</strong> declared
 here — Audiogravi<sup>ty</sup> finds it by itself, on any machine. Files written before this
 version carry an <code>appconfigfile</code> line; it is ignored (see
-<a href="09-troubleshooting.html">9. Troubleshooting</a>).</p>
+<a href="09-troubleshooting">9. Troubleshooting</a>).</p>
 </li>
 <li>
 <p><strong>Profiles</strong> — each entry has a <code>name</code>, a <code>description</code>, and two lists: the services to
@@ -180,7 +180,7 @@ issues appear as <strong>warnings</strong> you can review and accept. A referenc
 <p>See also <strong>Audio topology</strong> below — the <em>other</em> file you own, describing the physical hi-fi
 chain that feeds the signal-path view.</p>
 <h2 id="audio-topology-signal-chain-map">Audio topology (signal-chain map)</h2>
-<p>The <strong>Audio Pipeline</strong> graph (see <a href="06-outputs-engines.html">6. Outputs &amp; engines</a>) is drawn
+<p>The <strong>Audio Pipeline</strong> graph (see <a href="06-outputs-engines">6. Outputs &amp; engines</a>) is drawn
 from a single file you own: <strong><code>audio-topology.json</code></strong>. It is a plain description of your
 hi-fi chain — which devices you have (streamer, DAC, amplifier, speakers, the app driving
 it…) and how they are wired together. Audiogravi<sup>ty</sup> <strong>reads</strong> it to draw the picture;
@@ -305,7 +305,7 @@ and <em>Remove Override</em> to roll a service back to factory behaviour instant
 <p>From time to time Audiogravi<sup>ty</sup> broadcasts a short announcement — early-access
 news, an important notice. Unread announcements appear as <strong>dismissible banners</strong> at
 the top of the <strong>Admin</strong> page, and the Admin tab carries a small marker until you have
-seen them (the same cue it uses for a <a href="08-updating.html">waiting update</a>). Dismissals
+seen them (the same cue it uses for a <a href="08-updating">waiting update</a>). Dismissals
 are remembered per device.</p>
 <h2 id="licence">Licence</h2>
 <p>The licence panel opens from the <strong>Admin</strong> tab (and automatically when a <strong>Starter</strong>
@@ -315,6 +315,9 @@ install taps a Pro tab — those carry a small lock icon in the tab bar).</p>
 <li><strong>Lifetime</strong> — a single-device <code>.lic</code> file cryptographically tied to this device's
 hardware fingerprint (the <strong>Device ID</strong>). One-time payment, no expiry, no
 subscription.</li>
+<li><strong>Time-limited</strong> — the same file, issued to run until a given date. The panel shows
+that date while the licence is valid, and the plan reads <em>Time-limited</em> rather than
+<em>Perpetual</em>. Every Pro feature is unlocked exactly as with a lifetime licence.</li>
 <li><strong>Import / re-download</strong> — import a <code>.lic</code> file, or re-download yours from the
 self-service portal (purchase email + Device ID, no account needed) after an OS
 reinstall.</li>
@@ -322,8 +325,8 @@ reinstall.</li>
 <img loading="lazy" src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
 <h2 id="related">Related</h2>
 <ul>
-<li><a href="08-updating.html">8. Updating</a> — keeping the box current</li>
-<li><a href="09-troubleshooting.html">9. Troubleshooting</a> — when something misbehaves</li>
+<li><a href="08-updating">8. Updating</a> — keeping the box current</li>
+<li><a href="09-troubleshooting">9. Troubleshooting</a> — when something misbehaves</li>
 </ul>
 
             </article>

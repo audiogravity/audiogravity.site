@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Installation — Audiogravity manual</title>
     <meta name="description" content="Audiogravity user manual — Installation.">
-    <link rel="canonical" href="https://audiogravity.app/docs/manual/02-installation.html">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/02-installation">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,18 +34,18 @@
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="Manual chapters">
-            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
-            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
-            <a class="man-nav-item active" href="02-installation.html" aria-current="page"><span class="man-nav-n">02</span>Installation</a>
-            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
-            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
-            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
-            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
-            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
-            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
-            <a class="man-nav-item" href="09-troubleshooting.html"><span class="man-nav-n">09</span>Troubleshooting</a>
-            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
-            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+            <a class="man-nav-item" href="00-quick-start"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item active" href="02-installation" aria-current="page"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item" href="09-troubleshooting"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq"><span class="man-nav-n">11</span>FAQ</a>
         </nav>
 
         <main class="man-main">
@@ -58,13 +58,13 @@ dependency hell, no manual configuration.</p>
 <blockquote>
 <p>The installer sets up <strong>Audiogravi<sup>ty</sup> itself</strong>. The audio engines it conducts
 (MPD, AirPlay, UPnP…) are installed afterwards, in a few clicks <strong>from the
-interface</strong> — that's step 3 of <a href="03-first-run.html">3. First run</a>.</p>
+interface</strong> — that's step 3 of <a href="03-first-run">3. First run</a>.</p>
 </blockquote>
 <h2 id="before-you-start">Before you start</h2>
 <ul>
 <li>A <strong>Linux host</strong> next to your hi-fi — DietPi or Debian/Ubuntu, on <strong>x86-64</strong> or
 <strong>aarch64</strong> (Raspberry Pi). See
-<a href="01-introduction.html#what-you-need">1. Introduction → What you need</a>.</li>
+<a href="01-introduction#what-you-need">1. Introduction → What you need</a>.</li>
 <li>The host reachable on your <strong>local network</strong>.</li>
 <li>Your <strong>early-access token</strong> — a GitHub token shared with approved testers during
 early access. <a href="mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request">Request one</a> if you don't have it.</li>
@@ -86,7 +86,7 @@ curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash -s -- --token gh
 <blockquote>
 <p><strong>Split installs and updates.</strong> One-click self-update updates a <strong>co-located</strong>
 core + ui together. If core and ui live on <strong>different hosts</strong>, update each side
-separately (see <a href="08-updating.html">8. Updating</a>).</p>
+separately (see <a href="08-updating">8. Updating</a>).</p>
 </blockquote>
 <h2 id="optional-flags-core-installer">Optional flags (core installer)</h2>
 <div class="man-table"><table>
@@ -127,7 +127,7 @@ flags above are simply the recommended way to switch on the two <strong>optional
 them later, re-run the installer with the flag — or edit <code>/opt/audiogravity/core/.env</code>
 and restart the core (<code>sudo systemctl restart ag-core-server</code>).</p>
 <p><strong>The one exception is Roon</strong>, which has no installer flag or UI — you enable it in
-<code>.env</code>. See <a href="06-outputs-engines.html#roon">6. Outputs &amp; engines → Roon</a>.</p>
+<code>.env</code>. See <a href="06-outputs-engines#roon">6. Outputs &amp; engines → Roon</a>.</p>
 </blockquote>
 <h2 id="getting-https-for-passkeys-and-push">Getting HTTPS — for passkeys and push</h2>
 <p>Passkeys (WebAuthn) and push notifications both require the browser to see
@@ -177,8 +177,8 @@ Encrypt DNS-01 + reverse proxy&quot; applies as-is.</p>
 <p>Open <code>https://&lt;box-ip&gt;</code> in a browser. On first run, Audiogravi<sup>ty</sup> activates a
 <strong>30-day trial</strong> automatically — no action required — and you sign in with the
 <strong>default admin account</strong> (then change its password right away — see
-<a href="03-first-run.html#2-sign-in--and-secure-your-account">3. First run</a>). Continue to
-<strong><a href="03-first-run.html">3. First run</a></strong>.</p>
+<a href="03-first-run#2-sign-in--and-secure-your-account">3. First run</a>). Continue to
+<strong><a href="03-first-run">3. First run</a></strong>.</p>
 <h2 id="uninstalling">Uninstalling</h2>
 <pre><code class="language-bash">sudo /opt/audiogravity/uninstall.sh          # core — keeps your configuration
 sudo /var/www/audiogravity-ui/uninstall.sh   # ui

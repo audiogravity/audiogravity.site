@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Troubleshooting — Audiogravity manual</title>
     <meta name="description" content="Audiogravity user manual — Troubleshooting.">
-    <link rel="canonical" href="https://audiogravity.app/docs/manual/09-troubleshooting.html">
+    <link rel="canonical" href="https://audiogravity.app/docs/manual/09-troubleshooting">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,18 +34,18 @@
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="Manual chapters">
-            <a class="man-nav-item" href="00-quick-start.html"><span class="man-nav-n">00</span>Quick start</a>
-            <a class="man-nav-item" href="01-introduction.html"><span class="man-nav-n">01</span>Introduction</a>
-            <a class="man-nav-item" href="02-installation.html"><span class="man-nav-n">02</span>Installation</a>
-            <a class="man-nav-item" href="03-first-run.html"><span class="man-nav-n">03</span>First run</a>
-            <a class="man-nav-item" href="04-listening.html"><span class="man-nav-n">04</span>Listening</a>
-            <a class="man-nav-item" href="05-library-streaming.html"><span class="man-nav-n">05</span>Library & streaming</a>
-            <a class="man-nav-item" href="06-outputs-engines.html"><span class="man-nav-n">06</span>Outputs & engines</a>
-            <a class="man-nav-item" href="07-administration.html"><span class="man-nav-n">07</span>Administration</a>
-            <a class="man-nav-item" href="08-updating.html"><span class="man-nav-n">08</span>Updating</a>
-            <a class="man-nav-item active" href="09-troubleshooting.html" aria-current="page"><span class="man-nav-n">09</span>Troubleshooting</a>
-            <a class="man-nav-item" href="10-glossary.html"><span class="man-nav-n">10</span>Glossary</a>
-            <a class="man-nav-item" href="11-faq.html"><span class="man-nav-n">11</span>FAQ</a>
+            <a class="man-nav-item" href="00-quick-start"><span class="man-nav-n">00</span>Quick start</a>
+            <a class="man-nav-item" href="01-introduction"><span class="man-nav-n">01</span>Introduction</a>
+            <a class="man-nav-item" href="02-installation"><span class="man-nav-n">02</span>Installation</a>
+            <a class="man-nav-item" href="03-first-run"><span class="man-nav-n">03</span>First run</a>
+            <a class="man-nav-item" href="04-listening"><span class="man-nav-n">04</span>Listening</a>
+            <a class="man-nav-item" href="05-library-streaming"><span class="man-nav-n">05</span>Library & streaming</a>
+            <a class="man-nav-item" href="06-outputs-engines"><span class="man-nav-n">06</span>Outputs & engines</a>
+            <a class="man-nav-item" href="07-administration"><span class="man-nav-n">07</span>Administration</a>
+            <a class="man-nav-item" href="08-updating"><span class="man-nav-n">08</span>Updating</a>
+            <a class="man-nav-item active" href="09-troubleshooting" aria-current="page"><span class="man-nav-n">09</span>Troubleshooting</a>
+            <a class="man-nav-item" href="10-glossary"><span class="man-nav-n">10</span>Glossary</a>
+            <a class="man-nav-item" href="11-faq"><span class="man-nav-n">11</span>FAQ</a>
         </nav>
 
         <main class="man-main">
@@ -62,7 +62,7 @@ answer is usually on screen:</p>
 <li><em>&quot;Output in use by another player&quot;</em> — your sound card is <strong>exclusive</strong> (that is what
 makes bit-perfect playback possible), so only one player can hold it at a time.
 Stop the other one — often HQPlayer: turn its <strong>Use as output</strong> switch off and the
-card is released (see <a href="06-outputs-engines.html">6. Outputs &amp; engines</a>).</li>
+card is released (see <a href="06-outputs-engines">6. Outputs &amp; engines</a>).</li>
 <li><em>&quot;its network audio daemon (NAA) is not running&quot;</em> — HQPlayer is your output but the
 piece that feeds your DAC is stopped. Start it in <strong>Services</strong>, or turn the switch
 off to play locally.</li>
@@ -97,7 +97,7 @@ as soon as the music plays.</p>
 renderer) selected?</li>
 <li>In <strong>Config</strong>, confirm the service's <strong>audio output</strong> badge points at your DAC. If
 the card index drifted after a hardware change, re-run <strong>Guided → output</strong> (the DAC
-index is normally pinned automatically — see <a href="03-first-run.html">3. First run</a>).</li>
+index is normally pinned automatically — see <a href="03-first-run">3. First run</a>).</li>
 <li>In <strong>Services</strong>, confirm the relevant service (mpd, shairport-sync…) is <strong>RUNNING</strong>.</li>
 </ul>
 <h2 id="my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</h2>
@@ -176,7 +176,7 @@ use the jack or HDMI sound.</p>
 </code></pre>
 <p>Your DAC should now be listed — under its real name, <code>HiFiBerry DAC+ Pro</code> and the like,
 not a generic label. Back in the interface, run <strong>Guided → output</strong> (see
-<a href="03-first-run.html">3. First run</a>) and pick it: that is the step that writes the output
+<a href="03-first-run">3. First run</a>) and pick it: that is the step that writes the output
 into each service's configuration. Detection alone routes nothing.</p>
 <blockquote>
 <p><strong>If nothing appears after the reboot</strong>, the board is declared but not answering.
@@ -203,7 +203,7 @@ Override</strong> on the Systemd tab to roll it back to factory behaviour instan
 <h2 id="streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</h2>
 <ul>
 <li>Confirm the service is <strong>Connected</strong> in Library → Sources, and that your
-<strong>subscription</strong> covers Hi-Res (see <a href="05-library-streaming.html">5. Library &amp; streaming</a>).</li>
+<strong>subscription</strong> covers Hi-Res (see <a href="05-library-streaming">5. Library &amp; streaming</a>).</li>
 <li>A track that played before but fails later is usually an <strong>expired streaming link</strong> —
 Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.</li>
 <li><strong>HIGHRESAUDIO</strong> allows a single active device — if it signed out, reconnect.</li>
@@ -212,7 +212,7 @@ is anything in a format it cannot decode (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA
 AIFC) — wherever
 it comes from: your library, a media server or a radio station. Audiogravi<sup>ty</sup> names
 the reason. Turn <strong>Use as output</strong> off to play them locally (see
-<a href="06-outputs-engines.html">6. Outputs &amp; engines</a>).</li>
+<a href="06-outputs-engines">6. Outputs &amp; engines</a>).</li>
 </ul>
 <h2 id="casting-to-a-renderer-stalls">Casting to a renderer stalls</h2>
 <ul>
@@ -284,7 +284,7 @@ refresh — the share appears as a library choice.</p>
 <h2 id="locked-out-no-admin-can-log-in">Locked out — no admin can log in</h2>
 <p>Accounts live in <code>/opt/audiogravity/core/users.json</code> on the box. If the admin
 password is lost, connect over SSH, remove that file, and re-run the installer
-(see <a href="08-updating.html#manual-update">8. Updating → Manual update</a>): when no user file exists, the
+(see <a href="08-updating#manual-update">8. Updating → Manual update</a>): when no user file exists, the
 install seeds the default <strong><code>admin</code> / <code>admin123</code></strong> account again. This resets <strong>all</strong>
 accounts and their passkeys — your audio configuration is untouched. Sign in, set a
 fresh password immediately, and re-create the other accounts.</p>
@@ -293,10 +293,10 @@ fresh password immediately, and re-create the other accounts.</p>
 <strong>domain</strong> — they do <strong>not</strong> work over a bare IP, and <code>--public-url</code> alone is not
 enough: you also need the domain, a valid certificate and a reverse proxy. The full
 recipe is in
-<a href="02-installation.html#getting-https--for-passkeys-and-push">2. Installation → Getting HTTPS</a>.</p>
+<a href="02-installation#getting-https--for-passkeys-and-push">2. Installation → Getting HTTPS</a>.</p>
 <h2 id="version-mismatch-banner">Version-mismatch banner</h2>
 <p>The interface and core are on different versions — update the other component. See
-<a href="08-updating.html">8. Updating</a>.</p>
+<a href="08-updating">8. Updating</a>.</p>
 <h2 id="quotupdate-failed-to-start-an-update-is-already-in-progressquot">&quot;Update failed to start — An update is already in progress&quot;</h2>
 <p>A previous update was interrupted (power loss, reboot, or a crash mid-install) and
 left a stale &quot;in progress&quot; marker, so the core refuses to start a new one.</p>
@@ -308,7 +308,7 @@ banner.</li>
 </code></pre>
 This only resets the <em>status</em> flag; it does not touch the installed version. Check
 the current versions afterwards (App title / login screen) — if the core moved but
-the interface did not, re-run the interface installer (see <a href="08-updating.html">8. Updating</a>).</li>
+the interface did not, re-run the interface installer (see <a href="08-updating">8. Updating</a>).</li>
 </ul>
 <h2 id="the-config-tab-ignores-the-appconfigfile-path-i-set">The Config tab ignores the <code>appconfigfile</code> path I set</h2>
 <p>It is meant to. Audiogravi<sup>ty</sup> now knows by itself where each service keeps
@@ -334,6 +334,19 @@ sudo systemctl restart ag-core-server
 unexpected, there is currently no way to tell Audiogravi<sup>ty</sup> about it —
 <a href="https://github.com/audiogravity/audiogravity.site/issues">open an issue</a> and
 describe your setup.</p>
+</blockquote>
+<h2 id="quotlicense-ended-on-quot-in-the-licence-panel">&quot;License ended on …&quot; in the licence panel</h2>
+<p>Your licence was issued to run until a date, and that date has passed. Nothing is broken
+and nothing was tampered with: Audiogravi<sup>ty</sup> keeps running in <strong>Starter Edition</strong>,
+your music and settings are untouched, and the Pro features come back the moment a current
+licence is installed.</p>
+<p>The panel keeps your <strong>Order ID</strong> on screen — you need it to renew. Use <strong>License portal</strong>
+to download a <code>.lic</code> for an order you have already paid for, or <strong>Upload new license</strong> if
+you have the file already.</p>
+<blockquote>
+<p>A licence that has ended is not the same as <em>&quot;License file is invalid or bound to a
+different device&quot;</em>. That message means the file does not match this machine, or was
+altered — see below.</p>
 </blockquote>
 <h2 id="getting-help">Getting help</h2>
 <ul>

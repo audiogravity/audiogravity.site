@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.32] - 2026-08-06
+
 ### Added
 - **[site] The user manual has somewhere to be read.** Every link to it pointed at GitHub, so anyone following "Where is the documentation?" landed on a code host — and the search traffic for our own manual went there too. The twelve chapters are now published as ordinary pages on audiogravity.app, with a chapter sidebar, working cross-references and the same look and theme as the rest of the site. They are rendered from the same Markdown the interface reads, and regenerated automatically whenever a chapter changes, so the copy on the site and the copy in the app can no longer disagree. Reading it is also now reachable from the top of the page, not only from the sentences that happened to link to it. Every manual page carries the app mark beside the wordmark at the top, and that is the way back to the site — alongside the link already at the foot of each page. Its contents page states which release it describes, taken from the version the release process already writes, so it follows a release without anyone remembering to update it. That is said once, at the entrance: a version on every chapter would invite "where is the manual for my version?", which has no answer while only one is published.
 - **[site] Who is selling this.** A short note beside the prices says who wrote Audiogravi<sup>ty</sup> and on what system, in the first person. Asking for a lifetime licence while saying nothing about who is behind it is a fair thing for a visitor to hesitate over.

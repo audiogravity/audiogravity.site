@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.32 — 2026-08-06
+
 ### Licences bought for a period now say so
 
 Audiogravi<sup>ty</sup> can issue a licence that runs for a fixed period rather than for ever.

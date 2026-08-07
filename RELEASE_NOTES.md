@@ -7,6 +7,39 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A red frame around a station nobody was deleting
+
+On an iPhone, swiping one of the radio screens sideways left a red outline drawn around the
+station under the finger — and it stayed drawn, including while another station was being
+chosen. Red, on a screen where red means "remove", is not a detail: it reads as though
+something is about to be deleted.
+
+Two things caused it, and both are gone. The red panel that a swipe uncovers to offer
+**Remove** was in fact painted beneath every row all the time, simply covered up; and a row
+that had been touched once kept the small displacement the gesture gave it, forever. On iOS
+that combination is enough for a sliver of the red to show around the row's edges. The panel
+now exists only while a row is really being dragged left, and a row goes back to being an
+ordinary row the moment the finger lifts.
+
+The gesture is shared by four lists — radio stations, UPnP servers, renderers and the
+playback queue — so all four are fixed at once, along with three faults found in the same
+place: dragging one row and then merely tapping another used to leave the first one stuck,
+a drag to the right (or the sideways drift of a normal scroll) uncovered the red under a row
+that had not moved, and a removed row handed its red panel to whichever row slid up to take
+its place.
+
+### The licence panel says things once
+
+A trial announced how many days were left three times over — on the badge, in a sentence and
+under the progress bar — and one of those was assembled from a template, so it read
+"27 day(s) remaining". The price was given twice on the way to paying. The badge and the bar
+keep the count, the offer keeps the price, and the panel is two lines shorter.
+
+One correction travels with it. Last release removed the repeated price, and removed it from a
+piece of text used in two places rather than one: a box whose trial had ended was then asked
+to buy a licence without ever being shown what it costs, and the help screen lost its only
+figure too. Both state the price again.
+
 ### The System tab shows the core's logs again
 
 The log panel on the System tab had been empty for some time, and nothing said why. It was

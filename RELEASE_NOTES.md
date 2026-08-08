@@ -25,27 +25,52 @@ Two faults behind this were of a kind that cannot be seen by looking. Several co
 sizes were asking for values defined nowhere in the interface, so a stylesheet that read
 correctly did not behave correctly — and one of them left the spinner on the sign-in button
 drawn in white, on a white button, in dark mode: the button simply appeared to do nothing
-while it worked. The panel shown when a list fails to load had lost its red entirely under the
-Gravity theme for the same reason.
+while it worked.
 
-### The sign-in screen was wearing someone else's typeface
+The panel shown when a list of albums or stations fails to load is the same component, so it
+is fixed with it: readable text on the same red-bordered ground, and a red each theme now
+states for itself instead of inheriting another theme's.
 
-The first screen of Audiogravi<sup>ty</sup> was set in whatever font the device happened to ship —
-one typeface on a Mac, another on a PC, another again on an Android phone — while every screen
-behind it used the interface font. Nobody had chosen that; it was what was left after two
-independent faults, and repairing either one on its own would have changed nothing on screen.
+### Audiogravi<sup>ty</sup> was wearing someone else's typeface
 
-The font was being fetched from Google's servers, and the sign-in page was the one page that had
-never been given the link that fetches it — nor would its own security rules have permitted the
-request in the first place. So the font simply never arrived. And the sign-in page runs under the
-Minimal theme, which substitutes the operating system's font for the interface one: even had the
-font arrived, the theme would have handed it straight back.
+The interface was set in whatever font the device happened to ship — one typeface on a Mac,
+another on a PC, another again on an Android phone. Nobody had chosen that, and it was not for
+want of a typeface: Inter was being downloaded from Google's servers on every single page load,
+and then thrown away. The default theme substituted the operating system's font for it, so the
+only people who ever saw Inter were those who had gone into the settings and picked another
+theme.
 
-The font now lives on the box. Nothing is requested from the internet to display the sign-in
-screen, no visitor's address is reported to a third party in the process, and a box installed on a
-network with no route to the internet shows exactly the same screen as one that is connected. It
-is stored with the rest of the interface, so it is there from the first visit, offline included.
-The licence the typeface is distributed under is served next to it, as that licence requires.
+That download was not free. It is a request to a third party on the critical path of the first
+screen, a visitor's address handed to that third party, and a wait before anything can be drawn.
+On a device sitting on a network with no route to the internet — which is where a music streamer
+often sits — it is simply a typeface that never arrives.
+
+Inter now ships with Audiogravi<sup>ty</sup> and is served by the installation itself, on every
+screen including sign-in. Nothing is requested from the internet to draw the interface, no address
+goes to anyone, and a box with no connection shows exactly what a connected one shows. It is
+stored with the rest of the interface, so it is there from the first visit, offline included. The
+default theme wears it like the others.
+
+The second typeface changed too. Everything read digit by digit — frequencies, temperatures,
+identifiers, addresses, the terminal — was set in Courier New, a typewriter face from the 1950s
+and the one thing on the interface that looked its age. It is now JetBrains Mono, drawn for
+screens and for exactly this job: its figures share a width, so a value refreshing in place no
+longer shifts the layout under the eye.
+
+Both licences are served alongside the fonts, as those licences require.
+
+### A theme can carry its own typeface
+
+Themes are the part of Audiogravi<sup>ty</sup> open to contribution, and this is the first release
+where a theme is genuinely self-contained. One of the three was quietly acting as the palette every
+other theme inherited from, so changing a colour in it changed screens under the other two; and a
+theme that declared a typeface was obeyed everywhere except the sign-in screen, which pinned its
+own regardless.
+
+Both are gone. A theme now states what it wants — colours, typeface — and the whole interface
+follows it, with nothing outside the theme able to overrule it on one screen and not the next.
+Nothing changes in what any of the three existing themes looks like; what changes is that the next
+one will behave.
 
 ### A red frame around a station nobody was deleting
 

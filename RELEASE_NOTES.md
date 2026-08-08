@@ -7,6 +7,27 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The message you most need to read was the hardest one to read
+
+When a password is refused, the sentence explaining it was set in red on a pale red ground.
+That is the conventional way to write an error and one of the least legible: on the sign-in
+screen it fell below the contrast the text of an interface owes its reader — fine on a good
+monitor, gone on a laptop outdoors. The alert keeps its red border and tinted ground, because
+that is what makes it read as an alarm at a glance; the sentence inside it is now plain dark
+text. The icon beside it carries the same meaning for anyone who does not see the colour.
+
+The same was true, more quietly, of the greys around it — the line under the logo, the version
+at the foot of the page, the placeholder in each field. They are darker now. A failed passkey
+attempt is shown in the same alert as any other failure, instead of a line of small red text
+that resembled nothing else on the page.
+
+Two faults behind this were of a kind that cannot be seen by looking. Several colours and
+sizes were asking for values defined nowhere in the interface, so a stylesheet that read
+correctly did not behave correctly — and one of them left the spinner on the sign-in button
+drawn in white, on a white button, in dark mode: the button simply appeared to do nothing
+while it worked. The panel shown when a list fails to load had lost its red entirely under the
+Gravity theme for the same reason.
+
 ### The sign-in screen was wearing someone else's typeface
 
 The first screen of Audiogravi<sup>ty</sup> was set in whatever font the device happened to ship —

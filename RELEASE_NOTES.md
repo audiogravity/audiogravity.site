@@ -31,6 +31,21 @@ The panel shown when a list of albums or stations fails to load is the same comp
 is fixed with it: readable text on the same red-bordered ground, and a red each theme now
 states for itself instead of inheriting another theme's.
 
+### The white flash before the dark screen
+
+Opening Audiogravi<sup>ty</sup> on the dark theme began with a full-brightness white screen. Not
+long — the time it takes to fetch and parse the interface's code — but long enough to be the first
+thing you saw, and on a device most people use in a dimly lit room it is the worst possible first
+thing.
+
+The cause was ordinary: the theme and the dark mode were applied by that code, so until it ran
+there was nothing to apply them. The browser's own bar had the same problem in a simpler form — it
+had been given one fixed colour, belonging to one theme, shown to everyone. And the sign-in screen
+always appeared in the default theme before switching to yours a moment later.
+
+The appearance is now read and applied before anything is drawn at all, so the first thing on
+screen is already the one you chose. It survives a reload with no network, too.
+
 ### Audiogravi<sup>ty</sup> was wearing someone else's typeface
 
 The interface was set in whatever font the device happened to ship — one typeface on a Mac,

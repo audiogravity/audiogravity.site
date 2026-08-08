@@ -7,6 +7,30 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The page that fetches your licence had a dependency you never agreed to
+
+If you reinstall your machine, you come to a page on the licence server to download your licence
+file again. That page was built on code — and set in a typeface — fetched from a public code
+distributor elsewhere on the internet, every time it opened.
+
+That arrangement is invisible while it works. When it does not — an outage at that distributor, a
+corporate network that blocks it, a connection that simply cannot reach it — a missing typeface
+would have been a cosmetic matter. Missing code is not: the page renders nothing at all. Blank,
+with no message, precisely when someone needs it most.
+
+Everything that page needs now comes from the licence server itself. It is sixteen kilobytes; the
+argument for keeping it elsewhere was never strong, and the cost of the arrangement fell entirely
+on whoever happened to open the page on a bad day. The administration console gained the same
+independence, and rather more from it: code fetched from a third party there was running with full
+access to a page that holds licence keys and customer addresses.
+
+While in those pages, two things that had been true since they were written were put right. Their
+light theme had never been given colours of its own, so it borrowed those drawn for a black
+background — a green status, an amber warning, a red refusal, all barely distinguishable from white
+paper. And they were set in whatever typeface the machine happened to provide, so the page a
+customer sees looked like a different product on every computer. They now use Inter and JetBrains
+Mono, like the rest of Audiogravi<sup>ty</sup>, served from the same place as everything else.
+
 ### The message you most need to read was the hardest one to read
 
 When a password is refused, the sentence explaining it was set in red on a pale red ground.

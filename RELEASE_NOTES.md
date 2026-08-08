@@ -7,6 +7,25 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The sign-in screen was wearing someone else's typeface
+
+The first screen of Audiogravi<sup>ty</sup> was set in whatever font the device happened to ship —
+one typeface on a Mac, another on a PC, another again on an Android phone — while every screen
+behind it used the interface font. Nobody had chosen that; it was what was left after two
+independent faults, and repairing either one on its own would have changed nothing on screen.
+
+The font was being fetched from Google's servers, and the sign-in page was the one page that had
+never been given the link that fetches it — nor would its own security rules have permitted the
+request in the first place. So the font simply never arrived. And the sign-in page runs under the
+Minimal theme, which substitutes the operating system's font for the interface one: even had the
+font arrived, the theme would have handed it straight back.
+
+The font now lives on the box. Nothing is requested from the internet to display the sign-in
+screen, no visitor's address is reported to a third party in the process, and a box installed on a
+network with no route to the internet shows exactly the same screen as one that is connected. It
+is stored with the rest of the interface, so it is there from the first visit, offline included.
+The licence the typeface is distributed under is served next to it, as that licence requires.
+
 ### A red frame around a station nobody was deleting
 
 On an iPhone, swiping one of the radio screens sideways left a red outline drawn around the

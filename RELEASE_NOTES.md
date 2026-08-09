@@ -7,6 +7,27 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Nothing was telling the box that the music comes first
+
+Audiogravi<sup>ty</sup> runs two things on the same machine: the player, and the core that
+controls it. Until now the operating system had no reason to treat them differently. If the core
+did something demanding — installing a package, or simply going wrong — it asked for processor,
+memory and disk on exactly the same terms as the software decoding your music.
+
+That is the wrong default for a listening machine, and it is invisible until the day it is not.
+
+The core now runs with a declared, lower claim on the machine. Three things follow. Under
+contention the player gets two thirds of the processor and the core one third — still several
+times what the core needs, since at rest it uses about a tenth of one percent of a single core,
+measured across three days of normal use. A burst of memory from the core is slowed down at a
+threshold rather than being allowed to evict the player's own working data. And a runaway is
+capped and restarted within seconds, which on a machine you are listening to is far better than
+watching it grind itself into swap.
+
+On an idle box none of this does anything at all — that is the point. These are not
+optimisations, they are a statement of priority, and they only speak when something is competing
+for the machine.
+
 ### Seven screens that needed the internet to appear
 
 Configuration, Profiles, Performance, Systemd, Services, Audio software and the dashboard all rest

@@ -49,6 +49,11 @@ deliberate steps. That kind of drift has a mechanical cause worth naming: the pa
 text at one size while the unit everything else was written in resolved against another, so every
 value tuned by eye landed slightly beside the one before it.
 
+The same treatment was given to the space between things, which had grown to twenty-one different
+values — several of them a pixel apart, differences nobody decided and nobody sees one at a time,
+but which together make a page read as restless. Seven remain. Where a value had to move it moved
+outward, never inward: a layout should not quietly tighten because someone tidied it.
+
 Two faults were found in the doing, both of the sort that are invisible until someone is affected.
 Tapping a field on the customer page zoomed an iPhone in and never back out — the stylesheet had
 guarded against exactly that, but six fields carried their size on the element itself, which

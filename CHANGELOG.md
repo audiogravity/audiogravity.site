@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] [core] In your local library, All, Recent and A–Z now show three different things.** They showed the same list. Two reasons: the albums already arrive sorted alphabetically, so A–Z re-did work that was done — and Recent never looked at a date at all. It took the first fifty albums alphabetically and called them recent, which is why a library starting with `&` and `10,000 Hz Legend` opened on those under every heading. Recent now means what it says: most recently added to your library first, whatever the record's release year — a 1959 pressing copied in this week sits at the top. Albums added on the same day keep their alphabetical order, so a library that was indexed in one go stays readable instead of appearing in the order the disc happened to be read. And Recent is no longer capped at fifty: the whole library scrolls in that order.
+
+
 ## [0.9.33] - 2026-08-09
 
 ### Fixed

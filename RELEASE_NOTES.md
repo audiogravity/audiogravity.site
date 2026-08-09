@@ -7,6 +7,30 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Seven screens that needed the internet to appear
+
+Configuration, Profiles, Performance, Systemd, Services, Audio software and the dashboard all rest
+on one small library — a few hundred lines that let a screen read the application's shared state.
+The interface fetched it from a public code distributor on the internet, every time it loaded.
+
+There is a difference between a typeface that fails to arrive and code that fails to arrive. The
+first is a matter of appearance. The second stops the page: a module the browser cannot fetch stops
+the chain that depends on it, and those seven screens rendered nothing at all — no message, no
+partial page. On a machine sitting on a network with no route out, or behind one that blocks that
+distributor, that is what you got.
+
+The library now ships with Audiogravi<sup>ty</sup>, folded into a file the interface already
+downloads, so it costs not one extra request. It turned out to have been installed all along and
+simply unused, and one screen was already loading it that way — which means the interface had been
+carrying two copies of the same library, at two different versions, exchanging messages with each
+other.
+
+Three other libraries are still fetched that way: the code editor, the chart on the latency test,
+and the terminal. Those three are asked for by name and checked before use, so when they do not
+arrive the screen still appears — the editor becomes a plain text box, the chart does not draw.
+They will follow, and they need more care: folding them in naively would make every start pay for
+two screens most people never open.
+
 ### The page that fetches your licence had a dependency you never agreed to
 
 If you reinstall your machine, you come to a page on the licence server to download your licence

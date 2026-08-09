@@ -31,6 +31,32 @@ arrive the screen still appears — the editor becomes a plain text box, the cha
 They will follow, and they need more care: folding them in naively would make every start pay for
 two screens most people never open.
 
+### Not every screen wants to be dense
+
+The licence administration and the page a customer uses to re-download a licence were sharing one
+set of text sizes, and that was a mistake of category rather than of taste.
+
+The administration is a working surface: rows of orders read against each other, consulted at
+length by someone who knows it. Density is what makes that possible, and enlarging it would only
+push content off the screen and separate the things being compared. The customer page is the
+opposite — opened once, usually on a phone, by someone who has just reinstalled a machine and wants
+a file. Nothing there is being compared, and nothing rewards density.
+
+So the customer page now starts one step higher, and the administration keeps the size it was
+designed at. Underneath both, the sizes those pages had accumulated — twenty-two of them, eight
+falling within two pixels of each other, differences no eye can resolve — have become six
+deliberate steps. That kind of drift has a mechanical cause worth naming: the page declared its
+text at one size while the unit everything else was written in resolved against another, so every
+value tuned by eye landed slightly beside the one before it.
+
+Two faults were found in the doing, both of the sort that are invisible until someone is affected.
+Tapping a field on the customer page zoomed an iPhone in and never back out — the stylesheet had
+guarded against exactly that, but six fields carried their size on the element itself, which
+overrides a stylesheet, so the guard was present and inert. And the preview of an email campaign
+showed its unsubscribe footer larger than the message that actually goes out, because the preview
+is drawn in a frame that does not load the interface's stylesheet. A preview exists to decide
+whether to send.
+
 ### The page that fetches your licence had a dependency you never agreed to
 
 If you reinstall your machine, you come to a page on the licence server to download your licence

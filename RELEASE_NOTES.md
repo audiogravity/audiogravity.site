@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.33 — 2026-08-09
+
 ### Nothing was telling the box that the music comes first
 
 Audiogravi<sup>ty</sup> runs two things on the same machine: the player, and the core that

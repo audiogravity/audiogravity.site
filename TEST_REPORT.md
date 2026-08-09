@@ -1,14 +1,14 @@
 # Audiogravi<sup>ty</sup> — Test Report
 
-Generated: **2026-08-06 13:55 UTC**
+Generated: **2026-08-09 13:21 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **core** PASS | 1650 | 1650 | 0 | 0 | 53.3s |
-| **ui** PASS | 733 | 733 | 0 | 0 | 2.3s |
-| **Total** PASS | **2383** | **2383** | **0** | **0** | **55.6s** |
+| **core** PASS | 1654 | 1654 | 0 | 0 | 54.1s |
+| **ui** PASS | 851 | 851 | 0 | 0 | 3.2s |
+| **Total** PASS | **2505** | **2505** | **0** | **0** | **57.3s** |
 
 ## Detail
 
@@ -63,7 +63,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_app**
 
-  - [+] test_coreapp_uses_default_json_response_class
+  - [+] test_coreapp_uses_default_json_response_class (0.01s)
   - [+] test_responses_serialize_to_json
 
 **tests.test_audio_app_config.TestAudioAppConfig**
@@ -136,7 +136,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_audio_app_config.TestLicenceGate**
 
-  - [+] test_config_editing_works_without_a_licence (0.02s)
+  - [+] test_config_editing_works_without_a_licence (0.03s)
   - [+] test_guided_provisioning_works_without_a_licence_too (0.02s)
   - [+] test_guided_provisioning_stays_admin_only (0.02s)
 
@@ -179,7 +179,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_audio_hw.TestAudioHwRoutes**
 
-  - [+] test_devices_returns_200
+  - [+] test_devices_returns_200 (0.01s)
   - [+] test_devices_response_shape
   - [+] test_devices_returns_empty_when_no_proc
   - [+] test_force_refresh_param_accepted
@@ -247,7 +247,7 @@ Generated: **2026-08-06 13:55 UTC**
 **tests.test_audio_pipeline.TestCoverCache**
 
   - [+] test_cover_returns_24h_cache (0.02s)
-  - [+] test_cover_404_no_store (0.01s)
+  - [+] test_cover_404_no_store (0.02s)
 
 **tests.test_audio_pipeline.TestAirplayNowPlaying**
 
@@ -319,14 +319,14 @@ Generated: **2026-08-06 13:55 UTC**
 
   - [+] test_status_returns_200 (0.02s)
   - [+] test_provision_200_maps_request_to_provisioner (0.03s)
-  - [+] test_provision_initial_requires_valid_password (0.03s)
+  - [+] test_provision_initial_requires_valid_password (0.02s)
   - [+] test_provision_wrong_password_returns_401 (0.02s)
-  - [+] test_provision_missing_password_returns_401 (0.02s)
-  - [+] test_provision_regenerate_missing_password_returns_401 (0.02s)
+  - [+] test_provision_missing_password_returns_401 (0.03s)
+  - [+] test_provision_regenerate_missing_password_returns_401 (0.04s)
   - [+] test_provision_passes_library_usb_fields (0.02s)
   - [+] test_provision_value_error_returns_400 (0.02s)
-  - [+] test_provision_missing_card_name_returns_422 (0.04s)
-  - [+] test_patch_output_200_no_password_required (0.03s)
+  - [+] test_provision_missing_card_name_returns_422 (0.02s)
+  - [+] test_patch_output_200_no_password_required (0.02s)
   - [+] test_patch_output_missing_card_name_returns_422 (0.02s)
   - [+] test_patch_output_value_error_returns_400 (0.03s)
   - [+] test_patch_library_200_no_password_required (0.02s)
@@ -340,40 +340,40 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.39s)
-  - [+] test_login_wrong_password (0.39s)
-  - [+] test_login_unknown_user (0.42s)
+  - [+] test_login_valid (0.44s)
+  - [+] test_login_wrong_password (0.40s)
+  - [+] test_login_unknown_user (0.43s)
 
 **tests.test_auth.TestUsersCRUD**
 
   - [+] test_list_users (0.02s)
-  - [+] test_create_and_delete_user (0.54s)
-  - [+] test_update_user_role (0.40s)
-  - [+] test_cannot_delete_self (0.02s)
+  - [+] test_create_and_delete_user (0.43s)
+  - [+] test_update_user_role (0.44s)
+  - [+] test_cannot_delete_self (0.03s)
 
 **tests.test_auth.TestProtectedFlag**
 
   - [+] test_user_model_has_protected_field
-  - [+] test_create_user_accepts_protected_flag (0.37s)
-  - [+] test_unprotected_user_has_protected_false_by_default (0.37s)
-  - [+] test_delete_guard_rejects_protected (0.41s)
+  - [+] test_create_user_accepts_protected_flag (0.40s)
+  - [+] test_unprotected_user_has_protected_false_by_default (0.39s)
+  - [+] test_delete_guard_rejects_protected (0.38s)
   - [+] test_update_disable_guard_rejects_protected (0.38s)
   - [+] test_cannot_delete_self (0.02s)
-  - [+] test_unprotected_account_can_be_deleted (0.41s)
-  - [+] test_unprotected_account_can_be_disabled (0.40s)
+  - [+] test_unprotected_account_can_be_deleted (0.42s)
+  - [+] test_unprotected_account_can_be_disabled (0.48s)
 
 **tests.test_auth.TestCreateUserReturns201**
 
-  - [+] test_create_user_returns_201 (0.43s)
+  - [+] test_create_user_returns_201 (0.41s)
 
 **tests.test_auth.TestUpdateUserEmptyPassword**
 
-  - [+] test_short_password_rejected_by_pydantic (0.41s)
+  - [+] test_short_password_rejected_by_pydantic (0.42s)
   - [+] test_whitespace_only_password_rejected (0.41s)
 
 **tests.test_auth.TestDisabledUserLogin**
 
-  - [+] test_disabled_user_cannot_login (0.82s)
+  - [+] test_disabled_user_cannot_login (0.83s)
 
 **tests.test_auth.TestJwtContainsJti**
 
@@ -382,11 +382,11 @@ Generated: **2026-08-06 13:55 UTC**
 **tests.test_auth.TestCreateUserWhitespacePassword**
 
   - [+] test_whitespace_only_password_rejected_on_create (0.02s)
-  - [+] test_normal_password_accepted_on_create (0.40s)
+  - [+] test_normal_password_accepted_on_create (0.43s)
 
 **tests.test_auth.TestDisabledUserTimingOracle**
 
-  - [+] test_disabled_user_returns_401 (0.79s)
+  - [+] test_disabled_user_returns_401 (0.85s)
 
 **tests.test_auth.TestWebAuthnChallengeIsolation**
 
@@ -395,7 +395,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_auth.TestUpdateUserReturnsUpdatedState**
 
-  - [+] test_update_returns_new_role (0.40s)
+  - [+] test_update_returns_new_role (0.51s)
 
 **tests.test_auth.TestVerifyAdminPassword**
 
@@ -410,7 +410,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_auth.TestUsersFilePermissions**
 
-  - [+] test_users_json_is_0600 (0.39s)
+  - [+] test_users_json_is_0600 (0.40s)
 
 **tests.test_auth.TestApiKeyNonAscii**
 
@@ -458,7 +458,7 @@ Generated: **2026-08-06 13:55 UTC**
 **tests.test_config_validation.TestConfigValidationLicenceGate**
 
   - [+] test_config_validation_works_without_a_licence
-  - [+] test_topology_validation_still_needs_one (0.01s)
+  - [+] test_topology_validation_still_needs_one
   - [+] test_topology_validation_passes_with_a_licence
 
 **tests.test_config_validation.TestAppconfigFileIsInert**
@@ -503,7 +503,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_config_validation.TestConfigValidationRouterErrorCodes**
 
-  - [+] test_validation_error_returns_400 (0.01s)
+  - [+] test_validation_error_returns_400
 
 **tests.test_config_validation.TestTopologyValidation**
 
@@ -802,7 +802,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_hqplayer.TestPlayLibraryItemAlbumMetadata**
 
-  - [+] test_track_play_keeps_album (0.11s)
+  - [+] test_track_play_keeps_album (0.10s)
   - [+] test_add_does_not_touch_the_playing_track
 
 **tests.test_hqplayer.TestPlaybackWatch**
@@ -821,7 +821,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_the_shared_status_cache_is_never_evicted (0.01s)
   - [+] test_the_first_reading_is_taken_without_waiting (0.50s)
   - [+] test_a_push_over_a_playing_track_still_confirms (0.02s)
-  - [+] test_a_stopped_ending_is_not_blamed_on_the_sound_card (0.30s)
+  - [+] test_a_stopped_ending_is_not_blamed_on_the_sound_card (0.31s)
   - [+] test_the_window_covers_the_measured_dsd_warm_up
   - [+] test_the_patience_covers_the_measured_radio_start
   - [+] test_a_frozen_position_is_still_caught_before_the_window_ends (0.34s)
@@ -989,7 +989,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_library.TestLibrary**
 
-  - [+] test_upnp_known_servers_route_exists (0.08s)
+  - [+] test_upnp_known_servers_route_exists (0.09s)
   - [+] test_search_route_exists (0.09s)
   - [+] test_queue_route_exists (0.08s)
 
@@ -1017,7 +1017,7 @@ Generated: **2026-08-06 13:55 UTC**
 
   - [+] test_upnp_source_routes_to_upnp_queue (0.11s)
   - [+] test_mpd_source_still_routes_to_mpd_queue (0.08s)
-  - [+] test_an_unclassified_source_is_refused_with_501 (0.14s)
+  - [+] test_an_unclassified_source_is_refused_with_501 (0.16s)
 
 **tests.test_library.TestQueueRequestValidation**
 
@@ -1197,10 +1197,10 @@ Generated: **2026-08-06 13:55 UTC**
 
   - [+] test_full_get_returns_all_bytes (0.08s)
   - [+] test_range_returns_206_partial (0.08s)
-  - [+] test_head_returns_headers_no_body (0.10s)
-  - [+] test_bad_signature_rejected (0.09s)
-  - [+] test_missing_signature_rejected (0.08s)
-  - [+] test_missing_file_returns_404 (0.09s)
+  - [+] test_head_returns_headers_no_body (0.13s)
+  - [+] test_bad_signature_rejected (0.10s)
+  - [+] test_missing_signature_rejected (0.11s)
+  - [+] test_missing_file_returns_404 (0.10s)
 
 **tests.test_library_files.TestLibraryCoverEndpoint**
 
@@ -1211,7 +1211,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.05s)
+  - [+] test_no_license (0.06s)
   - [+] test_valid_lifetime_license (0.05s)
   - [+] test_beta_version_accepts_v1_scope (0.06s)
   - [+] test_version_expired (0.06s)
@@ -1237,26 +1237,26 @@ Generated: **2026-08-06 13:55 UTC**
 
   - [+] test_a_running_term_says_when_it_ends (0.05s)
   - [+] test_an_ended_term_does_not_accuse_the_customer (0.05s)
-  - [+] test_a_lifetime_licence_carries_no_end_date (0.05s)
-  - [+] test_a_version_locked_licence_keeps_its_details (0.06s)
-  - [+] test_a_paid_term_is_not_called_a_trial (0.06s)
-  - [+] test_a_perpetual_licence_is_still_called_lifetime (0.05s)
+  - [+] test_a_lifetime_licence_carries_no_end_date (0.09s)
+  - [+] test_a_version_locked_licence_keeps_its_details (0.12s)
+  - [+] test_a_paid_term_is_not_called_a_trial (0.07s)
+  - [+] test_a_perpetual_licence_is_still_called_lifetime (0.06s)
   - [+] test_a_genuinely_tampered_file_is_still_called_tampered (0.06s)
 
 **tests.test_license.TestUploadLicense**
 
   - [+] test_upload_valid_lic (0.05s)
   - [+] test_upload_invalid_signature (0.01s)
-  - [+] test_an_ended_licence_is_refused_with_its_own_date (0.02s)
-  - [+] test_a_licence_for_another_device_says_so (0.02s)
-  - [+] test_a_time_limited_licence_with_no_date_is_named_as_such (0.02s)
-  - [+] test_an_unreadable_date_is_named_as_such (0.02s)
-  - [+] test_a_forged_file_still_gets_the_verification_message (0.02s)
+  - [+] test_an_ended_licence_is_refused_with_its_own_date (0.01s)
+  - [+] test_a_licence_for_another_device_says_so (0.01s)
+  - [+] test_a_time_limited_licence_with_no_date_is_named_as_such (0.01s)
+  - [+] test_an_unreadable_date_is_named_as_such (0.01s)
+  - [+] test_a_forged_file_still_gets_the_verification_message (0.01s)
 
 **tests.test_license.TestDeleteLicense**
 
   - [+] test_delete_existing_license (0.06s)
-  - [+] test_delete_wrong_password (0.02s)
+  - [+] test_delete_wrong_password (0.01s)
   - [+] test_delete_no_license (0.01s)
   - [+] test_no_name_error (0.05s)
 
@@ -1272,7 +1272,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_license.TestCheckEndpointStatusHandling**
 
-  - [+] test_server_5xx_returns_502 (0.01s)
+  - [+] test_server_5xx_returns_502 (0.02s)
   - [+] test_unexpected_response_shape_returns_502 (0.02s)
 
 **tests.test_license.TestOnlineFetchStatusHandling**
@@ -1481,7 +1481,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_now_playing.TestRendererAsSource**
 
-  - [+] test_item_for_native_playing_renderer
+  - [+] test_item_for_native_playing_renderer (0.01s)
   - [+] test_no_item_when_stopped_or_unreachable
   - [+] test_no_item_when_no_active_renderer
   - [+] test_paused_maps_to_paused
@@ -1496,7 +1496,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_now_playing.TestHqplayerAsProcessor**
 
-  - [+] test_pushed_track_badged_with_content_origin (0.12s)
+  - [+] test_pushed_track_badged_with_content_origin (0.14s)
   - [+] test_pushed_track_without_origin_defaults_to_library
   - [+] test_external_playback_falls_back_to_processor_active_format
 
@@ -1511,7 +1511,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_packages.TestPackages**
 
-  - [+] test_route_exists (0.02s)
+  - [+] test_route_exists (0.03s)
 
 **tests.test_packages.TestRoonArchUrl**
 
@@ -1539,7 +1539,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (8.68s)
+  - [+] test_runs_standalone_without_package_context (8.32s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -1627,7 +1627,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_timeout_returns_a_verdict_instead_of_raising (1.01s)
   - [+] test_timeout_holds_when_the_command_forks (1.01s)
   - [+] test_newline_less_output_does_not_grow_without_bound (0.05s)
-  - [+] test_reading_the_log_while_a_worker_appends_never_raises (0.10s)
+  - [+] test_reading_the_log_while_a_worker_appends_never_raises (0.22s)
 
 **tests.test_packages.TestPackagesManagerCleanup**
 
@@ -1661,7 +1661,7 @@ Generated: **2026-08-06 13:55 UTC**
 
   - [+] test_boot_script_does_not_import_orjson
   - [+] test_boot_script_python_is_valid
-  - [+] test_systemd_unit_is_oneshot (0.01s)
+  - [+] test_systemd_unit_is_oneshot
 
 **tests.test_performance.TestCyclictestParsing**
 
@@ -1723,14 +1723,14 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_player.TestControlRouting**
 
-  - [+] test_explicit_renderer_source_routed_to_now_playing (0.15s)
+  - [+] test_explicit_renderer_source_routed_to_now_playing (0.16s)
   - [+] test_stopped_renderer_still_controllable (0.15s)
   - [+] test_unknown_source_returns_false
   - [+] test_no_source_resolves_active (0.15s)
 
 **tests.test_player.TestPlayer**
 
-  - [+] test_snapshot (0.03s)
+  - [+] test_snapshot (0.02s)
   - [+] test_control (0.02s)
   - [+] test_origins_returns_all_known_keys (0.02s)
   - [+] test_sleep_timer_get (0.02s)
@@ -1775,7 +1775,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_a_local_error_stays_visible_when_the_renderer_is_idle
   - [+] test_a_playing_renderer_still_wins_over_local
   - [+] test_idle_everywhere_keeps_the_selected_renderer_visible
-  - [+] test_a_paused_local_source_also_holds_the_active_spot (0.01s)
+  - [+] test_a_paused_local_source_also_holds_the_active_spot
   - [+] test_queue_next_populated_from_renderer_queue
 
 **tests.test_player.TestDsdRekeyOnDriver**
@@ -1791,7 +1791,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_a_failed_hqplayer_push_is_explained_with_no_item_left
   - [+] test_an_engine_error_still_wins_over_the_hqplayer_verdict
   - [+] test_an_unreachable_speaker_says_so_instead_of_going_quiet
-  - [+] test_the_local_chain_is_always_reachable
+  - [+] test_the_local_chain_is_always_reachable (0.02s)
   - [+] test_state_changed_detects_an_appearing_output_error
 
 **tests.test_player.TestIdleStateKeepsTheRendererControllable**
@@ -1803,7 +1803,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.04s)
+  - [+] test_activate (0.05s)
   - [+] test_deactivate (0.02s)
 
 **tests.test_profiles.TestProfilesGatherTimeout**
@@ -1858,7 +1858,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_provision_triggers_mpd_rescan_when_mpd_generated
   - [+] test_provision_airplay_only_does_not_rescan
   - [+] test_mpd_port_from_config_parses_and_defaults
-  - [+] test_patch_library_rescan_uses_configured_port
+  - [+] test_patch_library_rescan_uses_configured_port (0.01s)
   - [+] test_trigger_mpd_rescan_is_best_effort
   - [+] test_library_scan_status_reports_scanning
   - [+] test_library_scan_status_reports_idle
@@ -1880,7 +1880,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.09s)
+  - [+] test_script_produces_valid_keys (0.10s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -1954,14 +1954,14 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_qobuz.TestQobuzRouter**
 
-  - [+] test_get_connection_connected (0.01s)
-  - [+] test_delete_connection (0.01s)
-  - [+] test_get_connection_after_disconnect (0.01s)
-  - [+] test_stream_redirect_mode_returns_302_to_cdn (0.01s)
-  - [+] test_oauth_callback_no_code
-  - [+] test_oauth_callback_with_code (0.01s)
-  - [+] test_oauth_callback_failure (0.01s)
-  - [+] test_post_connection_starts_oauth (0.01s)
+  - [+] test_get_connection_connected (0.04s)
+  - [+] test_delete_connection (0.06s)
+  - [+] test_get_connection_after_disconnect (0.02s)
+  - [+] test_stream_redirect_mode_returns_302_to_cdn (0.03s)
+  - [+] test_oauth_callback_no_code (0.03s)
+  - [+] test_oauth_callback_with_code (0.02s)
+  - [+] test_oauth_callback_failure (0.02s)
+  - [+] test_post_connection_starts_oauth (0.02s)
 
 **tests.test_qobuz.TestQobuzStreamProxy**
 
@@ -2034,12 +2034,12 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
-  - [+] test_featured_albums (0.09s)
-  - [+] test_featured_albums_default_type (0.12s)
-  - [+] test_playlists (0.09s)
+  - [+] test_featured_albums (0.08s)
+  - [+] test_featured_albums_default_type (0.09s)
+  - [+] test_playlists (0.08s)
   - [+] test_playlist_tracks (0.08s)
   - [+] test_playlist_tracks_missing_id (0.09s)
-  - [+] test_featured_service_error (0.08s)
+  - [+] test_featured_service_error (0.21s)
 
 **tests.test_qobuz_library.TestQobuzQueueHelper**
 
@@ -2067,8 +2067,8 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_radio.TestRadioEditStation**
 
-  - [+] test_edit_station_returns_updated_station (0.04s)
-  - [+] test_edit_station_404_when_not_saved (0.03s)
+  - [+] test_edit_station_returns_updated_station (0.03s)
+  - [+] test_edit_station_404_when_not_saved (0.04s)
 
 **tests.test_radio.TestRadioSavedStationDatetime**
 
@@ -2237,7 +2237,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_connect_sets_active_udn
   - [+] test_connect_calls_svc_connect
   - [+] test_connect_stops_previous_active
-  - [+] test_connect_upserts_known_list
+  - [+] test_connect_upserts_known_list (0.01s)
   - [+] test_connect_rejects_local_renderer
 
 **tests.test_renderer_manager.TestDisconnect**
@@ -2245,6 +2245,13 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_disconnect_raises_for_unknown_udn
   - [+] test_disconnect_clears_active_udn
   - [+] test_disconnect_keeps_renderer_in_known
+
+**tests.test_resource_fences**
+
+  - [+] test_cpu_weight_yields_to_mpd_without_starving_the_transcoder
+  - [+] test_memory_high_throttles_before_the_box_feels_it
+  - [+] test_memory_max_is_a_backstop_not_a_ceiling_it_can_reach
+  - [+] test_io_weight_is_absent_on_purpose
 
 **tests.test_self_update.TestState**
 
@@ -2291,14 +2298,14 @@ Generated: **2026-08-06 13:55 UTC**
 **tests.test_services.TestServiceActions**
 
   - [+] test_restart_service (0.04s)
-  - [+] test_stop_service (0.06s)
-  - [+] test_start_service (0.19s)
+  - [+] test_stop_service (0.04s)
+  - [+] test_start_service (0.05s)
 
 **tests.test_services.TestServiceNameValidation**
 
   - [+] test_valid_name_accepted (0.04s)
   - [+] test_semicolon_rejected (0.04s)
-  - [+] test_slash_rejected (0.05s)
+  - [+] test_slash_rejected (0.04s)
   - [+] test_ampersand_rejected (0.05s)
 
 **tests.test_services.TestEnumComparison**
@@ -2348,7 +2355,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_sends_one_datagram_per_unicast_host_plus_the_multicast_one (0.05s)
   - [+] test_a_refused_unicast_host_does_not_stop_the_search (0.05s)
   - [+] test_a_socket_error_yields_an_empty_list_rather_than_raising
-  - [+] test_a_silent_network_is_not_an_error (0.05s)
+  - [+] test_a_silent_network_is_not_an_error (0.20s)
 
 **tests.test_ssdp.TestErrorLevel**
 
@@ -2467,8 +2474,8 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_sysinfo.TestSysinfoGrepPatternValidation**
 
-  - [+] test_invalid_regex_returns_400 (0.03s)
-  - [+] test_valid_regex_accepted (0.05s)
+  - [+] test_invalid_regex_returns_400 (0.05s)
+  - [+] test_valid_regex_accepted (0.12s)
 
 **tests.test_sysinfo.TestSysinfoSyslogIdentifierFormat**
 
@@ -2476,7 +2483,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **tests.test_sysinfo.TestTemperaturePushAlert**
 
-  - [+] test_cooldown_not_updated_when_push_raises
+  - [+] test_cooldown_not_updated_when_push_raises (0.02s)
   - [+] test_cooldown_below_threshold_no_alert
   - [+] test_cooldown_prevents_second_alert_within_15min
   - [+] test_alert_allowed_after_cooldown_elapsed
@@ -2507,9 +2514,9 @@ Generated: **2026-08-06 13:55 UTC**
 **tests.test_tidal.TestTidalRouter**
 
   - [+] test_get_connection_connected (0.01s)
-  - [+] test_post_connection_starts_pkce (0.01s)
-  - [+] test_submit_connection (0.01s)
-  - [+] test_delete_connection (0.01s)
+  - [+] test_post_connection_starts_pkce (0.02s)
+  - [+] test_submit_connection (0.02s)
+  - [+] test_delete_connection (0.02s)
 
 **tests.test_tidal.TestTidalRotation**
 
@@ -2543,7 +2550,7 @@ Generated: **2026-08-06 13:55 UTC**
 **tests.test_tidal.TestTidalRefreshClearsOnAllFailures**
 
   - [+] test_expired_token_cleared_on_401
-  - [+] test_expired_token_cleared_on_network_exception (0.18s)
+  - [+] test_expired_token_cleared_on_network_exception
   - [+] test_get_access_token_returns_none_after_failed_refresh
 
 **tests.test_tidal.TestTidalStreamCleanup**
@@ -2680,10 +2687,10 @@ Generated: **2026-08-06 13:55 UTC**
 **tests.test_upmpdcli_cover.TestGetArtForMpdUrl**
 
   - [+] test_returns_art_url_from_avt
-  - [+] test_result_is_cached_no_second_soap_call (0.01s)
-  - [+] test_returns_none_when_no_renderer_found (0.01s)
-  - [+] test_miss_is_cached_no_repeated_discovery (0.01s)
-  - [+] test_avt_url_cache_reused_for_different_track
+  - [+] test_result_is_cached_no_second_soap_call
+  - [+] test_returns_none_when_no_renderer_found
+  - [+] test_miss_is_cached_no_repeated_discovery
+  - [+] test_avt_url_cache_reused_for_different_track (0.01s)
   - [+] test_cache_expires_and_retries
   - [+] test_miss_url_cache_prevents_ssdp_on_per_track_expiry
 
@@ -2716,7 +2723,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_seek_falls_back_to_rel_time_when_abs_fails
   - [+] test_seek_marks_track_nonseekable_when_device_rejects
   - [+] test_set_volume_normalises_0_100_to_0_1
-  - [+] test_set_volume_raises_when_not_supported
+  - [+] test_set_volume_raises_when_not_supported (0.01s)
   - [+] test_no_dmr_raises_on_play
 
 **tests.test_upnp_renderer.TestRendererServiceStatus**
@@ -2748,7 +2755,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_on_dmr_event_coalesces_publish_tasks
   - [+] test_on_dmr_event_calls_check_queue_advance
   - [+] test_publish_status_force_always_publishes_and_updates_hash
-  - [+] test_publish_status_force_then_nonforce_dedup_works (0.01s)
+  - [+] test_publish_status_force_then_nonforce_dedup_works
 
 **tests.test_upnp_renderer.TestSsdpTargetsRenderer**
 
@@ -2767,9 +2774,9 @@ Generated: **2026-08-06 13:55 UTC**
 
   - [+] test_discover_route_exists (0.04s)
   - [+] test_known_route_exists (0.04s)
-  - [+] test_connection_route_exists (0.04s)
+  - [+] test_connection_route_exists (0.05s)
   - [+] test_status_route_exists (0.04s)
-  - [+] test_notify_route_exists (0.05s)
+  - [+] test_notify_route_exists (0.04s)
   - [+] test_bypass_route_removed (0.04s)
   - [+] test_remove_renderer_route_exists (0.04s)
 
@@ -2786,7 +2793,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_play_queue_single_entry_calls_play
   - [+] test_play_queue_empty_is_noop
   - [+] test_play_queue_preloads_second_track_via_set_next
-  - [+] test_play_queue_no_set_next_when_not_supported
+  - [+] test_play_queue_no_set_next_when_not_supported (0.01s)
   - [+] test_play_queue_lazy_resolver_called_at_play_time
   - [+] test_play_queue_on_play_called_with_resolved_uri
   - [+] test_advance_queue_stopped_plays_next
@@ -2794,7 +2801,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] test_advance_queue_at_end_clears_queue
   - [+] test_advance_queue_guard_prevents_concurrent_advances
   - [+] test_check_queue_advance_playing_to_stopped_schedules_task
-  - [+] test_check_queue_advance_uri_change_while_playing_schedules_task (0.01s)
+  - [+] test_check_queue_advance_uri_change_while_playing_schedules_task
   - [+] test_check_queue_advance_no_trigger_when_queue_empty
   - [+] test_check_queue_advance_deduplicates_when_task_pending
   - [+] test_check_queue_advance_creates_task_when_previous_done
@@ -2892,7 +2899,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/anti-zoom.test.js**
 
-  - [+] mobile anti-zoom contract > sets no font-size inline on a text field anywhere in js/ (0.01s)
+  - [+] mobile anti-zoom contract > sets no font-size inline on a text field anywhere in js/ (0.02s)
   - [+] mobile anti-zoom contract > gates the anti-zoom rule on the pointer, not on a width breakpoint
   - [+] mobile anti-zoom contract > keeps the anti-zoom selector specific enough to win against component overrides
 
@@ -2910,7 +2917,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/auth-init.test.js**
 
-  - [+] initAuth — corrupted localStorage (JSON.parse regression) > returns false without throwing when jwt_user is malformed JSON (0.03s)
+  - [+] initAuth — corrupted localStorage (JSON.parse regression) > returns false without throwing when jwt_user is malformed JSON (0.02s)
   - [+] initAuth — corrupted localStorage (JSON.parse regression) > clears auth state when jwt_user is invalid JSON
   - [+] initAuth — corrupted localStorage (JSON.parse regression) > returns true for a valid unexpired token
   - [+] initAuth — corrupted localStorage (JSON.parse regression) > does not authenticate with an expired token
@@ -2933,6 +2940,26 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] Auth state checkers > getAuthToken > returns null when not authenticated
   - [+] Auth state checkers > getAuthToken > returns token when authenticated
 
+**js/colors.test.js**
+
+  - [+] colours — every text token clears the floor (règle 8) > minimal light
+  - [+] colours — every text token clears the floor (règle 8) > minimal dark
+  - [+] colours — every text token clears the floor (règle 8) > slate light
+  - [+] colours — every text token clears the floor (règle 8) > slate dark
+  - [+] colours — every text token clears the floor (règle 8) > gravity light
+  - [+] colours — every text token clears the floor (règle 8) > gravity dark
+  - [+] colours — every text token clears the floor (règle 8) > gives every semantic role a text-safe variant in every theme
+  - [+] colours — text on a fill, not on the page > minimal light
+  - [+] colours — text on a fill, not on the page > minimal dark
+  - [+] colours — text on a fill, not on the page > slate light
+  - [+] colours — text on a fill, not on the page > slate dark
+  - [+] colours — text on a fill, not on the page > gravity light
+  - [+] colours — text on a fill, not on the page > gravity dark
+  - [+] colours — components read roles, never values (règle 6) > declares no colour literal as a var() fallback (0.02s)
+  - [+] colours — components read roles, never values (règle 6) > keeps the base semantic tokens out of JavaScript, whatever route they take (0.05s)
+  - [+] colours — components read roles, never values (règle 6) > explains every text colour still written as a value
+  - [+] colours — components read roles, never values (règle 6) > paints text with a text-safe token, never a base semantic one (0.01s)
+
 **js/common.test.js**
 
   - [+] escapeHtml (P1 — XSS prevention) > escapes < and > as entities
@@ -2946,6 +2973,44 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] SW reload guard (sw-reloading sessionStorage key) > clearGuard removes the key so the next update can reload
   - [+] SW reload guard (sw-reloading sessionStorage key) > clearGuard is idempotent when key is absent
   - [+] SW reload guard (sw-reloading sessionStorage key) > two rapid controllerchange events only reload once
+
+**js/fonts.test.js**
+
+  - [+] fonts — served from disk, everywhere > is pulled in by the stylesheet manifest, so every surface gets it
+  - [+] fonts — served from disk, everywhere > index.html reaches no font host
+  - [+] fonts — served from disk, everywhere > login.html reaches no font host
+  - [+] fonts — served from disk, everywhere > public/offline.html reaches no font host
+  - [+] fonts — served from disk, everywhere > index.html declares a CSP that forbids remote fonts
+  - [+] fonts — served from disk, everywhere > login.html declares a CSP that forbids remote fonts
+  - [+] fonts — served from disk, everywhere > leaves no font host in the service worker
+  - [+] fonts — served from disk, everywhere > declares every @font-face with a relative url, never a remote one
+  - [+] fonts — served from disk, everywhere > ships every referenced font file, as real WOFF2
+  - [+] fonts — served from disk, everywhere > covers the weights the UI actually uses (400-700)
+  - [+] fonts — served from disk, everywhere > declares latin last in each family, so the shared marks do not pull latin-ext
+  - [+] fonts — served from disk, everywhere > redistributes the OFL text inside the deployed artifact
+  - [+] typography — the theme layer owns the family, and always wins > defaults to Inter on :root
+  - [+] typography — the theme layer owns the family, and always wins > names, in both tokens, families the stylesheet actually declares
+  - [+] typography — the theme layer owns the family, and always wins > keeps the family out of the components, stylesheet or script (0.03s)
+  - [+] typography — the theme layer owns the family, and always wins > never sets an uppercase label in the monospace face (0.01s)
+  - [+] typography — the theme layer owns the family, and always wins > never lets waiting for a face swallow what arrived meanwhile
+  - [+] typography — the theme layer owns the family, and always wins > resolves the token in one place for the consumers that cannot read CSS
+  - [+] typography — the theme layer owns the family, and always wins > keeps the family out of every stylesheet but the theme layer
+  - [+] typography — the theme layer owns the family, and always wins > loads the themes after the defaults, since specificity cannot separate them
+  - [+] typography — the theme layer owns the family, and always wins > reaches every element a component may read the token from
+  - [+] typography — the theme layer owns the family, and always wins > leaves the default theme on the reference typeface
+  - [+] typography — the theme layer owns the family, and always wins > offers system names only as a fallback, never as the choice
+
+**js/keyless-client.test.js**
+
+  - [+] the probe: one request decides, instead of hundreds failing > locks after a single 403 and suppresses everything that follows (0.30s)
+  - [+] the probe: one request decides, instead of hundreds failing > marks the local refusal as final so the retry layer does not spin
+  - [+] the probe: one request decides, instead of hundreds failing > opens keyless traffic when the core proves it does not gate on a key
+  - [+] the probe: one request decides, instead of hundreds failing > remembers the verdict across a reload of the same tab
+  - [+] what stays open, and what never opens > lets the public endpoints through even when locked
+  - [+] what stays open, and what never opens > gives a leftover JWT no URL: the middleware gates on the key alone
+  - [+] what stays open, and what never opens > renders covers as empty while locked, and never serialises null
+  - [+] what stays open, and what never opens > opens no player SSE from the store while locked (0.03s)
+  - [+] what stays open, and what never opens > opens no dashboard worker, and keeps the caller sequence alive (0.02s)
 
 **js/library-api.test.js**
 
@@ -3011,6 +3076,25 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] shouldPromptForLicense > stays quiet for a version-locked licence
   - [+] shouldPromptForLicense > stays quiet for a licensed box
 
+**js/login-guidelines.test.js**
+
+  - [+] login page — no phantom tokens (règle 6) > every custom property it reads resolves under every theme
+  - [+] login page — no phantom tokens (règle 6) > writes no colour literal of its own
+  - [+] login page — no phantom tokens (règle 6) > declares no fallback value inside var()
+  - [+] login page — contrast floor (règle 8) > never paints text with --text-tertiary
+  - [+] login page — contrast floor (règle 8) > --text-secondary clears 4.5:1 in minimal clair
+  - [+] login page — contrast floor (règle 8) > --text-secondary clears 4.5:1 in minimal sombre
+  - [+] login page — contrast floor (règle 8) > states the error in --text-primary, not in the red
+  - [+] login page — scale discipline (règles 15 et 16) > writes no arbitrary padding or margin
+  - [+] login page — scale discipline (règles 15 et 16) > keeps the 11px step for uppercase labels only
+
+**js/module-imports.test.js**
+
+  - [+] every module comes from this server > finds the sources
+  - [+] every module comes from this server > imports nothing over http (0.02s)
+  - [+] every module comes from this server > mocks the specifier the code actually imports (0.01s)
+  - [+] every module comes from this server > keeps one copy of @lit/context, at the declared version (0.02s)
+
 **js/orientation-lock.test.js**
 
   - [+] applyOrientationLock > touch device, locked while in landscape: adds the class and calls lock("portrait")
@@ -3062,9 +3146,50 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/push-manager.test.js**
 
-  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.14s)
+  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.02s)
   - [+] push-manager unsubscribe (Fix P3) > passes endpoint as query param in the URL
   - [+] push-manager unsubscribe (Fix P3) > URLSearchParams encodes the endpoint correctly
+
+**js/sizes.test.js**
+
+  - [+] the type scale is one closed scale > declares seven steps, in one place
+  - [+] the type scale is one closed scale > gives every step a different value
+  - [+] the type scale is one closed scale > orders the steps by their names
+  - [+] the type scale is one closed scale > names no step it does not declare (0.01s)
+  - [+] sizes come from the scale > finds the sources
+  - [+] sizes come from the scale > writes no size as a value, unless it says why (0.03s)
+  - [+] sizes come from the scale > is documented with the values it actually has
+  - [+] sizes come from the scale > leaves the pipeline diagram off the scale
+  - [+] sizes come from the scale > keeps the touch-field size a literal
+  - [+] sizes come from the scale > reserves the smallest step for labels, not for read text
+
+**js/theme-boot.test.js**
+
+  - [+] theme boot — reaches the page before the first paint > index.html loads it synchronously, ahead of the stylesheet
+  - [+] theme boot — reaches the page before the first paint > index.html allows it under its own CSP
+  - [+] theme boot — reaches the page before the first paint > login.html loads it synchronously, ahead of the stylesheet
+  - [+] theme boot — reaches the page before the first paint > login.html allows it under its own CSP
+  - [+] theme boot — reaches the page before the first paint > is served at a stable path, not fingerprinted into assets/
+  - [+] theme boot — reaches the page before the first paint > is precached, so a cold load offline still gets it
+  - [+] theme boot — its copies match their source > knows the same themes as the registry
+  - [+] theme boot — its copies match their source > falls back to the same theme as common.js
+  - [+] theme boot — its copies match their source > reads the keys common.js and the config panel write
+  - [+] theme boot — its copies match their source > paints the browser chrome the colours updateThemeColorMeta would
+  - [+] theme boot — its copies match their source > stamps the root element, the only one that exists that early
+  - [+] theme boot — its copies match their source > recreates the theme-color meta rather than updating it
+  - [+] theme boot — its copies match their source > survives storage being unavailable
+
+**js/themes.test.js**
+
+  - [+] theme layer — every theme is scoped to itself > minimal.css writes only under its own selector
+  - [+] theme layer — every theme is scoped to itself > slate.css writes only under its own selector
+  - [+] theme layer — every theme is scoped to itself > gravity.css writes only under its own selector
+  - [+] theme layer — a palette applies before any script runs > index.html stamps data-theme in the markup
+  - [+] theme layer — a palette applies before any script runs > login.html stamps data-theme in the markup
+  - [+] theme layer — a palette applies before any script runs > leaves no colour on :root for a page to fall back to
+  - [+] theme layer — no theme depends on another > minimal resolves every token without help from a sibling theme
+  - [+] theme layer — no theme depends on another > slate resolves every token without help from a sibling theme
+  - [+] theme layer — no theme depends on another > gravity resolves every token without help from a sibling theme
 
 **js/ui-helpers.test.js**
 
@@ -3087,11 +3212,11 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] validation.js > validateAudioConfig > posts the config to the audio-config validation route
   - [+] validation.js > validateTopologyConfig > posts the topology to the topology validation route
   - [+] validation.js > validateTopologyConfig > returns the validation response verbatim (errors + warnings)
-  - [+] validation.js > validateTopologyConfig > rethrows when the API call fails
+  - [+] validation.js > validateTopologyConfig > rethrows when the API call fails (0.01s)
 
 **js/version.test.js**
 
-  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.32)
+  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.33)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > js/core/config.js UI_VERSION matches VERSION (UI display)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > sw.js CACHE_NAME matches VERSION (PWA cache busting)
 
@@ -3103,7 +3228,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/components/component-imports.test.js**
 
-  - [+] component import graph > every <ag-*> tag used in a component template is imported by that component (0.19s)
+  - [+] component import graph > every <ag-*> tag used in a component template is imported by that component (0.13s)
 
 **js/components/library-constants.test.js**
 
@@ -3234,6 +3359,16 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] SwipeToDismissController > trailing-click suppression + timer cleanup > keeps `swiping` true through the trailing click, then clears it
   - [+] SwipeToDismissController > trailing-click suppression + timer cleanup > does not leave `swiping` set after a plain tap (never crossed the slop)
   - [+] SwipeToDismissController > trailing-click suppression + timer cleanup > hostDisconnected clears the pending timer
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > reveals the backdrop while dragging and hides it once the row is back (0.05s)
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > clears the inline transform once the snap-back has run
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > leaves no trace at all after a plain tap
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > does not strip a row a new gesture has already taken over
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > cleans up per row: a gesture on another row does not strand the first
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > hides the backdrop at once on a commit, before the wrap is reused
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > does not reveal the backdrop for a rightward drag
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > rests a row still animating when the host goes away
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > release() frees a row un-wired mid-gesture, and the controller with it
+  - [+] SwipeToDismissController > resting state — nothing red under an untouched row > keeps `swiping` true for a fresh drag started during the trailing click
   - [+] swipeRow directive > stamps the coexistence contract and wires the four pointer listeners
   - [+] swipeRow directive > does not wire or stamp when enabled is false
   - [+] swipeRow directive > tears down listeners and the contract on disconnect
@@ -3257,10 +3392,10 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/components/atoms/ag-library-cover.test.js**
 
-  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.05s)
+  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.04s)
   - [+] ag-library-cover — deferred image loading > still points at the requested cover
   - [+] ag-library-cover — deferred image loading > renders no image at all when there is no cover, so nothing is requested
-  - [+] ag-library-cover — deferred image loading > drops the image once it has failed, instead of retrying on every render (0.01s)
+  - [+] ag-library-cover — deferred image loading > drops the image once it has failed, instead of retrying on every render
 
 **js/components/atoms/ag-license-badge.test.js**
 
@@ -3347,11 +3482,17 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] _portalUrl safety validation > rejects empty string
   - [+] _portalUrl safety validation > rejects null / undefined
   - [+] _portalUrl safety validation > rejects protocol-relative URLs
-  - [+] _priceDisplay — price formatting > formats a valid numeric price (0.02s)
-  - [+] _priceDisplay — price formatting > returns empty string for non-numeric price (backend sends garbage)
-  - [+] _priceDisplay — price formatting > returns empty string for null
-  - [+] _renderAcquisitionSteps — price as text node > embeds price as plain text, XSS payload is inert
-  - [+] _renderAcquisitionSteps — price as text node > embeds a valid price string correctly
+  - [+] _priceDisplay — price formatting > formats a valid numeric price
+  - [+] _priceDisplay — price formatting > hands back a non-numeric price verbatim — it does not sanitise
+  - [+] _priceDisplay — price formatting > hands back null unchanged
+  - [+] the purchase sentence — price as text node > embeds a valid price string correctly
+  - [+] the purchase sentence when the licence server gives no price > keeps a whole sentence — no dangling comma (0.12s)
+  - [+] the purchase sentence when the licence server gives no price > states the price when there is one (0.02s)
+  - [+] the purchase sentence when the licence server gives no price > states the price once, not again in the steps (0.02s)
+  - [+] the purchase sentence when the licence server gives no price > renders a hostile price as inert text (0.03s)
+  - [+] the purchase sentence when the licence server gives no price > states the price in the steps once the trial has ended (0.02s)
+  - [+] the trial tile says the day count once > keeps the badge and the bar caption, drops the relayed sentence (0.01s)
+  - [+] the trial tile says the day count once > still relays the message for a state the tile does not otherwise explain (0.03s)
 
 **js/components/molecules/ag-network-mount-form.test.js**
 
@@ -3465,6 +3606,17 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] ag-version-skew-banner — versionsMatch > flags a minor-level difference (0.x treats minor as breaking)
   - [+] ag-version-skew-banner — versionsMatch > flags a major-level difference
   - [+] ag-version-skew-banner — versionsMatch > treats unknown versions as compatible (no false warning)
+
+**js/components/organisms/ag-audio-pipeline-render.test.js**
+
+  - [+] the steering pop-up renders > with a service on this port — the branch that threw
+  - [+] the steering pop-up renders > with a service on another port
+  - [+] the steering pop-up renders > while a service is being steered
+  - [+] the steering pop-up renders > with no service at all
+  - [+] the steering pop-up renders > when the node has gone from the pipeline since the pop-up opened
+  - [+] the node detail panel renders > for an active node — the branch that threw
+  - [+] the node detail panel renders > for an inactive node
+  - [+] the node detail panel renders > for a node with no manufacturer or model
 
 **js/components/organisms/ag-audio-software-logs.test.js**
 
@@ -3622,17 +3774,17 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/components/organisms/ag-manual-modal.test.js**
 
-  - [+] ag-manual-modal > fallback chapters are structurally sound (unique ids, NN-prefix order, labels) (0.02s)
+  - [+] ag-manual-modal > fallback chapters are structurally sound (unique ids, NN-prefix order, labels) (0.01s)
   - [+] ag-manual-modal > parseToc (live TOC from README.md) > parses numbered contents entries, including chapter 0, stripping label markup
   - [+] ag-manual-modal > parseToc (live TOC from README.md) > returns empty for markdown with no contents list
   - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > replaces the fallback with the parsed live TOC
   - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback (and allows a retry) when the fetch fails
   - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback when the README has no parsable contents list
   - [+] ag-manual-modal > starts closed
-  - [+] ag-manual-modal > open() shows the modal and loads the default (first) chapter (0.06s)
-  - [+] ag-manual-modal > open(id) loads the requested chapter (0.01s)
+  - [+] ag-manual-modal > open() shows the modal and loads the default (first) chapter (0.04s)
+  - [+] ag-manual-modal > open(id) loads the requested chapter (0.02s)
   - [+] ag-manual-modal > auto-loads a chapter when opened via the is-open property (not open())
-  - [+] ag-manual-modal > does not double-load: open() sets _loading so updated() skips the auto-load
+  - [+] ag-manual-modal > does not double-load: open() sets _loading so updated() skips the auto-load (0.01s)
   - [+] ag-manual-modal > fetches the right URL, renders via marked, and caches (no refetch) (0.04s)
   - [+] ag-manual-modal > de-duplicates concurrent loads of the same uncached chapter (single fetch)
   - [+] ag-manual-modal > shows an error state on a non-OK response and logs it (not swallowed)
@@ -3640,7 +3792,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] ag-manual-modal > close() hides the modal and emits manual-close
   - [+] ag-manual-modal > Escape closes an open modal but is ignored when closed
   - [+] ag-manual-modal > renders one TOC item per fallback chapter and the rendered chapter body (0.03s)
-  - [+] ag-manual-modal > click handling (never navigate the host app away) > switches chapter in place for a tagged intra-manual link
+  - [+] ag-manual-modal > click handling (never navigate the host app away) > switches chapter in place for a tagged intra-manual link (0.01s)
   - [+] ag-manual-modal > click handling (never navigate the host app away) > passes the anchor for a tagged chapter+anchor link
   - [+] ag-manual-modal > click handling (never navigate the host app away) > scrolls for an in-page anchor without loading a chapter
   - [+] ag-manual-modal > click handling (never navigate the host app away) > leaves rewritten external links to the browser (no preventDefault, no in-modal load)
@@ -3654,11 +3806,11 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > absolutises a manual-relative image against the manual base, lazily
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > keeps absolute and data: image sources as authored (still lazy)
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — a second pass leaves an already-absolutised image unchanged
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > gives every table its own scroll container, keeping the <table> element (0.01s)
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > wraps each of several tables exactly once (0.01s)
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > gives every table its own scroll container, keeping the <table> element (0.03s)
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > wraps each of several tables exactly once (0.02s)
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — re-enhancing does not nest a second wrapper
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > stamps GitHub-style slug ids (punctuation, duplicate dedup, unicode)
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > enhances at cache time: cached HTML already has ids, absolute lazy images (0.01s)
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > enhances at cache time: cached HTML already has ids, absolute lazy images
 
 **js/components/organisms/ag-mobile-pipeline.test.js**
 
@@ -3671,7 +3823,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/components/organisms/ag-network-test.test.js**
 
-  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > destroys _jitterChart when component is disconnected (0.08s)
+  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > destroys _jitterChart when component is disconnected (0.07s)
   - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > does not throw when _jitterChart is null
 
 **js/components/organisms/ag-now-playing-fullscreen.test.js**
@@ -3765,10 +3917,10 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/components/organisms/ag-orientation-gate.test.js**
 
-  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.25s)
-  - [+] ag-orientation-gate > renders the rotate prompt and a landscape escape hatch (0.02s)
+  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.22s)
+  - [+] ag-orientation-gate > renders the rotate prompt and a landscape escape hatch (0.01s)
   - [+] ag-orientation-gate > _dismiss turns the lock off (state + persisted) and applies it (0.01s)
-  - [+] ag-orientation-gate > _setBackgroundInert inerts sibling top-level elements but never itself (0.01s)
+  - [+] ag-orientation-gate > _setBackgroundInert inerts sibling top-level elements but never itself
 
 **js/components/organisms/ag-pipeline-page.test.js**
 
@@ -3776,7 +3928,7 @@ Generated: **2026-08-06 13:55 UTC**
   - [+] ag-pipeline-page topology save > blocks the save and shows the modal on structural errors
   - [+] ag-pipeline-page topology save > asks for confirmation before persisting when there are warnings
   - [+] ag-pipeline-page topology save > persists once the warning confirmation callback runs
-  - [+] ag-pipeline-page topology save > falls through to the save when validation is unreachable
+  - [+] ag-pipeline-page topology save > falls through to the save when validation is unreachable (0.01s)
   - [+] ag-pipeline-page topology save > reports a backend save failure without closing the modal
 
 **js/components/organisms/ag-pull-tab.test.js**
@@ -3794,7 +3946,7 @@ Generated: **2026-08-06 13:55 UTC**
 
 **js/components/organisms/ag-user-modal.test.js**
 
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.02s)
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.07s)
   - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (tabs) is rejected
   - [+] AgUserModal._handleSave — password trim (Fix P3) > valid password passes validation
   - [+] AgUserModal._handleSave — password trim (Fix P3) > password with surrounding spaces is trimmed before sending

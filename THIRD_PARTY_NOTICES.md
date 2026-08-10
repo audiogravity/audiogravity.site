@@ -547,7 +547,7 @@ These names and logos are trademarks of their respective owners. Audiogravi<sup>
 
 HIGHRESAUDIO is a separate case and is stated separately rather than left in the sentence
 above, which would no longer be accurate: HRA provided their API for this integration and
-reviewed the interface built on it. That is a working arrangement between the two, not a
+saw early screenshots of it. That is a working arrangement between the two, not a
 commercial one — HRA does not sponsor Audiogravi<sup>ty</sup>, and no claim of partnership or
 endorsement is made here or on audiogravity.app.
 

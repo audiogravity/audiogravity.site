@@ -7,7 +7,41 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Forms on a phone were paying for a protection they only half needed
+
+Tap a text field on an iPhone and Safari zooms the page in. It does that whenever the field's text
+is declared below a certain size, it does not zoom back out afterwards, and the button you were
+reaching for ends up off the screen. It is a real problem and Audiogravi<sup>ty</sup> guarded
+against it the obvious way: every field on a touch screen was raised to that size.
+
+The guard worked. What nobody had weighed was its price. Every form in the interface — settings,
+licence, profiles, configuration, the test panels — was drawn on a phone with its fields visibly
+larger than the labels above them. A form reads as a sequence of pairs, a name and a value, and
+the pairs no longer looked like pairs.
+
+It turns out the two goals were never in conflict. What Safari inspects is the size a field
+*declares*, not the size it is finally drawn at. Fields still declare exactly what Safari wants,
+and are now drawn at the size the form was designed with. Confirmed on an actual iPhone rather
+than reasoned about: a field declared large and drawn small takes focus without moving the page,
+while the same field declared small zooms it a quarter larger.
+
+The fallback is the part worth stating. On an iPhone older than iOS 16.4 the second half of that
+is ignored and the field keeps its former, larger size — inelegant, and still perfectly safe. The
+protection never rests on the new behaviour, only the appearance does.
+
+### Dropdown lists were never at risk in the first place
+
+They had been held at that same enlarged size since the beginning, on the assumption that every
+form control behaves like a text field. It was never checked, and it is not true: a dropdown opens
+a picker wheel rather than a keyboard, and measured on an iPhone it does not zoom the page at any
+size.
+
+So the rule was buying nothing, and it was costing the lists their proportions. The clearest case
+was the HQPlayer DSP card, where *Filter*, *Shaper* and *Mode* sit under labels deliberately set
+small — the lists there were being drawn a third larger than the words naming them, which is what
+made the card look wrong without it being obvious why.
+
+Lists now keep the size their own screen gives them, on a phone exactly as on a desktop.
 
 ---
 

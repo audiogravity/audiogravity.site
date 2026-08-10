@@ -29,6 +29,29 @@ The fallback is the part worth stating. On an iPhone older than iOS 16.4 the sec
 is ignored and the field keeps its former, larger size — inelegant, and still perfectly safe. The
 protection never rests on the new behaviour, only the appearance does.
 
+### Five symbols and no words
+
+The library is the part of Audiogravi<sup>ty</sup> people spend their time in, and on a phone its
+five tabs had no names. Browse, Search, Queue, Library and Radio were five bare symbols, because
+the rule that drew their names simply switched them off below a certain screen width — the very
+screen the library is used from most.
+
+The names are back, under the icons, everywhere. The interesting part is what it took to fit them,
+because the bar had no room to give: the source you are browsing sat in it, and "LOCAL LIBRARY" in
+bold capitals is a third of a phone's width. It has moved to the head of the content it describes,
+which is where it belonged all along — it tells you what you are *looking at*, not where you can
+go. The bar also stopped spending a sixth of the screen on margins inherited from a desktop
+layout. Between the two, the five names fit with room to spare.
+
+When they do not — a long source name, a smaller phone — the bar can be dragged sideways, and it
+brings the selected tab back into view by itself whenever the tab changes, including when you
+change it by swiping the page rather than by tapping.
+
+One thing found on the way: on four screens, the tab shown as selected is not quite the screen you
+are on — the outputs list shows Library, the artist and Roon and UPnP browsers all show Browse.
+Tapping that tab is the obvious way back out, and it did nothing whatsoever. Nobody noticed while
+the tab had no name on it.
+
 ### The last thing the installer prints is now a QR code
 
 Audiogravi<sup>ty</sup> runs on a box on your own network, and the interface lives at a private

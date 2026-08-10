@@ -7,6 +7,28 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Seeking a Tidal track on the very first listen
+
+Tidal delivers its lossless tracks in pieces rather than as a file, so
+Audiogravi<sup>ty</sup> reassembles each one on the fly and hands it to the player as it is
+being written — which is why playback starts about a second after you press play instead of
+after a full download. The cost was a small, oddly specific annoyance: on that first listen the
+progress bar did nothing. The player decides whether it can jump around inside a stream at the
+moment it opens it, and at that moment the file is still being written, so the answer was no —
+for the whole track. Play it again later and seeking worked, because by then the finished copy
+was on the box.
+
+That finished copy is the thing this release makes use of. It is ready a few seconds into the
+track, and it was simply never offered to the listen already in progress. Now, when you drag the
+bar, the track is reopened from it and your jump lands. You do not see the reopen: a seek always
+goes quiet for an instant, and it hides in there.
+
+Two honest limits, both improvements in their own right. Dragging the bar during the first few
+seconds, before the copy is ready, is still declined — but it now says so, where before it looked
+like the app had simply frozen the bar at the position you chose. Same for a live radio stream:
+a live broadcast has no end to jump to, and being told so plainly is better than a control that
+appears to work and does not.
+
 ### The queue knew how long every track was, and threw it away
 
 A track from your own library shows its length in the queue. A track from Qobuz, Tidal,
@@ -1526,7 +1548,8 @@ streams it to MPD as it is produced — playback starts in about a second. The
 remux is written to a seekable FLAC file and kept in a small, disk-backed cache
 (the current track plus a couple of recent ones, wiped at startup), so replaying
 or reopening a track serves it with HTTP Range and **in-track seek works**. The
-first play of a given track in a session isn't seekable; replays are. Requires
+first play of a given track was not seekable in this release; it is since
+0.9.34, which reopens the track from that cached copy when you seek. Requires
 `ffmpeg` (installed by the backend installer).
 
 ### Top Bar — Mobile Navigation & Library Shortcut

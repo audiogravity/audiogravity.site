@@ -29,6 +29,37 @@ The fallback is the part worth stating. On an iPhone older than iOS 16.4 the sec
 is ignored and the field keeps its former, larger size — inelegant, and still perfectly safe. The
 protection never rests on the new behaviour, only the appearance does.
 
+### The last thing the installer prints is now a QR code
+
+Audiogravi<sup>ty</sup> runs on a box on your own network, and the interface lives at a private
+address on that network. That address cannot be shortened, published or looked up — it is
+yours — which left one clumsy step at the very end of an otherwise unattended install: reading
+an address off a screen and typing it, digit by digit, into the phone you are going to use the
+interface from.
+
+The installer now prints a QR code of that exact address, and under it the three steps that turn
+the page into a proper app — fullscreen, its own icon on the home screen — on Android, on iPhone
+and on the desktop. The certificate warning is explained at the point you actually meet it, right
+under the code with the phone in your hand, rather than several screens earlier.
+
+Two details decide whether something like this is a courtesy or a nuisance. It is drawn only when
+a person is present: an upgrade, or the one-click update which runs detached with no terminal at
+all, prints nothing and installs nothing extra on your box. And it gets out of the way rather than
+misbehave — a narrower terminal gets a compact rendering, a very narrow one gets the address on its
+own. What is printed can always be scanned, or nothing is printed.
+
+### The address the installer prints is now one your phone can reach
+
+The installer used to name the first of every address the machine holds, which sounds reasonable
+until you look at what that list contains on a box running Docker, a VPN, a bridge, or simply
+holding two network interfaces. The first entry can easily be an address that exists only inside
+the machine. It was printed as the place to go, and the certificate was issued in its name.
+
+It now asks the routing table which address a packet leaving the box would carry — the question
+that was being asked all along. This mattered little when it produced a line of text somebody
+would sanity-check; it matters entirely when it produces a QR code, where a wrong address is worse
+than no address at all.
+
 ### Dropdown lists were never at risk in the first place
 
 They had been held at that same enlarged size since the beginning, on the assumption that every

@@ -7,6 +7,32 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The queue knew how long every track was, and threw it away
+
+A track from your own library shows its length in the queue. A track from Qobuz, Tidal,
+HIGHRESAUDIO or your UPnP server showed `--:--`, and the reason is a fair one: those tracks
+reach the player as a stream, and MPD — which does the playing — only learns how long a
+stream is by decoding it. A track waiting its turn in the queue has not been decoded, so it
+has no length to report.
+
+But the length was never actually unknown. Qobuz says it. Tidal says it. HIGHRESAUDIO says
+it, and a UPnP server puts it in the very listing Audiogravi<sup>ty</sup> reads to show you
+the album. Every one of those values was in hand at the moment the track was queued, and
+every one of them was being dropped one line later, because the little record kept
+alongside each queued stream had room for the title, the artist, the album and the cover —
+and no room for the duration.
+
+It has room now, and that record is written to disk, so the durations survive restarting
+the box rather than vanishing with the first reboot. Internet radio still shows `--:--`:
+a live stream genuinely has no end, and pretending otherwise would be worse than admitting
+it. Tracks already sitting in your queue from before the update keep showing `--:--` until
+you queue them again — their length was never written down, so there is nothing to recover.
+
+One thing came out of the tidying. The player's remaining-time display reads the same
+record now, which it did not before. Had it been left alone, you could have seen the queue
+give a track's length while the progress bar just above it showed none, for the same track,
+at the same moment.
+
 ### Forms on a phone were paying for a protection they only half needed
 
 Tap a text field on an iPhone and Safari zooms the page in. It does that whenever the field's text

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.34 — 2026-08-11
+
 ### Controls that tell the truth
 
 Every transport control in Audiogravi<sup>ty</sup> — play/pause, next, previous, volume,

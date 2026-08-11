@@ -214,6 +214,37 @@ it comes from: your library, a media server or a radio station. Audiogravi<sup>t
 the reason. Turn <strong>Use as output</strong> off to play them locally (see
 <a href="06-outputs-engines">6. Outputs &amp; engines</a>).</li>
 </ul>
+<h2 id="a-control-snaps-back-or-an-action-says-it-failed">A control snaps back, or an action says it failed</h2>
+<p>Audiogravi<sup>ty</sup> reads the player's answer before showing a command as done, so a
+control that returns to its previous state is reporting a <strong>refusal</strong> — it is not a missed
+tap, and repeating it will not help until the cause is fixed.</p>
+<ul>
+<li><strong>The volume slider glides back.</strong> The output has no volume control of its own — common
+for a DAC used bit-perfect. Use the DAC's own control or its remote, or pick an output
+with a mixer (see <a href="06-outputs-engines">6. Outputs &amp; engines</a>).</li>
+<li><strong>Play/pause flips back, or next/previous does nothing.</strong> The player refused or could
+not be reached; check it is running under Services, and see <em>No sound / wrong output</em>
+above.</li>
+<li><strong>Adding to the queue, or removing from it, reports an error.</strong> The message carries the
+player's own reason. The usual ones: the track or album has left the library index since
+the page was drawn (<strong>re-scan the library</strong>), a radio station whose address the player
+rejects, or a queue row already removed from another device — reopen the queue to see
+its real content.</li>
+<li><strong>Queueing an album added only some of its tracks.</strong> That is reported honestly rather
+than rolled back: the tracks that made it in are yours and are counted. Queue the rest
+again, and if it repeats, re-scan the library.</li>
+</ul>
+<h2 id="the-progress-bar-wont-move">The progress bar won't move</h2>
+<p>Jumping inside a track is declined — and says so — in three cases, none of them a fault:</p>
+<ul>
+<li><strong>Internet radio.</strong> A live broadcast has no end to jump to.</li>
+<li><strong>The first seconds of a Tidal track's first listen.</strong> The track plays while it is still
+arriving; the seekable copy is ready a few seconds in. Wait a moment and drag again — the
+rest of that first listen seeks normally.</li>
+<li><strong>A second jump while the first is still being applied.</strong> Asking again immediately is
+declined rather than queued, so the track is not restarted several times over. Let the
+first one land.</li>
+</ul>
 <h2 id="casting-to-a-renderer-stalls">Casting to a renderer stalls</h2>
 <ul>
 <li>Check the renderer is reachable on the LAN and appears in the output selector.</li>

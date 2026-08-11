@@ -165,6 +165,39 @@ into each service's configuration. Detection alone routes nothing.
   the reason. Turn **Use as output** off to play them locally (see
   [6. Outputs & engines](06-outputs-engines.md)).
 
+## A control snaps back, or an action says it failed
+
+Audiogravi<sup>ty</sup> reads the player's answer before showing a command as done, so a
+control that returns to its previous state is reporting a **refusal** — it is not a missed
+tap, and repeating it will not help until the cause is fixed.
+
+- **The volume slider glides back.** The output has no volume control of its own — common
+  for a DAC used bit-perfect. Use the DAC's own control or its remote, or pick an output
+  with a mixer (see [6. Outputs & engines](06-outputs-engines.md)).
+- **Play/pause flips back, or next/previous does nothing.** The player refused or could
+  not be reached; check it is running under Services, and see *No sound / wrong output*
+  above.
+- **Adding to the queue, or removing from it, reports an error.** The message carries the
+  player's own reason. The usual ones: the track or album has left the library index since
+  the page was drawn (**re-scan the library**), a radio station whose address the player
+  rejects, or a queue row already removed from another device — reopen the queue to see
+  its real content.
+- **Queueing an album added only some of its tracks.** That is reported honestly rather
+  than rolled back: the tracks that made it in are yours and are counted. Queue the rest
+  again, and if it repeats, re-scan the library.
+
+## The progress bar won't move
+
+Jumping inside a track is declined — and says so — in three cases, none of them a fault:
+
+- **Internet radio.** A live broadcast has no end to jump to.
+- **The first seconds of a Tidal track's first listen.** The track plays while it is still
+  arriving; the seekable copy is ready a few seconds in. Wait a moment and drag again — the
+  rest of that first listen seeks normally.
+- **A second jump while the first is still being applied.** Asking again immediately is
+  declined rather than queued, so the track is not restarted several times over. Let the
+  first one land.
+
 ## Casting to a renderer stalls
 
 - Check the renderer is reachable on the LAN and appears in the output selector.

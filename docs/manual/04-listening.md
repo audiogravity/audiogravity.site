@@ -21,6 +21,18 @@ swipe up on mobile / the expand button on desktop) to open the **fullscreen play
 - When playing to a network renderer, a **"Routed to UPnP renderer"** indicator makes
   the destination clear.
 
+> **Controls tell you the truth.** Audiogravi<sup>ty</sup> waits for the player's answer
+> before showing a command as done. If the player refuses one, the control returns to its
+> real state rather than showing a change that never happened — a play/pause icon that
+> flips back, or a volume slider that glides back to where it was, means the command was
+> declined, not that your tap was missed. The commonest reason is an output with no volume
+> control of its own. Queue actions say it in words, carrying the player's own reason.
+> Jumping in a track is declined in three cases: a **live radio stream** has no end to
+> jump to; the **first seconds** of a Tidal track's first listen, while its seekable copy
+> is still arriving (wait a moment and try again); and a second jump asked for while the
+> first is still being applied. See
+> [9. Troubleshooting](09-troubleshooting.md).
+
 <img src="images/ios-fullscreen.webp" alt="The fullscreen player: cover art, signal path, hi-fi format strip, transport, next track and output bar" width="360">
 
 

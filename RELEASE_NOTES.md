@@ -34,6 +34,20 @@ success. The new output is now switched on before the old ones are touched, so a
 leaves the music playing where it was, and the refusal reaches you with the player's own
 reason.
 
+The same treatment then went to everything that *adds* music rather than steers it:
+queueing a track or an album, starting a radio station, removing a row from the queue.
+All of them answered "done" without reading the player's reply, and the failures they hid
+are the ordinary kind — a station whose address the player rejects, an album that left the
+library index since the page was drawn, a queue row someone already removed. You would
+click, see the interface agree, and hear nothing. Now each says what happened, in the
+player's own words.
+
+Two refusals are deliberately *not* passed on, because failing the whole request would lie
+in the other direction. When you queue an album and the player stops partway through the
+list, the tracks that made it in are yours — they are kept, and counted honestly. And the
+titles Audiogravi<sup>ty</sup> attaches to queued streams are decoration: if writing them
+fails, your music is still queued, and that is what you are told.
+
 ### Seeking a Tidal track on the very first listen
 
 Tidal delivers its lossless tracks in pieces rather than as a file, so
@@ -55,6 +69,11 @@ seconds, before the copy is ready, is still declined — but it now says so, whe
 like the app had simply frozen the bar at the position you chose. Same for a live radio stream:
 a live broadcast has no end to jump to, and being told so plainly is better than a control that
 appears to work and does not.
+
+One more limit, added after testing the impatient case: if you drag the bar again while a reopen
+is already under way, that second jump is declined rather than queued behind the first. Each
+queued jump would have reopened the track in its turn, so three quick drags meant hearing the
+track restart three times.
 
 ### The queue knew how long every track was, and threw it away
 

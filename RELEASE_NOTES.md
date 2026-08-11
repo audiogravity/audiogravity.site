@@ -7,6 +7,30 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### HQPlayer: the progress bar works, and you can move around in a track
+
+The bar was there and it was inert. The elapsed time counted up, the bar never moved, and
+dragging it did nothing at all. Two assumptions inside Audiogravi<sup>ty</sup> explained
+it: that HQPlayer cannot jump to a position, and that it has nothing to say about how long
+a track is. Both were written down years ago, one of them in a specification, and neither
+had been checked against the thing itself.
+
+Asking HQPlayer directly took a few minutes and contradicted both. It accepts a jump to any
+position — sent one on a playing track, it moved from 1:16 to 2:20 without a hiccup. And it
+works out a track's length by itself: for a stream nobody had described to it, it answered
+seven minutes twenty, which was exactly right.
+
+So both are now used. The bar has a scale, it advances, and you can drag it. The length
+HQPlayer measures is preferred over the one the source supplied, because it is right more
+often — and it is the *only* one available when you start playback from HQPlayer's own
+remote rather than from Audiogravi<sup>ty</sup>, a case that used to show nothing at all.
+A live stream still shows no length, which is the honest answer for something with no end.
+
+One limit stands. Push a whole album and the screen stays on the first track: HQPlayer plays
+straight through, but does not announce that it has moved on. Reading which track is playing
+turns out to be possible after all — the same enquiry that opened the two above — and it is
+written down as work to do rather than a wall.
+
 ### The box can now prove who it is, so your phone will treat it as an app
 
 Install Audiogravi<sup>ty</sup> with HTTPS and the box signs its own certificate —

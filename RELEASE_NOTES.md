@@ -7,6 +7,33 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Controls that tell the truth
+
+Every transport control in Audiogravi<sup>ty</sup> — play/pause, next, previous, volume,
+repeat, shuffle — used to work on trust. The command was sent to the player, the interface
+flipped at once, and the player's answer was never read. Almost always that trust was
+well placed, which is why it went unnoticed for so long. The exceptions were quietly
+corrosive: a DAC with no volume control of its own refuses every volume change, and the
+slider moved anyway; a player mid-restart drops commands on the floor, and the pause
+button toggled over music that never stopped.
+
+The seek was converted first — it is described below, and it forced the question of what
+the other six controls should do when the player says no. The answer, chosen deliberately:
+say nothing, and be right. On a refusal the button or slider simply returns to the true
+state. No toast, no error banner — a control that visibly does not act is the honest
+message, and a notification would be noise for something as rare as an output without a
+mixer. The volume panel was the last holdout: it kept showing the level you dragged to
+until you closed it. It now glides back to the real level a moment after you let go —
+invisible when the change took, honest when it did not.
+
+Two things stand behind this, worth a sentence each. After every command, refused or not,
+the player broadcasts its actual state, and that broadcast — not the interface's optimism
+— is the reference every screen converges on. And switching between audio outputs was
+found capable of something worse than lying: it could disable every output and report
+success. The new output is now switched on before the old ones are touched, so a refusal
+leaves the music playing where it was, and the refusal reaches you with the player's own
+reason.
+
 ### Seeking a Tidal track on the very first listen
 
 Tidal delivers its lossless tracks in pieces rather than as a file, so

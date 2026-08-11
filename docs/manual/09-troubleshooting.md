@@ -158,12 +158,44 @@ into each service's configuration. Detection alone routes nothing.
 - A track that played before but fails later is usually an **expired streaming link** —
   Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
-- **With HQPlayer as your output**, streaming services are refused on purpose, and so
-  is anything in a format it cannot decode (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM,
-  AIFC) — wherever
-  it comes from: your library, a media server or a radio station. Audiogravi<sup>ty</sup> names
-  the reason. Turn **Use as output** off to play them locally (see
-  [6. Outputs & engines](06-outputs-engines.md)).
+- **With HQPlayer as your output**, two different refusals exist and the message says
+  which one you hit:
+  - **Qobuz, Tidal and HIGHRESAUDIO** cannot go through HQPlayer at all, whatever the
+    quality — a Hi-Res FLAC album included. It is a route that has not been built yet,
+    not a limitation of the file (see
+    [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer)).
+  - **A format HQPlayer cannot decode** (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM,
+    AIFC) is refused wherever it comes from — your library, a media server or a radio
+    station.
+
+  In both cases, turn **Use as output** off to play it on the local output.
+
+## The browser warns about the certificate, or the app won't install
+
+On a self-signed setup the box signs its own certificate, so no browser knows it
+until you say so.
+
+- **A warning on every visit** — accept it to look around; to stop the warnings and
+  unlock the app install, trust the box's authority once per device:
+  [3. First run → Trust the box's certificate](03-first-run.md#7-trust-the-boxs-certificate-once-per-device).
+- **Android's Chrome never offers "Install app"** — that prompt requires a trusted
+  certificate. Same fix. There is nothing wrong with the site itself.
+- **The home-screen icon opens on an error** — the app window has no way to show the
+  "accept the risk" page a browser tab does, so an untrusted certificate simply fails
+  there. Trust the authority, then reopen the app.
+- **Upgraded from an older release and the warning changed** — before 0.9.35 the box
+  generated a certificate that no modern browser accepts at all (it identified itself
+  in a field browsers stopped reading in 2017) and that trusting could not repair.
+  Upgrading replaces it and creates the authority; trust it once and the app installs.
+  Nothing to undo first — and if you had installed that old certificate on a phone, it
+  is simply obsolete; remove it and install the authority instead.
+- **You put your own certificate on the box** — a valid one, whoever issued it, is
+  detected and **left untouched**: no authority is created, nothing is published, and
+  renewal stays with whatever issues it. The box only steps in if that certificate has
+  actually expired, or carries no `subjectAltName` (which no browser accepts).
+- **You changed the box's address** — the certificate is reissued automatically for
+  the new one, and the authority does not change, so devices that already trust it
+  need nothing.
 
 ## A control snaps back, or an action says it failed
 

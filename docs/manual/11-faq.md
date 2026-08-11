@@ -53,7 +53,7 @@ Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. **On Android**: o
 Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its
 own icon, just like a native app — and on iOS the installed app is what enables
 push notifications. Note: on iOS, only Safari supports PWA installation. See
-[3. First run](03-first-run.md#7-install-it-as-an-app-recommended-on-phones).
+[3. First run](03-first-run.md#8-install-it-as-an-app-recommended-on-phones).
 
 ## How do I connect Qobuz, Tidal or HIGHRESAUDIO?
 

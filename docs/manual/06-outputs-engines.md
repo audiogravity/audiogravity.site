@@ -97,6 +97,30 @@ missing rather than sending your music into silence.
 
 ### What can and cannot go through HQPlayer
 
+Two separate questions decide it, and a track has to pass **both**: where it comes
+from, and what format it is in. They are independent — a Qobuz album in FLAC is
+refused for the first reason even though FLAC is a format HQPlayer plays perfectly.
+
+**Which sources reach HQPlayer today:**
+
+| Source | Through HQPlayer |
+|---|---|
+| Your local library | **Yes** |
+| Internet radio | **Yes** |
+| A UPnP media server (MinimServer, Plex…) | **Yes** |
+| **Qobuz, Tidal, HIGHRESAUDIO** | **No — not yet** |
+| Roon | Not applicable — a Roon zone is its own output chain |
+
+The three streaming services are the exception, and it is not about audio quality:
+those two, radio and your library all reach HQPlayer as a plain web address it fetches
+by itself, whereas a streaming service is delivered through Audiogravi<sup>ty</sup>'s
+own relay — and that path has not been connected to HQPlayer. It is planned, not ruled
+out: Qobuz and HIGHRESAUDIO are official HQPlayer partners. Until then, turn **Use as
+output** off to play them on the local output, and Audiogravi<sup>ty</sup> says so
+plainly instead of going quiet.
+
+**Which formats HQPlayer decodes:**
+
 HQPlayer plays **FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF**. It does
 **not** decode anything else — **AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM** — nor AIFC, the compressed flavour of AIFF.
 DFF is read uncompressed only: its compressed form, DST, is refused.
@@ -113,11 +137,9 @@ Turn the switch off to play it on the local output. An album is checked before
 anything is sent, so a single unplayable track is caught up front instead of
 stopping the music halfway through.
 
-This matters most for **internet radio**, where many Hi-Res stations broadcast in AAC.
-
-**Streaming services** (Qobuz, Tidal, HIGHRESAUDIO) cannot be routed through HQPlayer
-yet either; you get the same clear message rather than silence. **Roon is unaffected** —
-a Roon zone is its own output chain and never uses the sound card HQPlayer replaces.
+This matters most for **internet radio**, where many Hi-Res stations broadcast in AAC —
+a station can therefore be refused on format even though radio is a source HQPlayer
+otherwise accepts.
 
 > **One output at a time.** HQPlayer and a network renderer cannot both be your
 > output. If both are selected, Audiogravi<sup>ty</sup> asks you to turn one off instead of

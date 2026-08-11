@@ -48,7 +48,7 @@ the fullscreen player and the live hi-fi readout — format, sample rate, bitrat
 
 ## 7. Make it yours (optional, five more minutes)
 
-- **[Add it to your phone's home screen](03-first-run.md#7-install-it-as-an-app-recommended-on-phones)** — fullscreen app, portrait lock.
+- **[Add it to your phone's home screen](03-first-run.md#8-install-it-as-an-app-recommended-on-phones)** — fullscreen app, portrait lock.
 - **[Register a passkey](03-first-run.md#2-sign-in--and-secure-your-account)** — Face ID / Touch ID login (needs
   [HTTPS](02-installation.md#getting-https--for-passkeys-and-push)).
 - **[Send music elsewhere](06-outputs-engines.md)** — network renderers, HQPlayer, AirPlay.

@@ -153,10 +153,41 @@ footer whatever the
 tab, and the **gear** in the top bar opens
 [Settings](07-administration.md#the-settings-panel).
 
-## 7. Install it as an app (recommended on phones)
+## 7. Trust the box's certificate (once per device)
+
+If you chose HTTPS at install, the box created its own **certificate authority** and
+signed the interface's certificate with it. Your browser does not know that authority,
+so the first visit shows a security warning.
+
+**Accepting the warning is enough to look around.** It is *not* enough to install
+Audiogravi<sup>ty</sup> as an app: a phone only grants a site an app icon, an offline
+start and notifications once it **trusts** the certificate. That is one operation per
+device, and it holds for years — the authority is created once and never replaced,
+even when the interface's own certificate is renewed or the box changes address.
+
+1. On the device, open **`https://<box-address>/ca.crt`** — the same address as the
+   interface, with `/ca.crt` at the end. Accept the warning if it appears again.
+2. Then, depending on the device:
+
+| Device | What to do |
+|---|---|
+| **iPhone / iPad** | Allow the download, then **Settings → Profile Downloaded → Install**. Then — and this is the step people miss, without which nothing changes — **Settings → General → About → Certificate Trust Settings** and switch **Audiogravity** on. |
+| **Android** | **Settings → Security → Encryption & credentials → Install a certificate → CA certificate**, then pick the downloaded file. Android warns that a third party could inspect traffic; here that third party is your own box. |
+| **macOS** | Open the file in **Keychain Access**, then set it to *Always Trust*. |
+| **Windows** | Install it into **Trusted Root Certification Authorities**. |
+
+> **Why not simply a real certificate?** Because a public authority will not certify a
+> private address like `192.168.1.30`. If you would rather have a certificate every
+> device trusts with no manual step — and you also want passkeys and push
+> notifications, which a self-signed setup can never provide — give the box a domain
+> name and a real certificate: see
+> [2. Installation → Getting HTTPS](02-installation.md#getting-https--for-passkeys-and-push).
+
+## 8. Install it as an app (recommended on phones)
 
 Audiogravi<sup>ty</sup> is an installable web app (PWA): added to your home screen it
-opens **fullscreen**, in its own window, with the app icon.
+opens **fullscreen**, in its own window, with the app icon. On a self-signed setup,
+do step 7 first — an untrusted certificate is what stops the app from installing.
 
 - **Android** — open the site in Chrome and accept the **Install app** prompt (or
   browser menu → *Add to Home screen*). The installed app also honours the

@@ -202,17 +202,57 @@ Override</strong> on the Systemd tab to roll it back to factory behaviour instan
 </ul>
 <h2 id="streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</h2>
 <ul>
-<li>Confirm the service is <strong>Connected</strong> in Library → Sources, and that your
-<strong>subscription</strong> covers Hi-Res (see <a href="05-library-streaming">5. Library &amp; streaming</a>).</li>
-<li>A track that played before but fails later is usually an <strong>expired streaming link</strong> —
-Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.</li>
-<li><strong>HIGHRESAUDIO</strong> allows a single active device — if it signed out, reconnect.</li>
-<li><strong>With HQPlayer as your output</strong>, streaming services are refused on purpose, and so
-is anything in a format it cannot decode (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM,
-AIFC) — wherever
-it comes from: your library, a media server or a radio station. Audiogravi<sup>ty</sup> names
-the reason. Turn <strong>Use as output</strong> off to play them locally (see
-<a href="06-outputs-engines">6. Outputs &amp; engines</a>).</li>
+<li>
+<p>Confirm the service is <strong>Connected</strong> in Library → Sources, and that your
+<strong>subscription</strong> covers Hi-Res (see <a href="05-library-streaming">5. Library &amp; streaming</a>).</p>
+</li>
+<li>
+<p>A track that played before but fails later is usually an <strong>expired streaming link</strong> —
+Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.</p>
+</li>
+<li>
+<p><strong>HIGHRESAUDIO</strong> allows a single active device — if it signed out, reconnect.</p>
+</li>
+<li>
+<p><strong>With HQPlayer as your output</strong>, two different refusals exist and the message says
+which one you hit:</p>
+<ul>
+<li><strong>Qobuz, Tidal and HIGHRESAUDIO</strong> cannot go through HQPlayer at all, whatever the
+quality — a Hi-Res FLAC album included. It is a route that has not been built yet,
+not a limitation of the file (see
+<a href="06-outputs-engines#what-can-and-cannot-go-through-hqplayer">6. Outputs &amp; engines</a>).</li>
+<li><strong>A format HQPlayer cannot decode</strong> (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM,
+AIFC) is refused wherever it comes from — your library, a media server or a radio
+station.</li>
+</ul>
+<p>In both cases, turn <strong>Use as output</strong> off to play it on the local output.</p>
+</li>
+</ul>
+<h2 id="the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</h2>
+<p>On a self-signed setup the box signs its own certificate, so no browser knows it
+until you say so.</p>
+<ul>
+<li><strong>A warning on every visit</strong> — accept it to look around; to stop the warnings and
+unlock the app install, trust the box's authority once per device:
+<a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → Trust the box's certificate</a>.</li>
+<li><strong>Android's Chrome never offers &quot;Install app&quot;</strong> — that prompt requires a trusted
+certificate. Same fix. There is nothing wrong with the site itself.</li>
+<li><strong>The home-screen icon opens on an error</strong> — the app window has no way to show the
+&quot;accept the risk&quot; page a browser tab does, so an untrusted certificate simply fails
+there. Trust the authority, then reopen the app.</li>
+<li><strong>Upgraded from an older release and the warning changed</strong> — before 0.9.35 the box
+generated a certificate that no modern browser accepts at all (it identified itself
+in a field browsers stopped reading in 2017) and that trusting could not repair.
+Upgrading replaces it and creates the authority; trust it once and the app installs.
+Nothing to undo first — and if you had installed that old certificate on a phone, it
+is simply obsolete; remove it and install the authority instead.</li>
+<li><strong>You put your own certificate on the box</strong> — a valid one, whoever issued it, is
+detected and <strong>left untouched</strong>: no authority is created, nothing is published, and
+renewal stays with whatever issues it. The box only steps in if that certificate has
+actually expired, or carries no <code>subjectAltName</code> (which no browser accepts).</li>
+<li><strong>You changed the box's address</strong> — the certificate is reissued automatically for
+the new one, and the authority does not change, so devices that already trust it
+need nothing.</li>
 </ul>
 <h2 id="a-control-snaps-back-or-an-action-says-it-failed">A control snaps back, or an action says it failed</h2>
 <p>Audiogravi<sup>ty</sup> reads the player's answer before showing a command as done, so a

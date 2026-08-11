@@ -7,7 +7,49 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The box can now prove who it is, so your phone will treat it as an app
+
+Install Audiogravi<sup>ty</sup> with HTTPS and the box signs its own certificate —
+nobody else can, because no public authority certifies a private address on your own
+network. Your browser therefore warns you on the first visit, you accept, and you get
+on with listening. That is where it looked finished, and where it wasn't.
+
+Accepting a warning gets you a *page*. It does not get you an *app*. A phone only
+grants a site a home-screen icon that opens fullscreen, starts without the network and
+receives notifications once it genuinely **trusts** the certificate — and this one
+could not be trusted, no matter how patient you were. It identified itself only in a
+field that Chrome, Safari and Firefox stopped reading in 2017, so every one of them
+refused it outright, and installing it by hand as a trusted certificate did not repair
+that. On Android, the *Install app* prompt simply never appeared, and nothing on screen
+explained why.
+
+The box now creates a small **certificate authority of its own**, and signs the
+interface's certificate with it. You install that authority once on each phone or
+computer — the installer prints the address to fetch it from and the exact steps for
+iPhone, Android, macOS and Windows, and the manual now has a chapter on it. After that
+the box is trusted like any other site: no warnings, and the app installs normally.
+
+The reason it is an authority rather than a single certificate is what happens later.
+Certificates expire, and addresses change. With one certificate, each of those events
+means going back around every device in the house. With an authority, only the
+certificate it signs is reissued — quietly, before every start and once a day — while
+the authority your devices trust stays untouched. You do it once, and it holds for
+years.
+
+Reviewing that work turned up something older and more serious, unrelated to the
+authority itself: **the interface was handing out its own private key**. The certificate
+and its key sat in the same folder the interface serves its pages from, and the server
+drew no distinction — asking it for `/ssl/key.pem` returned the key in full, to any
+device on the network, with no password and no login. That key is what proves the box is
+the box. The store now lives outside anything the interface serves; upgrading moves it
+and deletes the exposed copy, and the server refuses that path outright as a second lock.
+Only the public certificate, the one your devices are meant to install, is published.
+
+Two smaller things came with it. A box that changes address no longer serves a
+certificate for the old one, which it did indefinitely because the file was written at
+the first install and never re-examined. And the QR code the installer prints at the
+end takes a third less room on screen: same symbol, drawn exactly as precisely as
+before, with the oversized margin trimmed.
 
 ---
 

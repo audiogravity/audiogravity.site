@@ -95,6 +95,23 @@ Audiogravi<sup>ty</sup> refuses to turn the switch on when nothing would come ou
 configured, or its NAA not running on the box — and tells you which of the two is
 missing rather than sending your music into silence.
 
+**What the player shows while HQPlayer is your output.** The progress bar works: it knows
+how long the track is, it advances, and you can drag it to move around inside the track —
+HQPlayer is asked to jump, exactly as your local output would be. This holds track by
+track through an album.
+
+**One thing does not follow.** Push a whole album and the **title, artist and cover stay
+on the first track** for the whole album, while the bar and the position follow the track
+actually playing. HQPlayer plays straight through without announcing that it has moved on,
+so Audiogravi<sup>ty</sup> has nothing to tell it apart by. The same applies to your local
+library — it is not specific to any source. Nothing is wrong with the playback; only the
+labels are behind.
+
+And a playback you started from **HQPlayer's own remote** rather than from
+Audiogravi<sup>ty</sup> shows no title at all — its remote-control connection carries the
+format and the position, never the identity of the track. You get "processor active" and
+the format, which is what is actually knowable.
+
 ### What can and cannot go through HQPlayer
 
 Two separate questions decide it, and a track has to pass **both**: where it comes

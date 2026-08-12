@@ -100,12 +100,18 @@ how long the track is, it advances, and you can drag it to move around inside th
 HQPlayer is asked to jump, exactly as your local output would be. This holds track by
 track through an album.
 
-**One thing does not follow.** Push a whole album and the **title, artist and cover stay
-on the first track** for the whole album, while the bar and the position follow the track
-actually playing. HQPlayer plays straight through without announcing that it has moved on,
-so Audiogravi<sup>ty</sup> has nothing to tell it apart by. The same applies to your local
-library — it is not specific to any source. Nothing is wrong with the playback; only the
-labels are behind.
+**One thing does not follow, and only here.** With HQPlayer as your output, play a whole
+album and the **title, artist and cover stay on the first track** for the whole album,
+while the bar and the position follow the track actually playing. HQPlayer plays straight
+through without announcing that it has moved on, so Audiogravi<sup>ty</sup> has nothing to
+tell one track from the next by.
+
+This is a property of **HQPlayer as the output**, not of what you are playing: an album
+from your own library shows it just as a streaming one does, because both reach HQPlayer
+the same way. Play the same album to **your DAC or a network speaker** and every track
+gets its own title and cover, as always — MPD and network speakers both announce their
+track changes. Nothing is wrong with the playback either way; here, only the labels are
+behind.
 
 And a playback you started from **HQPlayer's own remote** rather than from
 Audiogravi<sup>ty</sup> shows no title at all — its remote-control connection carries the

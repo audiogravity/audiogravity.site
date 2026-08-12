@@ -165,14 +165,21 @@ start and notifications once it **trusts** the certificate. That is one operatio
 device, and it holds for years — the authority is created once and never replaced,
 even when the interface's own certificate is renewed or the box changes address.
 
-1. On the device, open **`https://<box-address>/ca.crt`** — the same address as the
-   interface, with `/ca.crt` at the end. Accept the warning if it appears again.
+1. On the device, open **`http://<box-address>:8081/ca.crt`** — the installer prints this
+   exact address at the end.
+
+   > **Note the `http://`.** The certificate is deliberately handed out unencrypted, on a
+   > port that serves this one file and nothing else. Over `https://` it could not be
+   > fetched at all: doing so would mean trusting the very certificate you are coming to
+   > collect, and Safari on iOS refuses outright. A certificate authority is public by
+   > design — it is the thing you are meant to distribute — and it carries no key.
+
 2. Then, depending on the device:
 
 | Device | What to do |
 |---|---|
-| **iPhone / iPad** | Allow the download, then **Settings → Profile Downloaded → Install**. Then — and this is the step people miss, without which nothing changes — **Settings → General → About → Certificate Trust Settings** and switch **Audiogravity** on. |
-| **Android** | **Settings → Security → Encryption & credentials → Install a certificate → CA certificate**, then pick the downloaded file. Android warns that a third party could inspect traffic; here that third party is your own box. |
+| **iPhone / iPad** | Open the address in **Safari** and allow the download. Then **Settings → Profile Downloaded → Install**. That installs it — and installing is *not* trusting: go to **Settings → General → About → Certificate Trust Settings** and switch **Audiogravity Local CA** on (the entry carries the box's address after that name). **That last switch is the step that counts**; without it nothing changes. (Verified end to end on iOS: afterwards the interface opens with no warning and installs as an app.) |
+| **Android** | The goal is to install the file as a **trusted certificate authority** from the system settings — that is the only place Android allows it. Look under **Security** for *Encryption & credentials*, then *Install a certificate* (or *Install from storage*) → **CA certificate**, and pick the file you downloaded. We give no exact path on purpose: it differs between Android versions and between manufacturers, so a fixed one would be wrong for most phones. Two things stop people: the phone must have a **screen lock** (PIN, pattern or password), or Android refuses to store an authority at all — set one first; and since Android 11 only the Settings app may start the install, so tapping the downloaded file in Chrome does nothing. Android then warns that a third party could inspect your traffic — here that third party is your own box. ⚠️ Unlike iOS, **this has not been verified on an Android device**: the certificate should be trusted for browsing, but we have not confirmed that Audiogravi<sup>ty</sup> then installs as an app. |
 | **macOS** | Open the file in **Keychain Access**, then set it to *Always Trust*. |
 | **Windows** | Install it into **Trusted Root Certification Authorities**. |
 
@@ -191,7 +198,9 @@ do step 7 first — an untrusted certificate is what stops the app from installi
 
 - **Android** — open the site in Chrome and accept the **Install app** prompt (or
   browser menu → *Add to Home screen*). The installed app also honours the
-  [Portrait Lock](04-listening.md#portrait-lock) at the OS level.
+  [Portrait Lock](04-listening.md#portrait-lock) at the OS level. (On a self-signed
+  setup this is the part we could not verify on an Android device — see the warning
+  in step 7. With a real certificate and a domain name, it is not in question.)
 - **iPhone / iPad** — in Safari, tap **Share → Add to Home Screen**. On iOS this is
   also **required for push notifications**: Safari tabs can't receive them, the
   installed app can (see

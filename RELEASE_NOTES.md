@@ -7,7 +7,43 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The certificate you were told to install could not be fetched
+
+The previous release gave boxes installed with HTTPS a certificate authority of their
+own, and told you to collect it from `https://<box>/ca.crt`. That address cannot work,
+and the reason is circular: fetching a file over HTTPS means trusting the certificate
+protecting the connection — which is the very certificate you are coming to collect.
+Safari on iOS does not offer a way through. Not a warning to accept, not a button to
+tap: it refuses. The procedure was impossible on the device it was written for, and so
+was the app install that depends on it.
+
+It went out because the feature was tested where it was built. On a computer the
+authority is already trusted, or the browser lets you push past the warning, so the
+address answers and everything looks correct. The one device that cannot is a phone
+that has never seen the box before — which is every phone, the first time.
+
+The authority is now handed out over **plain HTTP**, on a port that serves that one
+file and nothing else: every other address on it is redirected to the HTTPS interface.
+Being unencrypted is deliberate and costs nothing. A certificate authority is public by
+design — handing it out is its entire purpose — and it contains no key. What would be
+serious is serving the *private* key in the clear, which is a different file, in a
+different place, and which the previous release stopped serving at all.
+
+The written steps were wrong too, and for a worse reason: they had been composed from
+memory rather than performed. The iPhone ones are now what a phone actually does,
+checked end to end — including the step that everything hinges on, which is easy to
+miss because it looks redundant. Installing the profile does **not** trust it; a
+separate switch, in a different part of Settings, does. Miss it and nothing changes,
+with no error to explain why.
+
+For Android we now give no menu path at all. It differs between versions and between
+manufacturers, so a single path would be wrong for most phones. The manual describes
+what has to be achieved instead, along with the two things that genuinely block
+people — a screen lock is required before Android will store an authority, and since
+Android 11 only the Settings app may begin the install, so tapping the downloaded file
+does nothing. And it says outright that, unlike the iPhone route, nobody has run the
+Android one on a device. That is the honest state of it, and better written down than
+implied.
 
 ---
 
@@ -55,9 +91,13 @@ explained why.
 
 The box now creates a small **certificate authority of its own**, and signs the
 interface's certificate with it. You install that authority once on each phone or
-computer — the installer prints the address to fetch it from and the exact steps for
-iPhone, Android, macOS and Windows, and the manual now has a chapter on it. After that
-the box is trusted like any other site: no warnings, and the app installs normally.
+computer — the installer prints the address to fetch it from and the steps for iPhone,
+Android, macOS and Windows, and the manual now has a chapter on it. After that the box
+is trusted like any other site: no warnings, and the app installs normally.
+
+> **Read this with 0.9.36.** The address printed here could not be opened on a phone,
+> and the printed steps were wrong. Both are fixed in the following release; on 0.9.35
+> alone this feature cannot be completed on an iPhone.
 
 The reason it is an authority rather than a single certificate is what happens later.
 Certificates expire, and addresses change. With one certificate, each of those events

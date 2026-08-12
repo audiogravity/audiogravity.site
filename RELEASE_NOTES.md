@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.35 — 2026-08-12
+
 ### HQPlayer: the progress bar works, and you can move around in a track
 
 The bar was there and it was inert. The elapsed time counted up, the bar never moved, and

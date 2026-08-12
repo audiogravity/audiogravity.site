@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.35] - 2026-08-12
+
 ### Added
 - **[core] You can now move around inside a track played through HQPlayer, and its progress bar works.** The bar was there but inert: the elapsed time counted up, the bar never moved, and dragging it did nothing. Audiogravi<sup>ty</sup> had HQPlayer down as unable to seek, and never asked it for a track's length. Asking its remote-control connection directly showed both assumptions were wrong — it accepts a jump to any position, and it works out a track's length by itself, including for a stream nobody described to it. Both are now used: the bar has a scale, it advances, and you can drag it. A live stream still shows none, which is the honest answer for something with no end. Two things follow that are worth knowing: the length HQPlayer measures is preferred over the one the source supplied, because it is right more often; and a playback started from HQPlayer's own remote — which used to show nothing at all — now at least shows how long the track is and where you are in it.
 

@@ -158,17 +158,18 @@ into each service's configuration. Detection alone routes nothing.
 - A track that played before but fails later is usually an **expired streaming link** —
   Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
-- **With HQPlayer as your output**, two different refusals exist and the message says
-  which one you hit:
-  - **Qobuz, Tidal and HIGHRESAUDIO** cannot go through HQPlayer at all, whatever the
-    quality — a Hi-Res FLAC album included. It is a route that has not been built yet,
-    not a limitation of the file (see
-    [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer)).
-  - **A format HQPlayer cannot decode** (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM,
-    AIFC) is refused wherever it comes from — your library, a media server or a radio
-    station.
-
-  In both cases, turn **Use as output** off to play it on the local output.
+- **Tidal in silence, on any output.** Tidal's lossy qualities (HIGH, LOW) deliver AAC,
+  which cannot be converted losslessly — nothing plays, anywhere. Set Tidal to a lossless
+  quality. The same message appears when the **album itself** is not available in lossless
+  even though your setting is right: Audiogravi<sup>ty</sup> checks what Tidal actually
+  serves before it starts, and names the cause instead of leaving you with silence.
+- **With HQPlayer as your output**, a track in a format HQPlayer cannot decode (AAC, ALAC,
+  M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex,
+  AMR, MKA/WebM, AIFC) is refused wherever it comes from — your library, a media server or
+  a radio station — and the message names the format and the track. Turn **Use as output**
+  off to play it on the local output. Which *source* it comes from no longer matters: every
+  source reaches HQPlayer, streaming services included (see
+  [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer)).
 
 ## The browser warns about the certificate, or the app won't install
 

@@ -100,47 +100,57 @@ how long the track is, it advances, and you can drag it to move around inside th
 HQPlayer is asked to jump, exactly as your local output would be. This holds track by
 track through an album.
 
-**One thing does not follow, and only here.** With HQPlayer as your output, play a whole
-album and the **title, artist and cover stay on the first track** for the whole album,
-while the bar and the position follow the track actually playing. HQPlayer plays straight
-through without announcing that it has moved on, so Audiogravi<sup>ty</sup> has nothing to
-tell one track from the next by.
+The title, the artist and the cover follow the track too, all the way through an album.
+That is worth a word on how it is done, because HQPlayer cannot be asked: it reads no tags
+from a stream it fetches over the network, whatever the file. So Audiogravi<sup>ty</sup>
+remembers the list it sent and reads which entry HQPlayer is on — the answer comes from
+its own side, not from asking.
 
-This is a property of **HQPlayer as the output**, not of what you are playing: an album
-from your own library shows it just as a streaming one does, because both reach HQPlayer
-the same way. Play the same album to **your DAC or a network speaker** and every track
-gets its own title and cover, as always — MPD and network speakers both announce their
-track changes. Nothing is wrong with the playback either way; here, only the labels are
-behind.
+Two consequences follow from that, and they are both visible.
 
-And a playback you started from **HQPlayer's own remote** rather than from
-Audiogravi<sup>ty</sup> shows no title at all — its remote-control connection carries the
-format and the position, never the identity of the track. You get "processor active" and
-the format, which is what is actually knowable.
+A playback you started from **HQPlayer's own remote** rather than from
+Audiogravi<sup>ty</sup> shows no title at all — there is no list on this side to read from,
+and HQPlayer's remote-control connection carries the format and the position, never the
+identity of the track. You get "processor active" and the format, which is what is
+actually knowable.
+
+The same happens if you **change HQPlayer's playlist from HQPlayer itself** while
+Audiogravi<sup>ty</sup> is playing to it: it notices the list is no longer the one it sent
+and stops labelling rather than putting your album's titles on someone else's tracks.
+
+**Internet radio is the exception.** A station announces the track it is playing inside the
+audio stream itself, and here it is HQPlayer that receives the stream, not
+Audiogravi<sup>ty</sup> — and HQPlayer keeps only the station's name, never the current
+track. So a radio played through HQPlayer shows the station and its logo, where the same
+station on your local output shows the song. This one is a genuine gap, not a design.
 
 ### What can and cannot go through HQPlayer
 
-Two separate questions decide it, and a track has to pass **both**: where it comes
-from, and what format it is in. They are independent — a Qobuz album in FLAC is
-refused for the first reason even though FLAC is a format HQPlayer plays perfectly.
+Only one question decides it now: **what format the track is in**. Where it comes from no
+longer matters — every source Audiogravi<sup>ty</sup> can play reaches HQPlayer.
 
-**Which sources reach HQPlayer today:**
+**Which sources reach HQPlayer:**
 
 | Source | Through HQPlayer |
 |---|---|
 | Your local library | **Yes** |
 | Internet radio | **Yes** |
 | A UPnP media server (MinimServer, Plex…) | **Yes** |
-| **Qobuz, Tidal, HIGHRESAUDIO** | **No — not yet** |
+| Qobuz, Tidal, HIGHRESAUDIO | **Yes** |
 | Roon | Not applicable — a Roon zone is its own output chain |
 
-The three streaming services are the exception, and it is not about audio quality:
-those two, radio and your library all reach HQPlayer as a plain web address it fetches
-by itself, whereas a streaming service is delivered through Audiogravi<sup>ty</sup>'s
-own relay — and that path has not been connected to HQPlayer. It is planned, not ruled
-out: Qobuz and HIGHRESAUDIO are official HQPlayer partners. Until then, turn **Use as
-output** off to play them on the local output, and Audiogravi<sup>ty</sup> says so
-plainly instead of going quiet.
+They all get there the same way: Audiogravi<sup>ty</sup> hands HQPlayer a web address on
+your own network and HQPlayer fetches the music itself. For **Qobuz** and **HIGHRESAUDIO**
+that address redirects straight to the service's servers, so your box hands over an address
+and steps aside — it never carries the music. **Tidal** is the one exception: it delivers
+its audio in a form that has to be converted first, so that stream does pass through the
+box. Nothing is re-encoded either way; the audio is bit-for-bit what the service sent.
+
+> **Tidal and quality.** Tidal's lossy qualities (HIGH, LOW) deliver AAC, which cannot be
+> converted losslessly and so plays on **no** output at all — not just through HQPlayer.
+> Keep Tidal on a lossless quality. Audiogravi<sup>ty</sup> checks what Tidal actually
+> serves before starting an album, and says so rather than leaving you with silence: an
+> album unavailable in lossless is refused by name, even when your quality setting is right.
 
 **Which formats HQPlayer decodes:**
 

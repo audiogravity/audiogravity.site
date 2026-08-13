@@ -7,7 +7,45 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Two ways the volume was not telling the truth
+
+Both were found the same way — by watching what the box actually publishes while
+someone moves a slider, rather than by reasoning about the code — and both turned out
+to be different from what they looked like.
+
+**A DSD album could leave every volume at maximum.** DSD is a 1-bit stream, and any
+attenuation degrades it, so Audiogravi<sup>ty</sup> raises the volumes to 100 while one
+plays and puts them back when it ends. That is why the slider is replaced by a padlock
+during DSD: the level is deliberately out of your hands for the duration.
+
+The putting-back only happened if something was still playing at that precise moment.
+When a DSD album simply reached its end — or was stopped before choosing what came next
+— the restore was skipped, and the levels being held were thrown away in the same
+breath. Nothing later could recover them. Whatever you played next played at 100, and
+the only way back was to set the volume by hand. It looked intermittent because it
+depended on something else happening to be paused at the right instant.
+
+Restoring now happens whether or not the music is still running. One subtlety shaped
+the fix: a player that fails to answer is indistinguishable, from the outside, from a
+player that has stopped — and writing a level on the first case would attenuate a
+stream still in flight, the exact harm the whole mechanism exists to prevent. So the
+end of a DSD stream is now established by asking, once, instead of inferred from
+silence. When the answer does not come, nothing is written and nothing is forgotten.
+
+**And the slider could jump backwards after a drag.** A moment after letting go, it
+would flick to somewhere in the middle of your own gesture before landing on the value
+you chose. The previous release fixed one cause of this, and that fix does hold —
+verified, nothing arrives out of order any more. What remained is simpler: a drag sends
+one command per movement, so for about a second after you let go, the box is still
+publishing the levels your finger passed through on the way.
+
+The slider was covering that with a fixed pause of a second and a half. Measured
+against a running box, the correct value arrived after 1.26 s — a quarter of a second
+of margin. Enough on an idle machine; not enough on a busy one, a slower one, or after
+a longer drag. It now keeps the level you asked for until the box confirms that exact
+level, so no margin decides whether the display is right. The same gap existed in the
+player at the bottom of the screen, where nothing had gone wrong yet; it is closed
+there too.
 
 ---
 

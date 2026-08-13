@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.36] - 2026-08-13
+
 ### Added
 - **[core] Qobuz, Tidal and HIGHRESAUDIO play through HQPlayer.** Choosing HQPlayer as your output used to forbid all three: the answer was an immediate refusal saying the route did not exist, and turning HQPlayer off was the only way to hear them — a hard choice between your streaming subscription and your DSP engine. Nothing had to be invented to lift it. Your local library, internet radio and media servers already reach HQPlayer as a web address it fetches by itself, and the streaming services already publish exactly such an address on your own network, because network speakers have been pulling them that way for months. The same mechanism now points at them. Qobuz and HIGHRESAUDIO go one better: the address redirects straight to the service's own servers, so your box hands over an address and steps aside rather than carrying hours of music — measured at four percent of one processor core during playback, which is the cost of watching, not of relaying. Tidal is the exception and has to pass through the box, because it delivers its audio in a form that must be converted first; measured on a genuine first listen, HQPlayer plays that conversion while it is still being written, knows the full track length, and never runs its buffer dry. Nothing is re-encoded on any of the three paths: what reaches your DAC is bit-for-bit what the service sent.
 

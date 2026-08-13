@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.36 — 2026-08-13
+
 ### Your streaming subscriptions reach HQPlayer
 
 Until now, choosing HQPlayer as your output meant giving up Qobuz, Tidal and HIGHRESAUDIO.

@@ -7,6 +7,81 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Your streaming subscriptions reach HQPlayer
+
+Until now, choosing HQPlayer as your output meant giving up Qobuz, Tidal and HIGHRESAUDIO.
+The refusal was immediate and explicit — turn HQPlayer off to play this — which at least
+told the truth, but the choice it forced was an odd one: your DSP engine or your
+subscriptions, never both.
+
+Nothing had to be invented to lift it, and that is the interesting part. Your local
+library, internet radio and media servers all reach HQPlayer the same way: Audiogravi<sup>ty</sup>
+hands it a web address on your own network, and HQPlayer fetches the music itself. The three
+streaming services already publish exactly such an address — network speakers have been
+pulling Qobuz and Tidal through it for months, for the same reason a speaker cannot hold a
+password. The route existed; it had simply never been pointed at HQPlayer.
+
+**Where the music actually travels** differs by service, and it is worth knowing because it
+decides what your box spends its evening doing. For **Qobuz** and **HIGHRESAUDIO**, the
+address redirects straight to the service's own servers: your box hands over an address and
+steps aside. It carries nothing. Measured during playback, the core sits at four percent of
+one processor core — the cost of watching, not of relaying. **Tidal** is the exception: it
+delivers its audio in a form that has to be converted before anything can play it, so that
+one stream does pass through the box. Measured on a genuine first listen — nothing cached —
+HQPlayer plays the conversion while it is still being written, knows the full length of the
+track, and never runs its buffer dry.
+
+Nothing is re-encoded on any of the three paths. What reaches your DAC is bit-for-bit what
+the service sent, then whatever HQPlayer's own filters make of it.
+
+### The screen follows the track again, through a whole album
+
+The previous release noted one limit: with HQPlayer as your output, an album showed the
+first track's title, artist and cover from beginning to end, while the progress bar moved on
+correctly at every change. Two sources, two behaviours, and only one of them right.
+
+It could not be fixed by asking HQPlayer. It reads no tags at all from a stream it fetches
+over the network — asked what it is playing, it answers "HTTP stream" even for a perfectly
+tagged Hi-Res file, with no artist and no album. That closed the obvious door and opened a
+better one: Audiogravi<sup>ty</sup> already knows every title, artist and cover of what it
+sent, and HQPlayer does say which entry of its list is playing. Keeping the list and reading
+the number is enough. Nothing is asked of anyone, and no extra request is made.
+
+It follows on everything Audiogravi<sup>ty</sup> pushes — your own library included, which
+had the same problem for the same reason.
+
+Two situations still show no title, and both are the honest answer rather than a gap. A
+playback you started from **HQPlayer's own remote** was never sent by Audiogravi<sup>ty</sup>,
+so there is no list to read and nothing truthful to display. And if you **rearrange
+HQPlayer's playlist from HQPlayer itself** while it is playing, that is noticed too: the
+list no longer matches, so the labels stop rather than caption someone else's music with
+your album's titles.
+
+**Internet radio is a separate matter.** A station announces each song inside the audio
+stream, and through HQPlayer it is HQPlayer that receives that stream — and it keeps only
+the station's name. So a radio played through HQPlayer shows the station and its logo where
+the same station on your local output shows the song. That one is a real gap, and it is
+written down as work to do.
+
+### Three things that were quietly wrong, with HQPlayer as your output
+
+**Starting an album did not replace what was playing.** It queued behind it. The first album
+kept playing, the new one waited its turn — and the screen showed the new one's title and
+cover the whole time. You were looking at one record and listening to another. The command
+that empties HQPlayer's queue turns out to leave the track that is loaded and playing
+exactly where it is; it is now stopped first, which empties it properly.
+
+**A track found by searching a media server refused to play.** Playing the same track from
+the server's folders always worked, so the failure looked like a fault in the server. It was
+not: the request was being handed to the local library index, which was asked to find a file
+named after a web address.
+
+**Tidal in a quality that cannot play now says why.** Tidal's lossy qualities deliver AAC,
+which cannot be converted losslessly — so nothing came out, on any output, with nothing said.
+Audiogravi<sup>ty</sup> now looks at what Tidal *actually serves* rather than at what your
+account asked for, which matters more than it sounds: an album unavailable in lossless comes
+back as AAC even when your setting is right, and no setting can warn you about that.
+
 ### The certificate you were told to install could not be fetched
 
 The previous release gave boxes installed with HTTPS a certificate authority of their
@@ -68,10 +143,9 @@ often — and it is the *only* one available when you start playback from HQPlay
 remote rather than from Audiogravi<sup>ty</sup>, a case that used to show nothing at all.
 A live stream still shows no length, which is the honest answer for something with no end.
 
-One limit stands. Push a whole album and the screen stays on the first track: HQPlayer plays
-straight through, but does not announce that it has moved on. Reading which track is playing
-turns out to be possible after all — the same enquiry that opened the two above — and it is
-written down as work to do rather than a wall.
+One limit stood at the time of this release: push a whole album and the screen stayed on the
+first track, because HQPlayer plays straight through without announcing that it has moved
+on. It was written down as work to do rather than a wall, and the next release lifted it.
 
 ### The box can now prove who it is, so your phone will treat it as an app
 

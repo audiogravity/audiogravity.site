@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.37 — 2026-08-13
+
 ### Two ways the volume was not telling the truth
 
 Both were found the same way — by watching what the box actually publishes while

@@ -1,14 +1,14 @@
 # Audiogravi<sup>ty</sup> — Test Report
 
-Generated: **2026-08-13 12:20 UTC**
+Generated: **2026-08-13 19:21 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **core** PASS | 1855 | 1855 | 0 | 0 | 61.9s |
-| **ui** PASS | 914 | 914 | 0 | 0 | 7.7s |
-| **Total** PASS | **2769** | **2769** | **0** | **0** | **69.6s** |
+| **core** PASS | 1868 | 1868 | 0 | 0 | 62.4s |
+| **ui** PASS | 930 | 930 | 0 | 0 | 8.1s |
+| **Total** PASS | **2798** | **2798** | **0** | **0** | **70.5s** |
 
 ## Detail
 
@@ -68,13 +68,13 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_audio_app_config.TestAudioAppConfig**
 
-  - [+] test_services_route (0.52s)
+  - [+] test_services_route (0.54s)
 
 **tests.test_audio_app_config.TestPackageEventReload**
 
   - [+] test_reload_on_package_events[package_state-True] (0.70s)
   - [+] test_reload_on_package_events[packages_updated-True] (0.70s)
-  - [+] test_reload_on_package_events[some_other_event-False] (0.71s)
+  - [+] test_reload_on_package_events[some_other_event-False] (0.70s)
 
 **tests.test_audio_app_config.TestPathValidation**
 
@@ -137,8 +137,8 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_audio_app_config.TestLicenceGate**
 
   - [+] test_config_editing_works_without_a_licence (0.02s)
-  - [+] test_guided_provisioning_works_without_a_licence_too (0.02s)
-  - [+] test_guided_provisioning_stays_admin_only (0.02s)
+  - [+] test_guided_provisioning_works_without_a_licence_too (0.03s)
+  - [+] test_guided_provisioning_stays_admin_only (0.03s)
 
 **tests.test_audio_hw.TestAudioDeviceListModel**
 
@@ -152,7 +152,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_no_cards_file_result_is_cached
   - [+] test_single_card_parsed
   - [+] test_two_cards_parsed
-  - [+] test_capture_devices_are_excluded (0.01s)
+  - [+] test_capture_devices_are_excluded
   - [+] test_device_order_is_deterministic
 
 **tests.test_audio_hw.TestSubdeviceParsing**
@@ -173,16 +173,16 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_audio_hw.TestGetCardById**
 
-  - [+] test_returns_correct_card (0.01s)
+  - [+] test_returns_correct_card
   - [+] test_returns_none_for_unknown_id
   - [+] test_returns_none_when_no_cards_present
 
 **tests.test_audio_hw.TestAudioHwRoutes**
 
-  - [+] test_devices_returns_200
-  - [+] test_devices_response_shape (0.01s)
+  - [+] test_devices_returns_200 (0.01s)
+  - [+] test_devices_response_shape
   - [+] test_devices_returns_empty_when_no_proc
-  - [+] test_force_refresh_param_accepted (0.01s)
+  - [+] test_force_refresh_param_accepted
   - [+] test_mock_route_via_conftest_fixture
 
 **tests.test_audio_hw.TestClassifyOutputType**
@@ -242,7 +242,7 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_audio_pipeline.TestAudioPipeline**
 
   - [+] test_now_playing (0.02s)
-  - [+] test_control (0.03s)
+  - [+] test_control (0.02s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
@@ -319,16 +319,16 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_status_returns_200 (0.02s)
   - [+] test_provision_200_maps_request_to_provisioner (0.02s)
-  - [+] test_provision_initial_requires_valid_password (0.02s)
-  - [+] test_provision_wrong_password_returns_401 (0.03s)
+  - [+] test_provision_initial_requires_valid_password (0.03s)
+  - [+] test_provision_wrong_password_returns_401 (0.02s)
   - [+] test_provision_missing_password_returns_401 (0.02s)
   - [+] test_provision_regenerate_missing_password_returns_401 (0.02s)
   - [+] test_provision_passes_library_usb_fields (0.02s)
   - [+] test_provision_value_error_returns_400 (0.02s)
   - [+] test_provision_missing_card_name_returns_422 (0.02s)
   - [+] test_patch_output_200_no_password_required (0.02s)
-  - [+] test_patch_output_missing_card_name_returns_422 (0.04s)
-  - [+] test_patch_output_value_error_returns_400 (0.03s)
+  - [+] test_patch_output_missing_card_name_returns_422 (0.02s)
+  - [+] test_patch_output_value_error_returns_400 (0.02s)
   - [+] test_patch_library_200_no_password_required (0.03s)
 
 **tests.test_auth.TestGetApiKeyNotifyExemption**
@@ -340,40 +340,40 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.38s)
-  - [+] test_login_wrong_password (0.38s)
-  - [+] test_login_unknown_user (0.38s)
+  - [+] test_login_valid (0.55s)
+  - [+] test_login_wrong_password (0.41s)
+  - [+] test_login_unknown_user (0.42s)
 
 **tests.test_auth.TestUsersCRUD**
 
   - [+] test_list_users (0.02s)
-  - [+] test_create_and_delete_user (0.41s)
-  - [+] test_update_user_role (0.41s)
+  - [+] test_create_and_delete_user (0.42s)
+  - [+] test_update_user_role (0.40s)
   - [+] test_cannot_delete_self (0.02s)
 
 **tests.test_auth.TestProtectedFlag**
 
   - [+] test_user_model_has_protected_field
-  - [+] test_create_user_accepts_protected_flag (0.37s)
-  - [+] test_unprotected_user_has_protected_false_by_default (0.37s)
-  - [+] test_delete_guard_rejects_protected (0.36s)
+  - [+] test_create_user_accepts_protected_flag (0.39s)
+  - [+] test_unprotected_user_has_protected_false_by_default (0.38s)
+  - [+] test_delete_guard_rejects_protected (0.39s)
   - [+] test_update_disable_guard_rejects_protected (0.39s)
   - [+] test_cannot_delete_self (0.02s)
   - [+] test_unprotected_account_can_be_deleted (0.40s)
-  - [+] test_unprotected_account_can_be_disabled (0.38s)
+  - [+] test_unprotected_account_can_be_disabled (0.39s)
 
 **tests.test_auth.TestCreateUserReturns201**
 
-  - [+] test_create_user_returns_201 (0.44s)
+  - [+] test_create_user_returns_201 (0.42s)
 
 **tests.test_auth.TestUpdateUserEmptyPassword**
 
-  - [+] test_short_password_rejected_by_pydantic (0.39s)
-  - [+] test_whitespace_only_password_rejected (0.39s)
+  - [+] test_short_password_rejected_by_pydantic (0.40s)
+  - [+] test_whitespace_only_password_rejected (0.42s)
 
 **tests.test_auth.TestDisabledUserLogin**
 
-  - [+] test_disabled_user_cannot_login (0.79s)
+  - [+] test_disabled_user_cannot_login (0.80s)
 
 **tests.test_auth.TestJwtContainsJti**
 
@@ -386,7 +386,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_auth.TestDisabledUserTimingOracle**
 
-  - [+] test_disabled_user_returns_401 (0.75s)
+  - [+] test_disabled_user_returns_401 (0.79s)
 
 **tests.test_auth.TestWebAuthnChallengeIsolation**
 
@@ -410,7 +410,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_auth.TestUsersFilePermissions**
 
-  - [+] test_users_json_is_0600 (0.36s)
+  - [+] test_users_json_is_0600 (0.38s)
 
 **tests.test_auth.TestApiKeyNonAscii**
 
@@ -457,8 +457,8 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_config_validation.TestConfigValidationLicenceGate**
 
-  - [+] test_config_validation_works_without_a_licence
-  - [+] test_topology_validation_still_needs_one (0.01s)
+  - [+] test_config_validation_works_without_a_licence (0.01s)
+  - [+] test_topology_validation_still_needs_one (0.02s)
   - [+] test_topology_validation_passes_with_a_licence (0.01s)
 
 **tests.test_config_validation.TestAppconfigFileIsInert**
@@ -469,7 +469,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_any_value_parses_without_complaint[/etc/shadow]
   - [+] test_it_never_changes_which_file_the_editor_opens[/tmp/evil.conf]
   - [+] test_it_never_changes_which_file_the_editor_opens[/var/log/evil.conf]
-  - [+] test_it_never_changes_which_file_the_editor_opens[] (0.01s)
+  - [+] test_it_never_changes_which_file_the_editor_opens[]
   - [+] test_it_never_changes_which_file_the_editor_opens[/etc/mpd-other.conf]
   - [+] test_the_field_is_absent_from_the_shipped_template
 
@@ -729,12 +729,12 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_filters (0.03s)
   - [+] test_shapers (0.03s)
   - [+] test_modes (0.03s)
-  - [+] test_discover (0.04s)
+  - [+] test_discover (0.14s)
 
 **tests.test_hqplayer.TestHQPlayerStop**
 
-  - [+] test_stop_returns_success (0.12s)
-  - [+] test_stop_503_on_hqplayer_error (0.03s)
+  - [+] test_stop_returns_success (0.05s)
+  - [+] test_stop_503_on_hqplayer_error (0.05s)
 
 **tests.test_hqplayer.TestHQPlayerHasDspConfig**
 
@@ -781,7 +781,7 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_hqplayer.TestHQPlayerHasNoDirectPushRoute**
 
   - [+] test_play_route_is_gone (0.03s)
-  - [+] test_play_library_route_is_gone (0.03s)
+  - [+] test_play_library_route_is_gone (0.04s)
 
 **tests.test_hqplayer.TestNaaLiveness**
 
@@ -803,14 +803,14 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_hqplayer.TestPlayLibraryItemAlbumMetadata**
 
   - [+] test_track_play_keeps_album
-  - [+] test_add_does_not_touch_the_playing_track (0.01s)
+  - [+] test_add_does_not_touch_the_playing_track
 
 **tests.test_hqplayer.TestPlaybackWatch**
 
   - [+] test_an_advancing_position_is_the_proof_of_success (0.01s)
   - [+] test_playing_with_a_frozen_position_is_reported (0.11s)
   - [+] test_an_unanswered_status_is_never_a_verdict (0.31s)
-  - [+] test_a_silent_warm_up_that_finally_plays_is_not_reported (0.05s)
+  - [+] test_a_silent_warm_up_that_finally_plays_is_not_reported (0.04s)
   - [+] test_a_confirmed_stopped_is_reported (0.31s)
   - [+] test_a_track_stuck_in_pause_is_reported (0.31s)
   - [+] test_pausing_after_it_played_is_a_success
@@ -819,7 +819,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_a_failed_exchange_is_excused_once_a_new_track_starts (0.02s)
   - [+] test_an_exchange_error_is_kept_as_the_cause_when_nothing_plays (0.31s)
   - [+] test_the_shared_status_cache_is_never_evicted (0.01s)
-  - [+] test_the_first_reading_is_taken_without_waiting (0.50s)
+  - [+] test_the_first_reading_is_taken_without_waiting (0.51s)
   - [+] test_a_push_over_a_playing_track_still_confirms (0.02s)
   - [+] test_a_stopped_ending_is_not_blamed_on_the_sound_card (0.31s)
   - [+] test_the_window_covers_the_measured_dsd_warm_up
@@ -1065,8 +1065,8 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_library.TestLibrary**
 
-  - [+] test_upnp_known_servers_route_exists (0.10s)
-  - [+] test_search_route_exists (0.08s)
+  - [+] test_upnp_known_servers_route_exists (0.09s)
+  - [+] test_search_route_exists (0.09s)
   - [+] test_queue_route_exists (0.09s)
 
 **tests.test_library.TestUpnpSearchTrackId**
@@ -1093,7 +1093,7 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_upnp_source_routes_to_upnp_queue (0.08s)
   - [+] test_mpd_source_still_routes_to_mpd_queue (0.09s)
-  - [+] test_an_unclassified_source_is_refused_with_501 (0.08s)
+  - [+] test_an_unclassified_source_is_refused_with_501 (0.09s)
 
 **tests.test_library.TestQueueRequestValidation**
 
@@ -1172,13 +1172,13 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_add_bypasses_renderer_goes_to_mpd
   - [+] test_no_renderer_uses_mpd
   - [+] test_album_queues_all_tracks_via_play_queue
-  - [+] test_album_proxy_url_is_lan_reachable
+  - [+] test_album_proxy_url_is_lan_reachable (0.01s)
 
 **tests.test_library.TestTidalQueueRenderer**
 
   - [+] test_track_play_routes_to_renderer_with_external_url
   - [+] test_add_bypasses_renderer_goes_to_mpd
-  - [+] test_no_renderer_uses_mpd (0.01s)
+  - [+] test_no_renderer_uses_mpd
   - [+] test_tidal_proxy_url_local_only_false_uses_lan_ip
 
 **tests.test_library.TestRendererRouting**
@@ -1261,9 +1261,9 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_library.TestQueueRefusalHttpContract**
 
-  - [+] test_upnp_play_refusal_is_a_503_with_mpds_reason (0.08s)
+  - [+] test_upnp_play_refusal_is_a_503_with_mpds_reason (0.09s)
   - [+] test_remove_refusal_is_a_503_with_mpds_reason (0.08s)
-  - [+] test_remove_unreachable_is_a_503_not_a_500 (0.15s)
+  - [+] test_remove_unreachable_is_a_503_not_a_500 (0.12s)
 
 **tests.test_library.TestMpdAddOrPlayUrls**
 
@@ -1320,7 +1320,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_library_files.TestResolveWithinRoots**
 
-  - [+] test_valid_path (0.01s)
+  - [+] test_valid_path
   - [+] test_leading_slash_tolerated
   - [+] test_traversal_rejected
   - [+] test_empty_roots_rejected
@@ -1339,23 +1339,23 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_full_get_returns_all_bytes (0.08s)
   - [+] test_range_returns_206_partial (0.08s)
-  - [+] test_head_returns_headers_no_body (0.08s)
-  - [+] test_bad_signature_rejected (0.09s)
-  - [+] test_missing_signature_rejected (0.08s)
+  - [+] test_head_returns_headers_no_body (0.09s)
+  - [+] test_bad_signature_rejected (0.08s)
+  - [+] test_missing_signature_rejected (0.09s)
   - [+] test_missing_file_returns_404 (0.08s)
 
 **tests.test_library_files.TestLibraryCoverEndpoint**
 
-  - [+] test_valid_sig_returns_cover (0.01s)
-  - [+] test_bad_sig_rejected_without_resolving (0.01s)
-  - [+] test_missing_sig_rejected (0.01s)
-  - [+] test_cover_not_found_returns_404 (0.03s)
+  - [+] test_valid_sig_returns_cover (0.02s)
+  - [+] test_bad_sig_rejected_without_resolving (0.03s)
+  - [+] test_missing_sig_rejected (0.02s)
+  - [+] test_cover_not_found_returns_404 (0.01s)
 
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.05s)
-  - [+] test_valid_lifetime_license (0.06s)
-  - [+] test_beta_version_accepts_v1_scope (0.05s)
+  - [+] test_no_license (0.06s)
+  - [+] test_valid_lifetime_license (0.05s)
+  - [+] test_beta_version_accepts_v1_scope (0.06s)
   - [+] test_version_expired (0.05s)
   - [+] test_tampered_license (0.05s)
 
@@ -1378,28 +1378,28 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_license.TestTimeLimitedLicenceStatus**
 
   - [+] test_a_running_term_says_when_it_ends (0.05s)
-  - [+] test_an_ended_term_does_not_accuse_the_customer (0.08s)
-  - [+] test_a_lifetime_licence_carries_no_end_date (0.05s)
+  - [+] test_an_ended_term_does_not_accuse_the_customer (0.05s)
+  - [+] test_a_lifetime_licence_carries_no_end_date (0.06s)
   - [+] test_a_version_locked_licence_keeps_its_details (0.05s)
   - [+] test_a_paid_term_is_not_called_a_trial (0.05s)
-  - [+] test_a_perpetual_licence_is_still_called_lifetime (0.05s)
-  - [+] test_a_genuinely_tampered_file_is_still_called_tampered (0.05s)
+  - [+] test_a_perpetual_licence_is_still_called_lifetime (0.06s)
+  - [+] test_a_genuinely_tampered_file_is_still_called_tampered (0.06s)
 
 **tests.test_license.TestUploadLicense**
 
-  - [+] test_upload_valid_lic (0.05s)
-  - [+] test_upload_invalid_signature (0.01s)
-  - [+] test_an_ended_licence_is_refused_with_its_own_date (0.01s)
-  - [+] test_a_licence_for_another_device_says_so (0.01s)
-  - [+] test_a_time_limited_licence_with_no_date_is_named_as_such (0.01s)
-  - [+] test_an_unreadable_date_is_named_as_such (0.02s)
-  - [+] test_a_forged_file_still_gets_the_verification_message (0.13s)
+  - [+] test_upload_valid_lic (0.07s)
+  - [+] test_upload_invalid_signature (0.02s)
+  - [+] test_an_ended_licence_is_refused_with_its_own_date (0.02s)
+  - [+] test_a_licence_for_another_device_says_so (0.15s)
+  - [+] test_a_time_limited_licence_with_no_date_is_named_as_such (0.02s)
+  - [+] test_an_unreadable_date_is_named_as_such (0.01s)
+  - [+] test_a_forged_file_still_gets_the_verification_message (0.02s)
 
 **tests.test_license.TestDeleteLicense**
 
-  - [+] test_delete_existing_license (0.05s)
+  - [+] test_delete_existing_license (0.06s)
   - [+] test_delete_wrong_password (0.01s)
-  - [+] test_delete_no_license (0.01s)
+  - [+] test_delete_no_license (0.02s)
   - [+] test_no_name_error (0.06s)
 
 **tests.test_license.TestVerifyHeaders**
@@ -1469,7 +1469,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_online_status_defaults_update_unavailable
   - [+] test_online_status_coerces_update_dict
   - [+] test_result_always_includes_update_key
-  - [+] test_fetch_captures_update_field
+  - [+] test_fetch_captures_update_field (0.01s)
 
 **tests.test_license.TestTrialDaysRemainingClamp**
 
@@ -1496,7 +1496,7 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_playback_starters_are_prefixed_with_clearerror[play]
   - [+] test_playback_starters_are_prefixed_with_clearerror[playid 12]
-  - [+] test_playback_starters_are_prefixed_with_clearerror[next] (0.01s)
+  - [+] test_playback_starters_are_prefixed_with_clearerror[next]
   - [+] test_playback_starters_are_prefixed_with_clearerror[previous]
   - [+] test_other_commands_are_sent_untouched[status]
   - [+] test_other_commands_are_sent_untouched[playlistinfo]
@@ -1668,22 +1668,22 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_stopped_returns_none_by_default
   - [+] test_cast_item_is_rebadged_with_content_identity
   - [+] test_origin_derived_from_uri (0.02s)
-  - [+] test_control_toggle_pauses_when_playing
-  - [+] test_control_toggle_resumes_when_stopped
-  - [+] test_control_next_seek_volume (0.01s)
-  - [+] test_control_no_renderer_false
-  - [+] test_mpd_control_goes_straight_to_mpd
+  - [+] test_control_toggle_pauses_when_playing (0.03s)
+  - [+] test_control_toggle_resumes_when_stopped (0.02s)
+  - [+] test_control_next_seek_volume (0.02s)
+  - [+] test_control_no_renderer_false (0.01s)
+  - [+] test_mpd_control_goes_straight_to_mpd (0.02s)
 
 **tests.test_now_playing.TestHqplayerAsProcessor**
 
-  - [+] test_pushed_track_badged_with_content_origin
-  - [+] test_pushed_track_without_origin_defaults_to_library
+  - [+] test_pushed_track_badged_with_content_origin (0.01s)
+  - [+] test_pushed_track_without_origin_defaults_to_library (0.02s)
   - [+] test_external_playback_falls_back_to_processor_active_format
 
 **tests.test_now_playing.TestRendererContentIdentity**
 
   - [+] test_queue_origin_wins_for_an_ag_radio_cast
-  - [+] test_queue_origin_wins_for_a_media_server_cast
+  - [+] test_queue_origin_wins_for_a_media_server_cast (0.01s)
   - [+] test_non_http_uri_is_external_not_library
   - [+] test_unknown_http_uri_stays_external
   - [+] test_no_uri_is_external
@@ -1719,7 +1719,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (8.17s)
+  - [+] test_runs_standalone_without_package_context (7.62s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -1753,7 +1753,7 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_packages.TestAptDebSingle**
 
   - [+] test_single_deb_dpkg_install
-  - [+] test_single_deb_fixes_deps_on_dpkg_failure
+  - [+] test_single_deb_fixes_deps_on_dpkg_failure (0.01s)
 
 **tests.test_packages.TestScriptInstallerNoShellInjection**
 
@@ -1788,7 +1788,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_packages.TestPackageLogsRoute**
 
-  - [+] test_returns_entries_and_last_seq (0.03s)
+  - [+] test_returns_entries_and_last_seq (0.02s)
   - [+] test_after_seq_returns_only_the_missing_lines (0.02s)
   - [+] test_success_level_does_not_break_the_route (0.02s)
   - [+] test_unknown_package_is_404 (0.02s)
@@ -1806,8 +1806,8 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_third_party_failure_wording_is_not_promoted_to_error
   - [+] test_timeout_returns_a_verdict_instead_of_raising (1.01s)
   - [+] test_timeout_holds_when_the_command_forks (1.01s)
-  - [+] test_newline_less_output_does_not_grow_without_bound (0.06s)
-  - [+] test_reading_the_log_while_a_worker_appends_never_raises (0.11s)
+  - [+] test_newline_less_output_does_not_grow_without_bound (0.09s)
+  - [+] test_reading_the_log_while_a_worker_appends_never_raises (0.16s)
 
 **tests.test_packages.TestPackagesManagerCleanup**
 
@@ -1815,7 +1815,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_packages.TestPlayerPollLoop**
 
-  - [+] test_poll_loop_continues_after_get_now_playing_exception (10.02s)
+  - [+] test_poll_loop_continues_after_get_now_playing_exception (10.01s)
 
 **tests.test_packages.TestPlayerDsdGatherFailure**
 
@@ -1835,7 +1835,7 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_performance.TestPerformance**
 
   - [+] test_cpu_info_route (0.06s)
-  - [+] test_rt_processes (0.03s)
+  - [+] test_rt_processes (0.04s)
 
 **tests.test_performance.TestGovernorBootScript**
 
@@ -1881,11 +1881,11 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_connector_inserted_before_dac
   - [+] test_no_renderer_step_when_no_active_service
   - [+] test_source_prepended_from_origin
-  - [+] test_full_chain_no_renderer
+  - [+] test_full_chain_no_renderer (0.01s)
   - [+] test_radio_shows_canonical_label_not_station_name
   - [+] test_upnp_uses_server_name_from_origin_name
   - [+] test_renderer_active_output_label_is_renderer_not_local_dac
-  - [+] test_upnp_falls_back_to_upnp_label_when_no_server_name (0.01s)
+  - [+] test_upnp_falls_back_to_upnp_label_when_no_server_name
   - [+] test_native_renderer_signal_path_ends_at_renderer
   - [+] test_native_renderer_with_source_prepended
   - [+] test_renderer_unreachable_does_not_appear_in_signal_path
@@ -1904,31 +1904,31 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_player.TestControlRouting**
 
   - [+] test_explicit_renderer_source_routed_to_now_playing (0.16s)
-  - [+] test_stopped_renderer_still_controllable (0.16s)
+  - [+] test_stopped_renderer_still_controllable (0.15s)
   - [+] test_unknown_source_returns_false
   - [+] test_no_source_resolves_active (0.16s)
 
 **tests.test_player.TestPlayer**
 
   - [+] test_snapshot (0.02s)
-  - [+] test_control (0.02s)
+  - [+] test_control (0.03s)
   - [+] test_origins_returns_all_known_keys (0.02s)
   - [+] test_sleep_timer_get (0.02s)
 
 **tests.test_player.TestGetOutputs**
 
   - [+] test_returns_mpd_and_renderer_outputs (0.02s)
-  - [+] test_local_active_true_when_no_renderer (0.03s)
+  - [+] test_local_active_true_when_no_renderer (0.02s)
   - [+] test_local_active_false_when_renderer_reachable (0.02s)
   - [+] test_local_active_true_when_renderer_not_reachable (0.02s)
 
 **tests.test_player.TestSelectMpdOutput**
 
-  - [+] test_switch_succeeds (0.02s)
+  - [+] test_switch_succeeds (0.03s)
   - [+] test_unknown_output_id_returns_404 (0.02s)
-  - [+] test_refused_enable_is_a_503_not_success (0.02s)
-  - [+] test_stale_active_udn_cleared_not_raised (0.02s)
-  - [+] test_stale_active_udn_calls_save_config (0.02s)
+  - [+] test_refused_enable_is_a_503_not_success (0.03s)
+  - [+] test_stale_active_udn_cleared_not_raised (0.03s)
+  - [+] test_stale_active_udn_calls_save_config (0.05s)
 
 **tests.test_player.TestDsdRendererExcluded**
 
@@ -1937,7 +1937,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_player.TestDsdStartPartialFailure**
 
-  - [+] test_partial_failure_keeps_state_and_original_volume (0.02s)
+  - [+] test_partial_failure_keeps_state_and_original_volume
 
 **tests.test_player.TestControlIdRouting**
 
@@ -2013,6 +2013,25 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_no_publish_site_is_left_unguarded
   - [+] test_every_guarded_site_raises_the_watermark_with_max
 
+**tests.test_player.TestDsdRestoreSurvivesAStoppedPlayer**
+
+  - [+] test_the_level_comes_back_even_with_nothing_playing
+  - [+] test_the_other_sources_come_back_too
+  - [+] test_the_hardware_level_is_restored_as_well
+  - [+] test_the_memory_is_cleared_only_after_the_attempt
+  - [+] test_hqplayer_keeps_its_own_level
+  - [+] test_one_source_failing_does_not_strand_the_others
+
+**tests.test_player.TestDsdEndNeedsProof**
+
+  - [+] test_a_real_reading_of_playback_is_proof_enough
+  - [+] test_an_empty_reading_asks_mpd
+  - [+] test_mpd_still_on_a_dsd_file_is_not_over
+  - [+] test_an_unreachable_mpd_is_unknown_not_over
+  - [+] test_no_mpd_at_all_does_not_strand_the_levels
+  - [+] test_without_proof_nothing_is_written_and_nothing_is_forgotten
+  - [+] test_a_renderer_is_never_written_back
+
 **tests.test_profiles.TestActivateProfile**
 
   - [+] test_activate (0.04s)
@@ -2080,7 +2099,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_push.TestVapidKey**
 
-  - [+] test_get_key
+  - [+] test_get_key (0.01s)
 
 **tests.test_push.TestSubscribe**
 
@@ -2088,11 +2107,11 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_push.TestUnsubscribe**
 
-  - [+] test_unsubscribe
+  - [+] test_unsubscribe (0.01s)
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.08s)
+  - [+] test_script_produces_valid_keys (0.09s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -2111,7 +2130,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_push.TestPushUnsubscribeQueryParam**
 
-  - [+] test_endpoint_is_query_param
+  - [+] test_endpoint_is_query_param (0.01s)
 
 **tests.test_push.TestServiceDownPushHook**
 
@@ -2170,7 +2189,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_delete_connection (0.01s)
   - [+] test_get_connection_after_disconnect (0.01s)
   - [+] test_stream_redirect_mode_returns_302_to_cdn (0.01s)
-  - [+] test_oauth_callback_no_code (0.01s)
+  - [+] test_oauth_callback_no_code (0.02s)
   - [+] test_oauth_callback_with_code (0.01s)
   - [+] test_oauth_callback_failure (0.01s)
   - [+] test_post_connection_starts_oauth (0.01s)
@@ -2194,7 +2213,7 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_handle_callback_returns_false_when_no_secret
   - [+] test_user_id_is_none_when_json_id_is_null
-  - [+] test_user_id_is_none_when_id_key_absent (0.01s)
+  - [+] test_user_id_is_none_when_id_key_absent
 
 **tests.test_qobuz.TestGetStreamUrl**
 
@@ -2246,12 +2265,12 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
-  - [+] test_featured_albums (0.08s)
+  - [+] test_featured_albums (0.09s)
   - [+] test_featured_albums_default_type (0.08s)
-  - [+] test_playlists (0.12s)
-  - [+] test_playlist_tracks (0.09s)
+  - [+] test_playlists (0.09s)
+  - [+] test_playlist_tracks (0.22s)
   - [+] test_playlist_tracks_missing_id (0.08s)
-  - [+] test_featured_service_error (0.09s)
+  - [+] test_featured_service_error (0.08s)
 
 **tests.test_qobuz_library.TestQobuzQueueHelper**
 
@@ -2273,14 +2292,14 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_radio.TestRadio**
 
-  - [+] test_search_route (0.04s)
+  - [+] test_search_route (0.05s)
   - [+] test_library_route (0.03s)
   - [+] test_favorites_route (0.03s)
 
 **tests.test_radio.TestRadioEditStation**
 
   - [+] test_edit_station_returns_updated_station (0.03s)
-  - [+] test_edit_station_404_when_not_saved (0.04s)
+  - [+] test_edit_station_404_when_not_saved (0.03s)
 
 **tests.test_radio.TestRadioSavedStationDatetime**
 
@@ -2290,7 +2309,7 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_resolve_falls_back_to_saved_on_rbi_failure
   - [+] test_resolve_returns_none_when_the_catalogue_does_not_know_it
-  - [+] test_resolve_reports_an_unreachable_catalogue_instead_of_not_found (0.15s)
+  - [+] test_resolve_reports_an_unreachable_catalogue_instead_of_not_found
   - [+] test_a_saved_station_still_wins_over_an_unreachable_catalogue
 
 **tests.test_radio.TestRadioApplyEntryUpdate**
@@ -2333,7 +2352,7 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_radio.TestRadioHonoursOutputSelection**
 
   - [+] test_station_is_pushed_to_hqplayer_when_it_is_the_output
-  - [+] test_hqplayer_push_carries_the_radio_identity
+  - [+] test_hqplayer_push_carries_the_radio_identity (0.01s)
   - [+] test_hqplayer_push_never_touches_mpd
   - [+] test_local_output_still_goes_to_mpd
   - [+] test_routing_refusal_propagates
@@ -2396,7 +2415,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_a_silent_failure_from_the_only_server_is_asked_again
   - [+] test_a_reverse_lookup_outside_the_catalogue_domain_is_refused
   - [+] test_a_wrong_reverse_lookup_leaves_the_working_server_in_place
-  - [+] test_discovery_gives_up_rather_than_hanging_startup (5.01s)
+  - [+] test_discovery_gives_up_rather_than_hanging_startup (5.00s)
   - [+] test_shutdown_cancels_the_play_reports_still_in_flight
   - [+] test_a_search_older_than_the_bound_is_not_served_as_current
   - [+] test_a_play_that_never_started_is_not_reported
@@ -2496,28 +2515,28 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_self_update.TestUpdateEndpoints**
 
   - [+] test_update_rejects_bad_password (0.03s)
-  - [+] test_update_conflict_when_in_progress (0.04s)
+  - [+] test_update_conflict_when_in_progress (0.03s)
   - [+] test_update_happy_path_launches (0.03s)
   - [+] test_update_status_reflects_state (0.03s)
 
 **tests.test_services.TestListServices**
 
-  - [+] test_list_all (0.04s)
+  - [+] test_list_all (0.06s)
 
 **tests.test_services.TestServiceInfo**
 
-  - [+] test_get_service (0.04s)
+  - [+] test_get_service (0.05s)
 
 **tests.test_services.TestServiceActions**
 
-  - [+] test_restart_service (0.04s)
-  - [+] test_stop_service (0.04s)
+  - [+] test_restart_service (0.05s)
+  - [+] test_stop_service (0.05s)
   - [+] test_start_service (0.05s)
 
 **tests.test_services.TestServiceNameValidation**
 
   - [+] test_valid_name_accepted (0.04s)
-  - [+] test_semicolon_rejected (0.04s)
+  - [+] test_semicolon_rejected (0.05s)
   - [+] test_slash_rejected (0.04s)
   - [+] test_ampersand_rejected (0.04s)
 
@@ -2564,11 +2583,11 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_ssdp.TestMsearch**
 
-  - [+] test_collects_location_headers_without_duplicates (0.05s)
+  - [+] test_collects_location_headers_without_duplicates (0.06s)
   - [+] test_sends_one_datagram_per_unicast_host_plus_the_multicast_one (0.06s)
-  - [+] test_a_refused_unicast_host_does_not_stop_the_search (0.05s)
+  - [+] test_a_refused_unicast_host_does_not_stop_the_search (0.06s)
   - [+] test_a_socket_error_yields_an_empty_list_rather_than_raising
-  - [+] test_a_silent_network_is_not_an_error (0.06s)
+  - [+] test_a_silent_network_is_not_an_error (0.18s)
 
 **tests.test_ssdp.TestErrorLevel**
 
@@ -2577,14 +2596,14 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_ssdp.TestMulticastFailureDoesNotCancelUnicast**
 
-  - [+] test_unicast_probes_still_go_out (0.17s)
+  - [+] test_unicast_probes_still_go_out (0.05s)
   - [+] test_nothing_sent_means_no_pointless_wait
 
 **tests.test_sse_channels**
 
-  - [+] test_allowlist_covers_every_published_channel (0.01s)
-  - [+] test_unknown_channel_is_refused (0.01s)
-  - [+] test_refusal_names_the_valid_channels (0.01s)
+  - [+] test_allowlist_covers_every_published_channel (0.02s)
+  - [+] test_unknown_channel_is_refused (0.02s)
+  - [+] test_refusal_names_the_valid_channels (0.02s)
   - [+] test_sysinfo_is_refused_because_it_is_an_event_not_a_channel (0.01s)
   - [+] test_every_known_channel_passes_the_guard (0.01s)
 
@@ -2660,7 +2679,7 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_qobuz_pushes_redirecting_lan_urls
   - [+] test_highresaudio_pushes_redirecting_lan_urls
-  - [+] test_tidal_stays_pass_through (0.01s)
+  - [+] test_tidal_stays_pass_through
 
 **tests.test_stream_hqplayer.TestTidalCodecIsTheOneActuallyServed**
 
@@ -2678,7 +2697,7 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] test_a_qobuz_item_goes_to_its_own_service (0.08s)
   - [+] test_a_media_server_item_goes_to_the_upnp_path (0.09s)
-  - [+] test_the_local_library_still_resolves_through_mpd (0.10s)
+  - [+] test_the_local_library_still_resolves_through_mpd (0.08s)
 
 **tests.test_stream_meta.TestBuildStreamMeta**
 
@@ -2762,12 +2781,12 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_sysinfo.TestSysinfoSmartctlSafe**
 
-  - [+] test_smartctl_not_found_returns_none (0.05s)
+  - [+] test_smartctl_not_found_returns_none (0.04s)
 
 **tests.test_sysinfo.TestSysinfoGrepPatternValidation**
 
   - [+] test_invalid_regex_returns_400 (0.03s)
-  - [+] test_valid_regex_accepted (0.14s)
+  - [+] test_valid_regex_accepted (0.15s)
 
 **tests.test_sysinfo.TestSysinfoSyslogIdentifierFormat**
 
@@ -2805,7 +2824,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **tests.test_tidal.TestTidalRouter**
 
-  - [+] test_get_connection_connected (0.01s)
+  - [+] test_get_connection_connected (0.02s)
   - [+] test_post_connection_starts_pkce (0.01s)
   - [+] test_submit_connection (0.01s)
   - [+] test_delete_connection (0.01s)
@@ -2907,11 +2926,11 @@ Generated: **2026-08-13 12:20 UTC**
 **tests.test_transport_control.TestControlRouting**
 
   - [+] test_unknown_service_returns_false
-  - [+] test_mpd_protocol_routes_to_control_mpd_and_invalidates (0.01s)
+  - [+] test_mpd_protocol_routes_to_control_mpd_and_invalidates
   - [+] test_failed_dispatch_does_not_invalidate
   - [+] test_failed_seek_still_invalidates
   - [+] test_hqplayer_virtual_source_routes_to_control_hqplayer
-  - [+] test_renderer_virtual_source_routes_to_control_renderer
+  - [+] test_renderer_virtual_source_routes_to_control_renderer (0.01s)
   - [+] test_mpris_protocol_routes_with_mpris_name
 
 **tests.test_transport_control.TestControlHqplayerRefreshesCache**
@@ -2950,7 +2969,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_other_mpd_refusals_do_not_trigger_the_fallback
   - [+] test_never_raises_even_on_unexpected_errors
   - [+] test_control_mpd_routes_seek_through_the_new_path
-  - [+] test_register_publishes_the_router_cache_in_the_container (0.01s)
+  - [+] test_register_publishes_the_router_cache_in_the_container
   - [+] test_reopen_in_flight_refuses_instead_of_queueing
 
 **tests.test_trial_override.TestEffectiveTrialDays**
@@ -3016,7 +3035,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_returns_art_url_from_avt
   - [+] test_result_is_cached_no_second_soap_call
   - [+] test_returns_none_when_no_renderer_found
-  - [+] test_miss_is_cached_no_repeated_discovery (0.01s)
+  - [+] test_miss_is_cached_no_repeated_discovery
   - [+] test_avt_url_cache_reused_for_different_track
   - [+] test_cache_expires_and_retries
   - [+] test_miss_url_cache_prevents_ssdp_on_per_track_expiry
@@ -3050,7 +3069,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_seek_falls_back_to_rel_time_when_abs_fails
   - [+] test_seek_marks_track_nonseekable_when_device_rejects
   - [+] test_set_volume_normalises_0_100_to_0_1
-  - [+] test_set_volume_raises_when_not_supported (0.01s)
+  - [+] test_set_volume_raises_when_not_supported
   - [+] test_no_dmr_raises_on_play
 
 **tests.test_upnp_renderer.TestRendererServiceStatus**
@@ -3079,7 +3098,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_publish_dedup_suppresses_identical_payload
   - [+] test_publish_skipped_when_no_event_bus
   - [+] test_disconnect_event_not_suppressed_by_previous_hash
-  - [+] test_on_dmr_event_coalesces_publish_tasks
+  - [+] test_on_dmr_event_coalesces_publish_tasks (0.01s)
   - [+] test_on_dmr_event_calls_check_queue_advance
   - [+] test_publish_status_force_always_publishes_and_updates_hash
   - [+] test_publish_status_force_then_nonforce_dedup_works
@@ -3120,8 +3139,8 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_play_queue_single_entry_calls_play
   - [+] test_play_queue_empty_is_noop
   - [+] test_play_queue_preloads_second_track_via_set_next
-  - [+] test_play_queue_no_set_next_when_not_supported (0.02s)
-  - [+] test_play_queue_lazy_resolver_called_at_play_time
+  - [+] test_play_queue_no_set_next_when_not_supported
+  - [+] test_play_queue_lazy_resolver_called_at_play_time (0.01s)
   - [+] test_play_queue_on_play_called_with_resolved_uri
   - [+] test_advance_queue_stopped_plays_next
   - [+] test_advance_queue_uri_changed_registers_metadata_only
@@ -3133,7 +3152,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] test_check_queue_advance_deduplicates_when_task_pending
   - [+] test_check_queue_advance_creates_task_when_previous_done
   - [+] test_stop_clears_queue
-  - [+] test_direct_play_clears_queue (0.01s)
+  - [+] test_direct_play_clears_queue
   - [+] test_advance_queue_resolver_failure_rolls_back_queue_idx
   - [+] test_play_queue_entry_always_re_resolves_with_resolver
   - [+] test_advance_queue_uri_changed_re_resolves_for_on_play
@@ -3286,8 +3305,8 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] colours — text on a fill, not on the page > slate dark
   - [+] colours — text on a fill, not on the page > gravity light
   - [+] colours — text on a fill, not on the page > gravity dark
-  - [+] colours — components read roles, never values (règle 6) > declares no colour literal as a var() fallback (0.02s)
-  - [+] colours — components read roles, never values (règle 6) > keeps the base semantic tokens out of JavaScript, whatever route they take (0.04s)
+  - [+] colours — components read roles, never values (règle 6) > declares no colour literal as a var() fallback (0.01s)
+  - [+] colours — components read roles, never values (règle 6) > keeps the base semantic tokens out of JavaScript, whatever route they take (0.05s)
   - [+] colours — components read roles, never values (règle 6) > explains every text colour still written as a value
   - [+] colours — components read roles, never values (règle 6) > paints text with a text-safe token, never a base semantic one (0.01s)
 
@@ -3333,8 +3352,8 @@ Generated: **2026-08-13 12:20 UTC**
 
 **js/keyless-client.test.js**
 
-  - [+] the probe: one request decides, instead of hundreds failing > locks after a single 403 and suppresses everything that follows (0.27s)
-  - [+] the probe: one request decides, instead of hundreds failing > marks the local refusal as final so the retry layer does not spin (0.01s)
+  - [+] the probe: one request decides, instead of hundreds failing > locks after a single 403 and suppresses everything that follows (0.28s)
+  - [+] the probe: one request decides, instead of hundreds failing > marks the local refusal as final so the retry layer does not spin
   - [+] the probe: one request decides, instead of hundreds failing > opens keyless traffic when the core proves it does not gate on a key
   - [+] the probe: one request decides, instead of hundreds failing > remembers the verdict across a reload of the same tab
   - [+] what stays open, and what never opens > lets the public endpoints through even when locked
@@ -3424,7 +3443,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] every module comes from this server > finds the sources
   - [+] every module comes from this server > imports nothing over http (0.02s)
   - [+] every module comes from this server > mocks the specifier the code actually imports
-  - [+] every module comes from this server > keeps one copy of @lit/context, at the declared version (0.01s)
+  - [+] every module comes from this server > keeps one copy of @lit/context, at the declared version (0.02s)
 
 **js/no-undef.test.js**
 
@@ -3434,10 +3453,10 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] no undeclared identifier anywhere in the tree > does not lint generated output that git already refuses to track
   - [+] each file is checked against its own platform, not against every platform > gives the service worker its own globals and not the browser DOM
   - [+] each file is checked against its own platform, not against every platform > gives the build config Node and not the DOM
-  - [+] each file is checked against its own platform, not against every platform > gives the application the DOM and not Node
+  - [+] each file is checked against its own platform, not against every platform > gives the application the DOM and not Node (0.01s)
   - [+] each file is checked against its own platform, not against every platform > knows the Storybook preview runs in a browser, unlike Storybook's own config
   - [+] each file is checked against its own platform, not against every platform > knows the Storybook setup file runs in Chromium, despite looking like a test helper
-  - [+] each file is checked against its own platform, not against every platform > accepts the names the compatibility layer publishes, and still catches a typo (0.01s)
+  - [+] each file is checked against its own platform, not against every platform > accepts the names the compatibility layer publishes, and still catches a typo
   - [+] each file is checked against its own platform, not against every platform > accepts the libraries index.html loads from a script tag
 
 **js/orientation-lock.test.js**
@@ -3496,6 +3515,13 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] toggleRefusalRollback > does nothing on other statuses — the toggle may in fact have landed
   - [+] toggleRefusalRollback > does nothing once the track has changed
   - [+] toggleRefusalRollback > does nothing without an anchor
+  - [+] applyVolumeGuard > passes the state through when no change is pending
+  - [+] applyVolumeGuard > holds the target while a level the finger already left arrives
+  - [+] applyVolumeGuard > releases on the exact target
+  - [+] applyVolumeGuard > does not accept a neighbouring level as the destination
+  - [+] applyVolumeGuard > expires so a refused level cannot freeze the slider
+  - [+] applyVolumeGuard > releases when the source changes — the volume is someone else's now
+  - [+] applyVolumeGuard > leaves the incoming object untouched while holding
 
 **js/push-manager.test.js**
 
@@ -3556,7 +3582,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] getUserFriendlyError > returns error.detail when available
   - [+] getUserFriendlyError > returns error.message for unknown errors
   - [+] getUserFriendlyError > returns default for empty error
-  - [+] showPasswordConfirm — field styling contract > styles the field through .form-control, never an inline font-size (0.04s)
+  - [+] showPasswordConfirm — field styling contract > styles the field through .form-control, never an inline font-size (0.05s)
   - [+] showPasswordConfirm — field styling contract > keeps the password affordances the browser needs
   - [+] showPasswordConfirm — dialog contrast > carries the dialog variant so the field is not the colour of the modal
 
@@ -3569,7 +3595,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **js/version.test.js**
 
-  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.36)
+  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.37)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > js/core/config.js UI_VERSION matches VERSION (UI display)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > sw.js CACHE_NAME matches VERSION (PWA cache busting)
 
@@ -3581,7 +3607,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **js/components/component-imports.test.js**
 
-  - [+] component import graph > every <ag-*> tag used in a component template is imported by that component (0.13s)
+  - [+] component import graph > every <ag-*> tag used in a component template is imported by that component (0.14s)
 
 **js/components/library-constants.test.js**
 
@@ -3745,7 +3771,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **js/core/keep-in-view.test.js**
 
-  - [+] keepInView > centres the item in its own strip (0.16s)
+  - [+] keepInView > centres the item in its own strip (0.17s)
   - [+] keepInView > never touches an overflow-hidden ancestor — the page must not shift (0.01s)
   - [+] keepInView > scrolls vertically only when the item is actually out of view (0.01s)
   - [+] keepInView > animates by default, instantly on first or with animations off (0.01s)
@@ -3753,8 +3779,8 @@ Generated: **2026-08-13 12:20 UTC**
 
 **js/components/atoms/ag-library-cover.test.js**
 
-  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.04s)
-  - [+] ag-library-cover — deferred image loading > still points at the requested cover
+  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.15s)
+  - [+] ag-library-cover — deferred image loading > still points at the requested cover (0.01s)
   - [+] ag-library-cover — deferred image loading > renders no image at all when there is no cover, so nothing is requested
   - [+] ag-library-cover — deferred image loading > drops the image once it has failed, instead of retrying on every render
 
@@ -3763,7 +3789,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] ag-license-badge > says Lifetime for a perpetual licence (0.03s)
   - [+] ag-license-badge > does not say Lifetime for a licence bought with an end date
   - [+] ag-license-badge > names an ended term instead of falling through to "No license"
-  - [+] ag-license-badge > paints an ended term as a warning, never as critical (0.05s)
+  - [+] ag-license-badge > paints an ended term as a warning, never as critical (0.01s)
   - [+] ag-license-badge > still paints a tampered file as critical
   - [+] ag-license-badge > counts down the trial
   - [+] ag-license-badge > falls back to "No license" only for an unknown status
@@ -3831,9 +3857,9 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] ag-lib-tabbar > renders one labelled tab per destination, radio included (0.08s)
   - [+] ag-lib-tabbar > marks only the active tab (0.02s)
   - [+] ag-lib-tabbar > announces every tap, including one on the tab already highlighted (0.01s)
-  - [+] ag-lib-tabbar > keeps the newly active tab in view, animated after the first render (0.01s)
+  - [+] ag-lib-tabbar > keeps the newly active tab in view, animated after the first render (0.02s)
   - [+] ag-lib-tabbar > does not scroll when a re-render is not a tab change
-  - [+] ag-lib-tabbar > syncScroll repositions instantly — for a bar that just became visible
+  - [+] ag-lib-tabbar > syncScroll repositions instantly — for a bar that just became visible (0.01s)
   - [+] ag-lib-tabbar > is wired: the page resyncs the visible bar on every view switch
   - [+] ag-lib-tabbar > gives the custom element itself the flex properties, not just .lib-nav
 
@@ -3841,7 +3867,7 @@ Generated: **2026-08-13 12:20 UTC**
 
   - [+] ag-library-scan-indicator > renders nothing while idle (0.02s)
   - [+] ag-library-scan-indicator > shows the indexing row once a scan is observed (0.03s)
-  - [+] ag-library-scan-indicator > flashes "indexed" then hides when the scan completes
+  - [+] ag-library-scan-indicator > flashes "indexed" then hides when the scan completes (0.01s)
   - [+] ag-library-scan-indicator > gives up quietly when no scan is ever caught (too fast)
   - [+] ag-library-scan-indicator > tolerates a failing status endpoint without throwing
   - [+] ag-library-scan-indicator > stops polling once disconnected
@@ -3864,13 +3890,13 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] the purchase sentence when the licence server gives no price > states the price when there is one (0.02s)
   - [+] the purchase sentence when the licence server gives no price > states the price once, not again in the steps (0.02s)
   - [+] the purchase sentence when the licence server gives no price > renders a hostile price as inert text (0.03s)
-  - [+] the purchase sentence when the licence server gives no price > states the price in the steps once the trial has ended (0.01s)
+  - [+] the purchase sentence when the licence server gives no price > states the price in the steps once the trial has ended (0.02s)
   - [+] the trial tile says the day count once > keeps the badge and the bar caption, drops the relayed sentence (0.02s)
-  - [+] the trial tile says the day count once > still relays the message for a state the tile does not otherwise explain (0.02s)
+  - [+] the trial tile says the day count once > still relays the message for a state the tile does not otherwise explain (0.03s)
 
 **js/components/molecules/ag-network-mount-form.test.js**
 
-  - [+] ag-network-mount-form > validates required fields and credential pairing (0.03s)
+  - [+] ag-network-mount-form > validates required fields and credential pairing (0.04s)
   - [+] ag-network-mount-form > asks for the admin password transiently and submits a trimmed payload
   - [+] ag-network-mount-form > does nothing when the password prompt is cancelled
   - [+] ag-network-mount-form > surfaces the core mount error and keeps the form
@@ -3927,14 +3953,14 @@ Generated: **2026-08-13 12:20 UTC**
 **js/components/molecules/ag-update-banner.test.js**
 
   - [+] ag-update-banner — isUpdateAvailable > is false for null / undefined / empty
-  - [+] ag-update-banner — isUpdateAvailable > is false when available is false
+  - [+] ag-update-banner — isUpdateAvailable > is false when available is false (0.01s)
   - [+] ag-update-banner — isUpdateAvailable > is false when available but latest is missing
   - [+] ag-update-banner — isUpdateAvailable > is true when available with a latest version
   - [+] ag-update-banner — updatePhaseLabel > maps known phases to human labels
   - [+] ag-update-banner — updatePhaseLabel > falls back to a generic label for unknown/empty phases
   - [+] ag-update-banner — terminal phases > treats done/rolled_back/failed as terminal
   - [+] ag-update-banner — terminal phases > does not treat in-progress phases as terminal
-  - [+] ag-update-banner — _emitBadge (update-badge event) > emits available:true for an available update, clearing on none
+  - [+] ag-update-banner — _emitBadge (update-badge event) > emits available:true for an available update, clearing on none (0.01s)
   - [+] ag-update-banner — _emitBadge (update-badge event) > flags a mandatory update
   - [+] ag-update-banner — _emitBadge (update-badge event) > emits available:false when available but latest is missing
 
@@ -3983,7 +4009,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **js/components/molecules/ag-volume-popover.test.js**
 
-  - [+] ag-volume-popover live-value release > shows the dragged value while the hold lasts (0.14s)
+  - [+] ag-volume-popover live-value release > shows the dragged value while the hold lasts (0.13s)
   - [+] ag-volume-popover live-value release > falls back to the prop after the hold — a refused volume snaps back (0.01s)
   - [+] ag-volume-popover live-value release > is invisible when the change was confirmed before the release
   - [+] ag-volume-popover live-value release > rearms on every interaction — no snap-back mid-drag
@@ -4211,7 +4237,7 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > absolutises a manual-relative image against the manual base, lazily
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > keeps absolute and data: image sources as authored (still lazy)
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — a second pass leaves an already-absolutised image unchanged
-  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > gives every table its own scroll container, keeping the <table> element (0.01s)
+  - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > gives every table its own scroll container, keeping the <table> element (0.02s)
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > wraps each of several tables exactly once
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > is idempotent — re-enhancing does not nest a second wrapper
   - [+] ag-manual-modal > link rewriting (_rewriteLink / _enhanceHtml) > stamps GitHub-style slug ids (punctuation, duplicate dedup, unicode)
@@ -4291,6 +4317,11 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] fullscreen — Up next source selection > does NOT use it for another source while a cast runs elsewhere
   - [+] fullscreen — Up next source selection > falls back to source_id when control_id is absent
   - [+] fullscreen — Up next source selection > is false for a plain local source with no outputs listed
+  - [+] AgNowPlayingFullscreen — volume in flight (real _control) > shows the level asked for at once, and remembers what to hold
+  - [+] AgNowPlayingFullscreen — volume in flight (real _control) > ignores a level the finger already left, then releases on the target
+  - [+] AgNowPlayingFullscreen — volume in flight (real _control) > restores the previous level when the output REFUSES it
+  - [+] AgNowPlayingFullscreen — volume in flight (real _control) > does NOT roll back on a network error — the level may well have taken (0.01s)
+  - [+] AgNowPlayingFullscreen — volume in flight (real _control) > an older command failing does not undo a newer one
 
 **js/components/organisms/ag-now-playing.test.js**
 
@@ -4319,12 +4350,16 @@ Generated: **2026-08-13 12:20 UTC**
   - [+] AgNowPlaying — control body routing handle > sends control_id from the item alongside source_id
   - [+] AgNowPlaying — control body routing handle > omits control_id when the item has none (legacy fallback)
   - [+] AgNowPlaying — control body routing handle > seek still maps to seek_position with the handle present
+  - [+] AgNowPlaying — volume in flight (real _sendControl) > shows the level at once and arms the guard for that source
+  - [+] AgNowPlaying — volume in flight (real _sendControl) > rolls back a REFUSED level on the item currently in the list
+  - [+] AgNowPlaying — volume in flight (real _sendControl) > an older command refused does not undo a newer one
+  - [+] AgNowPlaying — volume in flight (real _sendControl) > never holds a level on a source the user was not adjusting
 
 **js/components/organisms/ag-orientation-gate.test.js**
 
-  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.18s)
+  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.19s)
   - [+] ag-orientation-gate > renders the rotate prompt and a landscape escape hatch (0.01s)
-  - [+] ag-orientation-gate > _dismiss turns the lock off (state + persisted) and applies it (0.01s)
+  - [+] ag-orientation-gate > _dismiss turns the lock off (state + persisted) and applies it
   - [+] ag-orientation-gate > _setBackgroundInert inerts sibling top-level elements but never itself
 
 **js/components/organisms/ag-pipeline-page.test.js**
@@ -4351,7 +4386,7 @@ Generated: **2026-08-13 12:20 UTC**
 
 **js/components/organisms/ag-user-modal.test.js**
 
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.04s)
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.02s)
   - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (tabs) is rejected
   - [+] AgUserModal._handleSave — password trim (Fix P3) > valid password passes validation
   - [+] AgUserModal._handleSave — password trim (Fix P3) > password with surrounding spaces is trimmed before sending

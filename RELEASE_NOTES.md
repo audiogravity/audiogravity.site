@@ -7,7 +7,28 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The interface stops behaving like a document
+
+Press and hold a button on a phone and, instead of the button responding, a blue
+highlight would spread over its label and the *Copy / Look Up* bubble would rise over
+it. Drag a mouse across the screen on a computer and it left a trail of highlighted
+words behind it. Neither was doing anything useful: a browser treats every page as
+prose to be read and copied, and Audiogravi<sup>ty</sup> is a console you operate, not
+a text you read.
+
+Selection is now off across the interface. What matters is where it deliberately
+stays on, because that list is the whole point of the change: anything you type into,
+the details of an event, the differences shown before a service change is applied, and
+the short technical values you may need to send us — an order number, a media server's
+address. Where a copy button already existed, as on the logs and the Device ID, it is
+still the quickest way and it has not moved.
+
+The terminal is the interesting exception. It looks like the one place that most needs
+selecting and copying, and it is — but it has always drawn its own selection rather
+than relying on the browser's, precisely so that a selection follows the grid of
+characters instead of the page underneath. Handing the browser's selection back to it
+would have set the two against each other. So the terminal is left exactly as it was,
+which is what keeps its copying working.
 
 ---
 

@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui] The interface no longer highlights its own labels when you press and hold, or drag across it.** Audiogravi<sup>ty</sup> is a control console rather than a document, but a browser treats every button label, tab and section title as text waiting to be selected. A long press on a phone raised a blue highlight and the *Copy / Look Up* bubble over a button you were only trying to press; a mouse drag across the screen left a trail of highlighted words behind it. Selection is now off across the interface — and deliberately left on everywhere copying is the point: anything you type into, the details of an event, the differences shown before a service change is applied, and the short technical values such as an order number or a media server's address. The logs and the Device ID already had their own copy buttons and keep them. The terminal is untouched: it has always drawn its own selection rather than the browser's, and keeping the browser out of its way is precisely what leaves its copying intact.
+
 ## [0.9.37] - 2026-08-13
 
 ### Fixed

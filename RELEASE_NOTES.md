@@ -7,6 +7,41 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The audio software page starts telling you what is actually out there
+
+Knowing what is installed is half the question. The other half — is there
+something newer — was answered by the system's package manager, which works well
+for software that comes from a package repository and not at all for software
+that does not. HQPlayer NAA does not: it is downloaded straight from its
+publisher. Asked about it, the package manager replied with the version already
+installed, so Audiogravi<sup>ty</sup> compared a version with itself and said
+"up to date" every time. Measured on a box: 5.1.5-67 installed, 6.1.4-71
+published — two major versions, invisible. The code that reads the publisher's
+page existed and had simply never been called. It is now, and while looking at
+what pressing *Update* would do, one more thing changed: the newer package is
+installed over the old one instead of the old one being removed first, so the
+audio output no longer vanishes for the length of a download.
+
+Roon is the opposite problem: it publishes no version number at all, anywhere.
+Its download has a fixed name and carries no version file, so there is nothing
+to compare — and because the interface insisted on a number, it refused the
+action outright, leaving no way to update Roon from Audiogravi<sup>ty</sup> at
+all. Updating Roon simply means re-running its own installer, which always
+fetches the current build. That is what the button now offers, and it says so:
+no version to compare, here is the one you have, shall we fetch the latest.
+
+The last one is invisible until you know it is there. The UPnP bridge has no
+official build for 64-bit ARM, so Audiogravi<sup>ty</sup> builds and hosts it.
+Those packages carry their version in their file name, and those names were
+written into the release — so rebuilding and publishing changed nothing on any
+box until the next release edited them. The list of files now comes from the
+checksum manifest already published beside the packages, which is the same file
+already downloaded to verify them: no new mechanism, one fewer thing to keep in
+step, and the version to display comes with it. Since that manifest now decides
+what gets installed rather than merely confirming it, it is checked against the
+packages the release expects — an unexpected, missing or repeated entry stops
+the install before anything is downloaded.
+
 ### The audio software page stops guessing about your box
 
 Audiogravi<sup>ty</sup> builds itself a small reference file describing what your

@@ -7,6 +7,46 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Installing something no longer surprises you
+
+Three things could go wrong around an installation, and all three were silent.
+
+An install began by refreshing the system's package lists, and that step reports
+failure if **any** configured source is unreachable — including repositories
+that have nothing to do with audio, which a box accumulates over time. The
+install stopped there, on a package that was very often already available
+locally. It now carries on and lets the package manager say whether it can
+actually find what was asked for; and the refresh waits its turn rather than
+failing when another operation is already using the package system, which is
+what happened when a version check and an install overlapped.
+
+Nothing measured the free disk space. A disk filling up mid-download left a
+truncated file, and on an update that is worse than a plain failure: the old
+version has already been replaced by the time the tool complains. The room
+needed is now checked first — the download plus as much again for unpacking —
+and a filesystem that cannot be measured is never treated as full.
+
+And installing something still does not configure it — deliberately, because
+writing an audio configuration on your behalf is not a side effect an install
+should have. What changed is that the card now says so. A freshly installed
+service runs on the settings its own package ships: it will start, it will look
+perfectly ready, and it may well play to the wrong output. The card says "not
+configured" until Audiogravi<sup>ty</sup> has written that service's
+configuration itself — which is judged on a marker it puts in the file, not on
+the file existing, since every package ships one. It also means the label
+reappears if a package upgrade ever replaces the file. When the box cannot
+answer the question at all, the card says nothing rather than accusing
+everything.
+
+The last one is the most ordinary. Updating a package restarts the service it
+drives, because the package's own installation script does that; uninstalling
+stops it. Neither was said anywhere, so choosing *Update* in the middle of an
+album simply cut the music. The confirmation now tells you which service is
+about to be restarted or stopped. Deliberately said rather than prevented:
+knowing whether that service is *currently* playing would mean rebuilding the
+entire audio pipeline before every operation, which is a lot to pay for a
+question the person pressing the button can answer better than the box.
+
 ### And keeps telling you, instead of answering with the day it booted
 
 Reading the right source is worth little if it is read once. The check ran a

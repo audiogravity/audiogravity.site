@@ -7,7 +7,20 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The configuration editor stays where you put it
+
+Open a service's configuration and it lands on **Guided**, which is the right place to
+start. Choose **Structured** or **Expert** and, about a second later, it slid back to
+Guided on its own — and if you had started typing, that went too, without the question
+you normally get before changes are discarded. Anyone who wanted the raw file had to
+race the interface for it.
+
+The click was never the problem. Your box streams the state of each service
+continuously, so the little status dots on the tiles stay true without you refreshing
+anything. The editor was reading one of those heartbeats as "a different service has
+been opened" — the one situation where returning to the default view is exactly right.
+It now tells a heartbeat from a service apart. Opening another service still starts you
+on Guided, as before.
 
 ---
 

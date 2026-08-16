@@ -133,6 +133,16 @@ layout. What decides is not the machine but who installed it, and the running se
 knows. Both paths are now read from it, and re-read after every install and uninstall
 so the file cannot go on describing a state that has moved on.
 
+Removing them is its own small problem. Deleting a folder that is not there succeeds
+without a word, so the step that removed nothing had no way of knowing it, and the
+service entry — the only thing that could still have located the files — was deleted
+immediately afterwards. That is how the original fault stayed invisible. The removal is
+now checked rather than announced, and it fails loudly when there was nothing where
+there should have been something. If an earlier attempt already took the service entry
+away, it looks for both layouts by name instead of giving up on the very one it exists
+for, and it says outright that the data folder can no longer be worked out — better an
+admission than the impression of a clean sweep.
+
 The second was quieter and would only have bitten a 32-bit ARM owner. The list of
 architectures a package supports was read from the *names of the folders* on the
 publisher's server; upstream `upmpdcli` has a 32-bit ARM folder that holds only its

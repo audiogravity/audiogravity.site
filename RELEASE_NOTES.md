@@ -7,6 +7,38 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### And keeps telling you, instead of answering with the day it booted
+
+Reading the right source is worth little if it is read once. The check ran a
+couple of seconds after the box started and never again: a machine left on for
+three weeks — which is what an audio box is for — answered with what had been
+true on the day it was switched on, and the notification could only ever fire
+in that same moment. It now repeats once a day.
+
+The subtler half is where the answer comes from. For software that lives in a
+package repository, the version on offer is read from a list held locally, and
+that list is only as current as the last time something refreshed it.
+Audiogravi<sup>ty</sup> only refreshed it as the first step of an installation,
+so on a box where nothing had been installed for months the answer was months
+old — and whether anything else refreshes it depends on the distribution:
+DietPi switches those automatic refreshes off, Raspberry Pi OS leaves them on.
+The same box running the same code gave two different answers depending on
+which one it was. Measured on a DietPi machine: the main Debian index dated
+from five weeks earlier, so a security update to MPD would have been invisible
+for five weeks.
+
+The box now refreshes before it answers, and so does the **Check updates**
+button, which is what everyone assumed it did. The cost is deliberately
+bounded — the refresh is skipped when the lists are already recent, it takes
+about five seconds when it does run, and an update you have already been told
+about is not re-announced every day.
+
+One thing was removed rather than added: the browser used to keep its own copy
+of the last versions it had seen, with no expiry, and lay it over a fresh
+answer from the box. A version that had stopped being offered could therefore
+keep an update badge lit on that browser indefinitely. The box remembers now,
+so the copy is gone.
+
 ### The audio software page starts telling you what is actually out there
 
 Knowing what is installed is half the question. The other half — is there

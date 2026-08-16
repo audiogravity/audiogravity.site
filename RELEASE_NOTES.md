@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.38 — 2026-08-16
+
 ### Installing something no longer surprises you
 
 Three things could go wrong around an installation, and all three were silent.

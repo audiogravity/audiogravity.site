@@ -7,6 +7,50 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The audio software page stops guessing about your box
+
+Audiogravi<sup>ty</sup> builds itself a small reference file describing what your
+particular machine can install and where the software on it lives. Everything the
+Audio Software page shows or does reads that file. It turned out to contain several
+things that were not true, and each of them was visible.
+
+The clearest was Roon. On a box where Roon Bridge had been installed by DietPi rather
+than by Audiogravi<sup>ty</sup>, the card showed no version at all, and uninstalling
+announced a success while removing nothing — the program stayed on disk, whole, and
+only its service entry disappeared. Behind it was one assumption written down as a
+fact: that Roon lives in `/opt/RoonBridge`. It does, when Roon's own installer puts it
+there; DietPi's puts it in `/opt/roonbridge`, with its data somewhere else again. The
+tempting fix is to test the operating system and branch — and it would be wrong, since
+a DietPi box where Audiogravi<sup>ty</sup> installs Roon itself lands back on the first
+layout. What decides is not the machine but who installed it, and the running service
+knows. Both paths are now read from it, and re-read after every install and uninstall
+so the file cannot go on describing a state that has moved on.
+
+The second was quieter and would only have bitten a 32-bit ARM owner. The list of
+architectures a package supports was read from the *names of the folders* on the
+publisher's server; upstream `upmpdcli` has a 32-bit ARM folder that holds only its
+add-ons, and its repository declares two architectures, neither of them that one. Every
+box therefore carried "32-bit ARM supported" for a package that apt would have refused.
+The repository's own manifest is now read — the same thing apt obeys — and the package
+is confirmed present for your architecture before it is offered.
+
+The third is about honesty rather than correctness. If a publisher's site could not be
+reached while that file was being worked out, the software was recorded as
+unsupported — the same word used for software that genuinely has no build for your
+machine, and just as permanent. A box installed without an internet connection came up
+with HQPlayer NAA, the UPnP bridge and Roon all marked unsupported, with nothing to say
+why. Those are now two different answers, and the card says which one it is: something
+unreachable is worth trying again, something incompatible is not.
+
+Two smaller things came out of the same pass. Installing the UPnP bridge on a fresh box
+now works — adding a publisher's repository writes two system-owned files, and the box
+had permission for neither, so the install stopped at its first privileged step.
+And Roon Server is no longer offered next to Roon Bridge: the Server already contains
+the Bridge, so having both means two Roon endpoints on one machine fighting over one
+audio output, and Roon's own installer neither notices nor warns. The card now names
+which of the two is in the way. A box that already has both still shows both — the rule
+decides what can be installed, it does not hide what is there.
+
 ### The interface stops behaving like a document
 
 Press and hold a button on a phone and, instead of the button responding, a blue

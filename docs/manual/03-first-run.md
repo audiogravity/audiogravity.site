@@ -159,10 +159,15 @@ If you chose HTTPS at install, the box created its own **certificate authority**
 signed the interface's certificate with it. Your browser does not know that authority,
 so the first visit shows a security warning.
 
-**Accepting the warning is enough to look around.** It is *not* enough to install
-Audiogravi<sup>ty</sup> as an app: a phone only grants a site an app icon, an offline
-start and notifications once it **trusts** the certificate. That is one operation per
-device, and it holds for years — the authority is created once and never replaced,
+**On an iPhone or iPad, there is no way round it.** Safari offers no way past that
+warning, so the address does not open at all until the authority below is installed.
+Nothing is broken — it is simply how Safari treats an authority it does not know.
+
+On Android and on a computer, **accepting the warning is enough to look around**. It is
+*not* enough to install Audiogravi<sup>ty</sup> as an app: a phone only grants a site an
+app icon, an offline start and notifications once it **trusts** the certificate. So the
+step below is required on an iPhone and worth doing everywhere else. That is one
+operation per device, and it holds for years — the authority is created once and never replaced,
 even when the interface's own certificate is renewed or the box changes address.
 
 1. On the device, open **`http://<box-address>:8081/ca.crt`** — the installer prints this

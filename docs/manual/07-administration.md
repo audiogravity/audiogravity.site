@@ -211,7 +211,7 @@ Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, up
 shairport-sync, Roon Bridge…).
 
 - **States** — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.
-- **Actions** — INSTALL, UPDATE (to the latest version), UNINSTALL. After a failed
+- **Actions** — INSTALL, UPDATE (to the version its publisher offers), UNINSTALL. After a failed
   operation the card offers the way out that fits it: an install that failed left
   nothing behind, so it offers to try again; an update that failed left the previous
   version in place, so it offers to update or to remove.
@@ -221,6 +221,12 @@ shairport-sync, Roon Bridge…).
   sources publish — which is what makes the answer current rather than as old as the
   last boot. When updates are pending, an **UPDATE ALL** badge appears next to it to
   run them in one go.
+- **Roon is the exception** — Roon publishes no version number anywhere: its download
+  always carries the same name and holds no version inside. Your box therefore cannot
+  announce a Roon update, and does not pretend to — waiting for one is waiting for
+  something that cannot come. The button stays available all the same: using it re-runs
+  Roon's own installer, which always fetches the current build. The card tells you which
+  build you have and that there is nothing to compare it against.
 - **Not available here** — a greyed-out INSTALL always says why, and the three reasons
   are not the same: the publisher has **no build** for your machine's architecture
   (nothing to be done); their site **could not be reached** when the list was worked

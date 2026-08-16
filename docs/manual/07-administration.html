@@ -247,7 +247,7 @@ reach the graph. Every save is backed up automatically, so you can always roll b
 shairport-sync, Roon Bridge…).</p>
 <ul>
 <li><strong>States</strong> — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.</li>
-<li><strong>Actions</strong> — INSTALL, UPDATE (to the latest version), UNINSTALL. After a failed
+<li><strong>Actions</strong> — INSTALL, UPDATE (to the version its publisher offers), UNINSTALL. After a failed
 operation the card offers the way out that fits it: an install that failed left
 nothing behind, so it offers to try again; an update that failed left the previous
 version in place, so it offers to update or to remove.</li>
@@ -257,6 +257,12 @@ the header asks immediately, and first refreshes what your system knows its soft
 sources publish — which is what makes the answer current rather than as old as the
 last boot. When updates are pending, an <strong>UPDATE ALL</strong> badge appears next to it to
 run them in one go.</li>
+<li><strong>Roon is the exception</strong> — Roon publishes no version number anywhere: its download
+always carries the same name and holds no version inside. Your box therefore cannot
+announce a Roon update, and does not pretend to — waiting for one is waiting for
+something that cannot come. The button stays available all the same: using it re-runs
+Roon's own installer, which always fetches the current build. The card tells you which
+build you have and that there is nothing to compare it against.</li>
 <li><strong>Not available here</strong> — a greyed-out INSTALL always says why, and the three reasons
 are not the same: the publisher has <strong>no build</strong> for your machine's architecture
 (nothing to be done); their site <strong>could not be reached</strong> when the list was worked

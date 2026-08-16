@@ -176,9 +176,13 @@ into each service's configuration. Detection alone routes nothing.
 On a self-signed setup the box signs its own certificate, so no browser knows it
 until you say so.
 
-- **A warning on every visit** — accept it to look around; to stop the warnings and
-  unlock the app install, trust the box's authority once per device:
+- **On an iPhone or iPad, the address does not open at all** — Safari offers no way past
+  the warning, so there is nothing to accept and no way in until the box's authority is
+  trusted. This is the one case where the step is not optional:
   [3. First run → Trust the box's certificate](03-first-run.md#7-trust-the-boxs-certificate-once-per-device).
+- **A warning on every visit (Android, computer)** — accept it to look around; to stop
+  the warnings and unlock the app install, trust the box's authority once per device,
+  same step.
 - **Android's Chrome never offers "Install app"** — that prompt requires a trusted
   certificate. Same fix. There is nothing wrong with the site itself.
 - **The home-screen icon opens on an error** — the app window has no way to show the

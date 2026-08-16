@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ops] The end of the installation stops sending iPhone owners to a dead end.** It printed the address, a QR code and "accept the browser warning to look around" — then explained, further down than most people read, how to trust the box's certificate. On an iPhone that order is not merely inefficient: Safari offers no way past the warning, so the address does not open at all and the QR code leads nowhere. The certificate step now comes first, and says which case you are in — required on an iPhone, optional-but-useful on Android and on a computer, where the warning can still be waved through for a look. The QR code follows, once the address will actually open. The user manual said the same thing in two places and is corrected with it.
+
 ## [0.9.38] - 2026-08-16
 
 ### Fixed

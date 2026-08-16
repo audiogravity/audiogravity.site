@@ -211,13 +211,34 @@ Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, up
 shairport-sync, Roon Bridge…).
 
 - **States** — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.
-- **Actions** — INSTALL, UPDATE (to the latest version), UNINSTALL.
-- **Version check** — per-card or **CHECK UPDATES** in the header to refresh all. When
-  updates are pending, an **UPDATE ALL** badge appears next to it to run them in one go.
+- **Actions** — INSTALL, UPDATE (to the latest version), UNINSTALL. After a failed
+  operation the card offers the way out that fits it: an install that failed left
+  nothing behind, so it offers to try again; an update that failed left the previous
+  version in place, so it offers to update or to remove.
+- **Version check** — **your box checks by itself, once a day**, and tells you when
+  something new is published; you do not have to come and ask. **CHECK UPDATES** in
+  the header asks immediately, and first refreshes what your system knows its software
+  sources publish — which is what makes the answer current rather than as old as the
+  last boot. When updates are pending, an **UPDATE ALL** badge appears next to it to
+  run them in one go.
+- **Not available here** — a greyed-out INSTALL always says why, and the three reasons
+  are not the same: the publisher has **no build** for your machine's architecture
+  (nothing to be done); their site **could not be reached** when the list was worked
+  out (worth trying again — the refresh icon in the page header rebuilds it); or
+  another installed package **rules it out**. Roon is the case you are most likely to
+  meet: Roon Server already contains Roon Bridge, so the two cannot share a box, and
+  the card names the one that is in the way.
+- **Installed, but not configured** — installing a service does not configure it; that
+  is a separate, deliberate step. The card says so while a service still runs on the
+  settings its own package shipped, because it can then play to the wrong output while
+  looking perfectly ready.
+- **Playback is interrupted** — updating a service restarts it, uninstalling stops it.
+  The confirmation names the service that is about to be cut, so an update chosen in
+  the middle of an album is a decision rather than a surprise.
 - **Restart required** — a pulsing badge appears when a service needs a restart after
   install/update; click to restart it.
-- **Architecture** — the CPU badge shows supported architectures (amd64, arm64…);
-  unsupported cards are dimmed. A **DRY-RUN** mode simulates operations safely.
+- **Architecture** — the CPU badge shows supported architectures (amd64, arm64…).
+  A **DRY-RUN** mode simulates operations safely.
 
 ## System
 

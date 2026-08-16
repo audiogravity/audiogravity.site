@@ -247,13 +247,34 @@ reach the graph. Every save is backed up automatically, so you can always roll b
 shairport-sync, Roon Bridge…).</p>
 <ul>
 <li><strong>States</strong> — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.</li>
-<li><strong>Actions</strong> — INSTALL, UPDATE (to the latest version), UNINSTALL.</li>
-<li><strong>Version check</strong> — per-card or <strong>CHECK UPDATES</strong> in the header to refresh all. When
-updates are pending, an <strong>UPDATE ALL</strong> badge appears next to it to run them in one go.</li>
+<li><strong>Actions</strong> — INSTALL, UPDATE (to the latest version), UNINSTALL. After a failed
+operation the card offers the way out that fits it: an install that failed left
+nothing behind, so it offers to try again; an update that failed left the previous
+version in place, so it offers to update or to remove.</li>
+<li><strong>Version check</strong> — <strong>your box checks by itself, once a day</strong>, and tells you when
+something new is published; you do not have to come and ask. <strong>CHECK UPDATES</strong> in
+the header asks immediately, and first refreshes what your system knows its software
+sources publish — which is what makes the answer current rather than as old as the
+last boot. When updates are pending, an <strong>UPDATE ALL</strong> badge appears next to it to
+run them in one go.</li>
+<li><strong>Not available here</strong> — a greyed-out INSTALL always says why, and the three reasons
+are not the same: the publisher has <strong>no build</strong> for your machine's architecture
+(nothing to be done); their site <strong>could not be reached</strong> when the list was worked
+out (worth trying again — the refresh icon in the page header rebuilds it); or
+another installed package <strong>rules it out</strong>. Roon is the case you are most likely to
+meet: Roon Server already contains Roon Bridge, so the two cannot share a box, and
+the card names the one that is in the way.</li>
+<li><strong>Installed, but not configured</strong> — installing a service does not configure it; that
+is a separate, deliberate step. The card says so while a service still runs on the
+settings its own package shipped, because it can then play to the wrong output while
+looking perfectly ready.</li>
+<li><strong>Playback is interrupted</strong> — updating a service restarts it, uninstalling stops it.
+The confirmation names the service that is about to be cut, so an update chosen in
+the middle of an album is a decision rather than a surprise.</li>
 <li><strong>Restart required</strong> — a pulsing badge appears when a service needs a restart after
 install/update; click to restart it.</li>
-<li><strong>Architecture</strong> — the CPU badge shows supported architectures (amd64, arm64…);
-unsupported cards are dimmed. A <strong>DRY-RUN</strong> mode simulates operations safely.</li>
+<li><strong>Architecture</strong> — the CPU badge shows supported architectures (amd64, arm64…).
+A <strong>DRY-RUN</strong> mode simulates operations safely.</li>
 </ul>
 <h2 id="system">System</h2>
 <p>Real-time monitoring and box-level actions.</p>

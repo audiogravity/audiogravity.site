@@ -151,6 +151,24 @@ into each service's configuration. Detection alone routes nothing.
 - For deeper output, use the browser **Terminal** (System tab, admin) — e.g.
   `systemctl status mpd` / `journalctl -u mpd -e`.
 
+## An MPD app on my phone or computer can't reach the box
+
+Audiogravi<sup>ty</sup> keeps MPD reachable **from the box only** — the interface, the
+UPnP renderer your phone casts to, and playback itself all talk to it from inside the
+machine, so nothing you do through Audiogravi<sup>ty</sup> is affected. A third-party
+MPD application connecting straight to the box is what stops working.
+
+This is deliberate. MPD's control port asks for no password: open to the network, it
+lets anything on your network start, stop and browse your music. On some boxes it was
+open by accident of the Debian packaging, and closing it is also what makes a service
+you stopped stay stopped — the same open port is what used to bring MPD back to life
+seconds after you switched it off.
+
+Control the box from the Audiogravi<sup>ty</sup> interface, or cast to it as a UPnP
+renderer, which stays open on the network as before. If a third-party MPD app is part
+of how you listen, say so through [Getting help](#getting-help) — reopening that port
+is reasonable, but it should be a switch you turn on knowingly rather than a default.
+
 ## Streaming fails or a track won't play
 
 - Confirm the service is **Connected** in Library → Sources, and that your

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.39 — 2026-08-17
+
 ### A service you stop stays stopped
 
 Stop MPD from its card, or switch to a profile that leaves it out, and on a recently

@@ -184,30 +184,34 @@ Audiogravi<sup>ty</sup> works with a **Roon Bridge** endpoint and connects to yo
 Core** for metadata and transport — so a Roon zone can sit alongside your other
 outputs in the same interface.
 
-**Setting it up.** Roon has no in-app settings screen and no installer flag — you point
-Audiogravi<sup>ty</sup> at your Roon Core in the core's config file, then authorize it once inside
-Roon:
+**Setting it up.** Nothing to configure on the box, and no file to edit:
 
-1. **Point AG at the Core.** On the box, edit `/opt/audiogravity/core/.env` and set:
-   ```
-   ROON_ENABLED=true
-   ROON_CORE_HOST=192.168.1.50    # the IP of the machine running Roon Core
-   ```
-   (The Core's control port `9330` is used automatically; leave `ROON_CORE_HOST` at the
-   default only if the Core runs on the same box.)
-2. **Restart the core** so it re-reads the file:
-   ```bash
-   sudo systemctl restart ag-core-server
-   ```
-3. **Authorize the extension in Roon.** Open Roon (the desktop or mobile app connected to
+1. **Install Roon Bridge** from the **Audio Software** page, and leave it running. That is
+   what tells Audiogravi<sup>ty</sup> that Roon belongs on this box — it then looks for your
+   Core on the network by itself. You do not need to know your Core's address, and its port
+   is fixed by Roon, so there is nothing to set for either.
+
+2. **Authorize the extension in Roon.** Open Roon (the desktop or mobile app connected to
    your Core) → **Settings → Extensions**. An extension named **“Audiogravity”** appears
-   in the list — click **Enable** next to it. That's the one-time authorization: Roon
-   grants AG a token, AG stores it, and it reconnects on its own afterwards (no need to
-   re-authorize on restarts).
+   in the list — click **Enable** next to it. That's the one-time authorization, and the
+   only thing that grants Audiogravi<sup>ty</sup> any access: Roon hands it a token, the box
+   stores it, and it reconnects on its own afterwards (no need to re-authorize on restarts).
 
-> If `ROON_CORE_HOST` is wrong or the Core is unreachable, the core logs a connection
-> warning and keeps retrying — correct the IP in `.env` and restart. Until you click
-> **Enable** in Roon (step 3), the connection stays unauthorized and Roon data won't appear.
+> Until you click **Enable** in Roon (step 2), the connection stays unauthorized and Roon
+> data won't appear. That wait is normal, and the box says so in its log, naming the
+> extension to enable. If no Core is found at all, the log says that too — check that Roon
+> Core is actually running.
+
+**If the Core cannot be found.** On a network where the search cannot reach it — a Core on
+another segment, or a router that blocks the broadcast — name it in
+`/opt/audiogravity/core/.env` and restart the core:
+
+```
+ROON_CORE_HOST=192.168.1.50    # the IP of the machine running Roon Core
+```
+
+An address that answers is used straight away; one that does not is not a dead end, the
+search still runs.
 
 ## AirPlay
 

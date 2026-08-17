@@ -74,8 +74,9 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 > them later, re-run the installer with the flag — or edit `/opt/audiogravity/core/.env`
 > and restart the core (`sudo systemctl restart ag-core-server`).
 >
-> **The one exception is Roon**, which has no installer flag or UI — you enable it in
-> `.env`. See [6. Outputs & engines → Roon](06-outputs-engines.md#roon).
+> **Roon needs nothing here either**: install Roon Bridge from the Audio Software page and
+> authorize the extension once inside Roon. See
+> [6. Outputs & engines → Roon](06-outputs-engines.md#roon).
 
 ## Getting HTTPS — for passkeys and push
 

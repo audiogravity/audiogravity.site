@@ -229,29 +229,35 @@ guessing which device you meant.</p>
 <p>Audiogravi<sup>ty</sup> works with a <strong>Roon Bridge</strong> endpoint and connects to your remote <strong>Roon
 Core</strong> for metadata and transport — so a Roon zone can sit alongside your other
 outputs in the same interface.</p>
-<p><strong>Setting it up.</strong> Roon has no in-app settings screen and no installer flag — you point
-Audiogravi<sup>ty</sup> at your Roon Core in the core's config file, then authorize it once inside
-Roon:</p>
+<p><strong>Setting it up.</strong> Nothing to configure on the box, and no file to edit:</p>
 <ol>
-<li><strong>Point AG at the Core.</strong> On the box, edit <code>/opt/audiogravity/core/.env</code> and set:<pre><code>ROON_ENABLED=true
-ROON_CORE_HOST=192.168.1.50    # the IP of the machine running Roon Core
-</code></pre>
-(The Core's control port <code>9330</code> is used automatically; leave <code>ROON_CORE_HOST</code> at the
-default only if the Core runs on the same box.)</li>
-<li><strong>Restart the core</strong> so it re-reads the file:<pre><code class="language-bash">sudo systemctl restart ag-core-server
-</code></pre>
+<li>
+<p><strong>Install Roon Bridge</strong> from the <strong>Audio Software</strong> page, and leave it running. That is
+what tells Audiogravi<sup>ty</sup> that Roon belongs on this box — it then looks for your
+Core on the network by itself. You do not need to know your Core's address, and its port
+is fixed by Roon, so there is nothing to set for either.</p>
 </li>
-<li><strong>Authorize the extension in Roon.</strong> Open Roon (the desktop or mobile app connected to
+<li>
+<p><strong>Authorize the extension in Roon.</strong> Open Roon (the desktop or mobile app connected to
 your Core) → <strong>Settings → Extensions</strong>. An extension named <strong>“Audiogravity”</strong> appears
-in the list — click <strong>Enable</strong> next to it. That's the one-time authorization: Roon
-grants AG a token, AG stores it, and it reconnects on its own afterwards (no need to
-re-authorize on restarts).</li>
+in the list — click <strong>Enable</strong> next to it. That's the one-time authorization, and the
+only thing that grants Audiogravi<sup>ty</sup> any access: Roon hands it a token, the box
+stores it, and it reconnects on its own afterwards (no need to re-authorize on restarts).</p>
+</li>
 </ol>
 <blockquote>
-<p>If <code>ROON_CORE_HOST</code> is wrong or the Core is unreachable, the core logs a connection
-warning and keeps retrying — correct the IP in <code>.env</code> and restart. Until you click
-<strong>Enable</strong> in Roon (step 3), the connection stays unauthorized and Roon data won't appear.</p>
+<p>Until you click <strong>Enable</strong> in Roon (step 2), the connection stays unauthorized and Roon
+data won't appear. That wait is normal, and the box says so in its log, naming the
+extension to enable. If no Core is found at all, the log says that too — check that Roon
+Core is actually running.</p>
 </blockquote>
+<p><strong>If the Core cannot be found.</strong> On a network where the search cannot reach it — a Core on
+another segment, or a router that blocks the broadcast — name it in
+<code>/opt/audiogravity/core/.env</code> and restart the core:</p>
+<pre><code>ROON_CORE_HOST=192.168.1.50    # the IP of the machine running Roon Core
+</code></pre>
+<p>An address that answers is used straight away; one that does not is not a dead end, the
+search still runs.</p>
 <h2 id="airplay">AirPlay</h2>
 <p>The box can act as an <strong>AirPlay receiver</strong> (shairport-sync) — stream to it from an
 iPhone, iPad or Mac, and it plays through the same output chain, with the same

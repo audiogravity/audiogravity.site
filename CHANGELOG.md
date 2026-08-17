@@ -9,6 +9,12 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[core] Setting Roon up no longer means opening a terminal.** It used to take an SSH session, a configuration file, your Roon Core's IP address typed in by hand, and a restart of the box's backend — for a product whose whole point is that you never do that. Now: install Roon Bridge from the **Audio Software** page, then enable the **Audiogravity** extension in Roon → Settings → Extensions. Nothing else. Your box finds your Core on the network by itself (measured: five seconds), and Roon's own **Enable** click is what grants access — it always was, so asking for the same permission a second time in a file only made the feature hard to reach. The manual's Roon section is rewritten around the two steps. Three settings are gone with it, and none of them did what its name promised: the port was never read (Roon fixes it, and the value shipped was a different port entirely, closed on the Core), the switch duplicated Roon's own authorization, and the extension's name only made it harder to find in Roon's list — one box announced itself as "Aty" while its owner looked for "Audiogravity". Boxes that ran Roon Server rather than Roon Bridge were checked too: they get the same treatment, where an earlier version of this change would have shut them out.
+
+### Fixed
+- **[core] A Roon Core started after the box is now picked up on its own.** The box tried to connect exactly once, at startup: turn your Core on afterwards and Roon stayed absent until someone restarted the backend. It retries now, quietly and at most once a minute, without ever making the interface wait for it. The log stopped crying wolf too — waiting for you to enable the extension is written as the ordinary step it is, and names the extension to look for, instead of appearing as an error next to the real ones.
+
 ## [0.9.39] - 2026-08-17
 
 ### Fixed

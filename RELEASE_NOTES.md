@@ -7,7 +7,33 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Roon, without the terminal
+
+Connecting Audiogravi<sup>ty</sup> to Roon used to take a route no owner should have to
+walk: open an SSH session on the box, edit a configuration file, type in your Roon
+Core's IP address, restart the backend — and only then click **Enable** in Roon. Four of
+those five steps are gone.
+
+What remains is what you would expect. Install **Roon Bridge** from the Audio Software
+page. Open Roon → **Settings → Extensions**, and enable **Audiogravity**. That's it.
+Your box looks for your Core on the network by itself and finds it in about five
+seconds, so its address is something you never need to know. And the click inside Roon
+was always the permission that mattered — nothing is read from your Core, or sent to it,
+until you give it. Asking for the same consent a second time, in a file, only made the
+feature hard to reach.
+
+Three settings disappeared along the way, and not one of them did what its name
+suggested. The port was never read at all: Roon fixes it, and the value the file
+carried pointed at a different port, closed on the Core. The on/off switch duplicated
+Roon's own authorization. And the extension's name only made it harder to find — one
+box announced itself in Roon's list as “Aty” while its owner scrolled past looking for
+“Audiogravity”. Boxes running Roon Server instead of Roon Bridge are covered by the same
+rule; the Roon section of the manual is rewritten around the two steps above.
+
+One more thing, less visible but worth knowing: your box used to try to reach your Core
+exactly once, when it started. Switch the Core on afterwards and Roon simply stayed
+absent until someone restarted the backend. It now keeps an eye out, quietly, and never
+makes the interface wait while it looks.
 
 ---
 

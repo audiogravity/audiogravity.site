@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.40 — 2026-08-17
+
 ### Roon, without the terminal
 
 Connecting Audiogravi<sup>ty</sup> to Roon used to take a route no owner should have to

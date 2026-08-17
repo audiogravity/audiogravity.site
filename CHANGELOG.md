@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.40] - 2026-08-17
+
 ### Added
 - **[ui] [core] The Roon card says where you are, and what is left to do.** The last step of connecting to Roon happens inside Roon — enabling the extension — and the box cannot see you do it, so an expanded Roon card said "No zones available" and stopped there. The person who got through it read the box's journal over SSH to find out what was expected of him. The card now names the situation: no Roon Bridge running on this box, no Core answering, waiting for your authorization — with the extension's name to look for, straight from the box so the two can never say different things — or connected, with the number of zones. When it is waiting, **I have enabled it** checks again on the spot instead of making you wait for the next look, and the zone list refreshes itself the moment a session comes up.
 

@@ -200,6 +200,20 @@ Override</strong> on the Systemd tab to roll it back to factory behaviour instan
 <li>For deeper output, use the browser <strong>Terminal</strong> (System tab, admin) — e.g.
 <code>systemctl status mpd</code> / <code>journalctl -u mpd -e</code>.</li>
 </ul>
+<h2 id="an-mpd-app-on-my-phone-or-computer-cant-reach-the-box">An MPD app on my phone or computer can't reach the box</h2>
+<p>Audiogravi<sup>ty</sup> keeps MPD reachable <strong>from the box only</strong> — the interface, the
+UPnP renderer your phone casts to, and playback itself all talk to it from inside the
+machine, so nothing you do through Audiogravi<sup>ty</sup> is affected. A third-party
+MPD application connecting straight to the box is what stops working.</p>
+<p>This is deliberate. MPD's control port asks for no password: open to the network, it
+lets anything on your network start, stop and browse your music. On some boxes it was
+open by accident of the Debian packaging, and closing it is also what makes a service
+you stopped stay stopped — the same open port is what used to bring MPD back to life
+seconds after you switched it off.</p>
+<p>Control the box from the Audiogravi<sup>ty</sup> interface, or cast to it as a UPnP
+renderer, which stays open on the network as before. If a third-party MPD app is part
+of how you listen, say so through <a href="#getting-help">Getting help</a> — reopening that port
+is reasonable, but it should be a switch you turn on knowingly rather than a default.</p>
 <h2 id="streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</h2>
 <ul>
 <li>Confirm the service is <strong>Connected</strong> in Library → Sources, and that your

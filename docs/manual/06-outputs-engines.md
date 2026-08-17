@@ -198,9 +198,10 @@ outputs in the same interface.
    stores it, and it reconnects on its own afterwards (no need to re-authorize on restarts).
 
 > Until you click **Enable** in Roon (step 2), the connection stays unauthorized and Roon
-> data won't appear. That wait is normal, and the box says so in its log, naming the
-> extension to enable. If no Core is found at all, the log says that too — check that Roon
-> Core is actually running.
+> data won't appear. **The Roon card in Library → Sources says where you are**: whether
+> Roon Bridge is running here, whether a Core is answering, whether the extension is still
+> waiting for you — with the name to look for — or how many zones are connected. Once you
+> have clicked Enable, *I have enabled it* on the card checks again straight away.
 
 **If the Core cannot be found.** On a network where the search cannot reach it — a Core on
 another segment, or a router that blocks the broadcast — name it in

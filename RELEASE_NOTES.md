@@ -30,6 +30,14 @@ box announced itself in Roon's list as “Aty” while its owner scrolled past l
 “Audiogravity”. Boxes running Roon Server instead of Roon Bridge are covered by the same
 rule; the Roon section of the manual is rewritten around the two steps above.
 
+The card itself now tells you where you are. That matters more than it sounds: the step
+above happens inside Roon, on another screen, and your box has no way of seeing you take
+it. Expand the Roon card and it says what is true — no Roon Bridge running here, no Core
+answering, waiting for your authorization (naming the extension to look for), or
+connected with the number of zones. While it waits, **I have enabled it** checks again
+straight away rather than leaving you wondering whether the click registered, and the
+list of zones fills itself in as soon as the connection comes up.
+
 One more thing, less visible but worth knowing: your box used to try to reach your Core
 exactly once, when it started. Switch the Core on afterwards and Roon simply stayed
 absent until someone restarted the backend. It now keeps an eye out, quietly, and never

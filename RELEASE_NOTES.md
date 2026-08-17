@@ -7,6 +7,42 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A service you stop stays stopped
+
+Stop MPD from its card, or switch to a profile that leaves it out, and on a recently
+installed box it came straight back — under two seconds later, before the page had
+finished refreshing. On one box: stopped at 07:40:32, running again at 07:40:34. There
+was no way to keep it off, and nothing on screen to explain why.
+
+The cause is in how Debian ships MPD: as two pieces rather than one. There is the
+daemon, and there is a second piece whose only job is to hold MPD's port open and start
+the daemon the instant anything connects to it. Your box connects to that port
+constantly — that is how it knows what is playing — so it woke up the very thing it had
+just been told to stop. Audiogravi<sup>ty</sup> writes MPD's own configuration with the
+address and port it should listen on, so that second piece was never doing anything the
+daemon does not already do for itself. It is now locked out when Audiogravi<sup>ty</sup>
+is installed, and MPD runs when, and only when, Audiogravi<sup>ty</sup> says so.
+
+If your box never showed this, it is because that second piece happened to be switched
+off already — recent installations arrive with it on. It gets the same treatment at its
+next update either way, and uninstalling Audiogravi<sup>ty</sup> puts the piece back.
+
+One consequence is worth spelling out, because it is a change you could notice. That
+second piece also decided *where* MPD could be reached, and it answered the whole
+network. MPD now answers only on the box itself — which is what
+Audiogravi<sup>ty</sup>'s own configuration has always asked for; the wider opening came
+from the packaging, not from a decision. Nothing you use through Audiogravi<sup>ty</sup>
+is affected: the interface, the UPnP renderer your phone sends music to, and playback
+itself all reach MPD from inside the box. We checked this on a box that has been
+local-only all along — its renderer is visible on the network and works normally. The
+one thing that stops working is a third-party MPD application, on a phone or another
+computer, connecting straight to the box. If that is part of how you listen, tell us:
+opening that door again is reasonable, but it should be a switch you turn on knowingly
+— the port in question asks for no password, so anything on your network can control
+the music through it.
+
+---
+
 ### The configuration editor stays where you put it
 
 Open a service's configuration and it lands on **Guided**, which is the right place to

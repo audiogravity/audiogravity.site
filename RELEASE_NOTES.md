@@ -7,6 +7,31 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Roon keeps looking, without keeping your box busy
+
+The check we added last time was right to exist and wrong in its pacing. If your Roon
+Core is switched off — overnight, or while you are away — your box went looking for it
+every single minute, for as long as it stayed on. Nothing came of it, and it is exactly
+the kind of small, endless work an audiophile machine should not be doing in the
+background.
+
+It now eases off: every minute at first, stretching to a quarter of an hour while nothing
+answers, and straight back to the quick pace the moment you open the Roon card. So the
+Enable click you make inside Roon is still picked up within a minute, and an idle box is
+left alone.
+
+The box's log changed with it, in the other direction. It was meant to report an
+unchanged situation once instead of once per attempt, and it did — but it also managed to
+swallow the single event worth recording: a Roon Core that stops answering in the middle
+of a session. That one is now always written down, and a Core that has moved to another
+address is named again rather than muted by an older report.
+
+One more thing you would only have noticed as a general slowness: a connection attempt
+that hangs — a Core that answers and then never finishes introducing itself — used to
+consume, once a minute, one of the workers the whole box shares. Left long enough,
+nothing else could run and the Pipeline tab stopped answering at all. Such an attempt is
+now confined to a thread of its own, and there is never more than one.
+
 ### An empty signal path tells you what it is waiting for
 
 Open the Pipeline tab on a phone and you could find the track playing above a blank
@@ -73,11 +98,7 @@ list of zones fills itself in as soon as the connection comes up.
 One more thing, less visible but worth knowing: your box used to try to reach your Core
 exactly once, when it started. Switch the Core on afterwards and Roon simply stayed
 absent until someone restarted the backend. It now keeps an eye out, quietly, and never
-makes the interface wait while it looks — checking every minute at first, then easing
-off to every quarter hour while nothing answers, and returning to the quick cadence the
-moment you open the Roon card. The journal stays quiet too: an unchanged situation is
-reported once, not once per look, and a Core that disappears mid-session is the one
-thing guaranteed a line.
+makes the interface wait while it looks.
 
 ---
 

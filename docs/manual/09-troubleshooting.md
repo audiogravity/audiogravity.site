@@ -177,6 +177,59 @@ that it cannot undo the work of someone who has described their system carefully
 - For deeper output, use the browser **Terminal** (System tab, admin) — e.g.
   `systemctl status mpd` / `journalctl -u mpd -e`.
 
+## Disk or network stays empty for a service
+
+Its **DISK** or **NET** figure shows a dash and draws no graph, while CPU moves.
+
+Those two are counted per service, and the counting is off until you ask for it. Open the
+**Systemd** tab, pick the service, and enable **IO Accounting** and **IP Accounting** in
+its override editor. The figures appear within seconds — no reboot, and no effect on
+playback.
+
+A dash is not a zero: a service that genuinely reads nothing from disk shows `0`, not a
+dash.
+
+## Memory reads 0 for every service
+
+In **Services**, every card shows *0 MB* and its little memory graph stays flat, while the
+CPU figures next to them move normally.
+
+Nothing is wrong with the services: your box's **kernel was started with memory accounting
+switched off**, so there is no figure for anyone to read. It is the factory setting of
+Raspberry Pi OS, which saves a few megabytes of kernel memory by not counting. systemd
+itself reports nothing for those services, and Audiogravi<sup>ty</sup> can only show what
+the system measures. CPU keeps working because that counter is enabled and the memory one
+is not.
+
+**Confirm it in two commands**, over SSH or in the browser **Terminal** (System tab, admin):
+
+```bash
+cat /sys/fs/cgroup/cgroup.controllers   # 'memory' missing from the list
+cat /proc/cmdline                       # contains cgroup_disable=memory
+```
+
+**Turn the counter on.** Edit the boot command line and restart:
+
+```bash
+# Back the file up first — a broken boot file leaves the box unreachable
+sudo cp /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bak-$(date +%F)
+sudo nano /boot/firmware/cmdline.txt
+```
+
+Remove `cgroup_disable=memory`. If your file has no such setting but memory is still
+missing from the controller list, add `cgroup_enable=memory cgroup_memory=1` instead.
+Then `sudo reboot`, and the figures appear on their own.
+
+> **This file is a single line.** Every setting sits on it, separated by spaces — an
+> editor that adds a line break makes the box fail to boot. Change only the words you came
+> for, save, and check the file still holds one line (`wc -l` answers 0 or 1).
+>
+> **If the box does not come back**, power it off, read the SD card on another computer,
+> and rename your `cmdline.txt.bak-…` back to `cmdline.txt`. This is why the first command
+> above is a backup.
+
+> **On an older image** this file lives at `/boot/cmdline.txt` instead.
+
 ## An MPD app on my phone or computer can't reach the box
 
 Audiogravi<sup>ty</sup> keeps MPD reachable **from the box only** — the interface, the

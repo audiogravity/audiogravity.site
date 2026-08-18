@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] [ui] A figure nothing measured is no longer shown as zero.** Three of the numbers on a service card depend on counters that can be switched off, and Audiogravi<sup>ty</sup> published all three absences as **0** under a flat graph — which is exactly what an idle service looks like. So a box measuring nothing looked like a box doing nothing. The cards now show a dash, with no graph, and the Services tab says once what a dash means and how to get the figure back. **Disk** and **network** are counted per service, and only once *IO Accounting* and *IP Accounting* are enabled for it in the **Systemd** tab — two switches, effective immediately. **Memory** depends on the machine: a Raspberry Pi kernel starts with that counter off, which no setting in the app can change, so the note links to the manual and its one-line boot change. CPU and tasks are always measured and are untouched. The manual gains both explanations, in Administration and in Troubleshooting.
+
 ## [0.9.41] - 2026-08-18
 
 ### Fixed

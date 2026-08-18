@@ -222,6 +222,46 @@ Override</strong> on the Systemd tab to roll it back to factory behaviour instan
 <li>For deeper output, use the browser <strong>Terminal</strong> (System tab, admin) — e.g.
 <code>systemctl status mpd</code> / <code>journalctl -u mpd -e</code>.</li>
 </ul>
+<h2 id="disk-or-network-stays-empty-for-a-service">Disk or network stays empty for a service</h2>
+<p>Its <strong>DISK</strong> or <strong>NET</strong> figure shows a dash and draws no graph, while CPU moves.</p>
+<p>Those two are counted per service, and the counting is off until you ask for it. Open the
+<strong>Systemd</strong> tab, pick the service, and enable <strong>IO Accounting</strong> and <strong>IP Accounting</strong> in
+its override editor. The figures appear within seconds — no reboot, and no effect on
+playback.</p>
+<p>A dash is not a zero: a service that genuinely reads nothing from disk shows <code>0</code>, not a
+dash.</p>
+<h2 id="memory-reads-0-for-every-service">Memory reads 0 for every service</h2>
+<p>In <strong>Services</strong>, every card shows <em>0 MB</em> and its little memory graph stays flat, while the
+CPU figures next to them move normally.</p>
+<p>Nothing is wrong with the services: your box's <strong>kernel was started with memory accounting
+switched off</strong>, so there is no figure for anyone to read. It is the factory setting of
+Raspberry Pi OS, which saves a few megabytes of kernel memory by not counting. systemd
+itself reports nothing for those services, and Audiogravi<sup>ty</sup> can only show what
+the system measures. CPU keeps working because that counter is enabled and the memory one
+is not.</p>
+<p><strong>Confirm it in two commands</strong>, over SSH or in the browser <strong>Terminal</strong> (System tab, admin):</p>
+<pre><code class="language-bash">cat /sys/fs/cgroup/cgroup.controllers   # 'memory' missing from the list
+cat /proc/cmdline                       # contains cgroup_disable=memory
+</code></pre>
+<p><strong>Turn the counter on.</strong> Edit the boot command line and restart:</p>
+<pre><code class="language-bash"># Back the file up first — a broken boot file leaves the box unreachable
+sudo cp /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bak-$(date +%F)
+sudo nano /boot/firmware/cmdline.txt
+</code></pre>
+<p>Remove <code>cgroup_disable=memory</code>. If your file has no such setting but memory is still
+missing from the controller list, add <code>cgroup_enable=memory cgroup_memory=1</code> instead.
+Then <code>sudo reboot</code>, and the figures appear on their own.</p>
+<blockquote>
+<p><strong>This file is a single line.</strong> Every setting sits on it, separated by spaces — an
+editor that adds a line break makes the box fail to boot. Change only the words you came
+for, save, and check the file still holds one line (<code>wc -l</code> answers 0 or 1).</p>
+<p><strong>If the box does not come back</strong>, power it off, read the SD card on another computer,
+and rename your <code>cmdline.txt.bak-…</code> back to <code>cmdline.txt</code>. This is why the first command
+above is a backup.</p>
+</blockquote>
+<blockquote>
+<p><strong>On an older image</strong> this file lives at <code>/boot/cmdline.txt</code> instead.</p>
+</blockquote>
 <h2 id="an-mpd-app-on-my-phone-or-computer-cant-reach-the-box">An MPD app on my phone or computer can't reach the box</h2>
 <p>Audiogravi<sup>ty</sup> keeps MPD reachable <strong>from the box only</strong> — the interface, the
 UPnP renderer your phone casts to, and playback itself all talk to it from inside the

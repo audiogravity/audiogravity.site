@@ -7,6 +7,28 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A dash where there was never a measurement
+
+Three of the figures on a service card come from counters that can be switched off:
+memory, disk and network. When they are off, nothing on the machine knows the answer — not
+systemd, not us. We were publishing that silence as **0**, under a flat graph, which is
+precisely how an idle service looks. A box measuring nothing looked like a box doing
+nothing.
+
+Those figures now show a dash, and no graph is drawn. The Services tab explains once, above
+the cards, what a dash means and how to get the number back — because the two cases have
+different answers:
+
+**Disk and network** are counted service by service, and only when *IO Accounting* and *IP
+Accounting* are enabled for that service in the **Systemd** tab. Two switches, effective
+straight away, no reboot.
+
+**Memory** is not up to the app at all: a Raspberry Pi kernel starts with that counter
+switched off, and turning it on means one line on the kernel command line and a restart.
+The note links to the manual, which walks through it.
+
+CPU and tasks are always measured, and nothing about them changes.
+
 _Nothing yet._
 
 ---

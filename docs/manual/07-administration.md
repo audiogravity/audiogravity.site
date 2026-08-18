@@ -83,6 +83,19 @@ Monitor and control individual systemd services in real time.
   tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, >20 % high).
 - **Filter** — ALL / RUNNING / STOPPED / FAILED.
 
+> **A dash means "not measured", not "zero".** Three of the figures depend on counters
+> that can be switched off, and Audiogravi<sup>ty</sup> shows a dash rather than inventing a
+> value:
+>
+> - **Disk** and **Network** are counted per service, and only when **IO Accounting** and
+>   **IP Accounting** are enabled on that service — two switches in the **Systemd** tab's
+>   override editor. They take effect at once, without a reboot.
+> - **Memory** depends on the machine: a Raspberry Pi kernel starts with its memory counter
+>   switched off, and no setting in the app can change that. See
+>   [9. Troubleshooting → Memory reads 0 for every service](09-troubleshooting.md#memory-reads-0-for-every-service).
+>
+> CPU and tasks are always measured.
+
 <img src="images/ios-services.webp" alt="The Services tab: per-service cards with live metrics, health bar and start/stop controls" width="360">
 
 ## Config editor

@@ -122,6 +122,20 @@ disk) and the session action history. Metrics are colour-coded LOW / MEDIUM / HI
 tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, &gt;20 % high).</li>
 <li><strong>Filter</strong> — ALL / RUNNING / STOPPED / FAILED.</li>
 </ul>
+<blockquote>
+<p><strong>A dash means &quot;not measured&quot;, not &quot;zero&quot;.</strong> Three of the figures depend on counters
+that can be switched off, and Audiogravi<sup>ty</sup> shows a dash rather than inventing a
+value:</p>
+<ul>
+<li><strong>Disk</strong> and <strong>Network</strong> are counted per service, and only when <strong>IO Accounting</strong> and
+<strong>IP Accounting</strong> are enabled on that service — two switches in the <strong>Systemd</strong> tab's
+override editor. They take effect at once, without a reboot.</li>
+<li><strong>Memory</strong> depends on the machine: a Raspberry Pi kernel starts with its memory counter
+switched off, and no setting in the app can change that. See
+<a href="09-troubleshooting#memory-reads-0-for-every-service">9. Troubleshooting → Memory reads 0 for every service</a>.</li>
+</ul>
+<p>CPU and tasks are always measured.</p>
+</blockquote>
 <img loading="lazy" src="images/ios-services.webp" alt="The Services tab: per-service cards with live metrics, health bar and start/stop controls" width="360">
 <h2 id="config-editor">Config editor</h2>
 <p>Safely edit the real configuration files of your audio services (see also

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.41 — 2026-08-18
+
 ### Roon keeps looking, without keeping your box busy
 
 The check we added last time was right to exist and wrong in its pacing. If your Roon

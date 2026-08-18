@@ -7,6 +7,32 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### An empty signal path tells you what it is waiting for
+
+Open the Pipeline tab on a phone and you could find the track playing above a blank
+space — no box, no converter, no speakers, no explanation. It looked broken. It was not:
+the view draws each device only when music actually flows through one of the connections
+**you have described**, and every new box arrives with an example description — a
+converter reached over USB and optical — meant to be replaced by your own gear.
+
+If your converter is a HAT board sitting on a Raspberry Pi's connector, it matches
+neither of those, so nothing in the chain lights up and the drawing empties itself. We
+found this on two of our own boxes, both blank for exactly that reason, with nothing on
+screen to say so.
+
+Now the panel speaks, and it puts the two facts next to each other: what your box is
+playing through, and what your description declares. Seeing *HiFiBerry DAC+ Pro* on one
+line and *USB Audio Output, Optical Output* on the next is usually all it takes to know
+which of the two has to change.
+
+Where to change it was itself a dead end on a phone: the **CONFIG** button existed only
+in the desktop layout, while the phone is exactly what you have in hand when you notice
+something is wrong. The Pipeline tab now carries the same bar on both, so the panel can
+point at a button that is really there. And when the
+description does match your gear and simply nothing is playing, it says that instead of
+leaving you guessing between the two. The manual carries the same explanation, both where
+outputs are described and in the troubleshooting chapter.
+
 _Nothing yet._
 
 ---
@@ -47,7 +73,11 @@ list of zones fills itself in as soon as the connection comes up.
 One more thing, less visible but worth knowing: your box used to try to reach your Core
 exactly once, when it started. Switch the Core on afterwards and Roon simply stayed
 absent until someone restarted the backend. It now keeps an eye out, quietly, and never
-makes the interface wait while it looks.
+makes the interface wait while it looks — checking every minute at first, then easing
+off to every quarter hour while nothing answers, and returning to the quick cadence the
+moment you open the Roon card. The journal stays quiet too: an unchanged situation is
+reported once, not once per look, and a Core that disappears mid-session is the one
+thing guaranteed a line.
 
 ---
 

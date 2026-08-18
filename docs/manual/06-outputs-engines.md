@@ -59,6 +59,30 @@ server's own audio path.
 > list as a non-selectable *"This device · receives external casts"* row — because
 > playing on the box is what the **Local DAC** output already does.
 
+## The signal path, and the chain you describe
+
+The **Pipeline** tab draws the route your music takes, device by device: the box, the
+converter, the amplifier, the speakers, and the cables between them. Audiogravi<sup>ty</sup>
+detects everything that happens **inside** the box on its own — the services, the formats,
+the outputs your hardware exposes. What it cannot detect is what sits *after* the box: no
+machine can know that the optical cable goes to a Cambridge amplifier and then to a pair
+of Harbeths.
+
+That part is a description you write once, and Audiogravi<sup>ty</sup> **never rewrites it**.
+A new box arrives with an example chain — a box, a converter over USB and optical, an
+amplifier, speakers — meant to be replaced by yours. Open **Pipeline → CONFIG** to do it,
+on a computer or on a phone. It is a text file, so a computer is the comfortable place to
+write one from scratch; the phone is there so a box that shows nothing is never a dead
+end, and for the one line you came to fix.
+
+> **Until it describes your gear, the signal path can look empty.** The view draws a
+> device only when audio is actually flowing through one of its declared connections, and
+> the example chain declares USB and optical. A box playing through a **HAT board** — a
+> converter mounted directly on a Raspberry Pi's connector — matches neither, so nothing
+> lights up. The Pipeline tab says so, and names the output it found next to what your
+> description declares: that is your cue to describe the real chain. See
+> [9. Troubleshooting → The signal path is empty](09-troubleshooting.md#the-signal-path-is-empty).
+
 ## HQPlayer
 
 If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with it three ways:

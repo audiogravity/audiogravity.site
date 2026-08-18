@@ -142,6 +142,32 @@ into each service's configuration. Detection alone routes nothing.
 > Pi OS releases leave a stub there pointing to the new location — if you open it and it
 > says the file has moved, follow it.
 
+## The signal path is empty
+
+The Pipeline tab shows what is playing, and then nothing underneath — no box, no
+converter, no speakers.
+
+The view draws a device only when audio actually flows through one of the connections
+**you have described**, and a new box carries an example chain: a converter reached over
+USB and optical. Two common cases leave that example unmatched, and the panel names which
+one you are in:
+
+- **It names an output it found** — “this box is playing through *HiFiBerry DAC+ Pro*,
+  which your described chain does not mention”. Your hardware is fine and the music plays;
+  the description is simply not yours yet. A **HAT board** mounted on a Raspberry Pi's
+  connector is the usual case, since the example declares USB and optical. Describe your
+  own chain in **Pipeline → CONFIG** on a computer and the path appears.
+- **It says nothing is flowing** — the description matches your gear, but no music is on
+  its way through it. Start playing, and the path lights up.
+
+**CONFIG** sits at the top of the Pipeline tab, on a phone as on a computer. The
+description is a text file, so writing one from scratch is far easier at a keyboard — but
+the phone can reach it, which matters when the box in front of you is showing nothing.
+
+The description is yours to maintain: Audiogravi<sup>ty</sup> never rewrites it, precisely so
+that it cannot undo the work of someone who has described their system carefully. See
+[6. Outputs & engines → The signal path](06-outputs-engines.md#the-signal-path-and-the-chain-you-describe).
+
 ## A service won't start
 
 - Open **Services** → click the service name for its detail modal (live metrics + the

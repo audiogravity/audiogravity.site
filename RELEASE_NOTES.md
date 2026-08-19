@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.43 — 2026-08-19
+
 ### The explanation behind the dash, delivered at last
 
 0.9.42 stopped a service card from claiming **0** where nothing had been measured, and put

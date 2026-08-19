@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.42 — 2026-08-19
+
 ### A dash where there was never a measurement
 
 Three of the figures on a service card come from counters that can be switched off:

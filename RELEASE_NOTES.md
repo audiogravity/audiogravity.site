@@ -7,7 +7,24 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The explanation behind the dash, delivered at last
+
+0.9.42 stopped a service card from claiming **0** where nothing had been measured, and put
+a line under the **Services** title explaining what a dash means and how to get the number
+back. The dashes appeared. The line did not — on any box.
+
+Your machine sends one measurement report per cycle. One fact on it belongs to the machine
+rather than to any single service: *this kernel counts no memory at all*. The interface was
+breaking that report into one message per service before handing it on, and that fact, having
+no service to belong to, fell out. The **Services** tab was listening for the whole report,
+which nothing had sent since v0.9.4 — so it never had the one thing it needed to speak.
+
+It is sent now. On a Raspberry Pi, whose kernel starts with the memory counter switched off,
+every card shows a dash for memory and the line finally says why, with a link to the one-line
+boot change in the manual.
+
+The same missing report also left the **Profiles** tab showing service states frozen at the
+moment you opened it. That tab had been waiting on it just as long, and it too is live again.
 
 ---
 

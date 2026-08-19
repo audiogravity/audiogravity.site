@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] The note explaining a dash on a service card now actually appears.** 0.9.42 replaced an untrue **0** with a dash wherever a counter is switched off, and added a line under the **Services** title saying what the dash means and how to get the figure back. The dashes arrived; the line never did. The interface splits the box's measurement report into one message per service before delivering it, and the fact that says *this machine counts no memory at all* travels on the report as a whole — so it was being dropped on the way. Two tabs had been waiting on that whole report since v0.9.4 without anything ever sending it: the **Services** tab could never explain its dashes, and the **Profiles** tab never noticed a service starting or stopping until it was reopened. Both are fed now. Most visible on a Raspberry Pi, whose kernel starts with the memory counter off, where every card shows a dash for memory and the reason is exactly what the missing line was there to give.
+- **[ui] A lost connection to the box now says so in the browser console.** When the live stream dropped, the diagnostic message logged `undefined` instead of naming the failure: the worker sent it under one label and the page read another. Two of its three error paths were already right; this was the third, and the one an owner actually meets.
+
 ## [0.9.42] - 2026-08-19
 
 ### Fixed

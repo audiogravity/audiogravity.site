@@ -72,7 +72,7 @@ early access. <a href="mailto:contact@audiogravity.app?subject=Audiogravity%20-%
 <h2 id="recommended-all-in-one-one-box">Recommended — all-in-one (one box)</h2>
 <p>Installs the <strong>core</strong> (the engine) and the <strong>ui</strong> (the interface) on the same box.
 This is the standard setup and the one one-click self-update fully supports.</p>
-<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install.sh | sudo bash
 </code></pre>
 <p>Then open the interface in any browser on your network:</p>
 <pre><code>https://&lt;ip-of-your-streamer&gt;
@@ -80,8 +80,8 @@ This is the standard setup and the one one-click self-update fully supports.</p>
 <h2 id="advanced-core-and-ui-separately">Advanced — core and ui separately</h2>
 <p>You can install the two parts independently — for example to run the interface on a
 different machine. Run each installer on its target host:</p>
-<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx
-curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash -s -- --token ghp_xxx
+<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install-core.sh | sudo bash
+curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash
 </code></pre>
 <blockquote>
 <p><strong>Split installs and updates.</strong> One-click self-update updates a <strong>co-located</strong>
@@ -108,7 +108,6 @@ separately (see <a href="08-updating">8. Updating</a>).</p>
 </tbody>
 </table></div>
 <pre><code class="language-bash">curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
-    --token ghp_xxx \
     --vapid-email you@example.com \
     --public-url https://audiogravity.example.com
 </code></pre>

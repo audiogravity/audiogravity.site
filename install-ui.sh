@@ -1,11 +1,13 @@
 #!/bin/bash
-# Audiogravity UI — Public Bootstrap Installer (token-authenticated)
+# Audiogravity UI — Public Bootstrap Installer
 #
-# Downloads release assets from the private GitHub repo via the API.
+# Downloads release assets from the GitHub releases repo via the API. --token is
+# OPTIONAL: needed only while the releases repo is private (Early Access).
 #
 # Usage:
-#   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --token ghp_xxx
-#   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash
+#   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --version 1.2.0
+#   (add --token <PAT> only while the releases repo is private)
 
 set -e
 
@@ -18,7 +20,7 @@ fail() { echo -e "  ${RED}✗${NC} $1" >&2; exit 1; }
 info() { echo -e "  ${BLUE}→${NC} $1"; }
 warn() { echo -e "  ${YELLOW}!${NC} $1"; }
 
-[ "$EUID" -eq 0 ] || fail "Run as root: curl ... | sudo bash -s -- --token <PAT>"
+[ "$EUID" -eq 0 ] || fail "Run as root: curl ... | sudo bash"
 
 TOKEN=""
 VERSION=""
@@ -30,7 +32,8 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-[ -n "$TOKEN" ] || fail "Missing --token <PAT>. Request your access token from contact@audiogravity.app."
+# --token is OPTIONAL: needed only while the releases repo is private. On a public
+# repo the release assets download anonymously, so no token is required.
 
 # Prerequisites. python3 is not optional for the ui either: the deployed HTTPS proxy
 # IS a python3 process (`ExecStart=/usr/bin/python3 .../server.py`), and unlike the core
@@ -65,7 +68,10 @@ if [ -n "$MISSING_CMDS" ]; then
     done
 fi
 
-AUTH_HEADER="Authorization: Bearer $TOKEN"
+# Send the token only when provided (empty on a public repo). Matches the pattern
+# in bootstrap-core-install.sh — change one, change the other.
+AUTH_ARGS=()
+[ -n "$TOKEN" ] && AUTH_ARGS=(-H "Authorization: Bearer $TOKEN")
 API_BASE="https://api.github.com/repos/$REPO"
 
 echo ""
@@ -76,11 +82,11 @@ echo ""
 
 if [ -z "$VERSION" ]; then
     info "Fetching latest release version..."
-    RELEASE_JSON=$(curl -fsSL -H "$AUTH_HEADER" "$API_BASE/releases/latest") \
+    RELEASE_JSON=$(curl -fsSL "${AUTH_ARGS[@]}" "$API_BASE/releases/latest") \
         || fail "Could not fetch release info. Check your token and internet connection."
 else
     info "Fetching release v${VERSION}..."
-    RELEASE_JSON=$(curl -fsSL -H "$AUTH_HEADER" "$API_BASE/releases/tags/v${VERSION}") \
+    RELEASE_JSON=$(curl -fsSL "${AUTH_ARGS[@]}" "$API_BASE/releases/tags/v${VERSION}") \
         || fail "Could not fetch release v${VERSION}. Check the version exists and your token is valid."
 fi
 
@@ -110,14 +116,14 @@ trap 'rm -rf "$INSTALL_DIR"' EXIT
 
 info "Downloading $TARBALL..."
 curl -fL --progress-bar \
-    -H "$AUTH_HEADER" -H "Accept: application/octet-stream" \
+    "${AUTH_ARGS[@]}" -H "Accept: application/octet-stream" \
     "$TARBALL_URL" -o "$INSTALL_DIR/$TARBALL" \
     || fail "Download failed."
 ok "Download complete"
 
 info "Verifying integrity..."
 if [ -n "$SUMS_URL" ]; then
-    curl -fsSL -H "$AUTH_HEADER" -H "Accept: application/octet-stream" \
+    curl -fsSL "${AUTH_ARGS[@]}" -H "Accept: application/octet-stream" \
         "$SUMS_URL" -o "$INSTALL_DIR/SHA256SUMS" 2>/dev/null || warn "SHA256SUMS download failed"
 fi
 

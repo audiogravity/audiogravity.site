@@ -3,10 +3,13 @@
 #
 # Use this when core and ui run on the same host.
 #
+# --token is OPTIONAL: needed only while the releases repo is private (Early Access).
+#
 # Usage:
-#   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
-#   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
-#   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx --public-url https://your-domain
+#   curl -fsSL https://audiogravity.app/install.sh | sudo bash
+#   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --public-url https://your-domain
+#   (add --token <PAT> only while the releases repo is private)
 
 set -e
 
@@ -24,12 +27,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-if [ -z "$TOKEN" ]; then
-    echo "✗ Missing --token <PAT>. Request your access token from contact@audiogravity.app." >&2
-    exit 1
-fi
-
-[ "$EUID" -eq 0 ] || { echo "✗ Run as root: curl ... | sudo bash -s -- --token <PAT>" >&2; exit 1; }
+[ "$EUID" -eq 0 ] || { echo "✗ Run as root: curl ... | sudo bash" >&2; exit 1; }
 
 BASE="https://audiogravity.app"
 

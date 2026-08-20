@@ -44,7 +44,7 @@ signal-chain map, and your saved radio stations). A **fresh** install seeds thos
 with sensible defaults; an **upgrade never overwrites them**, so your edits survive:
 
 ```bash
-curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
 ## Version-mismatch banner

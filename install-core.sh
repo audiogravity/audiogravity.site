@@ -1,13 +1,15 @@
 #!/bin/bash
-# Audiogravity Core — Public Bootstrap Installer (token-authenticated)
+# Audiogravity Core — Public Bootstrap Installer
 #
-# Downloads release assets from the private GitHub repo via the API.
+# Downloads release assets from the GitHub releases repo via the API. --token is
+# OPTIONAL: needed only while the releases repo is private (Early Access).
 #
 # Usage:
-#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx
-#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
-#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx --vapid-email you@example.com
-#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx --public-url https://audiogravity.example.com
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --vapid-email you@example.com
+#   curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --public-url https://audiogravity.example.com
+#   (add --token <PAT> only while the releases repo is private)
 
 set -e
 
@@ -20,7 +22,7 @@ fail() { echo -e "  ${RED}✗${NC} $1" >&2; exit 1; }
 info() { echo -e "  ${BLUE}→${NC} $1"; }
 warn() { echo -e "  ${YELLOW}!${NC} $1"; }
 
-[ "$EUID" -eq 0 ] || fail "Run as root: curl ... | sudo bash -s -- --token <PAT>"
+[ "$EUID" -eq 0 ] || fail "Run as root: curl ... | sudo bash"
 
 TOKEN=""
 VERSION=""

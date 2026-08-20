@@ -7,7 +7,29 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### One line, no token
+
+Until now, installing Audiogravi<sup>ty</sup> meant owning a credential. Early access ran from a
+private repository, so the install command carried a 90-character access token that had to be
+sent by e-mail, pasted without a typo, and kept — the box stores it, because one-click
+self-update reaches for the same repository later.
+
+It never fit what the product promises. Owners retyped it by hand, asked how to move it from a
+laptop to the box, or ran the example from this page as if it were the real thing. And because
+the same token served everyone, its life was collective: it expired on a set date, and one copy
+left in the open ended it for every owner at the same moment.
+
+The repository is public now and the token is gone from the entire path. Installing is one short
+line, typed straight into the box:
+
+```bash
+curl -fsSL https://audiogravity.app/install.sh | sudo bash
+```
+
+There is nothing to request, nothing to carry across machines, and nothing to renew. Boxes
+installed during early access keep the old token in their configuration and need it cleared
+once: a credential that is no longer valid is refused even by a public repository, where asking
+for nothing at all is accepted.
 
 ---
 

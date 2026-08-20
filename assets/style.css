@@ -2045,6 +2045,10 @@ nav {
     line-height: 1.9;
     color: #bcbcbc;
     display: block;
+    /* Preserve the indentation of continuation lines with real spaces. It used to
+       be written with &nbsp;, which survives a copy-paste as U+00A0 — a character
+       the shell does not treat as whitespace, so the pasted command failed. */
+    white-space: pre-wrap;
     word-break: break-all
 }
 

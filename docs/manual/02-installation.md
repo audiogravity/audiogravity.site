@@ -24,7 +24,7 @@ Installs the **core** (the engine) and the **ui** (the interface) on the same bo
 This is the standard setup and the one one-click self-update fully supports.
 
 ```bash
-curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
 Then open the interface in any browser on your network:
@@ -39,8 +39,8 @@ You can install the two parts independently — for example to run the interface
 different machine. Run each installer on its target host:
 
 ```bash
-curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx
-curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install-core.sh | sudo bash
+curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash
 ```
 
 > **Split installs and updates.** One-click self-update updates a **co-located**
@@ -56,7 +56,6 @@ curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash -s -- --token gh
 
 ```bash
 curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
-    --token ghp_xxx \
     --vapid-email you@example.com \
     --public-url https://audiogravity.example.com
 ```

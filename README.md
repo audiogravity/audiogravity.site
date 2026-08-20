@@ -133,18 +133,16 @@ Pro is a lifetime license — no subscription, no renewal. See [EDITIONS.md](EDI
 
 ```bash
 # Recommended — all-in-one (core + ui on the same box)
-curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install.sh | sudo bash
 
 # Advanced — core and ui separately (e.g. ui on a different host)
-curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- --token ghp_xxx
-curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install-core.sh | sudo bash
+curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash
 ```
 
 > **One-click self-update** covers a **co-located** core + ui (the recommended all-in-one
 > setup): one action updates the whole box. A **split install** (core and ui on different
 > hosts) is not auto-updated end-to-end — update each side by re-running its installer.
-
-> The token is shared during **early access** with approved testers. [Request access →](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request)
 
 ### Options
 
@@ -160,7 +158,6 @@ The core installer accepts two optional flags:
 
 ```bash
 curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
-    --token ghp_xxx \
     --vapid-email you@example.com \
     --public-url https://audiogravity.example.com
 ```
@@ -255,7 +252,6 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 ## Support
 
 - **Bug reports & questions** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues)
-- **Early-access token** — [request access](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request)
 - **Website** — [audiogravity.app](https://audiogravity.app)
 
 ## Roadmap

@@ -9,6 +9,12 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[site] [ops] Installing Audiogravi<sup>ty</sup> no longer needs an access token.** Early access shipped behind a private releases repository, so every installation had to carry a personal access token: a 90-character credential that had to reach the new owner by e-mail, be pasted into a command line, and then live on in the box's configuration for one-click self-update. It was the same token for everyone, it expired on a fixed date, and a single mishandled copy revoked it for every owner at once — which is exactly what happened. The releases repository is now public and the token is gone from the whole path: `--token` is accepted but optional in all three installers, and the install command is a single short line anyone can type by hand. Boxes installed during early access still hold the old token in their configuration and must have it cleared once — an invalid credential is refused even when the repository is public, where sending none succeeds.
+
+### Fixed
+- **[site] The install command on the landing page survives a copy-paste.** The indentation of its continuation lines was written with non-breaking spaces, which browsers copy literally and shells do not read as whitespace: the pasted command handed `curl` a second, unresolvable address and answered `curl: (6) Could not resolve host:` before doing anything useful. The lines carry real spaces now, kept intact by the stylesheet rather than by an entity.
+
 ## [0.9.43] - 2026-08-19
 
 ### Fixed

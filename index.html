@@ -1221,8 +1221,7 @@
                 <div>
                     <div class="terminal">
                         <code><span class="cmt"># All-in-one — core + ui, works on your LAN</span></code>
-                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span></code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> | <span class="cmd">sudo bash</span></code>
                         <code></code>
                         <code><span class="cmt"># Then open in your browser:</span></code>
                         <code><span class="url">https://&lt;ip-of-your-streamer&gt;</span></code>
@@ -1232,9 +1231,9 @@
                         <code><span class="cmt"># Optional — passkeys (Face ID / Touch ID) + push.</span></code>
                         <code><span class="cmt"># Only if AG is reachable via a public HTTPS domain:</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
-                        <code>&nbsp;&nbsp;| <span class="cmd">sudo bash</span> -s -- --token <span class="flag">ghp_xxx</span> \</code>
-                        <code>&nbsp;&nbsp;&nbsp;&nbsp;--public-url <span class="url">https://your-domain</span> \</code>
-                        <code>&nbsp;&nbsp;&nbsp;&nbsp;--vapid-email <span class="url">you@example.com</span></code>
+                        <code>  | <span class="cmd">sudo bash</span> -s -- \</code>
+                        <code>      --public-url <span class="url">https://your-domain</span> \</code>
+                        <code>      --vapid-email <span class="url">you@example.com</span></code>
                     </div>
                 </div>
             </div>

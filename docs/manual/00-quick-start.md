@@ -6,7 +6,7 @@ the detail.
 ## 1. Install Audiogravi<sup>ty</sup> on the box
 
 ```bash
-curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
+curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
 One command on your DietPi / Debian box — core and interface together, keys

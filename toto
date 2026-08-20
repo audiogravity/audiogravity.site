@@ -1,1 +1,0 @@
-curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token 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

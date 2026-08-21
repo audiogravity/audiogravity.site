@@ -22,6 +22,27 @@ of their titles arrive in German whatever language is requested — a quirk of t
 their own application works around the same way — so those four are relabelled on screen
 (*Hörtipps* becomes *Tips*) while the box keeps asking for them by their real name.
 
+### Two more ways into the same catalogue
+
+HIGHRESAUDIO arranges its music a second way, by genre: twenty-six of them, a hundred and
+eighty-six subdivisions underneath. None of it was reachable. A **Genres** button now opens a second
+row under the shelves — the genres, then the one you pick with its own subdivisions, and a way back.
+The whole genre is offered as **All**, because two of their genres contain a sub-genre of the same
+name and two identical buttons side by side read as a mistake; the heading above the albums tells
+you where you stand, *Soundtrack · Original Score*.
+
+And a search can now be narrowed by **composer** or by **record label** — the two questions the
+words alone cannot answer: the composer of a classical recording appears on no other field, and a
+collector browses by ECM or Pentatone. Both narrow what you typed rather than replacing it, and an
+empty pair of fields changes nothing.
+
+Two filters HIGHRESAUDIO offers are deliberately missing, and it is worth saying why. Choosing an
+audio **format** makes their search discard the words you typed: we measured three different
+searches, one of them deliberate nonsense, returning the same fifty albums. And a **mood** takes
+about a minute to answer the first time. A control that quietly searches for something else, or that
+hangs for a minute, is worse than no control at all. Both are reported to them, and both come back
+the day their answer changes.
+
 Fifteen buttons no longer fit across a screen, so the row scrolls. Where it continues, it now fades
 into the page rather than cutting a word in half, and on a computer a small chevron in each margin
 moves it one shelf at a time. On a touch screen the fade alone marks the way, since the strip is

@@ -87,6 +87,37 @@ AUTH_ARGS=()
 [ -n "$TOKEN" ] && AUTH_ARGS=(-H "Authorization: Bearer $TOKEN")
 API_BASE="https://api.github.com/repos/$REPO"
 
+# A token GitHub refuses is worse than no token at all: the releases repo is public,
+# so a request carrying no credential succeeds where one carrying a dead credential
+# gets 401. Boxes installed during Early Access still hold a revoked token in their
+# .env and hand it to us on every self-update, so validate it once and drop it if it
+# is refused — that is what lets such a box repair itself without anyone opening a
+# terminal on it.
+#
+# Only 401 is treated this way: "Bad credentials" is the one answer that means the
+# token itself is dead. 403 is deliberately NOT included — GitHub answers 403 when a
+# client exceeds its quota, and dropping a VALID token there would take us from 5000
+# requests an hour down to 60, turning a pause into a failure. On a public repo a
+# valid token is never refused for lack of rights, so 403 here means rate limiting far
+# more often than a dead credential. Anything else — a network outage, a captive
+# portal, GitHub being down — must stay an error: continuing anonymously there would
+# turn a diagnosable failure into a confusing one.
+#
+# TOKEN itself is cleared too, not just the header: it is forwarded to the package
+# installer, which persists it for the next self-update. Keeping a dead value would
+# make the box drag it along for ever.
+if [ -n "$TOKEN" ]; then
+    _token_check=$(curl -s -o /dev/null -m 15 -w '%{http_code}' \
+        "${AUTH_ARGS[@]}" "$API_BASE" || echo "000")
+    case "$_token_check" in
+        401)
+            warn "Access token refused by GitHub — continuing without it (the releases repo is public)."
+            AUTH_ARGS=()
+            TOKEN=""
+            ;;
+    esac
+fi
+
 echo ""
 echo -e "${BLUE}╔═══════════════════════════════════════╗${NC}"
 echo -e "${BLUE}║   Audiogravity Core Installer      ║${NC}"

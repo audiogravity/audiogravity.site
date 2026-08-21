@@ -26,10 +26,14 @@ line, typed straight into the box:
 curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
-There is nothing to request, nothing to carry across machines, and nothing to renew. Boxes
-installed during early access keep the old token in their configuration and need it cleared
-once: a credential that is no longer valid is refused even by a public repository, where asking
-for nothing at all is accepted.
+There is nothing to request, nothing to carry across machines, and nothing to renew.
+
+Boxes installed during early access still hold the old token, and it would have stopped them
+updating — a credential that is no longer valid is refused even by a public repository, where
+asking for nothing at all is accepted. They now clear it themselves. Your box fetches the
+installer afresh every time it updates, so it collects the fix on its first attempt: it tests the
+credential it is holding, drops it when the answer is a refusal, and removes it from its
+configuration. Nothing to do, and nobody has to open a terminal on a box.
 
 ---
 

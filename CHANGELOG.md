@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core] [ui] Every HIGHRESAUDIO shelf is reachable, under the name HIGHRESAUDIO gives it.** Their catalogue is arranged in fourteen shop categories; the browse offered three of them, and had renamed two of those three — *High-Res Essentials* was shown as *Discover*, *Editors Choice* as *Editor's Picks*. The three were written into the interface, so the eleven others could not be reached at all: the label highlights, ECM, Pentatone, Sony, Universal and Warner; the bestsellers; the editorial tips; what has just been added. The core now lists the categories and the browse builds one button per category from that answer, in the order HIGHRESAUDIO publishes them — so a shelf they add tomorrow appears without an update, and every name on screen is the one their own listeners recognise. Four of their titles come back in German whatever language is asked for, which is a quirk of their API their own application works around the same way: those four are relabelled for display (*Hörtipps* → *Tips*), and the original title stays what the box uses to ask for the shelf.
+
+### Fixed
+- **[ui] A row of buttons that continues off-screen now says so.** The browse filters sit on a strip that scrolls sideways, with its scrollbar hidden — deliberately, since a scrollbar drawn across labels that short is worse than none. That was survivable while the longest row held five buttons; with fifteen it left the last one sliced through the middle of a word and no sign that anything followed. The edge that still hides buttons now fades into the page instead of being cut, and where a mouse or trackpad is used — a screen you drag needs no button — a chevron sits in each margin to move the strip one shelf at a time. Neither ever claims more than there is: on a row that fits, there is no fade and no chevron at all, and each disappears the moment its end of the strip is reached. Under Firefox the same strips were also drawing a real scrollbar, which the rule hiding it never covered.
+- **[core] A momentary refusal from HIGHRESAUDIO no longer costs a restart.** The list of shelves is fetched once and kept, since it does not change while a box is on. But HIGHRESAUDIO answers some failures — a session it has just invalidated among them — with a perfectly successful reply containing nothing, and that empty answer was kept exactly like a real one: from then on every shelf was empty, on a box that had no way of knowing why and no way back short of restarting. Only a real answer is kept now, so the next visit asks again, and the browse's own **Refresh** is enough to repair a bar that came up bare.
+
 ## [0.9.44] - 2026-08-21
 
 ### Added

@@ -7,7 +7,26 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The whole HIGHRESAUDIO shop, not three shelves of it
+
+HIGHRESAUDIO arranges its catalogue in fourteen shop categories. Audiogravi<sup>ty</sup> showed
+three, and had renamed two of the three: what they call *High-Res Essentials* appeared as
+*Discover*, and *Editors Choice* as *Editor's Picks*. The three were written into the interface by
+hand, which is why the other eleven were not merely hidden but unreachable — the label highlights
+that speak to a collector (ECM, Pentatone, Sony, Universal, Warner), the bestsellers, the editorial
+tips, the albums just added.
+
+The box now asks HIGHRESAUDIO for the list and builds one button per category, in their order and
+under their names. A shelf they add tomorrow shows up on its own, without an update from us. Four
+of their titles arrive in German whatever language is requested — a quirk of their interface that
+their own application works around the same way — so those four are relabelled on screen
+(*Hörtipps* becomes *Tips*) while the box keeps asking for them by their real name.
+
+Fifteen buttons no longer fit across a screen, so the row scrolls. Where it continues, it now fades
+into the page rather than cutting a word in half, and on a computer a small chevron in each margin
+moves it one shelf at a time. On a touch screen the fade alone marks the way, since the strip is
+already yours to drag. Neither appears on a row that fits, and each goes out as soon as its end is
+reached.
 
 ---
 

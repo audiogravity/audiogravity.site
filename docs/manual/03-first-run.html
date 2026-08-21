@@ -76,7 +76,14 @@ plays everything through it: your local library, the queue, internet radio, and
 Qobuz, Tidal and HIGHRESAUDIO alike. Its card in <strong>Audio Software</strong> offers no
 <strong>UNINSTALL</strong> button for that reason — a box without MPD has an interface and no
 sound. If you use the box only as a Roon endpoint or an HQPlayer NAA, stop its
-service from the <strong>Systemd</strong> tab: a stopped daemon costs nothing.</p>
+service from the <strong>Systemd</strong> tab and turn its <strong>ENABLED</strong> switch off: a stopped
+daemon costs nothing, and the switch is what keeps it stopped after a reboot.</p>
+<blockquote>
+<p><strong>Note.</strong> Installing or updating Audiogravi<sup>ty</sup> starts MPD and sets it to
+start with the box — installing the software means guaranteeing what it plays
+through. An update therefore undoes both switches above; set them again if that
+is not what you want.</p>
+</blockquote>
 <p>The other engines are yours to choose, from the <strong>Audio Software</strong> tab (see
 <a href="07-administration#audio-software">7. Administration → Audio Software</a>): each
 has a card with an <strong>INSTALL</strong> button.</p>

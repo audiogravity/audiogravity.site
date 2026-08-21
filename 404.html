@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="robots" content="noindex">
+    <title>Audiogravity — Page not found</title>
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+    <meta name="theme-color" content="#2d2d2d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script>
+        /* Apply saved theme before first paint to avoid flash — same as index.html. */
+        (function () {
+            const t = localStorage.getItem('ag-theme');
+            if (t) document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <style>
+        .nf {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 24px;
+            text-align: center;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+        }
+        .nf-code { font-family: var(--mono); font-size: 13px; letter-spacing: .16em; color: var(--text4) }
+        .nf h1 { font-size: clamp(28px, 6vw, 44px); font-weight: 800; letter-spacing: -.02em; margin: 0 }
+        .nf p { max-width: 44ch; margin: 0; color: var(--text3); line-height: 1.65 }
+        .nf code { font-family: var(--mono); font-size: .92em; color: var(--text2) }
+        .nf-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px }
+        .nf-links a {
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: border-color var(--ease), background var(--ease);
+        }
+        .nf-links a:hover { background: var(--bg2); border-color: var(--border2) }
+    </style>
+</head>
+
+<body>
+    <main class="nf">
+        <div class="nf-code">ERROR 404</div>
+        <h1>This page does not exist</h1>
+        <p>
+            The address you asked for is not part of Audiogravi<sup>ty</sup>. It may have been
+            renamed, or mistyped.
+        </p>
+        <p>
+            <strong>If you were installing:</strong> the current commands are on the
+            home page, under <code>Install</code>. Installer addresses changed in August 2026 —
+            <code>install-backend.sh</code> and <code>install-frontend.sh</code> are now
+            <code>install-core.sh</code> and <code>install-ui.sh</code>.
+        </p>
+        <div class="nf-links">
+            <a href="/">Home</a>
+            <a href="/docs/manual/">Manual</a>
+            <a href="mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Broken%20link">Report a broken link</a>
+        </div>
+    </main>
+</body>
+
+</html>

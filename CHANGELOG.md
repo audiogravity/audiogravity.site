@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[site] An address that does not exist on the website now says so.** Any unknown path answered **200** with the whole home page instead of a 404 — the hosting serves the site's `index.html` whenever a request matches no file, and the site carried no `404.html` to serve in its place. Harmless on a normal page; not here, where the entire install path is scripts fetched by their address and piped into a shell: a stale or mistyped one delivered ninety kilobytes of HTML to `bash` rather than failing, and `curl --fail` could not help, the server having announced success. The site now carries a real 404 page, which also points at the current installer names for anyone arriving on the ones used before the August rename.
+
 ### Changed
 - **[site] [ops] Installing Audiogravi<sup>ty</sup> no longer needs an access token.** Early access shipped behind a private releases repository, so every installation had to carry a personal access token: a 90-character credential that had to reach the new owner by e-mail, be pasted into a command line, and then live on in the box's configuration for one-click self-update. It was the same token for everyone, it expired on a fixed date, and a single mishandled copy revoked it for every owner at once — which is exactly what happened. The releases repository is now public and the token is gone from the whole path: `--token` is accepted but optional in all three installers, and the install command is a single short line anyone can type by hand. Boxes installed during early access still hold the old token in their configuration and must have it cleared once — an invalid credential is refused even when the repository is public, where sending none succeeds.
 

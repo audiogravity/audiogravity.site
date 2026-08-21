@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.44] - 2026-08-21
+
 ### Added
 - **[core] [ui] [ops] MPD is part of Audiogravi<sup>ty</sup>, not one of its options.** The installer set up Audiogravi<sup>ty</sup> and none of the engines it conducts, so a fresh box reached the interface with nothing able to play: no output to choose, no music, and nothing on screen saying that the missing piece was one button away under **Audio Software**. But MPD is not an engine among others — the local library, the queue, internet radio and all three streaming services reach the DAC through it, and even the UPnP bridge is a front-end driving it. It is now installed with the box, and the interface no longer offers to remove it; the request is refused by the core as well, for anyone calling the route directly. A box used purely as a Roon endpoint or an HQPlayer NAA can stop the service instead — a stopped daemon costs nothing, and the setup stays possible without a box that cannot play at all.
 

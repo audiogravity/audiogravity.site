@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.44 — 2026-08-21
+
 ### A box that can play, out of the box
 
 Installing Audiogravi<sup>ty</sup> set up Audiogravi<sup>ty</sup> — and nothing else. The engines it

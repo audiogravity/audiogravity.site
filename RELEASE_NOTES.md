@@ -7,6 +7,25 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A box that can play, out of the box
+
+Installing Audiogravi<sup>ty</sup> set up Audiogravi<sup>ty</sup> — and nothing else. The engines it
+conducts were left for you to add, which is defensible in a manual and indefensible on screen: you
+reached the interface of a brand-new box, found no output to select and no music anywhere, and
+nothing told you that a single button under **Audio Software** was the missing piece.
+
+MPD now comes with the box. Calling it one engine among several was the mistake: your local files,
+the queue, internet radio and Qobuz, Tidal and HIGHRESAUDIO all reach your DAC through it, and the
+UPnP bridge is a front-end that drives it. Without it there is an interface and no sound.
+
+So it is no longer presented as a choice. Its card keeps **UPDATE** and loses **UNINSTALL**, and a
+box asked to remove it says why rather than obeying. If you run yours purely as a Roon endpoint or
+an HQPlayer NAA, stop the service from the **Systemd** tab — a stopped daemon costs nothing, and
+your setup stays exactly as you want it.
+
+The other engines are untouched, and remain yours to install or remove: AirPlay, the UPnP bridge,
+Roon Bridge, Roon Server, HQPlayer NAA.
+
 ### One line, no token
 
 Until now, installing Audiogravi<sup>ty</sup> meant owning a credential. Early access ran from a

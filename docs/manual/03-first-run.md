@@ -29,16 +29,20 @@ More accounts — family members, a read-only guest — can be added later from 
 
 ## 3. Install the audio engines
 
-The installer sets up Audiogravi<sup>ty</sup> itself — **not** the audio engines it
-conducts. On a fresh box, install those first from the **Audio Software** tab (see
-[7. Administration → Audio Software](07-administration.md#audio-software)): each
-engine has a card with an **INSTALL** button.
+**MPD is already there.** The installer brings it, because Audiogravi<sup>ty</sup>
+plays everything through it: your local library, the queue, internet radio, and
+Qobuz, Tidal and HIGHRESAUDIO alike. Its card in **Audio Software** offers no
+**UNINSTALL** button for that reason — a box without MPD has an interface and no
+sound. If you use the box only as a Roon endpoint or an HQPlayer NAA, stop its
+service from the **Systemd** tab: a stopped daemon costs nothing.
 
-- **Music Player Daemon (MPD)** — the core player. Install this one first: it plays
-  your local library **and** carries Qobuz, Tidal, HIGHRESAUDIO and internet radio.
+The other engines are yours to choose, from the **Audio Software** tab (see
+[7. Administration → Audio Software](07-administration.md#audio-software)): each
+has a card with an **INSTALL** button.
+
 - **Shairport Sync** — to receive **AirPlay**.
 - **UPnP Bridge** (upmpdcli) — to expose the box as a **UPnP renderer** other apps
-  can cast to.
+  can cast to. It drives MPD, so it needs the player that is already there.
 - **Roon Bridge / Roon Server / HQPlayer NAA** — only if you use Roon or HQPlayer.
 
 Install what you need now — you can always come back for the rest later.

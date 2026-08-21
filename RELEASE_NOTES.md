@@ -7,6 +7,38 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Silence, explained
+
+Everything Audiogravi<sup>ty</sup> plays goes through MPD — your files, the queue, radio,
+and all three streaming services. The box stops it itself when you pick the Roon or the
+HQPlayer profile, and the Services tab lets you stop it by hand, so a stopped MPD is a
+state you reach on purpose. It was also the one failure the box could not name: pressing
+play answered *Playback failed — Queue operation failed*, and the library showed no albums
+at all, as if your collection had vanished.
+
+Now every one of those moments says the same thing: **MPD is not running. Start it from
+the Services tab.** Playing, queueing, removing a track, searching, casting to a network
+renderer, starting a station.
+
+Two details worth knowing. Audiogravi<sup>ty</sup> restarts MPD itself when you change
+output, and during that second the port refuses exactly like a stopped daemon — so a
+refusal is confirmed a second later before anything is claimed, rather than sending you
+after a daemon that is already coming back. And a daemon that is listening but not
+answering is a different fault; it is not reported as this one.
+
+### A box that can play, after an install and after an update
+
+Installing the MPD package is not the same as having its daemon running. A box that
+already carried MPD, with the service stopped or simply not set to start with the machine,
+went through the whole installation without anything noticing — and came out with an
+interface in front of something silent. Every installation and every update now starts MPD
+and sets it to start with the box.
+
+If you run yours as a Roon endpoint or an HQPlayer NAA only, MPD is still yours to turn
+off — but stopping it is not enough: it comes back at the next boot unless you also turn
+its **ENABLED** switch off. And an update turns both back on, deliberately: a box that
+cannot play is a broken box, and turning MPD off again is two clicks.
+
 ### The whole HIGHRESAUDIO shop, not three shelves of it
 
 HIGHRESAUDIO arranges its catalogue in fourteen shop categories. Audiogravi<sup>ty</sup> showed

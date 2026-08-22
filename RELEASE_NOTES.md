@@ -81,6 +81,30 @@ moves it one shelf at a time. On a touch screen the fade alone marks the way, si
 already yours to drag. Neither appears on a row that fits, and each goes out as soon as its end is
 reached.
 
+### Their playlists, and yours
+
+HIGHRESAUDIO keeps two separate collections of playlists: the two hundred selections its editors
+publish, and the ones belonging to your own account. Neither could be reached, on a box where Qobuz
+and Tidal have had their Playlists shelf from the first day.
+
+A **Playlists** button now opens both. A playlist behaves like an album from there on — open it to
+read its tracks, or send the whole thing to the queue in one gesture, whether you listen on the
+box's own DAC, on a network renderer or through HQPlayer. An account with no playlist of its own
+says so plainly instead of looking broken.
+
+What this does not do is write. Creating a playlist, renaming one, adding or removing a track:
+what HIGHRESAUDIO has made is readable, what you make stays where you made it. That is a
+deliberate first step, not an oversight.
+
+One repair travelled with it, and it reaches further than playlists. HIGHRESAUDIO allows a single
+signed-in device per account, so any other phone or computer signing in ends the box's session —
+an ordinary event the box is built to recover from by signing back in on its own. It recovered
+from two of the three ways the service announces a finished session, and not from the third, which
+happens to be the one used by everything tied to your account: playlists, favourites, purchases,
+downloads. The box did not notice, did not sign back in, and answered with an empty list — telling
+you the account owned no favourites, on an account that owns some. All three are now recognised,
+verified against a session genuinely ended from another device rather than a simulated one.
+
 ---
 
 ## 0.9.44 — 2026-08-21

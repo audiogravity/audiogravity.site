@@ -7,6 +7,40 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A configuration tile that admits the software is not there
+
+The Services and Profiles tabs have always been able to say *this software is not
+installed*. The Configuration tab could not. It showed a tile like any other for a package
+that was not on the box — the path of a file that did not exist, a button offering to edit
+it, a download button with nothing to fetch, and no date, no state, no badge. Nothing said
+why the tile was half empty, so it read either as something broken or as software that was
+there.
+
+Such a tile is now dashed and greyed, carries an **UNAVAILABLE** badge, says the package is
+not installed, and links straight to **Audio Software**, where it is installed. Come back
+after installing it and the tile has caught up on its own.
+
+What still works, still works. Removing a package without purging it leaves its
+configuration file on the box, and that file stays downloadable — a file that is there can
+always be taken away, and its backups are not lost, they return with the package. What
+cannot work is refused instead of being offered: editing is closed, because saving a
+configuration also restarts the service, and no restart succeeds for software that is
+absent. The opposite case is untouched — an installed service whose file has gone keeps its
+editor, since that is what creates the file.
+
+### Every service's state, including the ones sitting still
+
+The same tab showed no state at all for some services. It was asking systemd for its list
+of loaded units, and that list quietly leaves out anything installed but idle — the UPnP
+bridge, on an ordinary box, was simply missing from it. Those tiles had no badge, and
+nothing separated *stopped* from *not installed*.
+
+Each service is now asked about directly, so **RUNNING**, **STOPPED** and **FAILED** show
+up wherever they belong. The tab also asks the box one question instead of two, and asks it
+over the system bus rather than by running commands — which matters more than it sounds:
+the same answer feeds the audio pipeline, and that path now creates no processes at all
+where the first attempt created six every time the pipeline refreshed.
+
 ### Silence, explained
 
 Everything Audiogravi<sup>ty</sup> plays goes through MPD — your files, the queue, radio,

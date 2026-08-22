@@ -206,7 +206,7 @@ a {
 @media(max-width:720px) {
     .announce-bar {
         font-size: 12px;
-        /* Room on the right for the "Coming soon" ribbon. It is fixed to the top-right
+        /* Room on the right for the "Public beta" ribbon. It is fixed to the top-right
            corner and sits above everything, so on a narrow screen — where this text wraps
            onto three lines instead of one — it landed squarely on the words. */
         padding: 8px 92px 8px 16px;
@@ -542,10 +542,10 @@ nav {
     margin-bottom: 48px
 }
 
-/* Mobile : les boutons stackent verticalement, et les ``::after`` labels
-   (Coming soon / Private beta) sont positionnés à top: -22px au-dessus de
-   leur bouton. Sans gap suffisant, le label colle visuellement au bouton
-   précédent. 32px laisse la place au label (~22px) + un peu d'air. */
+/* Mobile: the buttons stack vertically, and the ``::after`` label
+   (Public beta) sits at top: -22px above its own button. Without a large
+   enough gap, a label visually sticks to the button above it. 32px leaves
+   room for the label (~22px) plus some air. */
 @media (max-width: 720px) {
     .hero-cta {
         gap: 32px;
@@ -2657,7 +2657,7 @@ footer {
 #heroPlay.paused .ic-pause { display: none; }
 #heroPlay.paused .ic-play { display: inline; }
 
-/* Coming soon ribbon */
+/* Status ribbon */
 .ribbon {
     position: fixed;
     top: 36px;
@@ -2687,44 +2687,12 @@ footer {
     }
 }
 
-@keyframes ribbon-shake {
-    0%   { transform: rotate(45deg) translateX(0); }
-    15%  { transform: rotate(45deg) translateX(-8px); }
-    30%  { transform: rotate(45deg) translateX(8px); }
-    45%  { transform: rotate(45deg) translateX(-6px); }
-    60%  { transform: rotate(45deg) translateX(6px); }
-    75%  { transform: rotate(45deg) translateX(-3px); }
-    90%  { transform: rotate(45deg) translateX(3px); }
-    100% { transform: rotate(45deg) translateX(0); }
-}
-
-.ribbon.shake { animation: ribbon-shake .6s ease; }
-
-.cta-soon {
-    position: relative;
-}
-
-.cta-soon::after {
-    content: 'Coming soon';
-    position: absolute;
-    top: -22px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--mono);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--warn);
-    white-space: nowrap;
-}
-
 .cta-open {
     position: relative;
 }
 
 .cta-open::after {
-    content: 'Private beta';
+    content: 'Public beta';
     position: absolute;
     top: -22px;
     left: 50%;

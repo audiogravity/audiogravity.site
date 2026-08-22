@@ -10,7 +10,7 @@ curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
 One command on your DietPi / Debian box — core and interface together, keys
-generated, services started. *(Early-access token required — see
+generated, services started. *(Options and separate core / interface installs:
 [2. Installation](02-installation.md).)*
 
 ## 2. Open it and sign in

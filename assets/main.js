@@ -107,24 +107,6 @@ spark('ds1', 1.2); spark('ds2', 2.8);
     applyIcon();
 })();
 
-// Shake ribbon on trial button click
-(function () {
-    document.addEventListener('DOMContentLoaded', function () {
-        var btn = document.querySelector('a.cta-primary.cta-soon');
-        var ribbon = document.querySelector('.ribbon');
-        if (!btn || !ribbon) return;
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            ribbon.classList.remove('shake');
-            void ribbon.offsetWidth;
-            ribbon.classList.add('shake');
-            ribbon.addEventListener('animationend', function () {
-                ribbon.classList.remove('shake');
-            }, { once: true });
-        });
-    });
-})();
-
 // Right-edge scroll cue on the comparison table.
 //
 // The cue must vanish once there is nothing left to reveal: at the end of the scroll no

@@ -15,8 +15,6 @@ dependency hell, no manual configuration.
   **aarch64** (Raspberry Pi). See
   [1. Introduction → What you need](01-introduction.md#what-you-need).
 - The host reachable on your **local network**.
-- Your **early-access token** — a GitHub token shared with approved testers during
-  early access. [Request one](mailto:contact@audiogravity.app?subject=Audiogravity%20-%20Early%20access%20request) if you don't have it.
 
 ## Recommended — all-in-one (one box)
 

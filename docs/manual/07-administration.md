@@ -312,7 +312,7 @@ Low-level, per-service OS tuning using systemd **drop-in overrides** — the nat
 
 ## Announcements
 
-From time to time Audiogravi<sup>ty</sup> broadcasts a short announcement — early-access
+From time to time Audiogravi<sup>ty</sup> broadcasts a short announcement — release
 news, an important notice. Unread announcements appear as **dismissible banners** at
 the top of the **Admin** page, and the Admin tab carries a small marker until you have
 seen them (the same cue it uses for a [waiting update](08-updating.md)). Dismissals

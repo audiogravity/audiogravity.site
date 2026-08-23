@@ -155,6 +155,21 @@ button browses and restores any previous version.</li>
 <li><strong>Restart after save</strong> — on by default (applies changes immediately); uncheck to
 batch several edits.</li>
 </ul>
+<p>Each tile carries the state of its service — <strong>RUNNING</strong>, <strong>STOPPED</strong> or <strong>FAILED</strong> —
+and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
+<strong>CONFIGURED</strong> or still on the package defaults.</p>
+<h3 id="when-the-software-behind-a-tile-is-not-installed">When the software behind a tile is not installed</h3>
+<p>A tile whose package is absent is dashed and greyed, carries an <strong>UNAVAILABLE</strong> badge
+and says so in plain words, with a link to <a href="#audio-software">Audio Software</a> where the
+package is installed. Without that, the tile showed the path of a file that does not
+exist and a button offering to edit it, and looked broken rather than empty.</p>
+<p>What can still be done, still can: a package removed without purging leaves its
+configuration file behind, and that file stays downloadable — a file on the box can
+always be taken off it. What cannot, is refused: editing is closed, because saving a
+configuration also restarts the service, and no restart can succeed for software that
+is not there. Backups are not lost either; they come back with the package.</p>
+<p>The reverse case is left alone: an installed service whose file is missing keeps its
+editor, which is what creates the file.</p>
 <h2 id="audio-configuration-services-amp-profiles">Audio configuration (services &amp; profiles)</h2>
 <p><code>audio-config.json</code> is the registry of the audio <strong>services</strong> Audiogravi<sup>ty</sup> manages and
 the <strong>profiles</strong> built on top of them. It's what populates the <strong>Services</strong> tab (each declared

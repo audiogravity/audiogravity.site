@@ -94,6 +94,25 @@ Each service can target its **own** output. For example: MPD on your USB hi-res 
 AirPlay on the optical out. Change any service's output later from the **Guided**
 editor (see below) in a couple of clicks.
 
+### No music of your own? Say so
+
+A box with no local music is an ordinary box: HIGHRESAUDIO, Qobuz and Tidal need no
+file on disk, and neither does an AirPlay receiver or a UPnP bridge. The picker offers
+**No music library — online listening only** as a choice in its own right. It is not
+an empty field — it is an answer, and the box records it as one: MPD is configured
+without a music folder rather than with a blank one, and everything else works
+normally.
+
+The choice is reversible in both directions. A box that started with no library can be
+pointed at one later from the **Guided** editor, and one that has a library can be
+released from it — with a confirmation first, since that takes something away.
+
+A path you *do* give is checked before anything on the box is touched: it must be
+absolute, exist, be a directory, and be **readable by the account MPD runs as** — a
+folder you can read is not necessarily one MPD can, and that difference is invisible
+once MPD is running. If a check fails you are told which one, and nothing has been
+changed.
+
 ### Music on a NAS? Add the share from the picker
 
 The **Music library** picker lists what the box can already see: **USB drives**

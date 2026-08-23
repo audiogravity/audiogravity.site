@@ -117,6 +117,26 @@ Safely edit the real configuration files of your audio services (see also
 - **Restart after save** — on by default (applies changes immediately); uncheck to
   batch several edits.
 
+Each tile carries the state of its service — **RUNNING**, **STOPPED** or **FAILED** —
+and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
+**CONFIGURED** or still on the package defaults.
+
+### When the software behind a tile is not installed
+
+A tile whose package is absent is dashed and greyed, carries an **UNAVAILABLE** badge
+and says so in plain words, with a link to [Audio Software](#audio-software) where the
+package is installed. Without that, the tile showed the path of a file that does not
+exist and a button offering to edit it, and looked broken rather than empty.
+
+What can still be done, still can: a package removed without purging leaves its
+configuration file behind, and that file stays downloadable — a file on the box can
+always be taken off it. What cannot, is refused: editing is closed, because saving a
+configuration also restarts the service, and no restart can succeed for software that
+is not there. Backups are not lost either; they come back with the package.
+
+The reverse case is left alone: an installed service whose file is missing keeps its
+editor, which is what creates the file.
+
 ## Audio configuration (services & profiles)
 
 `audio-config.json` is the registry of the audio **services** Audiogravi<sup>ty</sup> manages and

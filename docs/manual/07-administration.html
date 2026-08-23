@@ -307,10 +307,24 @@ card, USB interface and subdevice.</li>
 reset.</li>
 <li><strong>Actions (admin)</strong> — <em>Restart Backend</em> restarts the Audiogravi<sup>ty</sup> service without
 rebooting; <em>Reboot OS</em> performs a full reboot (double confirmation). The UI
-reconnects automatically.</li>
+reconnects automatically. <em>Support Report</em> is described below.</li>
 <li><strong>Terminal (admin)</strong> — a full interactive bash shell in the browser (runs as the
 backend user — use with care).</li>
 </ul>
+<h3 id="support-report">Support report</h3>
+<p><em>Support Report</em> in <strong>System › Actions</strong> collects, in one gesture, everything someone
+helping you would otherwise have to ask for: the version and architecture, the licence
+verdict, system vitals, which audio packages are installed and at which versions, the
+state of each service and whether it starts at boot, the detected outputs and the one
+each service is pinned to, whether each configuration file is Audiogravi<sup>ty</sup>-managed or
+hand-written, the declared music library and whether MPD has actually indexed it — and
+the configuration files themselves.</p>
+<p><strong>Passwords, API keys and access tokens are removed before the report is built.</strong> A
+credential's <em>name</em> stays visible so you can still see the setting exists, but its value
+never appears. Neither does the content of your library.</p>
+<p>Nothing is sent anywhere. The report is displayed for you to read; <strong>Copy</strong> puts it on
+your clipboard and <strong>Download</strong> saves it as a text file, so it travels only if you
+attach it to a message yourself.</p>
 <img loading="lazy" src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
 <img loading="lazy" src="images/ios-system-actions.webp" alt="System actions: Restart Backend in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
 <h2 id="performance-tuning-pro">Performance tuning (Pro)</h2>
@@ -364,6 +378,20 @@ self-service portal (purchase email + Device ID, no account needed) after an OS
 reinstall.</li>
 </ul>
 <img loading="lazy" src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
+<h3 id="what-the-box-sends-to-the-licence-server">What the box sends to the licence server</h3>
+<p>Whether Pro is unlocked is decided <strong>on the box</strong>, from the signature of its <code>.lic</code> file —
+no network round-trip gates it. Alongside that, the box checks in with the licence
+server once a day; that channel is how revocations,
+<a href="#announcements">announcements</a> and <a href="08-updating">update offers</a> reach you.</p>
+<p>The check-in carries what the licence needs and nothing more: the <strong>Device ID</strong>, the
+primary <strong>MAC address</strong>, the operating system and architecture, the
+Audiogravi<sup>ty</sup> version, the current licence status and — during the trial —
+its start date. The <code>.lic</code> file itself travels when it is verified, and the <strong>hostname</strong>
+you type when activating a key. The server records the network address the request
+arrives from. Your music, your library paths, your service credentials and what you
+listen to never leave the box.</p>
+<p>A Pro licence is tied to one machine, so this exchange is part of how the licence works
+and is not optional.</p>
 <h2 id="related">Related</h2>
 <ul>
 <li><a href="08-updating">8. Updating</a> — keeping the box current</li>

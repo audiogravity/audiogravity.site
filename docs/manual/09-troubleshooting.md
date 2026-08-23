@@ -4,6 +4,12 @@ Most issues come down to a service that isn't running, an output that points at 
 wrong device, or a network hop that's flaky. Audiogravi<sup>ty</sup> surfaces all three in the
 interface.
 
+**Before you write in**, open **System › Actions › Support Report**. It gathers the state
+of the whole box in one gesture — versions, services, outputs, configuration files,
+library — with passwords and tokens removed, and gives you a **Copy** button. Pasting it
+into your message saves the round-trips that would otherwise be spent asking you what
+your box looks like. See [7. Administration](07-administration.md#support-report).
+
 ## No sound / wrong output
 
 **Read the message first.** Audiogravi<sup>ty</sup> now tells you why a track will not play,

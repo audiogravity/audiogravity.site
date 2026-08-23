@@ -43,12 +43,22 @@ The Software is provided without warranty. The Licensor's total liability shall 
 amount paid by the Licensee. Indirect, incidental, or punitive damages are excluded to the extent
 permitted by law.
 
-## 6. Governing Law
+## 6. License Validation Data
+
+To bind a License to a single machine and to enforce this EULA, the Software contacts the
+Licensor's license server on activation and once every 24 hours. It transmits a derived device
+identifier, the primary MAC address, the operating system and architecture, the Software version,
+the current license status and, during the trial, its start date; the License File itself is
+transmitted when it is verified. The server records the network address the request arrives from.
+No personal content, music library data, or third-party service credentials are transmitted. This
+exchange is a functional requirement of the license and cannot be disabled.
+
+## 7. Governing Law
 
 This EULA is governed by French law. Disputes are subject to the exclusive jurisdiction of
 French courts.
 
-## 7. General
+## 8. General
 
 This EULA constitutes the entire agreement between the parties and supersedes all prior
 communications. If any provision is unenforceable, the remainder continues in effect.

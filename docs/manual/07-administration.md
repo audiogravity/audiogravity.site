@@ -271,9 +271,27 @@ Real-time monitoring and box-level actions.
   reset.
 - **Actions (admin)** — *Restart Backend* restarts the Audiogravi<sup>ty</sup> service without
   rebooting; *Reboot OS* performs a full reboot (double confirmation). The UI
-  reconnects automatically.
+  reconnects automatically. *Support Report* is described below.
 - **Terminal (admin)** — a full interactive bash shell in the browser (runs as the
   backend user — use with care).
+
+### Support report
+
+*Support Report* in **System › Actions** collects, in one gesture, everything someone
+helping you would otherwise have to ask for: the version and architecture, the licence
+verdict, system vitals, which audio packages are installed and at which versions, the
+state of each service and whether it starts at boot, the detected outputs and the one
+each service is pinned to, whether each configuration file is Audiogravi<sup>ty</sup>-managed or
+hand-written, the declared music library and whether MPD has actually indexed it — and
+the configuration files themselves.
+
+**Passwords, API keys and access tokens are removed before the report is built.** A
+credential's *name* stays visible so you can still see the setting exists, but its value
+never appears. Neither does the content of your library.
+
+Nothing is sent anywhere. The report is displayed for you to read; **Copy** puts it on
+your clipboard and **Download** saves it as a text file, so it travels only if you
+attach it to a message yourself.
 
 <img src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
 
@@ -335,6 +353,24 @@ install taps a Pro tab — those carry a small lock icon in the tab bar).
   reinstall.
 
 <img src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
+
+### What the box sends to the licence server
+
+Whether Pro is unlocked is decided **on the box**, from the signature of its `.lic` file —
+no network round-trip gates it. Alongside that, the box checks in with the licence
+server once a day; that channel is how revocations,
+[announcements](#announcements) and [update offers](08-updating.md) reach you.
+
+The check-in carries what the licence needs and nothing more: the **Device ID**, the
+primary **MAC address**, the operating system and architecture, the
+Audiogravi<sup>ty</sup> version, the current licence status and — during the trial —
+its start date. The `.lic` file itself travels when it is verified, and the **hostname**
+you type when activating a key. The server records the network address the request
+arrives from. Your music, your library paths, your service credentials and what you
+listen to never leave the box.
+
+A Pro licence is tied to one machine, so this exchange is part of how the licence works
+and is not optional.
 
 ## Related
 

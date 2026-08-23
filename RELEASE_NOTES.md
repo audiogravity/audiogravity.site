@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.45 — 2026-08-23
+
 ### One button that says what your box actually looks like
 
 Helping someone at a distance used to work by deduction. The version was inferred

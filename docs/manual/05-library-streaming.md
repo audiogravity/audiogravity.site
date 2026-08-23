@@ -68,11 +68,51 @@ Favorites, New Releases, Charts, editorial playlists, in-track seek.
 
 Simpler still — enter your account **email and password** directly in the card (its
 official API, no redirect, no copy-paste). Native-master FLAC up to 24-bit /
-352.8 kHz; Favorites, Discover, Editor's Picks, Bestsellers, search. Your password is
-stored encrypted on the device.
+352.8 kHz. Your password is stored encrypted on the device.
 
 > **One device per HRA account.** HIGHRESAUDIO allows a single active device — connecting
 > Audiogravi<sup>ty</sup> signs you out of your other HRA players.
+
+#### Browsing HIGHRESAUDIO
+
+The pill bar carries **Favorites**, **Genres**, **Playlists**, and then every shop
+category HIGHRESAUDIO publishes — fourteen of them, in their order, under their own
+names: the label highlights (ECM, Pentatone, Sony, Universal, Warner), the
+bestsellers, the editorial tips, what has just been added. The list comes from
+HIGHRESAUDIO itself, so a shelf they add appears without an update to
+Audiogravi<sup>ty</sup>.
+
+Four of their titles come back in German whatever language is asked for — a quirk of
+their API that their own application works around the same way. Those four are shown
+translated: *Neue Alben hinzugefügt* → **Recently added**, *Hörtipps* → **Tips**, *Top
+Alben* → **Top Album**, *Neuheiten* → **New releases**.
+
+**Genres** is HIGHRESAUDIO's second way of arranging the same catalogue — 26 genres
+and 186 sub-genres. It opens a second strip rather than lengthening the shelf bar:
+pick a genre and the strip becomes that genre plus its own subdivisions, with **All**
+standing for the whole genre. The heading above the albums says where you are —
+*Soundtrack · Original Score*.
+
+**Playlists** opens the same second strip with two collections: **Editorial**, the
+selections HIGHRESAUDIO publishes, and **Mine**, the playlists belonging to your
+account. A playlist behaves like an album — open it to see its tracks, or send the
+whole thing to the queue in one gesture. Creating or editing playlists is not
+available: what HIGHRESAUDIO has made is readable, what you make stays where you made
+it.
+
+#### Narrowing a HIGHRESAUDIO search
+
+Two fields under the search box, for the two questions the words alone cannot answer:
+**Composer**, which appears on no other field and is how a classical recording is
+found, and **Label** — ECM, Pentatone — which is how a collector browses. They narrow
+the search rather than replacing it, and the ordinary search is untouched while both
+are empty. HIGHRESAUDIO's catalogue cannot be searched on fewer than three characters,
+and says so rather than answering with nothing.
+
+Two filters HIGHRESAUDIO offers are deliberately absent: choosing an audio **format**
+makes their API discard the words typed altogether, and a **mood** takes about a minute
+to answer the first time. Both have been reported to them, and both return the day
+they answer differently.
 
 ### Favorites — star an album from the app
 

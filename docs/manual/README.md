@@ -31,5 +31,5 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 
 ---
 
-*Applies to Audiogravi<sup>ty</sup> 0.9.x (public beta). For release-by-release changes see
-[RELEASE_NOTES.md](https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md).*
+*This manual describes the current release. What changed in each one is in the
+[release notes](https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md).*

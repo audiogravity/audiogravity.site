@@ -81,15 +81,29 @@ def parse_toc(readme: str) -> list[tuple[str, str]]:
 def slugify(text: str) -> str:
     """Turn a heading into a GitHub-style anchor id.
 
+    The manual's cross-references are authored against GitHub's rules, and
+    ``ag-manual-modal.js`` implements the same ones, so this has to agree with both or
+    a link resolves in the app and lands at the top of the page on the site. Two rules
+    are easy to get wrong, and both were:
+
+    * **Runs of whitespace are not collapsed.** GitHub replaces each space with a dash,
+      so ``Sign in — and secure`` (dash removed, two spaces left behind) gives
+      ``sign-in--and-secure`` with two hyphens, not one.
+    * **Entities are decoded first.** The heading arrives as HTML, where ``&`` is
+      ``&amp;``; slugifying that produced ``users-amp-access`` — a word that appears in
+      no heading — where GitHub gives ``users--access``.
+
+    Underscores survive, for the same reason: GitHub keeps them.
+
     Args:
-        text: Heading text, tags already stripped.
+        text: Heading text, tags already stripped (entities may remain).
 
     Returns:
-        A lowercase, hyphenated slug. Matches what ``ag-manual-modal.js`` produces, so a link
-        written for one reader resolves in the other.
+        A lowercase, hyphenated slug, character for character what
+        ``ag-manual-modal.js`` computes for the same heading.
     """
-    slug = re.sub(r"[^\w\s-]", "", text.strip().lower(), flags=re.UNICODE)
-    return re.sub(r"[\s_]+", "-", slug).strip("-")
+    slug = re.sub(r"[^\w\s-]", "", html.unescape(text).strip().lower(), flags=re.UNICODE)
+    return re.sub(r"\s", "-", slug)
 
 
 def stamp_heading_ids(rendered: str) -> str:

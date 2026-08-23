@@ -7,6 +7,67 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### One button that says what your box actually looks like
+
+Helping someone at a distance used to work by deduction. The version was inferred
+from a timestamp on the licence server. A service was assumed to be off because it
+looked that way in a screenshot. A configuration file edited by hand was guessed at
+from a description of it. Each guess took a day to confirm, and some of them were
+wrong — which meant looking for a fault in the audio chain where there wasn't one.
+
+**System › Actions › Support Report** answers all of it at once. The version and the
+architecture. The licence, and when the box last reached the licence server. Uptime,
+load, temperature. Which audio packages are installed, at which versions. Every
+service: running or not, and whether it comes back at the next boot. The outputs the
+box can see, and the one each service is pointed at. Whether each configuration file
+was written by Audiogravi<sup>ty</sup> or by hand. The declared music folder, whether it exists,
+whether MPD can read it, and whether MPD ever finished indexing it.
+
+And the configuration files themselves — the thing nobody could see, and the thing
+that most often explains the rest. They are reduced to what is actually in effect:
+comments dropped, which takes upmpdcli's file from three hundred and eighty-five lines
+to thirteen and turns it into something a person can read. Whatever gets cut is
+counted, so a shortened file never passes for a complete one.
+
+Anything else on the box that has failed is listed too. A NAS mount that never came
+up explains an empty library perfectly, and it never shows up anywhere in the audio
+stack.
+
+**Passwords, API keys, streaming tokens and share credentials are taken out before
+the report is assembled.** A setting's name stays, so you can still see it is
+configured; its value is replaced. Your music never appears — no titles, no albums,
+no file names.
+
+And nothing is sent anywhere. The report is displayed for you to read. **Copy** puts
+it on your clipboard, **Download** saves it as a text file, and it reaches anyone
+else only if you decide to attach it to a message.
+
+
+### What the box tells the licence server, in writing
+
+Once a day, and whenever a key is activated, your box contacts the licence server.
+That is what keeps a Pro licence bound to one machine, and it is also how revocations,
+announcements and update offers reach you.
+
+Until now that exchange was described nowhere — not in the licence agreement, which
+had seven clauses and not one about data, not on the site, not in the interface. It
+is a short thing to say, and it was missing.
+
+It now appears in the manual, under Licence in the Administration chapter, and as a
+clause of the licence agreement. What travels: the Device ID, the primary MAC address,
+the operating system and architecture, the Audiogravi<sup>ty</sup> version, the current licence
+status and, during the trial, the date it started. The licence file itself goes when it
+is being verified, and the hostname you type when activating a key. The server records
+the address the request comes from.
+
+What does not travel: your music, the paths it lives at, the credentials of any service
+you have signed into, and anything about what you listen to.
+
+Worth saying plainly, because it is the part most likely to be misread: whether Pro is
+unlocked is decided **on the box**, from the signature of its licence file. No
+round-trip to the server decides it.
+
+
 ### The setup screen now shows what it just did
 
 You run the first-time setup, it reports success, the three services come back

@@ -29,10 +29,12 @@ else works without any third-party subscription.
 
 ## Does it work without an internet connection?
 
-Audio playback runs entirely on your local network — no cloud, no telemetry.
-However, licence activation and periodic validation require access to the licence
-server, and Qobuz, Tidal and HIGHRESAUDIO require an active internet connection
-for streaming.
+Audio playback runs entirely on your local network — no cloud, no telemetry. Your
+licence keeps working offline too: whether Pro is unlocked is decided **on the box**,
+from the signature of your licence file, so a box that never reaches the internet
+again keeps every feature it had. What does need the internet: **activating** a
+licence in the first place, the daily check-in that carries announcements and update
+offers, and streaming from Qobuz, Tidal or HIGHRESAUDIO.
 
 ## Can I use one licence on multiple machines?
 

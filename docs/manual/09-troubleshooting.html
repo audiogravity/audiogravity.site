@@ -54,7 +54,12 @@
 <p>Most issues come down to a service that isn't running, an output that points at the
 wrong device, or a network hop that's flaky. Audiogravi<sup>ty</sup> surfaces all three in the
 interface.</p>
-<h2 id="no-sound-wrong-output">No sound / wrong output</h2>
+<p><strong>Before you write in</strong>, open <strong>System › Actions › Support Report</strong>. It gathers the state
+of the whole box in one gesture — versions, services, outputs, configuration files,
+library — with passwords and tokens removed, and gives you a <strong>Copy</strong> button. Pasting it
+into your message saves the round-trips that would otherwise be spent asking you what
+your box looks like. See <a href="07-administration#support-report">7. Administration</a>.</p>
+<h2 id="no-sound--wrong-output">No sound / wrong output</h2>
 <p><strong>Read the message first.</strong> Audiogravi<sup>ty</sup> now tells you why a track will not play,
 as a notification and under the output in the fullscreen player. Start there — the
 answer is usually on screen:</p>
@@ -66,13 +71,12 @@ card is released (see <a href="06-outputs-engines">6. Outputs &amp; engines</a>)
 <li><em>&quot;its network audio daemon (NAA) is not running&quot;</em> — HQPlayer is your output but the
 piece that feeds your DAC is stopped. Start it in <strong>Services</strong>, or turn the switch
 off to play locally.</li>
-<li><em>&quot;which HQPlayer cannot decode&quot;</em> — the track's format is not one HQPlayer handles
-(AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM, AIFC); the message names it. M4A and MP4 are the
-same container under two names — media servers disagree on which to publish — so the
-same file may be named either way depending on where you browsed it. Turn the switch off to play
-it on the local output. A whole album is refused if <strong>any</strong> of its tracks is in such
-a format — the message names that track — so you get one clear answer instead of
-music stopping partway through.</li>
+<li><em>&quot;which HQPlayer cannot decode&quot;</em> — the track's format is not one HQPlayer handles;
+the message names it. (The full list is in
+<a href="06-outputs-engines#what-can-and-cannot-go-through-hqplayer">6. Outputs &amp; engines</a>.)
+Turn the switch off to play it on the local output. A whole album is refused if
+<strong>any</strong> of its tracks is in such a format — the message names that track — so you get
+one clear answer instead of music stopping partway through.</li>
 <li><em>&quot;Both HQPlayer and a network renderer are selected&quot;</em> — pick one.</li>
 <li><em>&quot;The speaker you selected is not answering&quot;</em> — the renderer is asleep, off the
 network, or still reconnecting. Wake it up, or pick another output. Audiogravi<sup>ty</sup>
@@ -288,13 +292,13 @@ which cannot be converted losslessly — nothing plays, anywhere. Set Tidal to a
 quality. The same message appears when the <strong>album itself</strong> is not available in lossless
 even though your setting is right: Audiogravi<sup>ty</sup> checks what Tidal actually
 serves before it starts, and names the cause instead of leaving you with silence.</li>
-<li><strong>With HQPlayer as your output</strong>, a track in a format HQPlayer cannot decode (AAC, ALAC,
-M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex,
-AMR, MKA/WebM, AIFC) is refused wherever it comes from — your library, a media server or
-a radio station — and the message names the format and the track. Turn <strong>Use as output</strong>
-off to play it on the local output. Which <em>source</em> it comes from no longer matters: every
-source reaches HQPlayer, streaming services included (see
-<a href="06-outputs-engines#what-can-and-cannot-go-through-hqplayer">6. Outputs &amp; engines</a>).</li>
+<li><strong>With HQPlayer as your output</strong>, a track in a format HQPlayer cannot decode is refused
+wherever it comes from — your library, a media server or a radio station — and the
+message names the format and the track. Turn <strong>Use as output</strong> off to play it on the
+local output. Which <em>source</em> it comes from no longer matters: every source reaches
+HQPlayer, streaming services included — the formats it accepts, and those it does not,
+are listed in
+<a href="06-outputs-engines#what-can-and-cannot-go-through-hqplayer">6. Outputs &amp; engines</a>.</li>
 </ul>
 <h2 id="the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</h2>
 <p>On a self-signed setup the box signs its own certificate, so no browser knows it
@@ -312,12 +316,10 @@ certificate. Same fix. There is nothing wrong with the site itself.</li>
 <li><strong>The home-screen icon opens on an error</strong> — the app window has no way to show the
 &quot;accept the risk&quot; page a browser tab does, so an untrusted certificate simply fails
 there. Trust the authority, then reopen the app.</li>
-<li><strong>Upgraded from an older release and the warning changed</strong> — before 0.9.35 the box
-generated a certificate that no modern browser accepts at all (it identified itself
-in a field browsers stopped reading in 2017) and that trusting could not repair.
-Upgrading replaces it and creates the authority; trust it once and the app installs.
-Nothing to undo first — and if you had installed that old certificate on a phone, it
-is simply obsolete; remove it and install the authority instead.</li>
+<li><strong>You upgraded, and the warning changed</strong> — older boxes carried a certificate no
+modern browser accepts, whatever you did with it. Upgrading replaces it and creates
+the authority; trust that once and the app installs. Nothing to undo first, and any
+copy of the old certificate you had installed on a phone can simply be removed.</li>
 <li><strong>You put your own certificate on the box</strong> — a valid one, whoever issued it, is
 detected and <strong>left untouched</strong>: no authority is created, nothing is published, and
 renewal stays with whatever issues it. The box only steps in if that certificate has
@@ -385,7 +387,7 @@ VLANs without an mDNS repeater on the router.</li>
 <li>The same <strong>multicast filtering</strong> culprits as above (IGMP snooping, AP isolation,
 &quot;client/guest isolation&quot; on the Wi-Fi network) also hide AirPlay devices.</li>
 </ul>
-<h2 id="audio-glitches-dropouts">Audio glitches / dropouts</h2>
+<h2 id="audio-glitches--dropouts">Audio glitches / dropouts</h2>
 <ul>
 <li>Watch for a <strong>THROTTLED</strong> badge on a CPU core (Performance tab) — sustained thermal
 throttling causes glitches; improve cooling or ease the CPU governor.</li>
@@ -424,7 +426,7 @@ to 3.1.1). As a <strong>last resort</strong> for legacy NAS firmware you can add
 avoid <code>vers=1.0</code> (SMB1) unless you have no other option — it is deprecated and
 insecure, and modern kernels disable it by default. Back in the picker, hit
 refresh — the share appears as a library choice.</p>
-<h2 id="locked-out-no-admin-can-log-in">Locked out — no admin can log in</h2>
+<h2 id="locked-out--no-admin-can-log-in">Locked out — no admin can log in</h2>
 <p>Accounts live in <code>/opt/audiogravity/core/users.json</code> on the box. If the admin
 password is lost, connect over SSH, remove that file, and re-run the installer
 (see <a href="08-updating#manual-update">8. Updating → Manual update</a>): when no user file exists, the
@@ -440,7 +442,7 @@ recipe is in
 <h2 id="version-mismatch-banner">Version-mismatch banner</h2>
 <p>The interface and core are on different versions — update the other component. See
 <a href="08-updating">8. Updating</a>.</p>
-<h2 id="quotupdate-failed-to-start-an-update-is-already-in-progressquot">&quot;Update failed to start — An update is already in progress&quot;</h2>
+<h2 id="update-failed-to-start--an-update-is-already-in-progress">&quot;Update failed to start — An update is already in progress&quot;</h2>
 <p>A previous update was interrupted (power loss, reboot, or a crash mid-install) and
 left a stale &quot;in progress&quot; marker, so the core refuses to start a new one.</p>
 <ul>
@@ -454,31 +456,19 @@ the current versions afterwards (App title / login screen) — if the core moved
 the interface did not, re-run the interface installer (see <a href="08-updating">8. Updating</a>).</li>
 </ul>
 <h2 id="the-config-tab-ignores-the-appconfigfile-path-i-set">The Config tab ignores the <code>appconfigfile</code> path I set</h2>
-<p>It is meant to. Audiogravi<sup>ty</sup> now knows by itself where each service keeps
-its configuration — <code>/etc/mpd.conf</code>, <code>/etc/shairport-sync.conf</code> and so on — and
-finds the file whether the service came from your distribution's packages or was
-built from source. The path in <code>/etc/audiogravity/audio-config.json</code> is <strong>no longer
-read</strong>.</p>
-<p>It used to be, and it was a poor arrangement: the same file has to serve machines
-where it lives in different places, so the value shipped in the template was simply
-wrong on one of them. Worse, a stale line could point at a file that happened to
-exist, and the Config tab would edit <em>that</em> one while the service went on reading
-another — changes appearing to save with no effect.</p>
-<p>Boxes <strong>set up before this version</strong> still carry the line. It does nothing, breaks
-nothing, and can be left alone. If you would rather tidy it up, an admin can remove
-it from the Terminal:</p>
-<pre><code class="language-bash">sudo cp /etc/audiogravity/audio-config.json /etc/audiogravity/audio-config.json.bak
-sudo nano /etc/audiogravity/audio-config.json    # delete the &quot;appconfigfile&quot; lines
-sudo systemctl restart ag-core-server
-</code></pre>
-<p>New installations ship without it.</p>
+<p>It is meant to. Audiogravi<sup>ty</sup> finds each service's configuration by itself,
+wherever it lives — <code>/etc/mpd.conf</code> for a packaged MPD, <code>/usr/local/etc/shairport-sync.conf</code>
+for a shairport-sync built from source. Nothing to set, and nothing that can point at
+the wrong file.</p>
+<p>An older box may still carry an <code>appconfigfile</code> line in
+<code>/etc/audiogravity/audio-config.json</code>. It is simply ignored: leave it alone.</p>
 <blockquote>
 <p>If a service on your machine really does keep its configuration somewhere
 unexpected, there is currently no way to tell Audiogravi<sup>ty</sup> about it —
 <a href="https://github.com/audiogravity/audiogravity.site/issues">open an issue</a> and
 describe your setup.</p>
 </blockquote>
-<h2 id="quotlicense-ended-on-quot-in-the-licence-panel">&quot;License ended on …&quot; in the licence panel</h2>
+<h2 id="license-ended-on--in-the-licence-panel">&quot;License ended on …&quot; in the licence panel</h2>
 <p>Your licence was issued to run until a date, and that date has passed. Nothing is broken
 and nothing was tampered with: Audiogravi<sup>ty</sup> keeps running in <strong>Starter Edition</strong>,
 your music and settings are untouched, and the Pro features come back the moment a current
@@ -488,8 +478,10 @@ to download a <code>.lic</code> for an order you have already paid for, or <stro
 you have the file already.</p>
 <blockquote>
 <p>A licence that has ended is not the same as <em>&quot;License file is invalid or bound to a
-different device&quot;</em>. That message means the file does not match this machine, or was
-altered — see below.</p>
+different device&quot;</em>. That message means the file does not match this machine — most
+often after an OS reinstall, which changes the machine's fingerprint. Re-download
+your <code>.lic</code> from <strong>License portal</strong> with your purchase email and the <strong>Device ID</strong>
+shown in the licence panel.</p>
 </blockquote>
 <h2 id="getting-help">Getting help</h2>
 <ul>

@@ -53,16 +53,15 @@
 <h1>7. Administration</h1>
 <p>Everything you need to run the box lives in the interface — no SSH required. Most of
 this section is available on <strong>Starter</strong>: Profiles, Services, Audio Software, System,
-Admin — and <strong>Config</strong>, the configuration editor and its guided setup. Only the
-Audio Pipeline map and Performance tuning are <strong>Pro</strong>. Every tab has an <strong>INFO</strong>
-badge that opens
-an in-app explanation.</p>
+Admin — and <strong>Config</strong>, the configuration editor and its guided setup. Four tabs are
+<strong>Pro</strong>: Systemd tuning, Performance tuning, the Audio Pipeline map and the Library.
+Every tab has an <strong>INFO</strong> badge that opens an in-app explanation.</p>
 <h2 id="the-admin-tab">The Admin tab</h2>
 <p>The <strong>Admin</strong> tab gathers everything about accounts and the box's relationship with
 Audiogravi<sup>ty</sup>: the <strong>user cards</strong> (below), unread
 <a href="#announcements">announcements</a>, the <a href="08-updating">update banner</a> — and the
 <strong>licence</strong> panel, which also opens when a Starter install taps a locked Pro tab.</p>
-<h2 id="users-amp-access">Users &amp; access</h2>
+<h2 id="users--access">Users &amp; access</h2>
 <p>User management lives on the <strong>Admin</strong> tab — one card per account, with an online
 indicator for users currently connected. Three roles control who can do what:</p>
 <ul>
@@ -155,7 +154,22 @@ button browses and restores any previous version.</li>
 <li><strong>Restart after save</strong> — on by default (applies changes immediately); uncheck to
 batch several edits.</li>
 </ul>
-<h2 id="audio-configuration-services-amp-profiles">Audio configuration (services &amp; profiles)</h2>
+<p>Each tile carries the state of its service — <strong>RUNNING</strong>, <strong>STOPPED</strong> or <strong>FAILED</strong> —
+and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
+<strong>CONFIGURED</strong> or still on the package defaults.</p>
+<h3 id="when-the-software-behind-a-tile-is-not-installed">When the software behind a tile is not installed</h3>
+<p>A tile whose package is absent is dashed and greyed, carries an <strong>UNAVAILABLE</strong> badge
+and says so in plain words, with a link to <a href="#audio-software">Audio Software</a> where the
+package is installed. Without that, the tile showed the path of a file that does not
+exist and a button offering to edit it, and looked broken rather than empty.</p>
+<p>What can still be done, still can: a package removed without purging leaves its
+configuration file behind, and that file stays downloadable — a file on the box can
+always be taken off it. What cannot, is refused: editing is closed, because saving a
+configuration also restarts the service, and no restart can succeed for software that
+is not there. Backups are not lost either; they come back with the package.</p>
+<p>The reverse case is left alone: an installed service whose file is missing keeps its
+editor, which is what creates the file.</p>
+<h2 id="audio-configuration-services--profiles">Audio configuration (services &amp; profiles)</h2>
 <p><code>audio-config.json</code> is the registry of the audio <strong>services</strong> Audiogravi<sup>ty</sup> manages and
 the <strong>profiles</strong> built on top of them. It's what populates the <strong>Services</strong> tab (each declared
 service becomes a controllable tile) and the <strong>Profiles</strong> tab (each profile a one-tap way to
@@ -307,10 +321,24 @@ card, USB interface and subdevice.</li>
 reset.</li>
 <li><strong>Actions (admin)</strong> — <em>Restart Backend</em> restarts the Audiogravi<sup>ty</sup> service without
 rebooting; <em>Reboot OS</em> performs a full reboot (double confirmation). The UI
-reconnects automatically.</li>
+reconnects automatically. <em>Support Report</em> is described below.</li>
 <li><strong>Terminal (admin)</strong> — a full interactive bash shell in the browser (runs as the
 backend user — use with care).</li>
 </ul>
+<h3 id="support-report">Support report</h3>
+<p><em>Support Report</em> in <strong>System › Actions</strong> collects, in one gesture, everything someone
+helping you would otherwise have to ask for: the version and architecture, the licence
+verdict, system vitals, which audio packages are installed and at which versions, the
+state of each service and whether it starts at boot, the detected outputs and the one
+each service is pinned to, whether each configuration file is Audiogravi<sup>ty</sup>-managed or
+hand-written, the declared music library and whether MPD has actually indexed it — and
+the configuration files themselves.</p>
+<p><strong>Passwords, API keys and access tokens are removed before the report is built.</strong> A
+credential's <em>name</em> stays visible so you can still see the setting exists, but its value
+never appears. Neither does the content of your library.</p>
+<p>Nothing is sent anywhere. The report is displayed for you to read; <strong>Copy</strong> puts it on
+your clipboard and <strong>Download</strong> saves it as a text file, so it travels only if you
+attach it to a message yourself.</p>
 <img loading="lazy" src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
 <img loading="lazy" src="images/ios-system-actions.webp" alt="System actions: Restart Backend in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
 <h2 id="performance-tuning-pro">Performance tuning (Pro)</h2>
@@ -364,6 +392,20 @@ self-service portal (purchase email + Device ID, no account needed) after an OS
 reinstall.</li>
 </ul>
 <img loading="lazy" src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
+<h3 id="what-the-box-sends-to-the-licence-server">What the box sends to the licence server</h3>
+<p>Whether Pro is unlocked is decided <strong>on the box</strong>, from the signature of its <code>.lic</code> file —
+no network round-trip gates it. Alongside that, the box checks in with the licence
+server once a day; that channel is how revocations,
+<a href="#announcements">announcements</a> and <a href="08-updating">update offers</a> reach you.</p>
+<p>The check-in carries what the licence needs and nothing more: the <strong>Device ID</strong>, the
+primary <strong>MAC address</strong>, the operating system and architecture, the
+Audiogravi<sup>ty</sup> version, the current licence status and — during the trial —
+its start date. The <code>.lic</code> file itself travels when it is verified, and the <strong>hostname</strong>
+you type when activating a key. The server records the network address the request
+arrives from. Your music, your library paths, your service credentials and what you
+listen to never leave the box.</p>
+<p>A Pro licence is tied to one machine, so this exchange is part of how the licence works
+and is not optional.</p>
 <h2 id="related">Related</h2>
 <ul>
 <li><a href="08-updating">8. Updating</a> — keeping the box current</li>

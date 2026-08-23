@@ -34,8 +34,8 @@ plays everything through it: your local library, the queue, internet radio, and
 Qobuz, Tidal and HIGHRESAUDIO alike. Its card in **Audio Software** offers no
 **UNINSTALL** button for that reason — a box without MPD has an interface and no
 sound. If you use the box only as a Roon endpoint or an HQPlayer NAA, stop its
-service from the **Systemd** tab and turn its **ENABLED** switch off: a stopped
-daemon costs nothing, and the switch is what keeps it stopped after a reboot.
+service from the **Services** tab and turn its **ENABLED** badge off there: a stopped
+daemon costs nothing, and that badge is what keeps it stopped after a reboot.
 
 > **Note.** Installing or updating Audiogravi<sup>ty</sup> starts MPD and sets it to
 > start with the box — installing the software means guaranteeing what it plays
@@ -93,6 +93,25 @@ re-checking at startup.
 Each service can target its **own** output. For example: MPD on your USB hi-res DAC,
 AirPlay on the optical out. Change any service's output later from the **Guided**
 editor (see below) in a couple of clicks.
+
+### No music of your own? Say so
+
+A box with no local music is an ordinary box: HIGHRESAUDIO, Qobuz and Tidal need no
+file on disk, and neither does an AirPlay receiver or a UPnP bridge. The picker offers
+**No music library — online listening only** as a choice in its own right. It is not
+an empty field — it is an answer, and the box records it as one: MPD is configured
+without a music folder rather than with a blank one, and everything else works
+normally.
+
+The choice is reversible in both directions. A box that started with no library can be
+pointed at one later from the **Guided** editor, and one that has a library can be
+released from it — with a confirmation first, since that takes something away.
+
+A path you *do* give is checked before anything on the box is touched: it must be
+absolute, exist, be a directory, and be **readable by the account MPD runs as** — a
+folder you can read is not necessarily one MPD can, and that difference is invisible
+once MPD is running. If a check fails you are told which one, and nothing has been
+changed.
 
 ### Music on a NAS? Add the share from the picker
 

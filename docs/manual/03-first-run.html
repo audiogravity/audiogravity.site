@@ -57,7 +57,7 @@ music playing — without touching a config file.</p>
 <p>A <strong>30-day trial</strong> — full access to every Pro feature — is activated on first run.
 No action required, no card. When it ends you can keep using the free <strong>Starter</strong>
 features or buy a <strong>lifetime</strong> licence (see <a href="07-administration">7. Administration → Licence</a>).</p>
-<h2 id="2-sign-in-and-secure-your-account">2. Sign in — and secure your account</h2>
+<h2 id="2-sign-in--and-secure-your-account">2. Sign in — and secure your account</h2>
 <p>Audiogravi<sup>ty</sup> ships with one administrator account: username <strong><code>admin</code></strong>,
 password <strong><code>admin123</code></strong>. Sign in with it, then <strong>change the password right away</strong>
 (<strong>Admin</strong> tab → your user card) — the default is public knowledge.</p>
@@ -76,8 +76,8 @@ plays everything through it: your local library, the queue, internet radio, and
 Qobuz, Tidal and HIGHRESAUDIO alike. Its card in <strong>Audio Software</strong> offers no
 <strong>UNINSTALL</strong> button for that reason — a box without MPD has an interface and no
 sound. If you use the box only as a Roon endpoint or an HQPlayer NAA, stop its
-service from the <strong>Systemd</strong> tab and turn its <strong>ENABLED</strong> switch off: a stopped
-daemon costs nothing, and the switch is what keeps it stopped after a reboot.</p>
+service from the <strong>Services</strong> tab and turn its <strong>ENABLED</strong> badge off there: a stopped
+daemon costs nothing, and that badge is what keeps it stopped after a reboot.</p>
 <blockquote>
 <p><strong>Note.</strong> Installing or updating Audiogravi<sup>ty</sup> starts MPD and sets it to
 start with the box — installing the software means guaranteeing what it plays
@@ -129,6 +129,21 @@ re-checking at startup.</p>
 <p>Each service can target its <strong>own</strong> output. For example: MPD on your USB hi-res DAC,
 AirPlay on the optical out. Change any service's output later from the <strong>Guided</strong>
 editor (see below) in a couple of clicks.</p>
+<h3 id="no-music-of-your-own-say-so">No music of your own? Say so</h3>
+<p>A box with no local music is an ordinary box: HIGHRESAUDIO, Qobuz and Tidal need no
+file on disk, and neither does an AirPlay receiver or a UPnP bridge. The picker offers
+<strong>No music library — online listening only</strong> as a choice in its own right. It is not
+an empty field — it is an answer, and the box records it as one: MPD is configured
+without a music folder rather than with a blank one, and everything else works
+normally.</p>
+<p>The choice is reversible in both directions. A box that started with no library can be
+pointed at one later from the <strong>Guided</strong> editor, and one that has a library can be
+released from it — with a confirmation first, since that takes something away.</p>
+<p>A path you <em>do</em> give is checked before anything on the box is touched: it must be
+absolute, exist, be a directory, and be <strong>readable by the account MPD runs as</strong> — a
+folder you can read is not necessarily one MPD can, and that difference is invisible
+once MPD is running. If a check fails you are told which one, and nothing has been
+changed.</p>
 <h3 id="music-on-a-nas-add-the-share-from-the-picker">Music on a NAS? Add the share from the picker</h3>
 <p>The <strong>Music library</strong> picker lists what the box can already see: <strong>USB drives</strong>
 (ext4 / exFAT) and <strong>existing mounts</strong>. For a NAS share (CIFS/SMB — what

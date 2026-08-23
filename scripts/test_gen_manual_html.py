@@ -57,12 +57,40 @@ class TestSlugify:
         ("Audio topology (signal-chain map)", "audio-topology-signal-chain-map"),
         ("3. Install the audio engines", "3-install-the-audio-engines"),
         ("Réglages", "réglages"),
-        ("  Spaced   out  ", "spaced-out"),
-        ("Under_scores", "under-scores"),
+        # GitHub replaces each space with a dash and does NOT collapse the run. This
+        # case used to assert the opposite, which is what let seven cross-references
+        # ship broken: an em dash between two words leaves two spaces behind, so the
+        # anchor the author wrote carries two hyphens.
+        ("  Spaced   out  ", "spaced---out"),
+        ("2. Sign in — and secure your account", "2-sign-in--and-secure-your-account"),
+        # The heading reaches slugify as HTML, where & is an entity. Left encoded it
+        # produced "users-amp-access", a word in no heading.
+        ("Users &amp; access", "users--access"),
+        ("Users & access", "users--access"),
+        # Underscores are kept, as GitHub keeps them.
+        ("Under_scores", "under_scores"),
     ])
     def test_matches_github_anchors(self, text, expected):
         """The landing links to GitHub-style anchors; a mismatch silently lands at the top."""
         assert slugify(text) == expected
+
+    @pytest.mark.parametrize("heading,in_app_slug", [
+        # Expected values computed by hand from the rule in ag-manual-modal.js:
+        #   lower → trim → drop anything not letter/number/_/space/- → each space to '-'
+        ("No sound / wrong output", "no-sound--wrong-output"),
+        ("Users & access", "users--access"),
+        ("Getting HTTPS — for passkeys and push", "getting-https--for-passkeys-and-push"),
+        ("2. Sign in — and secure your account", "2-sign-in--and-secure-your-account"),
+    ])
+    def test_agrees_with_the_in_app_manual(self, heading, in_app_slug):
+        """The app and the site must compute the same anchor for the same heading.
+
+        `ag-manual-modal.js` renders the very same Markdown for the in-app reader, and
+        the manual's cross-references are written once for both. When the two rules
+        disagree, a link works in the app and lands silently at the top of the page on
+        the site — which is what shipped.
+        """
+        assert slugify(heading) == in_app_slug
 
 
 class TestStampHeadingIds:

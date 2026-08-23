@@ -7,6 +7,45 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A box that plays no local files is a box like any other
+
+Setting up Audiogravi<sup>ty</sup> asked for a music folder, and would not finish without one.
+But plenty of boxes hold no music at all: everything comes from HIGHRESAUDIO, Qobuz or
+Tidal, or the box is there to receive AirPlay, or to bridge UPnP. None of that needs a
+single file on disk.
+
+Those owners had one way past the button — invent a path — and the box took it. Nobody
+checked that the folder existed. What came out looked like a complete success: the
+configuration written, MPD running, the tile marked as configured, the indexing announcing
+it had finished, because there was nothing to walk through. And a library with nothing in
+it, with no explanation anywhere.
+
+The setup now offers **No music library — online listening only** as a choice in its own
+right. It is not an empty field: it is an answer, and the box records it as one.
+
+It works in both directions. A box that started without a library can be pointed at one
+later. A box that has one can be released from it — that asks first, since it takes
+something away; nothing on disk is touched, and you can point it back whenever you like.
+
+And a path you *do* give is now checked before anything happens: it must be absolute, it
+must exist, it must be a folder, and MPD must be able to read it. That last one matters
+more than it sounds — MPD runs under its own account, so a folder you can open is not
+necessarily one it can, and until now that ended as an empty library with no clue as to
+why. Each refusal names what was wrong, and arrives before a single thing on the box has
+been changed.
+
+### An empty library and a missing one no longer look alike
+
+MPD turns down every question about a collection it does not have, and that refusal
+carried none of the information Audiogravi<sup>ty</sup> was reading — so it arrived as "no
+albums", and as "no results" when searching. On a box whose library had never been set up,
+the interface was announcing that your collection was empty.
+
+Both now say what is actually going on: *No music library is configured on this box. Add
+one from the Config tab, or keep listening to your streaming services.* A collection that
+really is empty is still reported as empty.
+
+
 ### A configuration tile that admits the software is not there
 
 The Services and Profiles tabs have always been able to say *this software is not

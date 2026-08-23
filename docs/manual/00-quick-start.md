@@ -19,10 +19,11 @@ Browse to `https://<ip-of-your-box>`. Your **30-day trial** activates by itself.
 Sign in as **`admin` / `admin123`** — and change that password right away (**Admin**
 tab → your card). *(Details and passkeys: [3. First run](03-first-run.md).)*
 
-## 3. Install the audio engines
+## 3. Install the audio engines you want
 
-**Audio Software** tab → **INSTALL** on **Music Player Daemon** (the core player),
-plus **Shairport Sync** (AirPlay) and **UPnP Bridge** if you want them.
+**MPD is already there** — the installer brings it, because everything plays through
+it. Add the rest from the **Audio Software** tab if you want them: **Shairport Sync**
+(AirPlay), **UPnP Bridge** (cast to the box), **Roon Bridge**, **HQPlayer NAA**.
 
 ## 4. Initialize the audio stack
 

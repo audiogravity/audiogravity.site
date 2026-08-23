@@ -56,8 +56,9 @@ generates security keys, configures the systemd service and starts everything �
 usually <strong>under five minutes</strong> from <code>curl</code> to the interface. No compilation, no
 dependency hell, no manual configuration.</p>
 <blockquote>
-<p>The installer sets up <strong>Audiogravi<sup>ty</sup> itself</strong>. The audio engines it conducts
-(MPD, AirPlay, UPnP…) are installed afterwards, in a few clicks <strong>from the
+<p>The installer sets up <strong>Audiogravi<sup>ty</sup> itself</strong>, and <strong>MPD</strong> with it — the
+player everything goes through. The other engines it conducts (AirPlay, UPnP, Roon
+Bridge, HQPlayer NAA) are yours to choose afterwards, in a few clicks <strong>from the
 interface</strong> — that's step 3 of <a href="03-first-run">3. First run</a>.</p>
 </blockquote>
 <h2 id="before-you-start">Before you start</h2>
@@ -189,11 +190,11 @@ afterwards picks up where you left off.</p>
 <p>To remove those too:</p>
 <pre><code class="language-bash">sudo /opt/audiogravity/uninstall.sh --purge
 </code></pre>
-<p><strong>What is never removed, on purpose:</strong> the audio software you installed from the
-<strong>Audio Software</strong> page — MPD, Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge —
-and their own configuration files. They are ordinary system packages that keep working
-without Audiogravi<sup>ty</sup>; remove them with your package manager if you want them
-gone.</p>
+<p><strong>What is never removed, on purpose:</strong> the audio software itself — MPD, which came
+with the installer, and whatever you added from the <strong>Audio Software</strong> page
+(Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge) — along with their own
+configuration files. They are ordinary system packages that keep working without
+Audiogravi<sup>ty</sup>; remove them with your package manager if you want them gone.</p>
 
             </article>
             <footer class="man-foot">

@@ -23,13 +23,12 @@ answer is usually on screen:
 - *"its network audio daemon (NAA) is not running"* — HQPlayer is your output but the
   piece that feeds your DAC is stopped. Start it in **Services**, or turn the switch
   off to play locally.
-- *"which HQPlayer cannot decode"* — the track's format is not one HQPlayer handles
-  (AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM, AIFC); the message names it. M4A and MP4 are the
-  same container under two names — media servers disagree on which to publish — so the
-  same file may be named either way depending on where you browsed it. Turn the switch off to play
-  it on the local output. A whole album is refused if **any** of its tracks is in such
-  a format — the message names that track — so you get one clear answer instead of
-  music stopping partway through.
+- *"which HQPlayer cannot decode"* — the track's format is not one HQPlayer handles;
+  the message names it. (The full list is in
+  [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer).)
+  Turn the switch off to play it on the local output. A whole album is refused if
+  **any** of its tracks is in such a format — the message names that track — so you get
+  one clear answer instead of music stopping partway through.
 - *"Both HQPlayer and a network renderer are selected"* — pick one.
 - *"The speaker you selected is not answering"* — the renderer is asleep, off the
   network, or still reconnecting. Wake it up, or pick another output. Audiogravi<sup>ty</sup>
@@ -266,13 +265,13 @@ is reasonable, but it should be a switch you turn on knowingly rather than a def
   quality. The same message appears when the **album itself** is not available in lossless
   even though your setting is right: Audiogravi<sup>ty</sup> checks what Tidal actually
   serves before it starts, and names the cause instead of leaving you with silence.
-- **With HQPlayer as your output**, a track in a format HQPlayer cannot decode (AAC, ALAC,
-  M4A/MP4, OGG/Opus, APE, WMA, DST, AC3/E-AC3, DTS, Musepack, TAK, TTA, Shorten, Speex,
-  AMR, MKA/WebM, AIFC) is refused wherever it comes from — your library, a media server or
-  a radio station — and the message names the format and the track. Turn **Use as output**
-  off to play it on the local output. Which *source* it comes from no longer matters: every
-  source reaches HQPlayer, streaming services included (see
-  [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer)).
+- **With HQPlayer as your output**, a track in a format HQPlayer cannot decode is refused
+  wherever it comes from — your library, a media server or a radio station — and the
+  message names the format and the track. Turn **Use as output** off to play it on the
+  local output. Which *source* it comes from no longer matters: every source reaches
+  HQPlayer, streaming services included — the formats it accepts, and those it does not,
+  are listed in
+  [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer).
 
 ## The browser warns about the certificate, or the app won't install
 
@@ -291,12 +290,10 @@ until you say so.
 - **The home-screen icon opens on an error** — the app window has no way to show the
   "accept the risk" page a browser tab does, so an untrusted certificate simply fails
   there. Trust the authority, then reopen the app.
-- **Upgraded from an older release and the warning changed** — before 0.9.35 the box
-  generated a certificate that no modern browser accepts at all (it identified itself
-  in a field browsers stopped reading in 2017) and that trusting could not repair.
-  Upgrading replaces it and creates the authority; trust it once and the app installs.
-  Nothing to undo first — and if you had installed that old certificate on a phone, it
-  is simply obsolete; remove it and install the authority instead.
+- **You upgraded, and the warning changed** — older boxes carried a certificate no
+  modern browser accepts, whatever you did with it. Upgrading replaces it and creates
+  the authority; trust that once and the app installs. Nothing to undo first, and any
+  copy of the old certificate you had installed on a phone can simply be removed.
 - **You put your own certificate on the box** — a valid one, whoever issued it, is
   detected and **left untouched**: no authority is created, nothing is published, and
   renewal stays with whatever issues it. The box only steps in if that certificate has
@@ -453,29 +450,13 @@ left a stale "in progress" marker, so the core refuses to start a new one.
 
 ## The Config tab ignores the `appconfigfile` path I set
 
-It is meant to. Audiogravi<sup>ty</sup> now knows by itself where each service keeps
-its configuration — `/etc/mpd.conf`, `/etc/shairport-sync.conf` and so on — and
-finds the file whether the service came from your distribution's packages or was
-built from source. The path in `/etc/audiogravity/audio-config.json` is **no longer
-read**.
+It is meant to. Audiogravi<sup>ty</sup> finds each service's configuration by itself,
+wherever it lives — `/etc/mpd.conf` for a packaged MPD, `/usr/local/etc/shairport-sync.conf`
+for a shairport-sync built from source. Nothing to set, and nothing that can point at
+the wrong file.
 
-It used to be, and it was a poor arrangement: the same file has to serve machines
-where it lives in different places, so the value shipped in the template was simply
-wrong on one of them. Worse, a stale line could point at a file that happened to
-exist, and the Config tab would edit *that* one while the service went on reading
-another — changes appearing to save with no effect.
-
-Boxes **set up before this version** still carry the line. It does nothing, breaks
-nothing, and can be left alone. If you would rather tidy it up, an admin can remove
-it from the Terminal:
-
-```bash
-sudo cp /etc/audiogravity/audio-config.json /etc/audiogravity/audio-config.json.bak
-sudo nano /etc/audiogravity/audio-config.json    # delete the "appconfigfile" lines
-sudo systemctl restart ag-core-server
-```
-
-New installations ship without it.
+An older box may still carry an `appconfigfile` line in
+`/etc/audiogravity/audio-config.json`. It is simply ignored: leave it alone.
 
 > If a service on your machine really does keep its configuration somewhere
 > unexpected, there is currently no way to tell Audiogravi<sup>ty</sup> about it —
@@ -494,8 +475,10 @@ to download a `.lic` for an order you have already paid for, or **Upload new lic
 you have the file already.
 
 > A licence that has ended is not the same as *"License file is invalid or bound to a
-> different device"*. That message means the file does not match this machine, or was
-> altered — see below.
+> different device"*. That message means the file does not match this machine — most
+> often after an OS reinstall, which changes the machine's fingerprint. Re-download
+> your `.lic` from **License portal** with your purchase email and the **Device ID**
+> shown in the licence panel.
 
 ## Getting help
 

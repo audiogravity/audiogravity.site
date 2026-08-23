@@ -7,6 +7,27 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The setup screen now shows what it just did
+
+You run the first-time setup, it reports success, the three services come back
+configured — and the tab behind the window is the one from before. The banner
+inviting you to configure is still there, the tiles still say the services are
+not configured. Reloading the page by hand shows the truth. It is the worst
+possible moment for a screen to freeze: the one where you are looking for
+confirmation that something happened, and where the natural conclusion is that
+it did not.
+
+The refresh was there all along. It never ran: the setup panel sits inside a
+dialog, and the code meant to update the tab was being called on the dialog
+instead of on the tab, failing silently every time. The box had been reporting
+itself correctly configured throughout.
+
+Fixed, and one more thing with it: the installation-log window used to close by
+luck. Its own close button was writing to the wrong place, and the window only
+shut because something else happened to be listening. It closes on its own
+account now.
+
+
 ### A box that plays no local files is a box like any other
 
 Setting up Audiogravi<sup>ty</sup> asked for a music folder, and would not finish without one.

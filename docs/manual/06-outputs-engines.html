@@ -102,6 +102,15 @@ upmpdcli) so other apps can cast <em>to</em> it. That self-entry appears in the 
 list as a non-selectable <em>&quot;This device · receives external casts&quot;</em> row — because
 playing on the box is what the <strong>Local DAC</strong> output already does.</p>
 </blockquote>
+<blockquote>
+<p><strong>Driving the box from another app.</strong> Because Audiogravi<sup>ty</sup> advertises a standard
+UPnP renderer, any control point on your network can send music to it — <strong>JPLAY</strong> on
+iPhone, BubbleUPnP on Android, and others. The queue and the volume answer as they would
+from Audiogravi<sup>ty</sup> itself, and the player badges the track <strong>External</strong> so you can
+see the music was started elsewhere. Controllers that speak only <strong>OpenHome</strong>, such as
+Linn Kazoo, need <code>openhome = 1</code> in upmpdcli's configuration — editable from the <strong>Config</strong>
+tab.</p>
+</blockquote>
 <h2 id="the-signal-path-and-the-chain-you-describe">The signal path, and the chain you describe</h2>
 <p>The <strong>Pipeline</strong> tab draws the route your music takes, device by device: the box, the
 converter, the amplifier, the speakers, and the cables between them. Audiogravi<sup>ty</sup>

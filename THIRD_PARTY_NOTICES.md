@@ -556,6 +556,8 @@ same reason — to identify what the software controls:
 
 - **Roon** — Roon, Roon Bridge, Roon Server and the Roon logo (Roon Labs).
 - **HQPlayer** — HQPlayer, HQPlayer NAA and the HQPlayer logo (Signalyst).
+- **JPLAY** — JPLAY and the JPLAY logo (JPLAY). Named only to say that Audiogravi<sup>ty</sup>'s
+  UPnP renderer works with it: no JPLAY code is used, and no integration is specific to it.
 - **AirPlay** — AirPlay and the AirPlay logo (Apple). Audiogravi<sup>ty</sup> receives AirPlay
   through **shairport-sync**, the independent implementation listed above; it uses no Apple
   software and is not part of Apple's licensing programme.

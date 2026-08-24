@@ -43,7 +43,7 @@
 **Audio Control**
 - Unified transport across MPD, Roon, HQPlayer NAA, AirPlay and UPnP
 - UPnP Control Point — discover and cast to any network renderer (amplifiers, streamers, DLNA speakers) at full resolution, bit-perfect, with a live "Up next" queue
-- UPnP renderer mode via upmpdcli — control AG from BubbleUPnP, Kazoo or any OpenHome control point
+- UPnP renderer mode via upmpdcli — drive Audiogravi<sup>ty</sup> from any UPnP control point (JPLAY, BubbleUPnP, mconnect); OpenHome controllers such as Kazoo once enabled in the upmpdcli config
 - Fullscreen Now Playing — cover art, seekable progress bar, transport controls, album tracklist, multi-source swipe, dynamic background
 - HQPlayer DSP remote — filter, shaper, output mode, volume with auto-discovery
 - Output steering — USB, Toslink, HDMI

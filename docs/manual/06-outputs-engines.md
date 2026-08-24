@@ -59,6 +59,14 @@ server's own audio path.
 > list as a non-selectable *"This device · receives external casts"* row — because
 > playing on the box is what the **Local DAC** output already does.
 
+> **Driving the box from another app.** Because Audiogravi<sup>ty</sup> advertises a standard
+> UPnP renderer, any control point on your network can send music to it — **JPLAY** on
+> iPhone, BubbleUPnP on Android, and others. The queue and the volume answer as they would
+> from Audiogravi<sup>ty</sup> itself, and the player badges the track **External** so you can
+> see the music was started elsewhere. Controllers that speak only **OpenHome**, such as
+> Linn Kazoo, need `openhome = 1` in upmpdcli's configuration — editable from the **Config**
+> tab.
+
 ## The signal path, and the chain you describe
 
 The **Pipeline** tab draws the route your music takes, device by device: the box, the

@@ -7,7 +7,30 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A trial that, once given, stays given
+
+The length of the trial every box starts with is set on the licence server
+and served to the fleet each day, so it can change without a release. What it
+could not do was change safely in one direction: a box recomputes its days
+remaining from whatever length it is served, so lowering the setting ended
+trials that were already running, overnight and without a word.
+
+The server now serves each box the longest length it has ever told it.
+Raising the setting reaches every box, trials already running included — a
+box at day forty of a thirty-day trial is back in trial with twenty days
+left. Lowering it reaches only boxes the server has never seen. What was
+given is not taken back. The administration console shows the length granted
+to each installation and can forget one, which is how a figure typed by
+mistake is undone. Nothing changes on the boxes themselves.
+
+### The licence server keeps its own backups
+
+Everything the licence server knows — who bought what, the licence files it
+can re-send, every revocation — lives in one file, and until now the only
+copy of it was the one taken around an upgrade. A nightly job now copies it
+consistently, checks that the copy opens, compresses it and keeps the newest
+thirty. Existing servers get it at their next update, which also takes a
+snapshot before it restarts into the new code.
 
 ---
 

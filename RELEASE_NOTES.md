@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.46 — 2026-08-24
+
 ### A box that can be diagnosed at a distance
 
 The support report already answered "what is this box": version, licence, which

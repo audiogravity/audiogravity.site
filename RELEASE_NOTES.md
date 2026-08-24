@@ -7,7 +7,34 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The name on the network is yours
+
+For someone who drives their streamer from JPLAY, BubbleUPnP or mconnect, the
+name in that list is the whole product — they may never open the interface at
+all. And that name was wrong twice over: a hostname nobody picked, wearing a
+`-UPnP/AV` protocol suffix nobody asked for. The configuration form compounded
+it — its one name field promised to be "the name displayed to UPnP clients"
+and wasn't, so typing `Salon` produced `Salon-UPnP/AV`, and whoever came
+hunting for the suffix found nothing to fix.
+
+The form's **Friendly Name** now is what control points display. Exactly. A
+fresh box calls itself `audiogravity-XXXX`, with a short token unique to that
+box, because two boxes in one home must not announce the same name and UPnP has
+no way of telling them apart. An existing box sheds its suffix the first time
+its form is saved. And **Reset to default** warns that the name goes back to
+the default — a reset is a reset, and it says so.
+
+OpenHome, promised on the landing "once OpenHome is switched on", is now an
+actual switch: an **OpenHome Renderer** checkbox in the same form. Ticked, a
+second renderer appears for Linn Kazoo, named with an `-OH` tail so the two
+never collide in an app that lists both — and toggling it never renames the
+renderer your other apps already know. Both positions of the switch were
+measured on the real network, not inferred.
+
+Along the way, saving from the form stopped quietly stripping the *Managed by
+Audiogravi<sup>ty</sup>* line — the one that keeps the CONFIGURED badge honest and tells
+the support report whether a file was written by hand — and checkboxes learned
+to read `0` as off and to write settings in the file's own language.
 
 ---
 

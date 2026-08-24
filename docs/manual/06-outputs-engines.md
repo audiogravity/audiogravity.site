@@ -259,3 +259,10 @@ Playing view with per-stream output steering (USB / Optical).
 The graph is drawn from a map you own, **`audio-topology.json`** — see
 [7. Administration → Audio topology](07-administration.md#audio-topology-signal-chain-map)
 to edit it, and the same section for the tuning that keeps this path clean.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

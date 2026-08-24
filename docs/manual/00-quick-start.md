@@ -55,3 +55,10 @@ the fullscreen player and the live hi-fi readout — format, sample rate, bitrat
 - **[Send music elsewhere](06-outputs-engines.md)** — network renderers, HQPlayer, AirPlay.
 - **[Tune the OS for audio](07-administration.md#performance-tuning-pro)** (Pro) — real-time scheduling,
   CPU pinning, latency tests.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

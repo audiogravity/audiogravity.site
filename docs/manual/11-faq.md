@@ -81,3 +81,10 @@ update banner — one click and your admin password, and the box downloads,
 installs and health-checks the new version with live progress. If anything goes
 wrong it **automatically rolls back** to the previous version. No terminal, no
 re-running the installer. See [8. Updating](08-updating.md).
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

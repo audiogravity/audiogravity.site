@@ -69,3 +69,10 @@ free 30-day trial; it activates automatically on first run.
 - Your **home network**, and any device with a browser to control it
 
 Ready? Head to **[2. Installation](02-installation.md)**.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

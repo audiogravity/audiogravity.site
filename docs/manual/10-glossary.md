@@ -79,3 +79,10 @@ points conduct.
 
 **upmpdcli** — the bridge that presents MPD as a UPnP renderer, letting other apps
 cast to the box.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

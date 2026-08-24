@@ -247,3 +247,10 @@ do step 7 first — an untrusted certificate is what stops the app from installi
 Your box now plays. Head to **[4. Listening](04-listening.md)** to start playing
 music, or **[5. Library & streaming](05-library-streaming.md)** to connect Qobuz,
 Tidal, HIGHRESAUDIO and internet radio.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

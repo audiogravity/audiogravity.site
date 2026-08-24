@@ -171,3 +171,10 @@ If you would rather nothing left your box at all, set `RADIO_REPORT_PLAYS=false`
 `/opt/audiogravity/core/.env` and restart the core
 (`sudo systemctl restart ag-core-server`). Search and playback are unchanged by this;
 only the report stops.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

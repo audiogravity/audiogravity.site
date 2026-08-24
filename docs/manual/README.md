@@ -33,3 +33,10 @@ you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
 
 *This manual describes the current release. What changed in each one is in the
 [release notes](https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md).*
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

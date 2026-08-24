@@ -116,3 +116,10 @@ Choosing **where** music plays — your local DAC, a network renderer, HQPlayer 
 AirPlay — is covered in **[6. Outputs & engines](06-outputs-engines.md)**. Connecting
 streaming services and browsing your library is in
 **[5. Library & streaming](05-library-streaming.md)**.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

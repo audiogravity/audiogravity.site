@@ -2487,6 +2487,16 @@ footer {
     letter-spacing: .14em
 }
 
+/* Trademark notice — a paragraph, not another chip in .footer-bottom: that row is a
+   flex line of short uppercase items at 9px and a sentence would break it. Kept in
+   sentence case and readable rather than styled down to a legal murmur. */
+.footer-legal {
+    margin: 20px 0 0;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text3);
+}
+
 .footer-bottom a {
     color: #9a9a9a;
     transition: color var(--ease)

@@ -149,3 +149,10 @@ with the installer, and whatever you added from the **Audio Software** page
 (Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge) — along with their own
 configuration files. They are ordinary system packages that keep working without
 Audiogravi<sup>ty</sup>; remove them with your package manager if you want them gone.
+
+---
+
+*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
+trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
+endorsed by, or sponsored by any of them: it interoperates with their software as a client,
+and each remains the property of its owner.*

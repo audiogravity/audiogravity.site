@@ -367,6 +367,27 @@ def build() -> dict[Path, str]:
     return out
 
 
+#: The trademark notice every chapter must carry. It lives in the MARKDOWN, not in the
+#: HTML template, because the Markdown is the source: the site's pages are generated from
+#: it, GitHub renders it directly, and the interface fetches it live. A notice added to the
+#: template would have appeared on the website alone — the one reader of the three who is
+#: least likely to be a customer.
+#:
+#: That means thirteen copies of one sentence, which is why this check exists: they cannot
+#: drift, and a new chapter cannot ship without it.
+NOTICE_MARK = "trademarks of their respective owners"
+
+
+def check_notice() -> list[str]:
+    """Chapters missing the trademark notice.
+
+    Returns:
+        Their file names, empty when every chapter carries it.
+    """
+    return [f.name for f in sorted(MANUAL_DIR.glob("*.md"))
+            if NOTICE_MARK not in f.read_text(encoding="utf-8")]
+
+
 def main() -> int:
     """Entry point.
 
@@ -377,6 +398,12 @@ def main() -> int:
     ap.add_argument("--check", action="store_true",
                     help="fail if a committed page differs from what the Markdown produces")
     args = ap.parse_args()
+
+    missing = check_notice()
+    if missing:
+        print("trademark notice missing from: " + ", ".join(missing))
+        print("Every chapter carries it — the Markdown is what GitHub and the app read.")
+        return 1
 
     pages = build()
     if args.check:

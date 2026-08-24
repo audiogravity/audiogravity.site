@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/og-image_black.png" alt="Audiogravity" width="600" />
+  <img src="assets/ag-image_black.webp" alt="Audiogravity" width="600" />
 </p>
 
 <p align="center">
@@ -206,11 +206,12 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 
 ## The Audiogravi<sup>ty</sup> ecosystem
 
+<!-- One neutral wordmark, no light/dark pair: prefers-color-scheme follows the READER'S
+     OPERATING SYSTEM, not their GitHub theme, so a black logo landed on GitHub's dark
+     background whenever the two settings disagreed. #7d8590 clears 3:1 on both
+     backgrounds (3.73 on white, 5.07 on #0d1117) and depends on no setting at all. -->
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/pics/audiogravity-dark.svg">
-    <img src="assets/pics/audiogravity.svg" width="320" alt="Audiogravity wordmark" />
-  </picture>
+  <img src="assets/pics/audiogravity.svg" width="320" alt="Audiogravity wordmark" />
 </p>
 
 Three components, three official logos:
@@ -271,4 +272,4 @@ Audiogravi<sup>ty</sup> uses a **dual-license** model:
 
 Audiogravi<sup>ty</sup> also incorporates open-source components — see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-> [Qobuz](https://www.qobuz.com), [Tidal](https://tidal.com) and [HIGHRESAUDIO](https://www.highresaudio.com), and their respective logos, are trademarks of their respective owners; Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by them.
+> [Roon](https://roon.app), [HQPlayer](https://www.signalyst.com), AirPlay, [Qobuz](https://www.qobuz.com), [Tidal](https://tidal.com) and [HIGHRESAUDIO](https://www.highresaudio.com), and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.

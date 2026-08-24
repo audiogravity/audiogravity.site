@@ -7,6 +7,54 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### A box that can be diagnosed at a distance
+
+The support report already answered "what is this box": version, licence, which
+services run, what the configuration files say. What it could not answer was
+everything around the box — and that is where the other half of every support
+conversation went.
+
+It now measures, when you ask for it. How the interface is really served, asked
+of the running server rather than read from a file: plain HTTP or TLS, which
+port, which version of the interface is actually deployed, whether the
+certificate has expired, whether it still names the address the box answers on,
+and whether the authority you asked phones to trust is the one signing it. The
+network the music crosses: the gateway, the DNS, which interface actually
+carries the traffic, the negotiated speed of a wired link — a gigabit port
+running at a hundred is a thing that happens — the WiFi rate and signal, whether
+the clock is synchronised at all, and whether the internet and the licence
+server answer, with the time they took.
+
+The audio path as it is at that instant, not as it was configured: which DAC the
+system can see and at what USB speed, and the format and sample rate genuinely
+crossing ALSA — the bit-perfect claim, measured. How the audio services are
+scheduled, with what systemd was told to apply set beside what the running
+process actually carries, because a tuning file that failed to apply is exactly
+the difference between those two columns.
+
+What else is on the network: UPnP renderers and servers, an HQPlayer, a Roon
+Core — whether or not this box was configured to use them, since "not
+configured" and "nowhere to be found" are different answers and only one of them
+is a fault. Free space, and any filesystem the kernel has quietly remounted
+read-only, which is the failure where a box keeps working and nothing it does
+persists. Whether the deployed settings carry what the code expects, by name and
+never by value. Whether an update could actually download, asked of the release
+repository itself rather than inferred from anything else.
+
+And the last seven days of failures — the services' own, and the kernel's, which
+is where a DAC dropping off the bus, a dying memory card, an undervolted supply
+or thermal throttling speak, and where nothing else in the report would ever
+show them. The boot history comes with it, because five boots in two days is a
+hardware conversation, not a software one.
+
+Two rules hold throughout. Secrets are still removed before the report is built.
+And a measurement that fails says it failed: a probe that could not run is never
+printed as a negative finding — "we could not read this" and "there is nothing
+here" are not the same sentence, and only one of them is honest.
+
+The window itself now shows a turning indicator and names what it is probing
+while it works, then says "Report ready." when it is done.
+
 ### The name on the network is yours
 
 For someone who drives their streamer from JPLAY, BubbleUPnP or mconnect, the

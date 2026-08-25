@@ -23,6 +23,30 @@ given is not taken back. The administration console shows the length granted
 to each installation and can forget one, which is how a figure typed by
 mistake is undone. Nothing changes on the boxes themselves.
 
+### The support report tells the truth, or says it does not know
+
+The report a box produces for support was built to end the exchange of
+screenshots. It could only do that if every line of it were true, and five of
+its sections were not. It reported no streaming account signed in on every box
+ever, whatever the truth — a broken probe whose error was written down as a
+"no". It described the realtime tuning of software that is not installed,
+because asking systemd about a unit that does not exist gets you an answer
+anyway. It printed five outputs as *PCH*, *PCH*, *HDMI*, *HDMI*, *HDMI*, which
+is where an AirPlay receiver quietly ends up on the wrong socket. It showed the
+output Audiogravi<sup>ty</sup> believes it selected and never the one each
+service is actually playing on — so the one fault most worth reporting was the
+one it could not show. And it repeated a single failure twenty-one times, out
+of order.
+
+Each of those now answers correctly, and where an answer cannot be had, the
+report says *unknown* and names the reason rather than inventing a negative
+one. Repeated failures fold into one line with their count and their last
+occurrence, in chronological order. The report is a tenth smaller for it.
+
+The rule this came from is worth stating: a measurement that failed must never
+be printed as a finding. It applies to the whole report, and the sections that
+already followed it were the ones that never misled anyone.
+
 ### The licence server keeps its own backups
 
 Everything the licence server knows — who bought what, the licence files it

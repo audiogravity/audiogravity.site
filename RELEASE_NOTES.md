@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.47 — 2026-08-25
+
 ### A trial that, once given, stays given
 
 The length of the trial every box starts with is set on the licence server
@@ -55,6 +61,22 @@ copy of it was the one taken around an upgrade. A nightly job now copies it
 consistently, checks that the copy opens, compresses it and keeps the newest
 thirty. Existing servers get it at their next update, which also takes a
 snapshot before it restarts into the new code.
+
+### HIGHRESAUDIO's mark, as they drew it
+
+The HIGHRESAUDIO artwork shipped since 0.9.44 was cut out by hand from a flat
+image, and the cut had washed out the **RES** at the centre of the mark — the
+one word the whole logo is built around sat at half contrast, close to
+disappearing into its own white plate. HIGHRESAUDIO supplied their official
+file on 25 August; the three images the interface uses are regenerated from it,
+at the source's own proportions, and the wordmark reads as it was drawn.
+
+The small badge beside Qobuz and Tidal is redrawn from the same source and
+joins the treatment those two already use: at that size no lettering is legible
+either way, so what a reader gets is a silhouette — and a silhouette that
+follows the text colour stays visible on a selected card, whose background
+inverts, where a fixed dark image would not. Checked in all four combinations
+of theme and selection.
 
 ---
 

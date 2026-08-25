@@ -51,10 +51,14 @@ If nothing is displayed:
 
 - Check the **output selector** — is the right destination (Local DAC vs a network
   renderer) selected?
-- In **Config**, confirm the service's **audio output** badge points at your DAC. If
-  the card index drifted after a hardware change, re-run **Guided → output** (the DAC
-  index is normally pinned automatically — see [3. First run](03-first-run.md)).
 - In **Services**, confirm the relevant service (mpd, shairport-sync…) is **RUNNING**.
+- **Then open the support report rather than hunting.** Its *Audio stack* section
+  prints, for each service, the output Audiogravi<sup>ty</sup> pinned it to next to the one
+  that service's own configuration names, and marks the line when the two disagree —
+  the mismatch this list used to ask you to find by eye. A flagged line means the card
+  index has drifted, usually after a hardware change: re-run **Guided → output** and the
+  pin is rewritten (the DAC index is normally pinned automatically — see
+  [3. First run](03-first-run.md)).
 
 ## My DAC is not in the output list (Raspberry Pi HAT)
 

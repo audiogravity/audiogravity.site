@@ -299,10 +299,23 @@ Real-time monitoring and box-level actions.
 *Support Report* in **System › Actions** collects, in one gesture, everything someone
 helping you would otherwise have to ask for: the version and architecture, the licence
 verdict, system vitals, which audio packages are installed and at which versions, the
-state of each service and whether it starts at boot, the detected outputs and the one
-each service is pinned to, whether each configuration file is Audiogravi<sup>ty</sup>-managed or
-hand-written, the declared music library and whether MPD has actually indexed it — and
-the configuration files themselves.
+state of each service and whether it starts at boot, the detected outputs — each with
+its full label and its `hw:` address, so two sockets on the same card can be told apart
+— and, for every service, both the output Audiogravi<sup>ty</sup> pinned it to and the one its
+own configuration actually names, flagged when the two disagree. That last line is the
+one most worth having: a box playing out of a socket nobody chose looks exactly like a
+box playing correctly, until something says so. It also carries whether each
+configuration file is Audiogravi<sup>ty</sup>-managed or hand-written, whether each streaming
+account is signed in, the declared music library and whether MPD has actually indexed
+it — and the configuration files themselves.
+
+**When the report cannot answer, it says so rather than guessing.** A check that could
+not be run reads *unknown* and names what stopped it; a service that is not installed on
+your box is called absent, instead of being described from the settings it would have
+used if it were. An answer you can trust to be either right or missing is worth more
+than one that is always there. Recent errors from the system journal are folded the same
+way: an identical failure that happened seven times is one line carrying its count and
+the last time it occurred, in the order things actually happened.
 
 **Passwords, API keys and access tokens are removed before the report is built.** A
 credential's *name* stays visible so you can still see the setting exists, but its value

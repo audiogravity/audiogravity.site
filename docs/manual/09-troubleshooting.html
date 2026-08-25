@@ -99,10 +99,14 @@ as soon as the music plays.</p>
 <ul>
 <li>Check the <strong>output selector</strong> — is the right destination (Local DAC vs a network
 renderer) selected?</li>
-<li>In <strong>Config</strong>, confirm the service's <strong>audio output</strong> badge points at your DAC. If
-the card index drifted after a hardware change, re-run <strong>Guided → output</strong> (the DAC
-index is normally pinned automatically — see <a href="03-first-run">3. First run</a>).</li>
 <li>In <strong>Services</strong>, confirm the relevant service (mpd, shairport-sync…) is <strong>RUNNING</strong>.</li>
+<li><strong>Then open the support report rather than hunting.</strong> Its <em>Audio stack</em> section
+prints, for each service, the output Audiogravi<sup>ty</sup> pinned it to next to the one
+that service's own configuration names, and marks the line when the two disagree —
+the mismatch this list used to ask you to find by eye. A flagged line means the card
+index has drifted, usually after a hardware change: re-run <strong>Guided → output</strong> and the
+pin is rewritten (the DAC index is normally pinned automatically — see
+<a href="03-first-run">3. First run</a>).</li>
 </ul>
 <h2 id="my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</h2>
 <p>A <strong>HAT</strong> — a DAC board stacked on the Pi's GPIO header (HiFiBerry, IQaudIO, Allo,

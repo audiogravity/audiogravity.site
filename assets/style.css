@@ -2612,6 +2612,108 @@ footer {
 
 .hero-dots .dot.active { background: var(--text); }
 
+/* Hero carousel — per-slide caption and annotations.
+   Anchored to .hero-carousel, which is exactly the capture's box, so the labels follow the
+   device rather than the column: the phone keeps its size and its position, whatever is
+   written beside it. They fade on the same .7s as the capture, so text and image move
+   together instead of the text snapping mid-crossfade.
+   Both flanks are only wide enough past 1500px — see the fallback below. */
+/* The labels do NOT cross-fade with each other, unlike the captures they sit beside: the
+   outgoing one is gone (.25s) before the incoming one starts (.35s delay), and the pair
+   still totals the .7s of the image. Cross-fading them paints two different strings in the
+   same box at half opacity — consecutive slides deliberately share heights (0 and 1 share
+   three of them), so the overlap is the rule, not the exception.
+   visibility, not opacity alone, is what takes an inactive label out of the page: a
+   transparent element is still found by Ctrl+F and still announced, so all 14 captions and
+   their annotations would otherwise be reachable at once while 13 of them are invisible.
+   It carries a 0s transition so it flips at the end of the fade out, and immediately on the
+   way in. */
+.hero-caption,
+.hero-note {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility 0s linear .25s;
+    pointer-events: none;
+}
+
+.hero-caption.active,
+.hero-note.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .35s ease .35s, visibility 0s;
+}
+
+/* The flank is what the column leaves either side of the capture: the hero is a two-column
+   grid above 900px, so .hero-right is exactly 50vw and the free space per side is
+   25vw − 190px (half of the 380px capture). A FIXED width here is what clipped the caption:
+   230px only fits past 1856px, and .hero-right has overflow:hidden, so below that the
+   sentence was simply cut mid-word with nothing to signal it. The width follows the flank
+   instead, and the media queries below drop each label before it gets too narrow to read. */
+.hero-caption {
+    left: calc(100% + 28px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(240px, calc(25vw - 190px - 48px));
+}
+
+.hero-caption .k {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--text3);
+    margin-bottom: 10px;
+}
+
+.hero-caption .t {
+    display: block;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text2);
+}
+
+/* An annotation sits at the height of what it names and reaches the device with a hairline.
+   The offset is measured from the DEVICE edge (4.74% of the box, so 95.26% from the right),
+   not from the box edge: the mockup carries a transparent margin either side, and a line
+   drawn to the box would stop short in the void. */
+.hero-note {
+    right: calc(95.26% + 22px);
+    top: var(--y);
+    transform: translateY(-50%);
+    width: min(140px, calc(25vw - 190px - 42px));
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.45;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text3);
+}
+
+.hero-note::after {
+    content: "";
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    width: 16px;
+    height: 1px;
+    background: var(--border2);
+}
+
+/* One threshold for both, not one each. From the same 25vw − 190px, the annotations survive
+   down to ~1400px while the caption needs ~1550px — but keeping them apart leaves a band
+   where labels crowd the left flank and the right one is empty, which reads worse than
+   having neither. They appear and disappear together, and below that the carousel behaves
+   exactly as it did before. A narrow-screen placement is a separate decision, deliberately
+   not invented here. */
+@media(max-width:1550px) {
+    .hero-caption,
+    .hero-note { display: none }
+}
+
 /* PWA screenshot */
 .pwa-screenshot {
     width: 100%;

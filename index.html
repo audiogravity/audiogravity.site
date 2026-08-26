@@ -143,8 +143,13 @@
                 <img src="assets/pics/ag-player-black.webp" alt="Player, dark theme" class="hero-screenshot active">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-tidal.webp" alt="Player, playing from Tidal" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-qobuz.webp" alt="Player, playing from Qobuz" class="hero-screenshot">
+                <!-- ag-player-qobuz.webp is set aside, not deleted: it is the same screen as the
+                     opening slide — same Qobuz badge, same Qobuz → MPD → USB → Heed Abacus chain,
+                     same DAC — differing only by the light theme, so the carousel showed Qobuz
+                     twice. It comes back when there is a Qobuz screen the first slide does not
+                     already show (browsing the catalogue, favourites, a search). -->
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-radio.webp" alt="Player, internet radio" class="hero-screenshot">
+                <img loading="lazy" decoding="async" src="assets/pics/ag-player-hqplayer.webp" alt="Player, DSD through HQPlayer" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-library-black.webp" alt="Library, dark theme" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-library.webp" alt="Library" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-pipeline.webp" alt="Signal path" class="hero-screenshot">
@@ -154,6 +159,143 @@
                 <img loading="lazy" decoding="async" src="assets/pics/ag-audioconfig.webp" alt="Audio configuration" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-performence-black.webp" alt="Performance tuning" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-settings.webp" alt="Settings" class="hero-screenshot">
+
+                <!-- Per-slide caption and annotations. Positioned against .hero-carousel,
+                     which is exactly the phone's box, so they follow the device instead of
+                     the column — the capture never moves or shrinks to make room. --y is
+                     the height of the element each annotation names, as a share of the
+                     capture. Only slide 0 is written for now (prototype). -->
+                <div class="hero-caption active" data-slide="0">
+                    <span class="k">Qobuz</span>
+                    <span class="t">Qobuz plays through your own chain — and the screen names every
+                        link of it, down to the DAC.</span>
+                </div>
+                <span class="hero-note active" data-slide="0" style="--y:16.6%">From Qobuz</span>
+                <span class="hero-note active" data-slide="0" style="--y:53.6%">The whole chain</span>
+                <span class="hero-note active" data-slide="0" style="--y:66.4%">What is really playing</span>
+                <span class="hero-note active" data-slide="0" style="--y:92%">Switch output mid-track</span>
+
+                <div class="hero-caption" data-slide="1">
+                    <span class="k">HIGHRESAUDIO</span>
+                    <span class="t">Their Hi-Res catalogue, played on your own DAC — with the
+                        resolution you actually get, in writing.</span>
+                </div>
+                <span class="hero-note" data-slide="1" style="--y:16.6%">From HIGHRESAUDIO</span>
+                <span class="hero-note" data-slide="1" style="--y:53.6%">To your DAC</span>
+                <span class="hero-note" data-slide="1" style="--y:66.4%">The real resolution</span>
+
+                <div class="hero-caption" data-slide="2">
+                    <span class="k">Tidal</span>
+                    <span class="t">Tidal runs through the same chain as everything else — same
+                        controls, same readout, same DAC.</span>
+                </div>
+                <span class="hero-note" data-slide="2" style="--y:16.6%">Tidal, signed in</span>
+                <span class="hero-note" data-slide="2" style="--y:66.4%">Hi-Res, stated</span>
+                <span class="hero-note" data-slide="2" style="--y:92%">Your DAC</span>
+
+                <!-- Radio carries no NEXT block, so its rows sit higher than the other player
+                     screens: these three are measured on this capture, not copied. -->
+                <div class="hero-caption" data-slide="3">
+                    <span class="k">Radio</span>
+                    <span class="t">A web stream gets the same treatment as a local file: named
+                        source, named codec, your own DAC at the end.</span>
+                </div>
+                <span class="hero-note" data-slide="3" style="--y:16.6%">Internet radio</span>
+                <span class="hero-note" data-slide="3" style="--y:53.6%">Same chain</span>
+                <span class="hero-note" data-slide="3" style="--y:82.5%">Same DAC</span>
+
+                <div class="hero-caption" data-slide="4">
+                    <span class="k">HQPlayer</span>
+                    <span class="t">HQPlayer takes the stream, and Audiogravi<sup>ty</sup> still
+                        reports what comes out of it — here DSD128, and the DAC receiving it.</span>
+                </div>
+                <span class="hero-note" data-slide="4" style="--y:18.1%">Fed over UPnP</span>
+                <span class="hero-note" data-slide="4" style="--y:55.1%">Through HQPlayer</span>
+                <span class="hero-note" data-slide="4" style="--y:67.7%">What comes out</span>
+
+                <div class="hero-caption" data-slide="5">
+                    <span class="k">Browsing</span>
+                    <span class="t">Every service browsed the same way — genres, playlists, new
+                        releases — from one screen.</span>
+                </div>
+                <span class="hero-note" data-slide="5" style="--y:25.3%">Their catalogue</span>
+                <span class="hero-note" data-slide="5" style="--y:36%">By sub-genre</span>
+                <span class="hero-note" data-slide="5" style="--y:50.3%">Add in one tap</span>
+
+                <!-- Browse tab again, as on slide 5 — checked on the capture's tab bar, not on the
+                     alt, which says "Library". What is its own here is the transport bar: this is
+                     the only browsing screen with something playing underneath. -->
+                <div class="hero-caption" data-slide="6">
+                    <span class="k">Always playing</span>
+                    <span class="t">Browse Qobuz's new releases while a station keeps playing — the
+                        transport never leaves the bottom of the screen.</span>
+                </div>
+                <span class="hero-note" data-slide="6" style="--y:27.8%">New releases</span>
+                <span class="hero-note" data-slide="6" style="--y:42.1%">Add to the queue</span>
+                <span class="hero-note" data-slide="6" style="--y:91.3%">Playing throughout</span>
+
+                <div class="hero-caption" data-slide="7">
+                    <span class="k">Signal path</span>
+                    <span class="t">The whole chain drawn out — streamer, DAC, amplifier, speakers —
+                        with the link between each one named.</span>
+                </div>
+                <span class="hero-note" data-slide="7" style="--y:45.2%">The active output</span>
+                <span class="hero-note" data-slide="7" style="--y:59.5%">Every box, in order</span>
+                <span class="hero-note" data-slide="7" style="--y:76.2%">To the speakers</span>
+
+                <div class="hero-caption" data-slide="8">
+                    <span class="k">Sources</span>
+                    <span class="t">Your library and your subscriptions, connected once and shown as
+                        they are — online, connected, or not.</span>
+                </div>
+                <span class="hero-note" data-slide="8" style="--y:27%">Your own files</span>
+                <span class="hero-note" data-slide="8" style="--y:55.1%">All connected</span>
+                <span class="hero-note" data-slide="8" style="--y:83.3%">HQPlayer too</span>
+
+                <div class="hero-caption" data-slide="9">
+                    <span class="k">Services</span>
+                    <span class="t">Every audio service on the box, what it is using, and the buttons
+                        to stop or restart it.</span>
+                </div>
+                <span class="hero-note" data-slide="9" style="--y:37.8%">Up or down</span>
+                <span class="hero-note" data-slide="9" style="--y:57.9%">What it costs</span>
+                <span class="hero-note" data-slide="9" style="--y:66.1%">Start, stop, on boot</span>
+
+                <div class="hero-caption" data-slide="10">
+                    <span class="k">Profiles</span>
+                    <span class="t">One tap swaps the whole setup: what starts, what stops, which
+                        output — and a log of every switch.</span>
+                </div>
+                <span class="hero-note" data-slide="10" style="--y:28.3%">One per use</span>
+                <span class="hero-note" data-slide="10" style="--y:36.7%">Starts and stops</span>
+                <span class="hero-note" data-slide="10" style="--y:77.6%">What ran, and when</span>
+
+                <div class="hero-caption" data-slide="11">
+                    <span class="k">Configuration</span>
+                    <span class="t">The real configuration files, editable in place — with the output
+                        each service actually uses shown beside it.</span>
+                </div>
+                <span class="hero-note" data-slide="11" style="--y:29.9%">The real file</span>
+                <span class="hero-note" data-slide="11" style="--y:52.8%">Flagged if critical</span>
+                <span class="hero-note" data-slide="11" style="--y:67.4%">Its real device</span>
+
+                <div class="hero-caption" data-slide="12">
+                    <span class="k">Tuning</span>
+                    <span class="t">Jitter measured over time, and the scheduling priority of every
+                        process that touches the audio.</span>
+                </div>
+                <span class="hero-note" data-slide="12" style="--y:32.1%">Jitter, measured</span>
+                <span class="hero-note" data-slide="12" style="--y:64.1%">RT priorities</span>
+                <span class="hero-note" data-slide="12" style="--y:74.8%">Set per process</span>
+
+                <div class="hero-caption" data-slide="13">
+                    <span class="k">Settings</span>
+                    <span class="t">Export the whole configuration to a file, pick a theme, and sign
+                        in with Face ID instead of a password.</span>
+                </div>
+                <span class="hero-note" data-slide="13" style="--y:24.8%">Export the lot</span>
+                <span class="hero-note" data-slide="13" style="--y:43.1%">Light or dark</span>
+                <span class="hero-note" data-slide="13" style="--y:62.7%">Face ID</span>
             </div>
             <div class="hero-dots">
                 <span class="dot active"></span>

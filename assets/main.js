@@ -2,6 +2,9 @@
 (function () {
     var imgs = document.querySelectorAll('.hero-screenshot');
     var dots = document.querySelectorAll('.hero-dots .dot');
+    // Caption and annotations, each tagged with the slide it belongs to. Collected in one
+    // list because they share a rule: shown only while their own slide is.
+    var notes = document.querySelectorAll('.hero-caption, .hero-note');
     var prevBtn = document.getElementById('heroPrev');
     var nextBtn = document.getElementById('heroNext');
     var playBtn = document.getElementById('heroPlay');
@@ -17,6 +20,9 @@
         cur = ((n % imgs.length) + imgs.length) % imgs.length;
         imgs[cur].classList.add('active');
         if (dots[cur]) dots[cur].classList.add('active');
+        notes.forEach(function (el) {
+            el.classList.toggle('active', Number(el.dataset.slide) === cur);
+        });
     }
 
     function startTimer() {

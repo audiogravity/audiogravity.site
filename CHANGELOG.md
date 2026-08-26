@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[site] The manual's footer was a filled band, but only for readers whose system is dark.** The manual is a reading page and its footer is meant to be a single rule with the way back below it; under dark it came out as a `#1a1a1a` block spanning the column, as if borrowed from the commercial page. The stylesheet said `background: none` all along — the landing paints every `<footer>` through two rules of unequal weight, and the manual's own rule beat one of them and lost to the other. Which one applied depended on **how the reader reached dark**: picking dark in the interface gave the correct footer, leaving the browser to follow the system gave the band. The same theme rendered two ways, which is why nobody caught it. The manual's rule is now restated at each of the two weights; the landing keeps its own filled footer, unchanged.
+
 ## [0.9.47] - 2026-08-25
 
 ### Added

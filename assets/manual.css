@@ -28,7 +28,17 @@ nav.man-nav {
     align-items: stretch
 }
 
-footer.man-foot {
+/* The landing paints every <footer> under dark, through TWO rules of unequal weight:
+   `:root:not([data-theme="light"]) footer` (0,2,1) and `[data-theme="dark"] footer` (0,1,1).
+   A plain `footer.man-foot` (0,1,1) loses to the first and beats the second — manual.css
+   loading second — so the manual's footer came out as a filled band when the reader's
+   SYSTEM was dark, and transparent when they had picked dark themselves: the same theme,
+   two renderings, which is how this went unnoticed. Restated at each rule's own weight
+   rather than with !important. The manual is a reading page; its footer is a rule, not a
+   block borrowed from the commercial one. */
+footer.man-foot,
+:root:not([data-theme="light"]) footer.man-foot,
+[data-theme="dark"] footer.man-foot {
     background: none;
     color: inherit
 }

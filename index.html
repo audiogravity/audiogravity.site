@@ -140,14 +140,19 @@
 
         <div class="hero-right">
             <div class="hero-carousel">
-                <img src="assets/pics/ag-player-black.webp" alt="Player, dark theme" class="hero-screenshot active">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot">
+                <!-- Opening slide — the only one every visitor is guaranteed to see, so which
+                     record is on screen is an editorial choice, not whatever happened to be
+                     playing when the capture was taken. The one that opened before,
+                     ag-player-black.webp, is set aside and not deleted: a reader pointed out that
+                     its sleeve reads as the opposite of what a listener is after, which is a fair
+                     thing to say about a shop window. Its Qobuz screen lives on as
+                     ag-player-qobuz.webp, one slide down.
+                     Captions and annotations travel WITH their capture, never with the slot: --y
+                     is measured against the capture itself, so moving a slide changes nothing but
+                     the data-slide number and which one carries `active`. -->
+                <img src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot active">
+                <img loading="lazy" decoding="async" src="assets/pics/ag-player-qobuz.webp" alt="Player, playing from Qobuz" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-tidal.webp" alt="Player, playing from Tidal" class="hero-screenshot">
-                <!-- ag-player-qobuz.webp is set aside, not deleted: it is the same screen as the
-                     opening slide — same Qobuz badge, same Qobuz → MPD → USB → Heed Abacus chain,
-                     same DAC — differing only by the light theme, so the carousel showed Qobuz
-                     twice. It comes back when there is a Qobuz screen the first slide does not
-                     already show (browsing the catalogue, favourites, a search). -->
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-radio.webp" alt="Player, internet radio" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-hqplayer.webp" alt="Player, DSD through HQPlayer" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-library-black.webp" alt="Library, dark theme" class="hero-screenshot">
@@ -166,23 +171,23 @@
                      the height of the element each annotation names, as a share of the
                      capture. Only slide 0 is written for now (prototype). -->
                 <div class="hero-caption active" data-slide="0">
-                    <span class="k">Qobuz</span>
-                    <span class="t">Qobuz plays through your own chain — and the screen names every
-                        link of it, down to the DAC.</span>
-                </div>
-                <span class="hero-note active" data-slide="0" style="--y:16.6%">From Qobuz</span>
-                <span class="hero-note active" data-slide="0" style="--y:53.6%">The whole chain</span>
-                <span class="hero-note active" data-slide="0" style="--y:66.4%">What is really playing</span>
-                <span class="hero-note active" data-slide="0" style="--y:92%">Switch output mid-track</span>
-
-                <div class="hero-caption" data-slide="1">
                     <span class="k">HIGHRESAUDIO</span>
                     <span class="t">Their Hi-Res catalogue, played on your own DAC — with the
                         resolution you actually get, in writing.</span>
                 </div>
-                <span class="hero-note" data-slide="1" style="--y:16.6%">From HIGHRESAUDIO</span>
-                <span class="hero-note" data-slide="1" style="--y:53.6%">To your DAC</span>
-                <span class="hero-note" data-slide="1" style="--y:66.4%">The real resolution</span>
+                <span class="hero-note active" data-slide="0" style="--y:16.6%">From HIGHRESAUDIO</span>
+                <span class="hero-note active" data-slide="0" style="--y:53.6%">To your DAC</span>
+                <span class="hero-note active" data-slide="0" style="--y:66.4%">The real resolution</span>
+
+                <div class="hero-caption" data-slide="1">
+                    <span class="k">Qobuz</span>
+                    <span class="t">Qobuz plays through your own chain — and the screen names every
+                        link of it, down to the DAC.</span>
+                </div>
+                <span class="hero-note" data-slide="1" style="--y:16.6%">From Qobuz</span>
+                <span class="hero-note" data-slide="1" style="--y:53.6%">The whole chain</span>
+                <span class="hero-note" data-slide="1" style="--y:66.4%">What is really playing</span>
+                <span class="hero-note" data-slide="1" style="--y:92%">Switch output mid-track</span>
 
                 <div class="hero-caption" data-slide="2">
                     <span class="k">Tidal</span>

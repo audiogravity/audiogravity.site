@@ -45,6 +45,21 @@ One more thing on the same screen: the panel a phone with a passkey meets first 
 retry button after a failure that had already been disconnected, so pressing it did nothing
 at all until the page was reloaded. It works.
 
+### The same honesty, on the other screens — and in the app on your phone
+
+The sign-in screen was the first to stop guessing. It was not the only one guessing:
+uploading a licence file, adding a passkey from Settings, and every request the
+installed app makes on a phone all recognised a dead network in their own way, and
+each way had a hole. The licence upload still printed Safari's raw *Load failed*; the
+app on your home screen, which cannot let the browser report a failed request on
+iOS, turned one into *Service temporarily unavailable* — a sentence that never once
+mentioned the network, in front of a box that was simply off.
+
+Every request now leaves through one door, and that door records what happened.
+Whatever the screen, a box that cannot be reached is reported as a box that cannot be
+reached; a box that refused says why, in its own words; and nothing is retried unless
+nothing answered.
+
 ---
 
 ## 0.9.47 — 2026-08-25

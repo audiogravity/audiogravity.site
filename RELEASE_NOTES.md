@@ -7,7 +7,43 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A box that was off told you the password was wrong
+
+It happened on iPhones and iPads, and nowhere else. Someone opened
+Audiogravi<sup>ty</sup>, typed the password they have typed a hundred times, and read
+*Invalid username or password*. So they typed it again, more carefully. Then again. The
+box, meanwhile, had simply stopped — and two centimetres above that message, the screen
+was already saying **API · OFFLINE**.
+
+The cause is worth telling, because it is a small thing that produced a large lie. When a
+request cannot reach a machine at all, the browser reports it in its own words, and those
+words are different in every browser: Chrome says *Failed to fetch*, Firefox says
+*NetworkError*, Safari says *Load failed*. The screen recognised a failure by reading that
+sentence, and its list knew Chrome's and Firefox's. Safari's slipped through a rule meant
+for something else and came out as a rejected password — so the one device most people use
+to control their box was the one device that accused them.
+
+It no longer reads sentences. The only part of the software that can know a request never
+left is the part that sent it, so that is where the fact is now recorded, and every screen
+asks rather than guesses. Nothing depends on which browser is in front.
+
+### And when something is wrong, the screen says which thing
+
+Once the sign-in screen stopped guessing, it turned out to be answering with status codes
+for everything else too. Each of those has been replaced with a sentence, and each sentence
+was checked against what the box actually sends rather than what it was assumed to send.
+
+A box that cannot be reached now **names the address it tried** — the difference between
+writing to us and walking over to look at the machine. A box that is running and has just
+crashed says so instead, and points at the support report: that is a different event from a
+machine that is off, and it needs a different action. Six wrong passwords in a minute — what
+anyone does when they believe they are mistyping — answered *HTTP 429*, a number naming a
+rule it never mentioned; it now says how long to wait. And a field the box refuses to accept
+answered *[object Object]*.
+
+One more thing on the same screen: the panel a phone with a passkey meets first offered a
+retry button after a failure that had already been disconnected, so pressing it did nothing
+at all until the page was reloaded. It works.
 
 ---
 

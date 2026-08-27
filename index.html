@@ -13,12 +13,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Audiogravity — Your audio chain, fully controlled</title>
     <meta name="description"
-        content="Your streamer is your source. Audiogravity is the conductor. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
+        content="Audiogravity is a streamer. A conductor, not a soloist. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Audiogravity">
     <meta property="og:title" content="Audiogravity — Your audio chain, fully controlled">
     <meta property="og:description"
-        content="Your streamer is your source. Audiogravity is the conductor. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
+        content="Audiogravity is a streamer. A conductor, not a soloist. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
     <meta property="og:url" content="https://audiogravity.app">
     <meta property="og:image" content="https://audiogravity.app/assets/ag-image_black-og.png">
     <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Audiogravity — Your audio chain, fully controlled">
     <meta name="twitter:description"
-        content="Your streamer is your source. Audiogravity is the conductor. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
+        content="Audiogravity is a streamer. A conductor, not a soloist. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
     <meta name="twitter:image" content="https://audiogravity.app/assets/ag-image_black-og.png">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
@@ -104,15 +104,15 @@
     <section class="hero">
         <div class="hero-left">
             <div class="hero-kicker">
-                <span>The audiophile streamer interface</span>
+                <span>The audiophile streamer</span>
                 <span class="live">Live</span>
             </div>
             <h1 class="hero-h1">Audiogravi<sup>ty</sup></h1>
-            <p class="hero-tag">Your streamer is your source. <em>Audiogravi<sup>ty</sup> is the conductor.</em></p>
+            <p class="hero-tag">Audiogravi<sup>ty</sup> is a streamer. <em>A conductor, not a soloist.</em></p>
             <p class="hero-lede">MPD, Roon, HQPlayer, AirPlay, UPnP sources and renderers, internet radio — every
                 engine, every source, down to DSD and Hi-Res PCM. Send your library to any network renderer.
-                Audiogravi<sup>ty</sup> coordinates each component of your stack, from the system to your Qobuz,
-                Tidal and HIGHRESAUDIO libraries, without replacing any of them. One interface. Total control.
+                Audiogravi<sup>ty</sup> installs, configures and conducts every one of them — from the system up to
+                your Qobuz, Tidal and HIGHRESAUDIO libraries. It replaces none of them. One interface. Total control.
             </p>
             <div class="hero-cta">
                 <a class="cta-primary cta-open" href="#install">Install now — 30-day trial included</a>
@@ -619,7 +619,7 @@
                 before restarting its receiver.
             </p>
             <div class="pipeline-frame">
-                <svg viewBox="0 0 1000 300" aria-label="Audio pipeline">
+                <svg viewBox="0 0 1000 380" aria-label="Audio pipeline">
                     <defs>
                         <marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5"
                             orient="auto">
@@ -634,54 +634,109 @@
                             <path d="M0,0L10,5L0,10z" fill="#22c55e" />
                         </marker>
                     </defs>
-                    <path class="pl" d="M140 80 C260 80 260 150 380 150" marker-end="url(#m0)" />
-                    <path class="pl active" d="M140 150 L380 150" marker-end="url(#m1)" />
-                    <path class="pl" d="M140 220 C260 220 260 150 380 150" marker-end="url(#m0)" />
-                    <path class="pl active" d="M510 150 L640 150" marker-end="url(#m1)" />
-                    <path class="pl bp" d="M770 150 L850 150" marker-end="url(#m2)" />
+                    <!-- Flow, left to right: whose machine it is, what Audiogravity does with it,
+                         the hardware at the end. The dashed frame is the point of the drawing —
+                         without it the radio, the streaming clients and the two UPnP roles read as
+                         outside boxes, when they are functions of this product. What stays outside
+                         is what genuinely belongs to someone else: Qobuz's servers, the station
+                         catalogue, your NAS, your Core, your phone, the speaker.
+                         The two middle nodes were one box labelled "HQPlayer NAA · upsample", which
+                         credited the endpoint with work HQPlayer does — the NAA receives audio
+                         already processed. The frame cannot enclose the NAA as well, though it also
+                         runs on the box: it sits after HQPlayer, which may not. Its subtitle says
+                         so instead. -->
+                    <path class="pl active" d="M145 38 C190 38 180 174 215 174" marker-end="url(#m1)" />
+                    <path class="pl" d="M145 106 C190 106 180 174 215 174" marker-end="url(#m0)" />
+                    <path class="pl" d="M145 174 L215 174" marker-end="url(#m0)" />
+                    <path class="pl" d="M145 242 C190 242 180 174 215 174" marker-end="url(#m0)" />
+                    <path class="pl" d="M145 310 C190 310 180 174 215 174" marker-end="url(#m0)" />
+                    <path class="pl active" d="M370 174 L430 174" marker-end="url(#m1)" />
+                    <path class="pl active" d="M560 174 L625 174" marker-end="url(#m1)" />
+                    <path class="pl bp" d="M755 174 L820 174" marker-end="url(#m2)" />
+                    <path class="pl" d="M370 215 C500 215 500 318 625 318" marker-end="url(#m0)" />
                     <circle r="4" fill="#f59e0b">
-                        <animateMotion dur="2.4s" repeatCount="indefinite" path="M140 150 L380 150" />
+                        <animateMotion dur="2.4s" repeatCount="indefinite" path="M145 38 C190 38 180 174 215 174" />
                     </circle>
                     <circle r="4" fill="#f59e0b">
-                        <animateMotion dur="2.4s" repeatCount="indefinite" begin=".65s" path="M510 150 L640 150" />
+                        <animateMotion dur="2.4s" repeatCount="indefinite" begin=".6s" path="M370 174 L430 174" />
+                    </circle>
+                    <circle r="4" fill="#f59e0b">
+                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s" path="M560 174 L625 174" />
                     </circle>
                     <circle r="4" fill="#22c55e">
-                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s" path="M770 150 L850 150" />
+                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.8s" path="M755 174 L820 174" />
                     </circle>
+
+                    <g class="pn ag-box">
+                        <rect x="202" y="88" width="181" height="172" rx="6" class="own-r" /><text x="292" y="104"
+                            text-anchor="middle" class="own-t">Audiogravi<tspan dy="-3"
+                                font-size="7">ty</tspan><tspan dy="3" font-size="9"> — your box</tspan></text>
+                    </g>
+
                     <g class="pn">
-                        <rect x="20" y="50" width="120" height="60" /><text x="80" y="77" text-anchor="middle">Qobuz · Tidal ·
-                            HRA</text><text x="80" y="92" text-anchor="middle" class="sub">Hi-Res streaming</text>
+                        <rect x="15" y="10" width="130" height="56" class="active-r" /><text x="80" y="30"
+                            text-anchor="middle" class="active-t">Qobuz · Tidal</text><text x="80" y="44"
+                            text-anchor="middle" class="active-t">HIGHRESAUDIO</text><text x="80" y="58"
+                            text-anchor="middle" class="sub">their servers</text>
                     </g>
                     <g class="pn">
-                        <rect x="20" y="120" width="120" height="60" class="active-r" /><text x="80" y="147"
-                            text-anchor="middle" class="active-t">Roon Core</text><text x="80" y="162"
-                            text-anchor="middle" class="sub">PCM 24/192</text>
+                        <rect x="15" y="78" width="130" height="56" /><text x="80" y="103"
+                            text-anchor="middle">Radio Browser</text><text x="80" y="119" text-anchor="middle"
+                            class="sub">station catalogue</text>
                     </g>
                     <g class="pn">
-                        <rect x="20" y="190" width="120" height="60" /><text x="80" y="217"
-                            text-anchor="middle">MinimServer</text><text x="80" y="232" text-anchor="middle"
-                            class="sub">UPnP · NFS</text>
+                        <rect x="15" y="146" width="130" height="56" /><text x="80" y="171"
+                            text-anchor="middle">MinimServer · NAS</text><text x="80" y="187" text-anchor="middle"
+                            class="sub">your UPnP server</text>
                     </g>
                     <g class="pn">
-                        <rect x="380" y="120" width="130" height="60" class="active-r" /><text x="445" y="142"
-                            text-anchor="middle" class="active-t">HQPlayer NAA</text><text x="445" y="158"
-                            text-anchor="middle" class="sub">DSD256 · upsample</text><text x="445" y="172"
+                        <rect x="15" y="214" width="130" height="56" /><text x="80" y="239"
+                            text-anchor="middle">Roon Core</text><text x="80" y="255" text-anchor="middle"
+                            class="sub">via Roon Bridge</text>
+                    </g>
+                    <g class="pn">
+                        <rect x="15" y="282" width="130" height="56" /><text x="80" y="307"
+                            text-anchor="middle">JPLAY · BubbleUPnP</text><text x="80" y="323" text-anchor="middle"
+                            class="sub">your phone</text>
+                    </g>
+
+                    <g class="pn">
+                        <rect x="215" y="115" width="155" height="118" class="active-r" /><text x="292" y="138"
+                            text-anchor="middle" class="active-t">Audiogravi<tspan dy="-4"
+                                font-size="8">ty</tspan></text><text x="292" y="157" text-anchor="middle"
+                            class="sub">Qobuz · Tidal · HIGHRESAUDIO</text><text x="292" y="172" text-anchor="middle"
+                            class="sub">internet radio · library</text><text x="292" y="187" text-anchor="middle"
+                            class="sub">MPD · queue · transport</text><text x="292" y="202" text-anchor="middle"
+                            class="sub">upmpdcli — UPnP renderer</text><text x="292" y="217" text-anchor="middle"
+                            class="sub">UPnP control point</text>
+                    </g>
+                    <g class="pn">
+                        <rect x="430" y="144" width="130" height="60" class="active-r" /><text x="495" y="166"
+                            text-anchor="middle" class="active-t">HQPlayer</text><text x="495" y="182"
+                            text-anchor="middle" class="sub">filters · shapers</text><text x="495" y="196"
+                            text-anchor="middle" class="sub">PCM → DSD256</text>
+                    </g>
+                    <g class="pn">
+                        <rect x="625" y="144" width="130" height="60" class="active-r" /><text x="690" y="166"
+                            text-anchor="middle" class="active-t">HQPlayer NAA</text><text x="690" y="182"
+                            text-anchor="middle" class="sub">endpoint, on the box</text><text x="690" y="196"
                             text-anchor="middle" class="sub">FIFO 80 · MEMLOCK</text>
                     </g>
                     <g class="pn">
-                        <rect x="640" y="120" width="130" height="60" class="bp-r" /><text x="705" y="142"
-                            text-anchor="middle" class="bp-t">DAC · USB</text><text x="705" y="158" text-anchor="middle"
-                            class="sub">Holo May KTE</text><text x="705" y="172" text-anchor="middle" class="sub">DSD256
-                            · bit-perfect</text>
+                        <rect x="820" y="144" width="130" height="60" class="bp-r" /><text x="885" y="166"
+                            text-anchor="middle" class="bp-t">DAC · USB</text><text x="885" y="182"
+                            text-anchor="middle" class="sub">Holo May KTE</text><text x="885" y="196"
+                            text-anchor="middle" class="sub">DSD256 · bit-perfect</text>
                     </g>
                     <g class="pn">
-                        <rect x="850" y="120" width="130" height="60" /><text x="915" y="147"
-                            text-anchor="middle">Amplifier</text><text x="915" y="162" text-anchor="middle"
-                            class="sub">Naim Nac 52 / Nap 250</text>
+                        <rect x="625" y="290" width="130" height="56" /><text x="690" y="315"
+                            text-anchor="middle">UPnP renderer</text><text x="690" y="331" text-anchor="middle"
+                            class="sub">network speaker</text>
                     </g>
-                    <text x="20" y="280" font-family="Inter,sans-serif" font-size="10.5" fill="#888">Click any link →
-                        reroute the ALSA output to a different DAC (gapless on MPD). Latency, RSSI and 802.11
-                        protocol shown for every network hop.</text>
+
+                    <text x="15" y="368" font-family="Inter,sans-serif" font-size="10.5" fill="#888">Click any link →
+                        reroute the output: a different DAC, or any renderer on the network (gapless on MPD).
+                        Latency, RSSI and 802.11 protocol shown for every network hop.</text>
                 </svg>
                 <div class="pipeline-legend">
                     <span><span class="sw dashed"></span>Idle</span>
@@ -827,13 +882,63 @@
     </section>
 
     <!-- HOW IT COMPARES -->
+    <!-- BOARD AND SOFTWARE — the argument a product page usually leaves out: what a finished
+         streamer is made of, and which half of it this one replaces. Three rules hold it together,
+         all three deliberate. It names no brand and disparages no one — the claim is about a
+         category, not about anyone's product. It is checkable rather than asserted: the GPL
+         obliges every one of those machines to publish the list, so the reader can settle it on
+         their own device instead of taking our word. And it concedes the analog side outright,
+         because conceding it is exactly what makes the rest credible to someone who builds power
+         supplies. Shares the `alt` band with #layers above: the two are one argument in two steps
+         — where Audiogravity sits, and what that leaves you free to choose. -->
+    <section class="section alt" id="parts">
+        <div class="w">
+            <div class="section-label">Board and software</div>
+            <h2 class="section-title">A streamer is a board<br><em>and a software layer.</em></h2>
+            <p class="section-sub">Network streamers sell for anywhere between a few hundred and
+                several tens of thousands of euros. For the part that makes one a streamer —
+                receiving, decoding, handing the result to a DAC — it is a board running Linux with
+                a software layer on top. That layer is, most of the time, the one
+                Audiogravi<sup>ty</sup> drives: ALSA, MPD, upmpdcli, Shairport-Sync.</p>
+
+            <ul class="rt-list">
+                <li><span class="tag">Check it yourself</span><span>Those components are licensed
+                        under the GPL, which obliges the manufacturer to declare them. The “open
+                        source licences” page in your machine's manual or web interface lists
+                        them.</span></li>
+                <li><span class="tag">Yours to choose</span><span>Nothing here has to be built: a
+                        Raspberry Pi, a fanless mini-PC, an Intel Mac mini with Linux on it — a DAC
+                        you like, and you have a streamer.
+                        The DAC, the power supply, the clocks are simply not
+                        Audiogravi<sup>ty</sup>'s ground — they are yours. A finished box hands you
+                        the whole chain as one decision; this way you change one stage at a time,
+                        and only when you want to.</span></li>
+                <li><span class="tag">Where a box ages</span><span>The software is usually where a
+                        finished machine is weakest — a closed application, no Roon, no HQPlayer,
+                        rarely all three streaming services — and it stops evolving the day the
+                        model leaves the catalogue.</span></li>
+                <li><span class="tag">Where this one doesn't</span><span>MPD is over twenty years
+                        old, ALSA close to thirty, and both are still developed today. Your machine
+                        will not be abandoned because a manufacturer changed its range.</span></li>
+            </ul>
+        </div>
+    </section>
+
     <section class="section" id="compare">
         <div class="w">
             <div class="section-label">How it compares</div>
             <h2 class="section-title">One orchestrator.<br><em>Every audiophile engine.</em></h2>
-            <p class="section-sub">Audiogravi<sup>ty</sup> sits at a different layer than the rest. It does not compete
-                with Roon, MPD or HQPlayer — it orchestrates them. The table below clarifies where each solution stops.
-            </p>
+            <!-- This used to read "sits at a different layer than the rest — does not compete with
+                 Roon, MPD or HQPlayer", directly above a table that lists competing products and
+                 ends on a row of prices. It also put Roon and MPD in one bag: Roon is a column
+                 here, MPD is an engine Audiogravity installs. The distinction the sentence has to
+                 carry is Roon vs Roon Bridge, and HQPlayer vs its NAA — one of each pair is a
+                 rival, the other is something this product installs to be compatible with it. -->
+            <p class="section-sub">Audiogravi<sup>ty</sup> is a streamer, and so are most of the columns below — the
+                table shows where each one stops. What sets it apart is that it does not ask you to choose against Roon
+                or HQPlayer: it installs <b>Roon Bridge</b> to be a Roon endpoint, and <b>HQPlayer NAA</b> to be an
+                HQPlayer endpoint, so both keep working inside it. JPLAY iOS is listed for what it is: a control point,
+                not a streamer.</p>
 
             <!-- The wrapper exists only to anchor the right-edge scroll cue: an absolutely
                  positioned child of the scroller itself is placed in the scrolled coordinate
@@ -848,7 +953,7 @@
                             <th>Roon</th>
                             <th>Volumio</th>
                             <th>Moode</th>
-                            <th>HQPlayer Embedded</th>
+                            <th>HQPlayer</th>
                             <th>JPLAY iOS</th>
                         </tr>
                     </thead>
@@ -1198,8 +1303,8 @@
             <div class="pricing-note">
                 <div class="lbl">Who I am</div>
                 <div class="txt">I designed Audiogravi<sup>ty</sup> for my own system — MPD, Roon, and HQPlayer connected
-                    to a Heed Abacus, a Naim NAC 52 / NAP 250 setup, and ATC SL20 speakers — I handle its development
-                    and maintenance. <span class="sig">— <b>Alexandre Di Marco</b></span></div>
+                    to a Heed Abacus, a Naim NAC 52 / NAP 250 setup, and ATC SL20 speakers. I develop and maintain it
+                    myself, from France. <span class="sig">— <b>Alexandre Di Marco</b></span></div>
             </div>
 
             <!-- HOW TO PURCHASE -->
@@ -1239,6 +1344,16 @@
                 <div class="faq-item">
                     <input type="checkbox" id="faq1">
                     <label class="faq-label" for="faq1">
+                        <span>What does “Public beta” mean?</span>
+                        <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
+                    </label>
+                    <div class="faq-body">
+                        <div class="faq-body-inner">That the V1 scope is complete: every feature described exists and runs today — nothing here is a mock-up or a roadmap item. What remains is correction, refinement and optimisation, not missing features. Bugs do turn up, and they get fixed — report anything you hit.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <input type="checkbox" id="faq2">
+                    <label class="faq-label" for="faq2">
                         <span>What happens after the 30-day trial?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1247,8 +1362,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq2">
-                    <label class="faq-label" for="faq2">
+                    <input type="checkbox" id="faq3">
+                    <label class="faq-label" for="faq3">
                         <span>Does it work without Roon?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1257,8 +1372,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq3">
-                    <label class="faq-label" for="faq3">
+                    <input type="checkbox" id="faq4">
+                    <label class="faq-label" for="faq4">
                         <span>Do I need a Qobuz, Tidal or HIGHRESAUDIO subscription?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1267,8 +1382,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq4">
-                    <label class="faq-label" for="faq4">
+                    <input type="checkbox" id="faq5">
+                    <label class="faq-label" for="faq5">
                         <span>Does it work without an internet connection?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1277,8 +1392,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq5">
-                    <label class="faq-label" for="faq5">
+                    <input type="checkbox" id="faq6">
+                    <label class="faq-label" for="faq6">
                         <span>Can I use one licence on multiple machines?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1287,8 +1402,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq6">
-                    <label class="faq-label" for="faq6">
+                    <input type="checkbox" id="faq7">
+                    <label class="faq-label" for="faq7">
                         <span>Are updates included?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1297,8 +1412,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq7">
-                    <label class="faq-label" for="faq7">
+                    <input type="checkbox" id="faq8">
+                    <label class="faq-label" for="faq8">
                         <span>How do I install Audiogravi<sup>ty</sup> on my phone?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1307,8 +1422,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq8">
-                    <label class="faq-label" for="faq8">
+                    <input type="checkbox" id="faq9">
+                    <label class="faq-label" for="faq9">
                         <span>How do I connect Qobuz, Tidal or HIGHRESAUDIO?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1317,8 +1432,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq9">
-                    <label class="faq-label" for="faq9">
+                    <input type="checkbox" id="faq10">
+                    <label class="faq-label" for="faq10">
                         <span>Where is the documentation?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1327,8 +1442,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <input type="checkbox" id="faq10">
-                    <label class="faq-label" for="faq10">
+                    <input type="checkbox" id="faq11">
+                    <label class="faq-label" for="faq11">
                         <span>How do I update Audiogravi<sup>ty</sup>?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
@@ -1339,6 +1454,42 @@
 
                 <!-- FAQ:END -->
             </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S NEXT — deliberately non-committal, and saying so is the point: a roadmap that reads
+         as a commitment turns every unshipped line into a broken promise. The list is here to
+         collect opinions, not to sell them, which is why it ends on a way to answer. Placed after
+         the FAQ and before the call to action — a reader who has just been told the product is in
+         beta asks where it is going next, and the answer belongs there rather than in the pitch.
+         `alt` restores the banding, which FAQ and Install had broken by following each other.
+         Reuses .rt-list — the site's label-plus-description list, a global class, not scoped to
+         #rt — rather than adding a second class that would style exactly the same thing. -->
+    <section class="section alt" id="next">
+        <div class="w">
+            <div class="section-label">What's next</div>
+            <h2 class="section-title">What comes next.<br><em>Nothing is settled yet.</em></h2>
+            <p class="section-sub">The V1 scope is complete, and none of what follows belongs to
+                it. These are some of the directions on the table — the list is not closed, none of
+                them is promised, and the order is not fixed. What owners ask for is what decides
+                it.</p>
+
+            <ul class="rt-list">
+                <li><span class="tag">Ready-to-flash image</span><span>Audiogravi<sup>ty</sup> as a
+                        complete system image, instead of an install onto a system you set up
+                        first.</span></li>
+                <li><span class="tag">Diretta</span><span>The transport protocol, alongside the
+                        HQPlayer NAA already supported.</span></li>
+                <li><span class="tag">AirPlay sending</span><span>Sending to AirPlay devices, not
+                        only receiving from them.</span></li>
+                <li><span class="tag">Multiroom</span><span>The same music, in step, in more than
+                        one room.</span></li>
+            </ul>
+
+            <p class="section-sub">If one of these matters more to you than the others, say so —
+                <a href="https://github.com/audiogravity/audiogravity.site/issues">open an issue</a>
+                or write to <a href="mailto:contact@audiogravity.app">contact@audiogravity.app</a>.
+            </p>
         </div>
     </section>
 
@@ -1411,7 +1562,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="logo">Audiogravi<sup>ty</sup></div>
-                    <div class="tagline">The conductor of your streamer. Every engine, every source, total control.
+                    <div class="tagline">A conductor, not a soloist. Every engine, every source, total control.
                     </div>
                     <div class="version"><a
                             href="https://github.com/audiogravity/audiogravity.site/blob/main/CHANGELOG.md">v0.9.47

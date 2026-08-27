@@ -7,6 +7,13 @@ covers the full story.
      section is generated from it (audiogravity.ops/scripts/sync-landing-faq.py).
      Edit here, then re-run the generator — never edit the landing FAQ by hand. -->
 
+## What does “Public beta” mean?
+
+That the V1 scope is complete: every feature described exists and runs today —
+nothing here is a mock-up or a roadmap item. What remains is correction,
+refinement and optimisation, not missing features. Bugs do turn up, and they get
+fixed — report anything you hit.
+
 ## What happens after the 30-day trial?
 
 The Starter Edition activates automatically — no action required. You keep full

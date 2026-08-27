@@ -1484,6 +1484,24 @@ nav {
     stroke: var(--ok)
 }
 
+/* The dashed frame marking what runs on the box, in the pipeline drawing. `fill: none` is
+   load-bearing, not tidiness: the frame is painted after the incoming links, and the fill
+   .pn rect gives every rectangle would blank out the four arrows that cross it. */
+.pn rect.own-r {
+    fill: none;
+    stroke: var(--warn);
+    stroke-dasharray: 5 4;
+    stroke-width: 1;
+    opacity: .5
+}
+
+.pn text.own-t {
+    font-size: 9px;
+    font-weight: 700;
+    fill: var(--warn);
+    letter-spacing: .04em
+}
+
 .pn text {
     fill: var(--text);
     font-family: var(--font);

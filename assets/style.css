@@ -1484,9 +1484,10 @@ nav {
     stroke: var(--ok)
 }
 
-/* The dashed frame marking what runs on the box, in the pipeline drawing. `fill: none` is
-   load-bearing, not tidiness: the frame is painted after the incoming links, and the fill
-   .pn rect gives every rectangle would blank out the four arrows that cross it. */
+/* The dashed frames marking what runs on the box, in the pipeline drawing (there are two:
+   HQPlayer sits between them and may run elsewhere). `fill: none` is load-bearing, not
+   tidiness: the frames are painted after the links, and the fill .pn rect gives every
+   rectangle would blank out the arrows that cross them. */
 .pn rect.own-r {
     fill: none;
     stroke: var(--warn);

@@ -642,9 +642,10 @@
                          catalogue, your NAS, your Core, your phone, the speaker.
                          The two middle nodes were one box labelled "HQPlayer NAA · upsample", which
                          credited the endpoint with work HQPlayer does — the NAA receives audio
-                         already processed. The frame cannot enclose the NAA as well, though it also
-                         runs on the box: it sits after HQPlayer, which may not. Its subtitle says
-                         so instead. -->
+                         already processed. The NAA runs on the box too, but ONE frame cannot hold
+                         both: HQPlayer sits between them and may run on another machine. Hence a
+                         second frame, carrying the SAME label — two regions, one box. Keep the two
+                         labels identical: that is what stops the reader seeing two boxes. -->
                     <path class="pl active" d="M145 38 C190 38 180 174 215 174" marker-end="url(#m1)" />
                     <path class="pl" d="M145 106 C190 106 180 174 215 174" marker-end="url(#m0)" />
                     <path class="pl" d="M145 174 L215 174" marker-end="url(#m0)" />
@@ -669,6 +670,13 @@
 
                     <g class="pn ag-box">
                         <rect x="202" y="88" width="181" height="172" rx="6" class="own-r" /><text x="292" y="104"
+                            text-anchor="middle" class="own-t">Audiogravi<tspan dy="-3"
+                                font-size="7">ty</tspan><tspan dy="3" font-size="9"> — your box</tspan></text>
+                    </g>
+                    <!-- Same padding as the frame above (13 aside, 27 top and bottom, label 16 below
+                         the top edge), so the two read as one convention rather than two drawings. -->
+                    <g class="pn ag-box">
+                        <rect x="612" y="117" width="156" height="114" rx="6" class="own-r" /><text x="690" y="133"
                             text-anchor="middle" class="own-t">Audiogravi<tspan dy="-3"
                                 font-size="7">ty</tspan><tspan dy="3" font-size="9"> — your box</tspan></text>
                     </g>

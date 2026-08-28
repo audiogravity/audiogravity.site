@@ -21,6 +21,32 @@ in its address that says which place it lives in, and playback follows the mark 
 guessing from the shape of the address. It is the same mechanism playlists already use, and
 it is what keeps a purchase playable on an account the catalogue would refuse.
 
+### Seventeen hundred playlists, and now a way through them
+
+HIGHRESAUDIO publishes 1762 editorial playlists. They reached the interface as a single
+list in no particular order, which is another way of saying they were unreachable. They
+sort them into four shelves — *New Releases*, *Recommended*, *Popular*, *Moods* — and a
+strip now picks one, with the sorting done on their side rather than by pulling the whole
+catalogue over to sift it here.
+
+It opens on **All**, deliberately. Going through the whole tree turned up fourteen
+playlists filed under no shelf — *Mr. Slowhand — Eric Clapton*, *In the Spirit of Jazz*,
+*The Sky is Crying* — old ones, from before the shelves existed, and among the best in the
+set. Offering only the four would have buried them for good, so the shelves narrow the
+list instead of carving it up.
+
+### HIGHRESAUDIO looked at the integration, and three things moved
+
+Their first feedback arrived within a day. Four of their shop shelves reach the interface
+with German names, and the English put on them here was invented — two of the four
+wrongly. They now read as HIGHRESAUDIO writes them: *Listening Tips*, *Top Albums*, *New
+Release*, *Recently Added*. Their genres and sub-genres arrived in the order their system
+happens to hold them, which is no order at all; both levels are now alphabetical, and so
+are the artists a search brings back. And a playlist finally looks like one: on every
+streaming source, a playlist card and a playlist row say the word, where before only the
+heading above the shelf did — *"It is very important that you differentiate between
+albums and playlists"*, they wrote, and they were right.
+
 ### An account with purchases and no subscription can sign in
 
 It was believed that HIGHRESAUDIO turned such an account away at the door, and the

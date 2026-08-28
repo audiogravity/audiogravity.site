@@ -7,6 +7,36 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The albums you bought from HIGHRESAUDIO, next to the ones you stream
+
+HIGHRESAUDIO sells albums as well as streaming them, and an album you bought is yours to
+play whether or not you keep a subscription. Audiogravi<sup>ty</sup> now shows them: a
+**Vault** button on the HIGHRESAUDIO source, beside Favorites, lists every purchase on the
+account and plays it like any other album — on the box, on a network renderer, through
+HQPlayer.
+
+Under the surface the purchases are a different place from the catalogue, with their own
+addresses, and the two do not answer for each other. So each purchase carries a small mark
+in its address that says which place it lives in, and playback follows the mark rather than
+guessing from the shape of the address. It is the same mechanism playlists already use, and
+it is what keeps a purchase playable on an account the catalogue would refuse.
+
+### An account with purchases and no subscription can sign in
+
+It was believed that HIGHRESAUDIO turned such an account away at the door, and the
+integration was written on that belief. Tried on one, it does not: HIGHRESAUDIO answers the
+sign-in with a refusal *and hands over a working session in the same breath* — one that
+lists the purchases and streams them all the way to the file. It was
+Audiogravi<sup>ty</sup> that read the refusal and threw the session away.
+
+It no longer does. Such an account signs in, the sources card says next to its name that it
+can play its purchases only, and the library offers it the Vault and nothing else — the
+favourites, the playlists, every shelf of the shop and the search would all refuse it, and a
+row of buttons that fail is worse than one button that works. Switch accounts on the sources
+card and the library follows at once, shelves and stars included — never the account that
+was signed in a moment ago. Whether HIGHRESAUDIO meant to label a
+working session as a failure is a question for them; the music plays either way.
+
 ### A box that was off told you the password was wrong
 
 It happened on iPhones and iPads, and nowhere else. Someone opened

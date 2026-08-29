@@ -7,6 +7,38 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The name, set in type
+
+The interface showed its own name as a picture. That picture asked for a typeface —
+Helvetica — that the machines Audiogravi<sup>ty</sup> runs on do not have, and it had never
+been converted into a drawing, so every box rendered the name in whatever its system
+offered instead. It looked right on the machine where the file was made, and only there.
+Dark mode had to repaint it with a filter, the way one inverts a photograph, because a
+picture cannot simply take a colour.
+
+The name is now written, in the typeface the interface already carries, exactly as the
+landing page writes it — the same weight, the same tight fit, the same small *ty*. It
+appears that way on the title bar, in the sidebar, on the sign-in card and in the credit
+line at the bottom of both screens. Sizes were matched to what the old picture occupied,
+so nothing on any screen has moved.
+
+### Light or dark, before you sign in
+
+The choice between the light and the dark palette was inside the configuration panel,
+which is behind the sign-in form. Someone starting the box at night therefore got the
+light one full in the face, and had to sign in before they could do anything about it.
+
+A small button now sits in the corner of the sign-in card: a moon when the page is light,
+a sun when it is dark — always showing where pressing it takes you. It changes the
+appearance only; which theme you use is still yours to pick in the panel, and the button
+merely flips that theme's palette. The choice is remembered, and applied before the page
+is drawn the next time, so a box you left in dark opens dark, with no white flash. On a
+phone where the interface is installed to the home screen, the status bar follows in the
+same instant.
+
+The badge above the form also stopped calling the box "API". It says **CORE**, which is
+what it is checking.
+
 ### A blank sleeve, with the picture already in hand
 
 An album bought from HIGHRESAUDIO played with no cover in the player — while the same

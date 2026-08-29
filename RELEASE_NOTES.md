@@ -7,6 +7,22 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The API reference is no longer served to the whole network
+
+Audiogravi<sup>ty</sup>'s core carries an interactive reference of its API — the page
+developers use to explore what a box can do. It was reachable by anyone who could reach
+the box: no password, no key, nothing. What it hands over is not an access — every
+operation still checks who is asking — but it is the complete map of the machine, down to
+the routes that handle sign-in, licences and updates. Read on a running box: 188 routes.
+
+It is now off unless you ask for it, on new installations and on existing ones alike, and
+"off" means the address answers *not found* rather than *not allowed*. The interface
+follows on its own: where the box does not serve the reference, the buttons that opened it
+are simply not there. If you want it — on a box you administer, on a network you trust —
+a single setting in the core's configuration brings it back, and the interface offers it
+again the next time it asks. One thing to know if you do: that page fetches its own code
+from the internet, so it stays blank on a box that has none.
+
 ### The name, set in type
 
 The interface showed its own name as a picture. That picture asked for a typeface —

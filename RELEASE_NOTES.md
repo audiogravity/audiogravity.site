@@ -18,9 +18,16 @@ picture cannot simply take a colour.
 
 The name is now written, in the typeface the interface already carries, exactly as the
 landing page writes it — the same weight, the same tight fit, the same small *ty*. It
-appears that way on the title bar, in the sidebar, on the sign-in card and in the credit
-line at the bottom of both screens. Sizes were matched to what the old picture occupied,
-so nothing on any screen has moved.
+appears that way on the screen shown while the app starts, on the title bar, in the
+sidebar, on the sign-in card and in the credit line at the bottom of both screens. Sizes
+were matched to what the old picture occupied, so nothing on any screen has moved.
+
+Retiring the picture turned up a small pile of files the interface believed it had.
+Several icons were listed under names nothing in the project has ever carried, so they
+were never really kept for offline use; notifications asked for an icon that does not
+exist and were drawn with the browser's own instead; and the picture itself was offered
+to phones as the application icon — a name five times wider than tall, where an icon is
+square. All of them are now checked automatically against what the box actually ships.
 
 ### Light or dark, before you sign in
 

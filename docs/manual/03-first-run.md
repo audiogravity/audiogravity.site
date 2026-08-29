@@ -25,6 +25,15 @@ and asks for the passkey directly, with *Use password instead* as the fallback.
 More accounts — family members, a read-only guest — can be added later from the
 **Admin** tab (see [7. Administration](07-administration.md#users--access)).
 
+**Light or dark, before you sign in.** A small button in the corner of the sign-in card
+switches the two — a moon when the page is light, a sun when it is dark; the icon always
+shows where pressing it takes you. It changes the *appearance* only: which look you use
+— *Minimal*, *Slate* or *Gravity* — is chosen later in Settings
+([7. Administration](07-administration.md#the-settings-panel)), and this button flips
+that look's palette. Your choice is remembered and applied before the page is drawn the
+next time, so a box you left in dark opens dark, with no white flash — which matters on a
+box you start at night.
+
 <img src="images/ios-login.webp" alt="The login screen: username and password, or one-tap sign-in with a passkey" width="360">
 
 ## 3. Install the audio engines

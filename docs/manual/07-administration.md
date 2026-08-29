@@ -42,7 +42,10 @@ The **gear** in the top bar opens the app-wide Settings panel:
 - **Export / Import Configuration** — download or replace `audio-config.json`, the
   services-and-profiles registry (see *Audio configuration* below).
 - **Theme** — three looks: *Minimal (Classic)*, *Slate (Modern)* and *Gravity (Bold &
-  Cosmic)* — plus a **Light/Dark Mode** toggle.
+  Cosmic)* — plus a **Light/Dark Mode** toggle. The light/dark switch is also on the
+  sign-in screen, so the choice can be made before signing in (see
+  [3. First run](03-first-run.md#2-sign-in--and-secure-your-account)); the look itself is
+  chosen here.
 - **Notifications** — subscribe this device to **push notifications** (see below).
 - **Compact Mode** — a denser layout. **Animations** — turns UI motion off
   (functional loading spinners keep animating so an operation never looks stuck).

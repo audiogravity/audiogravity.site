@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.48 — 2026-08-29
+
 ### The albums you bought from HIGHRESAUDIO, next to the ones you stream
 
 HIGHRESAUDIO sells albums as well as streaming them, and an album you bought is yours to

@@ -80,6 +80,11 @@ points conduct.
 **upmpdcli** — the bridge that presents MPD as a UPnP renderer, letting other apps
 cast to the box.
 
+**Vault** — HIGHRESAUDIO's name for the albums you have **bought** from them, as
+opposed to the ones you stream on a subscription. They play in full without being
+downloaded, and they remain yours whether or not a subscription is running. In
+Audiogravi<sup>ty</sup> the Vault is a shelf of its own on the HIGHRESAUDIO source.
+
 ---
 
 *Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are

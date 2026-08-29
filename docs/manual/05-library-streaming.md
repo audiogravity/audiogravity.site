@@ -75,17 +75,29 @@ official API, no redirect, no copy-paste). Native-master FLAC up to 24-bit /
 
 #### Browsing HIGHRESAUDIO
 
-The pill bar carries **Favorites**, **Genres**, **Playlists**, and then every shop
-category HIGHRESAUDIO publishes — fourteen of them, in their order, under their own
-names: the label highlights (ECM, Pentatone, Sony, Universal, Warner), the
+The pill bar carries **Favorites**, **Vault**, **Genres**, **Playlists**, and then
+every shop category HIGHRESAUDIO publishes — fourteen of them, in their order, under
+their own names: the label highlights (ECM, Pentatone, Sony, Universal, Warner), the
 bestsellers, the editorial tips, what has just been added. The list comes from
 HIGHRESAUDIO itself, so a shelf they add appears without an update to
 Audiogravi<sup>ty</sup>.
 
 Four of their titles come back in German whatever language is asked for — a quirk of
 their API that their own application works around the same way. Those four are shown
-translated: *Neue Alben hinzugefügt* → **Recently added**, *Hörtipps* → **Tips**, *Top
-Alben* → **Top Album**, *Neuheiten* → **New releases**.
+in HIGHRESAUDIO's own English: *Neue Alben hinzugefügt* → **Recently Added**,
+*Hörtipps* → **Listening Tips**, *Top Alben* → **Top Albums**, *Neuheiten* → **New
+Release**.
+
+**Vault** is what you have **bought** from HIGHRESAUDIO, as opposed to what you stream.
+The albums play in full without being downloaded, like any other — to your local
+output, to a network renderer, through HQPlayer — and they stay yours whether or not a
+subscription is running.
+
+That last point has a consequence worth knowing: an account that only ever bought
+albums, with no subscription at all, signs in perfectly well and is offered the Vault
+**alone**. The shop, the favourites, the genres and the playlists would all refuse it,
+so a bar offering them would only offer buttons that fail. The sources card says as
+much next to the account name.
 
 **Genres** is HIGHRESAUDIO's second way of arranging the same catalogue — 26 genres
 and 186 sub-genres. It opens a second strip rather than lengthening the shelf bar:
@@ -96,9 +108,16 @@ standing for the whole genre. The heading above the albums says where you are �
 **Playlists** opens the same second strip with two collections: **Editorial**, the
 selections HIGHRESAUDIO publishes, and **Mine**, the playlists belonging to your
 account. A playlist behaves like an album — open it to see its tracks, or send the
-whole thing to the queue in one gesture. Creating or editing playlists is not
+whole thing to the queue in one gesture — and says *Playlist* on its card, so a
+selection is never mistaken for a record. Creating or editing playlists is not
 available: what HIGHRESAUDIO has made is readable, what you make stays where you made
 it.
+
+The editorial collection runs to more than seventeen hundred selections, so a third
+strip sorts them onto HIGHRESAUDIO's own shelves — **New Releases**, **Recommended**,
+**Popular** and **Moods** — with **All** at the front, where it opens. All is not
+merely a convenience: a handful of the older selections are filed under no shelf at
+all, and the unfiltered view is the only one that holds them.
 
 #### Narrowing a HIGHRESAUDIO search
 

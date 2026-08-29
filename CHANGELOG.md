@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] An album the cover catalogues have never heard of showed no cover at all — even holding the picture.** Reported on HIGHRESAUDIO's Vault, where *HRA Mixed Up Sampler 2015.1* played with a blank sleeve in the player while the very same artwork appeared, correctly, on the *Up next* row two centimetres below. The queue row asks for the cover with the bare image URL; the player asks with the same URL plus the artist and album as a fallback. That fallback was the whole difference. Covers are cached twice — once per track, once per album so one fetch serves a whole record — and the album entry was being consulted **before** the URL the source had handed over. Cached as a miss it answered "no cover" outright, so the picture was never fetched: measured on the box at under 2 ms per refusal, while the URL served 83 kB of JPEG the moment it was asked directly. A miss on that entry only ever meant *MusicBrainz and iTunes know nothing about this album* — true of a promotional sampler, and of any obscure release on any source, and no reason to ignore artwork the service itself provided. The album entry may now answer only when it holds a cover; a miss still spares the two slow catalogue searches, which is what it was cached for. And the first track that resolves its own artwork writes it back, repairing the album for every other track instead of leaving them to wait out the cache.
+
 ## [0.9.48] - 2026-08-29
 
 ### Added

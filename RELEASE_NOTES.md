@@ -7,7 +7,25 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A blank sleeve, with the picture already in hand
+
+An album bought from HIGHRESAUDIO played with no cover in the player — while the same
+artwork sat, perfectly visible, on the *Up next* row just below it. One record, one
+image, two answers.
+
+The two rows do not ask the same way. The queue asks with the picture's address alone;
+the player asks with the address *and* the artist and album, as a fallback for when
+there is no picture. That fallback turned out to be the problem. Covers are remembered
+twice — once for the track, once for the album, so one download serves a whole record —
+and the album entry was consulted before the address the service had provided. Once it
+was marked "nothing found", it answered on behalf of the album and the picture was
+never fetched at all.
+
+"Nothing found" only ever meant that the public cover catalogues had never heard of the
+album — which is simply true of a promotional sampler, and of plenty of fine obscure
+records on any source. It was never a reason to ignore artwork the service itself
+handed over. The album memory now answers only when it actually holds a cover, and the
+first track that finds its own repairs the album for all the others.
 
 ---
 

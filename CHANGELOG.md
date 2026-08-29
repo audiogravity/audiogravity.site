@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.49] - 2026-08-29
+
 ### Added
 - **[ui] Light or dark, decided before signing in.** The appearance switch lived in the configuration panel, which is behind the sign-in form: someone starting the box at night got the light palette full in the face until they were through it, and a reader who prefers dark had no way to say so on the one screen they always meet. A button now sits in the corner of the sign-in card — a moon on a light page, a sun on a dark one, always naming where pressing it takes you. It switches the *appearance*, not the theme: which of Minimal, Slate or Gravity applies is still chosen in the panel, and the button only flips that theme's palette. The choice is remembered where the pre-paint script reads it, so the next cold load opens dark with no white flash, and the browser's own chrome — the status bar of an app launched from a phone's home screen — follows in the same instant. The sequence behind both controls is now written once and shared, which is what the panel's switch had that the new button was missing: the event that repaints that chrome inside the application. Two faults found on the way, in code that had only ever run before the first paint and was now being called again on every flip: two thirds of the Safari remedy were absent, so a home-screen launch would have kept the old status-bar tint; and an unknown theme name — themes are extensible — threw *after* the palette and the stored preference had changed, leaving the switch half applied.
 

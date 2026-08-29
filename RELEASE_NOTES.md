@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.49 — 2026-08-29
+
 ### The API reference is no longer served to the whole network
 
 Audiogravi<sup>ty</sup>'s core carries an interactive reference of its API — the page

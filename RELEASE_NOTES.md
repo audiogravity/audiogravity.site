@@ -7,7 +7,22 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The services you browse are shown, not spelled
+
+Above the album grid, the line that tells you which source you are browsing named it in
+capitals: QOBUZ, TIDAL, ROON. HIGHRESAUDIO was already an exception — it appeared as its
+own logo, because that logo is simply its name drawn. The other three now do the same,
+each with the artwork its owner publishes, in a version for the light theme and one for
+the dark. They are set at a size that matches the weight of the words around them rather
+than the size of the file, which is why a very wide mark like Tidal's does not tower over
+the rest.
+
+The small green dot that used to pulse in front of that line has gone. It could only ever
+be green: it announced that the source was live at the exact moment when that cannot be
+in doubt — you have just picked it, and its covers are already on screen. A light that
+never changes is one you stop believing, and this one would have been in the way the day
+something genuinely needed reporting. It was also animating continuously on a machine
+whose spare capacity belongs to the music.
 
 ---
 

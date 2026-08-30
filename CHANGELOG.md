@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui] A streaming service is now shown by its own mark, and the library stopped pretending to report a state.** HIGHRESAUDIO already appeared as its logo above the album grid, because that logo *is* its name written out; Qobuz, Tidal and Roon were still spelled in capitals beside it. All four now carry their own artwork, in a light and a dark variant apiece, sized on the height of their lettering rather than on the height of their file — their proportions run from 1.4:1 to 7.5:1, so a single height would have drawn a Tidal five times wider than a HIGHRESAUDIO. Each stays an `<img>` with its name as alt text, never a CSS background: a background paints nothing at all when the file is missing or the browser is in forced-colours mode, and the line would then be empty with no way to tell which source is open. The green pulsing dot that opened that line is gone with them. It had exactly one value — there was no state it could report — so it announced "live" at the one moment that is true by construction: you have just chosen the source and its covers are already on screen. A status light that never changes is a word spent in advance, unavailable the day a source really is in difficulty; and it animated for as long as the page stayed open, on a machine whose CPU budget is a first-order constraint.
+
 ## [0.9.49] - 2026-08-29
 
 ### Added

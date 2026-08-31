@@ -31,6 +31,43 @@ genres already were at their request. The order they arrive in follows no rule t
 read — not the identifier, not the alphabet, not the size of each group — and a row nobody
 can predict is harder to use than one that reads left to right.
 
+### Searching HIGHRESAUDIO, with the form they built
+
+Typing *Queen* into the search box returned a list with little to do with Queen, and
+filling in a filter while the box was empty did nothing at all — no result, and no message
+saying why. Both of those were ours, not theirs.
+
+Their advanced search needs no words at all: asking for the label *ECM* on its own answers
+with twenty albums. The box refused to ask below three characters, a rule that belongs to
+their *quick* search and had been carried onto this one by mistake — and the screen only
+ran a search when the box held something, so filling in a filter beside an empty box was
+answered by silence.
+
+There is now an **Advanced search** panel, folded away until you want it, holding the eight
+criteria their own application offers: the words you type, plus artist, composer, label,
+year, format, mood, and the order results come back in. It is applied by its **Search**
+button rather than as you type — a filtered search can take HIGHRESAUDIO the better part of
+a minute the first time it is asked, and seconds thereafter, so asking once is the point.
+
+Two things are worth knowing, because they are theirs and we chose not to paper over them.
+**Year** is the year an album was put online, not the year it was recorded: *Innuendo* is a
+1991 record and answers to 2026 — their application calls that field Year, and so does
+this one. And choosing a **format** makes their catalogue ignore the words you typed: ask
+for *queen* in FLAC 192 and you get the same fifty albums as any other word. Their own
+application behaves that way; a search here that quietly behaved differently would be the
+larger surprise. They have been told.
+
+### A star and a plus sign, side by side again
+
+In the search results, an album from a streaming service carries two controls at the end of
+its line: the star that adds it to your favourites, and the `+` that puts it in the queue.
+There was room for one. The `+` fell to a second line and came back at the far left, under
+the sleeve, with the star left alone on the right.
+
+It had been like that since mid-July, on Qobuz, Tidal and HIGHRESAUDIO alike — the search
+results are the only place in the application where a line carries both. They now sit
+together, where they belong.
+
 ### Playlist covers are no longer cut in half
 
 HIGHRESAUDIO's playlists carry a banner, twice as wide as it is tall — measured on

@@ -7,6 +7,42 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### HIGHRESAUDIO, arranged the way HIGHRESAUDIO asked
+
+Browsing HIGHRESAUDIO meant reading a single row of eighteen buttons, in whatever order
+their catalogue happened to publish them, with most of the shop categories off the edge of
+the screen. Their own team said so, and then described the menu they wanted.
+
+That menu is now there: seven shelves — Favorites, Vault, Categories, Charts, Playlists,
+Labels, Genres — each opening its own row underneath. Three of them are new. **Charts** is
+the ranking their front page shows. **Labels** is the seven imprints they name, 2L and
+audite among them. And **Playlists** now offers *Genre* and *Theme* beside the editorial
+selections and your own, which is how they file those selections themselves.
+
+Nothing was hidden along the way. Their catalogue publishes fourteen categories and all
+fourteen are there — the six they listed first, in their order, the rest behind. Three of
+them appear nowhere in their plan, and each one turned out to hold real albums, so taking
+them out would have made part of the shop unreachable. One shelf they asked for is
+missing: two of its four entries duplicate categories you already have, and the other two
+point at data their API does not serve. That question is with them.
+
+The genres and themes of their playlists are now listed alphabetically, as their catalogue
+genres already were at their request. The order they arrive in follows no rule that can be
+read — not the identifier, not the alphabet, not the size of each group — and a row nobody
+can predict is harder to use than one that reads left to right.
+
+### Playlist covers are no longer cut in half
+
+HIGHRESAUDIO's playlists carry a banner, twice as wide as it is tall — measured on
+thirty-two of them, from the oldest in their catalogue to the newest, and every one the
+same shape. They were being shown in a square frame, which kept the middle and discarded
+the rest: on artwork composed across its width, what disappeared was the title and the
+label's mark.
+
+The frame now takes the shape of the picture. In the grid the card is simply shorter; in
+the lists below it the rows keep the height they have always had and the thumbnail widens
+instead, so a list holding both shapes never changes rhythm from one line to the next.
+
 ### The services you browse are shown, not spelled
 
 Above the album grid, the line that tells you which source you are browsing named it in

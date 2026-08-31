@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.50 — 2026-08-31
+
 ### HIGHRESAUDIO, arranged the way HIGHRESAUDIO asked
 
 Browsing HIGHRESAUDIO meant reading a single row of eighteen buttons, in whatever order

@@ -75,11 +75,15 @@ official API, no redirect, no copy-paste). Native-master FLAC up to 24-bit /
 
 #### Browsing HIGHRESAUDIO
 
-The pill bar carries **Favorites**, **Vault**, **Genres**, **Playlists**, and then
-every shop category HIGHRESAUDIO publishes — fourteen of them, in their order, under
-their own names: the label highlights (ECM, Pentatone, Sony, Universal, Warner), the
-bestsellers, the editorial tips, what has just been added. The list comes from
-HIGHRESAUDIO itself, so a shelf they add appears without an update to
+The bar carries **seven shelves** — **Favorites**, **Vault**, **Categories**,
+**Charts**, **Playlists**, **Labels**, **Genres** — and each one opens a strip of its
+own underneath. HIGHRESAUDIO asked for this arrangement and approved it: before, a
+single row of eighteen buttons ran end to end in whatever order their API published
+them, with most of the shop off the edge of the screen.
+
+**Categories** holds the fourteen shop categories they publish — the six they named
+first, in their order, then the other eight in theirs. The list comes from
+HIGHRESAUDIO itself, so a category they add appears without an update to
 Audiogravi<sup>ty</sup>.
 
 Four of their titles come back in German whatever language is asked for — a quirk of
@@ -87,6 +91,12 @@ their API that their own application works around the same way. Those four are s
 in HIGHRESAUDIO's own English: *Neue Alben hinzugefügt* → **Recently Added**,
 *Hörtipps* → **Listening Tips**, *Top Alben* → **Top Albums**, *Neuheiten* → **New
 Release**.
+
+**Charts** is the ranking their own front page shows.
+
+**Labels** is the seven imprints HIGHRESAUDIO names — *2L* and *audite* among them.
+Five of the seven serve the same albums as the matching *… Highlights* category: that
+is their catalogue, not a fault, and nothing is hidden to make the two look different.
 
 **Vault** is what you have **bought** from HIGHRESAUDIO, as opposed to what you stream.
 The albums play in full without being downloaded, like any other — to your local
@@ -105,9 +115,11 @@ pick a genre and the strip becomes that genre plus its own subdivisions, with **
 standing for the whole genre. The heading above the albums says where you are —
 *Soundtrack · Original Score*.
 
-**Playlists** opens the same second strip with two collections: **Editorial**, the
-selections HIGHRESAUDIO publishes, and **Mine**, the playlists belonging to your
-account. A playlist behaves like an album — open it to see its tracks, or send the
+**Playlists** opens the same second strip with four ways in. **Editorial** is the
+selections HIGHRESAUDIO publishes and **Mine** the playlists belonging to your
+account; **Genre** and **Theme** are the two ways HIGHRESAUDIO files those same
+editorial selections, offered here as they file them rather than as a third
+collection. A playlist behaves like an album — open it to see its tracks, or send the
 whole thing to the queue in one gesture — and says *Playlist* on its card, so a
 selection is never mistaken for a record. Creating or editing playlists is not
 available: what HIGHRESAUDIO has made is readable, what you make stays where you made
@@ -121,17 +133,31 @@ all, and the unfiltered view is the only one that holds them.
 
 #### Narrowing a HIGHRESAUDIO search
 
-Two fields under the search box, for the two questions the words alone cannot answer:
-**Composer**, which appears on no other field and is how a classical recording is
-found, and **Label** — ECM, Pentatone — which is how a collector browses. They narrow
-the search rather than replacing it, and the ordinary search is untouched while both
-are empty. HIGHRESAUDIO's catalogue cannot be searched on fewer than three characters,
-and says so rather than answering with nothing.
+Under the search box, **Advanced search** unfolds the form HIGHRESAUDIO's own
+application offers, criterion for criterion: **Artist**, **Composer**, **Label**,
+**Year**, **Format**, **Mood**, and the **order** results come back in. The eighth
+criterion is the search box itself — the words you type — so there is one text field,
+not two.
 
-Two filters HIGHRESAUDIO offers are deliberately absent: choosing an audio **format**
-makes their API discard the words typed altogether, and a **mood** takes about a minute
-to answer the first time. Both have been reported to them, and both return the day
-they answer differently.
+A criterion is a search on its own: you can leave the box empty, ask for the label
+*ECM* and press **Search**. The form is applied by that button rather than as you
+type, because a filtered search is the one slow thing HIGHRESAUDIO does — the first
+time a given search is asked it can take the better part of a minute, and a second or
+two every time after. When it runs out of patience the screen says so and invites you
+to ask again, which usually answers at once.
+
+Three things behave the way HIGHRESAUDIO's catalogue behaves, and are worth knowing
+before they surprise you. **Year** is the year an album was put *online*, not the year
+it was recorded: *Innuendo* is a 1991 record and answers to 2026. Choosing a
+**format** makes their catalogue ignore the words typed — ask for *queen* in FLAC 192
+and you get the same fifty albums as any other word — which is what their own
+application does, so this one behaves like the app you already know. And a **mood**
+currently changes nothing: measured on their catalogue, the same albums come back with
+it, without it, and with a mood of the opposite family. All three have been reported
+to them, and the form follows the day their catalogue answers differently.
+
+An **order** arranges an answer, it does not produce one: choosing one on its own
+returns nothing, and the form says so rather than searching.
 
 ### Favorites — star an album from the app
 

@@ -178,6 +178,21 @@ footer.man-foot,
     color: var(--text4)
 }
 
+/* A link to a section lands the heading at the very top of the viewport, which is exactly
+   where .man-top sits — so the title, and the first line under it, arrive hidden behind the
+   bar and the reader believes the link is broken. Every anchor in the manual is concerned,
+   including the ones chapters use to point at each other.
+
+   The value is the bar's own height plus a little air, NOT a step of the spacing scale: it
+   is a compensation for a fixed piece of chrome, and it has to follow that chrome if it ever
+   changes height. `:target` covers anything else a link may point at — a paragraph, a table
+   row — that carries an id today or tomorrow. */
+.man-md h2[id],
+.man-md h3[id],
+.man-md :target {
+    scroll-margin-top: calc(52px + env(safe-area-inset-top, 0px) + 16px)
+}
+
 .man-md h2 {
     margin: 48px 0 14px;
     padding-bottom: 8px;

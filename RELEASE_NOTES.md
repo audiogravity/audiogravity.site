@@ -7,7 +7,36 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Your box answers to its name, so its address can change without taking the app with it
+
+Until now the way to reach your box was its address on the network — and that address
+belongs to your router, which is free to hand out a different one. The day it does, every
+bookmark stops working, and so does the icon on your phone's home screen: an app added to
+the home screen remembers the address it was added from, for ever, and a full-screen app
+has no address bar and no error page. It simply opens on nothing.
+
+Every box has always had a second address — its own name, `<box>.local` — and its
+certificate has always promised it. What was missing was the small service that answers to
+that name. It came along by accident if you had installed AirPlay, and not at all
+otherwise. It is now installed with the rest, and two things were corrected on the way: the
+name is built the way that service actually publishes it, and a box whose certificate names
+something else now reissues it — the authority your phones were told to trust is left
+alone, so nothing has to be set up again.
+
+Point your browser and your home-screen icon at `https://<your box>.local` rather than at
+its address, and a change of address stops mattering.
+
+### The report you send us now carries the facts we ask you for
+
+When something goes wrong with the certificate — a phone that will not open the interface
+any more — the questions are always the same, and the report did not answer them: when the
+certificate was issued, when the box's own authority was created, whether its address is
+leased or fixed, and what name it announces. Five such facts were added, and the report now
+also points out when the name a box announces is not the one its certificate carries.
+
+Two lines were also saying something they did not mean, and both cost time. One of them
+read like a refusal from our licence server when it only meant "this box is on a trial and
+holds no licence file".
 
 ---
 

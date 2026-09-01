@@ -173,7 +173,11 @@ the app through that URL and the passkey / notification features light up.</p>
 automatically). This is the standard self-hosting pattern — any guide on &quot;Let's
 Encrypt DNS-01 + reverse proxy&quot; applies as-is.</p>
 <h2 id="first-contact">First contact</h2>
-<p>Open <code>https://&lt;box-ip&gt;</code> in a browser. On first run, Audiogravi<sup>ty</sup> activates a
+<p>Open <code>https://&lt;box-ip&gt;</code> in a browser — or <code>https://&lt;name&gt;.local</code>, where <code>&lt;name&gt;</code> is the
+first part of the box's hostname (<code>musics</code> → <code>musics.local</code>). The box announces that
+name on the network, and unlike its address the name does not change when the router
+hands out a new lease, so it is the one to bookmark and the one to add the app from.
+On first run, Audiogravi<sup>ty</sup> activates a
 <strong>30-day trial</strong> automatically — no action required — and you sign in with the
 <strong>default admin account</strong> (then change its password right away — see
 <a href="03-first-run#2-sign-in--and-secure-your-account">3. First run</a>). Continue to

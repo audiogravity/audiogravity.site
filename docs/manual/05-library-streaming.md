@@ -52,17 +52,88 @@ a disconnect action.
 ### Qobuz
 
 Tap **Connect** — an **OAuth2** login opens; sign in and Qobuz redirects back
-automatically, and the card switches to **Connected**. Browse via category pills —
-**Favorites**, **New Releases**, **Selection**, **Playlists** — plus full search.
-Hi-Res up to 24-bit / 192 kHz.
+automatically, and the card switches to **Connected**. Hi-Res up to 24-bit / 192 kHz,
+plus full search.
+
+#### Browsing Qobuz
+
+The bar carries **five shelves** — **Favorites**, **Purchases**, **Shelves**,
+**Playlists**, **Genres** — and each one opens a strip of its own underneath, the
+same arrangement as HIGHRESAUDIO's.
+
+**Shelves** holds the nine worth browsing: **New Releases**, **All New Releases**,
+**Selection**, **Qobuzissims**, **Press Awards**, **Best Sellers**, **Most Streamed**,
+**Ideal Discography** and **Harmonia Mundi**. Qobuz names fifteen. Six are left out
+because they have nothing of their own to show: one answers nothing at all, one is the
+same fifteen albums as *Most Streamed* under a second name, and the remaining four
+return one undifferentiated shelf matching none of the four names — so none of them
+could carry a truthful label.
+
+**Purchases** is what you have **bought** from Qobuz, as opposed to what you stream —
+their counterpart to the HIGHRESAUDIO vault. A bought album plays like any other, to
+your local output, to a network renderer or through HQPlayer, and it stays yours
+whether or not a subscription is running.
+
+**Playlists** opens a second strip with two ways in: **Editorial**, the selections
+Qobuz publishes, and **Mine**, the playlists belonging to your account. Qobuz files
+its editorial selections under two names that answer the same playlists, so there is
+one shelf here and not two. A playlist behaves like an album — open it for its tracks
+or send the whole thing to the queue — and says *Playlist* on its card.
+
+**Genres** is Qobuz's second way of arranging the same catalogue — **13 genres and 78
+sub-genres**, none of which were reachable before. A genre is not a shelf on Qobuz: it
+only ever narrows one, so the genre grid browses the **Selection**. Pick a genre and
+the strip becomes that genre plus its own subdivisions, with **All** standing for the
+whole genre, and the heading above the albums says where you are. Two of the thirteen
+publish a single sub-genre or none at all — that is their catalogue, not a fault.
+
+> **There is no advanced search on Qobuz**, and not by oversight: their search accepts
+> a genre and then disregards it — four queries crossed with four genres each returned
+> the same ten albums, filtered or not — and does the same with format, release type
+> and ordering. Narrowing on our side would only filter the page of fifty already
+> fetched instead of the catalogue, which reads as a search quietly losing records.
 
 ### Tidal
 
 Tidal uses the **PKCE** flow: tap **Connect**, sign in, and Tidal lands on a fixed
 redirect page (`tidal.com/android/login/auth?code=…`) that a web app can't intercept —
 so **copy that full URL** from the address bar, paste it back into the Tidal card and
-tap **Finish login**. You only do this once. Lossless FLAC (HiFi / HiFi Plus);
-Favorites, New Releases, Charts, editorial playlists, in-track seek.
+tap **Finish login**. You only do this once. Lossless FLAC (HiFi / HiFi Plus), with
+in-track seek.
+
+#### Browsing Tidal
+
+The bar carries **six shelves** — **Favorites**, **Shelves**, **Playlists**,
+**Genres**, **Moods**, **Explore** — each opening a strip of its own, as
+HIGHRESAUDIO's and Qobuz's do.
+
+**Shelves** is the catalogue's own list, read from Tidal rather than written here, so
+a shelf they add appears without an update to Audiogravi<sup>ty</sup>. A shelf holding
+nothing is left out, and that is settled by asking rather than by believing Tidal:
+one of theirs declares it has albums and answers an error, while another declares the
+same and holds two hundred and eighty-one playlists — so taking their word for it
+would show one dead button and hide one real shelf.
+
+**Playlists** gathers Tidal's three surfaces on one strip: the selections their
+editors publish, the playlists on your account, and the **charts** — *TIDAL's Top
+Hits* and the per-genre hit lists beside it.
+
+**Genres** brings **twenty**, none of them reachable before. They are one level deep —
+Tidal publishes no sub-genres — so this strip does not drill the way Qobuz's and
+HIGHRESAUDIO's do.
+
+**Moods** holds playlists and never albums, which is how Tidal files them. It is the
+shelf HIGHRESAUDIO has and Qobuz publishes nothing for.
+
+**Explore** opens Tidal's own navigation: **42 entries**, among them **HiRes**, seven
+**decades** from the 1950s to the 2010s, **52 record labels** and their full genre
+pages. A page there holds either further pages — *Record Labels* leads to 52 — which
+the strip drills in place the way the genres do, or sections of content, which open on
+a strip of their own. Each section scrolls on properly rather than stopping at a first
+dozen covers.
+
+Two things Tidal does not have, and that are therefore absent here: **purchases**,
+since it sells nothing, and **sub-genres**.
 
 ### HIGHRESAUDIO
 

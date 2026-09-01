@@ -119,7 +119,11 @@ Encrypt DNS-01 + reverse proxy" applies as-is.
 
 ## First contact
 
-Open `https://<box-ip>` in a browser. On first run, Audiogravi<sup>ty</sup> activates a
+Open `https://<box-ip>` in a browser — or `https://<name>.local`, where `<name>` is the
+first part of the box's hostname (`musics` → `musics.local`). The box announces that
+name on the network, and unlike its address the name does not change when the router
+hands out a new lease, so it is the one to bookmark and the one to add the app from.
+On first run, Audiogravi<sup>ty</sup> activates a
 **30-day trial** automatically — no action required — and you sign in with the
 **default admin account** (then change its password right away — see
 [3. First run](03-first-run.md#2-sign-in--and-secure-your-account)). Continue to

@@ -312,6 +312,17 @@ configuration file is Audiogravi<sup>ty</sup>-managed or hand-written, whether e
 account is signed in, the declared music library and whether MPD has actually indexed
 it — and the configuration files themselves.
 
+It also carries what a **certificate** incident turns on: the day the served
+certificate was **issued** and not only the day it expires, when the box's own
+**authority** was created and its fingerprint — an upgrade never replaces that
+authority, so those two tell *"the authority changed and every device stopped at
+once"* apart from *"this one device was never set up"* — whether each interface's
+address is **leased or fixed**, which is whether it can still move, the **name the box
+announces**, asked of the announcing service itself rather than guessed from the
+hostname, and the **date** of the last self-update. When the announced name is not one
+the certificate carries, the report says so on the spot: both facts were already in
+it, two sections apart, and nobody compares them by eye.
+
 **When the report cannot answer, it says so rather than guessing.** A check that could
 not be run reads *unknown* and names what stopped it; a service that is not installed on
 your box is called absent, instead of being described from the settings it would have

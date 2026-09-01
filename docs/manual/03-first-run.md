@@ -239,6 +239,13 @@ Audiogravi<sup>ty</sup> is an installable web app (PWA): added to your home scre
 opens **fullscreen**, in its own window, with the app icon. On a self-signed setup,
 do step 7 first — an untrusted certificate is what stops the app from installing.
 
+> **Add it from the box's name, not from its address** — `https://<name>.local`, where
+> `<name>` is the first part of the hostname. An installed app reopens for ever the
+> address it was added from, with no address bar to correct it: the day the router
+> hands the box a different address, an icon added on the address stops opening, while
+> one added on the name follows the box. See
+> [9. Troubleshooting](09-troubleshooting.md#a-bookmark-or-the-home-screen-icon-opens-on-nothing).
+
 - **Android** — open the site in Chrome and accept the **Install app** prompt (or
   browser menu → *Add to Home screen*). The installed app also honours the
   [Portrait Lock](04-listening.md#portrait-lock) at the OS level. (On a self-signed

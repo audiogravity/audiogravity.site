@@ -277,6 +277,29 @@ is reasonable, but it should be a switch you turn on knowingly rather than a def
   are listed in
   [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer).
 
+## A bookmark, or the home-screen icon, opens on nothing
+
+Almost always the router has handed the box a different address. A bookmark — and above
+all an **installed app icon** — reopens for ever the address it was added from, and an
+app window has no address bar and no error page to say so: it simply fails to open.
+
+Every box also answers to **its own name**, `https://<name>.local`, where `<name>` is
+the first part of its hostname — a box called `musics` answers to `musics.local`, and
+so does one called `musics.1`. That name follows the box when its address changes.
+**Add the app from the name rather than from the address** and the problem does not
+come back.
+
+- **The name doesn't answer** — names are announced over multicast (mDNS), so the
+  device asking must be on the **same subnet**: another VLAN needs an mDNS repeater on
+  the router, and some access points filter multicast. On the same network it resolves
+  with nothing to install on iOS, macOS and Windows, and on most Android versions.
+- **The certificate warning appears on the name** — a box installed before this was
+  reliable may hold a certificate issued for its address alone. Upgrading reissues it
+  to carry the name; the **authority** you trusted is not replaced, so no phone or
+  computer of the house has to be set up again.
+- **You still need the address** — your router's client list has it, and the installer
+  printed it at the end of the install.
+
 ## The browser warns about the certificate, or the app won't install
 
 On a self-signed setup the box signs its own certificate, so no browser knows it
@@ -302,9 +325,9 @@ until you say so.
   detected and **left untouched**: no authority is created, nothing is published, and
   renewal stays with whatever issues it. The box only steps in if that certificate has
   actually expired, or carries no `subjectAltName` (which no browser accepts).
-- **You changed the box's address** — the certificate is reissued automatically for
-  the new one, and the authority does not change, so devices that already trust it
-  need nothing.
+- **You changed the box's address, or its name** — the certificate is reissued
+  automatically to carry both, and the authority does not change, so devices that
+  already trust it need nothing.
 
 ## A control snaps back, or an action says it failed
 

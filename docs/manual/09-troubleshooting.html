@@ -304,6 +304,27 @@ HQPlayer, streaming services included — the formats it accepts, and those it d
 are listed in
 <a href="06-outputs-engines#what-can-and-cannot-go-through-hqplayer">6. Outputs &amp; engines</a>.</li>
 </ul>
+<h2 id="a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</h2>
+<p>Almost always the router has handed the box a different address. A bookmark — and above
+all an <strong>installed app icon</strong> — reopens for ever the address it was added from, and an
+app window has no address bar and no error page to say so: it simply fails to open.</p>
+<p>Every box also answers to <strong>its own name</strong>, <code>https://&lt;name&gt;.local</code>, where <code>&lt;name&gt;</code> is
+the first part of its hostname — a box called <code>musics</code> answers to <code>musics.local</code>, and
+so does one called <code>musics.1</code>. That name follows the box when its address changes.
+<strong>Add the app from the name rather than from the address</strong> and the problem does not
+come back.</p>
+<ul>
+<li><strong>The name doesn't answer</strong> — names are announced over multicast (mDNS), so the
+device asking must be on the <strong>same subnet</strong>: another VLAN needs an mDNS repeater on
+the router, and some access points filter multicast. On the same network it resolves
+with nothing to install on iOS, macOS and Windows, and on most Android versions.</li>
+<li><strong>The certificate warning appears on the name</strong> — a box installed before this was
+reliable may hold a certificate issued for its address alone. Upgrading reissues it
+to carry the name; the <strong>authority</strong> you trusted is not replaced, so no phone or
+computer of the house has to be set up again.</li>
+<li><strong>You still need the address</strong> — your router's client list has it, and the installer
+printed it at the end of the install.</li>
+</ul>
 <h2 id="the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</h2>
 <p>On a self-signed setup the box signs its own certificate, so no browser knows it
 until you say so.</p>
@@ -328,9 +349,9 @@ copy of the old certificate you had installed on a phone can simply be removed.<
 detected and <strong>left untouched</strong>: no authority is created, nothing is published, and
 renewal stays with whatever issues it. The box only steps in if that certificate has
 actually expired, or carries no <code>subjectAltName</code> (which no browser accepts).</li>
-<li><strong>You changed the box's address</strong> — the certificate is reissued automatically for
-the new one, and the authority does not change, so devices that already trust it
-need nothing.</li>
+<li><strong>You changed the box's address, or its name</strong> — the certificate is reissued
+automatically to carry both, and the authority does not change, so devices that
+already trust it need nothing.</li>
 </ul>
 <h2 id="a-control-snaps-back-or-an-action-says-it-failed">A control snaps back, or an action says it failed</h2>
 <p>Audiogravi<sup>ty</sup> reads the player's answer before showing a command as done, so a

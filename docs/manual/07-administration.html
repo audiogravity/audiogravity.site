@@ -341,6 +341,16 @@ box playing correctly, until something says so. It also carries whether each
 configuration file is Audiogravi<sup>ty</sup>-managed or hand-written, whether each streaming
 account is signed in, the declared music library and whether MPD has actually indexed
 it — and the configuration files themselves.</p>
+<p>It also carries what a <strong>certificate</strong> incident turns on: the day the served
+certificate was <strong>issued</strong> and not only the day it expires, when the box's own
+<strong>authority</strong> was created and its fingerprint — an upgrade never replaces that
+authority, so those two tell <em>&quot;the authority changed and every device stopped at
+once&quot;</em> apart from <em>&quot;this one device was never set up&quot;</em> — whether each interface's
+address is <strong>leased or fixed</strong>, which is whether it can still move, the <strong>name the box
+announces</strong>, asked of the announcing service itself rather than guessed from the
+hostname, and the <strong>date</strong> of the last self-update. When the announced name is not one
+the certificate carries, the report says so on the spot: both facts were already in
+it, two sections apart, and nobody compares them by eye.</p>
 <p><strong>When the report cannot answer, it says so rather than guessing.</strong> A check that could
 not be run reads <em>unknown</em> and names what stopped it; a service that is not installed on
 your box is called absent, instead of being described from the settings it would have

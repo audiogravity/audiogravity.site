@@ -7,6 +7,38 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Qobuz opens the way HIGHRESAUDIO does, and most of its catalogue is reachable at last
+
+Qobuz had four buttons above the album grid, and two of them were a single shelf each out
+of the many the catalogue holds — the rest simply had no way in. It now has the same five
+shelves HIGHRESAUDIO got in the previous release, each opening a strip below it: your
+favourites, **your purchases**, the **shelves** of the catalogue, the **playlists**, and
+the **genres**.
+
+Nine shelves are on that strip — new releases, all new releases, the Qobuz selection,
+Qobuzissims, press awards, best sellers, most streamed, the ideal discography and Harmonia
+Mundi. Qobuz names fifteen; six were left out after checking each one, because they are
+empty, or the same shelf twice under two names, or — for four of them — one undifferentiated
+list whose contents match none of the four names it is published under. A button that cannot
+be labelled honestly is worse than no button.
+
+**Your purchases** are new, and **your own playlists** appear beside the ones Qobuz
+publishes: they were never listed, although everything needed to play them already worked.
+And the **genres** — thirteen of them, seventy-eight sub-genres — were entirely out of
+reach until now.
+
+One thing to know about the genres: on Qobuz a genre is not a shelf of its own, it only
+narrows one. Choosing *Jazz* therefore shows the Qobuz selection within jazz. That is not a
+shortcut on our side — it is the only shelf where sub-genres return anything at all, which
+we measured before choosing it. Two genres publish one sub-genre or none: that is their
+catalogue, not a fault.
+
+Search stays a single box, deliberately. There is no advanced search for Qobuz the way there
+is for HIGHRESAUDIO, because their current interface has nothing to build one on: every
+filter it accepts on a search is accepted and then ignored, which we checked rather than
+assumed. It did get faster — the same search used to be sent three times over, and is now
+sent once.
+
 ### Your box answers to its name, so its address can change without taking the app with it
 
 Until now the way to reach your box was its address on the network — and that address

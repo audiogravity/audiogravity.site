@@ -7,6 +7,32 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Tidal opens the same way — and two of its shelves were simply not working
+
+Two of Tidal's five buttons were empty. *Charts* showed nothing at all, and *Editorial*
+showed the charts mixed in with its own selections. Same cause for both: the box was
+recognising those lists by the words Tidal writes above them on its home page, and Tidal
+renamed one. Nothing recognises a heading any more.
+
+Tidal now has the same five shelves as the other two services: your favourites, the
+**shelves** of the catalogue, the **playlists** — the editors' selections, your own and
+the charts, all three on one strip — the **genres**, twenty of them and out of reach
+until now, and the **moods**, a shelf HIGHRESAUDIO has and Qobuz has nothing for.
+
+A shelf that holds nothing is left out, and we check rather than believe: one Tidal shelf
+announces that it has albums and answers an error, another announces the same and holds
+281 playlists. Taking Tidal at its word would have given you one dead button and hidden a
+real shelf.
+
+Two things you will not find, because Tidal does not have them: purchases, since it sells
+nothing, and sub-genres — its genres are one level deep.
+
+A sixth shelf, **Explore**, opens Tidal's own navigation, and it is where the depth is:
+**HiRes**, seven **decades** from the fifties to the two-thousand-tens, **52 record
+labels**, and genre pages far richer than a single grid — jazz alone opens on a dozen
+lists. Some of those pages lead to others rather than holding albums, so the strip goes
+down into them and offers a way back, exactly as the genres do.
+
 ### Qobuz opens the way HIGHRESAUDIO does, and most of its catalogue is reachable at last
 
 Qobuz had four buttons above the album grid, and two of them were a single shelf each out

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.51 — 2026-09-01
+
 ### Tidal opens the same way — and two of its shelves were simply not working
 
 Two of Tidal's five buttons were empty. *Charts* showed nothing at all, and *Editorial*

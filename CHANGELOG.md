@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui] The application's icon stands beside its name on every screen that shows the name.** Two surfaces still showed the wordmark on its own. One is the passkey panel: it replaces the sign-in card's contents entirely, so the lockup somebody had been looking at a second earlier vanished at the exact moment they were asked to authenticate. The other is the start-up screen the app paints while it loads. Both now carry the same row as the sign-in header, from one shared rule rather than three copies of it. The start-up screen keeps a hairline of its own instead of the theme's, and that is not a detail: it paints a fixed ground — `#12141c`, the colour the installed app declares for itself — whatever appearance the interface is set to, because it is drawn before any theme exists. The icon is a near-black square, so on that ground it needs its edges given back in **both** appearances. Measured against that ground, the theme's border was worth 1.21:1 under Gravity, 1.28:1 under Minimal and 1.78:1 under Slate, against 15.28:1 for the screen's own — in a dark appearance the outline was there in the stylesheet and invisible on the screen.
+
 ## [0.9.51] - 2026-09-01
 
 ### Added

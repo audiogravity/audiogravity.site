@@ -7,6 +7,16 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### When HIGHRESAUDIO is slow, the box stops taking the blame
+
+Their catalogue sometimes takes its time — a filtered search computed cold can run for tens of
+seconds, then answer the same one instantly. Audiogravi<sup>ty</sup> knew how to say that, and
+said it well. On one screen. Everywhere else the same wait produced a flat *"HIGHRESAUDIO
+unavailable"*, which reads as a fault on the box.
+
+That was never a decision. The sentence had been copied by hand onto forty routes and finished
+on one. It is now written once and shared, so every shelf says the same honest thing.
+
 ### When a subscription ends, the box says so
 
 Until now it did not. A Tidal or Qobuz subscription that lapses does not lock you out —

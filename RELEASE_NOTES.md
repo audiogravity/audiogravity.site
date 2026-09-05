@@ -7,7 +7,30 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### When a subscription ends, the box says so
+
+Until now it did not. A Tidal or Qobuz subscription that lapses does not lock you out —
+both services keep you signed in, keep the catalogue browsable, and keep handing out
+music. Thirty seconds of it, per track. The screen meanwhile still read *Hi-Res* and
+*Studio · Hi-Res 24/192*, because that is the quality Audiogravi<sup>ty</sup> **asks**
+for, and no part of the playback path can tell a thirty-second excerpt from a short
+song. So the music stopped early and nothing, anywhere, explained why.
+
+Each streaming card now says what will actually be heard. And it keeps saying it: the
+state is read again from the service rather than remembered from the day you signed in,
+which is the difference between being right once and being right the day it matters.
+
+### A Qobuz account without a subscription can finally connect
+
+It could not before — and it was told the wrong reason. Qobuz was asked to sign the
+account in, did so, and Audiogravi<sup>ty</sup> refused the result because the account
+had no streaming rights. What the browser showed was *"Failed to exchange the
+authorization code. Please try again."*: a good code blamed, a retry invited that could
+never work, and the real cause left in the journal. The account was shut out of Qobuz
+altogether — **including the albums it had paid for**.
+
+It now connects like any other. The catalogue browses, the purchases are there, and what
+Qobuz gives is played — with the card saying plainly why the tracks are short.
 
 ---
 

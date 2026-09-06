@@ -7,7 +7,16 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The Tidal subscription notice from 0.9.52, made to actually work
+
+0.9.52 added a line under each streaming account saying what it will really play. It
+worked for Qobuz and HIGHRESAUDIO. It did not work for Tidal, and the reason is worth
+saying plainly: reading the plan needs a valid access key, that key lasts a week, and
+nothing renews it unless you play something from Tidal. On a box used for anything else,
+the question could not be asked — and an unanswered question is read as "subscribed", so
+the card went on announcing Hi-Res on an account that had none.
+
+It renews the key now, like every other part of the box that talks to Tidal.
 
 ---
 

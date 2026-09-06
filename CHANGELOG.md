@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] Tidal now really says when a subscription has ended — 0.9.52 shipped that unable to work.** The card read the plan with the stored access token as it stood, and that token lives a week with nothing renewing it unless something plays. On a box whose owner listens to anything else, Tidal answered 401, the answer came back "unknown", and unknown reads as subscribed — so the card announced Hi-Res on an account that had none, which is the very thing the feature was added to stop. Measured on a box the morning after the release: the token had expired 100 hours earlier, and one renewal through another path was enough to make the same lookup answer correctly. The lookup now renews like every other caller.
+
 ## [0.9.52] - 2026-09-06
 
 ### Fixed

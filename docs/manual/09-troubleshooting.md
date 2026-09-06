@@ -259,10 +259,17 @@ is reasonable, but it should be a switch you turn on knowingly rather than a def
 
 ## Streaming fails or a track won't play
 
-- Confirm the service is **Connected** in Library → Sources, and that your
-  **subscription** covers Hi-Res (see [5. Library & streaming](05-library-streaming.md)).
+- Confirm the service is **Connected** in Library → Sources, and **read the line under
+  the account name** — it states what the service will actually play, which is not the
+  quality Audiogravi<sup>ty</sup> asks for (see
+  [5. Library & streaming](05-library-streaming.md#when-a-subscription-ends)).
 - A track that played before but fails later is usually an **expired streaming link** —
   Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
+- **Every track stops after thirty seconds.** The subscription has ended. Qobuz and
+  Tidal keep the account signed in and keep serving music — thirty seconds of each
+  track, at any quality setting. Library → Sources says so under the account name:
+  *No subscription · 30-second previews*. Nothing on the box is at fault, and no
+  setting changes it.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
 - **Tidal in silence, on any output.** Tidal's lossy qualities (HIGH, LOW) deliver AAC,
   which cannot be converted losslessly — nothing plays, anywhere. Set Tidal to a lossless

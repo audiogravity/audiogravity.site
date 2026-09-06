@@ -242,11 +242,29 @@ favorite, updates instantly, and stays in sync between browsing and search.
 
 ### Subscriptions at a glance
 
-| Service | For Hi-Res you need |
-|---------|---------------------|
-| Qobuz | Qobuz **Studio** or **Sublime** |
-| Tidal | Tidal **HiFi** or **HiFi Plus** |
-| HIGHRESAUDIO | an active **HIGHRESAUDIO** subscription |
+| Service | For Hi-Res you need | Without it |
+|---------|---------------------|------------|
+| Qobuz | Qobuz **Studio** or **Sublime** | you stay signed in; every track plays as a **30-second excerpt** |
+| Tidal | Tidal **HiFi** or **HiFi Plus** | the same — 30 seconds per track, whatever quality is set |
+| HIGHRESAUDIO | an active **HIGHRESAUDIO** subscription | the catalogue is refused; your **Vault** still plays in full |
+
+### When a subscription ends
+
+None of the three locks you out, and that is the confusing part: the service keeps
+signing you in, the catalogue keeps browsing, and pressing play still produces sound.
+Qobuz and Tidal simply serve a **thirty-second excerpt** of each track — at any quality
+setting, so nothing about the setting explains it. Audiogravi<sup>ty</sup> cannot tell
+that from a very short song either.
+
+So the sources card says it, under the account name: **`No subscription · 30-second
+previews`** for Qobuz and Tidal, **`purchases only, no subscription`** for
+HIGHRESAUDIO. It is read again from the service from time to time rather than
+remembered from the day you signed in — the line is still right the day the plan
+lapses.
+
+> A Qobuz account without a subscription used to be refused at sign-in, and the message
+> blamed the sign-in itself. It now connects like any other, including an account whose
+> only content is albums it bought.
 
 ## Internet radio
 

@@ -30,9 +30,15 @@ there (configuration, tuning, orchestration). See
 
 ## Do I need a Qobuz, Tidal or HIGHRESAUDIO subscription?
 
-Only if you want to use those services. Qobuz, Tidal and HIGHRESAUDIO browsing in
-the Library requires an active subscription to each respective service. Everything
-else works without any third-party subscription.
+Only if you want to use those services, and everything else works without any
+third-party subscription.
+
+To **listen** to them in full, yes: each needs its own active subscription. Browsing is
+another matter — Qobuz and Tidal let a lapsed account sign in and browse the whole
+catalogue, and play thirty seconds of each track; HIGHRESAUDIO refuses the catalogue but
+still plays what you bought from it. The sources card names the state in each case, so
+short tracks are never a mystery. See
+[5. Library & streaming](05-library-streaming.md#when-a-subscription-ends).
 
 ## Does it work without an internet connection?
 

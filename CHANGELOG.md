@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.52] - 2026-09-06
+
 ### Fixed
 - **[ui] A box that answers, and says what went wrong, is no longer reported as unreachable.** The interface held that the core never returns 502 or 504 — only a proxy standing in for a stopped box does — so it replaced both with *"Unable to connect to server. Please check your connection."* The core returns both, and always has: **502** when the licence server is unreachable or answers nonsense, when a Qobuz sign-in cannot start, when a streaming favourite could not be written; **504** when the HIGHRESAUDIO catalogue is answering but slowly. On those screens the reader was sent to check their network while the box was fine, replying, and naming the real cause — with the badge beside the message reading CONNECTED. One rule now covers all three statuses: a 502, 503 or 504 **carrying a message** is the core speaking and the message is shown; one carrying **none** came from a proxy, since a proxy answers with HTML and leaves no message behind.
 

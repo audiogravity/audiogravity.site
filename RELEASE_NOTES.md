@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.52 — 2026-09-06
+
 ### When HIGHRESAUDIO is slow, the box stops taking the blame
 
 Their catalogue sometimes takes its time — a filtered search computed cold can run for tens of

@@ -7,6 +7,30 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The radio is a source, and the screen finally says what is playing
+
+The sources screen used to name the engine rather than the music. Play a webradio and it
+announced **Local Library** as the active source — because a station, a Qobuz album and a
+file on your disk all travel through the same engine, and the badge was reading that
+engine. The radio was worse off still: it had no card at all, only a tab, so there was
+nothing for the badge to land on even if it had been right.
+
+Sources are now named by what they are, and the radio is one of them, on the same footing
+as Qobuz, Tidal, HIGHRESAUDIO, your local library and a UPnP server. Its stations keep
+their own screen with their own filters — country, genre, codec — so the shared search bar
+does not offer it, and its tab bar drops the two tabs that would answer an empty grid and
+an error. Its queue is the shared queue it actually plays through, not an empty one.
+
+**AirPlay and the UPnP bridge are listed too.** They do put out sound, so they are sources.
+But an input hides the source behind it: what a phone sends over AirPlay has an identity
+the box cannot see, so there is no catalogue on this side of the door. They appear in their
+own section, they light up while they play, and touching one raises the player.
+
+**Several things can play at once, and now they all show it.** Casting AirPlay to one
+output while Qobuz plays on another lit a single card — whichever had started first. And a
+card no longer waits for a page reload: a second stream pausing, changing album or moving
+to the next track reaches the screen straight away.
+
 ### The Tidal subscription notice from 0.9.52, made to actually work
 
 0.9.52 added a line under each streaming account saying what it will really play. It

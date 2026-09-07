@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.53 — 2026-09-07
+
 ### The radio is a source, and the screen finally says what is playing
 
 The sources screen used to name the engine rather than the music. Play a webradio and it
@@ -41,6 +47,26 @@ the question could not be asked — and an unanswered question is read as "subsc
 the card went on announcing Hi-Res on an account that had none.
 
 It renews the key now, like every other part of the box that talks to Tidal.
+
+### The box says which shelf, and which server
+
+The music on your disk answered to **MPD** — the name of the engine that plays the files,
+not of the shelf they sit on. The interface patched the word on its way to the screen,
+from a table of its own, so the box and the screen disagreed about the same thing. It is
+called **Local Library** now, from the box, and the screen shows what it is given: the
+same words on the source card, on the now-playing badge and above the queue.
+
+A UPnP server used to be known by its **name** alone. Two servers named alike lit both
+cards, with nothing to say which one was playing. Each now travels with its own identity,
+from the moment a track is queued — including tracks cast to a network renderer or pushed
+to HQPlayer, where a local file used to be filed under the name of the processor playing
+it.
+
+**What renderers fetch audio from is a door without a key** — it has to be, since a
+renderer sends no headers. When a track could not be resolved, that door used to hand back
+the streaming service's own error, verbatim, to anything on the network. It now says only
+that the track is unavailable, and writes the reason in the box's journal, where it was
+missing.
 
 ---
 

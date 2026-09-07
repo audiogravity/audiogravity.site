@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.53] - 2026-09-07
+
 ### Added
 - **[core] [ui] The radio is a source, like Qobuz or the local library.** It streams over the same engine as the three streaming services, so it held no entry of its own and had no card on the sources screen — it existed only as a tab. It is now listed, it can carry the playing badge, and its queue is the shared MPD queue instead of an empty one. Its catalogue keeps its own screen with its own filters (country, genre, codec), so it is deliberately left out of the common search picker, and the tab bar drops the two tabs it cannot serve rather than offering an empty grid and an error.
 - **[core] [ui] Every source now says what it is** — `sources[].kind`: `library`, `radio`, `streaming`, `roon` or `input`. The sources screen filters on that instead of a hardcoded list of six ids, which is why the radio had no card in the first place: every source added to the backend had to be remembered in the interface too, and one was not.

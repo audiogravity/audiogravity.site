@@ -27,6 +27,18 @@ no. So music you add appears **straight away**, whether you added it yourself or
 re-indexed after you pointed it at a new folder; and a collection that has not changed in a
 fortnight is not re-read every minute for nothing.
 
+### The support report tells you where to reach the interface
+
+Everything needed to open your box was already in the report — the port the interface is
+served on, the address of the box on your network, the name it announces — in three
+different places, and never as something you could read off and type. The name on its own
+lands on port 80, where nothing listens, so a box answering perfectly looks unreachable.
+
+It now writes the address out whole, and puts the one that always works first:
+`http://10.0.4.254:8080 · also http://musics.local:8080`. The `.local` name is the one
+worth keeping — it still finds your box after your router hands it a different address —
+and it comes second because it is also the half that can fail on its own.
+
 ---
 
 ## 0.9.53 — 2026-09-07

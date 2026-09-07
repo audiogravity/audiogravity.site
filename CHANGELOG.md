@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[core] [ui] Switching the order of the local library no longer makes the box read the whole library again.** All, Recent and A–Z are answered by the box, over the complete collection, so touching one asks for the first page — and asking for the first page was the only way the box had of knowing that somebody wanted fresh data. It could not tell "the same shelf, in another order" from "go and look again", so every change of order re-enumerated the collection: one question to list the albums, then one round trip per album to find the file its cover is read from. Measured on a box holding 475 albums: 0.19 s of that work against 0.002 s to answer from the list already in hand, and the ordering never needed the fresh copy — the box holds the whole collection and can turn it around on its own. The intention is now said rather than guessed: only the **↻ Refresh** button asks for a new reading. Nothing else changes on screen, and nothing is traded away: the box now asks its own music index whether the collection has changed — one question, measured at 0.17 ms against the 190 ms of the reading it can spare — instead of throwing its list away every minute on principle. So a collection that grew underneath appears **at once**, wherever the change came from, where it used to need the shelf to be opened again at the right moment; and a collection that has not changed in a fortnight is no longer re-read once a minute for nothing. The reading itself is also no longer done twice at the same time: two open tabs, or a second tap on ↻ before the first finished, each started their own walk through the collection, and they now share one — the same guard the streaming catalogues were given in 0.9.53, on the one enumeration that reads the box's own daemon.
+
 ## [0.9.53] - 2026-09-07
 
 ### Added

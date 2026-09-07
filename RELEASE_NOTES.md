@@ -7,7 +7,25 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Reordering your library is instant
+
+The three buttons above your local collection — **All**, **Recent**, **A–Z** — are answered
+by the box across the whole collection, not by the screen across the page it happens to
+hold. That is what makes *Recent* mean recent. The cost was that each of them started the
+collection over: the box listed every album again, then went back once per album for the
+file its cover is read from. On a 475-album library that is a fifth of a second of work,
+every time, for a list the box already had in front of it.
+
+It keeps that list now and simply turns it around, which takes about a thousandth of the
+time. Only the **↻ Refresh** button asks it to go and read the collection again — which is
+what that button is for.
+
+And the list is no longer kept "for a minute, then thrown away just in case". The box asks
+its own music index whether anything has changed — a question that costs 0.17 ms, against
+the fifth of a second the reading costs — and keeps its list for as long as the answer is
+no. So music you add appears **straight away**, whether you added it yourself or AG
+re-indexed after you pointed it at a new folder; and a collection that has not changed in a
+fortnight is not re-read every minute for nothing.
 
 ---
 

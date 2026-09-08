@@ -1,7 +1,8 @@
 # Audiogravi<sup>ty</sup> — User Manual
 
 Welcome to Audiogravi<sup>ty</sup> — the conductor of your music streamer. This manual walks
-you from a bare Linux box to a fully-tuned, browser-controlled hi-fi system.
+you from a bare Linux box to a fully-tuned hi-fi system, controlled from your browser or
+your phone.
 
 > **In a hurry?** The **[Quick start](00-quick-start.md)** takes you from a bare box
 > to music on one page.

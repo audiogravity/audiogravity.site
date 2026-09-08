@@ -54,10 +54,10 @@ If nothing is displayed:
 - In **Services**, confirm the relevant service (mpd, shairport-sync…) is **RUNNING**.
 - **Then open the support report rather than hunting.** Its *Audio stack* section
   prints, for each service, the output Audiogravi<sup>ty</sup> pinned it to next to the one
-  that service's own configuration names, and marks the line when the two disagree —
-  the mismatch this list used to ask you to find by eye. A flagged line means the card
-  index has drifted, usually after a hardware change: re-run **Guided → output** and the
-  pin is rewritten (the DAC index is normally pinned automatically — see
+  that service's own configuration names, and marks the line when the two disagree.
+  A flagged line means the card index has drifted, usually after a hardware change:
+  re-run **Guided → output** and the pin is rewritten (the DAC index is normally pinned
+  automatically — see
   [3. First run](03-first-run.md)).
 
 ## My DAC is not in the output list (Raspberry Pi HAT)
@@ -170,11 +170,9 @@ one you are in:
   its way through it. Start playing, and the path lights up.
 
 **CONFIG** sits at the top of the Pipeline tab, on a phone as on a computer. The
-description is a text file, so writing one from scratch is far easier at a keyboard — but
-the phone can reach it, which matters when the box in front of you is showing nothing.
+description is a text file, so writing one from scratch is far easier at a keyboard.
 
-The description is yours to maintain: Audiogravi<sup>ty</sup> never rewrites it, precisely so
-that it cannot undo the work of someone who has described their system carefully. See
+The description is yours to maintain: Audiogravi<sup>ty</sup> never rewrites it. See
 [6. Outputs & engines → The signal path](06-outputs-engines.md#the-signal-path-and-the-chain-you-describe).
 
 ## A service won't start
@@ -246,11 +244,9 @@ UPnP renderer your phone casts to, and playback itself all talk to it from insid
 machine, so nothing you do through Audiogravi<sup>ty</sup> is affected. A third-party
 MPD application connecting straight to the box is what stops working.
 
-This is deliberate. MPD's control port asks for no password: open to the network, it
-lets anything on your network start, stop and browse your music. On some boxes it was
-open by accident of the Debian packaging, and closing it is also what makes a service
-you stopped stay stopped — the same open port is what used to bring MPD back to life
-seconds after you switched it off.
+This is deliberate. MPD's control port asks for no password, so left open to the network
+it lets anything on your network start, stop and browse your music. Closing it is also
+what makes a service you stopped stay stopped.
 
 Control the box from the Audiogravi<sup>ty</sup> interface, or cast to it as a UPnP
 renderer, which stays open on the network as before. If a third-party MPD app is part
@@ -279,9 +275,9 @@ is reasonable, but it should be a switch you turn on knowingly rather than a def
 - **With HQPlayer as your output**, a track in a format HQPlayer cannot decode is refused
   wherever it comes from — your library, a media server or a radio station — and the
   message names the format and the track. Turn **Use as output** off to play it on the
-  local output. Which *source* it comes from no longer matters: every source reaches
-  HQPlayer, streaming services included — the formats it accepts, and those it does not,
-  are listed in
+  local output. The *source* makes no difference: every source reaches HQPlayer,
+  streaming services included — the formats it accepts, and those it does not, are
+  listed in
   [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer).
 
 ## A bookmark, or the home-screen icon, opens on nothing

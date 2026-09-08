@@ -102,10 +102,10 @@ renderer) selected?</li>
 <li>In <strong>Services</strong>, confirm the relevant service (mpd, shairport-sync…) is <strong>RUNNING</strong>.</li>
 <li><strong>Then open the support report rather than hunting.</strong> Its <em>Audio stack</em> section
 prints, for each service, the output Audiogravi<sup>ty</sup> pinned it to next to the one
-that service's own configuration names, and marks the line when the two disagree —
-the mismatch this list used to ask you to find by eye. A flagged line means the card
-index has drifted, usually after a hardware change: re-run <strong>Guided → output</strong> and the
-pin is rewritten (the DAC index is normally pinned automatically — see
+that service's own configuration names, and marks the line when the two disagree.
+A flagged line means the card index has drifted, usually after a hardware change:
+re-run <strong>Guided → output</strong> and the pin is rewritten (the DAC index is normally pinned
+automatically — see
 <a href="03-first-run">3. First run</a>).</li>
 </ul>
 <h2 id="my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</h2>
@@ -216,10 +216,8 @@ own chain in <strong>Pipeline → CONFIG</strong> on a computer and the path app
 its way through it. Start playing, and the path lights up.</li>
 </ul>
 <p><strong>CONFIG</strong> sits at the top of the Pipeline tab, on a phone as on a computer. The
-description is a text file, so writing one from scratch is far easier at a keyboard — but
-the phone can reach it, which matters when the box in front of you is showing nothing.</p>
-<p>The description is yours to maintain: Audiogravi<sup>ty</sup> never rewrites it, precisely so
-that it cannot undo the work of someone who has described their system carefully. See
+description is a text file, so writing one from scratch is far easier at a keyboard.</p>
+<p>The description is yours to maintain: Audiogravi<sup>ty</sup> never rewrites it. See
 <a href="06-outputs-engines#the-signal-path-and-the-chain-you-describe">6. Outputs &amp; engines → The signal path</a>.</p>
 <h2 id="a-service-wont-start">A service won't start</h2>
 <ul>
@@ -275,11 +273,9 @@ above is a backup.</p>
 UPnP renderer your phone casts to, and playback itself all talk to it from inside the
 machine, so nothing you do through Audiogravi<sup>ty</sup> is affected. A third-party
 MPD application connecting straight to the box is what stops working.</p>
-<p>This is deliberate. MPD's control port asks for no password: open to the network, it
-lets anything on your network start, stop and browse your music. On some boxes it was
-open by accident of the Debian packaging, and closing it is also what makes a service
-you stopped stay stopped — the same open port is what used to bring MPD back to life
-seconds after you switched it off.</p>
+<p>This is deliberate. MPD's control port asks for no password, so left open to the network
+it lets anything on your network start, stop and browse your music. Closing it is also
+what makes a service you stopped stay stopped.</p>
 <p>Control the box from the Audiogravi<sup>ty</sup> interface, or cast to it as a UPnP
 renderer, which stays open on the network as before. If a third-party MPD app is part
 of how you listen, say so through <a href="#getting-help">Getting help</a> — reopening that port
@@ -306,9 +302,9 @@ serves before it starts, and names the cause instead of leaving you with silence
 <li><strong>With HQPlayer as your output</strong>, a track in a format HQPlayer cannot decode is refused
 wherever it comes from — your library, a media server or a radio station — and the
 message names the format and the track. Turn <strong>Use as output</strong> off to play it on the
-local output. Which <em>source</em> it comes from no longer matters: every source reaches
-HQPlayer, streaming services included — the formats it accepts, and those it does not,
-are listed in
+local output. The <em>source</em> makes no difference: every source reaches HQPlayer,
+streaming services included — the formats it accepts, and those it does not, are
+listed in
 <a href="06-outputs-engines#what-can-and-cannot-go-through-hqplayer">6. Outputs &amp; engines</a>.</li>
 </ul>
 <h2 id="a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</h2>

@@ -78,14 +78,18 @@ also <strong>cast local files to a network renderer</strong>, just like a stream
 <p>In <strong>Sources</strong>, Audiogravi<sup>ty</sup> lists the UPnP media servers it already knows and lets
 you run a <strong>manual scan</strong> to discover more (e.g. <strong>MinimServer</strong>); found servers are
 saved automatically, and a <strong>left-swipe</strong> removes a saved server you no longer use.
-Browse any server's tree (ContentDirectory); results play directly, with metadata
-and art.</p>
+Browse any server's tree; results play directly, with metadata and art.</p>
+<blockquote>
+<p><strong>A scan only finds servers on the same network as the box.</strong> A media server on
+another network segment or another VLAN will not appear, however healthy it is — see
+<a href="09-troubleshooting#a-upnp-renderer-or-media-server-isnt-discovered">9. Troubleshooting</a>.</p>
+</blockquote>
 <h2 id="roon">Roon</h2>
 <p>Connect a Roon source in <strong>Sources</strong>; it expands to show the available <strong>zones</strong>.
 A dedicated Roon browser navigates the Roon library hierarchy.</p>
 <h2 id="streaming-services">Streaming services</h2>
-<p>All three deliver native-resolution audio through their <strong>official APIs</strong>. Each
-requires <strong>your own active subscription</strong> — Audiogravi<sup>ty</sup> provides no access itself.</p>
+<p>All three deliver audio at its native resolution. Each requires <strong>your own active
+subscription</strong> — Audiogravi<sup>ty</sup> provides no access itself.</p>
 <p>Connect them from <strong>Library → Sources</strong>: open the service's card, sign in, and the
 session is kept alive and refreshed for you. Each card shows its connection state and
 a disconnect action.</p>
@@ -94,37 +98,25 @@ a disconnect action.</p>
 automatically, and the card switches to <strong>Connected</strong>. Hi-Res up to 24-bit / 192 kHz,
 plus full search.</p>
 <h4 id="browsing-qobuz">Browsing Qobuz</h4>
-<p>The bar carries <strong>five shelves</strong> — <strong>Favorites</strong>, <strong>Purchases</strong>, <strong>Shelves</strong>,
-<strong>Playlists</strong>, <strong>Genres</strong> — and each one opens a strip of its own underneath, the
-same arrangement as HIGHRESAUDIO's.</p>
-<p><strong>Shelves</strong> holds the nine worth browsing: <strong>New Releases</strong>, <strong>All New Releases</strong>,
+<p>The bar carries these shelves — <strong>Favorites</strong>, <strong>Purchases</strong>, <strong>Shelves</strong>,
+<strong>Playlists</strong>, <strong>Genres</strong> — and each one opens a strip of its own underneath.</p>
+<p><strong>Shelves</strong> holds Qobuz's own selections: <strong>New Releases</strong>, <strong>All New Releases</strong>,
 <strong>Selection</strong>, <strong>Qobuzissims</strong>, <strong>Press Awards</strong>, <strong>Best Sellers</strong>, <strong>Most Streamed</strong>,
-<strong>Ideal Discography</strong> and <strong>Harmonia Mundi</strong>. Qobuz names fifteen. Six are left out
-because they have nothing of their own to show: one answers nothing at all, one is the
-same fifteen albums as <em>Most Streamed</em> under a second name, and the remaining four
-return one undifferentiated shelf matching none of the four names — so none of them
-could carry a truthful label.</p>
+<strong>Ideal Discography</strong> and <strong>Harmonia Mundi</strong>.</p>
 <p><strong>Purchases</strong> is what you have <strong>bought</strong> from Qobuz, as opposed to what you stream —
 their counterpart to the HIGHRESAUDIO vault. A bought album plays like any other, to
 your local output, to a network renderer or through HQPlayer, and it stays yours
 whether or not a subscription is running.</p>
 <p><strong>Playlists</strong> opens a second strip with two ways in: <strong>Editorial</strong>, the selections
-Qobuz publishes, and <strong>Mine</strong>, the playlists belonging to your account. Qobuz files
-its editorial selections under two names that answer the same playlists, so there is
-one shelf here and not two. A playlist behaves like an album — open it for its tracks
-or send the whole thing to the queue — and says <em>Playlist</em> on its card.</p>
-<p><strong>Genres</strong> is Qobuz's second way of arranging the same catalogue — <strong>13 genres and 78
-sub-genres</strong>, none of which were reachable before. A genre is not a shelf on Qobuz: it
-only ever narrows one, so the genre grid browses the <strong>Selection</strong>. Pick a genre and
-the strip becomes that genre plus its own subdivisions, with <strong>All</strong> standing for the
-whole genre, and the heading above the albums says where you are. Two of the thirteen
-publish a single sub-genre or none at all — that is their catalogue, not a fault.</p>
+Qobuz publishes, and <strong>Mine</strong>, the playlists belonging to your account. A playlist
+behaves like an album — open it for its tracks or send the whole thing to the queue —
+and says <em>Playlist</em> on its card.</p>
+<p><strong>Genres</strong> is Qobuz's second way of arranging the same catalogue. Pick a genre and the
+strip becomes that genre plus its own subdivisions, with <strong>All</strong> standing for the whole
+genre, and the heading above the albums says where you are.</p>
 <blockquote>
-<p><strong>There is no advanced search on Qobuz</strong>, and not by oversight: their search accepts
-a genre and then disregards it — four queries crossed with four genres each returned
-the same ten albums, filtered or not — and does the same with format, release type
-and ordering. Narrowing on our side would only filter the page of fifty already
-fetched instead of the catalogue, which reads as a search quietly losing records.</p>
+<p><strong>Qobuz search takes words, not filters.</strong> Type what you are looking for; there is no
+form to narrow a Qobuz search by genre, format or release type.</p>
 </blockquote>
 <h3 id="tidal">Tidal</h3>
 <p>Tidal uses the <strong>PKCE</strong> flow: tap <strong>Connect</strong>, sign in, and Tidal lands on a fixed
@@ -133,86 +125,63 @@ so <strong>copy that full URL</strong> from the address bar, paste it back into 
 tap <strong>Finish login</strong>. You only do this once. Lossless FLAC (HiFi / HiFi Plus), with
 in-track seek.</p>
 <h4 id="browsing-tidal">Browsing Tidal</h4>
-<p>The bar carries <strong>six shelves</strong> — <strong>Favorites</strong>, <strong>Shelves</strong>, <strong>Playlists</strong>,
-<strong>Genres</strong>, <strong>Moods</strong>, <strong>Explore</strong> — each opening a strip of its own, as
-HIGHRESAUDIO's and Qobuz's do.</p>
-<p><strong>Shelves</strong> is the catalogue's own list, read from Tidal rather than written here, so
-a shelf they add appears without an update to Audiogravi<sup>ty</sup>. A shelf holding
-nothing is left out, and that is settled by asking rather than by believing Tidal:
-one of theirs declares it has albums and answers an error, while another declares the
-same and holds two hundred and eighty-one playlists — so taking their word for it
-would show one dead button and hide one real shelf.</p>
+<p>The bar carries these shelves — <strong>Favorites</strong>, <strong>Shelves</strong>, <strong>Playlists</strong>, <strong>Genres</strong>,
+<strong>Moods</strong>, <strong>Explore</strong> — each opening a strip of its own.</p>
+<p><strong>Shelves</strong> is Tidal's own list, so a shelf they add appears without an update to
+Audiogravi<sup>ty</sup>.</p>
 <p><strong>Playlists</strong> gathers Tidal's three surfaces on one strip: the selections their
 editors publish, the playlists on your account, and the <strong>charts</strong> — <em>TIDAL's Top
 Hits</em> and the per-genre hit lists beside it.</p>
-<p><strong>Genres</strong> brings <strong>twenty</strong>, none of them reachable before. They are one level deep —
-Tidal publishes no sub-genres — so this strip does not drill the way Qobuz's and
-HIGHRESAUDIO's do.</p>
-<p><strong>Moods</strong> holds playlists and never albums, which is how Tidal files them. It is the
-shelf HIGHRESAUDIO has and Qobuz publishes nothing for.</p>
-<p><strong>Explore</strong> opens Tidal's own navigation: <strong>42 entries</strong>, among them <strong>HiRes</strong>, seven
-<strong>decades</strong> from the 1950s to the 2010s, <strong>52 record labels</strong> and their full genre
-pages. A page there holds either further pages — <em>Record Labels</em> leads to 52 — which
-the strip drills in place the way the genres do, or sections of content, which open on
-a strip of their own. Each section scrolls on properly rather than stopping at a first
-dozen covers.</p>
-<p>Two things Tidal does not have, and that are therefore absent here: <strong>purchases</strong>,
-since it sells nothing, and <strong>sub-genres</strong>.</p>
+<p><strong>Genres</strong> are one level deep — Tidal publishes no sub-genres — so this strip does not
+drill the way Qobuz's and HIGHRESAUDIO's do.</p>
+<p><strong>Moods</strong> holds playlists and never albums, which is how Tidal files them.</p>
+<p><strong>Explore</strong> opens Tidal's own navigation: <strong>HiRes</strong>, the <strong>decades</strong>, the <strong>record
+labels</strong> and their full genre pages. A page there holds either further pages, which the
+strip drills in place the way the genres do, or sections of content, which open on a
+strip of their own.</p>
+<p>Tidal sells nothing, so there is no <strong>Purchases</strong> shelf as there is on Qobuz and
+HIGHRESAUDIO.</p>
 <h3 id="highresaudio">HIGHRESAUDIO</h3>
-<p>Simpler still — enter your account <strong>email and password</strong> directly in the card (its
-official API, no redirect, no copy-paste). Native-master FLAC up to 24-bit /
-352.8 kHz. Your password is stored encrypted on the device.</p>
+<p>Simpler still — enter your account <strong>email and password</strong> directly in the card: no
+redirect, no copy-paste. Native-master FLAC up to 24-bit / 352.8 kHz. Your password is
+stored encrypted on the device.</p>
 <blockquote>
 <p><strong>One device per HRA account.</strong> HIGHRESAUDIO allows a single active device — connecting
 Audiogravi<sup>ty</sup> signs you out of your other HRA players.</p>
 </blockquote>
 <h4 id="browsing-highresaudio">Browsing HIGHRESAUDIO</h4>
-<p>The bar carries <strong>seven shelves</strong> — <strong>Favorites</strong>, <strong>Vault</strong>, <strong>Categories</strong>,
-<strong>Charts</strong>, <strong>Playlists</strong>, <strong>Labels</strong>, <strong>Genres</strong> — and each one opens a strip of its
-own underneath. HIGHRESAUDIO asked for this arrangement and approved it: before, a
-single row of eighteen buttons ran end to end in whatever order their API published
-them, with most of the shop off the edge of the screen.</p>
-<p><strong>Categories</strong> holds the fourteen shop categories they publish — the six they named
-first, in their order, then the other eight in theirs. The list comes from
-HIGHRESAUDIO itself, so a category they add appears without an update to
-Audiogravi<sup>ty</sup>.</p>
-<p>Four of their titles come back in German whatever language is asked for — a quirk of
-their API that their own application works around the same way. Those four are shown
-in HIGHRESAUDIO's own English: <em>Neue Alben hinzugefügt</em> → <strong>Recently Added</strong>,
-<em>Hörtipps</em> → <strong>Listening Tips</strong>, <em>Top Alben</em> → <strong>Top Albums</strong>, <em>Neuheiten</em> → <strong>New
-Release</strong>.</p>
+<p>The bar carries these shelves — <strong>Favorites</strong>, <strong>Vault</strong>, <strong>Categories</strong>, <strong>Charts</strong>,
+<strong>Playlists</strong>, <strong>Labels</strong>, <strong>Genres</strong> — and each one opens a strip of its own
+underneath.</p>
+<p><strong>Categories</strong> holds the shop categories HIGHRESAUDIO publishes. The list comes from
+them, so a category they add appears without an update to Audiogravi<sup>ty</sup>.</p>
 <p><strong>Charts</strong> is the ranking their own front page shows.</p>
-<p><strong>Labels</strong> is the seven imprints HIGHRESAUDIO names — <em>2L</em> and <em>audite</em> among them.
-Five of the seven serve the same albums as the matching <em>… Highlights</em> category: that
-is their catalogue, not a fault, and nothing is hidden to make the two look different.</p>
+<p><strong>Labels</strong> is the imprints HIGHRESAUDIO names — <em>2L</em> and <em>audite</em> among them. Several
+serve the same albums as the matching <em>… Highlights</em> category.</p>
 <p><strong>Vault</strong> is what you have <strong>bought</strong> from HIGHRESAUDIO, as opposed to what you stream.
 The albums play in full without being downloaded, like any other — to your local
 output, to a network renderer, through HQPlayer — and they stay yours whether or not a
 subscription is running.</p>
 <p>That last point has a consequence worth knowing: an account that only ever bought
 albums, with no subscription at all, signs in perfectly well and is offered the Vault
-<strong>alone</strong>. The shop, the favourites, the genres and the playlists would all refuse it,
-so a bar offering them would only offer buttons that fail. The sources card says as
-much next to the account name.</p>
-<p><strong>Genres</strong> is HIGHRESAUDIO's second way of arranging the same catalogue — 26 genres
-and 186 sub-genres. It opens a second strip rather than lengthening the shelf bar:
-pick a genre and the strip becomes that genre plus its own subdivisions, with <strong>All</strong>
-standing for the whole genre. The heading above the albums says where you are —
-<em>Soundtrack · Original Score</em>.</p>
-<p><strong>Playlists</strong> opens the same second strip with four ways in. <strong>Editorial</strong> is the
-selections HIGHRESAUDIO publishes and <strong>Mine</strong> the playlists belonging to your
-account; <strong>Genre</strong> and <strong>Theme</strong> are the two ways HIGHRESAUDIO files those same
-editorial selections, offered here as they file them rather than as a third
-collection. A playlist behaves like an album — open it to see its tracks, or send the
+<strong>alone</strong> — the shop, the favourites, the genres and the playlists all need a
+subscription. The sources card says as much next to the account name.</p>
+<p><strong>Genres</strong> is HIGHRESAUDIO's second way of arranging the same catalogue. Pick a genre
+and the strip becomes that genre plus its own subdivisions, with <strong>All</strong> standing for
+the whole genre. The heading above the albums says where you are — <em>Soundtrack ·
+Original Score</em>.</p>
+<p><strong>Playlists</strong> opens the same second strip with four ways in: <strong>Editorial</strong>, the
+selections HIGHRESAUDIO publishes, <strong>Mine</strong>, the playlists belonging to your account,
+and <strong>Genre</strong> and <strong>Theme</strong>, the two ways HIGHRESAUDIO files those same editorial
+selections. A playlist behaves like an album — open it to see its tracks, or send the
 whole thing to the queue in one gesture — and says <em>Playlist</em> on its card, so a
 selection is never mistaken for a record. Creating or editing playlists is not
 available: what HIGHRESAUDIO has made is readable, what you make stays where you made
 it.</p>
-<p>The editorial collection runs to more than seventeen hundred selections, so a third
-strip sorts them onto HIGHRESAUDIO's own shelves — <strong>New Releases</strong>, <strong>Recommended</strong>,
-<strong>Popular</strong> and <strong>Moods</strong> — with <strong>All</strong> at the front, where it opens. All is not
-merely a convenience: a handful of the older selections are filed under no shelf at
-all, and the unfiltered view is the only one that holds them.</p>
+<p>The editorial collection is large, so a third strip sorts it onto HIGHRESAUDIO's own
+shelves — <strong>New Releases</strong>, <strong>Recommended</strong>, <strong>Popular</strong> and <strong>Moods</strong> — with <strong>All</strong>
+at the front, where it opens. Keep <strong>All</strong> in mind: some of the older selections are
+filed under no shelf at all, and it is the only view that holds them.</p>
 <h4 id="narrowing-a-highresaudio-search">Narrowing a HIGHRESAUDIO search</h4>
 <p>Under the search box, <strong>Advanced search</strong> unfolds the form HIGHRESAUDIO's own
 application offers, criterion for criterion: <strong>Artist</strong>, <strong>Composer</strong>, <strong>Label</strong>,
@@ -223,17 +192,15 @@ not two.</p>
 <em>ECM</em> and press <strong>Search</strong>. The form is applied by that button rather than as you
 type, because a filtered search is the one slow thing HIGHRESAUDIO does — the first
 time a given search is asked it can take the better part of a minute, and a second or
-two every time after. When it runs out of patience the screen says so and invites you
-to ask again, which usually answers at once.</p>
+two every time after. If it takes too long the screen says so and invites you to ask
+again, which usually answers at once.</p>
 <p>Three things behave the way HIGHRESAUDIO's catalogue behaves, and are worth knowing
 before they surprise you. <strong>Year</strong> is the year an album was put <em>online</em>, not the year
 it was recorded: <em>Innuendo</em> is a 1991 record and answers to 2026. Choosing a
 <strong>format</strong> makes their catalogue ignore the words typed — ask for <em>queen</em> in FLAC 192
-and you get the same fifty albums as any other word — which is what their own
-application does, so this one behaves like the app you already know. And a <strong>mood</strong>
-currently changes nothing: measured on their catalogue, the same albums come back with
-it, without it, and with a mood of the opposite family. All three have been reported
-to them, and the form follows the day their catalogue answers differently.</p>
+and you get the same albums as for any other word — which is what their own
+application does too. And a <strong>mood</strong> currently changes nothing: the same albums come
+back with it and without it.</p>
 <p>An <strong>order</strong> arranges an answer, it does not produce one: choosing one on its own
 returns nothing, and the form says so rather than searching.</p>
 <h3 id="favorites--star-an-album-from-the-app">Favorites — star an album from the app</h3>
@@ -279,11 +246,6 @@ that from a very short song either.</p>
 HIGHRESAUDIO. It is read again from the service from time to time rather than
 remembered from the day you signed in — the line is still right the day the plan
 lapses.</p>
-<blockquote>
-<p>A Qobuz account without a subscription used to be refused at sign-in, and the message
-blamed the sign-in itself. It now connects like any other, including an account whose
-only content is albums it bought.</p>
-</blockquote>
 <h2 id="internet-radio">Internet radio</h2>
 <p>Internet radio is a <strong>first-class source</strong> — stations flow through the same transport
 as your FLAC library, route to the same output, and show the same hi-fi readout. The
@@ -302,18 +264,17 @@ toggles My Live Radio, the <strong>pencil</strong> edits a custom station, and a
 removes it from the current list.</p>
 <h3 id="where-the-stations-come-from-and-what-is-sent-back">Where the stations come from, and what is sent back</h3>
 <p>Search results come from <a href="https://www.radio-browser.info">Radio Browser</a>, a free,
-community-run catalogue. It is not a service Audiogravi<sup>ty</sup> operates: it runs on
-a single machine, and when it is unavailable — which does happen — search stops working
-for as long as its own outage lasts. Your own stations are unaffected: <strong>My Live Radio</strong>
-and <strong>Favorites</strong> are stored on your box and keep playing regardless. A search you have
-already run also keeps showing its last results while the catalogue is unreachable, for
-up to a day.</p>
+community-run catalogue that Audiogravi<sup>ty</sup> does not operate. When it is
+unavailable — which does happen — search stops working until it is back. Your own
+stations are unaffected: <strong>My Live Radio</strong> and <strong>Favorites</strong> are stored on your box and
+keep playing regardless, and a search you have already run keeps showing its last
+results while the catalogue is unreachable, for up to a day.</p>
 <p>That catalogue ranks stations by how often they are played, and Audiogravi<sup>ty</sup>
-sorts your search results by that ranking. Its documentation asks the software that uses
-it to report each play, so it does: when you start a station, its identifier is sent to
-Radio Browser, and nothing else — no account, no listening history, no information about
-you or your box. Stations you added by hand are never reported, and neither is a station
-that failed to start.</p>
+sorts your search results by that ranking. In return it asks the software using it to
+report each play, so when you start a station its identifier is sent to Radio Browser —
+and nothing else: no account, no listening history, no information about you or your
+box. Stations you added by hand are never reported, and neither is a station that failed
+to start.</p>
 <p>If you would rather nothing left your box at all, set <code>RADIO_REPORT_PLAYS=false</code> in
 <code>/opt/audiogravity/core/.env</code> and restart the core
 (<code>sudo systemctl restart ag-core-server</code>). Search and playback are unchanged by this;

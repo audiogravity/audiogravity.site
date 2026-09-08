@@ -133,9 +133,9 @@ unless it's a guest share — its username and password. Audiogravi<sup>ty</sup>
 pre-selected; on failure you get the actual mount error (wrong password,
 unreachable host) and nothing is left behind.
 
-Under the hood this creates a systemd *mount-on-access* unit — robust to a NAS
-that is off at boot — with the credentials in a root-only file, mounted
-read-only by default.
+The share is mounted read-only by default, on demand rather than at startup, so a NAS
+that is switched off when the box boots causes no trouble. Your credentials are stored
+where only the system can read them.
 
 Adding a share **mounts and selects it**, but does not yet make it MPD's
 library on its own — that's the same two-step rule as any source: pick it in
@@ -151,11 +151,9 @@ effect immediately; if the share is MPD's active library, it warns you first.
 <img src="images/ios-network-mount.webp" alt="The Add network share panel: existing AG shares with their state, and the CIFS form" width="360">
 
 > **Prefer the terminal, or need NFS?** Any share you mount yourself at the OS
-> level (fstab or systemd units, CIFS or NFS) under `/mnt` is detected exactly
-> the same way — see [9. Troubleshooting → Manual NAS mount](09-troubleshooting.md#manual-nas-mount-terminal)
-> for the recipe. NFS is terminal-only by design: mounting it from the UI would
-> require RPC daemons on the box, which Audiogravi<sup>ty</sup> refuses on an
-> audio appliance.
+> level (CIFS or NFS) under `/mnt` is detected exactly the same way — see
+> [9. Troubleshooting → Manual NAS mount](09-troubleshooting.md#manual-nas-mount-terminal)
+> for the recipe. NFS is available from the terminal only.
 
 ## 5. Change output or library later (Guided mode)
 
@@ -193,9 +191,11 @@ tab, and the **gear** in the top bar opens
 
 ## 7. Trust the box's certificate (once per device)
 
-If you chose HTTPS at install, the box created its own **certificate authority** and
-signed the interface's certificate with it. Your browser does not know that authority,
-so the first visit shows a security warning.
+HTTPS is the recommended mode, and the one the installer offers first: passkeys and
+push notifications need it, and a browser treats an HTTPS page as a place it can install
+an app from. With it, the box created its own **certificate authority** and signed the
+interface's certificate with it. Your browser does not know that authority, so the first
+visit shows a security warning.
 
 **On an iPhone or iPad, there is no way round it.** Safari offers no way past that
 warning, so the address does not open at all until the authority below is installed.
@@ -211,18 +211,15 @@ even when the interface's own certificate is renewed or the box changes address.
 1. On the device, open **`http://<box-address>:8081/ca.crt`** — the installer prints this
    exact address at the end.
 
-   > **Note the `http://`.** The certificate is deliberately handed out unencrypted, on a
-   > port that serves this one file and nothing else. Over `https://` it could not be
-   > fetched at all: doing so would mean trusting the very certificate you are coming to
-   > collect, and Safari on iOS refuses outright. A certificate authority is public by
-   > design — it is the thing you are meant to distribute — and it carries no key.
+   > **Note the `http://`, not `https://`.** That port serves this one file and nothing
+   > else, and the address only works as written.
 
 2. Then, depending on the device:
 
 | Device | What to do |
 |---|---|
-| **iPhone / iPad** | Open the address in **Safari** and allow the download. Then **Settings → Profile Downloaded → Install**. That installs it — and installing is *not* trusting: go to **Settings → General → About → Certificate Trust Settings** and switch **Audiogravity Local CA** on (the entry carries the box's address after that name). **That last switch is the step that counts**; without it nothing changes. (Verified end to end on iOS: afterwards the interface opens with no warning and installs as an app.) |
-| **Android** | The goal is to install the file as a **trusted certificate authority** from the system settings — that is the only place Android allows it. Look under **Security** for *Encryption & credentials*, then *Install a certificate* (or *Install from storage*) → **CA certificate**, and pick the file you downloaded. We give no exact path on purpose: it differs between Android versions and between manufacturers, so a fixed one would be wrong for most phones. Two things stop people: the phone must have a **screen lock** (PIN, pattern or password), or Android refuses to store an authority at all — set one first; and since Android 11 only the Settings app may start the install, so tapping the downloaded file in Chrome does nothing. Android then warns that a third party could inspect your traffic — here that third party is your own box. ⚠️ Unlike iOS, **this has not been verified on an Android device**: the certificate should be trusted for browsing, but we have not confirmed that Audiogravi<sup>ty</sup> then installs as an app. |
+| **iPhone / iPad** | Open the address in **Safari** and allow the download. Then **Settings → Profile Downloaded → Install**. That installs it — and installing is *not* trusting: go to **Settings → General → About → Certificate Trust Settings** and switch **Audiogravity Local CA** on (the entry carries the box's address after that name). **That last switch is the step that counts**; without it nothing changes. Afterwards the interface opens with no warning and installs as an app. |
+| **Android** | The goal is to install the file as a **trusted certificate authority** from the system settings — that is the only place Android allows it. Look under **Security** for *Encryption & credentials*, then *Install a certificate* (or *Install from storage*) → **CA certificate**, and pick the file you downloaded. We give no exact path on purpose: it differs between Android versions and between manufacturers, so a fixed one would be wrong for most phones. Two things stop people: the phone must have a **screen lock** (PIN, pattern or password), or Android refuses to store an authority at all — set one first; and since Android 11 only the Settings app may start the install, so tapping the downloaded file in Chrome does nothing. Android then warns that a third party could inspect your traffic — here that third party is your own box. |
 | **macOS** | Open the file in **Keychain Access**, then set it to *Always Trust*. |
 | **Windows** | Install it into **Trusted Root Certification Authorities**. |
 
@@ -246,11 +243,16 @@ do step 7 first — an untrusted certificate is what stops the app from installi
 > one added on the name follows the box. See
 > [9. Troubleshooting](09-troubleshooting.md#a-bookmark-or-the-home-screen-icon-opens-on-nothing).
 
+> **Better still, give the box a fixed address.** Most routers can reserve one for a
+> given machine — look for *DHCP reservation*, *static lease* or *address reservation*
+> in their settings. Then the address never changes, bookmarks and home-screen icons
+> keep working whichever one you used, and the certificate is never reissued for a new
+> address. Doing both — a reserved address *and* adding the app from the `.local` name —
+> is belt and braces, and takes two minutes once.
+
 - **Android** — open the site in Chrome and accept the **Install app** prompt (or
   browser menu → *Add to Home screen*). The installed app also honours the
-  [Portrait Lock](04-listening.md#portrait-lock) at the OS level. (On a self-signed
-  setup this is the part we could not verify on an Android device — see the warning
-  in step 7. With a real certificate and a domain name, it is not in question.)
+  [Portrait Lock](04-listening.md#portrait-lock) at the OS level.
 - **iPhone / iPad** — in Safari, tap **Share → Add to Home Screen**. On iOS this is
   also **required for push notifications**: Safari tabs can't receive them, the
   installed app can (see

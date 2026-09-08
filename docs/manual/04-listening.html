@@ -90,21 +90,23 @@ including <strong>Qobuz, Tidal and HIGHRESAUDIO</strong> albums, with their real
 <img loading="lazy" src="images/ios-queue-mixed.webp" alt="A mixed queue: Qobuz, radio and local-library tracks with per-source badges and the source filter bar" width="360">
 <ul>
 <li>The header names the <strong>actual source</strong> — playing internet radio reads &quot;Radio&quot; and
-shows the <strong>station's logo</strong>, not the underlying playback engine. The same holds
-when you <strong>cast to a network speaker</strong>: the badge names where the music comes from
-(<strong>Qobuz</strong>, <strong>Library</strong>, your media server's name), and the speaker appears as the
-<strong>output</strong> — because it is the destination, not the source.</li>
-<li>A badge reading <strong>External</strong> means the music was <strong>not started from
-Audiogravi<sup>ty</sup></strong> — someone is driving your speaker, or HQPlayer, from another app
-or its own remote. Audiogravi<sup>ty</sup> shows what it can see and stays out of the way.</li>
+shows the <strong>station's logo</strong>. The same holds when you <strong>cast to a network speaker</strong>:
+the badge names where the music comes from (<strong>Qobuz</strong>, <strong>Library</strong>, your media
+server's name), and the speaker appears as the <strong>output</strong> — because it is the
+destination, not the source.</li>
+<li>A badge reading <strong>External</strong> means the music was <strong>started from another app</strong>, not
+from Audiogravi<sup>ty</sup>. This happens because your box also behaves as a speaker
+other apps can send music to, and because HQPlayer has a remote control of its own: a
+phone running JPLAY or BubbleUPnP, or someone at the HQPlayer remote, can start
+playback without going through Audiogravi<sup>ty</sup>. It still shows you what is
+playing, and the badge tells you the queue is not one it filled.</li>
 <li>When the queue <strong>mixes sources</strong> — say a radio station followed by a Qobuz album —
 each upcoming track carries a small <strong>source badge</strong> telling you where it comes
 from, and a <strong>filter bar</strong> lets you view one source at a time. Filtering only
 changes what you <em>see</em>: nothing moves or stops playing, and the current track
 always stays in view.</li>
 <li>Remove an upcoming track with its <strong>Remove</strong> button or a <strong>left-swipe</strong> — the same
-gesture used across the app's lists. It always removes the track you swiped, even
-if the queue has reordered meanwhile. <strong>Clear</strong> empties the queue, and respects the
+gesture used across the app's lists. <strong>Clear</strong> empties the queue, and respects the
 active filter.</li>
 </ul>
 <img loading="lazy" src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a Marantz: the card is badged Qobuz, the signal path reads Qobuz then Marantz, and the output bar names the speaker" width="360">
@@ -136,7 +138,8 @@ music without leaving the system running all night.</p>
 <strong>Portrait Lock</strong> switch in <strong>Settings</strong> (the gear in the top bar) turns it off if
 you prefer landscape — and on a device you can't rotate, the <em>Continue in landscape</em>
 button on the rotate screen lets you carry on (it switches the lock off for you).
-Desktop installs are unaffected.</p>
+On a computer there is nothing to lock: the setting has no effect there, and the
+interface follows your window whatever its shape.</p>
 <h2 id="where-the-audio-goes">Where the audio goes</h2>
 <p>The output line at the bottom of the fullscreen player always names your
 destination — your DAC or the speaker you selected — even when nothing is playing,

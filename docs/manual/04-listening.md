@@ -46,21 +46,23 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
 
 
 - The header names the **actual source** — playing internet radio reads "Radio" and
-  shows the **station's logo**, not the underlying playback engine. The same holds
-  when you **cast to a network speaker**: the badge names where the music comes from
-  (**Qobuz**, **Library**, your media server's name), and the speaker appears as the
-  **output** — because it is the destination, not the source.
-- A badge reading **External** means the music was **not started from
-  Audiogravi<sup>ty</sup>** — someone is driving your speaker, or HQPlayer, from another app
-  or its own remote. Audiogravi<sup>ty</sup> shows what it can see and stays out of the way.
+  shows the **station's logo**. The same holds when you **cast to a network speaker**:
+  the badge names where the music comes from (**Qobuz**, **Library**, your media
+  server's name), and the speaker appears as the **output** — because it is the
+  destination, not the source.
+- A badge reading **External** means the music was **started from another app**, not
+  from Audiogravi<sup>ty</sup>. This happens because your box also behaves as a speaker
+  other apps can send music to, and because HQPlayer has a remote control of its own: a
+  phone running JPLAY or BubbleUPnP, or someone at the HQPlayer remote, can start
+  playback without going through Audiogravi<sup>ty</sup>. It still shows you what is
+  playing, and the badge tells you the queue is not one it filled.
 - When the queue **mixes sources** — say a radio station followed by a Qobuz album —
   each upcoming track carries a small **source badge** telling you where it comes
   from, and a **filter bar** lets you view one source at a time. Filtering only
   changes what you *see*: nothing moves or stops playing, and the current track
   always stays in view.
 - Remove an upcoming track with its **Remove** button or a **left-swipe** — the same
-  gesture used across the app's lists. It always removes the track you swiped, even
-  if the queue has reordered meanwhile. **Clear** empties the queue, and respects the
+  gesture used across the app's lists. **Clear** empties the queue, and respects the
   active filter.
 
 <img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a Marantz: the card is badged Qobuz, the signal path reads Qobuz then Marantz, and the output bar names the speaker" width="360">
@@ -103,7 +105,8 @@ On phones and tablets, Audiogravi<sup>ty</sup> stays in **portrait** by default.
 **Portrait Lock** switch in **Settings** (the gear in the top bar) turns it off if
 you prefer landscape — and on a device you can't rotate, the *Continue in landscape*
 button on the rotate screen lets you carry on (it switches the lock off for you).
-Desktop installs are unaffected.
+On a computer there is nothing to lock: the setting has no effect there, and the
+interface follows your window whatever its shape.
 
 ## Where the audio goes
 

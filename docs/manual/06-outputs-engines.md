@@ -14,9 +14,8 @@ next to it in **Library → Sources**.
 <img src="images/ios-outputs.webp" alt="The output selector: the active USB DAC and the ready optical and HDMI outputs" width="360">
 
 
-Switching is designed to be seamless. **MPD's output flips gapless** — over MPD's
-control socket, without restarting the player — so there is no silence, and a cast
-already playing keeps going on the new output. **AirPlay** is the exception: its
+Switching is designed to be seamless. **MPD's output flips gapless** — no silence, and
+a cast already playing keeps going on the new output. **AirPlay** is the exception: its
 receiver has to restart to change output, so the panel warns you first that it will
 interrupt any AirPlay session in progress. And when a switch does not take, the panel
 tells you instead of pretending it worked — it shows the reason and rolls back to the
@@ -78,10 +77,9 @@ of Harbeths.
 
 That part is a description you write once, and Audiogravi<sup>ty</sup> **never rewrites it**.
 A new box arrives with an example chain — a box, a converter over USB and optical, an
-amplifier, speakers — meant to be replaced by yours. Open **Pipeline → CONFIG** to do it,
-on a computer or on a phone. It is a text file, so a computer is the comfortable place to
-write one from scratch; the phone is there so a box that shows nothing is never a dead
-end, and for the one line you came to fix.
+amplifier, speakers — meant to be replaced by yours. Open **Pipeline → CONFIG** to do it.
+It is a text file, so a computer is the comfortable place to write one from scratch, but
+it can be reached from a phone too.
 
 > **Until it describes your gear, the signal path can look empty.** The view draws a
 > device only when audio is actually flowing through one of its declared connections, and
@@ -132,34 +130,25 @@ how long the track is, it advances, and you can drag it to move around inside th
 HQPlayer is asked to jump, exactly as your local output would be. This holds track by
 track through an album.
 
-The title, the artist and the cover follow the track too, all the way through an album.
-That is worth a word on how it is done, because HQPlayer cannot be asked: it reads no tags
-from a stream it fetches over the network, whatever the file. So Audiogravi<sup>ty</sup>
-remembers the list it sent and reads which entry HQPlayer is on — the answer comes from
-its own side, not from asking.
+The title, the artist and the cover follow the track too, all the way through an album —
+as long as the album was started from Audiogravi<sup>ty</sup>. Two cases show no title,
+and both are cases where it cannot know what is playing:
 
-Two consequences follow from that, and they are both visible.
+- Playback you started from **HQPlayer's own remote**. You get "processor active" and
+  the format.
+- A playlist **changed inside HQPlayer** while Audiogravi<sup>ty</sup> was playing to
+  it: labelling stops rather than putting your album's titles on someone else's tracks.
 
-A playback you started from **HQPlayer's own remote** rather than from
-Audiogravi<sup>ty</sup> shows no title at all — there is no list on this side to read from,
-and HQPlayer's remote-control connection carries the format and the position, never the
-identity of the track. You get "processor active" and the format, which is what is
-actually knowable.
-
-The same happens if you **change HQPlayer's playlist from HQPlayer itself** while
-Audiogravi<sup>ty</sup> is playing to it: it notices the list is no longer the one it sent
-and stops labelling rather than putting your album's titles on someone else's tracks.
-
-**Internet radio is the exception.** A station announces the track it is playing inside the
-audio stream itself, and here it is HQPlayer that receives the stream, not
-Audiogravi<sup>ty</sup> — and HQPlayer keeps only the station's name, never the current
-track. So a radio played through HQPlayer shows the station and its logo, where the same
-station on your local output shows the song. This one is a genuine gap, not a design.
+**Internet radio shows the station, not the song.** A station announces its current track
+inside the audio stream, and through HQPlayer it is HQPlayer that receives that stream.
+So a radio played this way shows the station and its logo, where the same station on your
+local output shows the song.
 
 ### What can and cannot go through HQPlayer
 
-Only one question decides it now: **what format the track is in**. Where it comes from no
-longer matters — every source Audiogravi<sup>ty</sup> can play reaches HQPlayer.
+One question decides it: **what format the track is in**. Every source
+Audiogravi<sup>ty</sup> can play reaches HQPlayer, so where the music comes from makes no
+difference.
 
 **Which sources reach HQPlayer:**
 

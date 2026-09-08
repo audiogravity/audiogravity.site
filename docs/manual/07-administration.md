@@ -127,17 +127,15 @@ and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
 
 A tile whose package is absent is dashed and greyed, carries an **UNAVAILABLE** badge
 and says so in plain words, with a link to [Audio Software](#audio-software) where the
-package is installed. Without that, the tile showed the path of a file that does not
-exist and a button offering to edit it, and looked broken rather than empty.
+package is installed.
 
-What can still be done, still can: a package removed without purging leaves its
-configuration file behind, and that file stays downloadable — a file on the box can
-always be taken off it. What cannot, is refused: editing is closed, because saving a
-configuration also restarts the service, and no restart can succeed for software that
-is not there. Backups are not lost either; they come back with the package.
+A package removed without purging leaves its configuration file behind, and that file
+stays **downloadable**. **Editing is closed**, because saving a configuration also
+restarts the service and no restart can succeed for software that is not there. Your
+backups are not lost; they come back with the package.
 
-The reverse case is left alone: an installed service whose file is missing keeps its
-editor, which is what creates the file.
+An installed service whose file is missing keeps its editor, which is what creates the
+file.
 
 ## Audio configuration (services & profiles)
 
@@ -256,12 +254,10 @@ shairport-sync, Roon Bridge…).
   sources publish — which is what makes the answer current rather than as old as the
   last boot. When updates are pending, an **UPDATE ALL** badge appears next to it to
   run them in one go.
-- **Roon is the exception** — Roon publishes no version number anywhere: its download
-  always carries the same name and holds no version inside. Your box therefore cannot
-  announce a Roon update, and does not pretend to — waiting for one is waiting for
-  something that cannot come. The button stays available all the same: using it re-runs
-  Roon's own installer, which always fetches the current build. The card tells you which
-  build you have and that there is nothing to compare it against.
+- **Roon is the exception** — Roon publishes no version number, so your box cannot tell
+  you a Roon update is waiting, and never will. Use the button anyway when you want to
+  move: it re-runs Roon's own installer, which always fetches the current build. The
+  card tells you which build you have and that there is nothing to compare it against.
 - **Not available here** — a greyed-out INSTALL always says why, and the three reasons
   are not the same: the publisher has **no build** for your machine's architecture
   (nothing to be done); their site **could not be reached** when the list was worked
@@ -270,7 +266,7 @@ shairport-sync, Roon Bridge…).
   meet: Roon Server already contains Roon Bridge, so the two cannot share a box, and
   the card names the one that is in the way.
 - **Installed, but not configured** — installing a service does not configure it; that
-  is a separate, deliberate step. The card says so while a service still runs on the
+  is a separate step. The card says so while a service still runs on the
   settings its own package shipped, because it can then play to the wrong output while
   looking perfectly ready.
 - **Playback is interrupted** — updating a service restarts it, uninstalling stops it.
@@ -320,16 +316,15 @@ once"* apart from *"this one device was never set up"* — whether each interfac
 address is **leased or fixed**, which is whether it can still move, the **name the box
 announces**, asked of the announcing service itself rather than guessed from the
 hostname, and the **date** of the last self-update. When the announced name is not one
-the certificate carries, the report says so on the spot: both facts were already in
-it, two sections apart, and nobody compares them by eye.
+the certificate carries, the report says so on the spot rather than leaving you to
+compare two sections by eye.
 
 **When the report cannot answer, it says so rather than guessing.** A check that could
 not be run reads *unknown* and names what stopped it; a service that is not installed on
 your box is called absent, instead of being described from the settings it would have
-used if it were. An answer you can trust to be either right or missing is worth more
-than one that is always there. Recent errors from the system journal are folded the same
-way: an identical failure that happened seven times is one line carrying its count and
-the last time it occurred, in the order things actually happened.
+used if it were. Recent errors from the system journal are folded the same way: an
+identical failure that happened several times is one line carrying its count and the
+last time it occurred, in the order things actually happened.
 
 **Passwords, API keys and access tokens are removed before the report is built.** A
 credential's *name* stays visible so you can still see the setting exists, but its value

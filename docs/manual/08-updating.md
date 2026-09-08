@@ -26,8 +26,7 @@ together**, so everything lands on the new version at once.
 ### Safety: automatic rollback
 
 If anything goes wrong, the box **automatically rolls back** to the previous version
-and tells you — you're never left on a broken update. The updater runs detached from
-the app, so it survives the restart it triggers. There's **no OS reboot**; only a
+and tells you — you're never left on a broken update. There's **no OS reboot**; only a
 brief pause while the audio service restarts.
 
 ## Split installs (different hosts)

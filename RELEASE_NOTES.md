@@ -7,6 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The Admin tab stops counting who is connected
+
+A small figure sat beside **Admin** in the list of tabs — people connected, over accounts on
+the box. On a phone the tabs always run down the side of the screen, which is where that
+figure shows, so it was in the way of the one place it had no reason to be.
+
+A box at home is not a server with users to watch. The count is gone, and with it a question
+the interface asked the box every time it loaded.
+
+Who is online is still there where it says something: open **Admin** and each account carries
+a green mark for as long as that person has the interface open.
+
 ### Reordering your library is instant
 
 The three buttons above your local collection — **All**, **Recent**, **A–Z** — are answered

@@ -6,13 +6,12 @@ interface.
 
 **Before you write in**, open **System › Actions › Support Report**. It gathers the state
 of the whole box in one gesture — versions, services, outputs, configuration files,
-library — with passwords and tokens removed, and gives you a **Copy** button. Pasting it
-into your message saves the round-trips that would otherwise be spent asking you what
-your box looks like. See [7. Administration](07-administration.md#support-report).
+library — with passwords and tokens removed, and gives you a **Copy** button. Paste it
+into your message. See [7. Administration](07-administration.md#support-report).
 
 ## No sound / wrong output
 
-**Read the message first.** Audiogravi<sup>ty</sup> now tells you why a track will not play,
+**Read the message first.** Audiogravi<sup>ty</sup> tells you why a track will not play,
 as a notification and under the output in the fullscreen player. Start there — the
 answer is usually on screen:
 
@@ -239,19 +238,13 @@ Then `sudo reboot`, and the figures appear on their own.
 
 ## An MPD app on my phone or computer can't reach the box
 
-Audiogravi<sup>ty</sup> keeps MPD reachable **from the box only** — the interface, the
-UPnP renderer your phone casts to, and playback itself all talk to it from inside the
-machine, so nothing you do through Audiogravi<sup>ty</sup> is affected. A third-party
-MPD application connecting straight to the box is what stops working.
-
-This is deliberate. MPD's control port asks for no password, so left open to the network
-it lets anything on your network start, stop and browse your music. Closing it is also
-what makes a service you stopped stay stopped.
+Nothing you do through Audiogravi<sup>ty</sup> is affected — the interface, casting to
+the box and playback itself all keep working. What stops working is a third-party MPD
+app connecting to the box directly, because that door is closed on purpose.
 
 Control the box from the Audiogravi<sup>ty</sup> interface, or cast to it as a UPnP
-renderer, which stays open on the network as before. If a third-party MPD app is part
-of how you listen, say so through [Getting help](#getting-help) — reopening that port
-is reasonable, but it should be a switch you turn on knowingly rather than a default.
+renderer, which stays open on the network. If a third-party MPD app is part of how you
+listen, tell us through [Getting help](#getting-help).
 
 ## Streaming fails or a track won't play
 
@@ -259,19 +252,19 @@ is reasonable, but it should be a switch you turn on knowingly rather than a def
   the account name** — it states what the service will actually play, which is not the
   quality Audiogravi<sup>ty</sup> asks for (see
   [5. Library & streaming](05-library-streaming.md#when-a-subscription-ends)).
-- A track that played before but fails later is usually an **expired streaming link** —
-  Audiogravi<sup>ty</sup> refreshes these automatically; retry the track.
+- A track that played before but fails later: **retry it**.
 - **Every track stops after thirty seconds.** The subscription has ended. Qobuz and
   Tidal keep the account signed in and keep serving music — thirty seconds of each
   track, at any quality setting. Library → Sources says so under the account name:
   *No subscription · 30-second previews*. Nothing on the box is at fault, and no
   setting changes it.
 - **HIGHRESAUDIO** allows a single active device — if it signed out, reconnect.
-- **Tidal in silence, on any output.** Tidal's lossy qualities (HIGH, LOW) deliver AAC,
-  which cannot be converted losslessly — nothing plays, anywhere. Set Tidal to a lossless
-  quality. The same message appears when the **album itself** is not available in lossless
-  even though your setting is right: Audiogravi<sup>ty</sup> checks what Tidal actually
-  serves before it starts, and names the cause instead of leaving you with silence.
+- **Tidal plays nothing, while everything else does.** Set Tidal's quality to a lossless
+  one. Its lower quality settings (HIGH, LOW) produce no sound at all on any output —
+  not quieter or worse, nothing. A particular album can do the same if Tidal does not
+  publish it in lossless; try another release. With HQPlayer as your output you get a
+  message saying so; on your DAC you get only the silence, which is why this is the
+  entry to check first.
 - **With HQPlayer as your output**, a track in a format HQPlayer cannot decode is refused
   wherever it comes from — your library, a media server or a radio station — and the
   message names the format and the track. Turn **Use as output** off to play it on the
@@ -282,9 +275,9 @@ is reasonable, but it should be a switch you turn on knowingly rather than a def
 
 ## A bookmark, or the home-screen icon, opens on nothing
 
-Almost always the router has handed the box a different address. A bookmark — and above
-all an **installed app icon** — reopens for ever the address it was added from, and an
-app window has no address bar and no error page to say so: it simply fails to open.
+Almost always, the router has given the box a new address, and your bookmark or icon
+still points at the old one. An installed app is the worst case: it has no address bar
+to correct and shows no error — it just opens on a blank page.
 
 Every box also answers to **its own name**, `https://<name>.local`, where `<name>` is
 the first part of its hostname — a box called `musics` answers to `musics.local`, and
@@ -296,10 +289,6 @@ come back.
   device asking must be on the **same subnet**: another VLAN needs an mDNS repeater on
   the router, and some access points filter multicast. On the same network it resolves
   with nothing to install on iOS, macOS and Windows, and on most Android versions.
-- **The certificate warning appears on the name** — a box installed before this was
-  reliable may hold a certificate issued for its address alone. Upgrading reissues it
-  to carry the name; the **authority** you trusted is not replaced, so no phone or
-  computer of the house has to be set up again.
 - **You still need the address** — your router's client list has it, and the installer
   printed it at the end of the install.
 
@@ -324,10 +313,6 @@ until you say so.
   modern browser accepts, whatever you did with it. Upgrading replaces it and creates
   the authority; trust that once and the app installs. Nothing to undo first, and any
   copy of the old certificate you had installed on a phone can simply be removed.
-- **You put your own certificate on the box** — a valid one, whoever issued it, is
-  detected and **left untouched**: no authority is created, nothing is published, and
-  renewal stays with whatever issues it. The box only steps in if that certificate has
-  actually expired, or carries no `subjectAltName` (which no browser accepts).
 - **You changed the box's address, or its name** — the certificate is reissued
   automatically to carry both, and the authority does not change, so devices that
   already trust it need nothing.
@@ -338,9 +323,8 @@ Audiogravi<sup>ty</sup> reads the player's answer before showing a command as do
 control that returns to its previous state is reporting a **refusal** — it is not a missed
 tap, and repeating it will not help until the cause is fixed.
 
-- **The volume slider glides back.** The output has no volume control of its own — common
-  for a DAC used bit-perfect. Use the DAC's own control or its remote, or pick an output
-  with a mixer (see [6. Outputs & engines](06-outputs-engines.md)).
+- **The volume slider glides back.** The output has no volume control Audiogravi<sup>ty</sup>
+  can drive. Use the DAC's own control, or your amplifier's.
 - **Play/pause flips back, or next/previous does nothing.** The player refused or could
   not be reached; check it is running under Services, and see *No sound / wrong output*
   above.
@@ -349,9 +333,8 @@ tap, and repeating it will not help until the cause is fixed.
   the page was drawn (**re-scan the library**), a radio station whose address the player
   rejects, or a queue row already removed from another device — reopen the queue to see
   its real content.
-- **Queueing an album added only some of its tracks.** That is reported honestly rather
-  than rolled back: the tracks that made it in are yours and are counted. Queue the rest
-  again, and if it repeats, re-scan the library.
+- **Queueing an album added only some of its tracks.** The count you are shown is what
+  actually went in. Queue the rest again, and if it repeats, re-scan the library.
 
 ## The progress bar won't move
 
@@ -361,9 +344,8 @@ Jumping inside a track is declined — and says so — in three cases, none of t
 - **The first seconds of a Tidal track's first listen.** The track plays while it is still
   arriving; the seekable copy is ready a few seconds in. Wait a moment and drag again — the
   rest of that first listen seeks normally.
-- **A second jump while the first is still being applied.** Asking again immediately is
-  declined rather than queued, so the track is not restarted several times over. Let the
-  first one land.
+- **Two jumps in quick succession.** The second is declined while the first is still
+  being applied. Wait a moment and drag again.
 
 ## Casting to a renderer stalls
 

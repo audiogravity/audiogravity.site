@@ -319,13 +319,6 @@ hostname, and the **date** of the last self-update. When the announced name is n
 the certificate carries, the report says so on the spot rather than leaving you to
 compare two sections by eye.
 
-**When the report cannot answer, it says so rather than guessing.** A check that could
-not be run reads *unknown* and names what stopped it; a service that is not installed on
-your box is called absent, instead of being described from the settings it would have
-used if it were. Recent errors from the system journal are folded the same way: an
-identical failure that happened several times is one line carrying its count and the
-last time it occurred, in the order things actually happened.
-
 **Passwords, API keys and access tokens are removed before the report is built.** A
 credential's *name* stays visible so you can still see the setting exists, but its value
 never appears. Neither does the content of your library.

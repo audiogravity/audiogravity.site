@@ -1,8 +1,8 @@
 # 6. Outputs & engines
 
 Audiogravi<sup>ty</sup> can send the same music to very different destinations — a locally
-attached DAC, a network renderer across the room, HQPlayer's DSP engine, or an AirPlay
-receiver. The **output selector** switches between them in one tap.
+attached DAC, a network renderer across the room, or HQPlayer's DSP engine. The **output
+selector** switches between them in one tap.
 
 ## The output selector
 
@@ -167,11 +167,10 @@ and steps aside — it never carries the music. **Tidal** is the one exception: 
 its audio in a form that has to be converted first, so that stream does pass through the
 box. Nothing is re-encoded either way; the audio is bit-for-bit what the service sent.
 
-> **Tidal and quality.** Tidal's lossy qualities (HIGH, LOW) deliver AAC, which cannot be
-> converted losslessly and so plays on **no** output at all — not just through HQPlayer.
-> Keep Tidal on a lossless quality. Audiogravi<sup>ty</sup> checks what Tidal actually
-> serves before starting an album, and says so rather than leaving you with silence: an
-> album unavailable in lossless is refused by name, even when your quality setting is right.
+> **Keep Tidal on a lossless quality.** Its lower quality settings (HIGH, LOW) produce no
+> sound at all — on every output, not only through HQPlayer. With HQPlayer as your output
+> you are told so before the album starts, and the same applies to an album Tidal does not
+> publish in lossless.
 
 **Which formats HQPlayer decodes:**
 

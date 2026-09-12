@@ -7,6 +7,27 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### You can see where the music is coming from
+
+Everything you play travels over the same engine — a Qobuz album, a Tidal track, a station,
+a file on the box, a record served by a machine down the hall. So the card at the top of the
+**Audio Pipeline** tab could only ever tell you about the engine. It said **MPD**, and it
+said it for all of them.
+
+It now tells you the source as well, beside the engine rather than instead of it: the tab is
+about the path your music takes, and the engine is part of that path. When naming both would
+just say one thing twice — AirPlay carried by AirPlay — only one is shown.
+
+The same information reaches the player at the bottom of the screen and the full-screen
+player, where it was already shown but only in the general: a record served by your media
+server reads **MinimServer** instead of "UPnP", a station you are listening to reads its own
+name instead of "Radio", and music playing on HQPlayer from HQPlayer's own remote reads
+**HQPlayer** instead of "External" — which told you it was not us without telling you what
+it was.
+
+None of this asks your box for anything new. All of it was in the answer it was already
+giving, and no screen had ever read it.
+
 ### The Admin tab stops counting who is connected
 
 A small figure sat beside **Admin** in the list of tabs — people connected, over accounts on

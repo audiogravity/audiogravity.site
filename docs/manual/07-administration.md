@@ -319,6 +319,9 @@ hostname, and the **date** of the last self-update. When the announced name is n
 the certificate carries, the report says so on the spot rather than leaving you to
 compare two sections by eye.
 
+It also gives **the address to type** to reach the interface: the box's address on your
+network, and its `.local` name beside it, each with the port to use.
+
 **Passwords, API keys and access tokens are removed before the report is built.** A
 credential's *name* stays visible so you can still see the setting exists, but its value
 never appears. Neither does the content of your library.

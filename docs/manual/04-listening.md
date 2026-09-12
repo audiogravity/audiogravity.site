@@ -51,11 +51,12 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   server's name), and the speaker appears as the **output** — because it is the
   destination, not the source.
 - A badge reading **External** means the music was **started from another app**, not
-  from Audiogravi<sup>ty</sup>. This happens because your box also behaves as a speaker
-  other apps can send music to, and because HQPlayer has a remote control of its own: a
-  phone running JPLAY or BubbleUPnP, or someone at the HQPlayer remote, can start
-  playback without going through Audiogravi<sup>ty</sup>. It still shows you what is
-  playing, and the badge tells you the queue is not one it filled.
+  from Audiogravi<sup>ty</sup>. Your box also behaves as a speaker other apps can send
+  music to, so a phone running JPLAY or BubbleUPnP can start playback without going
+  through it. Music started at **HQPlayer's own remote** is badged **HQPlayer**. Either
+  way you still see what is playing, and the badge tells you the queue is not one
+  Audiogravi<sup>ty</sup> filled. When *you* send music to HQPlayer, the badge names the
+  music — your library, Qobuz — not HQPlayer.
 - When the queue **mixes sources** — say a radio station followed by a Qobuz album —
   each upcoming track carries a small **source badge** telling you where it comes
   from, and a **filter bar** lets you view one source at a time. Filtering only
@@ -78,9 +79,10 @@ native resolution. A DSD lock indicator appears for DSD streams.
 
 ## The stream-origin badge
 
-A badge in the Now Playing bar always tells you **where the audio is coming from** —
-Tidal, Qobuz, HIGHRESAUDIO, your UPnP server (by name), a radio station, a local file,
-or AirPlay. No guessing which source is live.
+A badge in the player always tells you **where the audio is coming from** — Tidal,
+Qobuz, HIGHRESAUDIO, your UPnP server (by name), a radio station (by name), a local
+file, or AirPlay. You see it in the Now Playing bar, on the full-screen player and on
+the **Pipeline** tab's Now Playing card. No guessing which source is live.
 
 ## Profiles — switch whole chains in one tap
 

@@ -36,9 +36,14 @@ done
 # repo the release assets download anonymously, so no token is required.
 
 # Prerequisites. python3 is not optional for the ui either: the deployed HTTPS proxy
-# IS a python3 process (`ExecStart=/usr/bin/python3 .../server.py`), and unlike the core
-# package the ui installer has no system-dependency block of its own. It used to be a
-# hard failure here. We are root (asserted above), so install what is missing.
+# IS a python3 process (`ExecStart=/usr/bin/python3 .../server.py`), and it has to be
+# there before that installer runs at all. It used to be a hard failure here. We are
+# root (asserted above), so install what is missing.
+#
+# The ui installer does have system dependencies of its own — avahi-daemon, and openssl
+# in HTTPS mode — but it installs them itself, so that a manual tarball install (which
+# never runs this bootstrap) is covered too. A new ui dependency belongs THERE, not
+# here; this list is only what has to exist before the installer can start.
 #
 # Duplicated verbatim in scripts/bootstrap-core-install.sh, and it has to be: both are
 # standalone single-file scripts piped straight into bash from a URL, so they cannot

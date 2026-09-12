@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.54 — 2026-09-12
+
 ### You can see where the music is coming from
 
 Everything you play travels over the same engine — a Qobuz album, a Tidal track, a station,

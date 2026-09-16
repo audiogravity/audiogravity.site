@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.55 — 2026-09-16
+
 ### The Library stops offering you what you are already listening to
 
 Play a station, stand on the Radio screen, and a banner appeared across the top:

@@ -24,7 +24,7 @@ indicator for users currently connected. Three roles control who can do what:
 - **Guest** — read-only: can view status and logs but not change settings or toggle
   services.
 
-<img src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle and the edit and delete actions" width="360">
+<img src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle, and the passkeys and edit actions" width="360">
 
 **Passkeys** — the *Passkeys* button on your own card registers WebAuthn credentials
 (Face ID, Touch ID, a hardware key). Each passkey is tied to one device and can be
@@ -55,7 +55,7 @@ The **gear** in the top bar opens the app-wide Settings panel:
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
-<img src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, theme, display toggles and passkeys" width="360">
+<img src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, theme, the display and notification toggles, portrait lock and Face ID / Touch ID" width="360">
 
 ### Push notifications
 
@@ -122,6 +122,8 @@ Safely edit the real configuration files of your audio services (see also
 Each tile carries the state of its service — **RUNNING**, **STOPPED** or **FAILED** —
 and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
 **CONFIGURED** or still on the package defaults.
+
+<img src="images/ios-config-editor.webp" alt="The Config tab: one tile per audio service with its file path, its output, its RUNNING or STOPPED state, its CONFIGURED badge and the Edit config button" width="360">
 
 ### When the software behind a tile is not installed
 
@@ -332,7 +334,7 @@ attach it to a message yourself.
 
 <img src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
 
-<img src="images/ios-system-actions.webp" alt="System actions: Restart Backend in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
+<img src="images/ios-system-actions.webp" alt="System actions: Restart Core and Support Report in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
 
 ## Performance tuning (Pro)
 
@@ -390,6 +392,11 @@ install taps a Pro tab — those carry a small lock icon in the tab bar).
   reinstall.
 
 <img src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
+
+Once the licence is activated the same panel changes shape: the countdown gives way to
+the plan, the order the key came from, and the date it was activated.
+
+<img src="images/ios-license-active.webp" alt="The licence panel on an activated box: the Lifetime badge, the licence-server status, the Device ID and Order ID with their copy buttons, the activation date and the plan" width="360">
 
 ### What the box sends to the licence server
 

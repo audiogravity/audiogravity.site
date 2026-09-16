@@ -71,7 +71,7 @@ demoted by others, and cannot delete their own account.</li>
 <li><strong>Guest</strong> — read-only: can view status and logs but not change settings or toggle
 services.</li>
 </ul>
-<img loading="lazy" src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle and the edit and delete actions" width="360">
+<img loading="lazy" src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle, and the passkeys and edit actions" width="360">
 <p><strong>Passkeys</strong> — the <em>Passkeys</em> button on your own card registers WebAuthn credentials
 (Face ID, Touch ID, a hardware key). Each passkey is tied to one device and can be
 removed individually; use it instead of a password at login. Password changes take
@@ -98,7 +98,7 @@ chosen here.</li>
 registered device appears as a chip you can remove individually. (These are the
 same credentials as the <em>Passkeys</em> button on your user card above.)</li>
 </ul>
-<img loading="lazy" src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, theme, display toggles and passkeys" width="360">
+<img loading="lazy" src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, theme, the display and notification toggles, portrait lock and Face ID / Touch ID" width="360">
 <h3 id="push-notifications">Push notifications</h3>
 <p>With <strong>Notifications</strong> on, the box sends this device a system notification when
 something needs attention — even with the app closed:</p>
@@ -160,6 +160,7 @@ batch several edits.</li>
 <p>Each tile carries the state of its service — <strong>RUNNING</strong>, <strong>STOPPED</strong> or <strong>FAILED</strong> —
 and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
 <strong>CONFIGURED</strong> or still on the package defaults.</p>
+<img loading="lazy" src="images/ios-config-editor.webp" alt="The Config tab: one tile per audio service with its file path, its output, its RUNNING or STOPPED state, its CONFIGURED badge and the Edit config button" width="360">
 <h3 id="when-the-software-behind-a-tile-is-not-installed">When the software behind a tile is not installed</h3>
 <p>A tile whose package is absent is dashed and greyed, carries an <strong>UNAVAILABLE</strong> badge
 and says so in plain words, with a link to <a href="#audio-software">Audio Software</a> where the
@@ -356,7 +357,7 @@ never appears. Neither does the content of your library.</p>
 your clipboard and <strong>Download</strong> saves it as a text file, so it travels only if you
 attach it to a message yourself.</p>
 <img loading="lazy" src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
-<img loading="lazy" src="images/ios-system-actions.webp" alt="System actions: Restart Backend in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
+<img loading="lazy" src="images/ios-system-actions.webp" alt="System actions: Restart Core and Support Report in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
 <h2 id="performance-tuning-pro">Performance tuning (Pro)</h2>
 <p>Tune CPU scheduling for bit-perfect, glitch-free playback.</p>
 <ul>
@@ -408,6 +409,9 @@ self-service portal (purchase email + Device ID, no account needed) after an OS
 reinstall.</li>
 </ul>
 <img loading="lazy" src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
+<p>Once the licence is activated the same panel changes shape: the countdown gives way to
+the plan, the order the key came from, and the date it was activated.</p>
+<img loading="lazy" src="images/ios-license-active.webp" alt="The licence panel on an activated box: the Lifetime badge, the licence-server status, the Device ID and Order ID with their copy buttons, the activation date and the plan" width="360">
 <h3 id="what-the-box-sends-to-the-licence-server">What the box sends to the licence server</h3>
 <p>Whether Pro is unlocked is decided <strong>on the box</strong>, from the signature of its <code>.lic</code> file —
 no network round-trip gates it. Alongside that, the box checks in with the licence

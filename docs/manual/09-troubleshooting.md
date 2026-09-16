@@ -273,6 +273,29 @@ listen, tell us through [Getting help](#getting-help).
   listed in
   [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer).
 
+## After an update, the app shows an old version and says the core is offline
+
+The version line under the logo names a release you no longer run, and the status beside
+it reads **CORE · OFFLINE** — while the box itself is up and answers from another browser.
+
+The app is installed on your device, and a copy of it is stored there so it opens
+instantly and keeps working when the network blinks. That copy normally replaces itself:
+the app checks for a newer one every few minutes and reloads once it has it. A device
+that was asleep, offline, or closed during the update can miss that exchange and keep
+serving you the copy it already had. The old copy asks the box for things the new
+version moved, gets nothing back, and reports what it honestly sees — no answer, so
+**offline**. It is your app that is stale, not your box that is down.
+
+**Reload the page bypassing the stored copy.** On a desktop browser, hold **Shift** (or
+**⌘**) while clicking reload. In the installed app, where there is no reload button,
+close it completely — every window — and open it again; if it still shows the old
+version, open the same address in a normal browser tab, which has the button, and the
+installed app picks up the new copy on its next start.
+
+As a last resort, clear the site's stored data for the box's address in your browser's
+settings. Nothing of yours lives there: your accounts, licence and audio configuration
+are all on the box.
+
 ## A bookmark, or the home-screen icon, opens on nothing
 
 Almost always, the router has given the box a new address, and your bookmark or icon

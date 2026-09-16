@@ -252,6 +252,8 @@ is flowing; **green links** mean lossless, no sample-rate conversion (bit-perfec
 **bit-perfect** badge confirms it. On small screens it falls back to a simplified Now
 Playing view with per-stream output steering (USB / Optical).
 
+<img src="images/ios-signal-chain.webp" alt="The Audio Pipeline on a phone: the Now Playing card, the output steering pills, and the signal chain from the streamer through the DAC and the amplifier to the speakers" width="360">
+
 The graph is drawn from a map you own, **`audio-topology.json`** — see
 [7. Administration → Audio topology](07-administration.md#audio-topology-signal-chain-map)
 to edit it, and the same section for the tuning that keeps this path clean.

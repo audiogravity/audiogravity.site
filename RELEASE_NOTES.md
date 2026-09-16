@@ -7,7 +7,50 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### The manual shows the interface you are running
+
+The pictures in the manual were taken between eight and ten weeks ago, and the interface
+moved underneath them. They offered you MPD 0.23 where your box installs 0.24, an engine
+that is no longer listed and neither of the two that now are, three outputs where a plain
+box has six, a user card missing the passkeys button that sits beside it today, and an
+update banner announcing a version from last spring.
+
+Every one of them has been retaken against a running box, at the size of a phone screen
+and at three times its resolution, so they stay sharp on the device most people read them
+on. Where a caption had come to describe something the screen no longer says — the button
+is **Restart Core**, not "Restart Backend" — it was corrected along with the picture above it.
+
+Seven parts of the manual described something and showed nothing. The stream-origin badge
+that arrived in 0.9.54 was one of them: explained in a paragraph, never pictured. It is now
+shown carrying the name of a station beside the engine playing it, which is the whole point
+of it — the engine alone tells you nothing, since everything you play travels over the same
+one. The bar at the bottom of every screen, the list of sources the Library chapter is built
+around, the radio collection, the signal chain as a phone draws it, and the tiles of the
+configuration editor have joined it.
+
+The licence panel is shown twice, on trial and once activated, because it holds different
+things in each. The device identifier and the order number are blurred in both: an order
+number is the licence key itself.
+
+### When the app says your box is offline and your box is fine
+
+A phone that was asleep, or an app that was closed while the box updated itself, can keep
+serving the copy of the interface it already had. That copy asks the box for things the
+newer version moved, gets nothing back, and reports the only thing it can honestly see —
+no answer — as **CORE · OFFLINE**.
+
+So the screen tells you to go and look at your box, and your box is working: the same
+address opens normally in any other browser. The troubleshooting chapter now says this in
+as many words and gives the way out, including inside the installed app, which has no
+reload button to press.
+
+### A stray line in the interface installer
+
+Installing the interface printed `install.sh: line 347: -: command not found` in the middle
+of its success report, on every install. Nothing was broken by it — the service it writes
+was always correct — but it is the kind of line that makes you stop and wonder what you have
+just done to your box. It is gone, along with the truncated comment it left behind in one of
+the files on your machine.
 
 ---
 

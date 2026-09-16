@@ -10,6 +10,8 @@ A sticky **Now Playing** bar sits above the footer and shows **all active audio
 sources** at once, with quick transport — play/pause, next, and volume. Tap it (or
 swipe up on mobile / the expand button on desktop) to open the **fullscreen player**.
 
+<img src="images/ios-nowplaying-bar.webp" alt="The Now Playing bar: cover art, the stream-origin and output badges, the track, and the transport with repeat and shuffle" width="360">
+
 ## The fullscreen player
 
 - **Cover art** with a dynamic background derived from it, a **seekable progress
@@ -83,6 +85,13 @@ A badge in the player always tells you **where the audio is coming from** — Ti
 Qobuz, HIGHRESAUDIO, your UPnP server (by name), a radio station (by name), a local
 file, or AirPlay. You see it in the Now Playing bar, on the full-screen player and on
 the **Pipeline** tab's Now Playing card. No guessing which source is live.
+
+<img src="images/ios-origin-badge.webp" alt="The Pipeline tab's Now Playing card: the MPD transport pill beside the stream-origin badge, which names the radio station rather than the engine" width="360">
+
+The transport pill on the left names the **engine** carrying the audio — here MPD.
+On its own it would tell you nothing about the music: MPD plays local files, Qobuz,
+Tidal, HIGHRESAUDIO and radio alike. The badge beside it names the **origin**, and
+for a radio station or a UPnP server it gives the name of the station or the server.
 
 ## Profiles — switch whole chains in one tap
 

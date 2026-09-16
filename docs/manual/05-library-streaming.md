@@ -20,6 +20,8 @@ The Library tab holds several views:
 - **Outputs** — pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
 - **Queue** — what's playing and coming up.
 
+<img src="images/ios-sources.webp" alt="The Sources view: the active source at the top, then the other sources, the AirPlay and UPnP inputs, and the discovered UPnP servers" width="360">
+
 ## Your local library
 
 Files on your NAS or USB drive (served by MPD) appear as a browsable, searchable
@@ -244,6 +246,8 @@ radio view has three sub-tabs:
 On each station card: **tap** to play, the **star** toggles Favorites, the **+**
 toggles My Live Radio, the **pencil** edits a custom station, and a **left-swipe**
 removes it from the current list.
+
+<img src="images/ios-radio.webp" alt="My Live Radio: the three sub-tabs, the Add custom station button, and station rows with their logo, country, bitrate, codec badge and favourite star" width="360">
 
 ### Where the stations come from, and what is sent back
 

@@ -301,6 +301,24 @@ streaming services included — the formats it accepts, and those it does not, a
 listed in
 <a href="06-outputs-engines#what-can-and-cannot-go-through-hqplayer">6. Outputs &amp; engines</a>.</li>
 </ul>
+<h2 id="after-an-update-the-app-shows-an-old-version-and-says-the-core-is-offline">After an update, the app shows an old version and says the core is offline</h2>
+<p>The version line under the logo names a release you no longer run, and the status beside
+it reads <strong>CORE · OFFLINE</strong> — while the box itself is up and answers from another browser.</p>
+<p>The app is installed on your device, and a copy of it is stored there so it opens
+instantly and keeps working when the network blinks. That copy normally replaces itself:
+the app checks for a newer one every few minutes and reloads once it has it. A device
+that was asleep, offline, or closed during the update can miss that exchange and keep
+serving you the copy it already had. The old copy asks the box for things the new
+version moved, gets nothing back, and reports what it honestly sees — no answer, so
+<strong>offline</strong>. It is your app that is stale, not your box that is down.</p>
+<p><strong>Reload the page bypassing the stored copy.</strong> On a desktop browser, hold <strong>Shift</strong> (or
+<strong>⌘</strong>) while clicking reload. In the installed app, where there is no reload button,
+close it completely — every window — and open it again; if it still shows the old
+version, open the same address in a normal browser tab, which has the button, and the
+installed app picks up the new copy on its next start.</p>
+<p>As a last resort, clear the site's stored data for the box's address in your browser's
+settings. Nothing of yours lives there: your accounts, licence and audio configuration
+are all on the box.</p>
 <h2 id="a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</h2>
 <p>Almost always, the router has given the box a new address, and your bookmark or icon
 still points at the old one. An installed app is the worst case: it has no address bar

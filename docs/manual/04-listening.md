@@ -68,7 +68,12 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   gesture used across the app's lists. **Clear** empties the queue, and respects the
   active filter.
 
-<img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a Marantz: the card is badged Qobuz, the signal path reads Qobuz then Marantz, and the output bar names the speaker" width="360">
+<img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
+
+Casting hands the audio over: what was playing on your DAC stops, and the speaker
+becomes the output. The hi-fi readout is absent here because a network speaker fetches
+the stream itself and reports no format back — what it receives is the file as the
+service serves it.
 
 ## The live hi-fi readout
 

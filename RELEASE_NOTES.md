@@ -44,6 +44,26 @@ address opens normally in any other browser. The troubleshooting chapter now say
 as many words and gives the way out, including inside the installed app, which has no
 reload button to press.
 
+### Sending music to a network speaker hands the room over
+
+Casting an album to a UPnP speaker used to leave the box playing whatever it already
+had on its own DAC. Two different pieces of music, two outputs, at the same time — and
+the screen followed the wrong one: it showed the station you had been listening to,
+with its cover and its format, while the speaker played the album you had just chosen.
+The signal path read *Radio → your speaker*, which describes nothing that exists.
+
+Nothing was wrong with what the box knew. It had the speaker's track, artist and album
+the whole time. The local player simply never stopped, and Audiogravi<sup>ty</sup> shows
+you the source that is actually playing — so it went on showing that one, correctly,
+from a situation that should never have arisen. HQPlayer hid it by accident: its network
+adaptor holds the sound card for itself, so the local player is stopped by being refused
+it. A speaker on the network takes nothing away from your DAC.
+
+Casting now hands the room over: what was playing stops as the speaker starts. It stops
+at the last moment, so a speaker that has left the network, or a streaming link that
+expires while it is being fetched, leaves your music playing instead of stopping it for
+nothing — and once per album, not once per track.
+
 ### A stray line in the interface installer
 
 Installing the interface printed `install.sh: line 347: -: command not found` in the middle

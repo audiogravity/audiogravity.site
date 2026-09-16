@@ -47,6 +47,11 @@ server's own audio path.
   owns the queue.
 - You can **cast your local NAS/USB library** to a network renderer too, exactly like
   a streaming service.
+- **Casting hands the room over.** What was playing on the box's own DAC stops as the
+  speaker starts — one piece of music, in one place. The hand-over happens at the last
+  moment, so a speaker that has left the network, or a streaming link that expires while
+  it is being fetched, leaves what you were listening to playing rather than stopping it
+  for nothing.
 
 > **A speaker that does not answer stops the play.** If the renderer you selected is
 > asleep, off the network or still reconnecting, Audiogravi<sup>ty</sup> refuses the play and

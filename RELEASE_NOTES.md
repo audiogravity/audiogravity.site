@@ -7,6 +7,41 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The Library stops offering you what you are already listening to
+
+Play a station, stand on the Radio screen, and a banner appeared across the top:
+*"Radio Choco HD is now playing"*, with a button offering to switch you to the radio. You
+were on the radio. The same banner turned up for a Qobuz album, and its Dismiss button was
+decoration — the box republishes what is playing about every three seconds, and the banner
+came straight back each time, so there was no way to make it stop.
+
+Underneath it, the two halves of that screen were not answering the same question. A
+station, a Qobuz album and a stream from a media server all travel over the same engine, so
+the field naming the engine says *the local library* for all three; only a second field
+names where the music actually comes from. The Library was reading the engine on one side
+and the real source on the other, and then telling you they disagreed. They always did.
+
+Both sides now read the real source. The radio has a quirk of its own on top of that — its
+screen is reached from the tab bar without changing the source you are browsing — so the
+banner also takes account of what the screen is showing, and starting a station now makes
+the radio the source you are browsing, exactly as picking it from the sources screen does.
+That last step waits until the station has actually started, so a station that fails to play
+no longer rearranges the tab bar underneath the error message.
+
+Dismiss now holds. The refusal lasts as long as that source is the one playing and lifts by
+itself once something else starts, so you are still told about the next thing — and glancing
+at the Radio screen is no longer read as changing your mind.
+
+Two smaller things came out of the same work. Signing in to a streaming account refreshes
+the list of sources, and that refresh had started adopting whatever was playing: it could
+drop you onto the radio screen, or swap the media server you were browsing for the local
+library. It refreshes the list now, and leaves you where you were. And the banner no longer
+names things that are not sources: with HQPlayer driven from its own remote, it offered
+*"HQPlayer is now playing"* and its Switch button sent the Library off to browse a routing
+handle, which holds no music to show you.
+
+---
+
 ### The manual shows the interface you are running
 
 The pictures in the manual were taken between eight and ten weeks ago, and the interface

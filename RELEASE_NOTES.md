@@ -7,7 +7,63 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Offline, the app now shows what it promised it was showing
+
+Take the box off the network — or walk out of range of it — and the interface raises a
+banner across the top: **OFFLINE MODE — VIEWING CACHED DATA**. Underneath it, the panel you
+were reading said *"Unable to connect to server. Please check your connection."*
+
+Both were true, and that is what made it bad. The strip of figures along the top really was
+restored from the last thing the box said. Nothing else was. Every panel fetches its own
+data, and none of them had ever been handed back what it last saw — they simply asked the
+box again, got no answer, and reported it, directly beneath a banner announcing the
+opposite.
+
+Six panels now keep their last reading and show it when the box cannot be reached: your
+profiles, your services, the system dashboard, the audio software list, the accounts, and
+the description of the processor. The banner means what it says on those screens.
+
+It is deliberately not everywhere. A reading is only served when **nothing answered at
+all** — a box that replies and refuses still says so, rather than showing you state from
+hours ago as though it were current. And three screens keep the error on purpose: the
+configuration editor, the systemd override editor, and the log viewer. The first two have
+a Save button, and offering a stale copy there is offering to overwrite the live file with
+it. Frozen logs shown as live mislead on precisely the subject you opened them for.
+
+On a phone the banner also stopped covering the page. It is fixed below the top bar, so the
+content underneath has to leave room for it — and the rule that did so had been shut inside
+a block that only applies to wide screens. On the screen where the banner is seen most, the
+first section title was cut in half.
+
+### An installed app that starts offline, after an update
+
+The app keeps its own copy of everything it needs, and rebuilds that copy at every release.
+Two files it cannot start without were missing from it: the one carrying the address and
+key of your box, and the one holding the connection for live updates.
+
+So the first launch after an update, made away from the network, opened an interface with
+no credentials — unable to ask the box for anything, and staying that way until it was
+reloaded with the network back. The live updates were gone too, without a word, because
+that particular failure is not one the app can notice. Both are kept now, and the app opens
+with your data.
+
+### Less work for nothing, on a machine that has music to play
+
+Three things the interface did on every page load, for no benefit:
+
+It re-fetched parts of itself. The rule deciding which files never change spelled out the
+shape of the fingerprint in their names, and the tool that produces them sometimes puts a
+dash in it — so whichever files happened to draw one that day were treated as changeable,
+re-requested and rewritten on each load. Which ones were affected was redrawn at every
+build, so the cost kept moving instead of being noticed. The pictures, icons and launch
+screens had their own version of this: re-checked against the box on every request, cache
+hit included, for files that cannot change until the next release replaces them all.
+
+It wrote the box's state to storage on every measurement that arrived — several times a
+minute, blocking the interface each time, when only the last value is ever read back.
+
+And it loaded nine of its heaviest screens in the background so they would be available
+offline. They already were.
 
 ---
 

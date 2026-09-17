@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.56 — 2026-09-17
+
 ### Offline, the app now shows what it promised it was showing
 
 Take the box off the network — or walk out of range of it — and the interface raises a

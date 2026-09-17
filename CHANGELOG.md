@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.56] - 2026-09-17
+
 ### Fixed
 - **[ui] Offline, the interface now shows the data it says it is showing.** A banner reading **OFFLINE MODE — VIEWING CACHED DATA** stretched across the screen while the panel underneath it said *"Unable to connect to server. Please check your connection."* Both were telling the truth, which is what made it worse: only the strip of figures along the top was ever restored, because it was the only surface listening for the state that was being kept. The panels each fetch their own data, and nothing handed them back what they had last seen — they simply asked the box again, got nothing, and reported it. Six now keep their last reading and serve it when the box cannot be reached: profiles, services, the system dashboard, audio software, accounts and the processor description. The reading is only served when **nothing answered at all** — a box that replies and refuses, say after a key is changed, still says so rather than showing hours-old state as though it were current. Three surfaces deliberately keep the error: the configuration and systemd editors, because a stale copy on a screen with a Save button offers to overwrite the live file with it, and the log viewer, because frozen logs presented as live mislead on exactly the subject they are opened for.
 - **[ui] The offline banner no longer covers the top of the page on a phone.** It is fixed below the top bar, so whatever scrolls underneath has to leave room for it — and the rule that did so was shut inside a desktop-only block. On a phone, which is where the banner is seen most, the first section title was cut in half and the chip beside it disappeared behind the orange.

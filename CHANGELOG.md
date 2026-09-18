@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] The Library button in the top bar now looks like the two buttons beside it.** Between the menu and the settings wheel, it was the only thing in the bar drawn inside a framed box — taller than its neighbours, filled with a background, its icon small in the middle. It borrowed the generic style meant for buttons elsewhere in the interface instead of the one the top bar uses, and had done so from the start without anything saying why. It is now the same size, frameless, with its icon filling the button like the other two. The button at the foot of the page, which uses that generic style on purpose, keeps its frame.
+
 ## [0.9.56] - 2026-09-17
 
 ### Fixed

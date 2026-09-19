@@ -130,6 +130,12 @@ Audiogravi<sup>ty</sup> refuses to turn the switch on when nothing would come ou
 configured, or its NAA not running on the box — and tells you which of the two is
 missing rather than sending your music into silence.
 
+**You are told what HQPlayer kept.** HQPlayer can accept a track and then drop it without
+saying so — a file it cannot reach, or cannot decode. Each time it sends music,
+Audiogravi<sup>ty</sup> reads HQPlayer's playlist back and names the tracks that did not
+make it: an album plays with what HQPlayer kept, a play it kept nothing of is refused at
+once, and adding to the queue tells you when a track was lost.
+
 **What the player shows while HQPlayer is your output.** The progress bar works: it knows
 how long the track is, it advances, and you can drag it to move around inside the track —
 HQPlayer is asked to jump, exactly as your local output would be. This holds track by

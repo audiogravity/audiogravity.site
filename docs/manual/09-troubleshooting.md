@@ -28,6 +28,11 @@ answer is usually on screen:
   Turn the switch off to play it on the local output. A whole album is refused if
   **any** of its tracks is in such a format — the message names that track — so you get
   one clear answer instead of music stopping partway through.
+- *"HQPlayer could not open this track"* (or *"could not open 2 of 12 tracks"*) —
+  HQPlayer accepted the track, then dropped it without an error of its own: a file it
+  cannot reach on your network, or cannot decode. The message names the tracks. If
+  HQPlayer kept part of an album, the rest plays; if it kept nothing, nothing is sent to
+  play. Turn **Use as output** off to play them on the local output.
 - *"Both HQPlayer and a network renderer are selected"* — pick one.
 - *"The speaker you selected is not answering"* — the renderer is asleep, off the
   network, or still reconnecting. Wake it up, or pick another output. Audiogravi<sup>ty</sup>
@@ -195,10 +200,10 @@ playback.
 A dash is not a zero: a service that genuinely reads nothing from disk shows `0`, not a
 dash.
 
-## Memory reads 0 for every service
+## Memory shows a dash for every service
 
-In **Services**, every card shows *0 MB* and its little memory graph stays flat, while the
-CPU figures next to them move normally.
+In **Services**, every card shows a dash (—) where the memory figure should be, and draws
+no memory graph, while the CPU figures next to them move normally.
 
 Nothing is wrong with the services: your box's **kernel was started with memory accounting
 switched off**, so there is no figure for anyone to read. It is the factory setting of

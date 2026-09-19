@@ -76,6 +76,11 @@ the message names it. (The full list is in
 Turn the switch off to play it on the local output. A whole album is refused if
 <strong>any</strong> of its tracks is in such a format — the message names that track — so you get
 one clear answer instead of music stopping partway through.</li>
+<li><em>&quot;HQPlayer could not open this track&quot;</em> (or <em>&quot;could not open 2 of 12 tracks&quot;</em>) —
+HQPlayer accepted the track, then dropped it without an error of its own: a file it
+cannot reach on your network, or cannot decode. The message names the tracks. If
+HQPlayer kept part of an album, the rest plays; if it kept nothing, nothing is sent to
+play. Turn <strong>Use as output</strong> off to play them on the local output.</li>
 <li><em>&quot;Both HQPlayer and a network renderer are selected&quot;</em> — pick one.</li>
 <li><em>&quot;The speaker you selected is not answering&quot;</em> — the renderer is asleep, off the
 network, or still reconnecting. Wake it up, or pick another output. Audiogravi<sup>ty</sup>
@@ -235,9 +240,9 @@ its override editor. The figures appear within seconds — no reboot, and no eff
 playback.</p>
 <p>A dash is not a zero: a service that genuinely reads nothing from disk shows <code>0</code>, not a
 dash.</p>
-<h2 id="memory-reads-0-for-every-service">Memory reads 0 for every service</h2>
-<p>In <strong>Services</strong>, every card shows <em>0 MB</em> and its little memory graph stays flat, while the
-CPU figures next to them move normally.</p>
+<h2 id="memory-shows-a-dash-for-every-service">Memory shows a dash for every service</h2>
+<p>In <strong>Services</strong>, every card shows a dash (—) where the memory figure should be, and draws
+no memory graph, while the CPU figures next to them move normally.</p>
 <p>Nothing is wrong with the services: your box's <strong>kernel was started with memory accounting
 switched off</strong>, so there is no figure for anyone to read. It is the factory setting of
 Raspberry Pi OS, which saves a few megabytes of kernel memory by not counting. systemd

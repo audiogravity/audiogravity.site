@@ -47,6 +47,20 @@ radio takes HQPlayer about four seconds to acknowledge — more than Audiogravi<
 to wait — and that late reply could stop the album from starting, silently. Every reply is now
 matched to the command it answers.
 
+### The Systemd tab shows the real-time settings your audio services run with
+
+The **Systemd** tab said "default" for the scheduling policy and the nice level of every audio
+service — including services running in real time. systemd reports the policy as a number,
+Audiogravi<sup>ty</sup> only understood names, and the nice level was asked for under a name
+systemd does not have. The tab now shows what systemd actually applies: `rr` for the audio
+engines tuned for real time, −10 for an HQPlayer NAA set that way.
+
+It mattered beyond the display. The editor starts from what the tab shows, so saving any
+setting wrote the service's file back without its policy — a service put in real time with
+*Audio Optimized* would have lost it at its next edit. It keeps it now. A service you never
+tuned still reads "default", and saving leaves systemd's defaults alone rather than freezing
+them into your settings.
+
 ---
 
 ## 0.9.56 — 2026-09-17

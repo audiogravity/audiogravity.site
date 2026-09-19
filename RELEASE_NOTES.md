@@ -7,7 +7,45 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Your own library plays through HQPlayer — on every box
+
+With HQPlayer as your output, playing an album from your own library could not work
+anywhere but in our lab. To play a file, HQPlayer is handed an address on your network to
+fetch it from, and that address had been written into the code as the one of our development
+machine. Every box gave it out. In the lab the development machine was always running, with
+the same music on it, so HQPlayer fetched the files from there and everything seemed fine;
+on your network that machine does not exist, and nothing played.
+
+The address is now your box's own, the one on the route toward HQPlayer — the right one even
+on a box with two network connections. Your files are fetched from the same signed address
+network speakers use, closing on the way a route that let any device on your network download
+any file of your library without a signature.
+
+Three things that followed from it:
+
+- **MP3 files play.** HQPlayer refuses an MP3 it is given with its size, and one sent without
+  it never started when the file opened with its cover. They now go to HQPlayer the way a radio
+  does, from their first note.
+- **The progress bar works on every MP3.** HQPlayer cannot measure the length of an MP3 without
+  a particular header, so the bar had no scale and could not be dragged. The length your library
+  knows is shown instead — HQPlayer's own measurement still wins when it has one. For such files
+  it can run a couple of seconds long, so the bar may stop just short of the end.
+- **The cover is your library's.** The picture inside the file, as the library shows it, with the
+  search on the internet behind it when a file has none.
+
+### HQPlayer now says what it actually kept
+
+HQPlayer accepts whatever it is given and may then drop it without a word — a file it cannot
+open, an address it cannot reach. Audiogravi<sup>ty</sup> used to take that silence for a yes.
+It now reads HQPlayer's playlist back as it sends. An album plays with the tracks that were
+kept, and the titles and covers follow the tracks HQPlayer really holds. A play HQPlayer keeps
+nothing of — or an addition to the queue that loses a track — is refused at once, naming the
+tracks, instead of blaming your sound card 45 seconds later.
+
+Starting an album while a radio plays through HQPlayer also works reliably now. Stopping the
+radio takes HQPlayer about four seconds to acknowledge — more than Audiogravi<sup>ty</sup> used
+to wait — and that late reply could stop the album from starting, silently. Every reply is now
+matched to the command it answers.
 
 ---
 

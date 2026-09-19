@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.57] - 2026-09-19
+
 ### Changed
 - **[ui] The default theme's corners are softened, to one 2 px radius everywhere.** *Minimal* drew every corner square, which read as hard. Cards, panels, buttons, filters, badges, the top bar's figures, the player's artwork, the pipeline's controls and the notifications now share a single 2 px radius — graded values were tried and dropped, because 6 px on the large panel of each tab changed the theme's character more than it softened it. Elements whose corners were written into their own style, and so ignored every theme, now take them from the theme; *slate* and *gravity* keep exactly the corners they had, except the offline banner's Retry button (2 px in *slate*) and the reference box of the help windows (8 px in *gravity*), which now follow each theme's own scale.
 - **[ui] The Services and System charts show what was measured, and nothing else.** On Services, each box draws a thin line over a light area with a dot on the latest value; on System, each tile draws one bar per measurement, the newest in full, with the highest value of the window and the time it covers written above — measured from when the readings arrived, since the box sends them every 2, 10 or 30 seconds depending on activity. Both start empty and fill from the right, leave a gap where a reading is missing or the stream was paused (the app hidden, the box offline), and start their scale at zero. The second curve of a box (outgoing, writes) is grey instead of the warning orange it fell back to.

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.57 — 2026-09-19
+
 ### Your own library plays through HQPlayer — on every box
 
 With HQPlayer as your output, playing an album from your own library could not work

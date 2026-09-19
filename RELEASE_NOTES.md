@@ -61,6 +61,27 @@ setting wrote the service's file back without its policy — a service put in re
 tuned still reads "default", and saving leaves systemd's defaults alone rather than freezing
 them into your settings.
 
+### A softer default theme, and charts that show what was measured
+
+The default theme, *Minimal*, keeps its black and white but loses its hard edges: every
+corner now has the same slight 2 px radius, from the cards and buttons to the badges and the
+notifications. Status dots no longer glow — green or orange, they are flat discs that still
+blink. In the mini player, the badge naming where the music comes from (Qobuz, Tidal…) now
+matches the output badge beside it exactly.
+
+The small charts of the **Services** and **System** tabs were redrawn, and made honest:
+
+- **They start empty and fill from the right.** A Services box used to open on a flat line
+  at zero followed by a cliff — thirty invented zeros that took five to fifteen minutes to
+  scroll out. It now shows the few measurements it has, on the right, and grows.
+- **A gap is a gap.** A missing reading, or a pause while the app was in the background,
+  leaves a break in the line instead of a dive to zero or two moments glued together.
+- **Services** boxes draw a thin line over a light area, with a dot on the latest value.
+  **System** tiles draw one bar per measurement, with the highest value of the window and
+  the time it covers written above it.
+- **They move.** The Services charts were only redrawn when something else refreshed the
+  page; they now follow every measurement.
+
 ---
 
 ## 0.9.56 — 2026-09-17

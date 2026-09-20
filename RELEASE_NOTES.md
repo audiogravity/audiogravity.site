@@ -7,6 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### The NAA update stops offering a version your HQPlayer cannot use
+
+Signalyst publishes two lines of its Network Audio Adapter side by side in the same folder —
+the one that pairs with HQPlayer 5 and the one that pairs with HQPlayer 6 — and
+Audiogravi<sup>ty</sup> offered whichever file came last on the page. On a machine running the
+5 line that meant proposing a 6, which does not work with HQPlayer 5.
+
+The update now compares versions instead of reading the listing in order, and it stays on the
+line your machine already runs. A machine that is current is told so. One that was a release
+behind is finally offered the update it had been denied — the real one was buried under a
+version it could not use. A machine with nothing installed still gets the newest published.
+
 ### One less switch in the settings
 
 Audiogravi<sup>ty</sup> shipped with a **Compact Mode** switch that was already on the first

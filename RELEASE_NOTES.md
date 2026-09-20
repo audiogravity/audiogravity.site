@@ -7,6 +7,28 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Audiogravi<sup>ty</sup> knows which HQPlayer you have, and keeps the adapter in step with it
+
+HQPlayer and the network audio adapter that carries its sound to your DAC have to be on
+the same major line. A 6 adapter does not work with HQPlayer 5 — nothing plays, and
+nothing says why.
+
+Audiogravi<sup>ty</sup> now asks the instance who it is when you connect it. The card
+shows the engine version beside the name, a network scan says which address holds a
+Desktop and which an Embedded, and the version of your adapter is read from the box. If
+the two lines do not match, the card tells you so and names both, and *Use as output* is
+refused instead of sending your music into silence. If either version cannot be read,
+nothing is claimed and nothing is blocked.
+
+From that, the adapter offered to you follows the HQPlayer in front of it rather than
+whatever is already installed. So a box that ended up on the wrong line is offered the
+right one — which means an **older** version than the one it holds, deliberately. The
+Audio Software page says exactly that: an older version is offered, and it asks to
+switch rather than to update.
+
+None of it is polled. The version is read once when the instance answers and forgotten
+when it goes away, so upgrading HQPlayer on your other machine is picked up on its own.
+
 ### The NAA update stops offering a version your HQPlayer cannot use
 
 Signalyst publishes two lines of its Network Audio Adapter side by side in the same folder —

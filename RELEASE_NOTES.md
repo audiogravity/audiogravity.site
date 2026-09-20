@@ -7,7 +7,25 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### One less switch in the settings
+
+Audiogravi<sup>ty</sup> shipped with a **Compact Mode** switch that was already on the first
+time you opened the interface. Turning it off made everything larger — a second layout that
+existed only to be left behind, and that every screen had to carry. It is gone, and what you
+have been looking at all along is now simply what the interface is.
+
+Nothing moves on screen, with two exceptions:
+
+- **The settings drawer** gives each switch a line of its own. Light/dark mode, notifications,
+  animations, portrait lock and Face ID / Touch ID used to sit two to a row, each label
+  squeezed into half the width beside its switch.
+- **A service that starts, or a profile you activate**, no longer nudges its tile's contents
+  by a pixel while its border thickens.
+
+The sign-in screen is the one place that kept its own layout. It never loaded the setting, so
+it had been drawing the larger one on its own, and simply following the interface would have
+shrunk it while nothing around it changed. It now holds those steps itself and looks exactly
+as it did.
 
 ---
 

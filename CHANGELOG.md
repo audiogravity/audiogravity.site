@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui] The Compact Mode switch is gone; the interface keeps the density it has always shown.** The switch was on from the very first launch and the only thing turning it off did was make everything larger — a second layout nobody asked for, carried through 31 rules and every screen of the interface. Those rules are now simply what the interface is: the spacing steps read 4/6/12/18/24 px and the type steps 12/13/14 px where three names were being substituted underneath. Nothing moves on screen, except in two places. The **settings drawer** gives each switch a full-width row — light/dark mode, notifications, animations, portrait lock and Face ID / Touch ID were paired two to a line, each label squeezed into half the width beside its switch. And a **service tile that starts, or a profile that becomes active**, no longer shifts its contents by a pixel as its border thickens: the second border pixel is taken out of the padding, as the processor tile beside it already did. The **sign-in page** is deliberately left untouched: it is the one screen the setting never reached, so it had been drawing the larger layout alone, and following the interface would have shrunk it by itself (its card 558 → 460 px on a computer, 536 → 445 px on a phone). It now states the steps it used to inherit, and is pixel-identical — checked over every element it holds, at both sizes. Verified the same way across ten tabs on a computer and a phone: no other difference.
+- **[manual] The Administration chapter stops offering a switch that no longer exists.** *Compact Mode* was listed among the settings and the drawer's picture showed it; the picture has been retaken and the list now describes what the drawer holds.
+
 ## [0.9.57] - 2026-09-19
 
 ### Changed

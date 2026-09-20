@@ -27,6 +27,22 @@ it had been drawing the larger one on its own, and simply following the interfac
 shrunk it while nothing around it changed. It now holds those steps itself and looks exactly
 as it did.
 
+### A calmer playback bar
+
+**Repeat** and **shuffle** have left the bar above the footer. They sat on a second line under
+the track title, in a strip whose job is to tell you what is playing and give you the transport
+— play/pause, previous, next, volume. Both controls are in the **fullscreen player**, alongside
+the rest of what you set while listening.
+
+The bar keeps exactly the height it had, so nothing above it shifts; the space is simply given
+back to what remains.
+
+And because the fullscreen player now holds two controls that used to be one tap away, the
+manual finally says how to open it: the small tab at the top-right corner of the bar on a
+computer, a swipe up from the track title on a phone, or nothing at all — it opens by itself
+when you start something playing from the Library. It used to say "tap the bar", which never
+worked; tapping the cover art opens the album's details and its tracklist.
+
 ---
 
 ## 0.9.57 — 2026-09-19

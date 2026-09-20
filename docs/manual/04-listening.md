@@ -7,10 +7,21 @@ of controls.
 ## The Now Playing bar
 
 A sticky **Now Playing** bar sits above the footer and shows **all active audio
-sources** at once, with quick transport — play/pause, next, and volume. Tap it (or
-swipe up on mobile / the expand button on desktop) to open the **fullscreen player**.
+sources** at once, with quick transport — previous, play/pause, next, and volume.
+Repeat and shuffle are in the fullscreen player.
 
-<img src="images/ios-nowplaying-bar.webp" alt="The Now Playing bar: cover art, the stream-origin and output badges, the track, and the transport with repeat and shuffle" width="360">
+**Opening the fullscreen player.** There are three ways in, and tapping the bar
+itself is not one of them:
+
+- **On a computer** — the small tab at the top-right corner of the bar.
+- **On a phone or tablet** — swipe **up** on the bar, starting from the track title
+  rather than from the buttons, which keep the touch for themselves.
+- **From the Library** — it opens by itself as soon as you start something playing.
+
+Tapping the **cover art** does something else: it opens the album's details —
+Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
+
+<img src="images/ios-nowplaying-bar.webp" alt="The Now Playing bar: cover art, the stream-origin and output badges, the track, and the transport — previous, play/pause, next and volume" width="360">
 
 ## The fullscreen player
 

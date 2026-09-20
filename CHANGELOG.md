@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[core][ui] The box's HQPlayer adapter is now called `naa`, and stops borrowing HQPlayer's own name.** Audiogravi<sup>ty</sup> used the one word `hqplayer` for two different machines: the Signalyst Network Audio Adaptor, the daemon running on the box, and the HQPlayer instance it receives sound from, which runs somewhere else. The collision had reached the interface it offers — `/packages/hqplayer` meant the adapter, `/hqplayer/status` meant the player — and ran through the service identifiers, the configuration file it edits and the output switching. The adapter is `naa` from now on, everywhere it is named by identifier; the player keeps `hqplayer` and every one of its routes. **Nothing changes on screen**: each screen shows the label, *HQPlayer NAA*, which has not moved. A box that already holds an `audio-config.json` has the name changed in it when it updates — profiles included, so no chain loses a step — and a configuration exported before this release is brought over when it is imported back, rather than putting the old name where the update just removed it. For API clients: the package id and the service id `hqplayer` become `naa`, in `/packages/*`, `/audio_app_config/*`, `/audio-stack/*` and the `service-metrics` events; `/hqplayer/*` is untouched.
+
 ## [0.9.58] - 2026-09-20
 
 ### Changed

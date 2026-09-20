@@ -33,6 +33,10 @@ answer is usually on screen:
   cannot reach on your network, or cannot decode. The message names the tracks. If
   HQPlayer kept part of an album, the rest plays; if it kept nothing, nothing is sent to
   play. Turn **Use as output** off to play them on the local output.
+- *"this box runs NAA 6, which does not work with HQPlayer 5.x"* — the adapter on your box
+  and the HQPlayer it feeds are on different major lines, and that pair carries no audio.
+  Open **Audio Software** and install the NAA line the message names: the version offered
+  there follows your HQPlayer. Or turn **Use as output** off to play on the local DAC.
 - *"Both HQPlayer and a network renderer are selected"* — pick one.
 - *"The speaker you selected is not answering"* — the renderer is asleep, off the
   network, or still reconnecting. Wake it up, or pick another output. Audiogravi<sup>ty</sup>

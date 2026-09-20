@@ -106,6 +106,14 @@ If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with
 - **As your output** — the **Use as output** switch on the HQPlayer card sends your
   library through HQPlayer's DSP engine instead of straight to the local DAC.
 
+Audiogravi<sup>ty</sup> reads the identity of the HQPlayer it connects to — Desktop or
+Embedded, its engine, and which **major version** it runs — and shows it on the card. That
+version matters: HQPlayer 5 talks to a **NAA 5**, HQPlayer 6 to a **NAA 6**, and a
+mismatched pair plays nothing. So the NAA offered in **Audio Software** follows the
+HQPlayer you are connected to rather than the line already on the box, and both the **Use
+as output** switch and playback itself refuse a pair that cannot work, naming the two
+versions instead of letting the music fail without a word.
+
 ### Use as output
 
 <img src="images/ios-hqplayer-output.webp" alt="The HQPlayer card: connected, with the Use as output switch turned on" width="360">

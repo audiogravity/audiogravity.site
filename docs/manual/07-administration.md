@@ -260,6 +260,10 @@ shairport-sync, Roon Bridge…).
   you a Roon update is waiting, and never will. Use the button anyway when you want to
   move: it re-runs Roon's own installer, which always fetches the current build. The
   card tells you which build you have and that there is nothing to compare it against.
+- **HQPlayer NAA follows your HQPlayer** — the adapter has to be on the same major line as
+  the HQPlayer it feeds, so the version offered here is the one that matches the instance
+  you are connected to, not simply the newest the vendor publishes. With no HQPlayer
+  answering, the line already installed is kept.
 - **Not available here** — a greyed-out INSTALL always says why, and the three reasons
   are not the same: the publisher has **no build** for your machine's architecture
   (nothing to be done); their site **could not be reached** when the list was worked

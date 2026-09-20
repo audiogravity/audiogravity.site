@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.58 — 2026-09-20
+
 ### Audiogravi<sup>ty</sup> knows which HQPlayer you have, and keeps the adapter in step with it
 
 HQPlayer and the network audio adapter that carries its sound to your DAC have to be on

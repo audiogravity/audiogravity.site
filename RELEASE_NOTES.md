@@ -7,7 +7,43 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### HQPlayer Embedded, installed from Audiogravi<sup>ty</sup>
+
+Until now Audiogravi<sup>ty</sup> could install the adapter that carries HQPlayer's sound
+to your DAC, but not HQPlayer itself. It can now: HQPlayer Embedded appears on the Audio
+Software page beside the rest of the stack, for Debian 13 on Intel and on 64-bit ARM.
+
+**You choose the version — among those this machine can actually run.** Signalyst keeps
+two major lines published side by side, and only you know which one your licence covers.
+So Audiogravi<sup>ty</sup> does not take the newest by default: it shows the newest build
+of each line. But before offering one, it checks with the system that everything the
+package needs can be installed. On Debian 13 today that rules out the 5 line — it depends
+on a library called `libgmpris` that neither Debian nor Signalyst publishes — so you will
+see it named, with that reason, rather than offered as a choice that would leave a
+half-installed package behind. Once installed, your line is held: updates stay on it, and
+moving to another major stays a decision you make. Signalyst's licence provides for a
+time-limited trial.
+
+**And you read the licence first.** Signalyst puts its end-user licence agreement on a
+screen its own installer shows. Audiogravi<sup>ty</sup> installs without that screen, so
+until now the agreement was accepted on your behalf, by nobody — and that was already
+true of the adapter, on every box. Both licences are now read straight out of the package
+and shown before anything is downloaded, and the install waits until you accept. That
+wait is enforced by Audiogravi<sup>ty</sup> itself, not just by the screen. If the licence
+cannot be fetched, you are told so and asked to accept all the same, instead of seeing
+nothing.
+
+Several things were fixed on the way, and they matter for every piece of software in the
+stack. A package used to be downloaded into `/tmp`, which on these boxes is memory rather
+than disk: a 144 MB download would have been 144 MB of RAM held while your music played.
+The space a package unpacks to — 257 MB for this one — was never checked, so a full disk
+broke an installation halfway instead of refusing it at the start. An install that apt
+"repaired" by removing the package was announced as a success. And when an install is
+turned down, you now read why.
+
+Removing a package also changed: it now keeps your settings, and erasing them is a
+separate, explicit choice. For HQPlayer that distinction is every filter and modulator
+you chose.
 
 ---
 

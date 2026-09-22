@@ -23,7 +23,8 @@ tab → your card). *(Details and passkeys: [3. First run](03-first-run.md).)*
 
 **MPD is already there** — the installer brings it, because everything plays through
 it. Add the rest from the **Audio Software** tab if you want them: **Shairport Sync**
-(AirPlay), **UPnP Bridge** (cast to the box), **Roon Bridge**, **HQPlayer NAA**.
+(AirPlay), **UPnP Bridge** (cast to the box), **Roon Bridge**, **HQPlayer NAA**,
+**HQPlayer Embedded**.
 
 ## 4. Initialize the audio stack
 

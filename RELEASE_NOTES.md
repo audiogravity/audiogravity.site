@@ -7,7 +7,94 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### HQPlayer Embedded, installed from Audiogravi<sup>ty</sup>
+
+Until now Audiogravi<sup>ty</sup> could install the adapter that carries HQPlayer's sound
+to your DAC, but not HQPlayer itself. It can now: HQPlayer Embedded appears on the Audio
+Software page beside the rest of the stack, for Debian 13 on Intel and on 64-bit ARM.
+
+**You choose the version — among those this machine can actually run.** Signalyst keeps
+two major lines published side by side, and only you know which one your licence covers.
+So Audiogravi<sup>ty</sup> does not take the newest by default: it shows the newest build
+of each line. But before offering one, it checks with the system that everything the
+package needs can be installed. On Debian 13 today that rules out the 5 line — it depends
+on a library called `libgmpris` that neither Debian nor Signalyst publishes — so you will
+see it named, with that reason, rather than offered as a choice that would leave a
+half-installed package behind. Once installed, your line is held: updates stay on it, and
+moving to another major stays a decision you make. Signalyst's licence provides for a
+time-limited trial.
+
+**And you read the licence first.** Signalyst puts its end-user licence agreement on a
+screen its own installer shows. Audiogravi<sup>ty</sup> installs without that screen, so
+until now the agreement was accepted on your behalf, by nobody — and that was already
+true of the adapter, on every box. Both licences are now read straight out of the package
+and shown before anything is downloaded, and the install waits until you accept. That
+wait is enforced by Audiogravi<sup>ty</sup> itself, not just by the screen. If the licence
+cannot be fetched, you are told so and asked to accept all the same, instead of seeing
+nothing.
+
+**A password for its web interface, set for you.** HQPlayer Embedded has its own web
+interface, and its package installs it with no password at all: nobody can open the
+settings, and every attempt fills a log. The install dialog proposes a random password,
+shown in clear so you can note it down; Audiogravi<sup>ty</sup> sets it right after the
+install and restarts HQPlayer once, when it has finished starting, so that it takes it. If
+it could not be set, the card of the installed package offers *Set web password* — no need
+to uninstall and start again. The password is written in no log, the system's included.
+
+**A log that cannot fill the box's memory.** HQPlayer writes its log to memory, with no
+limit and never emptied, and a loop in it once wrote 600 MB a minute there. The log now
+gets 10 MB of memory of its own, which the system does not let it exceed; HQPlayer keeps
+playing when it is full, and nothing is ever written to disk.
+
+**Part of your profiles.** HQPlayer Embedded is started, stopped and switched to like the
+rest of the stack, and it takes the DAC from the adapter and gives it back. If you remove
+it from your configuration, it stays removed. A stop it would ignore right after starting
+now ends within 15 seconds instead of 90.
+
+**When a step after the install cannot be done**, the card says the package is installed
+and what is left to do — *Incomplete*, not *Failed* — and *Update all* now says so too.
+And a restart Audiogravi<sup>ty</sup> has just done itself is no longer asked of you.
+
+Several things were fixed on the way, and they matter for every piece of software in the
+stack. A package used to be downloaded into `/tmp`, which on these boxes is memory rather
+than disk: a 144 MB download would have been 144 MB of RAM held while your music played.
+The space a package unpacks to — 257 MB for this one — was never checked, so a full disk
+broke an installation halfway instead of refusing it at the start. A package from its
+vendor was installed in a way that always stopped on missing libraries and let apt repair
+afterwards — so even a successful install showed a string of red errors, and an install
+that apt "repaired" by removing the package was announced as a success. It now installs
+with its libraries in one step, and success is confirmed with the system. And when an
+install is turned down, you now read why.
+
+Removing a package also changed: it now keeps your settings, and erasing them is a
+separate, explicit choice. For HQPlayer that distinction is every filter and modulator
+you chose.
+
+The manual has a section on HQPlayer Embedded, in *Outputs & engines*: installing it,
+setting it up from its web page, switching to it with its profile. What to do when its
+password is lost is in *Troubleshooting*.
+
+### Fixes that concern every box
+
+**Updates on a box set to another language.** On a box set to French or German, no update
+was ever offered for the software installed from the system: Audiogravi<sup>ty</sup> read
+the system's answers in English only. It now always asks in English.
+
+**System files handed back to the system.** Files Audiogravi<sup>ty</sup> writes into the
+system — the mount of a USB library or of a network share, a service setting — are
+prepared under its own account and then handed to the administrator. For mounts, that
+last step never worked, and nothing said so. Every step is now checked, and the update
+hands the files already written back to the administrator.
+
+**Restarting a service** from the Services tab no longer reports a failure when the
+service simply takes more than a few seconds to stop.
+
+**Restoring your own configuration** works on a box that does not have every optional
+package installed: a service that is not installed is now a warning, not a reason to
+refuse the file.
+
+**A network share with an accent in its name** is recognised as mounted. And when
+installing a package makes the system remove other software, you are now told what went.
 
 ---
 

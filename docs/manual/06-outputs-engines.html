@@ -147,6 +147,7 @@ streams to it and out to your DAC.</li>
 <li><strong>As your output</strong> — the <strong>Use as output</strong> switch on the HQPlayer card sends your
 library through HQPlayer's DSP engine instead of straight to the local DAC.</li>
 </ul>
+<p>HQPlayer can also run on the box itself: see <a href="#hqplayer-embedded">HQPlayer Embedded</a> below.</p>
 <p>Audiogravi<sup>ty</sup> reads the identity of the HQPlayer it connects to — Desktop or
 Embedded, its engine, and which <strong>major version</strong> it runs — and shows it on the card. That
 version matters: HQPlayer 5 talks to a <strong>NAA 5</strong>, HQPlayer 6 to a <strong>NAA 6</strong>, and a
@@ -268,6 +269,50 @@ otherwise accepts.</p>
 output. If both are selected, Audiogravi<sup>ty</sup> asks you to turn one off instead of
 guessing which device you meant.</p>
 </blockquote>
+<h2 id="hqplayer-embedded">HQPlayer Embedded</h2>
+<p>HQPlayer can also run <strong>on the box itself</strong>. HQPlayer Embedded is the version of HQPlayer
+that Signalyst, its maker, publishes for a machine without a screen: you set it up from a
+web page, and the processing happens on the box, next to your DAC, with no computer to
+keep on.</p>
+<p><strong>Installing it.</strong> HQPlayer Embedded has a card in <strong>Audio Software</strong>; if your box cannot
+run it, the card says why.</p>
+<ol>
+<li>Click <strong>INSTALL</strong>.</li>
+<li><strong>Choose the version</strong> your licence covers — Signalyst publishes several side by
+side. With no licence yet, Signalyst's terms allow a time-limited trial. A version your
+box cannot run is listed with the reason, and cannot be chosen.</li>
+<li><strong>Read Signalyst's licence</strong>, then tick <em>I have read and accept the terms above</em>.</li>
+<li><strong>Note down the password</strong> shown under <em>Web interface password</em>: you need it to open
+HQPlayer's web page, and Audiogravi<sup>ty</sup> does not keep it. You can type your own
+instead.</li>
+<li>Click <strong>Install</strong>. Once it is done, HQPlayer Embedded is running.</li>
+</ol>
+<img loading="lazy" src="images/ios-hqplayer-embedded-install.webp" alt="The install window of HQPlayer Embedded: the version to install, the password for its web page, and Signalyst's licence" width="360">
+<p><strong>Setting it up.</strong> Open <code>http://&lt;your box&gt;:8088</code> in your browser — your box's address
+followed by <code>:8088</code> — and sign in as <strong><code>hqplayer</code></strong> with that password. This page is where
+HQPlayer itself is set up. Start by choosing your DAC as its output: it has none after
+installation, and plays nothing until you do. You can change the password there too; it
+asks for the current one. Lost it? See
+<a href="09-troubleshooting#locked-out-of-hqplayer-embeddeds-web-page">9. Troubleshooting → Locked out of HQPlayer Embedded's web page</a>.</p>
+<p><strong>Switching to it.</strong> Activate the <strong>HQPlayer Embedded</strong> profile. It starts HQPlayer and
+stops the other players — MPD, UPnP Bridge, Roon Bridge and the NAA — so that HQPlayer has
+your DAC to itself. Any other profile switches back, except AirPlay's, which starts AirPlay
+alongside whatever is playing. The NAA and HQPlayer Embedded can both be installed: the
+profile you choose decides which one plays. On a box without HQPlayer Embedded, its
+profile shows as <strong>UNAVAILABLE</strong>.</p>
+<p><strong>Playing music.</strong> The <strong>Use as output</strong> switch on the HQPlayer card sends music to an
+HQPlayer that reaches your DAC through the NAA — typically HQPlayer on a computer. It does
+not work with HQPlayer Embedded, which plays to your DAC directly. Play music to it with the
+apps Signalyst provides.</p>
+<p><strong>If something did not go through.</strong> When HQPlayer Embedded is installed but a step after
+that could not be done, the result says <strong>Install Incomplete</strong> and what is left to do. If
+its password could not be set, the card shows <strong>Set web password</strong>: click it to set one.
+HQPlayer then restarts, so anything it is playing stops for a moment.</p>
+<p><strong>Updating and removing it.</strong> <strong>UPDATE</strong> brings the latest release of the version you
+chose, and never moves you to another one. To change version, uninstall it and install it
+again. A plain <strong>UNINSTALL</strong> keeps HQPlayer's settings and password, and a reinstall finds
+them again. To erase them too, tick <em>Also delete its settings and data</em> — keep a copy of
+your licence first, as this cannot be undone.</p>
 <h2 id="roon">Roon</h2>
 <p>Audiogravi<sup>ty</sup> works with a <strong>Roon Bridge</strong> endpoint and connects to your remote <strong>Roon
 Core</strong> for metadata and transport — so a Roon zone can sit alongside your other

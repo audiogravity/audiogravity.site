@@ -59,6 +59,8 @@ has a card with an **INSTALL** button.
 - **UPnP Bridge** (upmpdcli) — to expose the box as a **UPnP renderer** other apps
   can cast to. It drives MPD, so it needs the player that is already there.
 - **Roon Bridge / Roon Server / HQPlayer NAA** — only if you use Roon or HQPlayer.
+- **HQPlayer Embedded** — HQPlayer itself, running on the box: see
+  [6. Outputs & engines → HQPlayer Embedded](06-outputs-engines.md#hqplayer-embedded).
 
 Install what you need now — you can always come back for the rest later.
 

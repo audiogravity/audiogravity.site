@@ -34,8 +34,9 @@ tracks — essential for live albums and continuous mixes.
 **Hi-Res** — better-than-CD resolution: more than 16-bit / 44.1 kHz, typically
 24-bit at 96 or 192 kHz. The **HI·RES** badge in the player flags it live.
 
-**HQPlayer Embedded** — HQPlayer installed on the box itself and set up from its own web
-page, instead of running on a computer that sends its sound to the box through a NAA. See
+**HQPlayer Embedded** — HQPlayer installed on the box itself, playing straight to your DAC
+instead of running on a computer that sends its sound to the box through a NAA. Its output
+is chosen in Audiogravi<sup>ty</sup>, its other settings on its own web page. See
 [6. Outputs & engines](06-outputs-engines.md#hqplayer-embedded).
 
 **MPD** — Music Player Daemon, the core playback engine: it plays your local

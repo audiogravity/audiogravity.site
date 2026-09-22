@@ -105,11 +105,13 @@ Monitor and control individual systemd services in real time.
 Safely edit the real configuration files of your audio services (see also
 [3. First run](03-first-run.md) for the guided setup).
 
-- **Guided mode** (MPD / AirPlay / UPnP) — change output or library in a couple of
-  clicks; only the changed setting is rewritten. *Reset to default* regenerates a
-  minimal config (current file backed up first).
+- **Guided mode** (MPD / AirPlay / UPnP / HQPlayer Embedded) — change output or library
+  in a couple of clicks; only the changed setting is rewritten. *Reset to default*
+  regenerates a minimal config (current file backed up first) — except for HQPlayer
+  Embedded, whose settings are its own: only its output is chosen here.
 - **Form mode** — edit common settings through a friendly interface with field
-  descriptions and validation.
+  descriptions and validation. HQPlayer Embedded has none: its file is edited in Expert
+  mode.
 - **Expert (Raw) mode** — edit the raw file directly, with syntax validation before
   save.
 - **Preview changes (Diff)** — a unified diff (raw) or a before/after field table
@@ -121,7 +123,8 @@ Safely edit the real configuration files of your audio services (see also
 
 Each tile carries the state of its service — **RUNNING**, **STOPPED** or **FAILED** —
 and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
-**CONFIGURED** or still on the package defaults.
+**CONFIGURED** or still on the package defaults. HQPlayer Embedded is **CONFIGURED** once
+its output has been chosen here.
 
 <img src="images/ios-config-editor.webp" alt="The Config tab: one tile per audio service with its file path, its output, its RUNNING or STOPPED state, its CONFIGURED badge and the Edit config button" width="360">
 

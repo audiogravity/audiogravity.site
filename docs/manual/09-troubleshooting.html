@@ -479,6 +479,17 @@ lost, connect over SSH and set a new one with Signalyst's command:</p>
 </code></pre>
 <p>Then restart HQPlayer Embedded from the <strong>Services</strong> tab: it reads its password only when it
 starts. HQPlayer's settings are untouched.</p>
+<h2 id="hqplayer-embedded-the-dac-hisses-instead-of-playing">HQPlayer Embedded: the DAC hisses instead of playing</h2>
+<p>Your DAC is receiving a DSD rate it cannot convert. It does not refuse it: it hisses, and
+keeps hissing after the music stops, until it receives a rate it converts.</p>
+<ol>
+<li>On HQPlayer Embedded's web page, open <strong>Configuration</strong> and, under <strong>SDM settings</strong>, set
+<strong>Rate limit</strong> to the highest DSD rate your DAC converts: see
+<a href="06-outputs-engines#hqplayer-embedded">6. Outputs &amp; engines → HQPlayer Embedded</a>.</li>
+<li>In the same section, set <strong>Bit rate</strong> to <strong>Auto</strong>; on its main page, set <strong>Samplerate</strong>
+to <strong>Auto</strong> as well — or both to a rate your DAC converts.</li>
+<li>Play something: as soon as the DAC receives a rate it converts, the hiss stops.</li>
+</ol>
 <h2 id="passkeys-or-push-notifications-unavailable">Passkeys or push notifications unavailable</h2>
 <p>Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS
 <strong>domain</strong> — they do <strong>not</strong> work over a bare IP, and <code>--public-url</code> alone is not

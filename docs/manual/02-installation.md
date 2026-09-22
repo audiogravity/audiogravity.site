@@ -7,8 +7,8 @@ dependency hell, no manual configuration.
 
 > The installer sets up **Audiogravi<sup>ty</sup> itself**, and **MPD** with it — the
 > player everything goes through. The other engines it conducts (AirPlay, UPnP, Roon
-> Bridge, HQPlayer NAA) are yours to choose afterwards, in a few clicks **from the
-> interface** — that's step 3 of [3. First run](03-first-run.md).
+> Bridge, HQPlayer NAA, HQPlayer Embedded) are yours to choose afterwards, in a few
+> clicks **from the interface** — that's step 3 of [3. First run](03-first-run.md).
 
 ## Before you start
 
@@ -150,8 +150,8 @@ sudo /opt/audiogravity/uninstall.sh --purge
 
 **What is never removed, on purpose:** the audio software itself — MPD, which came
 with the installer, and whatever you added from the **Audio Software** page
-(Shairport-Sync, upmpdcli, HQPlayer NAA, Roon Bridge) — along with their own
-configuration files. They are ordinary system packages that keep working without
+(Shairport-Sync, upmpdcli, HQPlayer NAA, HQPlayer Embedded, Roon Bridge) — along with
+their own configuration files. They are ordinary system packages that keep working without
 Audiogravi<sup>ty</sup>; remove them with your package manager if you want them gone.
 
 ---

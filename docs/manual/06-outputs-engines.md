@@ -106,6 +106,8 @@ If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with
 - **As your output** — the **Use as output** switch on the HQPlayer card sends your
   library through HQPlayer's DSP engine instead of straight to the local DAC.
 
+HQPlayer can also run on the box itself: see [HQPlayer Embedded](#hqplayer-embedded) below.
+
 Audiogravi<sup>ty</sup> reads the identity of the HQPlayer it connects to — Desktop or
 Embedded, its engine, and which **major version** it runs — and shows it on the card. That
 version matters: HQPlayer 5 talks to a **NAA 5**, HQPlayer 6 to a **NAA 6**, and a
@@ -220,6 +222,58 @@ otherwise accepts.
 > **One output at a time.** HQPlayer and a network renderer cannot both be your
 > output. If both are selected, Audiogravi<sup>ty</sup> asks you to turn one off instead of
 > guessing which device you meant.
+
+## HQPlayer Embedded
+
+HQPlayer can also run **on the box itself**. HQPlayer Embedded is the version of HQPlayer
+that Signalyst, its maker, publishes for a machine without a screen: you set it up from a
+web page, and the processing happens on the box, next to your DAC, with no computer to
+keep on.
+
+**Installing it.** HQPlayer Embedded has a card in **Audio Software**; if your box cannot
+run it, the card says why.
+
+1. Click **INSTALL**.
+2. **Choose the version** your licence covers — Signalyst publishes several side by
+   side. With no licence yet, Signalyst's terms allow a time-limited trial. A version your
+   box cannot run is listed with the reason, and cannot be chosen.
+3. **Read Signalyst's licence**, then tick *I have read and accept the terms above*.
+4. **Note down the password** shown under *Web interface password*: you need it to open
+   HQPlayer's web page, and Audiogravi<sup>ty</sup> does not keep it. You can type your own
+   instead.
+5. Click **Install**. Once it is done, HQPlayer Embedded is running.
+
+<img src="images/ios-hqplayer-embedded-install.webp" alt="The install window of HQPlayer Embedded: the version to install, the password for its web page, and Signalyst's licence" width="360">
+
+**Setting it up.** Open `http://<your box>:8088` in your browser — your box's address
+followed by `:8088` — and sign in as **`hqplayer`** with that password. This page is where
+HQPlayer itself is set up. Start by choosing your DAC as its output: it has none after
+installation, and plays nothing until you do. You can change the password there too; it
+asks for the current one. Lost it? See
+[9. Troubleshooting → Locked out of HQPlayer Embedded's web page](09-troubleshooting.md#locked-out-of-hqplayer-embeddeds-web-page).
+
+**Switching to it.** Activate the **HQPlayer Embedded** profile. It starts HQPlayer and
+stops the other players — MPD, UPnP Bridge, Roon Bridge and the NAA — so that HQPlayer has
+your DAC to itself. Any other profile switches back, except AirPlay's, which starts AirPlay
+alongside whatever is playing. The NAA and HQPlayer Embedded can both be installed: the
+profile you choose decides which one plays. On a box without HQPlayer Embedded, its
+profile shows as **UNAVAILABLE**.
+
+**Playing music.** The **Use as output** switch on the HQPlayer card sends music to an
+HQPlayer that reaches your DAC through the NAA — typically HQPlayer on a computer. It does
+not work with HQPlayer Embedded, which plays to your DAC directly. Play music to it with the
+apps Signalyst provides.
+
+**If something did not go through.** When HQPlayer Embedded is installed but a step after
+that could not be done, the result says **Install Incomplete** and what is left to do. If
+its password could not be set, the card shows **Set web password**: click it to set one.
+HQPlayer then restarts, so anything it is playing stops for a moment.
+
+**Updating and removing it.** **UPDATE** brings the latest release of the version you
+chose, and never moves you to another one. To change version, uninstall it and install it
+again. A plain **UNINSTALL** keeps HQPlayer's settings and password, and a reinstall finds
+them again. To erase them too, tick *Also delete its settings and data* — keep a copy of
+your licence first, as this cannot be undone.
 
 ## Roon
 

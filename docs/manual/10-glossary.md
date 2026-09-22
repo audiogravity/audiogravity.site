@@ -22,8 +22,8 @@ into the analog signal your amplifier plays. USB, HAT, HDMI or S/PDIF-attached.
 (DSD64/128/256…). The player shows a **DSD lock** when a DSD stream plays natively.
 
 **Engine** — the software that actually renders audio on the box: MPD, shairport-sync
-(AirPlay), Roon Bridge, HQPlayer NAA. Audiogravi<sup>ty</sup> conducts engines; it
-doesn't replace them.
+(AirPlay), Roon Bridge, HQPlayer NAA, HQPlayer Embedded. Audiogravi<sup>ty</sup> conducts
+engines; it doesn't replace them.
 
 **FLAC** — the lossless compressed audio format most hi-res catalogues use. Lossless
 = decodes to the exact original samples.
@@ -33,6 +33,10 @@ tracks — essential for live albums and continuous mixes.
 
 **Hi-Res** — better-than-CD resolution: more than 16-bit / 44.1 kHz, typically
 24-bit at 96 or 192 kHz. The **HI·RES** badge in the player flags it live.
+
+**HQPlayer Embedded** — HQPlayer installed on the box itself and set up from its own web
+page, instead of running on a computer that sends its sound to the box through a NAA. See
+[6. Outputs & engines](06-outputs-engines.md#hqplayer-embedded).
 
 **MPD** — Music Player Daemon, the core playback engine: it plays your local
 library and carries Qobuz, Tidal, HIGHRESAUDIO and internet radio.

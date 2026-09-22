@@ -148,8 +148,8 @@ start one set of services and stop another). It is a different file from the per
 files edited above — this one lists *which* services exist, not their internal settings.
 
 - **Services** — each entry declares a `label`, its `systemd_unit` (e.g. `mpd.service`) and a
-  `critical` flag. MPD, upmpdcli (UPnP), shairport-sync (AirPlay), Roon Bridge and HQPlayer's
-  NAA are the usual entries. Where a service keeps its own settings file is **not** declared
+  `critical` flag. MPD, upmpdcli (UPnP), shairport-sync (AirPlay), Roon Bridge, HQPlayer's
+  NAA and HQPlayer Embedded are the usual entries. Where a service keeps its own settings file is **not** declared
   here — Audiogravi<sup>ty</sup> finds it by itself, on any machine. Files written before this
   version carry an `appconfigfile` line; it is ignored (see
   [9. Troubleshooting](09-troubleshooting.md)).
@@ -158,18 +158,17 @@ files edited above — this one lists *which* services exist, not their internal
   and `depends_on`). "MPD", "Stop All"… are profiles.
 - **`topology_link`** — ties this box to its device in the topology (`host_device_id`, e.g.
   `streamer_01`), so the signal-chain view knows which streamer the services run on.
-- **`added_by_upgrade`** — the services an update has already added to this file (HQPlayer
-  Embedded, `hqplayerd`, today). Remove one of them from your services and profiles, and it
-  stays removed: neither an update nor an import puts it back.
+- **`added_by_upgrade`** — filled in by Audiogravi<sup>ty</sup>; leave it as it is. It lists
+  the services an update has added to this file, such as HQPlayer Embedded, so that one you
+  remove stays removed: no update or import puts it back.
 
 - **Managing it.** Open **Settings** (the gear in the top bar). *Export Configuration*
   downloads the current `audio-config.json`; *Import Configuration* uploads a replacement.
 - **Validation on import.** An imported file is checked before it is applied: bad structure, a
   missing required field or a wrong type are reported as blocking **errors**; softer issues
-  appear as **warnings** you can review and accept — among them a `systemd_unit` that isn't
-  installed on the box, since declaring a service before installing it is normal (its profiles
-  read as unavailable until then). A file written before an update is brought up to date as it
-  is imported, as the update did for the box's own. A reference
+  appear as **warnings** you can review and accept — among them a service that is not
+  installed on the box, whose profiles simply show as unavailable until you install it. A
+  file exported before an update is brought up to date as you import it. A reference
   **`audio-config.json.example`** ships with the box.
 
 See also **Audio topology** below — the *other* file you own, describing the physical hi-fi
@@ -255,6 +254,16 @@ shairport-sync, Roon Bridge…).
   operation the card offers the way out that fits it: an install that failed left
   nothing behind, so it offers to try again; an update that failed left the previous
   version in place, so it offers to update or to remove.
+- **Before installing** — when the software comes with a licence, as HQPlayer's do, it is
+  shown first, and nothing installs until you accept it. When it is published in several
+  versions side by side, you choose one; a version your box cannot run is listed with the
+  reason.
+- **Uninstalling keeps your settings** — reinstall, and they are back. To erase them as
+  well, tick *Also delete its settings and data*; this cannot be undone. Roon's packages
+  are the exception: uninstalling them removes their settings too.
+- **Install Incomplete** (or *Update Incomplete*) — the software is installed, but a step
+  after that could not be done: the message says what is left to do. It also names any other software the system
+  removed on the way.
 - **Version check** — **your box checks by itself, once a day**, and tells you when
   something new is published; you do not have to come and ask. **CHECK UPDATES** in
   the header asks immediately, and first refreshes what your system knows its software
@@ -269,6 +278,8 @@ shairport-sync, Roon Bridge…).
   the HQPlayer it feeds, so the version offered here is the one that matches the instance
   you are connected to, not simply the newest the vendor publishes. With no HQPlayer
   answering, the line already installed is kept.
+- **HQPlayer Embedded** — installing it also gives you a password for its web page: see
+  [6. Outputs & engines → HQPlayer Embedded](06-outputs-engines.md#hqplayer-embedded).
 - **Not available here** — a greyed-out INSTALL always says why, and the three reasons
   are not the same: the publisher has **no build** for your machine's architecture
   (nothing to be done); their site **could not be reached** when the list was worked
@@ -284,8 +295,8 @@ shairport-sync, Roon Bridge…).
   The confirmation names the service that is about to be cut, so an update chosen in
   the middle of an album is a decision rather than a surprise.
 - **Restart required** — a pulsing badge appears when a service needs a restart after
-  install/update; click to restart it. A package Audiogravi<sup>ty</sup> restarts by itself
-  once installed — HQPlayer Embedded — only shows it when that restart failed.
+  install/update; click to restart it. HQPlayer Embedded is restarted for you once
+  installed, so it only shows the badge when that restart failed.
 - **Architecture** — the CPU badge shows supported architectures (amd64, arm64…).
   A **DRY-RUN** mode simulates operations safely.
 

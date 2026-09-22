@@ -70,6 +70,10 @@ Removing a package also changed: it now keeps your settings, and erasing them is
 separate, explicit choice. For HQPlayer that distinction is every filter and modulator
 you chose.
 
+The manual has a section on HQPlayer Embedded, in *Outputs & engines*: installing it,
+setting it up from its web page, switching to it with its profile. What to do when its
+password is lost is in *Troubleshooting*.
+
 ### Fixes that concern every box
 
 **Updates on a box set to another language.** On a box set to French or German, no update

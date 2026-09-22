@@ -463,6 +463,19 @@ install seeds the default **`admin` / `admin123`** account again. This resets **
 accounts and their passkeys — your audio configuration is untouched. Sign in, set a
 fresh password immediately, and re-create the other accounts.
 
+## Locked out of HQPlayer Embedded's web page
+
+Audiogravi<sup>ty</sup> does not keep the password shown when HQPlayer Embedded was
+installed, and HQPlayer's own page changes it only if you type the current one. If it is
+lost, connect over SSH and set a new one with Signalyst's command:
+
+```
+sudo hqplayerd -s hqplayer <new password>
+```
+
+Then restart HQPlayer Embedded from the **Services** tab: it reads its password only when it
+starts. HQPlayer's settings are untouched.
+
 ## Passkeys or push notifications unavailable
 
 Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS

@@ -47,9 +47,33 @@ gets 10 MB of memory of its own, which the system does not let it exceed; HQPlay
 playing when it is full, and nothing is ever written to disk.
 
 **Part of your profiles.** HQPlayer Embedded is started, stopped and switched to like the
-rest of the stack, and it takes the DAC from the adapter and gives it back. If you remove
-it from your configuration, it stays removed. A stop it would ignore right after starting
-now ends within 15 seconds instead of 90.
+rest of the stack, and it takes the DAC from the adapter and gives it back. Two profiles
+run it: *MPD HQPlayer Embedded* keeps MPD running beside it, so your own library plays
+through it too; *HQPlayer Embedded* stops MPD as well. If you remove it from your
+configuration, it stays removed. A stop it would ignore right after starting now ends
+within 15 seconds instead of 90.
+
+**Your music plays through it.** While HQPlayer Embedded runs, what you start from the
+Library goes to it, and from it straight to your DAC — there is no adapter in between, and
+nothing asks for one. The HQPlayer card says *This box*, with *Use as output* on and locked
+for as long as it runs. If you had chosen an HQPlayer on your network, it is kept, with its
+own settings and its DSP choices; the card goes back to it when HQPlayer Embedded stops.
+The player shows what is playing, and the signal path starts from HQPlayer Embedded. A
+format HQPlayer cannot decode is refused before anything is sent, with advice you can
+follow: a profile that stops it. For an Apple-encoded library, the manual suggests a
+conversion to FLAC, which is lossless too.
+
+**Its output is chosen here; everything else on its own page.** HQPlayer Embedded has no
+output after installation. You choose it in **Config**, on its tile, exactly as for MPD or
+AirPlay — and only that setting changes: its filters, its modulators and its DSD rate stay
+what you set in its web interface. It is restarted to take the new output only if it is
+running; a save never starts it, since it takes your DAC as soon as it starts.
+
+**Its DSD rate, before the first play.** HQPlayer Embedded comes set to DSD256, and a DAC
+that does not go that high does not refuse it: it hisses, and keeps hissing after the music
+stops. Audiogravi<sup>ty</sup> cannot tell — a DAC does not say which DSD rates it
+converts. So the manual shows where to set the limit on HQPlayer's own page before you play
+anything, and what to do if you hear the hiss.
 
 **When a step after the install cannot be done**, the card says the package is installed
 and what is left to do — *Incomplete*, not *Failed* — and *Update all* now says so too.
@@ -71,8 +95,15 @@ separate, explicit choice. For HQPlayer that distinction is every filter and mod
 you chose.
 
 The manual has a section on HQPlayer Embedded, in *Outputs & engines*: installing it,
-setting it up from its web page, switching to it with its profile. What to do when its
-password is lost is in *Troubleshooting*.
+choosing its output, setting its DSD rate, switching to it, playing through it. It needs a
+licence from Signalyst. What to do when its password is lost, or when the DAC hisses, is in
+*Troubleshooting*.
+
+Two fixes concern an HQPlayer on your network as well. The support report now describes
+the HQPlayer you actually use — the one chosen in the card, which it used to miss, saying
+*not configured* — and which one plays when the box runs its own. And with HQPlayer as the
+output, a start-up where the adapter started at the same moment no longer leaves every play
+refused until the adapter restarts.
 
 ### Fixes that concern every box
 

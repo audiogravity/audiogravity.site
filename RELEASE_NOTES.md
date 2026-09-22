@@ -105,6 +105,21 @@ the HQPlayer you actually use — the one chosen in the card, which it used to m
 output, a start-up where the adapter started at the same moment no longer leaves every play
 refused until the adapter restarts.
 
+**Five rough edges on the way to HQPlayer.** They are small, and you meet them daily.
+Adding tracks to an album already playing used to blank its title, its artist and its cover
+a few seconds later, and for good: HQPlayer takes about five seconds to acknowledge a
+longer playlist, and Audiogravi<sup>ty</sup> read that delay as a playlist that was no
+longer its own. A command — next, previous, pause, a jump within the track — was reported
+as failed whenever HQPlayer took more than three seconds to answer, although it had
+carried it out; measured, an HQPlayer on the network takes up to 4.5 seconds to answer the
+first command of a connection, even when it is stopped. Starting an album now says it is on
+its way, instead of leaving the screen still for the seconds the tracks take to go over.
+The tracks HQPlayer accepts and then quietly drops — a file it cannot open, an address it
+cannot reach — are named on screen, where the album simply played short. And an HQPlayer
+designated by its name rather than its address is now told the right address to fetch your
+files from, instead of the box's default route, which is the wrong one on exactly the
+networks where this matters: two networks, a VPN, an audio LAN with no gateway.
+
 ### Fixes that concern every box
 
 **Updates on a box set to another language.** On a box set to French or German, no update

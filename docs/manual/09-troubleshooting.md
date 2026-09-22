@@ -476,6 +476,18 @@ sudo hqplayerd -s hqplayer <new password>
 Then restart HQPlayer Embedded from the **Services** tab: it reads its password only when it
 starts. HQPlayer's settings are untouched.
 
+## HQPlayer Embedded: the DAC hisses instead of playing
+
+Your DAC is receiving a DSD rate it cannot convert. It does not refuse it: it hisses, and
+keeps hissing after the music stops, until it receives a rate it converts.
+
+1. On HQPlayer Embedded's web page, open **Configuration** and, under **SDM settings**, set
+   **Rate limit** to the highest DSD rate your DAC converts: see
+   [6. Outputs & engines → HQPlayer Embedded](06-outputs-engines.md#hqplayer-embedded).
+2. In the same section, set **Bit rate** to **Auto**; on its main page, set **Samplerate**
+   to **Auto** as well — or both to a rate your DAC converts.
+3. Play something: as soon as the DAC receives a rate it converts, the hiss stops.
+
 ## Passkeys or push notifications unavailable
 
 Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS

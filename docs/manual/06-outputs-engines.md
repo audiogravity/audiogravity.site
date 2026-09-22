@@ -205,15 +205,21 @@ lossy qualities — and **ALAC / M4A / MP4**, an Apple-encoded library.
 
 Whenever a track is in one of those formats — an ALAC album in your library, an AAC
 track on your media server, a station broadcasting in AAC — Audiogravi<sup>ty</sup> tells you
-straight away rather than letting playback fail obscurely, and names the format.
+straight away rather than letting playback fail obscurely, and names the format. An album
+is checked before anything is sent, so a single unplayable track is caught up front
+instead of stopping the music halfway through. To hear it, play it on the local output:
+turn **Use as output** off — or, with [HQPlayer Embedded](#hqplayer-embedded), activate a
+profile that does not run it.
+
+> **An Apple-encoded library plays through HQPlayer once converted to FLAC.** FLAC is
+> lossless too: converted from ALAC, it holds exactly the same music, and HQPlayer plays
+> it. The conversion is yours to do, with the converter of your choice —
+> Audiogravi<sup>ty</sup> never changes your files.
 
 > **The same file can be named two ways.** M4A and MP4 are one container under two
 > names, and media servers disagree: MinimServer publishes a track as `.m4a`, Plex
 > publishes the very same file as `.mp4`. Both are refused, and the message names
 > whichever spelling your server used — it is one format, not two problems.
-Turn the switch off to play it on the local output. An album is checked before
-anything is sent, so a single unplayable track is caught up front instead of
-stopping the music halfway through.
 
 This matters most for **internet radio**, where many Hi-Res stations broadcast in AAC —
 a station can therefore be refused on format even though radio is a source HQPlayer
@@ -228,15 +234,14 @@ otherwise accepts.
 HQPlayer can also run **on the box itself**. HQPlayer Embedded is the version of HQPlayer
 that Signalyst, its maker, publishes for a machine without a screen: you set it up from a
 web page, and the processing happens on the box, next to your DAC, with no computer to
-keep on.
+keep on. It needs a licence from Signalyst.
 
 **Installing it.** HQPlayer Embedded has a card in **Audio Software**; if your box cannot
 run it, the card says why.
 
 1. Click **INSTALL**.
 2. **Choose the version** your licence covers — Signalyst publishes several side by
-   side. With no licence yet, Signalyst's terms allow a time-limited trial. A version your
-   box cannot run is listed with the reason, and cannot be chosen.
+   side. A version your box cannot run is listed with the reason, and cannot be chosen.
 3. **Read Signalyst's licence**, then tick *I have read and accept the terms above*.
 4. **Note down the password** shown under *Web interface password*: you need it to open
    HQPlayer's web page, and Audiogravi<sup>ty</sup> does not keep it. You can type your own
@@ -245,24 +250,65 @@ run it, the card says why.
 
 <img src="images/ios-hqplayer-embedded-install.webp" alt="The install window of HQPlayer Embedded: the version to install, the password for its web page, and Signalyst's licence" width="360">
 
-**Setting it up.** Open `http://<your box>:8088` in your browser — your box's address
-followed by `:8088` — and sign in as **`hqplayer`** with that password. This page is where
-HQPlayer itself is set up. Start by choosing your DAC as its output: it has none after
-installation, and plays nothing until you do. You can change the password there too; it
-asks for the current one. Lost it? See
+**Choosing its output.** HQPlayer Embedded has no output after installation and plays
+nothing until you give it one. Choose it in Audiogravi<sup>ty</sup>, as for any player on the
+box:
+
+1. Open **Config** and click **EDIT CONFIG** on the **HQPlayer Embedded** tile.
+2. In **Guided**, under **Audio output**, pick the output your DAC is connected to, then
+   click **Apply changes**.
+
+<img src="images/ios-hqplayer-embedded-output.webp" alt="HQPlayer Embedded in the Config tab: the Guided view, with the audio output to choose and the Apply changes button" width="360">
+
+The tile then shows **CONFIGURED** and the output. Only the output changes: HQPlayer's
+other settings stay as they are, which is why there is no *Reset to default* for it. If
+HQPlayer Embedded is running, it restarts to take the new output, so whatever it is playing
+stops for a moment.
+
+**Its web page.** HQPlayer's own settings, its filters, modulators and DSD rate among them,
+are set on its web page. Open `http://<your box>:8088` in your browser — your box's address
+followed by `:8088` — and sign in as **`hqplayer`** with that password. You can change the
+password there too; it asks for the current one. Lost it? See
 [9. Troubleshooting → Locked out of HQPlayer Embedded's web page](09-troubleshooting.md#locked-out-of-hqplayer-embeddeds-web-page).
 
-**Switching to it.** Activate the **HQPlayer Embedded** profile. It starts HQPlayer and
-stops the other players — MPD, UPnP Bridge, Roon Bridge and the NAA — so that HQPlayer has
-your DAC to itself. Any other profile switches back, except AirPlay's, which starts AirPlay
-alongside whatever is playing. The NAA and HQPlayer Embedded can both be installed: the
-profile you choose decides which one plays. On a box without HQPlayer Embedded, its
-profile shows as **UNAVAILABLE**.
+**Its DSD rate, before the first play.** HQPlayer Embedded comes set to DSD256. If your DAC
+plays DSD but not that high — its specifications say how far it goes — lower it before
+playing anything:
 
-**Playing music.** The **Use as output** switch on the HQPlayer card sends music to an
-HQPlayer that reaches your DAC through the NAA — typically HQPlayer on a computer. It does
-not work with HQPlayer Embedded, which plays to your DAC directly. Play music to it with the
-apps Signalyst provides.
+1. On its web page, open **Configuration**.
+2. Under **SDM settings**, set **Rate limit** to the highest DSD rate your DAC converts:
+   2822400 for DSD64, 5644800 for DSD128, 11289600 for DSD256.
+3. In the same section, leave **Bit rate** on **Auto**, or set it to a rate your DAC
+   converts: when it is set, that is the rate HQPlayer Embedded uses.
+
+A DAC does not say which DSD rates it converts, and some accept one they cannot handle:
+they hiss instead of playing — see
+[9. Troubleshooting → The DAC hisses instead of playing](09-troubleshooting.md#hqplayer-embedded-the-dac-hisses-instead-of-playing).
+The **Samplerate** list on its main page changes the rate only until HQPlayer Embedded
+restarts.
+
+**Switching to it.** Two profiles run it. Both stop the NAA, Roon Bridge and UPnP Bridge,
+so that HQPlayer has your DAC to itself:
+
+- **MPD HQPlayer Embedded** keeps MPD running beside it: your own music library plays
+  through HQPlayer Embedded, as well as everything else.
+- **HQPlayer Embedded** stops MPD too: streaming services, internet radio and media servers
+  play through it, but not your own library.
+
+Any other profile switches back, except AirPlay's, which starts AirPlay alongside whatever
+is playing. The NAA and HQPlayer Embedded can both be installed: the profile you choose
+decides which one plays. On a box without HQPlayer Embedded, both profiles show as
+**UNAVAILABLE**.
+
+**Playing music.** While HQPlayer Embedded runs, Audiogravi<sup>ty</sup> plays through it:
+what you start from the **Library** goes to HQPlayer Embedded, and from it straight to your
+DAC. The HQPlayer card in **Library → Sources** shows **This box**, with **Use as output**
+on and locked for as long as it runs. An HQPlayer you had chosen on your network is kept:
+when HQPlayer Embedded stops, the card returns to it, with its own **Use as output**
+setting. The formats HQPlayer cannot decode are refused here too — see
+[What can and cannot go through HQPlayer](#what-can-and-cannot-go-through-hqplayer).
+
+<img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, and the HQPlayer chosen before kept for when it stops" width="360">
 
 **If something did not go through.** When HQPlayer Embedded is installed but a step after
 that could not be done, the result says **Install Incomplete** and what is left to do. If

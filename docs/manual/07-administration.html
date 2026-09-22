@@ -143,11 +143,13 @@ switched off, and no setting in the app can change that. See
 <p>Safely edit the real configuration files of your audio services (see also
 <a href="03-first-run">3. First run</a> for the guided setup).</p>
 <ul>
-<li><strong>Guided mode</strong> (MPD / AirPlay / UPnP) — change output or library in a couple of
-clicks; only the changed setting is rewritten. <em>Reset to default</em> regenerates a
-minimal config (current file backed up first).</li>
+<li><strong>Guided mode</strong> (MPD / AirPlay / UPnP / HQPlayer Embedded) — change output or library
+in a couple of clicks; only the changed setting is rewritten. <em>Reset to default</em>
+regenerates a minimal config (current file backed up first) — except for HQPlayer
+Embedded, whose settings are its own: only its output is chosen here.</li>
 <li><strong>Form mode</strong> — edit common settings through a friendly interface with field
-descriptions and validation.</li>
+descriptions and validation. HQPlayer Embedded has none: its file is edited in Expert
+mode.</li>
 <li><strong>Expert (Raw) mode</strong> — edit the raw file directly, with syntax validation before
 save.</li>
 <li><strong>Preview changes (Diff)</strong> — a unified diff (raw) or a before/after field table
@@ -159,7 +161,8 @@ batch several edits.</li>
 </ul>
 <p>Each tile carries the state of its service — <strong>RUNNING</strong>, <strong>STOPPED</strong> or <strong>FAILED</strong> —
 and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
-<strong>CONFIGURED</strong> or still on the package defaults.</p>
+<strong>CONFIGURED</strong> or still on the package defaults. HQPlayer Embedded is <strong>CONFIGURED</strong> once
+its output has been chosen here.</p>
 <img loading="lazy" src="images/ios-config-editor.webp" alt="The Config tab: one tile per audio service with its file path, its output, its RUNNING or STOPPED state, its CONFIGURED badge and the Edit config button" width="360">
 <h3 id="when-the-software-behind-a-tile-is-not-installed">When the software behind a tile is not installed</h3>
 <p>A tile whose package is absent is dashed and greyed, carries an <strong>UNAVAILABLE</strong> badge

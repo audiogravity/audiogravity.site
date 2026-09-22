@@ -45,6 +45,7 @@ and this landing) are documented here. Format based on
 - **[core][ui] The support report describes the HQPlayer you actually use.** Its HQPlayer section read an address from the settings file, which only seeds the card: on a box whose card had chosen an HQPlayer, it said *not configured*. It now reports the instance chosen in the card, whether the box's own HQPlayer is the one played through, whether library playback goes to HQPlayer, and which HQPlayer answers, by product and version. An HQPlayer that does not answer is asked once, not twice.
 - **[core] HQPlayer as the output no longer refuses every play after a start-up where its adapter started at the same moment.** Audiogravi<sup>ty</sup> read the adapter's state, then began listening for its changes: a start completing in between went unseen, and every play was refused as *NAA not running* until the adapter next restarted. It now listens first.
 - **[core] A UPnP renderer is recognised as this box on any loopback address, and a renderer address with no host never is.**
+- **[ui] The filter you pick after changing HQPlayer's mode is the one that applies.** HQPlayer offers different filters and shapers in PCM and in DSD, and what it takes is a position in that list: the card kept the previous mode's lists, so a pick after a mode change silently applied another filter. The lists are now re-read when the mode changes.
 
 ## [0.9.58] - 2026-09-20
 

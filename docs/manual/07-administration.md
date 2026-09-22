@@ -158,13 +158,18 @@ files edited above — this one lists *which* services exist, not their internal
   and `depends_on`). "MPD", "Stop All"… are profiles.
 - **`topology_link`** — ties this box to its device in the topology (`host_device_id`, e.g.
   `streamer_01`), so the signal-chain view knows which streamer the services run on.
+- **`added_by_upgrade`** — the services an update has already added to this file (HQPlayer
+  Embedded, `hqplayerd`, today). Remove one of them from your services and profiles, and it
+  stays removed: neither an update nor an import puts it back.
 
 - **Managing it.** Open **Settings** (the gear in the top bar). *Export Configuration*
   downloads the current `audio-config.json`; *Import Configuration* uploads a replacement.
 - **Validation on import.** An imported file is checked before it is applied: bad structure, a
-  missing required field, a wrong type — but also a `systemd_unit` that isn't installed on the
-  box — are reported as blocking **errors**; softer
-  issues appear as **warnings** you can review and accept. A reference
+  missing required field or a wrong type are reported as blocking **errors**; softer issues
+  appear as **warnings** you can review and accept — among them a `systemd_unit` that isn't
+  installed on the box, since declaring a service before installing it is normal (its profiles
+  read as unavailable until then). A file written before an update is brought up to date as it
+  is imported, as the update did for the box's own. A reference
   **`audio-config.json.example`** ships with the box.
 
 See also **Audio topology** below — the *other* file you own, describing the physical hi-fi
@@ -279,7 +284,8 @@ shairport-sync, Roon Bridge…).
   The confirmation names the service that is about to be cut, so an update chosen in
   the middle of an album is a decision rather than a surprise.
 - **Restart required** — a pulsing badge appears when a service needs a restart after
-  install/update; click to restart it.
+  install/update; click to restart it. A package Audiogravi<sup>ty</sup> restarts by itself
+  once installed — HQPlayer Embedded — only shows it when that restart failed.
 - **Architecture** — the CPU badge shows supported architectures (amd64, arm64…).
   A **DRY-RUN** mode simulates operations safely.
 

@@ -22,8 +22,9 @@ answer is usually on screen:
 - *"its network audio daemon (NAA) is not running"* — HQPlayer is your output but the
   piece that feeds your DAC is stopped. Start it in **Services**, or turn the switch
   off to play locally.
-- *"which HQPlayer cannot decode"* — the track's format is not one HQPlayer handles;
-  the message names it. (The full list is in
+- *"which HQPlayer cannot decode"* — the track is in one of the few formats
+  Audiogravi<sup>ty</sup> does not convert for HQPlayer: a DST-compressed DFF, Speex or
+  AMR; the message names it. (The full list is in
   [6. Outputs & engines](06-outputs-engines.md#what-can-and-cannot-go-through-hqplayer).)
   Turn the switch off to play it on the local output. A whole album is refused if
   **any** of its tracks is in such a format — the message names that track — so you get
@@ -274,8 +275,9 @@ listen, tell us through [Getting help](#getting-help).
   publish it in lossless; try another release. With HQPlayer as your output you get a
   message saying so; on your DAC you get only the silence, which is why this is the
   entry to check first.
-- **With HQPlayer as your output**, a track in a format HQPlayer cannot decode is refused
-  wherever it comes from — your library, a media server or a radio station — and the
+- **With HQPlayer as your output**, a track in a format HQPlayer cannot decode is
+  converted to FLAC on the way out, wherever it comes from — your library, a media server
+  or a radio station. Only a DST-compressed DFF, Speex and AMR are refused, and the
   message names the format and the track. Turn **Use as output** off to play it on the
   local output. The *source* makes no difference: every source reaches HQPlayer,
   streaming services included — the formats it accepts, and those it does not, are

@@ -245,7 +245,8 @@ publish in lossless.</p>
 <p><strong>Which formats HQPlayer decodes:</strong></p>
 <p>HQPlayer plays <strong>FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF</strong>, and
 <strong>cannot decode</strong> anything else — AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, AC3/E-AC3,
-DTS, Musepack, TAK, TTA, Shorten, MKA/WebM, AIFC, nor DST, the compressed flavour of DFF.</p>
+DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM, AIFC, nor DST, the compressed
+flavour of DFF.</p>
 <p><strong>You do not have to think about this.</strong> When a track is in a format HQPlayer cannot
 read, Audiogravi<sup>ty</sup> converts it to FLAC as it hands it over — an ALAC album in
 your library, an M4A track your media server publishes, a station broadcasting in AAC.
@@ -258,7 +259,9 @@ so Audiogravi<sup>ty</sup> never does it silently: a DST-compressed DFF is refus
 the reason. The same holds for an address Audiogravi<sup>ty</sup> only passes on to
 HQPlayer without carrying the audio — there is nothing for it to convert. To hear one of
 those, play it on the local output: turn <strong>Use as output</strong> off — or, with
-<a href="#hqplayer-embedded">HQPlayer Embedded</a>, activate a profile that does not run it.</p>
+<a href="#hqplayer-embedded">HQPlayer Embedded</a>, activate a profile that does not run it.
+Speex and AMR, two formats made for speech rather than music, are not converted either:
+they are refused the same way, with the reason.</p>
 <blockquote>
 <p><strong>An album starts on its first track.</strong> HQPlayer inspects every track before accepting
 it, and that inspection is what sets the conversion going. So an album that needs
@@ -272,8 +275,7 @@ publishes the very same file as <code>.mp4</code>. It is one format, not two pro
 are converted the same way.</p>
 </blockquote>
 <p>This matters most for <strong>internet radio</strong>, where many Hi-Res stations broadcast in AAC —
-a station can therefore be refused on format even though radio is a source HQPlayer
-otherwise accepts.</p>
+those stations play through HQPlayer like any other, converted as they arrive.</p>
 <blockquote>
 <p><strong>One output at a time.</strong> HQPlayer and a network renderer cannot both be your
 output. If both are selected, Audiogravi<sup>ty</sup> asks you to turn one off instead of
@@ -360,7 +362,7 @@ what you start from the <strong>Library</strong> goes to HQPlayer Embedded, and 
 DAC. The HQPlayer card in <strong>Library → Sources</strong> shows <strong>This box</strong>, with <strong>Use as output</strong>
 on and locked for as long as it runs. An HQPlayer you had chosen on your network is kept:
 when HQPlayer Embedded stops, the card returns to it, with its own <strong>Use as output</strong>
-setting. The formats HQPlayer cannot decode are refused here too — see
+setting. The formats HQPlayer cannot decode are converted here too — see
 <a href="#what-can-and-cannot-go-through-hqplayer">What can and cannot go through HQPlayer</a>.</p>
 <img loading="lazy" src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, and the HQPlayer chosen before kept for when it stops" width="360">
 <p><strong>If something did not go through.</strong> When HQPlayer Embedded is installed but a step after

@@ -197,7 +197,8 @@ box. Nothing is re-encoded either way; the audio is bit-for-bit what the service
 
 HQPlayer plays **FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF**, and
 **cannot decode** anything else — AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, AC3/E-AC3,
-DTS, Musepack, TAK, TTA, Shorten, MKA/WebM, AIFC, nor DST, the compressed flavour of DFF.
+DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM, AIFC, nor DST, the compressed
+flavour of DFF.
 
 **You do not have to think about this.** When a track is in a format HQPlayer cannot
 read, Audiogravi<sup>ty</sup> converts it to FLAC as it hands it over — an ALAC album in
@@ -213,6 +214,8 @@ the reason. The same holds for an address Audiogravi<sup>ty</sup> only passes on
 HQPlayer without carrying the audio — there is nothing for it to convert. To hear one of
 those, play it on the local output: turn **Use as output** off — or, with
 [HQPlayer Embedded](#hqplayer-embedded), activate a profile that does not run it.
+Speex and AMR, two formats made for speech rather than music, are not converted either:
+they are refused the same way, with the reason.
 
 > **An album starts on its first track.** HQPlayer inspects every track before accepting
 > it, and that inspection is what sets the conversion going. So an album that needs
@@ -225,8 +228,7 @@ those, play it on the local output: turn **Use as output** off — or, with
 > are converted the same way.
 
 This matters most for **internet radio**, where many Hi-Res stations broadcast in AAC —
-a station can therefore be refused on format even though radio is a source HQPlayer
-otherwise accepts.
+those stations play through HQPlayer like any other, converted as they arrive.
 
 > **One output at a time.** HQPlayer and a network renderer cannot both be your
 > output. If both are selected, Audiogravi<sup>ty</sup> asks you to turn one off instead of
@@ -321,7 +323,7 @@ what you start from the **Library** goes to HQPlayer Embedded, and from it strai
 DAC. The HQPlayer card in **Library → Sources** shows **This box**, with **Use as output**
 on and locked for as long as it runs. An HQPlayer you had chosen on your network is kept:
 when HQPlayer Embedded stops, the card returns to it, with its own **Use as output**
-setting. The formats HQPlayer cannot decode are refused here too — see
+setting. The formats HQPlayer cannot decode are converted here too — see
 [What can and cannot go through HQPlayer](#what-can-and-cannot-go-through-hqplayer).
 
 <img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, and the HQPlayer chosen before kept for when it stops" width="360">

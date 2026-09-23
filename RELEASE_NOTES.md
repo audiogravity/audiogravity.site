@@ -65,9 +65,9 @@ nothing asks for one. The HQPlayer card says *This box*, with *Use as output* on
 for as long as it runs. If you had chosen an HQPlayer on your network, it is kept, with its
 own settings and its DSP choices; the card goes back to it when HQPlayer Embedded stops.
 The player shows what is playing, and the signal path starts from HQPlayer Embedded. A
-format HQPlayer cannot decode is refused before anything is sent, with advice you can
-follow: a profile that stops it. For an Apple-encoded library, the manual suggests a
-conversion to FLAC, which is lossless too.
+format HQPlayer cannot decode is converted to FLAC on the way out (see below); what stays
+refused is refused before anything is sent, with advice you can follow: a profile that
+stops it.
 
 **Its output is chosen here; everything else on its own page.** HQPlayer Embedded has no
 output after installation. You choose it in **Config**, on its tile, exactly as for MPD or

@@ -335,7 +335,8 @@
 
     <div class="marquee-bar" aria-hidden="true">
         <div class="marquee-track">
-            <span>MPD</span><span class="sep">·</span><span>Roon Bridge</span><span class="sep">·</span><span>HQPlayer
+            <span>MPD</span><span class="sep">·</span><span>Roon Core</span><span class="sep">·</span><span>Roon Bridge</span><span class="sep">·</span><span>HQPlayer
+                Embedded</span><span class="sep">·</span><span>HQPlayer
                 NAA</span><span class="sep">·</span><span>upmpdcli</span><span
                 class="sep">·</span><span>Shairport-Sync</span><span class="sep">·</span><span>MinimServer</span><span class="sep">·</span><span>UPnP Control Point</span><span
                 class="sep">·</span><span>Qobuz</span><span class="sep">·</span><span>Tidal</span><span class="sep">·</span><span>HIGHRESAUDIO</span><span
@@ -345,7 +346,8 @@
                 class="sep">·</span><span>WebAuthn</span><span class="sep">·</span><span>Face ID</span><span
                 class="sep">·</span><span>DietPi</span><span class="sep">·</span><span>Raspberry Pi</span><span
                 class="sep">·</span>
-            <span>MPD</span><span class="sep">·</span><span>Roon Bridge</span><span class="sep">·</span><span>HQPlayer
+            <span>MPD</span><span class="sep">·</span><span>Roon Core</span><span class="sep">·</span><span>Roon Bridge</span><span class="sep">·</span><span>HQPlayer
+                Embedded</span><span class="sep">·</span><span>HQPlayer
                 NAA</span><span class="sep">·</span><span>upmpdcli</span><span
                 class="sep">·</span><span>Shairport-Sync</span><span class="sep">·</span><span>MinimServer</span><span class="sep">·</span><span>UPnP Control Point</span><span
                 class="sep">·</span><span>Qobuz</span><span class="sep">·</span><span>Tidal</span><span class="sep">·</span><span>HIGHRESAUDIO</span><span
@@ -360,10 +362,13 @@
 
     <!-- PULL -->
     <div class="pull">
-        <div class="pull-label">The problem it solves</div>
-        <blockquote class="pull-q">"The enemy of bit-perfect playback isn't the engines you trust. <em>It's the kernel
-                scheduler
-                interrupting your audio thread for 200 µs to handle a network IRQ.</em>"</blockquote>
+        <!-- Inside .w like every section, so its left edge lines up with theirs at any width. -->
+        <div class="w pull-in">
+            <div class="pull-label">The problem it solves</div>
+            <blockquote class="pull-q">"The enemy of bit-perfect playback isn't the engines you trust. <em>It's the kernel
+                    scheduler
+                    interrupting your audio thread for 200 µs to handle a network IRQ.</em>"</blockquote>
+        </div>
     </div>
 
     <!-- FEATURES BENTO -->
@@ -477,7 +482,9 @@
                     <p>Most apps treat radio as a second-class source — a different player, a degraded path to the DAC,
                         no metadata, no cover art. Here it isn't. Stations flow through the same transport as your FLAC
                         library, route to the same output zone, surface the same Hi-Fi readout. Curate your own
-                        collection, filter the catalogue down to Hi-Res, save the ones worth coming back to.</p>
+                        collection, filter the catalogue down to Hi-Res, save the ones worth coming back to. With
+                        HQPlayer as your output, they can go through its filters too — stations broadcasting in AAC
+                        included, converted to FLAC as they arrive.</p>
                     <span class="fb-chip">Same transport · Hi-Res filter · live metadata · cover art</span>
                 </div>
 
@@ -876,7 +883,7 @@
                     <span class="stack-num">2</span>
                     <div class="stack-body">
                         <div class="stack-name">Audio Engine</div>
-                        <div class="stack-sub">MPD · Roon Bridge · HQPlayer NAA · AirPlay · upmpdcli · UPnP renderers</div>
+                        <div class="stack-sub">MPD · Roon Bridge · HQPlayer Embedded · HQPlayer NAA · AirPlay · upmpdcli · UPnP renderers</div>
                     </div>
                     <span class="stack-tag">Audiogravi<sup>ty</sup> manages</span>
                 </div>
@@ -893,7 +900,7 @@
             <div class="layers-takeaway">
                 <p><b>The takeaway:</b> Audiogravi<sup>ty</sup> owns the interface and orchestration layers, <b>installs,
                         configures and drives</b> the audio engines audiophiles already trust (MPD, upmpdcli, AirPlay,
-                    the HQPlayer NAA + DSP, Roon, network UPnP renderers), <b>connects</b> the content sources they rely
+                    HQPlayer Embedded, the HQPlayer NAA + DSP, Roon, network UPnP renderers), <b>connects</b> the content sources they rely
                     on (NAS, Qobuz, Tidal, HIGHRESAUDIO, internet radio, MinimServer), and <b>tunes</b> the OS kernel
                     underneath — without replacing or hiding any of them.</p>
             </div>
@@ -956,7 +963,7 @@
             <p class="section-sub">Audiogravi<sup>ty</sup> is a streamer, and so are most of the columns below — the
                 table shows where each one stops. What sets it apart is that it does not ask you to choose against Roon
                 or HQPlayer: it installs <b>Roon Bridge</b> to be a Roon endpoint, and <b>HQPlayer NAA</b> to be an
-                HQPlayer endpoint, so both keep working inside it. JPLAY iOS is listed for what it is: a control point,
+                HQPlayer endpoint — or <b>HQPlayer Embedded</b> itself, running on the box — so both keep working inside it. JPLAY iOS is listed for what it is: a control point,
                 not a streamer.</p>
 
             <!-- The wrapper exists only to anchor the right-edge scroll cue: an absolutely

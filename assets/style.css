@@ -1063,9 +1063,15 @@ nav {
 }
 
 /* PULL */
+/* Same box model as .section: its own padding, then .w for the centred column and the
+   gutter. It used to be a grid spanning the whole page, so its left edge stayed at 48px
+   while every section's followed the 1280px column — 320px apart on a 1920px screen. */
 .pull {
     padding: 90px 48px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border)
+}
+
+.pull-in {
     display: grid;
     grid-template-columns: 220px 1fr;
     gap: 60px;
@@ -1074,7 +1080,10 @@ nav {
 
 @media(max-width:720px) {
     .pull {
-        padding: 60px 24px;
+        padding: 60px 0
+    }
+
+    .pull-in {
         grid-template-columns: 1fr;
         gap: 20px
     }

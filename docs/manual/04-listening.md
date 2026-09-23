@@ -30,6 +30,9 @@ Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 - **Album details** — Album, Artist, Format, Genre, Year, Position, Source and the
   full **Tracklist**.
 - A **Queue** view for what's coming up (see below).
+- On a HIGHRESAUDIO track, an **Add to playlist** button beside the title puts the track
+  into one of your HIGHRESAUDIO playlists — see
+  [5. Library & streaming](05-library-streaming.md#adding-to-your-highresaudio-playlists).
 - **Swipe** between active sources; close with the back button or swipe-down.
 - When playing to a network renderer, a **"Routed to UPnP renderer"** indicator makes
   the destination clear.

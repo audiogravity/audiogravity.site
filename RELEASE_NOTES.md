@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.59 — 2026-09-23
+
 ### HQPlayer Embedded, installed from Audiogravi<sup>ty</sup>
 
 Until now Audiogravi<sup>ty</sup> could install the adapter that carries HQPlayer's sound

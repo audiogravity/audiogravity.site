@@ -274,9 +274,14 @@ HQPlayer Embedded is running, it restarts to take the new output, so whatever it
 stops for a moment.
 
 **Its web page.** HQPlayer's own settings, its filters, modulators and DSD rate among them,
-are set on its web page. Open `http://<your box>:8088` in your browser — your box's address
-followed by `:8088` — and sign in as **`hqplayer`** with that password. You can change the
-password there too; it asks for the current one. Lost it? See
+are set on its web page. The quickest way there: open the **Library**, go to **Sources**, and
+on the HQPlayer card click **WEB INTERFACE** — it opens in a new tab. The button is there
+whenever HQPlayer Embedded is the one running on your box, and it stays available even when
+the card says it is offline, which is when you are most likely to need it. Otherwise, type
+`http://<your box>:8088` in your browser — your box's address followed by `:8088`.
+
+Sign in as **`hqplayer`** with the password noted at the install. You can change it there
+too; it asks for the current one. Lost it? See
 [9. Troubleshooting → Locked out of HQPlayer Embedded's web page](09-troubleshooting.md#locked-out-of-hqplayer-embeddeds-web-page).
 
 **Its DSD rate, before the first play.** HQPlayer Embedded comes set to DSD256. If your DAC

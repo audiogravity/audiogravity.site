@@ -485,7 +485,9 @@ Your output setting is kept, and so are HQPlayer's own settings: there is nothin
 again.
 
 A licence from Signalyst removes the limit. It is bought from Signalyst directly, and
-entered on HQPlayer Embedded's own web page.
+entered on HQPlayer Embedded's own web page — reachable from the HQPlayer card in
+**Library → Sources**, with **WEB INTERFACE**. That page keeps answering while the half
+hour is up, so you can go there without restarting anything first.
 
 ## Locked out of HQPlayer Embedded's web page
 

@@ -121,6 +121,15 @@ restart leaves HQPlayer with an empty queue. A licence from Signalyst removes th
 Audiogravi<sup>ty</sup> will not restart it for you: that would work around a limit its
 maker set, and cut your music without warning.
 
+**And its settings page is one click away.** HQPlayer's filters, its modulators, its DSD
+rate and its licence key live on a web page of its own — the one the manual keeps sending
+you to, and which you had to reach by typing your box's address followed by `:8088`. The
+HQPlayer card, in **Library → Sources**, now has a **Web interface** button beside its DSP
+controls. It shows up only for the HQPlayer running on your box, since one on your network
+has no such page — and it stays there when the card says HQPlayer is offline, which is when
+you need it most: that page answers even when the rest of HQPlayer has stopped, and it is
+where you enter the licence key.
+
 **Five rough edges on the way to HQPlayer.** They are small, and you meet them daily.
 Adding tracks to an album already playing used to blank its title, its artist and its cover
 a few seconds later, and for good: HQPlayer takes about five seconds to acknowledge a

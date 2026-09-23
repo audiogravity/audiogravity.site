@@ -162,8 +162,10 @@ selections HIGHRESAUDIO publishes, **Mine**, the playlists belonging to your acc
 and **Genre** and **Theme**, the two ways HIGHRESAUDIO files those same editorial
 selections. A playlist behaves like an album — tap it to play it, or send the whole
 thing to the queue with its **+** — and says *Playlist* on its card, so a selection is
-never mistaken for a record. You can add tracks and albums to your own playlists, and
-create new ones, from the box: see *Adding to your HIGHRESAUDIO playlists* below.
+never mistaken for a record. Its **open** button, at the bottom left of the cover, shows
+what it holds: see *A HIGHRESAUDIO playlist's page* below. You can also add tracks and
+albums to your own playlists, and create new ones, from the box: see *Adding to your
+HIGHRESAUDIO playlists*.
 
 The editorial collection is large, so a third strip sorts it onto HIGHRESAUDIO's own
 shelves — **New Releases**, **Recommended**, **Popular** and **Moods** — with **All**
@@ -224,9 +226,45 @@ Then:
    ever added twice. For an album, it says how many tracks went in and how many were
    already there.
 
-The button is not offered on your purchases (**Vault**) or on playlists. To see what a
-playlist holds, remove a track, rename a playlist or delete one, use HIGHRESAUDIO's own
-applications for now.
+The button is not offered on your purchases (**Vault**). On a playlist it is not on the
+cover, but on each of its tracks, from the playlist's page.
+
+### A HIGHRESAUDIO playlist's page
+
+Every HIGHRESAUDIO playlist — yours, and the selections HIGHRESAUDIO publishes — has a
+page of its own. Tapping a playlist still plays it; to see what it holds, tap its
+**open** button (a list with a note), at the bottom left of the cover or at the end of
+its row.
+
+The page shows the playlist's name, its description, how many tracks it holds and how
+long it lasts, then the tracks themselves:
+
+- **Play** plays the whole playlist; **Queue** adds it to the queue.
+- **Tap a track** to play the playlist from that track on. The tracks before it are not
+  queued.
+- The back button at the top returns to the playlists, where you left them.
+
+On **your own playlists**:
+
+- The button at the end of a track's row (a list with a **−**) **removes** the track
+  from the playlist, at once.
+- The **pencil** renames the playlist; its description can be changed at the same time.
+- The **bin** deletes the playlist from your HIGHRESAUDIO account, once you confirm. Its
+  tracks stay in the catalogue; only the playlist goes.
+
+On **a HIGHRESAUDIO selection**, each track carries the **Add to playlist** button
+instead, to copy it into one of your own playlists.
+
+### Creating an empty playlist
+
+In **Playlists › Mine**, the first tile is **New playlist**:
+
+1. Tap it.
+2. Give the playlist a name, and a description if you like.
+3. Tap **Create**.
+
+The playlist starts empty. Fill it with the **Add to playlist** button, from the player
+or from an album.
 
 
 ### Subscriptions at a glance

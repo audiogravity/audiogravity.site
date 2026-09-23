@@ -7,14 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-### Your HIGHRESAUDIO playlists, filled from the box
+### Your HIGHRESAUDIO playlists, managed from the box
 
-The track you are listening to, or a whole album, now goes into one of your
-HIGHRESAUDIO playlists without leaving Audiogravi<sup>ty</sup>. In the full-screen
-player, a button beside the title adds the track playing now; on HIGHRESAUDIO's album
-covers and in the album rows of a search, the same button sits next to the star. It
-opens a window with your playlists and **New playlist** at the top: tap one, or name a
-new one and the track or the album goes straight into it.
+Your HIGHRESAUDIO playlists no longer need HIGHRESAUDIO's own applications: from
+Audiogravi<sup>ty</sup> you fill them, open them, play them from any track, and tidy
+them up.
+
+**Adding.** The track you are listening to, or a whole album, goes into one of your
+playlists without leaving the player. In the full-screen player, a button beside the
+title adds the track playing now; on HIGHRESAUDIO's album covers and in the album rows
+of a search, the same button sits next to the star. It opens a window with your
+playlists and **New playlist** at the top: tap one, or name a new one and the track or
+the album goes straight into it.
 
 **Nothing goes in twice.** HIGHRESAUDIO accepts a track a playlist already holds and
 keeps both copies — and a later removal takes out every copy at once. So the box looks
@@ -26,14 +30,34 @@ many were already there.
 last track in twice. The box sends the album's tracks as a list instead, in the album's
 order.
 
-**A new playlist shows up at once.** HIGHRESAUDIO lists a playlist it has just created
-only a few seconds later; the box shows it meanwhile, in the window and in your
-playlists alike.
+**A playlist opens on a page of its own.** Tapping a playlist still plays it; its new
+**open** button, at the bottom left of the cover, shows what it holds — its name, its
+description, how many tracks and how long, then the tracks. **Play** and **Queue** take
+the whole of it, and a tap on a track plays the playlist from there. The selections
+HIGHRESAUDIO publishes open the same way, and each of their tracks can be copied into one
+of your playlists.
 
-Not yet: seeing what a playlist holds, removing a track, renaming or deleting a
-playlist — that is the next step, and HIGHRESAUDIO's own applications do it for now.
-Purchases (the Vault) have playlists of their own and are not offered the button, and
+**Your own playlists, edited in place.** On one of yours, a track comes out with one tap;
+the pencil renames the playlist and edits its description; the bin deletes it, once you
+confirm. **New playlist**, the first tile of your playlists, creates an empty one to fill
+later.
+
+**What you see is what your account holds.** HIGHRESAUDIO's own list lags a few seconds
+behind every change; the box shows a playlist just created, renamed or deleted as it now
+is, everywhere, meanwhile. A playlist deleted elsewhere is said to be gone rather than
+shown empty, and a track tapped in a playlist that changed in the meantime still starts
+the right track.
+
+Purchases (the Vault) have playlists of their own and are not offered these buttons, and
 Qobuz and Tidal are not written yet.
+
+### Nothing hides under the mini-player any more
+
+On a phone, the last lines of a list — the library, and the other tabs too — could stay
+under the mini-player at the bottom of the screen, whatever the scroll. They now always
+clear it, and clear its small pull tab when the player is folded away. With the phone on
+its side, the top of the library no longer sits under the top bar either, and in a low
+window on a computer, with the tabs shown as a bar, the tabs can be reached again.
 
 ---
 

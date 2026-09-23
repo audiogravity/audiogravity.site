@@ -145,6 +145,44 @@ designated by its name rather than its address is now told the right address to 
 files from, instead of the box's default route, which is the wrong one on exactly the
 networks where this matters: two networks, a VPN, an audio LAN with no gateway.
 
+### Your whole library plays through HQPlayer, whatever it is encoded in
+
+HQPlayer reads a short list of formats, and an Apple-encoded library is not on it. Hand it
+an ALAC file and it answers with an error without so much as opening it — served over the
+network or given by its path, it makes no difference. That mattered more than it sounds:
+a library ripped with iTunes or Apple Music is almost entirely M4A, and the media server
+on our own network answers with 185 M4A files out of 200. Choosing HQPlayer as your output
+meant losing nearly all of your music, and the only advice we could give was to convert the
+lot yourself, with something else, and keep two copies.
+
+**You no longer have to.** Audiogravi<sup>ty</sup> converts each track to FLAC as it hands
+it over. Losslessly — nothing is lost that was not already lost — and your files are never
+touched: what is converted is the copy going out, and it is thrown away afterwards. A
+CD-rate track takes about two seconds and comes out the same size as the original.
+
+**And you can still move inside a track.** That is the part worth insisting on, because it
+is what a simple relay would have cost you. The conversion is a complete file rather than
+a stream, so it is served with its length and can be read from any point: ask for three
+minutes in and HQPlayer goes there. A converted album behaves like any other.
+
+This covers three paths at once. A file in your own library. **A track a media server
+publishes** — until now the same album was accepted from the box and refused from the NAS,
+which took some explaining. And **an internet radio station**: many of the best-sounding
+ones broadcast in AAC only, with no equivalent anywhere else, and HQPlayer refused them
+outright. Audiogravi<sup>ty</sup> now relays those as they arrive, for well under one per
+cent of a processor core.
+
+**DSD is never converted.** Turning it into PCM behind your back is not a decision a music
+player should make on its own, so those formats stay refused, with the reason — as does an
+address Audiogravi<sup>ty</sup> merely passes on without holding the audio itself.
+
+One thing you may notice: an album whose tracks have to be converted starts on its first
+track and fills in behind it. HQPlayer inspects every entry before accepting it, and that
+inspection is what sets the conversion going, so a sixteen-track album queued in one go
+would have been half a minute of silence before the first note. The conversions are kept
+on disk in a space sized from what your box actually has free, emptied every time it
+starts, and remade when needed.
+
 ### Fixes that concern every box
 
 **Updates on a box set to another language.** On a box set to French or German, no update

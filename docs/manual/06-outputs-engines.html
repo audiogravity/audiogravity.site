@@ -243,30 +243,33 @@ you are told so before the album starts, and the same applies to an album Tidal 
 publish in lossless.</p>
 </blockquote>
 <p><strong>Which formats HQPlayer decodes:</strong></p>
-<p>HQPlayer plays <strong>FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF</strong>. It
+<p>HQPlayer plays <strong>FLAC, WAV, AIFF, WavPack, MP3, DSF and uncompressed DFF</strong>, and
 <strong>cannot decode</strong> anything else — AAC, ALAC, M4A/MP4, OGG/Opus, APE, WMA, AC3/E-AC3,
-DTS, Musepack, TAK, TTA, Shorten, Speex, AMR, MKA/WebM, AIFC, nor DST, the compressed
-flavour of DFF.</p>
-<p>The two you are most likely to meet are <strong>AAC</strong> — most internet radio, and Tidal's
-lossy qualities — and <strong>ALAC / M4A / MP4</strong>, an Apple-encoded library.</p>
-<p>Whenever a track is in one of those formats — an ALAC album in your library, an AAC
-track on your media server, a station broadcasting in AAC — Audiogravi<sup>ty</sup> tells you
-straight away rather than letting playback fail obscurely, and names the format. An album
-is checked before anything is sent, so a single unplayable track is caught up front
-instead of stopping the music halfway through. To hear it, play it on the local output:
-turn <strong>Use as output</strong> off — or, with <a href="#hqplayer-embedded">HQPlayer Embedded</a>, activate a
-profile that does not run it.</p>
+DTS, Musepack, TAK, TTA, Shorten, MKA/WebM, AIFC, nor DST, the compressed flavour of DFF.</p>
+<p><strong>You do not have to think about this.</strong> When a track is in a format HQPlayer cannot
+read, Audiogravi<sup>ty</sup> converts it to FLAC as it hands it over — an ALAC album in
+your library, an M4A track your media server publishes, a station broadcasting in AAC.
+The conversion is lossless and your own files are never touched: what is converted is the
+copy going out. You can still move inside a converted track, exactly as you would in any
+other. Nothing to set up, and nothing to notice beyond a couple of seconds before an album
+starts.</p>
+<p><strong>DSD is the exception, on purpose.</strong> Turning DSD into PCM would change the music itself,
+so Audiogravi<sup>ty</sup> never does it silently: a DST-compressed DFF is refused, with
+the reason. The same holds for an address Audiogravi<sup>ty</sup> only passes on to
+HQPlayer without carrying the audio — there is nothing for it to convert. To hear one of
+those, play it on the local output: turn <strong>Use as output</strong> off — or, with
+<a href="#hqplayer-embedded">HQPlayer Embedded</a>, activate a profile that does not run it.</p>
 <blockquote>
-<p><strong>An Apple-encoded library plays through HQPlayer once converted to FLAC.</strong> FLAC is
-lossless too: converted from ALAC, it holds exactly the same music, and HQPlayer plays
-it. The conversion is yours to do, with the converter of your choice —
-Audiogravi<sup>ty</sup> never changes your files.</p>
+<p><strong>An album starts on its first track.</strong> HQPlayer inspects every track before accepting
+it, and that inspection is what sets the conversion going. So an album that needs
+converting starts on its first track and fills in behind it, rather than making you wait
+for the whole record.</p>
 </blockquote>
 <blockquote>
 <p><strong>The same file can be named two ways.</strong> M4A and MP4 are one container under two
 names, and media servers disagree: MinimServer publishes a track as <code>.m4a</code>, Plex
-publishes the very same file as <code>.mp4</code>. Both are refused, and the message names
-whichever spelling your server used — it is one format, not two problems.</p>
+publishes the very same file as <code>.mp4</code>. It is one format, not two problems — and both
+are converted the same way.</p>
 </blockquote>
 <p>This matters most for <strong>internet radio</strong>, where many Hi-Res stations broadcast in AAC —
 a station can therefore be refused on format even though radio is a source HQPlayer

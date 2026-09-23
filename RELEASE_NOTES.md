@@ -7,7 +7,33 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Your HIGHRESAUDIO playlists, filled from the box
+
+The track you are listening to, or a whole album, now goes into one of your
+HIGHRESAUDIO playlists without leaving Audiogravi<sup>ty</sup>. In the full-screen
+player, a button beside the title adds the track playing now; on HIGHRESAUDIO's album
+covers and in the album rows of a search, the same button sits next to the star. It
+opens a window with your playlists and **New playlist** at the top: tap one, or name a
+new one and the track or the album goes straight into it.
+
+**Nothing goes in twice.** HIGHRESAUDIO accepts a track a playlist already holds and
+keeps both copies — and a later removal takes out every copy at once. So the box looks
+at the playlist first and sends only what it lacks. The message says what happened: the
+track was added, it was already there, or, for an album, how many tracks went in and how
+many were already there.
+
+**An album arrives whole, and once.** HIGHRESAUDIO's own way of adding an album puts its
+last track in twice. The box sends the album's tracks as a list instead, in the album's
+order.
+
+**A new playlist shows up at once.** HIGHRESAUDIO lists a playlist it has just created
+only a few seconds later; the box shows it meanwhile, in the window and in your
+playlists alike.
+
+Not yet: seeing what a playlist holds, removing a track, renaming or deleting a
+playlist — that is the next step, and HIGHRESAUDIO's own applications do it for now.
+Purchases (the Vault) have playlists of their own and are not offered the button, and
+Qobuz and Tidal are not written yet.
 
 ---
 

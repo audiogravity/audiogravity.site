@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core][ui][manual] The track playing now, or a whole album, goes into your HIGHRESAUDIO playlists from the box.** An **Add to playlist** button sits beside the title in the full-screen player, and next to the star on HIGHRESAUDIO album covers and album rows in search. It opens the account's own playlists with **New playlist** at the top: pick one, or name a new one and the item goes into it. The box reads the playlist before writing and sends only what it lacks — HIGHRESAUDIO keeps a track added twice, and a later removal then takes out every copy at once (measured on 2026-09-23) — and the message says what happened: added, already there, or an album added in part. An album goes in as the list of its tracks, never through HIGHRESAUDIO's album route, which inserts the album's last track twice (two albums out of two). A read of the playlist that fails stops the add rather than passing for an empty playlist, and a playlist that no longer exists is refused: HIGHRESAUDIO itself accepts a write to a playlist number that does not exist. A playlist just created is listed at once, although HIGHRESAUDIO's own list shows it only seconds later. Purchases (the Vault) and playlists are not offered the button; Qobuz and Tidal are not written yet. New routes `GET|POST /library/playlists` and `POST /library/playlists/add`; neither write is retried by the interface, so a lost answer cannot make a second playlist.
+- **[core] The player names the track it plays, not only the source it comes from.** `content_item_id`, beside `content_source_id` in the player state, is the track's id on its streaming service — read off the address the box handed MPD, HQPlayer or a network renderer. Measured on MPD: it reports the box's own address, not the service's after the redirect, so the id is there. `null` for a local file, a station, a media server, or a playback started outside Audiogravi<sup>ty</sup>.
+
 ## [0.9.59] - 2026-09-23
 
 ### Added

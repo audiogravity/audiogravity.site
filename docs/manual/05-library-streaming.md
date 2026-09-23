@@ -160,11 +160,10 @@ Original Score*.
 **Playlists** opens the same second strip with four ways in: **Editorial**, the
 selections HIGHRESAUDIO publishes, **Mine**, the playlists belonging to your account,
 and **Genre** and **Theme**, the two ways HIGHRESAUDIO files those same editorial
-selections. A playlist behaves like an album — open it to see its tracks, or send the
-whole thing to the queue in one gesture — and says *Playlist* on its card, so a
-selection is never mistaken for a record. Creating or editing playlists is not
-available: what HIGHRESAUDIO has made is readable, what you make stays where you made
-it.
+selections. A playlist behaves like an album — tap it to play it, or send the whole
+thing to the queue with its **+** — and says *Playlist* on its card, so a selection is
+never mistaken for a record. You can add tracks and albums to your own playlists, and
+create new ones, from the box: see *Adding to your HIGHRESAUDIO playlists* below.
 
 The editorial collection is large, so a third strip sorts it onto HIGHRESAUDIO's own
 shelves — **New Releases**, **Recommended**, **Popular** and **Moods** — with **All**
@@ -205,6 +204,29 @@ on that service**, with one tap. The star is filled when the album is already a
 favorite, updates instantly, and stays in sync between browsing and search.
 
 <img src="images/ios-browse.webp" alt="The streaming browse grid: category pills, album covers, add-to-queue and the favorite star" width="360">
+
+### Adding to your HIGHRESAUDIO playlists
+
+The track you are listening to, or a whole album, can go into one of the playlists of
+your HIGHRESAUDIO account.
+
+- **The track playing now** — open the full-screen player: the button beside the title
+  (three lines and a **+**) adds it.
+- **An album** — the same button sits next to the star on HIGHRESAUDIO album covers,
+  and on album rows in the search results.
+
+Then:
+
+1. A window lists your playlists. Tap the one you want.
+2. Or tap **New playlist**, type a name, and tap **Create and add**: the playlist is
+   created in your HIGHRESAUDIO account with the track or the album in it.
+3. A message says what happened: added, or *Already in this playlist* — nothing is
+   ever added twice. For an album, it says how many tracks went in and how many were
+   already there.
+
+The button is not offered on your purchases (**Vault**) or on playlists. To see what a
+playlist holds, remove a track, rename a playlist or delete one, use HIGHRESAUDIO's own
+applications for now.
 
 
 ### Subscriptions at a glance

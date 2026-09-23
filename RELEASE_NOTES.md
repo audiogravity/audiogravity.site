@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.60 — 2026-09-23
+
 ### Your HIGHRESAUDIO playlists, managed from the box
 
 Your HIGHRESAUDIO playlists no longer need HIGHRESAUDIO's own applications: from

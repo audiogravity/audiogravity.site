@@ -105,6 +105,22 @@ the HQPlayer you actually use — the one chosen in the card, which it used to m
 output, a start-up where the adapter started at the same moment no longer leaves every play
 refused until the adapter restarts.
 
+**The 30-minute trial says its name.** Signalyst lets you run HQPlayer Embedded without a
+licence key, but only 30 minutes at a time — and the half hour counts from the moment
+HQPlayer Embedded **starts**, not from the moment you press play. Spend it setting your
+output and your DSD rate, and there is none of it left for music; the vendor's own wording,
+"plays for 30 minutes at a time", does not suggest that, and measuring it is how we know.
+What happens at the end looks exactly like a breakdown: HQPlayer keeps running and keeps
+your DAC, its own web page still answers, but it stops taking commands — so the music stops
+and Audiogravi<sup>ty</sup> shows it as unavailable, with nothing to explain it. It cannot
+explain it: HQPlayer writes that limit in no log, so all the box ever reads is a player gone
+quiet. The limit is now told where you can still do something about it — in the install
+window before anything is downloaded, on the package's card once it is installed, and in the
+manual, which says to restart it from **Services** and to start your music again, since the
+restart leaves HQPlayer with an empty queue. A licence from Signalyst removes the limit.
+Audiogravi<sup>ty</sup> will not restart it for you: that would work around a limit its
+maker set, and cut your music without warning.
+
 **Five rough edges on the way to HQPlayer.** They are small, and you meet them daily.
 Adding tracks to an album already playing used to blank its title, its artist and its cover
 a few seconds later, and for good: HQPlayer takes about five seconds to acknowledge a

@@ -463,6 +463,30 @@ install seeds the default **`admin` / `admin123`** account again. This resets **
 accounts and their passkeys — your audio configuration is untouched. Sign in, set a
 fresh password immediately, and re-create the other accounts.
 
+## HQPlayer Embedded stops after half an hour
+
+The music stops, and the HQPlayer card shows it as unavailable although the service is
+still running. Nothing is broken: **without a licence, Signalyst lets HQPlayer Embedded
+run for 30 minutes at a time**, after which it stops taking commands until it is
+restarted.
+
+The half hour counts **from the moment HQPlayer Embedded starts**, not from the moment you
+play something. If it had been running a while before you pressed play, you get the rest of
+the half hour, not a fresh one.
+
+To carry on:
+
+1. Open **Services**, find **HQPlayer Embedded** and click **RESTART**.
+2. **Start your music again** — the restart leaves HQPlayer with an empty queue, and
+   nothing resumes on its own. The player may go on showing the album that was playing
+   until you do.
+
+Your output setting is kept, and so are HQPlayer's own settings: there is nothing to set up
+again.
+
+A licence from Signalyst removes the limit. It is bought from Signalyst directly, and
+entered on HQPlayer Embedded's own web page.
+
 ## Locked out of HQPlayer Embedded's web page
 
 Audiogravi<sup>ty</sup> does not keep the password shown when HQPlayer Embedded was

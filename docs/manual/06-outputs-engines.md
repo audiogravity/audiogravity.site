@@ -236,6 +236,14 @@ that Signalyst, its maker, publishes for a machine without a screen: you set it 
 web page, and the processing happens on the box, next to your DAC, with no computer to
 keep on. It needs a licence from Signalyst.
 
+> **Without a licence, it runs for 30 minutes at a time.** Signalyst lets you try HQPlayer
+> Embedded before buying one, and that trial stops 30 minutes after HQPlayer Embedded
+> **starts** — whether or not you played anything meanwhile. It keeps running but stops
+> taking commands, so Audiogravi<sup>ty</sup> shows it as unavailable and the music stops.
+> Restart it from the **Services** tab, start your music again, and you have another half
+> hour. A licence from Signalyst removes the limit. See
+> [9. Troubleshooting → HQPlayer Embedded stops after half an hour](09-troubleshooting.md#hqplayer-embedded-stops-after-half-an-hour).
+
 **Installing it.** HQPlayer Embedded has a card in **Audio Software**; if your box cannot
 run it, the card says why.
 

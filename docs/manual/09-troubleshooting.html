@@ -522,6 +522,26 @@ recipe is in
 <h2 id="version-mismatch-banner">Version-mismatch banner</h2>
 <p>The interface and core are on different versions — update the other component. See
 <a href="08-updating">8. Updating</a>.</p>
+<h2 id="audio-software-the-systems-package-manager-was-interrupted">Audio Software: &quot;the system's package manager was interrupted&quot;</h2>
+<p>Installing, updating or removing a program in <strong>Audio Software</strong> is refused, with a
+message that ends:</p>
+<blockquote>
+<p><em>the system's package manager was interrupted during an earlier operation and refuses
+every change until it is repaired.</em></p>
+</blockquote>
+<p>An earlier installation stopped before the end — the box lost power, or restarted, while
+it was running. The system keeps that installation on hold and accepts no other change
+until it is finished. The rest of the box keeps working; only the program that was being
+installed may not, until the last step below.</p>
+<ol>
+<li>Open the browser <strong>Terminal</strong> (System tab, admin), or connect to the box over SSH.</li>
+<li>Run:<pre><code class="language-bash">sudo dpkg --configure -a
+</code></pre>
+</li>
+<li>In <strong>Audio Software</strong>, if the program that was being installed now shows as not
+installed, install it again first: that completes it. Then carry on with what you
+were doing.</li>
+</ol>
 <h2 id="update-failed-to-start--an-update-is-already-in-progress">&quot;Update failed to start — An update is already in progress&quot;</h2>
 <p>A previous update was interrupted (power loss, reboot, or a crash mid-install) and
 left a stale &quot;in progress&quot; marker, so the core refuses to start a new one.</p>

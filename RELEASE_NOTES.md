@@ -7,7 +7,46 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Installing software survives a restart
+
+Some installations take a minute: HQPlayer Embedded downloads 120 MB, then sets itself
+up. Until now, restarting Audiogravi<sup>ty</sup> during that minute — or updating it,
+or restarting the box — killed the installation halfway, and left the system's package
+manager in a state where nothing more could be installed until a command had been typed
+on the box.
+
+**Restarting waits for the installation.** While something is being installed,
+**Restart Core**, **Reboot OS** and the update of Audiogravi<sup>ty</sup> say what is
+being installed and ask you to try again once it has finished. Stopping or restarting
+the core from **Services** gets the same answer. A reboot and an update wait for any
+installation on the box, including one started from the Terminal tab or over SSH.
+
+**A stop that comes anyway lets the installation finish.** If the core is stopped all
+the same — the box shutting down, a command typed on it — it first lets an installation
+already under way finish, for up to four minutes, and then stops. One that had not
+started yet — still downloading, or waiting its turn — is called off and says so,
+rather than starting in the middle of the stop.
+
+**A restart is quicker when nothing is installing**: about five seconds, where a page
+left open on the box used to hold it until it was forced to stop.
+
+### When the package manager needs repairing, you are told how
+
+If an earlier installation was cut short all the same — by a power cut, say — the
+system's package manager refuses every change until it is repaired.
+Audiogravi<sup>ty</sup> found that out only after downloading the package, and then
+reported a bare *Installation failed*. It now checks first and tells you, before
+anything is downloaded, with the command that repairs the box:
+`sudo dpkg --configure -a`. The **Terminal** tab (System, admin) is now allowed to run
+it, and the manual's troubleshooting chapter walks you through it. If another
+installation is simply still running, you are told that instead.
+
+### The version offered is the right one
+
+Right after installing HQPlayer Embedded, its card could offer a version older than the
+one just installed — *Older version offered*. For software Audiogravi<sup>ty</sup>
+downloads from its vendor, the page now asks the vendor only, and asks again as soon as
+an installation, an update or a removal ends.
 
 ---
 

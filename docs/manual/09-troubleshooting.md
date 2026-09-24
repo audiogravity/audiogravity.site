@@ -529,6 +529,28 @@ recipe is in
 The interface and core are on different versions — update the other component. See
 [8. Updating](08-updating.md).
 
+## Audio Software: "the system's package manager was interrupted"
+
+Installing, updating or removing a program in **Audio Software** is refused, with a
+message that ends:
+
+> *the system's package manager was interrupted during an earlier operation and refuses
+> every change until it is repaired.*
+
+An earlier installation stopped before the end — the box lost power, or restarted, while
+it was running. The system keeps that installation on hold and accepts no other change
+until it is finished. The rest of the box keeps working; only the program that was being
+installed may not, until the last step below.
+
+1. Open the browser **Terminal** (System tab, admin), or connect to the box over SSH.
+2. Run:
+   ```bash
+   sudo dpkg --configure -a
+   ```
+3. In **Audio Software**, if the program that was being installed now shows as not
+   installed, install it again first: that completes it. Then carry on with what you
+   were doing.
+
 ## "Update failed to start — An update is already in progress"
 
 A previous update was interrupted (power loss, reboot, or a crash mid-install) and

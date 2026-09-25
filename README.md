@@ -12,11 +12,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.9.60_beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.9.61_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
   <img src="https://img.shields.io/badge/ui-MIT-green" alt="UI License" />
   <img src="https://img.shields.io/badge/core-proprietary-lightgrey" alt="Core License" />
-  <img src="https://img.shields.io/badge/tests-6107_passing-brightgreen" alt="Tests" />
+  <img src="https://img.shields.io/badge/tests-6432_passing-brightgreen" alt="Tests" />
 </p>
 
 <p align="center">
@@ -233,11 +233,11 @@ Three components, three official logos:
 
 | Suite | Tests | Status |
 |-------|------:|--------|
-| Core | 3790 | ✅ |
-| UI | 2317 | ✅ |
-| **Total** | **6107** | ✅ |
+| Core | 4087 | ✅ |
+| UI | 2345 | ✅ |
+| **Total** | **6432** | ✅ |
 
-Last run: 2026-09-23 19:33 UTC
+Last run: 2026-09-25 18:01 UTC
 
 See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 

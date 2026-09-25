@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.61 — 2026-09-25
+
 ### Your Qobuz playlists, managed from the box
 
 Everything the box does with your HIGHRESAUDIO playlists, it now does with your Qobuz ones:

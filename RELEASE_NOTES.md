@@ -7,6 +7,42 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Your Qobuz playlists, managed from the box
+
+Everything the box does with your HIGHRESAUDIO playlists, it now does with your Qobuz ones:
+you fill them, open them, play them from any track and tidy them up, without Qobuz's own
+applications.
+
+**Adding.** In the full-screen player, the button beside the title adds the Qobuz track
+playing now; on Qobuz's album covers and in the album rows of a search, the same button
+sits next to the star. It opens your playlists with **New playlist** at the top: tap one,
+or name a new one and the track or the album goes straight into it.
+
+**Nothing goes in twice.** Qobuz keeps a track added twice, and its own protection refuses
+a whole album as soon as one of its tracks is already there. So the box looks at the
+playlist first and sends only what it lacks; the message says what went in and what was
+already there.
+
+**A new playlist is private.** Qobuz makes a playlist public unless told otherwise, which
+shows it on your public profile. The box creates yours private; making one public is done
+from a Qobuz app.
+
+**A playlist opens on a page of its own.** The **open** button, at the bottom left of the
+cover, shows its tracks, and a tap on a track plays the playlist from there. The selections
+Qobuz publishes open the same way, and each of their tracks can be copied into one of your
+playlists.
+
+**Your own playlists, edited in place.** On one of yours, a track comes out with one tap —
+every copy of it, if it was there twice; the pencil renames the playlist and edits its
+description; the bin deletes it, once you confirm. **New playlist**, the first tile of
+*Mine*, creates an empty one. A playlist you follow without owning it stays read-only: only
+its owner can change it.
+
+**Long playlists are read to the end.** Qobuz hands a playlist out 500 tracks at a time,
+and the box used to stop there; it now reads every track, however long the playlist.
+
+Tidal is not written yet.
+
 ### Installing software survives a restart
 
 Some installations take a minute: HQPlayer Embedded downloads 120 MB, then sets itself

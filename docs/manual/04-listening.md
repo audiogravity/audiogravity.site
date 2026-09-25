@@ -30,9 +30,9 @@ Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 - **Album details** — Album, Artist, Format, Genre, Year, Position, Source and the
   full **Tracklist**.
 - A **Queue** view for what's coming up (see below).
-- On a HIGHRESAUDIO track, an **Add to playlist** button beside the title puts the track
-  into one of your HIGHRESAUDIO playlists — see
-  [5. Library & streaming](05-library-streaming.md#adding-to-your-highresaudio-playlists).
+- On a Qobuz or HIGHRESAUDIO track, an **Add to playlist** button beside the title puts
+  the track into one of your playlists on that service — see
+  [5. Library & streaming](05-library-streaming.md#adding-to-your-playlists).
 - **Swipe** between active sources; close with the back button or swipe-down.
 - When playing to a network renderer, a **"Routed to UPnP renderer"** indicator makes
   the destination clear.
@@ -123,6 +123,10 @@ background music.
 Each profile tile shows the services it starts/stops, the resolved output port (e.g.
 `usb`, `toslink`), a live **health bar** (active / failed / idle), and when it was
 last activated. Activation is atomic, with a detailed toast on failure.
+
+If a service of the profile in use fails, its tile reads **FAILED** in red; tap
+**Activate** on it to start again what failed. The other profiles keep their state,
+with a small *failed* badge counting it.
 
 ## Sleep timer
 

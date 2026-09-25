@@ -313,9 +313,11 @@ Real-time monitoring and box-level actions.
   card, USB interface and subdevice.
 - **Event log** — system events and live updates; RUNNING/STOPPED to pause, CLEAR to
   reset.
-- **Actions (admin)** — *Restart Backend* restarts the Audiogravi<sup>ty</sup> service without
+- **Actions (admin)** — *Restart Core* restarts the Audiogravi<sup>ty</sup> service without
   rebooting; *Reboot OS* performs a full reboot (double confirmation). The UI
-  reconnects automatically. *Support Report* is described below.
+  reconnects automatically. While software is being installed, both are refused with a
+  message naming what is being installed: try again once it has finished. *Support
+  Report* is described below.
 - **Terminal (admin)** — a full interactive bash shell in the browser (runs as the
   backend user — use with care).
 
@@ -390,6 +392,14 @@ Low-level, per-service OS tuning using systemd **drop-in overrides** — the nat
   LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).
 - **Safety** — a diff preview before applying, automatic backups (*Restore Backup*),
   and *Remove Override* to roll a service back to factory behaviour instantly.
+- **Settings a service cannot start with are refused** before anything is saved, with
+  the reason: a real-time priority without a real-time policy or the reverse, a CPU the
+  box does not have, a memory limit under 16 MB, an open-file limit under 1024.
+  **Validate** gives the same answers.
+- **A change that stops a service is undone.** A running service is restarted on its
+  new settings and watched for a few seconds; if it does not stay up, the previous
+  settings are put back, the service is started again, and you are told. A service that
+  is not running is not started by a save: its new settings apply at its next start.
 
 ## Announcements
 

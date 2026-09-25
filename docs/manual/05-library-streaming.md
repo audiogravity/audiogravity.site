@@ -75,9 +75,12 @@ your local output, to a network renderer or through HQPlayer, and it stays yours
 whether or not a subscription is running.
 
 **Playlists** opens a second strip with two ways in: **Editorial**, the selections
-Qobuz publishes, and **Mine**, the playlists belonging to your account. A playlist
-behaves like an album — open it for its tracks or send the whole thing to the queue —
-and says *Playlist* on its card.
+Qobuz publishes, and **Mine**, the playlists on your account — the ones you made and
+the ones you follow. A playlist behaves like an album — tap it to play it, or send the
+whole thing to the queue with its **+** — and says *Playlist* on its card. Its **open**
+button, at the bottom left of the cover, shows what it holds: see *A playlist's page*
+below. You can also add tracks and albums to the playlists you made, and create new
+ones, from the box: see *Adding to your playlists*.
 
 **Genres** is Qobuz's second way of arranging the same catalogue. Pick a genre and the
 strip becomes that genre plus its own subdivisions, with **All** standing for the whole
@@ -163,9 +166,8 @@ and **Genre** and **Theme**, the two ways HIGHRESAUDIO files those same editoria
 selections. A playlist behaves like an album — tap it to play it, or send the whole
 thing to the queue with its **+** — and says *Playlist* on its card, so a selection is
 never mistaken for a record. Its **open** button, at the bottom left of the cover, shows
-what it holds: see *A HIGHRESAUDIO playlist's page* below. You can also add tracks and
-albums to your own playlists, and create new ones, from the box: see *Adding to your
-HIGHRESAUDIO playlists*.
+what it holds: see *A playlist's page* below. You can also add tracks and albums to
+your own playlists, and create new ones, from the box: see *Adding to your playlists*.
 
 The editorial collection is large, so a third strip sorts it onto HIGHRESAUDIO's own
 shelves — **New Releases**, **Recommended**, **Popular** and **Moods** — with **All**
@@ -207,34 +209,37 @@ favorite, updates instantly, and stays in sync between browsing and search.
 
 <img src="images/ios-browse.webp" alt="The streaming browse grid: category pills, album covers, add-to-queue and the favorite star" width="360">
 
-### Adding to your HIGHRESAUDIO playlists
+### Adding to your playlists
 
 The track you are listening to, or a whole album, can go into one of the playlists of
-your HIGHRESAUDIO account.
+your Qobuz or HIGHRESAUDIO account.
 
-- **The track playing now** — open the full-screen player: the button beside the title
-  (three lines and a **+**) adds it.
-- **An album** — the same button sits next to the star on HIGHRESAUDIO album covers,
-  and on album rows in the search results.
+- **The track playing now** — open the full-screen player: on a Qobuz or HIGHRESAUDIO
+  track, the button beside the title (three lines and a **+**) adds it.
+- **An album** — the same button sits next to the star on Qobuz and HIGHRESAUDIO album
+  covers, and on album rows in the search results.
 
 Then:
 
 1. A window lists your playlists. Tap the one you want.
 2. Or tap **New playlist**, type a name, and tap **Create and add**: the playlist is
-   created in your HIGHRESAUDIO account with the track or the album in it.
+   created in your account with the track or the album in it.
 3. A message says what happened: added, or *Already in this playlist* — nothing is
    ever added twice. For an album, it says how many tracks went in and how many were
    already there.
 
-The button is not offered on your purchases (**Vault**). On a playlist it is not on the
-cover, but on each of its tracks, from the playlist's page.
+On Qobuz, the window lists the playlists you made: one you follow belongs to someone
+else, and only its owner can add to it.
 
-### A HIGHRESAUDIO playlist's page
+The button is not offered on your HIGHRESAUDIO purchases (**Vault**). On a playlist it
+is not on the cover, but on each of its tracks, from the playlist's page.
 
-Every HIGHRESAUDIO playlist — yours, and the selections HIGHRESAUDIO publishes — has a
-page of its own. Tapping a playlist still plays it; to see what it holds, tap its
-**open** button (a list with a note), at the bottom left of the cover or at the end of
-its row.
+### A playlist's page
+
+Every Qobuz and HIGHRESAUDIO playlist — yours, and the selections the service
+publishes — has a page of its own. Tapping a playlist still plays it; to see what it
+holds, tap its **open** button (a list with a note), at the bottom left of the cover or
+at the end of its row.
 
 The page shows the playlist's name, its description, how many tracks it holds and how
 long it lasts, then the tracks themselves:
@@ -249,15 +254,16 @@ On **your own playlists**:
 - The button at the end of a track's row (a list with a **−**) **removes** the track
   from the playlist, at once.
 - The **pencil** renames the playlist; its description can be changed at the same time.
-- The **bin** deletes the playlist from your HIGHRESAUDIO account, once you confirm. Its
-  tracks stay in the catalogue; only the playlist goes.
+- The **bin** deletes the playlist from your account, once you confirm. Its tracks stay
+  in the catalogue; only the playlist goes.
 
-On **a HIGHRESAUDIO selection**, each track carries the **Add to playlist** button
-instead, to copy it into one of your own playlists.
+On **a selection** the service publishes — and on Qobuz, on **a playlist you follow** —
+each track carries the **Add to playlist** button instead, to copy it into one of your
+own playlists.
 
 ### Creating an empty playlist
 
-In **Playlists › Mine**, the first tile is **New playlist**:
+In **Playlists › Mine**, on Qobuz or HIGHRESAUDIO, the first tile is **New playlist**:
 
 1. Tap it.
 2. Give the playlist a name, and a description if you like.
@@ -265,6 +271,10 @@ In **Playlists › Mine**, the first tile is **New playlist**:
 
 The playlist starts empty. Fill it with the **Add to playlist** button, from the player
 or from an album.
+
+On Qobuz, a playlist created from the box — here or from the **Add to playlist**
+window — is **private**: it does not show on your public Qobuz profile. To make it
+public, use a Qobuz app.
 
 
 ### Subscriptions at a glance

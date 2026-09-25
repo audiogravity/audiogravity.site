@@ -23,6 +23,10 @@ Installing it is one action:
 On an **all-in-one** box, the same click updates the **core and the interface
 together**, so everything lands on the new version at once.
 
+While software is being installed on the box — from **Audio Software**, the
+**Terminal** tab or over SSH — the update is refused, with a message naming what is
+being installed. Try again once it has finished.
+
 ### Safety: automatic rollback
 
 If anything goes wrong, the box **automatically rolls back** to the previous version

@@ -60,7 +60,7 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:
 | What | Where |
 |------|-------|
 | Audio setup — services & profiles registry, hi-fi chain map, saved radio stations | `/etc/audiogravity/` (`audio-config.json`, `audio-topology.json`, `radio.json`) |
-| Your **licence** and its public key | `/etc/audiogravity/audiogravity.lic`, `license.pub` |
+| Your **licence** and its public key — valid on this installation only (see below) | `/etc/audiogravity/audiogravity.lic`, `license.pub` |
 | **Accounts** — users, roles, password hashes, passkeys | `/opt/audiogravity/core/users.json` |
 | Core **runtime config** — API key, security secrets, enabled modules | `/opt/audiogravity/core/.env` |
 
@@ -76,11 +76,21 @@ sudo tar -czf ag-backup-$(hostname)-$(date +%F).tar.gz \
 
 **Restore** on a fresh install: run the installer first
 (see [2. Installation](02-installation.md)), then unpack the archive over the new
-files (`sudo tar -xzf ag-backup-….tar.gz -C /`) and restart the core
-(`sudo systemctl restart ag-core-server`). Service config files regenerate through
-the guided setup, and streaming-service logins are simply re-entered in
-**Library → Sources**. Your music itself lives on the NAS/USB drive — it is never
-stored on the box.
+files and restart the core:
+
+```bash
+sudo tar -xzf ag-backup-….tar.gz -C / --exclude=etc/audiogravity/audiogravity.lic
+sudo systemctl restart ag-core-server
+```
+
+Service config files regenerate through the guided setup, and streaming-service logins
+are simply re-entered in **Library → Sources**. Your music itself lives on the NAS/USB
+drive — it is never stored on the box.
+
+The licence file is left out on purpose: it only matches the installation it was
+activated on, and a reinstalled system has a new **Device ID**. Brought back, it would be
+refused, and would keep the free trial from starting. To have your licence reset, see
+[9. Troubleshooting](09-troubleshooting.md#licence-not-recognised-after-a-reinstall-or-a-new-machine).
 
 > Editor-level backups (the timestamped copies the Config editor keeps before every
 > save) live under `/var/backups/audiogravity` — that's why the archive above

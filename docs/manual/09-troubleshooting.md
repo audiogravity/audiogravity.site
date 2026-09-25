@@ -594,10 +594,25 @@ to download a `.lic` for an order you have already paid for, or **Upload new lic
 you have the file already.
 
 > A licence that has ended is not the same as *"License file is invalid or bound to a
-> different device"*. That message means the file does not match this machine — most
-> often after an OS reinstall, which changes the machine's fingerprint. Re-download
-> your `.lic` from **License portal** with your purchase email and the **Device ID**
-> shown in the licence panel.
+> different device"*. That message means the file does not match this installation — see
+> the next section.
+
+## Licence not recognised after a reinstall or a new machine
+
+Reinstalling the operating system, or moving Audiogravi<sup>ty</sup> to another machine,
+gives the box a new **Device ID**. Your licence belongs to the Device ID it was activated
+on, so the new installation refuses it, with one of these messages:
+
+- *"No license found for this key on this device."* — when you check your key;
+- *"This license is bound to a different device."* — when you upload your old `.lic`
+  file;
+- *"License file is invalid or bound to a different device."* — in the licence panel,
+  when the old file came back with a backup.
+
+The licence portal cannot help here. Write to
+[support@audiogravity.app](mailto:support@audiogravity.app) with your **Order ID** (in
+your purchase email) and the new **Device ID**, shown in the licence panel with a copy
+button: a licence reset is available on request.
 
 ## Getting help
 

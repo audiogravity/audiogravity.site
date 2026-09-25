@@ -114,6 +114,22 @@ caught in such a loop, which it could not before.
 system refused the command it used. It now brings back the settings the last change
 replaced.
 
+### Your licence after reinstalling the system: one address to write to
+
+Reinstalling the operating system, or moving Audiogravi<sup>ty</sup> to another machine,
+gives the box a new Device ID, and a licence belongs to the Device ID it was activated
+on. The licence portal cannot hand it back to the new one, the old licence file is
+refused, and the key answers that no licence exists for this device. The manual, the
+licence panel and the emails that deliver a key or a licence said the opposite — the
+portal was presented as the way back after a reinstall since 0.9.31.
+
+They now tell it as it is. Reinstalling Audiogravi<sup>ty</sup> itself, on the same
+system, changes nothing: the key and the portal still bring your licence back. After a
+new system or a new machine, write to support@audiogravity.app with your Order ID and the
+new Device ID, and your licence is reset. The manual's troubleshooting chapter lists the
+messages you would see, and its backup instructions no longer restore the old licence
+file, which would have kept even the free trial from starting.
+
 ---
 
 ## 0.9.60 — 2026-09-23

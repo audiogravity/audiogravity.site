@@ -53,7 +53,7 @@ offers, and streaming from Qobuz, Tidal or HIGHRESAUDIO.
 
 No. A Pro licence is bound to one installation. If you move to a new machine, a
 licence reset is available on request — contact us at
-[contact@audiogravity.app](mailto:contact@audiogravity.app).
+[support@audiogravity.app](mailto:support@audiogravity.app).
 
 ## Are updates included?
 

@@ -412,8 +412,14 @@ install taps a Pro tab — those carry a small lock icon in the tab bar).
   that date while the licence is valid, and the plan reads *Time-limited* rather than
   *Perpetual*. Every Pro feature is unlocked exactly as with a lifetime licence.
 - **Import / re-download** — import a `.lic` file, or re-download yours from the
-  self-service portal (purchase email + Device ID, no account needed) after an OS
-  reinstall.
+  self-service portal (purchase email + Device ID, no account needed) if it has gone
+  missing from this installation.
+- **Reinstalled the system, or moved to another machine?** The box then has a new
+  **Device ID**, and your licence no longer matches it — neither the portal nor your old
+  file can fix that. Write to [support@audiogravity.app](mailto:support@audiogravity.app)
+  with your **Order ID** and the new **Device ID**: a licence reset is available on
+  request (see
+  [9. Troubleshooting](09-troubleshooting.md#licence-not-recognised-after-a-reinstall-or-a-new-machine)).
 
 <img src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
 

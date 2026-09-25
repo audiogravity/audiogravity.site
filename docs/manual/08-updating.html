@@ -104,7 +104,7 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:</p>
 <td><code>/etc/audiogravity/</code> (<code>audio-config.json</code>, <code>audio-topology.json</code>, <code>radio.json</code>)</td>
 </tr>
 <tr>
-<td>Your <strong>licence</strong> and its public key</td>
+<td>Your <strong>licence</strong> and its public key — valid on this installation only (see below)</td>
 <td><code>/etc/audiogravity/audiogravity.lic</code>, <code>license.pub</code></td>
 </tr>
 <tr>
@@ -126,11 +126,17 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:</p>
 </code></pre>
 <p><strong>Restore</strong> on a fresh install: run the installer first
 (see <a href="02-installation">2. Installation</a>), then unpack the archive over the new
-files (<code>sudo tar -xzf ag-backup-….tar.gz -C /</code>) and restart the core
-(<code>sudo systemctl restart ag-core-server</code>). Service config files regenerate through
-the guided setup, and streaming-service logins are simply re-entered in
-<strong>Library → Sources</strong>. Your music itself lives on the NAS/USB drive — it is never
-stored on the box.</p>
+files and restart the core:</p>
+<pre><code class="language-bash">sudo tar -xzf ag-backup-….tar.gz -C / --exclude=etc/audiogravity/audiogravity.lic
+sudo systemctl restart ag-core-server
+</code></pre>
+<p>Service config files regenerate through the guided setup, and streaming-service logins
+are simply re-entered in <strong>Library → Sources</strong>. Your music itself lives on the NAS/USB
+drive — it is never stored on the box.</p>
+<p>The licence file is left out on purpose: it only matches the installation it was
+activated on, and a reinstalled system has a new <strong>Device ID</strong>. Brought back, it would be
+refused, and would keep the free trial from starting. To have your licence reset, see
+<a href="09-troubleshooting#licence-not-recognised-after-a-reinstall-or-a-new-machine">9. Troubleshooting</a>.</p>
 <blockquote>
 <p>Editor-level backups (the timestamped copies the Config editor keeps before every
 save) live under <code>/var/backups/audiogravity</code> — that's why the archive above

@@ -76,9 +76,9 @@ bar</strong>, and full <strong>transport</strong>: repeat · previous · play/pa
 <li><strong>Album details</strong> — Album, Artist, Format, Genre, Year, Position, Source and the
 full <strong>Tracklist</strong>.</li>
 <li>A <strong>Queue</strong> view for what's coming up (see below).</li>
-<li>On a HIGHRESAUDIO track, an <strong>Add to playlist</strong> button beside the title puts the track
-into one of your HIGHRESAUDIO playlists — see
-<a href="05-library-streaming#adding-to-your-highresaudio-playlists">5. Library &amp; streaming</a>.</li>
+<li>On a Qobuz or HIGHRESAUDIO track, an <strong>Add to playlist</strong> button beside the title puts
+the track into one of your playlists on that service — see
+<a href="05-library-streaming#adding-to-your-playlists">5. Library &amp; streaming</a>.</li>
 <li><strong>Swipe</strong> between active sources; close with the back button or swipe-down.</li>
 <li>When playing to a network renderer, a <strong>&quot;Routed to UPnP renderer&quot;</strong> indicator makes
 the destination clear.</li>
@@ -155,6 +155,9 @@ background music.</p>
 <p>Each profile tile shows the services it starts/stops, the resolved output port (e.g.
 <code>usb</code>, <code>toslink</code>), a live <strong>health bar</strong> (active / failed / idle), and when it was
 last activated. Activation is atomic, with a detailed toast on failure.</p>
+<p>If a service of the profile in use fails, its tile reads <strong>FAILED</strong> in red; tap
+<strong>Activate</strong> on it to start again what failed. The other profiles keep their state,
+with a small <em>failed</em> badge counting it.</p>
 <h2 id="sleep-timer">Sleep timer</h2>
 <p>A built-in sleep timer pauses playback after a set duration — for falling asleep to
 music without leaving the system running all night.</p>

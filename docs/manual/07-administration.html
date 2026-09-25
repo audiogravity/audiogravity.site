@@ -345,9 +345,11 @@ over SSE (the <strong>LIVE</strong> badge shows the stream is active).</li>
 card, USB interface and subdevice.</li>
 <li><strong>Event log</strong> — system events and live updates; RUNNING/STOPPED to pause, CLEAR to
 reset.</li>
-<li><strong>Actions (admin)</strong> — <em>Restart Backend</em> restarts the Audiogravi<sup>ty</sup> service without
+<li><strong>Actions (admin)</strong> — <em>Restart Core</em> restarts the Audiogravi<sup>ty</sup> service without
 rebooting; <em>Reboot OS</em> performs a full reboot (double confirmation). The UI
-reconnects automatically. <em>Support Report</em> is described below.</li>
+reconnects automatically. While software is being installed, both are refused with a
+message naming what is being installed: try again once it has finished. <em>Support
+Report</em> is described below.</li>
 <li><strong>Terminal (admin)</strong> — a full interactive bash shell in the browser (runs as the
 backend user — use with care).</li>
 </ul>
@@ -412,6 +414,14 @@ the out-of-memory killer in favour of audio.</li>
 LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).</li>
 <li><strong>Safety</strong> — a diff preview before applying, automatic backups (<em>Restore Backup</em>),
 and <em>Remove Override</em> to roll a service back to factory behaviour instantly.</li>
+<li><strong>Settings a service cannot start with are refused</strong> before anything is saved, with
+the reason: a real-time priority without a real-time policy or the reverse, a CPU the
+box does not have, a memory limit under 16 MB, an open-file limit under 1024.
+<strong>Validate</strong> gives the same answers.</li>
+<li><strong>A change that stops a service is undone.</strong> A running service is restarted on its
+new settings and watched for a few seconds; if it does not stay up, the previous
+settings are put back, the service is started again, and you are told. A service that
+is not running is not started by a save: its new settings apply at its next start.</li>
 </ul>
 <h2 id="announcements">Announcements</h2>
 <p>From time to time Audiogravi<sup>ty</sup> broadcasts a short announcement — release

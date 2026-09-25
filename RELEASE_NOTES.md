@@ -48,6 +48,36 @@ one just installed — *Older version offered*. For software Audiogravi<sup>ty</
 downloads from its vendor, the page now asks the vendor only, and asks again as soon as
 an installation, an update or a removal ends.
 
+### A service setting that goes wrong no longer takes the box with it
+
+The **Systemd** tab lets you tune how each audio program runs: its priority, the
+processor cores it uses, its memory and file limits. A setting the system refuses used
+to be saved all the same: the program then failed at every start, and the system kept
+restarting it every two seconds, for as long as nobody noticed. On a lab box, HQPlayer
+Embedded did so for two hours, and every profile tile naming it stayed on PENDING.
+
+**Settings a program cannot start with are refused before they are saved**, with the
+reason: a real-time priority without a real-time policy and the reverse, a processor
+core the box does not have, a memory limit under 16 MB, an open-file limit under 1024.
+The memory limit matters most: at 1 KB, it is not the program that stops, it is the
+whole box's service manager that freezes. **Validate** says the same.
+
+**A change that stops the program is undone.** Audiogravi<sup>ty</sup> restarts the
+program on its new settings and watches it for a few seconds; if it does not stay up,
+the previous settings are put back and the program started again, and you are told.
+A program that is not running is no longer started by a save: its new settings apply
+when it next starts.
+
+**A failure reads as one.** A program the system keeps restarting now shows as
+failed, never as starting. The profile you are using reads **FAILED** in red, and
+**Activate** on it starts again what failed; the other profiles are left as they are,
+with a small count of what failed among their programs. **Stop all** stops a program
+caught in such a loop, which it could not before.
+
+**Restore Backup works on the box.** It never did outside a development machine: the
+system refused the command it used. It now brings back the settings the last change
+replaced.
+
 ---
 
 ## 0.9.60 — 2026-09-23

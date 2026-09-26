@@ -142,19 +142,19 @@
             <div class="hero-carousel">
                 <!-- Opening slide — the only one every visitor is guaranteed to see, so which
                      record is on screen is an editorial choice, not whatever happened to be
-                     playing when the capture was taken. The one that opened before,
-                     ag-player-black.webp, is set aside and not deleted: a reader pointed out that
-                     its sleeve reads as the opposite of what a listener is after, which is a fair
-                     thing to say about a shop window. Its Qobuz screen lives on as
-                     ag-player-qobuz.webp, one slide down.
+                     playing when the capture was taken. HQPlayer opens; HIGHRESAUDIO, Qobuz,
+                     Tidal and the radio follow. ag-player-black.webp, which once opened, is set
+                     aside and not deleted: a reader pointed out that its sleeve reads as the
+                     opposite of what a listener is after, which is a fair thing to say about a shop
+                     window.
                      Captions and annotations travel WITH their capture, never with the slot: --y
                      is measured against the capture itself, so moving a slide changes nothing but
                      the data-slide number and which one carries `active`. -->
-                <img src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot active">
+                <img src="assets/pics/ag-player-hqplayer.webp" alt="Player, DSD through HQPlayer" class="hero-screenshot active">
+                <img loading="lazy" decoding="async" src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-qobuz.webp" alt="Player, playing from Qobuz" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-tidal.webp" alt="Player, playing from Tidal" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-radio.webp" alt="Player, internet radio" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-hqplayer.webp" alt="Player, DSD through HQPlayer" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-library-black.webp" alt="Library, dark theme" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-library.webp" alt="Library" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-pipeline.webp" alt="Signal path" class="hero-screenshot">
@@ -169,54 +169,54 @@
                      which is exactly the phone's box, so they follow the device instead of
                      the column — the capture never moves or shrinks to make room. --y is
                      the height of the element each annotation names, as a share of the
-                     capture. Only slide 0 is written for now (prototype). -->
+                     capture. -->
                 <div class="hero-caption active" data-slide="0">
-                    <span class="k">HIGHRESAUDIO</span>
-                    <span class="t">Their Hi-Res catalogue, played on your own DAC — with the
-                        resolution you actually get, in writing.</span>
-                </div>
-                <span class="hero-note active" data-slide="0" style="--y:16.6%">From HIGHRESAUDIO</span>
-                <span class="hero-note active" data-slide="0" style="--y:53.6%">To your DAC</span>
-                <span class="hero-note active" data-slide="0" style="--y:66.4%">The real resolution</span>
-
-                <div class="hero-caption" data-slide="1">
-                    <span class="k">Qobuz</span>
-                    <span class="t">Qobuz plays through your own chain — and the screen names every
-                        link of it, down to the DAC.</span>
-                </div>
-                <span class="hero-note" data-slide="1" style="--y:16.6%">From Qobuz</span>
-                <span class="hero-note" data-slide="1" style="--y:53.6%">The whole chain</span>
-                <span class="hero-note" data-slide="1" style="--y:66.4%">What is really playing</span>
-                <span class="hero-note" data-slide="1" style="--y:92%">Switch output mid-track</span>
-
-                <div class="hero-caption" data-slide="2">
-                    <span class="k">Tidal</span>
-                    <span class="t">Tidal runs through the same chain as everything else — same
-                        controls, same readout, same DAC.</span>
-                </div>
-                <span class="hero-note" data-slide="2" style="--y:16.6%">Tidal, signed in</span>
-                <span class="hero-note" data-slide="2" style="--y:66.4%">Hi-Res, stated</span>
-                <span class="hero-note" data-slide="2" style="--y:92%">Your DAC</span>
-
-                <!-- Radio carries no NEXT block, so its rows sit higher than the other player
-                     screens: these three are measured on this capture, not copied. -->
-                <div class="hero-caption" data-slide="3">
-                    <span class="k">Radio</span>
-                    <span class="t">A web stream gets the same treatment as a local file: named
-                        source, named codec, your own DAC at the end.</span>
-                </div>
-                <span class="hero-note" data-slide="3" style="--y:16.6%">Internet radio</span>
-                <span class="hero-note" data-slide="3" style="--y:53.6%">Same chain</span>
-                <span class="hero-note" data-slide="3" style="--y:82.5%">Same DAC</span>
-
-                <div class="hero-caption" data-slide="4">
                     <span class="k">HQPlayer</span>
                     <span class="t">HQPlayer takes the stream, and Audiogravi<sup>ty</sup> still
                         reports what comes out of it — here DSD128, and the DAC receiving it.</span>
                 </div>
-                <span class="hero-note" data-slide="4" style="--y:18.1%">Fed over UPnP</span>
-                <span class="hero-note" data-slide="4" style="--y:55.1%">Through HQPlayer</span>
-                <span class="hero-note" data-slide="4" style="--y:67.7%">What comes out</span>
+                <span class="hero-note active" data-slide="0" style="--y:18.1%">Fed over UPnP</span>
+                <span class="hero-note active" data-slide="0" style="--y:55.1%">Through HQPlayer</span>
+                <span class="hero-note active" data-slide="0" style="--y:67.7%">What comes out</span>
+
+                <div class="hero-caption" data-slide="1">
+                    <span class="k">HIGHRESAUDIO</span>
+                    <span class="t">Their Hi-Res catalogue, played on your own DAC — with the
+                        resolution you actually get, in writing.</span>
+                </div>
+                <span class="hero-note" data-slide="1" style="--y:16.6%">From HIGHRESAUDIO</span>
+                <span class="hero-note" data-slide="1" style="--y:53.6%">To your DAC</span>
+                <span class="hero-note" data-slide="1" style="--y:66.4%">The real resolution</span>
+
+                <div class="hero-caption" data-slide="2">
+                    <span class="k">Qobuz</span>
+                    <span class="t">Qobuz plays through your own chain — and the screen names every
+                        link of it, down to the DAC.</span>
+                </div>
+                <span class="hero-note" data-slide="2" style="--y:16.6%">From Qobuz</span>
+                <span class="hero-note" data-slide="2" style="--y:53.6%">The whole chain</span>
+                <span class="hero-note" data-slide="2" style="--y:66.4%">What is really playing</span>
+                <span class="hero-note" data-slide="2" style="--y:92%">Switch output mid-track</span>
+
+                <div class="hero-caption" data-slide="3">
+                    <span class="k">Tidal</span>
+                    <span class="t">Tidal runs through the same chain as everything else — same
+                        controls, same readout, same DAC.</span>
+                </div>
+                <span class="hero-note" data-slide="3" style="--y:16.6%">Tidal, signed in</span>
+                <span class="hero-note" data-slide="3" style="--y:66.4%">Hi-Res, stated</span>
+                <span class="hero-note" data-slide="3" style="--y:92%">Your DAC</span>
+
+                <!-- Radio carries no NEXT block, so its rows sit higher than the other player
+                     screens: these three are measured on this capture, not copied. -->
+                <div class="hero-caption" data-slide="4">
+                    <span class="k">Radio</span>
+                    <span class="t">A web stream gets the same treatment as a local file: named
+                        source, named codec, your own DAC at the end.</span>
+                </div>
+                <span class="hero-note" data-slide="4" style="--y:16.6%">Internet radio</span>
+                <span class="hero-note" data-slide="4" style="--y:53.6%">Same chain</span>
+                <span class="hero-note" data-slide="4" style="--y:82.5%">Same DAC</span>
 
                 <div class="hero-caption" data-slide="5">
                     <span class="k">Browsing</span>

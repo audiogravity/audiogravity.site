@@ -1223,34 +1223,28 @@
     <section class="section alt" id="pricing">
         <div class="w">
             <div class="section-label">Editions &amp; license</div>
-            <h2 class="section-title">Three tiers.<br><em>Lifetime license.</em></h2>
-            <p class="section-sub">Audiogravi<sup>ty</sup> ships in three tiers: a 30-day Trial with full access, a free
-                Starter
-                Edition that activates automatically when the trial ends, and a Pro License — a lifetime license that
-                permanently unlocks all features on one machine.</p>
-            <p class="section-sub section-note">The interface is <a href="https://github.com/audiogravity/audiogravity.ui" style="color:inherit;text-decoration:underline">open source (MIT)</a> — fork it, contribute, or build on it. The core engine remains proprietary.</p>
+            <h2 class="section-title">Two editions.<br><em>Lifetime license.</em></h2>
+            <p class="section-sub">Audiogravi<sup>ty</sup> comes in two editions: the Starter Edition, free, and
+                the Pro License, a lifetime license that permanently unlocks every feature on one machine.
+                Every install starts with thirty days of Pro, so you can try it all before you choose.</p>
+            <p class="section-sub section-note">The interface is <a href="https://github.com/audiogravity/audiogravity.ui">open source (MIT)</a> — fork it, contribute, or build on it. The core engine remains proprietary.</p>
+
+            <!-- The trial is a period, not an edition: every install starts in it and leaves it on
+                 its own. Drawn as a third card at €0 beside the Starter Edition's €0, it read as a
+                 third product and pushed the Pro card to the end of the row. It now heads the two
+                 editions it leads to, joined to them so it reads as applying to both. -->
+            <div class="pricing-trial">
+                <div>
+                    <div class="pp-tier">Trial · included</div>
+                    <div class="pt-title">30 days of Pro, on every install</div>
+                </div>
+                <p class="pt-desc">Full access to every feature from the first start. No action required: the days
+                    remaining are shown in Admin › License, and after thirty days the box moves to the Starter
+                    Edition on its own.</p>
+                <a href="#install" class="pp-cta">Start trial</a>
+            </div>
 
             <div class="pricing-grid">
-
-                <!-- Trial -->
-                <div class="pricing-plan">
-                    <div class="pp-tier">Trial</div>
-                    <div class="pp-price"><span class="currency">€</span>0</div>
-                    <div class="pp-period">30 days · auto-activated</div>
-                    <p class="pp-desc">Full access to every feature on first install. No action required. Days remaining
-                        shown in Admin › License.</p>
-                    <div class="pp-border">
-                        <div class="pp-rows">
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>All Starter features</span></div>
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>All Pro features</span></div>
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>Pipeline · Player · Library</span></div>
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>Audio priority · latency test</span></div>
-                            <div class="pp-row"><span class="na">·</span><span style="color:var(--text4)">After 30 d →
-                                    Starter</span></div>
-                        </div>
-                    </div>
-                    <a href="#install" class="pp-cta">Start trial</a>
-                </div>
 
                 <!-- Starter -->
                 <div class="pricing-plan">
@@ -1275,7 +1269,7 @@
                                     in-place editing + diff</span></div>
                             <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span><b>Guided provisioning</b> — set the
                                     audio stack up in a few clicks</span></div>
-                            <div class="pp-row"><span class="na">·</span><span style="color:var(--text4)">Pro features
+                            <div class="pp-row"><span class="na">·</span><span class="pp-off">Pro features
                                     locked</span></div>
                         </div>
                     </div>

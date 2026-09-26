@@ -937,6 +937,10 @@ nav {
     color: var(--text3)
 }
 
+.section-note a {
+    text-decoration: underline
+}
+
 /* NOW PLAYING STRIP */
 .np-strip {
     background: var(--inv);
@@ -1762,9 +1766,50 @@ nav {
 }
 
 /* PRICING */
+/* The trial above the two editions: a period every install goes through, not a third
+   product. No bottom border, so it joins the grid under it and reads as applying to both. */
+.pricing-trial {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto;
+    gap: 20px 40px;
+    align-items: center;
+    padding: 28px 32px;
+    border: 1px solid var(--border);
+    border-bottom: 0
+}
+
+.pricing-trial .pp-tier {
+    margin-bottom: 8px
+}
+
+.pt-title {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.2
+}
+
+.pt-desc {
+    font-size: var(--font-size-sm);
+    color: var(--text2);
+    line-height: 1.65
+}
+
+.pricing-trial .pp-cta {
+    margin-top: 0;
+    white-space: nowrap
+}
+
+@media(max-width:820px) {
+    .pricing-trial {
+        grid-template-columns: 1fr;
+        padding: 28px 24px
+    }
+}
+
 .pricing-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0;
     border: 1px solid var(--border);
     margin-top: 0
@@ -1911,6 +1956,11 @@ nav {
     color: var(--text4);
     min-width: 14px;
     flex-shrink: 0
+}
+
+/* A row that says what the edition does not include. */
+.pp-row .pp-off {
+    color: var(--text4)
 }
 
 .pp-cta {

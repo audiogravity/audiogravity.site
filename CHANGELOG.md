@@ -9,6 +9,12 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[core][ops] The audio services and profiles are delivered with each version.** `audio-config.json` was copied once, at the first install, and afterwards only received what an update knew how to add: a box installed before a change to the shipped file never got it — the ARM build box kept an MPD profile that needed the UPnP bridge, disabled at boot, so its MPD tile could not be active after a restart. The installer now replaces the file with the one its version ships, at every install and update, as it does for the software registry. The file it replaces is kept beside it as `audio-config.json.previous`, with its date; a file already identical is left alone, and a self-update that rolls back puts both back as they were. A change made by hand therefore lasts until the next update. The copies the retired import and export left on the box are removed (`/etc/audiogravity/audio-config.json.backup.*`, `/opt/audiogravity/core/audio-config-export-*.json`). API: `GET /profiles/configuration` no longer returns `added_by_upgrade`.
+
+### Fixed
+- **[ops] An install cut short no longer risks leaving the software registry half-written.** The installer copied `packages-registry.json` straight over the one in place, so a full disk or a power cut during the copy could leave a truncated file for the core to read. It is now written beside it, then renamed over it in one step — as `audio-config.json` is.
+
 ### Removed
 - **[core][ui] Settings no longer exports or imports the audio configuration.** `audio-config.json` — the audio services and the profiles built on them, behind the **Services** and **Profiles** tabs — becomes Audiogravi<sup>ty</sup>'s own: it defines the profiles it covers. An import would overwrite that file, and the export only existed to be imported again, so *Export Configuration* and *Import Configuration* are gone from the Settings panel. API: `GET /profiles/configuration/export-file` and `POST /profiles/configuration/import-file` are removed; `GET /profiles/configuration` stays.
 

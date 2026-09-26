@@ -12,6 +12,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 The audio services the box drives, and the profiles that start and stop them, are now
 defined by Audiogravi<sup>ty</sup> itself.
 
+**Delivered with each version.** Every install and every update now puts the services and
+profiles of that version on the box. They used to be copied once, at the first install, so
+a box installed earlier never received what changed afterwards. The file replaced is kept
+beside it as `audio-config.json.previous`: a change made by hand lasts until the next
+update.
+
 **No more export or import.** The Settings panel no longer offers *Export Configuration*
 and *Import Configuration*: an import would overwrite what Audiogravi<sup>ty</sup> defines,
 and the export only existed to be imported again.

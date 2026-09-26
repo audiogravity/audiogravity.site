@@ -555,19 +555,32 @@ This only resets the <em>status</em> flag; it does not touch the installed versi
 the current versions afterwards (App title / login screen) — if the core moved but
 the interface did not, re-run the interface installer (see <a href="08-updating">8. Updating</a>).</li>
 </ul>
-<h2 id="the-config-tab-ignores-the-appconfigfile-path-i-set">The Config tab ignores the <code>appconfigfile</code> path I set</h2>
-<p>It is meant to. Audiogravi<sup>ty</sup> finds each service's configuration by itself,
-wherever it lives — <code>/etc/mpd.conf</code> for a packaged MPD, <code>/usr/local/etc/shairport-sync.conf</code>
-for a shairport-sync built from source. Nothing to set, and nothing that can point at
-the wrong file.</p>
-<p>An older box may still carry an <code>appconfigfile</code> line in
-<code>/etc/audiogravity/audio-config.json</code>. It is simply ignored: leave it alone.</p>
-<blockquote>
-<p>If a service on your machine really does keep its configuration somewhere
-unexpected, there is currently no way to tell Audiogravi<sup>ty</sup> about it —
-<a href="https://github.com/audiogravity/audiogravity.site/issues">open an issue</a> and
-describe your setup.</p>
-</blockquote>
+<h2 id="changing-the-profiles-between-two-versions">Changing the profiles between two versions</h2>
+<p>The services and profiles come with each version of Audiogravi<sup>ty</sup> (see
+<a href="07-administration#audio-configuration-services--profiles">7. Administration → Audio configuration</a>).
+When one has to change before the next version — support may ask you to try one — a copy
+of the file is changed by hand, then applied by a command that checks it first. Work on a
+copy: the box reads the file itself as soon as it is saved, before any check.</p>
+<ol>
+<li>Connect to the box over SSH.</li>
+<li>Make a copy, and edit it:<pre><code class="language-bash">sudo cp /etc/audiogravity/audio-config.json /root/audio-config.json
+sudo nano /root/audio-config.json
+</code></pre>
+</li>
+<li>Check it:<pre><code class="language-bash">sudo /opt/audiogravity/ag-apply-audio-config --check /root/audio-config.json
+</code></pre>
+A mistake is shown with where it is and why; nothing changes. Correct it and check again.
+The core checks it, so it must be running: if the command says it does not answer, start
+it with <code>sudo systemctl start ag-core-server</code>.</li>
+<li>Apply it:<pre><code class="language-bash">sudo /opt/audiogravity/ag-apply-audio-config /root/audio-config.json
+</code></pre>
+The copy takes the file's place, the core restarts, and the command says how many
+profiles it now runs. Should the core not start on it, the command puts the previous
+file back.</li>
+</ol>
+<p>The change lasts until the installer runs again — at the next update, or a reinstall —
+which puts the shipped file back and keeps the one it replaces as
+<code>/etc/audiogravity/audio-config.json.previous</code>.</p>
 <h2 id="license-ended-on--in-the-licence-panel">&quot;License ended on …&quot; in the licence panel</h2>
 <p>Your licence was issued to run until a date, and that date has passed. Nothing is broken
 and nothing was tampered with: Audiogravi<sup>ty</sup> keeps running in <strong>Starter Edition</strong>,

@@ -20,6 +20,7 @@
             } catch (e) { /* private mode: fall back to the media query */ }
         })();
     </script>
+    <script src="../../assets/manual-copy.js" defer></script>
 </head>
 
 <body class="man-body">
@@ -131,15 +132,15 @@ declares it. Nothing can be probed before the declaration exists.</p>
 </blockquote>
 <p><strong>1. Confirm the board really is missing.</strong> Over SSH, or in the browser <strong>Terminal</strong>
 (System tab, admin):</p>
-<pre><code class="language-bash">cat /proc/asound/cards
+<pre><code class="language-bash"><span class="hl-cmd">cat</span> /proc/asound/cards
 </code></pre>
 <p>If your DAC is not in that list, this section applies. If it <em>is</em> listed, the problem
 lies elsewhere — go back to <a href="#no-sound--wrong-output">No sound / wrong output</a>.</p>
 <p><strong>2. Find the overlay name for your board.</strong> Every Raspberry Pi OS image ships the full
 catalogue — around forty audio boards — and your kernel version, because some vendors
 changed their overlay names at kernel <strong>6.1.77</strong>:</p>
-<pre><code class="language-bash">grep -iE &quot;^Name:.*(hifiberry|iqaudio|allo|dac|digi|audio)&quot; /boot/firmware/overlays/README
-uname -r
+<pre><code class="language-bash"><span class="hl-cmd">grep</span> <span class="hl-opt">-iE</span> <span class="hl-string">"^Name:.*(hifiberry|iqaudio|allo|dac|digi|audio)"</span> /boot/firmware/overlays/README
+<span class="hl-cmd">uname</span> <span class="hl-opt">-r</span>
 </code></pre>
 <p>Cross-check the name against your manufacturer's own documentation. HiFiBerry, for
 instance, publishes one line per board and splits it by kernel version: a <strong>DAC+ Pro /
@@ -147,9 +148,9 @@ DAC2 Pro</strong> takes <code>hifiberry-dacplus</code> below 6.1.77 and <code>hi
 above it — the wrong one still produces sound, but drives the clock from the Pi instead
 of the board's own oscillators, which is precisely what you paid the Pro version for.</p>
 <p><strong>3. Declare the board, then reboot.</strong></p>
-<pre><code class="language-bash"># Back the file up first — a broken boot file leaves the box unreachable
-sudo cp /boot/firmware/config.txt /boot/firmware/config.txt.bak-$(date +%F)
-sudo nano /boot/firmware/config.txt
+<pre><code class="language-bash"><span class="hl-comment"># Back the file up first — a broken boot file leaves the box unreachable</span>
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">cp</span> /boot/firmware/config.txt /boot/firmware/config.txt.bak-<span class="hl-var">$(date +%F)</span>
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">nano</span> /boot/firmware/config.txt
 </code></pre>
 <p>Make three changes at the <strong>top</strong> of the file, before the first <code>[…]</code> line — settings
 placed after one apply only to that model of Pi:</p>
@@ -184,10 +185,10 @@ DAC is one candidate among four and Audiogravi<sup>ty</sup> will not presume whi
 meant. Silence them and it selects your DAC on its own. Skip them only if you actually
 use the jack or HDMI sound.</p>
 <p>Then reboot:</p>
-<pre><code class="language-bash">sudo reboot
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">reboot</span>
 </code></pre>
 <p><strong>4. Verify, then point Audiogravi<sup>ty</sup> at it.</strong></p>
-<pre><code class="language-bash">aplay -l
+<pre><code class="language-bash"><span class="hl-cmd">aplay</span> <span class="hl-opt">-l</span>
 </code></pre>
 <p>Your DAC should now be listed — under its real name, <code>HiFiBerry DAC+ Pro</code> and the like,
 not a generic label. Back in the interface, run <strong>Guided → output</strong> (see
@@ -247,31 +248,39 @@ dash.</p>
 <p>In <strong>Services</strong>, every card shows a dash (—) where the memory figure should be, and draws
 no memory graph, while the CPU figures next to them move normally.</p>
 <p>Nothing is wrong with the services: your box's <strong>kernel was started with memory accounting
-switched off</strong>, so there is no figure for anyone to read. It is the factory setting of
-Raspberry Pi OS, which saves a few megabytes of kernel memory by not counting. systemd
-itself reports nothing for those services, and Audiogravi<sup>ty</sup> can only show what
-the system measures. CPU keeps working because that counter is enabled and the memory one
-is not.</p>
+switched off</strong>, so there is no figure for anyone to read. A Raspberry Pi starts that way on
+its own. systemd itself reports nothing for those services, and Audiogravi<sup>ty</sup> can
+only show what the system measures. CPU keeps working because that counter is enabled and
+the memory one is not.</p>
 <p><strong>Confirm it in two commands</strong>, over SSH or in the browser <strong>Terminal</strong> (System tab, admin):</p>
-<pre><code class="language-bash">cat /sys/fs/cgroup/cgroup.controllers   # 'memory' missing from the list
-cat /proc/cmdline                       # contains cgroup_disable=memory
+<pre><code class="language-bash"><span class="hl-cmd">cat</span> /sys/fs/cgroup/cgroup.controllers   <span class="hl-comment"># 'memory' missing from the list</span>
+<span class="hl-cmd">cat</span> /proc/cmdline                       <span class="hl-comment"># contains cgroup_disable=memory</span>
 </code></pre>
-<p><strong>Turn the counter on.</strong> Edit the boot command line and restart:</p>
-<pre><code class="language-bash"># Back the file up first — a broken boot file leaves the box unreachable
-sudo cp /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bak-$(date +%F)
-sudo nano /boot/firmware/cmdline.txt
+<p><strong>Turn the counter on</strong> by adding one word at the end of the boot command line:</p>
+<pre><code class="language-bash"><span class="hl-comment"># Back the file up first — a broken boot file leaves the box unreachable</span>
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">cp</span> /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bak-<span class="hl-var">$(date +%F)</span>
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">sed</span> <span class="hl-opt">-i</span> <span class="hl-string">'1 s/$/ cgroup_enable=memory/'</span> /boot/firmware/cmdline.txt
+<span class="hl-cmd">cat</span> /boot/firmware/cmdline.txt
 </code></pre>
-<p>Remove <code>cgroup_disable=memory</code>. If your file has no such setting but memory is still
-missing from the controller list, add <code>cgroup_enable=memory cgroup_memory=1</code> instead.
-Then <code>sudo reboot</code>, and the figures appear on their own.</p>
+<p>The last command shows the file: check that it is still a single line, now ending with
+<code>cgroup_enable=memory</code>. Only then restart:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">reboot</span>
+</code></pre>
+<p>Once the box is back, the figures appear on their own, and
+<code>cat /sys/fs/cgroup/cgroup.controllers</code> now lists <code>memory</code>. Don't look for
+<code>cgroup_disable=memory</code> in that file: the Pi adds it by itself, and the word you added at
+the end takes over.</p>
 <blockquote>
 <p><strong>This file is a single line.</strong> Every setting sits on it, separated by spaces — an
-editor that adds a line break makes the box fail to boot. Change only the words you came
-for, save, and check the file still holds one line (<code>wc -l</code> answers 0 or 1).</p>
+editor that adds a line break makes the box fail to boot. If you edit it by hand instead,
+change only the words you came for, save, and check the file still holds one line
+(<code>wc -l</code> answers 0 or 1).</p>
 <p><strong>If the box does not come back</strong>, power it off, read the SD card on another computer,
 and rename your <code>cmdline.txt.bak-…</code> back to <code>cmdline.txt</code>. This is why the first command
 above is a backup.</p>
 </blockquote>
+<p>To switch the counter off again, remove <code>cgroup_enable=memory</code> from the end of the line and
+restart.</p>
 <blockquote>
 <p><strong>On an older image</strong> this file lives at <code>/boot/cmdline.txt</code> instead.</p>
 </blockquote>
@@ -437,25 +446,29 @@ contention.</li>
 <h2 id="manual-nas-mount-terminal">Manual NAS mount (terminal)</h2>
 <p>The library picker's <strong>Add network share</strong> covers CIFS/SMB. If you prefer the
 terminal, or need <strong>NFS</strong>, mount at the OS level — anything mounted under
-<code>/mnt</code> is detected as a library source:</p>
-<pre><code class="language-bash"># 1. Create a mount point
-sudo mkdir -p /mnt/music
-
-# 2a. CIFS / SMB — the quoted heredoc keeps special characters
-#     in the password intact
-sudo tee /root/.smbcredentials &gt;/dev/null &lt;&lt;'EOF'
-username=nasuser
-password=naspass
+<code>/mnt</code> is detected as a library source.</p>
+<p><strong>1. Create a mount point:</strong></p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">mkdir</span> <span class="hl-opt">-p</span> /mnt/music
+</code></pre>
+<p><strong>2. Describe the share</strong> — CIFS/SMB <em>or</em> NFS, not both. Replace the address, the share and
+the credentials below with your NAS's own before running them: that is why these blocks come
+without a copy button.</p>
+<p>For <strong>CIFS / SMB</strong>, store the credentials first — the quoted heredoc keeps special characters
+in the password intact — then add the share:</p>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">tee</span> /root/.smbcredentials &gt;/dev/null &lt;&lt;'EOF'
+<span class="hl-string">username=nasuser</span>
+<span class="hl-string">password=naspass</span>
 EOF
-sudo chmod 600 /root/.smbcredentials
-echo &quot;//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,_netdev 0 0&quot; \
-    | sudo tee -a /etc/fstab
-
-# 2b. — or NFS (requires: sudo apt-get install nfs-common)
-echo &quot;192.168.1.20:/volume1/music /mnt/music nfs ro,_netdev 0 0&quot; | sudo tee -a /etc/fstab
-
-# 3. Mount and verify
-sudo systemctl daemon-reload &amp;&amp; sudo mount -a &amp;&amp; ls /mnt/music
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">chmod</span> 600 /root/.smbcredentials
+</code></pre>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">echo</span> <span class="hl-string">"//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,_netdev 0 0"</span> \
+    | <span class="hl-cmd">sudo</span> <span class="hl-cmd">tee</span> <span class="hl-opt">-a</span> /etc/fstab
+</code></pre>
+<p>For <strong>NFS</strong> (requires <code>sudo apt-get install nfs-common</code>):</p>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">echo</span> <span class="hl-string">"192.168.1.20:/volume1/music /mnt/music nfs ro,_netdev 0 0"</span> | <span class="hl-cmd">sudo</span> <span class="hl-cmd">tee</span> <span class="hl-opt">-a</span> /etc/fstab
+</code></pre>
+<p><strong>3. Mount and verify:</strong></p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> daemon-reload &amp;&amp; <span class="hl-cmd">sudo</span> <span class="hl-cmd">mount</span> <span class="hl-opt">-a</span> &amp;&amp; <span class="hl-cmd">ls</span> /mnt/music
 </code></pre>
 <p><code>_netdev</code> makes the mount wait for the network at boot, and <code>ro</code> (read-only) is
 a sensible default for a music library. The SMB version is best left
@@ -496,7 +509,7 @@ hour is up, so you can go there without restarting anything first.</p>
 <p>Audiogravi<sup>ty</sup> does not keep the password shown when HQPlayer Embedded was
 installed, and HQPlayer's own page changes it only if you type the current one. If it is
 lost, connect over SSH and set a new one with Signalyst's command:</p>
-<pre><code>sudo hqplayerd -s hqplayer &lt;new password&gt;
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">hqplayerd</span> <span class="hl-opt">-s</span> hqplayer &lt;new password&gt;
 </code></pre>
 <p>Then restart HQPlayer Embedded from the <strong>Services</strong> tab: it reads its password only when it
 starts. HQPlayer's settings are untouched.</p>
@@ -533,7 +546,7 @@ until it is finished. The rest of the box keeps working; only the program that w
 installed may not, until the last step below.</p>
 <ol>
 <li>Open the browser <strong>Terminal</strong> (System tab, admin), or connect to the box over SSH.</li>
-<li>Run:<pre><code class="language-bash">sudo dpkg --configure -a
+<li>Run:<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">dpkg</span> <span class="hl-opt">--configure</span> <span class="hl-opt">-a</span>
 </code></pre>
 </li>
 <li>In <strong>Audio Software</strong>, if the program that was being installed now shows as not
@@ -547,7 +560,7 @@ left a stale &quot;in progress&quot; marker, so the core refuses to start a new 
 <li><strong>No action needed in most cases</strong> — the core treats a stuck update as dead after
 <strong>15 minutes</strong> and frees the lock automatically. Wait, then retry from the update
 banner.</li>
-<li><strong>To unblock immediately</strong>, an admin can clear the marker from the Terminal and retry:<pre><code class="language-bash">sudo rm -f /etc/audiogravity/self-update.state
+<li><strong>To unblock immediately</strong>, an admin can clear the marker from the Terminal and retry:<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">rm</span> <span class="hl-opt">-f</span> /etc/audiogravity/self-update.state
 </code></pre>
 This only resets the <em>status</em> flag; it does not touch the installed version. Check
 the current versions afterwards (App title / login screen) — if the core moved but
@@ -561,16 +574,16 @@ of the file is changed by hand, then applied by a command that checks it first. 
 copy: the box reads the file itself as soon as it is saved, before any check.</p>
 <ol>
 <li>Connect to the box over SSH.</li>
-<li>Make a copy, and edit it:<pre><code class="language-bash">sudo cp /etc/audiogravity/audio-config.json /root/audio-config.json
-sudo nano /root/audio-config.json
+<li>Make a copy, and edit it:<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">cp</span> /etc/audiogravity/audio-config.json /root/audio-config.json
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">nano</span> /root/audio-config.json
 </code></pre>
 </li>
-<li>Check it:<pre><code class="language-bash">sudo /opt/audiogravity/ag-apply-audio-config --check /root/audio-config.json
+<li>Check it:<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">/opt/audiogravity/ag-apply-audio-config</span> <span class="hl-opt">--check</span> /root/audio-config.json
 </code></pre>
 A mistake is shown with where it is and why; nothing changes. Correct it and check again.
 The core checks it, so it must be running: if the command says it does not answer, start
 it with <code>sudo systemctl start ag-core-server</code>.</li>
-<li>Apply it:<pre><code class="language-bash">sudo /opt/audiogravity/ag-apply-audio-config /root/audio-config.json
+<li>Apply it:<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">/opt/audiogravity/ag-apply-audio-config</span> /root/audio-config.json
 </code></pre>
 The copy takes the file's place, the core restarts, and the command says how many
 profiles it now runs. Should the core not start on it, the command puts the previous

@@ -20,6 +20,7 @@
             } catch (e) { /* private mode: fall back to the media query */ }
         })();
     </script>
+    <script src="../../assets/manual-copy.js" defer></script>
 </head>
 
 <body class="man-body">
@@ -220,20 +221,20 @@ output is a <strong>warning</strong> you can review and accept. Once saved, the 
 <h3 id="structure">Structure</h3>
 <p>Everything lives under <code>hifi_topology.devices</code> — a map keyed by a device id you choose:</p>
 <pre><code class="language-json">{
-  &quot;hifi_topology&quot;: {
-    &quot;devices&quot;: {
-      &quot;streamer_01&quot;: {
-        &quot;type&quot;: &quot;streamer&quot;,
-        &quot;label&quot;: &quot;Audiogravity&quot;,
-        &quot;outputs&quot;: {
-          &quot;usb_out&quot;: { &quot;connector&quot;: &quot;usb-a&quot;, &quot;target_device_id&quot;: &quot;dac_01&quot; }
+  <span class="hl-key">"hifi_topology"</span>: {
+    <span class="hl-key">"devices"</span>: {
+      <span class="hl-key">"streamer_01"</span>: {
+        <span class="hl-key">"type"</span>: <span class="hl-string">"streamer"</span>,
+        <span class="hl-key">"label"</span>: <span class="hl-string">"Audiogravity"</span>,
+        <span class="hl-key">"outputs"</span>: {
+          <span class="hl-key">"usb_out"</span>: { <span class="hl-key">"connector"</span>: <span class="hl-string">"usb-a"</span>, <span class="hl-key">"target_device_id"</span>: <span class="hl-string">"dac_01"</span> }
         }
       },
-      &quot;dac_01&quot;: {
-        &quot;type&quot;: &quot;converter&quot;,
-        &quot;label&quot;: &quot;My DAC&quot;,
-        &quot;inputs&quot;:  { &quot;usb_in&quot;: { &quot;connector&quot;: &quot;usb-b&quot; } },
-        &quot;outputs&quot;: { &quot;line_out&quot;: { &quot;connector&quot;: &quot;rca&quot;, &quot;target_device_id&quot;: &quot;amp_01&quot; } }
+      <span class="hl-key">"dac_01"</span>: {
+        <span class="hl-key">"type"</span>: <span class="hl-string">"converter"</span>,
+        <span class="hl-key">"label"</span>: <span class="hl-string">"My DAC"</span>,
+        <span class="hl-key">"inputs"</span>:  { <span class="hl-key">"usb_in"</span>: { <span class="hl-key">"connector"</span>: <span class="hl-string">"usb-b"</span> } },
+        <span class="hl-key">"outputs"</span>: { <span class="hl-key">"line_out"</span>: { <span class="hl-key">"connector"</span>: <span class="hl-string">"rca"</span>, <span class="hl-key">"target_device_id"</span>: <span class="hl-string">"amp_01"</span> } }
       }
     }
   }

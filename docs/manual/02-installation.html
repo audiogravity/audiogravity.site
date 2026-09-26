@@ -20,6 +20,7 @@
             } catch (e) { /* private mode: fall back to the media query */ }
         })();
     </script>
+    <script src="../../assets/manual-copy.js" defer></script>
 </head>
 
 <body class="man-body">
@@ -69,16 +70,16 @@ clicks <strong>from the interface</strong> — that's step 3 of <a href="03-firs
 <h2 id="recommended--all-in-one-one-box">Recommended — all-in-one (one box)</h2>
 <p>Installs the <strong>core</strong> (the engine) and the <strong>ui</strong> (the interface) on the same box.
 This is the standard setup and the one one-click self-update fully supports.</p>
-<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install.sh | sudo bash
+<pre><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span>
 </code></pre>
 <p>Then open the interface in any browser on your network:</p>
-<pre><code>https://&lt;ip-of-your-streamer&gt;
+<pre data-copy="no"><code class="language-text">https://&lt;ip-of-your-streamer&gt;
 </code></pre>
 <h2 id="advanced--core-and-ui-separately">Advanced — core and ui separately</h2>
 <p>You can install the two parts independently — for example to run the interface on a
 different machine. Run each installer on its target host:</p>
-<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install-core.sh | sudo bash
-curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash
+<pre><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install-core.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span>
+<span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install-ui.sh   | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span>
 </code></pre>
 <blockquote>
 <p><strong>Split installs and updates.</strong> One-click self-update updates a <strong>co-located</strong>
@@ -104,9 +105,9 @@ separately (see <a href="08-updating">8. Updating</a>).</p>
 </tr>
 </tbody>
 </table></div>
-<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
-    --vapid-email you@example.com \
-    --public-url https://audiogravity.example.com
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install-core.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span> <span class="hl-opt">-s</span> <span class="hl-opt">--</span> \
+    <span class="hl-opt">--vapid-email</span> you@example.com \
+    <span class="hl-opt">--public-url</span> https://audiogravity.example.com
 </code></pre>
 <blockquote>
 <p>Use the exact origin your browser shows (scheme + host + port). Example:
@@ -181,8 +182,8 @@ On first run, Audiogravi<sup>ty</sup> activates a
 <a href="03-first-run#2-sign-in--and-secure-your-account">3. First run</a>). Continue to
 <strong><a href="03-first-run">3. First run</a></strong>.</p>
 <h2 id="uninstalling">Uninstalling</h2>
-<pre><code class="language-bash">sudo /opt/audiogravity/uninstall.sh          # core — keeps your configuration
-sudo /var/www/audiogravity-ui/uninstall.sh   # ui
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">/opt/audiogravity/uninstall.sh</span>          <span class="hl-comment"># core — keeps your configuration</span>
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">/var/www/audiogravity-ui/uninstall.sh</span>   <span class="hl-comment"># ui</span>
 </code></pre>
 <p>This removes the services, the programs, the privileged rules Audiogravi<sup>ty</sup>
 granted itself and its system account — but <strong>keeps your configuration</strong> in
@@ -190,7 +191,7 @@ granted itself and its system account — but <strong>keeps your configuration</
 backups of your audio services' configuration files in <code>/var/backups/audiogravity</code>.
 Reinstalling afterwards picks up where you left off.</p>
 <p>To remove those too:</p>
-<pre><code class="language-bash">sudo /opt/audiogravity/uninstall.sh --purge
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">/opt/audiogravity/uninstall.sh</span> <span class="hl-opt">--purge</span>
 </code></pre>
 <p><strong>What is never removed, on purpose:</strong> the audio software itself — MPD, which came
 with the installer, and whatever you added from the <strong>Audio Software</strong> page

@@ -244,6 +244,310 @@ def wrap_tables(rendered: str) -> str:
                   rendered, flags=re.S)
 
 
+#: Fence languages coloured as shell. The manual writes ``bash``; the other two are what an
+#: author reaches for without thinking, and they colour the same way.
+SHELL_LANGS = {"bash", "sh", "shell"}
+
+#: A word that hands the command position on to the next one: in ``sudo tee``, both words are
+#: commands, and colouring only ``sudo`` would leave what actually runs looking like an argument.
+SHELL_PREFIXES = {"sudo"}
+
+#: ``sudo`` options that take the next word as their value: in ``sudo -u audiogravity systemctl``
+#: the command is ``systemctl``, and ``audiogravity`` is only the account it runs as.
+SUDO_ARG_OPTIONS = {"-u", "-g", "-C", "-D", "-h", "-p", "-r", "-t", "-T", "-U"}
+
+#: A leading assignment — ``LANG=C sort f`` — which leaves the command position to the next word.
+SHELL_ASSIGNMENT = re.compile(r"[A-Za-z_][A-Za-z0-9_]*=")
+
+#: What ends a shell word. Quotes and ``$`` do not: ``"a"b`` and ``x-$(date)`` are one word each.
+SHELL_BREAKS = frozenset(" \t\n|&;()<>")
+
+#: A heredoc opener — ``<<EOF``, ``<<-EOF``, ``<<'EOF'``, ``<<"EOF"`` — with its terminator.
+SHELL_HEREDOC = re.compile(r"<<(-?)[ \t]*(?:'([^'\n]*)'|\"([^\"\n]*)\"|([^\s|&;()<>]+))")
+
+#: A redirection — ``>``, ``>>``, ``<``, ``>&2``, ``<&-``.
+SHELL_REDIRECT = re.compile(r"[<>]+(?:&(?:[0-9]+|-))?")
+
+#: A JSON number, anchored where the scan stands.
+JSON_NUMBER = re.compile(r"-?[0-9]+(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?")
+
+#: Fence flag for a block the reader must adapt before running it: no copy button is offered,
+#: since a one-click copy of an example address or password is an invitation to run it as is.
+NOCOPY_FLAG = "nocopy"
+
+
+def _esc(text: str) -> str:
+    """Escape text for an element body the way the interface's ``escapeHtml`` does.
+
+    That function escapes what a browser escapes when it serialises a text node — ``&``,
+    ``<`` and ``>``, and a no-break space written ``&nbsp;`` — nothing else. Matching it
+    exactly is what lets the two colourers produce the same bytes for the same block (see
+    :func:`highlight_code`).
+    """
+    return html.escape(text, quote=False).replace("\u00a0", "&nbsp;")
+
+
+def _span(kind: str, text: str) -> str:
+    """Wrap ``text`` in a token span, or return nothing for an empty token."""
+    return f'<span class="hl-{kind}">{_esc(text)}</span>' if text else ""
+
+
+def _shell_expansion_end(code: str, i: int) -> int:
+    """Index just past the ``$`` expansion starting at ``i``, or ``i + 1`` for a lone ``$``.
+
+    ``$(…)`` is matched with its nesting counted, ``${…}`` up to its brace, ``$NAME`` over
+    its identifier, and ``$?``-style specials over one character.
+    """
+    n = len(code)
+    nxt = code[i + 1] if i + 1 < n else ""
+    if nxt == "(":
+        depth, j = 0, i + 1
+        while j < n:
+            if code[j] == "(":
+                depth += 1
+            elif code[j] == ")":
+                depth -= 1
+                if depth == 0:
+                    return j + 1
+            j += 1
+        return n
+    if nxt == "{":
+        close = code.find("}", i + 2)
+        return n if close == -1 else close + 1
+    if nxt == "_" or nxt.isascii() and nxt.isalpha():
+        j = i + 1
+        while j < n and (code[j] == "_" or code[j].isascii() and code[j].isalnum()):
+            j += 1
+        return j
+    if nxt and nxt in "0123456789#?@*$!-":
+        return i + 2
+    return i + 1
+
+
+def _shell_quote_end(code: str, i: int) -> int:
+    """Index just past the quoted string opening at ``i`` (to the end if it never closes)."""
+    quote, j, n = code[i], i + 1, len(code)
+    while j < n:
+        if quote == '"' and code[j] == "\\":
+            j += 2
+            continue
+        if code[j] == quote:
+            return j + 1
+        j += 1
+    return n
+
+
+def highlight_shell(code: str) -> str:
+    """Colour a shell block: commands, options, strings, expansions, comments.
+
+    A line-oriented reading, not a parser — enough for commands a reader copies, and the
+    same rules as ``highlightShell`` in the interface (``js/core/code-highlight.js``), which
+    must stay in step: the manual is shown in both places.
+
+    * The first word of a command — at the start of a line, after ``|``, ``&``, ``;`` or
+      ``(`` — is a command, and so is the word after ``sudo``. A line ending in ``\\``
+      continues the command, so the next line starts with an argument.
+    * A word starting with ``-`` is an option; it does not use up the command position. The
+      value of a ``sudo`` option (``-u audiogravity``) does not either, nor does a leading
+      assignment (``LANG=C``), which is an expansion.
+    * ``'…'`` and ``"…"`` are strings, ``$…`` an expansion, ``#`` at a word start a comment.
+    * The body of a heredoc (``<<'EOF'`` … ``EOF``) is a string.
+
+    Args:
+        code: The block's text.
+
+    Returns:
+        HTML with token spans; every character of ``code`` is kept, escaped.
+    """
+    out: list[str] = []
+    n, i = len(code), 0
+    at_cmd = True
+    after_sudo = False  # the command position was handed on by sudo, whose options take values
+    skip_arg = False    # the next word is the value of such an option
+    heredocs: list[tuple[str, bool]] = []  # (terminator, tabs stripped) awaiting a newline
+
+    while i < n:
+        c = code[i]
+        if c == "\\" and code.startswith("\n", i + 1):
+            out.append("\\\n")  # continuation: the command goes on, the position is kept
+            i += 2
+        elif c == "\n":
+            out.append("\n")
+            i += 1
+            at_cmd, after_sudo, skip_arg = True, False, False
+            for term, strip_tabs in heredocs:
+                while i < n:
+                    end = code.find("\n", i)
+                    line = code[i:] if end == -1 else code[i:end]
+                    i = n if end == -1 else end + 1
+                    tail = "" if end == -1 else "\n"
+                    if (line.lstrip("\t") if strip_tabs else line) == term:
+                        out.append(_esc(line) + tail)
+                        break
+                    out.append(_span("string", line) + tail)
+            heredocs = []
+        elif c in " \t":
+            out.append(c)
+            i += 1
+        elif c == "#":
+            end = code.find("\n", i)
+            end = n if end == -1 else end
+            out.append(_span("comment", code[i:end]))
+            i = end
+        elif code.startswith("<<", i) and not code.startswith("<<<", i):
+            m = SHELL_HEREDOC.match(code, i)
+            if m:
+                term = next(g for g in (m.group(2), m.group(3), m.group(4)) if g is not None)
+                heredocs.append((term, m.group(1) == "-"))
+                out.append(_esc(m.group(0)))
+                i = m.end()
+            else:
+                out.append(_esc("<<"))
+                i += 2
+            at_cmd = False
+        elif c in "<>":
+            m = SHELL_REDIRECT.match(code, i)
+            out.append(_esc(m.group(0)))
+            i = m.end()
+            at_cmd = False  # what follows a redirection is a file, not a command
+        elif c in "|&;()":
+            out.append(_esc(c))
+            i += 1
+            at_cmd, after_sudo, skip_arg = c != ")", False, False
+        else:
+            start = i
+            if skip_arg:
+                kind = None
+            elif c == "-":
+                kind = "opt"
+            elif at_cmd and SHELL_ASSIGNMENT.match(code, i):
+                kind = "var"
+            else:
+                kind = "cmd" if at_cmd else None
+            literal: list[str] = []
+
+            def flush() -> None:
+                if literal:
+                    text = "".join(literal)
+                    out.append(_span(kind, text) if kind else _esc(text))
+                    literal.clear()
+
+            while i < n and code[i] not in SHELL_BREAKS:
+                ch = code[i]
+                if ch == "\\":
+                    if code.startswith("\n", i + 1):
+                        break  # a continuation ends the word; the outer loop emits it
+                    literal.append(code[i:i + 2])
+                    i += 2
+                elif ch in "'\"":
+                    flush()
+                    end = _shell_quote_end(code, i)
+                    out.append(_span("string", code[i:end]))
+                    i = end
+                elif ch == "$":
+                    end = _shell_expansion_end(code, i)
+                    if end == i + 1:
+                        literal.append(ch)
+                    else:
+                        flush()
+                        out.append(_span("var", code[i:end]))
+                    i = end
+                else:
+                    literal.append(ch)
+                    i += 1
+            flush()
+            word = code[start:i]
+            if skip_arg:
+                skip_arg = False  # the option's value: the command position is still open
+            elif kind == "opt":
+                skip_arg = after_sudo and word in SUDO_ARG_OPTIONS
+            elif kind == "cmd":
+                at_cmd = after_sudo = word in SHELL_PREFIXES
+            elif kind is None:  # an argument; an assignment ("var") leaves the position open
+                at_cmd = after_sudo = False
+    return "".join(out)
+
+
+def highlight_json(code: str) -> str:
+    """Colour a JSON block: keys, strings, numbers and the literals ``true``/``false``/``null``.
+
+    Same rules as ``highlightJson`` in the interface (``js/core/code-highlight.js``).
+
+    Args:
+        code: The block's text.
+
+    Returns:
+        HTML with token spans; every character of ``code`` is kept, escaped.
+    """
+    out: list[str] = []
+    n, i = len(code), 0
+    while i < n:
+        c = code[i]
+        if c == '"':
+            end = _shell_quote_end(code, i)  # JSON strings escape with a backslash too
+            j = end
+            while j < n and code[j] in " \t":
+                j += 1
+            out.append(_span("key" if code.startswith(":", j) else "string", code[i:end]))
+            i = end
+            continue
+        m = JSON_NUMBER.match(code, i) if (c == "-" or "0" <= c <= "9") else None
+        if m:
+            out.append(_span("num", m.group(0)))
+            i = m.end()
+            continue
+        word = next((w for w in ("true", "false", "null") if code.startswith(w, i)), None)
+        if word:
+            out.append(_span("null" if word == "null" else "lit", word))
+            i += len(word)
+            continue
+        out.append(_esc(c))
+        i += 1
+    return "".join(out)
+
+
+def highlight_code(code: str, lang: str) -> str | None:
+    """Colour a code block in one of the languages the manual uses.
+
+    Args:
+        code: The block's text.
+        lang: The fence's language, e.g. ``bash``.
+
+    Returns:
+        Highlighted HTML, or None for a language left plain.
+    """
+    if lang in SHELL_LANGS:
+        return highlight_shell(code)
+    if lang == "json":
+        return highlight_json(code)
+    return None
+
+
+def highlight_fence(content: str, lang: str, attrs: str) -> str:
+    """markdown-it's ``highlight`` hook: colour a fenced block and carry its flags.
+
+    Returns the whole ``<pre>`` — markdown-it then uses it as is — so that a block flagged
+    ``nocopy`` in its info string (```` ```bash nocopy ````) can say so on the element the
+    copy script reads. A block with neither a known language nor a flag returns nothing, and
+    markdown-it renders it exactly as it did before.
+
+    Args:
+        content: The block's text.
+        lang: First word of the info string.
+        attrs: The rest of the info string.
+
+    Returns:
+        The block's HTML, or an empty string to let markdown-it render it.
+    """
+    nocopy = NOCOPY_FLAG in attrs.split()
+    body = highlight_code(content, lang)
+    if body is None and not nocopy:
+        return ""
+    cls = f' class="language-{html.escape(lang)}"' if lang else ""
+    flag = ' data-copy="no"' if nocopy else ""
+    return f"<pre{flag}><code{cls}>{body if body is not None else _esc(content)}</code></pre>"
+
+
 def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonical: str) -> str:
     """Assemble one manual page.
 
@@ -298,6 +602,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
             }} catch (e) {{ /* private mode: fall back to the media query */ }}
         }})();
     </script>
+    <script src="../../assets/manual-copy.js" defer></script>
 </head>
 
 <body class="man-body">
@@ -332,9 +637,10 @@ def markdown() -> MarkdownIt:
     """The Markdown renderer the manual's pages are built with.
 
     Returns:
-        A CommonMark renderer that passes raw HTML through and knows tables.
+        A CommonMark renderer that passes raw HTML through, knows tables, and colours the
+        manual's shell and JSON blocks (:func:`highlight_fence`).
     """
-    return MarkdownIt("commonmark", {"html": True}).enable("table")
+    return MarkdownIt("commonmark", {"html": True, "highlight": highlight_fence}).enable("table")
 
 
 def heading_ids(source: str) -> set[str]:

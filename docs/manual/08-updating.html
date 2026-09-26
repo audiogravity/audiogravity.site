@@ -20,6 +20,7 @@
             } catch (e) { /* private mode: fall back to the media query */ }
         })();
     </script>
+    <script src="../../assets/manual-copy.js" defer></script>
 </head>
 
 <body class="man-body">
@@ -85,7 +86,7 @@ radio stations). A <strong>fresh</strong> install seeds those files with sensibl
 <strong>upgrade never overwrites them</strong>, so your edits survive. The services and profiles are
 the exception: they come with each version, and the installer puts them back every time
 it runs (see <a href="07-administration#audio-configuration-services--profiles">7. Administration</a>):</p>
-<pre><code class="language-bash">curl -fsSL https://audiogravity.app/install.sh | sudo bash
+<pre><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span>
 </code></pre>
 <h2 id="version-mismatch-banner">Version-mismatch banner</h2>
 <p>If the interface and the core end up on different versions (for example after a
@@ -121,7 +122,7 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:</p>
 </tbody>
 </table></div>
 <p>The simplest habit — grab everything in one archive:</p>
-<pre><code class="language-bash">sudo tar -czf ag-backup-$(hostname)-$(date +%F).tar.gz \
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">tar</span> <span class="hl-opt">-czf</span> ag-backup-<span class="hl-var">$(hostname)</span>-<span class="hl-var">$(date +%F)</span>.tar.gz \
     /etc/audiogravity \
     /var/backups/audiogravity \
     /opt/audiogravity/core/users.json \
@@ -130,11 +131,11 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:</p>
 <p><strong>Restore</strong> on a fresh install: run the installer first
 (see <a href="02-installation">2. Installation</a>), then unpack the archive over the new
 files and restart the core:</p>
-<pre><code class="language-bash">sudo tar -xzf ag-backup-….tar.gz -C / --exclude=etc/audiogravity/audiogravity.lic \
-    --exclude='etc/audiogravity/audio-config.json*' \
-    --exclude=etc/audiogravity/packages-registry.json \
-    --exclude=etc/audiogravity/packages-config.json
-sudo systemctl restart ag-core-server
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">tar</span> <span class="hl-opt">-xzf</span> ag-backup-….tar.gz <span class="hl-opt">-C</span> / <span class="hl-opt">--exclude=etc/audiogravity/audiogravity.lic</span> \
+    <span class="hl-opt">--exclude=</span><span class="hl-string">'etc/audiogravity/audio-config.json*'</span> \
+    <span class="hl-opt">--exclude=etc/audiogravity/packages-registry.json</span> \
+    <span class="hl-opt">--exclude=etc/audiogravity/packages-config.json</span>
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> restart ag-core-server
 </code></pre>
 <p>Service config files regenerate through the guided setup, and streaming-service logins
 are simply re-entered in <strong>Library → Sources</strong>. Your music itself lives on the NAS/USB

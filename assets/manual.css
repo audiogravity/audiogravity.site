@@ -277,6 +277,104 @@ footer.man-foot,
     overflow-wrap: normal
 }
 
+/* A code block's frame and its copy button, both added by manual-copy.js. The button sits on
+   the frame rather than inside the <pre>, which scrolls sideways on a long line and would carry
+   it off. A block the script leaves alone — flagged nocopy, or no script at all — keeps the
+   plain rule above, margin included. */
+.man-md .man-code {
+    position: relative;
+    margin: 18px 0
+}
+
+.man-md .man-code > pre {
+    margin: 0;
+
+    /* Room for the button, so the end of a short first line is never drawn under it. */
+    padding-right: 52px
+}
+
+.man-copy {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text3);
+    cursor: pointer;
+    transition: color var(--ease), border-color var(--ease);
+
+    /* A coat of the block's own ground over the gap to the button's right, up to the block's
+       1px border: a long line scrolled under the button otherwise shows through that gap as
+       stray fragments of letters. */
+    box-shadow: 7px 0 0 var(--bg2)
+}
+
+.man-copy:hover,
+.man-copy.is-copied {
+    color: var(--text);
+    border-color: var(--border2)
+}
+
+.man-copy:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px
+}
+
+.man-copy-icon {
+    display: inline-flex
+}
+
+.man-copy-done,
+.man-copy.is-copied .man-copy-icon {
+    display: none
+}
+
+.man-copy.is-copied .man-copy-done {
+    display: inline-flex
+}
+
+/* The clipboard was refused and the text selected instead (see manual-copy.js): the button says
+   so in red for a moment — its label says what to do. */
+.man-copy.is-failed {
+    color: var(--err);
+    border-color: var(--err)
+}
+
+/* Syntax colours: the tokens style.css declares for both themes, mapped as the app maps them —
+   commands with JSON keys, options with numbers, expansions with literals. */
+.man-md .hl-cmd,
+.man-md .hl-key {
+    color: var(--syntax-key)
+}
+
+.man-md .hl-opt,
+.man-md .hl-num {
+    color: var(--syntax-number)
+}
+
+.man-md .hl-string {
+    color: var(--syntax-string)
+}
+
+.man-md .hl-var,
+.man-md .hl-lit {
+    color: var(--syntax-boolean)
+}
+
+/* JSON's null, and comments: the text's own quieter grey — the site declares no grey of its own
+   for syntax. */
+.man-md .hl-null,
+.man-md .hl-comment {
+    color: var(--text3)
+}
+
 .man-md blockquote {
     margin: 18px 0;
     padding: 2px 0 2px 16px;

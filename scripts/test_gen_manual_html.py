@@ -15,8 +15,13 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from gen_manual_html import (  # noqa: E402
+    MANUAL_DIR,
+    REPO_DIR,
     heading_ids,
+    highlight_code,
+    highlight_fence,
     lazy_load_images,
+    markdown,
     link_between_pages,
     page,
     parse_toc,
@@ -282,3 +287,140 @@ class TestHeadingIds:
 
     def test_ignores_the_chapter_title(self):
         assert heading_ids("# Only a title\n") == set()
+
+
+# The same cases, character for character, are in audiogravity.ui/js/core/code-highlight.test.js:
+# the manual is coloured twice — here for the site, there for the app — and the two must agree.
+SHELL_CASES = [
+    ("curl -fsSL https://x/install.sh | sudo bash",
+     '<span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://x/install.sh | '
+     '<span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span>'),
+    ("cat /proc/cmdline   # 'memory' missing",
+     '<span class="hl-cmd">cat</span> /proc/cmdline   <span class="hl-comment"># \'memory\' missing</span>'),
+    ("sudo cp a b.bak-$(date +%F)",
+     '<span class="hl-cmd">sudo</span> <span class="hl-cmd">cp</span> a b.bak-<span class="hl-var">$(date +%F)</span>'),
+    ("sed -i '1 s/$/ x/' f",
+     '<span class="hl-cmd">sed</span> <span class="hl-opt">-i</span> <span class="hl-string">\'1 s/$/ x/\'</span> f'),
+    ('echo "a \\"b\\"" \\\n    | sudo tee -a /etc/fstab',
+     '<span class="hl-cmd">echo</span> <span class="hl-string">"a \\"b\\""</span> \\\n    | '
+     '<span class="hl-cmd">sudo</span> <span class="hl-cmd">tee</span> <span class="hl-opt">-a</span> /etc/fstab'),
+    ("bash -s -- \\\n    --email you@example.com",
+     '<span class="hl-cmd">bash</span> <span class="hl-opt">-s</span> <span class="hl-opt">--</span> \\\n'
+     '    <span class="hl-opt">--email</span> you@example.com'),
+    ("tee f >/dev/null <<'EOF'\nuser=a\nEOF\nls",
+     '<span class="hl-cmd">tee</span> f &gt;/dev/null &lt;&lt;\'EOF\'\n<span class="hl-string">user=a</span>\n'
+     'EOF\n<span class="hl-cmd">ls</span>'),
+    ("a 2>&1 && b",
+     '<span class="hl-cmd">a</span> 2&gt;&amp;1 &amp;&amp; <span class="hl-cmd">b</span>'),
+    ("x#y $HOME ${A} $? $",
+     '<span class="hl-cmd">x#y</span> <span class="hl-var">$HOME</span> <span class="hl-var">${A}</span> '
+     '<span class="hl-var">$?</span> $'),
+    ("printf '<b>' & ls",
+     '<span class="hl-cmd">printf</span> <span class="hl-string">\'&lt;b&gt;\'</span> &amp; '
+     '<span class="hl-cmd">ls</span>'),
+    ("# note\nsudo -E tee x",
+     '<span class="hl-comment"># note</span>\n<span class="hl-cmd">sudo</span> <span class="hl-opt">-E</span> '
+     '<span class="hl-cmd">tee</span> x'),
+    ("echo a\u00a0b",
+     '<span class="hl-cmd">echo</span> a&nbsp;b'),
+    ("sudo -u audiogravity systemctl status x",
+     '<span class="hl-cmd">sudo</span> <span class="hl-opt">-u</span> audiogravity '
+     '<span class="hl-cmd">systemctl</span> status x'),
+    ("LANG=C sort f",
+     '<span class="hl-var">LANG=C</span> <span class="hl-cmd">sort</span> f'),
+    ("echo sudo tee",
+     '<span class="hl-cmd">echo</span> sudo tee'),
+]
+
+JSON_CASES = [
+    ('{"a": "b", "n": -1.5e3, "t": true, "z": null}',
+     '{<span class="hl-key">"a"</span>: <span class="hl-string">"b"</span>, <span class="hl-key">"n"</span>: '
+     '<span class="hl-num">-1.5e3</span>, <span class="hl-key">"t"</span>: <span class="hl-lit">true</span>, '
+     '<span class="hl-key">"z"</span>: <span class="hl-null">null</span>}'),
+    ('{"k" : "a\\"<b>", "l": [1, false]}',
+     '{<span class="hl-key">"k"</span> : <span class="hl-string">"a\\"&lt;b&gt;"</span>, '
+     '<span class="hl-key">"l"</span>: [<span class="hl-num">1</span>, <span class="hl-lit">false</span>]}'),
+]
+
+
+def _manual_blocks():
+    """Every fenced block of the published manual, as (chapter, language, text).
+
+    A fence may sit up to three spaces in, inside a list item; its lines then lose that much
+    indentation, as they do in the renderer.
+    """
+    fence = re.compile(r"^( {0,3})```(\w*)[^\n]*\n(.*?)^ {0,3}```", re.S | re.M)
+    for f in sorted(MANUAL_DIR.glob("*.md")):
+        for m in fence.finditer(f.read_text(encoding="utf-8")):
+            indent = len(m.group(1))
+            yield f.name, m.group(2), re.sub(rf"(?m)^ {{0,{indent}}}", "", m.group(3))
+
+
+class TestHighlight:
+    @pytest.mark.parametrize("code,expected", SHELL_CASES)
+    def test_shell(self, code, expected):
+        assert highlight_code(code, "bash") == expected
+
+    @pytest.mark.parametrize("code,expected", JSON_CASES)
+    def test_json(self, code, expected):
+        assert highlight_code(code, "json") == expected
+
+    @pytest.mark.parametrize("lang", ["sh", "shell"])
+    def test_shell_aliases_colour_the_same(self, lang):
+        code, expected = SHELL_CASES[0]
+        assert highlight_code(code, lang) == expected
+
+    @pytest.mark.parametrize("lang", ["", "text", "ini", "python"])
+    def test_leaves_other_languages_alone(self, lang):
+        assert highlight_code("x = 1", lang) is None
+
+    def test_keeps_every_character_of_every_block_in_the_manual(self):
+        """A colourer that drops or doubles a character hands the reader a command that is not
+        the one written — the worst thing a copy button can do. Checked on the real blocks."""
+        import html as h
+        checked = 0
+        for name, lang, text in _manual_blocks():
+            out = highlight_code(text, lang)
+            if out is None:
+                continue
+            assert h.unescape(re.sub(r"</?span[^>]*>", "", out)) == text, name
+            checked += 1
+        # 24 at column 0 and 5 inside list items, on 2026-09-26.
+        assert checked >= 29, "the manual's blocks were not found — has the fence syntax changed?"
+
+
+class TestHighlightFence:
+    def test_leaves_an_unknown_unflagged_block_to_markdown_it(self):
+        assert highlight_fence("x\n", "", "") == ""
+        assert highlight_fence("x\n", "ini", "") == ""
+
+    def test_returns_the_whole_block_for_a_coloured_language(self):
+        assert highlight_fence("ls\n", "bash", "") == (
+            '<pre><code class="language-bash"><span class="hl-cmd">ls</span>\n</code></pre>')
+
+    def test_marks_a_nocopy_block_whatever_its_language(self):
+        assert highlight_fence("a <b>\n", "text", "nocopy") == (
+            '<pre data-copy="no"><code class="language-text">a &lt;b&gt;\n</code></pre>')
+        assert highlight_fence("ls\n", "bash", "nocopy") == (
+            '<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">ls</span>\n</code></pre>')
+
+    def test_renders_through_markdown_it(self):
+        md = markdown()
+        assert md.render("```bash\nls\n```\n") == (
+            '<pre><code class="language-bash"><span class="hl-cmd">ls</span>\n</code></pre>\n')
+        # An untagged block comes out exactly as it did before colouring existed.
+        assert md.render("```\nplain <x>\n```\n") == "<pre><code>plain &lt;x&gt;\n</code></pre>\n"
+
+
+class TestCopyScript:
+    def test_every_page_loads_it_deferred(self):
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<script src="../../assets/manual-copy.js" defer></script>' in out
+
+    def test_the_script_exists(self):
+        assert (REPO_DIR / "assets" / "manual-copy.js").is_file()
+
+    def test_skips_the_blocks_flagged_nocopy(self):
+        """The flag is only worth something if the script reads it."""
+        js = (REPO_DIR / "assets" / "manual-copy.js").read_text(encoding="utf-8")
+        assert "data-copy" in js and "'no'" in js

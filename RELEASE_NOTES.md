@@ -35,6 +35,22 @@ mistake is refused with its reason and nothing changes; a correct copy takes the
 place, and lasts until the installer runs again. The manual's troubleshooting chapter walks
 through it.
 
+### The manual's commands, coloured and copied in one click
+
+The commands in the manual now read in colour — the command, its options, quoted text,
+variables, comments — on audiogravity.app and in the app's **Manual** window alike, and every
+block carries a button that copies it, then turns into a check mark. The text leaves without
+its final newline: pasted into a terminal, the last line waits for you to press Enter.
+
+A block you must adapt before running it — an address, a password, the example NAS share —
+comes without a button, and the manual says so. The NAS mount is now laid out one step per
+block.
+
+The same colours serve the configuration editor and the event viewer of the **System** tab:
+they are darker or lighter where they were hard to read, and every theme now clears the
+interface's contrast floor. In the app, all of this arrives with the next version of the
+interface; the website has it now.
+
 ---
 
 ## 0.9.61 — 2026-09-25

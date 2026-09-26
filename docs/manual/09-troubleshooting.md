@@ -437,26 +437,43 @@ AirPlay is announced over **mDNS/Bonjour** (UDP 5353 multicast):
 
 The library picker's **Add network share** covers CIFS/SMB. If you prefer the
 terminal, or need **NFS**, mount at the OS level — anything mounted under
-`/mnt` is detected as a library source:
+`/mnt` is detected as a library source.
+
+**1. Create a mount point:**
 
 ```bash
-# 1. Create a mount point
 sudo mkdir -p /mnt/music
+```
 
-# 2a. CIFS / SMB — the quoted heredoc keeps special characters
-#     in the password intact
+**2. Describe the share** — CIFS/SMB *or* NFS, not both. Replace the address, the share and
+the credentials below with your NAS's own before running them: that is why these blocks come
+without a copy button.
+
+For **CIFS / SMB**, store the credentials first — the quoted heredoc keeps special characters
+in the password intact — then add the share:
+
+```bash nocopy
 sudo tee /root/.smbcredentials >/dev/null <<'EOF'
 username=nasuser
 password=naspass
 EOF
 sudo chmod 600 /root/.smbcredentials
+```
+
+```bash nocopy
 echo "//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,_netdev 0 0" \
     | sudo tee -a /etc/fstab
+```
 
-# 2b. — or NFS (requires: sudo apt-get install nfs-common)
+For **NFS** (requires `sudo apt-get install nfs-common`):
+
+```bash nocopy
 echo "192.168.1.20:/volume1/music /mnt/music nfs ro,_netdev 0 0" | sudo tee -a /etc/fstab
+```
 
-# 3. Mount and verify
+**3. Mount and verify:**
+
+```bash
 sudo systemctl daemon-reload && sudo mount -a && ls /mnt/music
 ```
 
@@ -509,7 +526,7 @@ Audiogravi<sup>ty</sup> does not keep the password shown when HQPlayer Embedded 
 installed, and HQPlayer's own page changes it only if you type the current one. If it is
 lost, connect over SSH and set a new one with Signalyst's command:
 
-```
+```bash nocopy
 sudo hqplayerd -s hqplayer <new password>
 ```
 

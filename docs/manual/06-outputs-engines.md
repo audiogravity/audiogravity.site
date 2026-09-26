@@ -368,7 +368,7 @@ outputs in the same interface.
 another segment, or a router that blocks the broadcast — name it in
 `/opt/audiogravity/core/.env` and restart the core:
 
-```
+```text nocopy
 ROON_CORE_HOST=192.168.1.50    # the IP of the machine running Roon Core
 ```
 

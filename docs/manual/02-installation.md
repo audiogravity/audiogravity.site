@@ -28,7 +28,7 @@ curl -fsSL https://audiogravity.app/install.sh | sudo bash
 
 Then open the interface in any browser on your network:
 
-```
+```text nocopy
 https://<ip-of-your-streamer>
 ```
 
@@ -53,7 +53,7 @@ curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash
 | `--vapid-email you@example.com` | Contact address for Web Push notifications (the VAPID `sub`). Omitted → a placeholder is used and push stays basic. |
 | `--public-url https://your.domain` | Enables **passkeys** (WebAuthn) and derives the WebAuthn origin / RP ID. Passkeys need a real HTTPS **domain** — they do **not** work over a bare IP. |
 
-```bash
+```bash nocopy
 curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
     --vapid-email you@example.com \
     --public-url https://audiogravity.example.com

@@ -116,6 +116,14 @@
     --ok: #22c55e;
     --warn: #f59e0b;
     --err: #ef4444;
+    /* SYNTAX — the manual's code blocks. The values of the app's default theme ("minimal"),
+       so a command reads the same on the site and in the app. Each clears 4.5:1 on --bg2,
+       where code sits: 6.3 to 6.7 here, 10.5 to 13.4 in dark (computed 2026-09-26).
+       Comments take --text3 rather than a grey of their own. */
+    --syntax-key: #1d4ed8;
+    --syntax-string: #166534;
+    --syntax-number: #92400e;
+    --syntax-boolean: #7e22ce;
     --font: 'Inter', -apple-system, 'Segoe UI', sans-serif;
     --mono: 'JetBrains Mono', monospace;
     /* TYPE SCALE — closed. Six steps for text, four for display; nothing else is a size.
@@ -161,6 +169,10 @@
         --border: #2a2a2a;
         --border2: #3a3a3a;
         --nav-bg: rgba(10,10,10,.92);
+        --syntax-key: #93c5fd;
+        --syntax-string: #86efac;
+        --syntax-number: #fcd34d;
+        --syntax-boolean: #d8b4fe;
     }
     /* Keep inv-bg elements dark instead of flipping to white */
     :root:not([data-theme="light"]) .fb.dark,
@@ -192,6 +204,10 @@
     --border: #2a2a2a;
     --border2: #3a3a3a;
     --nav-bg: rgba(10,10,10,.92);
+    --syntax-key: #93c5fd;
+    --syntax-string: #86efac;
+    --syntax-number: #fcd34d;
+    --syntax-boolean: #d8b4fe;
 }
 
 [data-theme="dark"] .fb.dark,

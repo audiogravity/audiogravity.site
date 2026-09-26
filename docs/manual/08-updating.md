@@ -84,7 +84,7 @@ sudo tar -czf ag-backup-$(hostname)-$(date +%F).tar.gz \
 (see [2. Installation](02-installation.md)), then unpack the archive over the new
 files and restart the core:
 
-```bash
+```bash nocopy
 sudo tar -xzf ag-backup-….tar.gz -C / --exclude=etc/audiogravity/audiogravity.lic \
     --exclude='etc/audiogravity/audio-config.json*' \
     --exclude=etc/audiogravity/packages-registry.json \

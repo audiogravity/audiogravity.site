@@ -1,0 +1,46 @@
+# Runs the landing's guards — the closed type scale, the fonts served from this site, monospace
+# kept for what is read character by character, and every file and manual link the landing and
+# the 404 page point at — on the pushes that can break them.
+#
+# A report, not a gate: GitHub Pages publishes every push to main whatever this job says, so a
+# failure shows as a red mark on the commit that caused it, not as a page held back. Running
+# `python3 -m pytest scripts/` before pushing catches it earlier.
+#
+# Its own workflow rather than a step of the Manual one: that one only starts when the manual's
+# sources change, so a stylesheet regression went unseen and then failed the next, unrelated,
+# manual render.
+name: Landing
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/**'
+      - 'index.html'
+      - '404.html'
+      - 'scripts/test_landing_styles.py'
+      - 'scripts/test_landing_content.py'
+      - 'docs/manual/*.md'
+      - 'scripts/gen_manual_html.py'
+      - '.github/workflows/landing.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Pinned, as in the Manual workflow. markdown-it-py because the link guard computes the
+      # manual's anchors with the generator's own renderer.
+      - run: pip install --quiet markdown-it-py==3.0.0 pytest==8.3.4
+
+      - name: Test the landing's guards
+        run: python3 -m pytest scripts/test_landing_styles.py scripts/test_landing_content.py -q

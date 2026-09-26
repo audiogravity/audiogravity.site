@@ -107,7 +107,7 @@ def slugify(text: str) -> str:
 
 
 def stamp_heading_ids(rendered: str) -> str:
-    """Give every h2/h3 an anchor id, de-duplicating repeats.
+    """Give every h2, h3 and h4 an anchor id, de-duplicating repeats.
 
     markdown-it emits no ids, so without this the manual's own cross-references
     (``09-troubleshooting.md#roon``) land at the top of the page instead of the section.
@@ -116,7 +116,7 @@ def stamp_heading_ids(rendered: str) -> str:
         rendered: HTML from markdown-it.
 
     Returns:
-        The same HTML with ``id`` attributes on h2 and h3.
+        The same HTML with ``id`` attributes on h2, h3 and h4.
     """
     seen: dict[str, int] = {}
 
@@ -286,8 +286,6 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     <meta name="description" content="Audiogravity user manual — {html.escape(plain)}.">
     <link rel="canonical" href="https://audiogravity.app/docs/manual/{canonical}">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/style.css">
     <link rel="stylesheet" href="../../assets/manual.css">
     <script>
@@ -330,6 +328,30 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
 """
 
 
+def markdown() -> MarkdownIt:
+    """The Markdown renderer the manual's pages are built with.
+
+    Returns:
+        A CommonMark renderer that passes raw HTML through and knows tables.
+    """
+    return MarkdownIt("commonmark", {"html": True}).enable("table")
+
+
+def heading_ids(source: str) -> set[str]:
+    """The anchor ids a chapter's headings get on the site.
+
+    The landing links into the manual by these ids. Computing them with the pages' own
+    renderer and numbering of repeats keeps its guard from drifting from the pages.
+
+    Args:
+        source: A chapter's Markdown.
+
+    Returns:
+        Every id stamped on its h2, h3 and h4 headings.
+    """
+    return set(re.findall(r'<h[234] id="([^"]+)"', stamp_heading_ids(markdown().render(source))))
+
+
 def build() -> dict[Path, str]:
     """Render every chapter.
 
@@ -341,7 +363,7 @@ def build() -> dict[Path, str]:
     if not toc:
         sys.exit("no chapters found in docs/manual/README.md — has the Contents list moved?")
 
-    md = MarkdownIt("commonmark", {"html": True}).enable("table")
+    md = markdown()
     known = {cid for cid, _ in toc} | {"README"}
 
     def render(source: str) -> str:

@@ -15,6 +15,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from gen_manual_html import (  # noqa: E402
+    heading_ids,
     lazy_load_images,
     link_between_pages,
     page,
@@ -268,3 +269,16 @@ class TestBuildCanonicals:
         pages = g.build()
         index = next(p for p in pages if p.name == "index.html")
         assert 'href="https://audiogravity.app/docs/manual/">' in pages[index]
+
+
+class TestHeadingIds:
+    def test_matches_the_ids_the_pages_carry(self):
+        """The landing's links are checked against these: they must be the pages' own."""
+        source = "# Title\n\n## Setup\n\n### Sign in — and secure\n\n#### Deep\n"
+        assert heading_ids(source) == {"setup", "sign-in--and-secure", "deep"}
+
+    def test_numbers_repeats_as_the_pages_do(self):
+        assert heading_ids("## Setup\n\n## Setup\n") == {"setup", "setup-1"}
+
+    def test_ignores_the_chapter_title(self):
+        assert heading_ids("# Only a title\n") == set()

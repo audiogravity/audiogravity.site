@@ -34,11 +34,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-180.png">
     <meta name="theme-color" content="#2d2d2d">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <!-- The two faces the first screen draws, requested before the stylesheet asks for them:
+         Inter upright for nearly everything, its italic for "A conductor, not a soloist."
+         Both come from this site, like every font on it (the FONTS block of style.css). -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/style.css">
     <script>
         /* Apply saved theme before first paint to avoid flash */
@@ -105,7 +105,7 @@
         <div class="hero-left">
             <div class="hero-kicker">
                 <span>The audiophile streamer</span>
-                <span class="live">Live</span>
+                <span class="live">Now playing</span>
             </div>
             <h1 class="hero-h1">Audiogravi<sup>ty</sup></h1>
             <p class="hero-tag">Audiogravi<sup>ty</sup> is a streamer. <em>A conductor, not a soloist.</em></p>
@@ -142,19 +142,19 @@
             <div class="hero-carousel">
                 <!-- Opening slide — the only one every visitor is guaranteed to see, so which
                      record is on screen is an editorial choice, not whatever happened to be
-                     playing when the capture was taken. The one that opened before,
-                     ag-player-black.webp, is set aside and not deleted: a reader pointed out that
-                     its sleeve reads as the opposite of what a listener is after, which is a fair
-                     thing to say about a shop window. Its Qobuz screen lives on as
-                     ag-player-qobuz.webp, one slide down.
+                     playing when the capture was taken. HQPlayer opens; HIGHRESAUDIO, Qobuz,
+                     Tidal and the radio follow. ag-player-black.webp, which once opened, is set
+                     aside and not deleted: a reader pointed out that its sleeve reads as the
+                     opposite of what a listener is after, which is a fair thing to say about a shop
+                     window.
                      Captions and annotations travel WITH their capture, never with the slot: --y
                      is measured against the capture itself, so moving a slide changes nothing but
                      the data-slide number and which one carries `active`. -->
-                <img src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot active">
+                <img src="assets/pics/ag-player-hqplayer.webp" alt="Player, DSD through HQPlayer" class="hero-screenshot active">
+                <img loading="lazy" decoding="async" src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-qobuz.webp" alt="Player, playing from Qobuz" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-tidal.webp" alt="Player, playing from Tidal" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-player-radio.webp" alt="Player, internet radio" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-hqplayer.webp" alt="Player, DSD through HQPlayer" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-library-black.webp" alt="Library, dark theme" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-library.webp" alt="Library" class="hero-screenshot">
                 <img loading="lazy" decoding="async" src="assets/pics/ag-pipeline.webp" alt="Signal path" class="hero-screenshot">
@@ -169,54 +169,54 @@
                      which is exactly the phone's box, so they follow the device instead of
                      the column — the capture never moves or shrinks to make room. --y is
                      the height of the element each annotation names, as a share of the
-                     capture. Only slide 0 is written for now (prototype). -->
+                     capture. -->
                 <div class="hero-caption active" data-slide="0">
-                    <span class="k">HIGHRESAUDIO</span>
-                    <span class="t">Their Hi-Res catalogue, played on your own DAC — with the
-                        resolution you actually get, in writing.</span>
-                </div>
-                <span class="hero-note active" data-slide="0" style="--y:16.6%">From HIGHRESAUDIO</span>
-                <span class="hero-note active" data-slide="0" style="--y:53.6%">To your DAC</span>
-                <span class="hero-note active" data-slide="0" style="--y:66.4%">The real resolution</span>
-
-                <div class="hero-caption" data-slide="1">
-                    <span class="k">Qobuz</span>
-                    <span class="t">Qobuz plays through your own chain — and the screen names every
-                        link of it, down to the DAC.</span>
-                </div>
-                <span class="hero-note" data-slide="1" style="--y:16.6%">From Qobuz</span>
-                <span class="hero-note" data-slide="1" style="--y:53.6%">The whole chain</span>
-                <span class="hero-note" data-slide="1" style="--y:66.4%">What is really playing</span>
-                <span class="hero-note" data-slide="1" style="--y:92%">Switch output mid-track</span>
-
-                <div class="hero-caption" data-slide="2">
-                    <span class="k">Tidal</span>
-                    <span class="t">Tidal runs through the same chain as everything else — same
-                        controls, same readout, same DAC.</span>
-                </div>
-                <span class="hero-note" data-slide="2" style="--y:16.6%">Tidal, signed in</span>
-                <span class="hero-note" data-slide="2" style="--y:66.4%">Hi-Res, stated</span>
-                <span class="hero-note" data-slide="2" style="--y:92%">Your DAC</span>
-
-                <!-- Radio carries no NEXT block, so its rows sit higher than the other player
-                     screens: these three are measured on this capture, not copied. -->
-                <div class="hero-caption" data-slide="3">
-                    <span class="k">Radio</span>
-                    <span class="t">A web stream gets the same treatment as a local file: named
-                        source, named codec, your own DAC at the end.</span>
-                </div>
-                <span class="hero-note" data-slide="3" style="--y:16.6%">Internet radio</span>
-                <span class="hero-note" data-slide="3" style="--y:53.6%">Same chain</span>
-                <span class="hero-note" data-slide="3" style="--y:82.5%">Same DAC</span>
-
-                <div class="hero-caption" data-slide="4">
                     <span class="k">HQPlayer</span>
                     <span class="t">HQPlayer takes the stream, and Audiogravi<sup>ty</sup> still
                         reports what comes out of it — here DSD128, and the DAC receiving it.</span>
                 </div>
-                <span class="hero-note" data-slide="4" style="--y:18.1%">Fed over UPnP</span>
-                <span class="hero-note" data-slide="4" style="--y:55.1%">Through HQPlayer</span>
-                <span class="hero-note" data-slide="4" style="--y:67.7%">What comes out</span>
+                <span class="hero-note active" data-slide="0" style="--y:18.1%">Fed over UPnP</span>
+                <span class="hero-note active" data-slide="0" style="--y:55.1%">Through HQPlayer</span>
+                <span class="hero-note active" data-slide="0" style="--y:67.7%">What comes out</span>
+
+                <div class="hero-caption" data-slide="1">
+                    <span class="k">HIGHRESAUDIO</span>
+                    <span class="t">Their Hi-Res catalogue, played on your own DAC — with the
+                        resolution you actually get, in writing.</span>
+                </div>
+                <span class="hero-note" data-slide="1" style="--y:16.6%">From HIGHRESAUDIO</span>
+                <span class="hero-note" data-slide="1" style="--y:53.6%">To your DAC</span>
+                <span class="hero-note" data-slide="1" style="--y:66.4%">The real resolution</span>
+
+                <div class="hero-caption" data-slide="2">
+                    <span class="k">Qobuz</span>
+                    <span class="t">Qobuz plays through your own chain — and the screen names every
+                        link of it, down to the DAC.</span>
+                </div>
+                <span class="hero-note" data-slide="2" style="--y:16.6%">From Qobuz</span>
+                <span class="hero-note" data-slide="2" style="--y:53.6%">The whole chain</span>
+                <span class="hero-note" data-slide="2" style="--y:66.4%">What is really playing</span>
+                <span class="hero-note" data-slide="2" style="--y:92%">Switch output mid-track</span>
+
+                <div class="hero-caption" data-slide="3">
+                    <span class="k">Tidal</span>
+                    <span class="t">Tidal runs through the same chain as everything else — same
+                        controls, same readout, same DAC.</span>
+                </div>
+                <span class="hero-note" data-slide="3" style="--y:16.6%">Tidal, signed in</span>
+                <span class="hero-note" data-slide="3" style="--y:66.4%">Hi-Res, stated</span>
+                <span class="hero-note" data-slide="3" style="--y:92%">Your DAC</span>
+
+                <!-- Radio carries no NEXT block, so its rows sit higher than the other player
+                     screens: these three are measured on this capture, not copied. -->
+                <div class="hero-caption" data-slide="4">
+                    <span class="k">Radio</span>
+                    <span class="t">A web stream gets the same treatment as a local file: named
+                        source, named codec, your own DAC at the end.</span>
+                </div>
+                <span class="hero-note" data-slide="4" style="--y:16.6%">Internet radio</span>
+                <span class="hero-note" data-slide="4" style="--y:53.6%">Same chain</span>
+                <span class="hero-note" data-slide="4" style="--y:82.5%">Same DAC</span>
 
                 <div class="hero-caption" data-slide="5">
                     <span class="k">Browsing</span>
@@ -293,6 +293,10 @@
                 <span class="hero-note" data-slide="12" style="--y:64.1%">RT priorities</span>
                 <span class="hero-note" data-slide="12" style="--y:74.8%">Set per process</span>
 
+                <!-- BACKLOG: this capture comes from 0.9.45. It shows Compact mode and the configuration
+                     export and import, all since removed, and the caption below still offers the export.
+                     Retake it before the next release: audiogravity.ops/BACKLOG.md, "La landing montre
+                     une app qui a changé". -->
                 <div class="hero-caption" data-slide="13">
                     <span class="k">Settings</span>
                     <span class="t">Export the whole configuration to a file, pick a theme, and sign
@@ -505,8 +509,7 @@
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></div>
                     <h3>Complete audio device inventory</h3>
                     <p>Every ALSA card, USB interface, subdevice and hardware capability your kernel sees — without
-                        <code style="font-family:var(--mono);font-size:12px">aplay -l</code> or <code
-                            style="font-family:var(--mono);font-size:12px">lsusb</code>. Plus CPU, temperature, memory,
+                        <code class="ic">aplay -l</code> or <code class="ic">lsusb</code>. Plus CPU, temperature, memory,
                         disk and network at a glance.
                     </p>
                     <span class="fb-chip">ALSA · USB · sub-devices · hardware caps</span>
@@ -629,7 +632,7 @@
             <div class="section-label">Audio pipeline · Pro</div>
             <h2 class="section-title">Every device.<br>Every connection. <em>Live.</em></h2>
             <p class="section-sub">The pipeline graph is the signature view of Audiogravi<sup>ty</sup>. It renders your
-                <code style="font-family:var(--mono); font-size:15px">audio-topology.json</code> — the physical and
+                <code class="ic">audio-topology.json</code> — the physical and
                 virtual map of your Hi-Fi chain — as a live, interactive SVG you can pan, zoom and steer from. Click any
                 link to open the steering popover and reroute the ALSA output — gapless on MPD; AirPlay warns
                 before restarting its receiver.
@@ -1224,34 +1227,28 @@
     <section class="section alt" id="pricing">
         <div class="w">
             <div class="section-label">Editions &amp; license</div>
-            <h2 class="section-title">Three tiers.<br><em>Lifetime license.</em></h2>
-            <p class="section-sub">Audiogravi<sup>ty</sup> ships in three tiers: a 30-day Trial with full access, a free
-                Starter
-                Edition that activates automatically when the trial ends, and a Pro License — a lifetime license that
-                permanently unlocks all features on one machine.</p>
-            <p class="section-sub" style="font-size:.9em;opacity:.7;">The interface is <a href="https://github.com/audiogravity/audiogravity.ui" style="color:inherit;text-decoration:underline">open source (MIT)</a> — fork it, contribute, or build on it. The core engine remains proprietary.</p>
+            <h2 class="section-title">Two editions.<br><em>Lifetime license.</em></h2>
+            <p class="section-sub">Audiogravi<sup>ty</sup> comes in two editions: the Starter Edition, free, and
+                the Pro License, a lifetime license that permanently unlocks every feature on one machine.
+                Every install starts with thirty days of Pro, so you can try it all before you choose.</p>
+            <p class="section-sub section-note">The interface is <a href="https://github.com/audiogravity/audiogravity.ui">open source (MIT)</a> — fork it, contribute, or build on it. The core engine remains proprietary.</p>
+
+            <!-- The trial is a period, not an edition: every install starts in it and leaves it on
+                 its own. Drawn as a third card at €0 beside the Starter Edition's €0, it read as a
+                 third product and pushed the Pro card to the end of the row. It now heads the two
+                 editions it leads to, joined to them so it reads as applying to both. -->
+            <div class="pricing-trial">
+                <div>
+                    <div class="pp-tier">Trial · included</div>
+                    <div class="pt-title">30 days of Pro, on every install</div>
+                </div>
+                <p class="pt-desc">Full access to every feature from the first start. No action required: the days
+                    remaining are shown in Admin › License, and after thirty days the box moves to the Starter
+                    Edition on its own.</p>
+                <a href="#install" class="pp-cta">Start trial</a>
+            </div>
 
             <div class="pricing-grid">
-
-                <!-- Trial -->
-                <div class="pricing-plan">
-                    <div class="pp-tier">Trial</div>
-                    <div class="pp-price"><span class="currency">€</span>0</div>
-                    <div class="pp-period">30 days · auto-activated</div>
-                    <p class="pp-desc">Full access to every feature on first install. No action required. Days remaining
-                        shown in Admin › License.</p>
-                    <div class="pp-border">
-                        <div class="pp-rows">
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>All Starter features</span></div>
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>All Pro features</span></div>
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>Pipeline · Player · Library</span></div>
-                            <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span>Audio priority · latency test</span></div>
-                            <div class="pp-row"><span class="na">·</span><span style="color:var(--text4)">After 30 d →
-                                    Starter</span></div>
-                        </div>
-                    </div>
-                    <a href="#install" class="pp-cta">Start trial</a>
-                </div>
 
                 <!-- Starter -->
                 <div class="pricing-plan">
@@ -1276,7 +1273,7 @@
                                     in-place editing + diff</span></div>
                             <div class="pp-row"><span class="ck"><svg class="ck-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></span><span><b>Guided provisioning</b> — set the
                                     audio stack up in a few clicks</span></div>
-                            <div class="pp-row"><span class="na">·</span><span style="color:var(--text4)">Pro features
+                            <div class="pp-row"><span class="na">·</span><span class="pp-off">Pro features
                                     locked</span></div>
                         </div>
                     </div>
@@ -1327,12 +1324,15 @@
             <!-- The one first-person note on the page. It reuses the pricing-note idiom rather
                  than claiming a section of its own: a lone paragraph in an empty band reads as a
                  blog post dropped into a product page. Kept to two sentences — past that, a
-                 personal note gets skipped. -->
-            <div class="pricing-note">
+                 personal note gets skipped. The photo is the system the note names, so the note
+                 shows what it says. -->
+            <div class="pricing-note who">
                 <div class="lbl">Who I am</div>
                 <div class="txt">I designed Audiogravi<sup>ty</sup> for my own system — MPD, Roon, and HQPlayer connected
                     to a Heed Abacus, a Naim NAC 52 / NAP 250 setup, and ATC SL20 speakers. I develop and maintain it
                     myself, from France. <span class="sig">— <b>Alexandre Di Marco</b></span></div>
+                <img class="who-photo" src="assets/pics/whoiam.jpg" alt="The author's system in the dark, its Naim logo lit green"
+                    width="1440" height="732" loading="lazy" decoding="async">
             </div>
 
             <!-- HOW TO PURCHASE -->
@@ -1531,8 +1531,7 @@
                     <p class="setup-lede">No compilation, no dependency hell, no manual configuration. The installer
                         detects your architecture, generates security keys, configures the systemd service and starts
                         everything. Then install your audio engines in one click from the interface (MPD, AirPlay,
-                        UPnP…) and let the guided setup wire your DAC and music library. A few minutes from <code
-                            style="font-family:var(--mono);font-size:13px">curl</code> to listening.</p>
+                        UPnP…) and let the guided setup wire your DAC and music library. A few minutes from <code class="ic">curl</code> to listening.</p>
                     <ul class="setup-list">
                         <li><span class="tag">Recommended</span><span>DietPi on x86_64 or Raspberry Pi (aarch64)</span>
                         </li>

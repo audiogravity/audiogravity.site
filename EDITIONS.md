@@ -1,8 +1,7 @@
 # Editions / Plans — Audiogravi<sup>ty</sup>
 
-Audiogravi<sup>ty</sup> is available in three tiers: a **30-day trial** with full access,
-a free **Starter Edition** that activates automatically when the trial ends,
-and a **Pro License** — a one-time purchase that permanently unlocks all features.
+Audiogravi<sup>ty</sup> comes in two editions — a free **Starter Edition** and a **Pro License** —
+and every install starts with a **30-day trial** of Pro.
 
 ---
 

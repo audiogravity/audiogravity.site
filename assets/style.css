@@ -2033,6 +2033,43 @@ nav {
     color: var(--text)
 }
 
+/* "Who I am" with its photo, the system the note names. Side by side, half each: smaller, the
+   photo showed a dark room and no equipment. The words sit centred against the photo's height
+   (the empty tracks above and below take the slack), and the photo against the words' height
+   when those are the taller, as on a tablet. On a phone the photo heads the note.
+   .pricing-note.who outranks the phone rule of .pricing-note, hence a phone rule of its own. */
+.pricing-note.who {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto 1fr;
+    grid-template-areas: "photo ." "photo lbl" "photo txt" "photo .";
+    gap: 12px 32px
+}
+
+.pricing-note.who .lbl {
+    grid-area: lbl
+}
+
+.pricing-note.who .txt {
+    grid-area: txt;
+    font-size: var(--font-size-md)
+}
+
+.who-photo {
+    grid-area: photo;
+    align-self: center;
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+@media(max-width:720px) {
+    .pricing-note.who {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-template-areas: "photo" "lbl" "txt"
+    }
+}
+
 /* HOW TO PURCHASE */
 .howto {
     display: grid;

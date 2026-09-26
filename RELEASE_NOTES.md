@@ -7,7 +7,33 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Services and profiles come from Audiogravi<sup>ty</sup>
+
+The audio services the box drives, and the profiles that start and stop them, are now
+defined by Audiogravi<sup>ty</sup> itself.
+
+**Delivered with each version.** Every install and every update now puts the services and
+profiles of that version on the box. They used to be copied once, at the first install, so
+a box installed earlier never received what changed afterwards. The file replaced is kept
+beside it as `audio-config.json.previous`: a change made by hand lasts until the installer
+runs again — the next update, or a reinstall.
+
+**Profiles named after what they run.** A profile's name now says what it starts —
+*Roon Bridge + HQPlayer NAA*, *MPD + HQPlayer Embedded* — and its description what it is
+for. A profile is critical, with an orange left edge and a *Critical Profile* confirmation,
+when it starts HQPlayer's NAA or HQPlayer Embedded: *Roon Bridge + MPD + HQPlayer NAA* now is,
+*Stop All* no longer is.
+
+**No more export or import.** The Settings panel no longer offers *Export Configuration*
+and *Import Configuration*: an import would overwrite what Audiogravi<sup>ty</sup> defines,
+and the export only existed to be imported again.
+
+**A change by hand, checked before it is applied.** When a box's profiles must change
+between two versions, support edits a copy of the file over SSH and applies it with
+`sudo /opt/audiogravity/ag-apply-audio-config <copy>`. The core checks the copy first: a
+mistake is refused with its reason and nothing changes; a correct copy takes the file's
+place, and lasts until the installer runs again. The manual's troubleshooting chapter walks
+through it.
 
 ---
 

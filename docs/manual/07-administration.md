@@ -39,8 +39,6 @@ the tab closes). Takes effect on your next login.
 
 The **gear** in the top bar opens the app-wide Settings panel:
 
-- **Export / Import Configuration** — download or replace `audio-config.json`, the
-  services-and-profiles registry (see *Audio configuration* below).
 - **Theme** — three looks: *Minimal (Classic)*, *Slate (Modern)* and *Gravity (Bold &
   Cosmic)* — plus a **Light/Dark Mode** toggle. The light/dark switch is also on the
   sign-in screen, so the choice can be made before signing in (see
@@ -55,7 +53,7 @@ The **gear** in the top bar opens the app-wide Settings panel:
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
-<img src="images/ios-settings.webp" alt="The Settings panel: configuration export/import, theme, and one toggle per row — light/dark mode, notifications, animations, portrait lock and Face ID / Touch ID" width="360">
+<img src="images/ios-settings.webp" alt="The Settings panel: theme, and one toggle per row — light/dark mode, notifications, animations, portrait lock and Face ID / Touch ID" width="360">
 
 ### Push notifications
 
@@ -144,38 +142,30 @@ file.
 
 ## Audio configuration (services & profiles)
 
-`audio-config.json` is the registry of the audio **services** Audiogravi<sup>ty</sup> manages and
-the **profiles** built on top of them. It's what populates the **Services** tab (each declared
-service becomes a controllable tile) and the **Profiles** tab (each profile a one-tap way to
-start one set of services and stop another). It is a different file from the per-service config
-files edited above — this one lists *which* services exist, not their internal settings.
+The **Services** tab and the **Profiles** tab both come from one file,
+`/etc/audiogravity/audio-config.json`: the audio **services** Audiogravi<sup>ty</sup> drives, and
+the **profiles** built on them — each a one-tap way to start one set of services and stop
+another. It is a different file from the per-service config files edited above: this one lists
+*which* services exist, not their settings.
 
-- **Services** — each entry declares a `label`, its `systemd_unit` (e.g. `mpd.service`) and a
-  `critical` flag. MPD, upmpdcli (UPnP), shairport-sync (AirPlay), Roon Bridge, HQPlayer's
-  NAA and HQPlayer Embedded are the usual entries. Where a service keeps its own settings file is **not** declared
-  here — Audiogravi<sup>ty</sup> finds it by itself, on any machine. Files written before this
-  version carry an `appconfigfile` line; it is ignored (see
-  [9. Troubleshooting](09-troubleshooting.md)).
-- **Profiles** — each entry has a `name`, a `description`, and two lists: the services to
-  **start** and the services to **stop** when you activate it (plus an optional `critical` flag
-  and `depends_on`). "MPD", "Stop All"… are profiles.
-- **`topology_link`** — ties this box to its device in the topology (`host_device_id`, e.g.
-  `streamer_01`), so the signal-chain view knows which streamer the services run on.
-- **`added_by_upgrade`** — filled in by Audiogravi<sup>ty</sup>; leave it as it is. It lists
-  the services an update has added to this file, such as HQPlayer Embedded, so that one you
-  remove stays removed: no update or import puts it back.
+Audiogravi<sup>ty</sup> ships this file, and puts it in place at every installation and every
+update: the services and profiles on your box are those of the version you run.
 
-- **Managing it.** Open **Settings** (the gear in the top bar). *Export Configuration*
-  downloads the current `audio-config.json`; *Import Configuration* uploads a replacement.
-- **Validation on import.** An imported file is checked before it is applied: bad structure, a
-  missing required field or a wrong type are reported as blocking **errors**; softer issues
-  appear as **warnings** you can review and accept — among them a service that is not
-  installed on the box, whose profiles simply show as unavailable until you install it. A
-  file exported before an update is brought up to date as you import it. A reference
-  **`audio-config.json.example`** ships with the box.
+- **A profile's name says what it starts** — *MPD + HQPlayer NAA* runs MPD and HQPlayer's NAA —
+  and its description what it is for. Two exceptions: *UPnP Renderer* runs MPD and the UPnP
+  bridge, and *Stop All* stops everything.
+- **A profile that starts HQPlayer's NAA or HQPlayer Embedded is critical**: its tile has an
+  orange left edge, and the confirmation of a switch is titled *Critical Profile*.
+- **The services and profiles of software you have not installed stay listed**, greyed out,
+  until you install it from [Audio Software](#audio-software).
 
-See also **Audio topology** below — the *other* file you own, describing the physical hi-fi
-chain that feeds the signal-path view.
+A change made to the file by hand lasts until the installer runs again — at the next update,
+or a reinstall — which puts the shipped file back and keeps the one it replaces beside it as
+`audio-config.json.previous`. To make one, see
+[9. Troubleshooting → Changing the profiles between two versions](09-troubleshooting.md#changing-the-profiles-between-two-versions).
+
+See also **Audio topology** below — the file you own, describing the physical hi-fi chain that
+feeds the signal-path view.
 
 ## Audio topology (signal-chain map)
 

@@ -42,9 +42,11 @@ action updates the box it runs on.
 ## Manual update
 
 You can always update by re-running the installer; your configuration is preserved —
-both `.env` and the editable files under `/etc/audiogravity` (the audio setup, the
-signal-chain map, and your saved radio stations). A **fresh** install seeds those files
-with sensible defaults; an **upgrade never overwrites them**, so your edits survive:
+both `.env` and your files under `/etc/audiogravity` (the signal-chain map, and your saved
+radio stations). A **fresh** install seeds those files with sensible defaults; an
+**upgrade never overwrites them**, so your edits survive. The services and profiles are
+the exception: they come with each version, and the installer puts them back every time
+it runs (see [7. Administration](07-administration.md#audio-configuration-services--profiles)):
 
 ```bash
 curl -fsSL https://audiogravity.app/install.sh | sudo bash
@@ -63,7 +65,7 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:
 
 | What | Where |
 |------|-------|
-| Audio setup — services & profiles registry, hi-fi chain map, saved radio stations | `/etc/audiogravity/` (`audio-config.json`, `audio-topology.json`, `radio.json`) |
+| Audio setup — hi-fi chain map, saved radio stations | `/etc/audiogravity/` (`audio-topology.json`, `radio.json`) |
 | Your **licence** and its public key — valid on this installation only (see below) | `/etc/audiogravity/audiogravity.lic`, `license.pub` |
 | **Accounts** — users, roles, password hashes, passkeys | `/opt/audiogravity/core/users.json` |
 | Core **runtime config** — API key, security secrets, enabled modules | `/opt/audiogravity/core/.env` |
@@ -83,7 +85,10 @@ sudo tar -czf ag-backup-$(hostname)-$(date +%F).tar.gz \
 files and restart the core:
 
 ```bash
-sudo tar -xzf ag-backup-….tar.gz -C / --exclude=etc/audiogravity/audiogravity.lic
+sudo tar -xzf ag-backup-….tar.gz -C / --exclude=etc/audiogravity/audiogravity.lic \
+    --exclude='etc/audiogravity/audio-config.json*' \
+    --exclude=etc/audiogravity/packages-registry.json \
+    --exclude=etc/audiogravity/packages-config.json
 sudo systemctl restart ag-core-server
 ```
 
@@ -95,6 +100,10 @@ The licence file is left out on purpose: it only matches the installation it was
 activated on, and a reinstalled system has a new **Device ID**. Brought back, it would be
 refused, and would keep the free trial from starting. To have your licence reset, see
 [9. Troubleshooting](09-troubleshooting.md#licence-not-recognised-after-a-reinstall-or-a-new-machine).
+
+The services and profiles, and the list of audio software, are left out too: they come
+with the version you install, and the archive's would bring back those of the version you
+backed up.
 
 > Editor-level backups (the timestamped copies the Config editor keeps before every
 > save) live under `/var/backups/audiogravity` — that's why the archive above

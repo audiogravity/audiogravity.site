@@ -308,7 +308,7 @@ restarts.
 **Switching to it.** Two profiles run it. Both stop the NAA, Roon Bridge and UPnP Bridge,
 so that HQPlayer has your DAC to itself:
 
-- **MPD HQPlayer Embedded** keeps MPD running beside it: your own music library plays
+- **MPD + HQPlayer Embedded** keeps MPD running beside it: your own music library plays
   through HQPlayer Embedded, as well as everything else.
 - **HQPlayer Embedded** stops MPD too: streaming services, internet radio and media servers
   play through it, but not your own library.

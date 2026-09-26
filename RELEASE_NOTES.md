@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Services and profiles come from Audiogravi<sup>ty</sup>
+
+The audio services the box drives, and the profiles that start and stop them, are now
+defined by Audiogravi<sup>ty</sup> itself.
+
+**No more export or import.** The Settings panel no longer offers *Export Configuration*
+and *Import Configuration*: an import would overwrite what Audiogravi<sup>ty</sup> defines,
+and the export only existed to be imported again.
 
 ---
 

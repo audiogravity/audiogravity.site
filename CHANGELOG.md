@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Removed
+- **[core][ui] Settings no longer exports or imports the audio configuration.** `audio-config.json` — the audio services and the profiles built on them, behind the **Services** and **Profiles** tabs — becomes Audiogravi<sup>ty</sup>'s own: it defines the profiles it covers. An import would overwrite that file, and the export only existed to be imported again, so *Export Configuration* and *Import Configuration* are gone from the Settings panel. API: `GET /profiles/configuration/export-file` and `POST /profiles/configuration/import-file` are removed; `GET /profiles/configuration` stays.
+
 ## [0.9.61] - 2026-09-25
 
 ### Added

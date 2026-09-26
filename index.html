@@ -34,11 +34,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-180.png">
     <meta name="theme-color" content="#2d2d2d">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <!-- The two faces the first screen draws, requested before the stylesheet asks for them:
+         Inter upright for nearly everything, its italic for "A conductor, not a soloist."
+         Both come from this site, like every font on it (the FONTS block of style.css). -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/style.css">
     <script>
         /* Apply saved theme before first paint to avoid flash */
@@ -505,8 +505,7 @@
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></div>
                     <h3>Complete audio device inventory</h3>
                     <p>Every ALSA card, USB interface, subdevice and hardware capability your kernel sees — without
-                        <code style="font-family:var(--mono);font-size:12px">aplay -l</code> or <code
-                            style="font-family:var(--mono);font-size:12px">lsusb</code>. Plus CPU, temperature, memory,
+                        <code class="ic">aplay -l</code> or <code class="ic">lsusb</code>. Plus CPU, temperature, memory,
                         disk and network at a glance.
                     </p>
                     <span class="fb-chip">ALSA · USB · sub-devices · hardware caps</span>
@@ -629,7 +628,7 @@
             <div class="section-label">Audio pipeline · Pro</div>
             <h2 class="section-title">Every device.<br>Every connection. <em>Live.</em></h2>
             <p class="section-sub">The pipeline graph is the signature view of Audiogravi<sup>ty</sup>. It renders your
-                <code style="font-family:var(--mono); font-size:15px">audio-topology.json</code> — the physical and
+                <code class="ic">audio-topology.json</code> — the physical and
                 virtual map of your Hi-Fi chain — as a live, interactive SVG you can pan, zoom and steer from. Click any
                 link to open the steering popover and reroute the ALSA output — gapless on MPD; AirPlay warns
                 before restarting its receiver.
@@ -1229,7 +1228,7 @@
                 Starter
                 Edition that activates automatically when the trial ends, and a Pro License — a lifetime license that
                 permanently unlocks all features on one machine.</p>
-            <p class="section-sub" style="font-size:.9em;opacity:.7;">The interface is <a href="https://github.com/audiogravity/audiogravity.ui" style="color:inherit;text-decoration:underline">open source (MIT)</a> — fork it, contribute, or build on it. The core engine remains proprietary.</p>
+            <p class="section-sub section-note">The interface is <a href="https://github.com/audiogravity/audiogravity.ui" style="color:inherit;text-decoration:underline">open source (MIT)</a> — fork it, contribute, or build on it. The core engine remains proprietary.</p>
 
             <div class="pricing-grid">
 
@@ -1531,8 +1530,7 @@
                     <p class="setup-lede">No compilation, no dependency hell, no manual configuration. The installer
                         detects your architecture, generates security keys, configures the systemd service and starts
                         everything. Then install your audio engines in one click from the interface (MPD, AirPlay,
-                        UPnP…) and let the guided setup wire your DAC and music library. A few minutes from <code
-                            style="font-family:var(--mono);font-size:13px">curl</code> to listening.</p>
+                        UPnP…) and let the guided setup wire your DAC and music library. A few minutes from <code class="ic">curl</code> to listening.</p>
                     <ul class="setup-list">
                         <li><span class="tag">Recommended</span><span>DietPi on x86_64 or Raspberry Pi (aarch64)</span>
                         </li>

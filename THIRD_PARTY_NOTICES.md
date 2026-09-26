@@ -116,14 +116,18 @@ Same MIT terms as above.
 
 ---
 
-## UI — fonts loaded via Google Fonts CDN
+## Fonts — shipped with the interface and with this website
+
+Both families are served as files: by the interface on the box, and by this website
+for its pages and the manual. Neither is fetched from a font service. The license
+texts travel with the files, as `OFL-Inter.txt` and `OFL-JetBrains-Mono.txt`.
 
 ### Inter
 **Copyright** © 2016 The Inter Project Authors  
 **License** SIL Open Font License 1.1  
 **Source** https://rsms.me/inter  
 
-This Font Software is licensed under the SIL Open Font License, Version 1.1.
+Upright and italic. This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied at https://openfontlicense.org and is also available
 with a FAQ at https://openfontlicense.org/ofl-faq.
 

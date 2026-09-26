@@ -46,9 +46,11 @@ jobs:
       - run: pip install --quiet markdown-it-py==3.0.0 pytest==8.3.4
 
       # The generator is the only thing standing between the Markdown and the published site,
-      # and nothing else reviews what it emits — so its tests run before it does.
+      # and nothing else reviews what it emits — so its tests run before it does. Its own tests
+      # only: scripts/ also holds the landing's guards, which the Landing workflow runs, and a
+      # stylesheet regression must not hold the manual back.
       - name: Test the generator
-        run: python3 -m pytest scripts/ -q
+        run: python3 -m pytest scripts/test_gen_manual_html.py -q
 
       - name: Render the manual
         run: python3 scripts/gen_manual_html.py

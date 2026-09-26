@@ -286,8 +286,6 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     <meta name="description" content="Audiogravity user manual — {html.escape(plain)}.">
     <link rel="canonical" href="https://audiogravity.app/docs/manual/{canonical}">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/style.css">
     <link rel="stylesheet" href="../../assets/manual.css">
     <script>

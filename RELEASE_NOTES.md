@@ -18,6 +18,12 @@ a box installed earlier never received what changed afterwards. The file replace
 beside it as `audio-config.json.previous`: a change made by hand lasts until the next
 update.
 
+**Profiles named after what they run.** A profile's name now says what it starts —
+*Roon Bridge + HQPlayer NAA*, *MPD + HQPlayer Embedded* — and its description what it is
+for. A profile is critical, with the orange border and the stronger confirmation, when it
+starts HQPlayer's NAA or HQPlayer Embedded: *Roon Bridge + MPD + HQPlayer NAA* now is,
+*Stop All* no longer is.
+
 **No more export or import.** The Settings panel no longer offers *Export Configuration*
 and *Import Configuration*: an import would overwrite what Audiogravi<sup>ty</sup> defines,
 and the export only existed to be imported again.

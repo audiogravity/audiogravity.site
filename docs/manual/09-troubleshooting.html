@@ -247,31 +247,39 @@ dash.</p>
 <p>In <strong>Services</strong>, every card shows a dash (—) where the memory figure should be, and draws
 no memory graph, while the CPU figures next to them move normally.</p>
 <p>Nothing is wrong with the services: your box's <strong>kernel was started with memory accounting
-switched off</strong>, so there is no figure for anyone to read. It is the factory setting of
-Raspberry Pi OS, which saves a few megabytes of kernel memory by not counting. systemd
-itself reports nothing for those services, and Audiogravi<sup>ty</sup> can only show what
-the system measures. CPU keeps working because that counter is enabled and the memory one
-is not.</p>
+switched off</strong>, so there is no figure for anyone to read. A Raspberry Pi starts that way on
+its own. systemd itself reports nothing for those services, and Audiogravi<sup>ty</sup> can
+only show what the system measures. CPU keeps working because that counter is enabled and
+the memory one is not.</p>
 <p><strong>Confirm it in two commands</strong>, over SSH or in the browser <strong>Terminal</strong> (System tab, admin):</p>
 <pre><code class="language-bash">cat /sys/fs/cgroup/cgroup.controllers   # 'memory' missing from the list
 cat /proc/cmdline                       # contains cgroup_disable=memory
 </code></pre>
-<p><strong>Turn the counter on.</strong> Edit the boot command line and restart:</p>
+<p><strong>Turn the counter on</strong> by adding one word at the end of the boot command line:</p>
 <pre><code class="language-bash"># Back the file up first — a broken boot file leaves the box unreachable
 sudo cp /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bak-$(date +%F)
-sudo nano /boot/firmware/cmdline.txt
+sudo sed -i '1 s/$/ cgroup_enable=memory/' /boot/firmware/cmdline.txt
+cat /boot/firmware/cmdline.txt
 </code></pre>
-<p>Remove <code>cgroup_disable=memory</code>. If your file has no such setting but memory is still
-missing from the controller list, add <code>cgroup_enable=memory cgroup_memory=1</code> instead.
-Then <code>sudo reboot</code>, and the figures appear on their own.</p>
+<p>The last command shows the file: check that it is still a single line, now ending with
+<code>cgroup_enable=memory</code>. Only then restart:</p>
+<pre><code class="language-bash">sudo reboot
+</code></pre>
+<p>Once the box is back, the figures appear on their own, and
+<code>cat /sys/fs/cgroup/cgroup.controllers</code> now lists <code>memory</code>. Don't look for
+<code>cgroup_disable=memory</code> in that file: the Pi adds it by itself, and the word you added at
+the end takes over.</p>
 <blockquote>
 <p><strong>This file is a single line.</strong> Every setting sits on it, separated by spaces — an
-editor that adds a line break makes the box fail to boot. Change only the words you came
-for, save, and check the file still holds one line (<code>wc -l</code> answers 0 or 1).</p>
+editor that adds a line break makes the box fail to boot. If you edit it by hand instead,
+change only the words you came for, save, and check the file still holds one line
+(<code>wc -l</code> answers 0 or 1).</p>
 <p><strong>If the box does not come back</strong>, power it off, read the SD card on another computer,
 and rename your <code>cmdline.txt.bak-…</code> back to <code>cmdline.txt</code>. This is why the first command
 above is a backup.</p>
 </blockquote>
+<p>To switch the counter off again, remove <code>cgroup_enable=memory</code> from the end of the line and
+restart.</p>
 <blockquote>
 <p><strong>On an older image</strong> this file lives at <code>/boot/cmdline.txt</code> instead.</p>
 </blockquote>

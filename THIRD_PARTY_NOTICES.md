@@ -393,15 +393,20 @@ optionally used) at runtime. They must be present on the host system.
 
 ### ffmpeg
 **Copyright** © FFmpeg contributors  
-**License** GNU Lesser General Public License v2.1 or later (LGPL-2.1+)  
+**License** GNU General Public License v2.0 or later (GPL-2.0+)  
 **Source** https://ffmpeg.org  
-**Used by** Tidal streaming — remuxes DASH segments to FLAC for MPD playback  
+**Used by** Tidal streaming — remuxes DASH segments to FLAC; HQPlayer — converts to
+FLAC the radio stations and library files it cannot decode  
 **Install** `apt install ffmpeg`
 
+FFmpeg's own code is LGPL-2.1+, but the build that Debian and Raspberry Pi OS
+ship enables FFmpeg's optional GPL parts (`--enable-gpl`), and FFmpeg's license
+then changes to GPL-2.0+ — that build is the program installed on the box.
+
 This program is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the Free
-Software Foundation; either version 2.1 of the License, or (at your option)
-any later version. Full license: https://www.gnu.org/licenses/lgpl-2.1.html
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Full license: https://www.gnu.org/licenses/gpl-2.0.html
 
 ---
 

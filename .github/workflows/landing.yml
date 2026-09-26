@@ -1,5 +1,6 @@
 # Runs the landing's guards — the closed type scale, the fonts served from this site, monospace
-# kept for what is read character by character — on the pushes that can break them.
+# kept for what is read character by character, and every file and manual link the landing and
+# the 404 page point at — on the pushes that can break them.
 #
 # A report, not a gate: GitHub Pages publishes every push to main whatever this job says, so a
 # failure shows as a red mark on the commit that caused it, not as a page held back. Running
@@ -18,6 +19,8 @@ on:
       - 'index.html'
       - '404.html'
       - 'scripts/test_landing_styles.py'
+      - 'scripts/test_landing_content.py'
+      - 'docs/manual/*.md'
       - 'scripts/gen_manual_html.py'
       - '.github/workflows/landing.yml'
   workflow_dispatch:
@@ -35,8 +38,9 @@ jobs:
         with:
           python-version: '3.x'
 
-      # Pinned, as in the Manual workflow.
-      - run: pip install --quiet pytest==8.3.4
+      # Pinned, as in the Manual workflow. markdown-it-py because the link guard computes the
+      # manual's anchors with the generator's own renderer.
+      - run: pip install --quiet markdown-it-py==3.0.0 pytest==8.3.4
 
       - name: Test the landing's guards
-        run: python3 -m pytest scripts/test_landing_styles.py -q
+        run: python3 -m pytest scripts/test_landing_styles.py scripts/test_landing_content.py -q

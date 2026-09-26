@@ -138,9 +138,9 @@ sudo /var/www/audiogravity-ui/uninstall.sh   # ui
 
 This removes the services, the programs, the privileged rules Audiogravi<sup>ty</sup>
 granted itself and its system account — but **keeps your configuration** in
-`/etc/audiogravity` (your topology, profiles and audio settings) and the backups of
-your audio services' configuration files in `/var/backups/audiogravity`. Reinstalling
-afterwards picks up where you left off.
+`/etc/audiogravity` (your signal-chain map, saved radio stations and licence) and the
+backups of your audio services' configuration files in `/var/backups/audiogravity`.
+Reinstalling afterwards picks up where you left off.
 
 To remove those too:
 

@@ -114,11 +114,12 @@ for a radio station or a UPnP server it gives the name of the station or the ser
 
 ## Profiles — switch whole chains in one tap
 
-A **profile** is a saved scenario for your audio system. Switching one automatically
-**starts the services it needs and stops the conflicting ones**, so the chain is
-always coherent and bit-perfect. Typical profiles: *Roon + HQPlayer* for serious
-listening, *MPD + upmpdcli* to expose the box as a UPnP renderer, *AirPlay only* for
-background music.
+A **profile** is a ready-made scenario for your audio system, named after what it runs.
+Switching one automatically **starts the services it needs and stops the conflicting
+ones**, so the chain is always coherent and bit-perfect. For example: *Roon Bridge +
+HQPlayer NAA* for serious listening, *UPnP Renderer* to expose the box as a UPnP
+renderer, *MPD* for your own music library. The profiles come with Audiogravi<sup>ty</sup>
+(see [7. Administration](07-administration.md#audio-configuration-services--profiles)).
 
 Each profile tile shows the services it starts/stops, the resolved output port (e.g.
 `usb`, `toslink`), a live **health bar** (active / failed / idle), and when it was

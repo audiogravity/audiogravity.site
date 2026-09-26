@@ -28,6 +28,12 @@ starts HQPlayer's NAA or HQPlayer Embedded: *Roon Bridge + MPD + HQPlayer NAA* n
 and *Import Configuration*: an import would overwrite what Audiogravi<sup>ty</sup> defines,
 and the export only existed to be imported again.
 
+**A change by hand, checked before it is applied.** When a box's profiles must change
+between two versions, support edits the file over SSH and runs
+`sudo /opt/audiogravity/ag-apply-audio-config`. The core checks the file first: a mistake is
+refused with its reason and nothing changes; a correct file is applied, and lasts until the
+next update.
+
 ---
 
 ## 0.9.61 — 2026-09-25

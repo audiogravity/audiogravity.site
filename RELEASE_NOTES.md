@@ -51,6 +51,14 @@ they are darker or lighter where they were hard to read, and every theme now cle
 interface's contrast floor. In the app, all of this arrives with the next version of the
 interface; the website has it now.
 
+### The HQPlayer card, on a phone
+
+The card of an HQPlayer on your network now says which one it is — *HQPlayer Desktop
+5.28.1* — as the card of the one running on your box already did. And while HQPlayer
+Embedded runs, its **Forget** button no longer runs out of the card on a phone: the button
+is simply called **Forget**, the address it forgets is written just above it, and the
+buttons go to a second line when there is no room.
+
 ---
 
 ## 0.9.61 — 2026-09-25

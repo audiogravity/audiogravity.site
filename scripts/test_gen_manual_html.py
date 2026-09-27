@@ -424,3 +424,57 @@ class TestCopyScript:
         """The flag is only worth something if the script reads it."""
         js = (REPO_DIR / "assets" / "manual-copy.js").read_text(encoding="utf-8")
         assert "data-copy" in js and "'no'" in js
+
+
+class TestTrademarkNotice:
+    """The notice is shown once wherever the manual is read, never at the end of a chapter."""
+
+    def test_a_chapter_page_carries_it_in_its_footer(self):
+        out = page("Listening", "<p>Body</p>", TOC, "04-listening", "04-listening")
+        footer = out[out.index('<footer class="man-foot">'):out.index("</footer>")]
+        assert '<p class="man-notice">Roon, HQPlayer, AirPlay' in footer
+        assert "trademarks of their respective owners. Audiogravi<sup>ty</sup> is not" in footer
+
+    def test_the_contents_page_does_not_repeat_it(self):
+        """README.md, the contents page's body, already ends with it."""
+        out = page("Contents", "<p>Body</p>", TOC, "", "")
+        assert "man-notice" not in out
+
+    def test_the_manual_places_it_as_it_should(self):
+        import gen_manual_html as g
+        assert g.check_notice() == []
+
+    def test_a_chapter_repeating_it_is_refused(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("*… are\ntrademarks of their respective owners. …*\n")
+        (tmp_path / "04-listening.md").write_text("# Listening\n\n*… trademarks of their\nrespective owners …*\n")
+        monkeypatch.setattr(g, "MANUAL_DIR", tmp_path)
+        assert g.check_notice() == ["04-listening.md repeats the trademark notice"]
+
+    def test_a_readme_without_it_is_refused(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("# Manual\n")
+        monkeypatch.setattr(g, "MANUAL_DIR", tmp_path)
+        assert g.check_notice() == ["README.md lacks the trademark notice"]
+
+    def test_a_readme_carrying_it_outside_italics_is_refused(self, tmp_path, monkeypatch):
+        """The app finds it as an italic passage: the site holds the README to the same form."""
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("Names are trademarks of their respective owners.\n")
+        monkeypatch.setattr(g, "MANUAL_DIR", tmp_path)
+        assert g.check_notice() == ["README.md lacks the trademark notice"]
+
+    def test_the_footer_takes_its_words_from_the_readme(self, tmp_path, monkeypatch):
+        """One wording, the README's: nothing to keep in step by hand."""
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("*Names are trademarks\nof their respective owners.*\n")
+        monkeypatch.setattr(g, "MANUAL_DIR", tmp_path)
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<p class="man-notice">Names are trademarks of their respective owners.</p>' in out
+
+    def test_reads_it_as_the_app_does(self):
+        import gen_manual_html as g
+        md = "*Roon … are\ntrademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated.*"
+        assert g.read_notice(md) == ("Roon … are trademarks of their respective owners. "
+                                     "Audiogravi<sup>ty</sup> is not affiliated.")
+        assert g.read_notice("*An italic line.*") is None

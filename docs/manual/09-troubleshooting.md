@@ -667,10 +667,3 @@ button: a licence reset is available on request.
 - **Logs** — the System event log (in-app) and `journalctl -u ag-core-server` /
   `journalctl -u <service>` from the Terminal.
 - More answers on the [website FAQ](https://audiogravity.app/#faq).
-
----
-
-*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
-trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
-endorsed by, or sponsored by any of them: it interoperates with their software as a client,
-and each remains the property of its owner.*

@@ -49,7 +49,7 @@ Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 > first is still being applied. See
 > [9. Troubleshooting](09-troubleshooting.md).
 
-<img src="images/ios-fullscreen.webp" alt="The fullscreen player: cover art, signal path, hi-fi format strip, transport, next track and output bar" width="360">
+<img src="images/ios-fullscreen.webp" alt="The fullscreen player: cover art, signal path, the track with its add-to-playlist button, hi-fi format strip, transport, next track and output bar" width="360">
 
 
 ## The Queue

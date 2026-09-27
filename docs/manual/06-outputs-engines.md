@@ -118,7 +118,7 @@ versions instead of letting the music fail without a word.
 
 ### Use as output
 
-<img src="images/ios-hqplayer-output.webp" alt="The HQPlayer card: connected, with the Use as output switch turned on" width="360">
+<img src="images/ios-hqplayer-output.webp" alt="The HQPlayer card: HQPlayer Desktop and its version, connected, with the Use as output switch turned on" width="360">
 
 With the switch on, playing an album routes it to HQPlayer, which processes it and
 sends it back to your DAC through the NAA. The player badges the track with where the
@@ -261,7 +261,7 @@ run it, the card says why.
    instead.
 5. Click **Install**. Once it is done, HQPlayer Embedded is running.
 
-<img src="images/ios-hqplayer-embedded-install.webp" alt="The install window of HQPlayer Embedded: the version to install, the password for its web page, and Signalyst's licence" width="360">
+<img src="images/ios-hqplayer-embedded-install.webp" alt="The install window of HQPlayer Embedded: the version to install, the 30-minute limit without a licence key, the password for its web page, and Signalyst's licence" width="360">
 
 **Choosing its output.** HQPlayer Embedded has no output after installation and plays
 nothing until you give it one. Choose it in Audiogravi<sup>ty</sup>, as for any player on the
@@ -326,7 +326,7 @@ when HQPlayer Embedded stops, the card returns to it, with its own **Use as outp
 setting. The formats HQPlayer cannot decode are converted here too — see
 [What can and cannot go through HQPlayer](#what-can-and-cannot-go-through-hqplayer).
 
-<img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, and the HQPlayer chosen before kept for when it stops" width="360">
+<img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, the HQPlayer chosen before kept for when it stops, and the Web interface and Forget buttons" width="360">
 
 **If something did not go through.** When HQPlayer Embedded is installed but a step after
 that could not be done, the result says **Install Incomplete** and what is left to do. If

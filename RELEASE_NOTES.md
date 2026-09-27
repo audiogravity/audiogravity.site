@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.62 — 2026-09-27
+
 ### Services and profiles come from Audiogravi<sup>ty</sup>
 
 The audio services the box drives, and the profiles that start and stop them, are now

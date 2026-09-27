@@ -59,6 +59,36 @@ MD_LINK = re.compile(r'href="(?!https?:)(?P<id>[^"#]*?)\.md(?P<anchor>#[^"]*)?"'
 
 BRAND = "Audiogravi<sup>ty</sup>"
 
+#: How the trademark notice is found in README.md, the one Markdown file that carries it: its
+#: italic passage that says the names are trademarks of their respective owners. The app reads
+#: it the same way (audiogravity.ui, js/core/manual-notice.js) and shows it under each chapter;
+#: the chapter pages here show it in their footer. check_notice() keeps it in the README and
+#: out of the chapters.
+NOTICE_ITALIC = re.compile(r"\*([^*]*trademarks\s+of\s+their\s+respective\s+owners[^*]*)\*")
+
+
+def read_notice(readme: str) -> str | None:
+    """The trademark notice, as README.md words it.
+
+    Args:
+        readme: Contents of ``docs/manual/README.md``.
+
+    Returns:
+        The notice with its lines joined and its inline HTML (``<sup>``) kept, or None when
+        the README does not carry it as an italic passage.
+    """
+    m = NOTICE_ITALIC.search(readme)
+    return " ".join(m.group(1).split()) if m else None
+
+
+def footer_notice() -> str:
+    """The notice the chapter pages carry in their footer, in the README's own words.
+
+    Returns:
+        The notice; empty when the README has none — which check_notice() refuses first.
+    """
+    return read_notice((MANUAL_DIR / "README.md").read_text(encoding="utf-8")) or ""
+
 
 def parse_toc(readme: str) -> list[tuple[str, str]]:
     """Extract the ordered chapter list from the manual README.
@@ -580,6 +610,9 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         for cid, label in toc
     )
     plain = re.sub(r"<[^>]+>", "", title)
+    # A chapter carries the trademark notice in its footer; the contents page does not,
+    # since README.md — its body — already ends with it.
+    notice = f'\n                <p class="man-notice">{footer_notice()}</p>' if active else ""
     return f"""<!doctype html>
 <html lang="en">
 
@@ -623,7 +656,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
 {body}
             </article>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <a href="../../index.html">← Back to audiogravity.app</a>{notice}
             </footer>
         </main>
     </div>
@@ -695,25 +728,44 @@ def build() -> dict[Path, str]:
     return out
 
 
-#: The trademark notice every chapter must carry. It lives in the MARKDOWN, not in the
-#: HTML template, because the Markdown is the source: the site's pages are generated from
-#: it, GitHub renders it directly, and the interface fetches it live. A notice added to the
-#: template would have appeared on the website alone — the one reader of the three who is
-#: least likely to be a customer.
-#:
-#: That means thirteen copies of one sentence, which is why this check exists: they cannot
-#: drift, and a new chapter cannot ship without it.
+#: Where the trademark notice may appear in the Markdown: README.md only. It used to close all
+#: thirteen files, because the Markdown is read in three places — these pages, GitHub, and
+#: the app — and a notice in this template alone would have reached the website alone. Each
+#: place now shows it once instead: the chapter pages in their footer (footer_notice()), the
+#: app's Manual window in its own footer, GitHub in README.md. Repeated at the end of every
+#: chapter it read as part of the text. This check keeps it out of the chapters, so it
+#: cannot creep back, and in README.md, where GitHub readers find it.
 NOTICE_MARK = "trademarks of their respective owners"
 
 
-def check_notice() -> list[str]:
-    """Chapters missing the trademark notice.
+def _mentions_notice(path: Path) -> bool:
+    """Whether a Markdown file carries the trademark notice, wherever its lines break.
+
+    Args:
+        path: A Markdown file of the manual.
 
     Returns:
-        Their file names, empty when every chapter carries it.
+        True when the notice's wording is in it.
     """
-    return [f.name for f in sorted(MANUAL_DIR.glob("*.md"))
-            if NOTICE_MARK not in f.read_text(encoding="utf-8")]
+    return NOTICE_MARK in " ".join(path.read_text(encoding="utf-8").split())
+
+
+def check_notice() -> list[str]:
+    """Where the trademark notice is out of place.
+
+    The README must carry it as the app reads it — an italic passage (read_notice); a chapter
+    must not carry it in any form, its words alone being enough to refuse it.
+
+    Returns:
+        One line per problem: README.md without it, or a chapter repeating it. Empty when
+        the notice is where it belongs.
+    """
+    problems = []
+    if read_notice((MANUAL_DIR / "README.md").read_text(encoding="utf-8")) is None:
+        problems.append("README.md lacks the trademark notice")
+    problems += [f"{f.name} repeats the trademark notice"
+                 for f in sorted(MANUAL_DIR.glob("[0-9][0-9]-*.md")) if _mentions_notice(f)]
+    return problems
 
 
 def main() -> int:
@@ -727,10 +779,10 @@ def main() -> int:
                     help="fail if a committed page differs from what the Markdown produces")
     args = ap.parse_args()
 
-    missing = check_notice()
-    if missing:
-        print("trademark notice missing from: " + ", ".join(missing))
-        print("Every chapter carries it — the Markdown is what GitHub and the app read.")
+    misplaced = check_notice()
+    if misplaced:
+        print("trademark notice: " + "; ".join(misplaced))
+        print("It belongs in README.md only — each chapter page shows it in its footer.")
         return 1
 
     pages = build()

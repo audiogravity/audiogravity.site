@@ -280,7 +280,7 @@ stops for a moment.
 
 **Its web page.** HQPlayer's own settings, its filters, modulators and DSD rate among them,
 are set on its web page. The quickest way there: open the **Library**, go to **Sources**, and
-on the HQPlayer card click **WEB INTERFACE** — it opens in a new tab. The button is there
+on the HQPlayer card click **WEB UI** — it opens in a new tab. The button is there
 whenever HQPlayer Embedded is the one running on your box, and it stays available even when
 the card says it is offline, which is when you are most likely to need it. Otherwise, type
 `http://<your box>:8088` in your browser — your box's address followed by `:8088`.
@@ -326,7 +326,7 @@ when HQPlayer Embedded stops, the card returns to it, with its own **Use as outp
 setting. The formats HQPlayer cannot decode are converted here too — see
 [What can and cannot go through HQPlayer](#what-can-and-cannot-go-through-hqplayer).
 
-<img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, the HQPlayer chosen before kept for when it stops, and the Web interface and Forget buttons" width="360">
+<img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, the HQPlayer chosen before kept for when it stops, and the Web UI and Forget buttons" width="360">
 
 **If something did not go through.** When HQPlayer Embedded is installed but a step after
 that could not be done, the result says **Install Incomplete** and what is left to do. If
@@ -394,10 +394,3 @@ Playing view with per-stream output steering (USB / Optical).
 The graph is drawn from a map you own, **`audio-topology.json`** — see
 [7. Administration → Audio topology](07-administration.md#audio-topology-signal-chain-map)
 to edit it, and the same section for the tuning that keeps this path clean.
-
----
-
-*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
-trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
-endorsed by, or sponsored by any of them: it interoperates with their software as a client,
-and each remains the property of its owner.*

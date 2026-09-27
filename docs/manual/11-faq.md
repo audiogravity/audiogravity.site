@@ -85,7 +85,8 @@ in [5. Library & streaming](05-library-streaming.md#streaming-services).
 A fully illustrated manual covers the whole journey — from installation to
 troubleshooting — with a one-page [quick start](00-quick-start.md) and a
 [glossary](10-glossary.md). It is readable **inside the app** (the **Manual**
-tab, always up to date) and online.
+tab — the manual of the version your box runs, even without internet access) and
+online, where the latest edition is published.
 
 ## How do I update Audiogravi<sup>ty</sup>?
 
@@ -94,10 +95,3 @@ update banner — one click and your admin password, and the box downloads,
 installs and health-checks the new version with live progress. If anything goes
 wrong it **automatically rolls back** to the previous version. No terminal, no
 re-running the installer. See [8. Updating](08-updating.md).
-
----
-
-*Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are
-trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with,
-endorsed by, or sponsored by any of them: it interoperates with their software as a client,
-and each remains the property of its owner.*

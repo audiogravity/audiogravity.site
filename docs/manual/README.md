@@ -13,7 +13,8 @@ your phone.
 
 > **Read it in the app.** The **Manual** tab (at the end of the tab bar) opens this
 > manual inside Audiogravi<sup>ty</sup> itself — a chapter list on the side, the page
-> beside it, always showing the latest published version.
+> beside it. It is the manual of the version your box runs, and it opens without internet
+> access; the latest edition is on audiogravity.app.
 
 ## Contents
 

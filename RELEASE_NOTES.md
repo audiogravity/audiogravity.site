@@ -57,7 +57,20 @@ The card of an HQPlayer on your network now says which one it is — *HQPlayer D
 5.28.1* — as the card of the one running on your box already did. And while HQPlayer
 Embedded runs, its **Forget** button no longer runs out of the card on a phone: the button
 is simply called **Forget**, the address it forgets is written just above it, and the
-buttons go to a second line when there is no room.
+buttons go to a second line when there is no room. The button that opens HQPlayer's own
+page is now called **Web UI**, which keeps all three on one row on most phones.
+
+### The manual comes with the app
+
+The **Manual** tab now carries the manual of your version and opens it from the box
+itself: it needs no internet access and fetches nothing from audiogravity.app. A chapter
+you have read opens at once afterwards, even when the box is out of reach. The website
+keeps publishing the latest edition; the app shows the one that matches what your box
+runs, and a correction reaches it with the next version.
+
+Two things read better on the way. The trademark notice that closed every chapter now
+appears once, under the chapter. And paragraphs have their space back: two of them no
+longer run together, in the app or on the website.
 
 ---
 

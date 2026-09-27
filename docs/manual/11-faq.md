@@ -85,7 +85,8 @@ in [5. Library & streaming](05-library-streaming.md#streaming-services).
 A fully illustrated manual covers the whole journey — from installation to
 troubleshooting — with a one-page [quick start](00-quick-start.md) and a
 [glossary](10-glossary.md). It is readable **inside the app** (the **Manual**
-tab, always up to date) and online.
+tab — the manual of the version your box runs, even without internet access) and
+online, where the latest edition is published.
 
 ## How do I update Audiogravi<sup>ty</sup>?
 

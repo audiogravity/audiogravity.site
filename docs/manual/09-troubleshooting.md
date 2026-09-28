@@ -186,10 +186,11 @@ The description is yours to maintain: Audiogravi<sup>ty</sup> never rewrites it.
 
 ## A service won't start
 
-- Open **Services** → click the service name for its detail modal (live metrics + the
-  session action history), then **restart** it.
-- If a **Systemd** tuning override made it unstable, use **Restore Backup** or **Remove
-  Override** on the Systemd tab to roll it back to factory behaviour instantly.
+- Open **Services** → click the service name for its detail modal (live metrics and its
+  recent actions), then **restart** it.
+- If a **Systemd** tuning override made it unstable, use **Restore Backup** (its previous
+  settings) or **Remove Override** (its original settings) on the Systemd tab — a running
+  service is restarted on them.
 - For deeper output, use the browser **Terminal** (System tab, admin) — e.g.
   `systemctl status mpd` / `journalctl -u mpd -e`.
 
@@ -396,8 +397,9 @@ Jumping inside a track is declined — and says so — in three cases, none of t
 ## Casting to a renderer stalls
 
 - Check the renderer is reachable on the LAN and appears in the output selector.
-- Network renderers depend on your local network — run the **Network Test**
-  (Performance tab) to check jitter/loss.
+- Network renderers depend on your local network — run the
+  [Network test](07-administration.md#network-test) (Performance tab) to check
+  jitter/loss.
 
 <img src="images/ios-network-test.webp" alt="The network stability test after a ping run: an EXCELLENT verdict with min, average, max latency, jitter and packet loss" width="360">
 
@@ -426,12 +428,14 @@ AirPlay is announced over **mDNS/Bonjour** (UDP 5353 multicast):
 
 ## Audio glitches / dropouts
 
-- Watch for a **THROTTLED** badge on a CPU core (Performance tab) — sustained thermal
-  throttling causes glitches; improve cooling or ease the CPU governor.
+- Watch for a **THROTTLED** badge on a CPU core (Performance tab) — sustained
+  throttling causes glitches. Improve cooling or ease the CPU governor; on a Raspberry
+  Pi, a badge on every core points at the power supply: use one that can deliver the
+  current the board needs.
 - In the **RT process monitor**, audio processes should show **SCHED_FIFO / SCHED_RR**
   (green), not NON-RT (red). Apply the *Audio Optimized* preset on the Systemd tab.
-- Run the **Latency test** (`cyclictest`) — a high max latency points at scheduling
-  contention.
+- Run the [Latency test](07-administration.md#latency-test) — a high max latency points
+  at scheduling contention.
 
 ## Manual NAS mount (terminal)
 

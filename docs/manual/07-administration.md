@@ -4,7 +4,6 @@ Everything you need to run the box lives in the interface — no SSH required. M
 this section is available on **Starter**: Profiles, Services, Audio Software, System,
 Admin — and **Config**, the configuration editor and its guided setup. Four tabs are
 **Pro**: Systemd tuning, Performance tuning, the Audio Pipeline map and the Library.
-Every tab has an **INFO** badge that opens an in-app explanation.
 
 ## The Admin tab
 
@@ -13,27 +12,44 @@ Audiogravi<sup>ty</sup>: the **user cards** (below), unread
 [announcements](#announcements), the [update banner](08-updating.md) — and the
 **licence** panel, which also opens when a Starter install taps a locked Pro tab.
 
+At the bottom of the tab, the **Frontend performance cockpit** measures the app itself in
+your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
+and other Chromium browsers) and how long the page has been open. It is a diagnostic aid —
+nothing there changes how the box plays.
+
 ## Users & access
 
 User management lives on the **Admin** tab — one card per account, with an online
 indicator for users currently connected. Three roles control who can do what:
 
-- **Admin** — full access to all features and user management. Cannot be deleted or
-  demoted by others, and cannot delete their own account.
-- **User** — standard access to features, but cannot manage users or core settings.
-- **Guest** — read-only: can view status and logs but not change settings or toggle
-  services.
+- **Admin** — full access, including user management. The **admin** account created at
+  installation cannot be deleted, disabled or demoted; any other admin account can be, by
+  another admin. Nobody can delete, disable or change the role of their own account.
+- **User** — everything except what is kept for admins: managing accounts, the guided
+  setup of the audio stack and its network shares, the Config editor's **Guided** mode
+  and **CONFIGURED** badges, the **DRY-RUN** switch of Audio Software, restarting or
+  rebooting the box, updating Audiogravi<sup>ty</sup>, the support report, the terminal
+  and removing the licence. The **Admin** tab is not shown to users.
+- **Guest** — can look at every tab except **Admin** and control what is playing — play
+  and pause, skip, seek, volume, repeat, shuffle and the sleep timer, on the box, a
+  network speaker or HQPlayer — but not start something else, send it to another output,
+  change settings, start or stop services, or read the logs.
+
+Changing an account's password or role, disabling it or deleting it signs that account
+out on every device where it is open. When you change your own password, you stay signed
+in on the device you changed it from.
 
 <img src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle, and the passkeys and edit actions" width="360">
 
 **Passkeys** — the *Passkeys* button on your own card registers WebAuthn credentials
 (Face ID, Touch ID, a hardware key). Each passkey is tied to one device and can be
-removed individually; use it instead of a password at login. Password changes take
-effect immediately on current sessions.
+removed individually; use it instead of a password at login.
 
-**Session persistence** — the *Persist* toggle chooses how your session is stored:
-persistent (stay logged in across browser restarts) or session-only (log out when
-the tab closes). Takes effect on your next login.
+**Session persistence** — the *Persist* switch on each card decides whether that
+account stays signed in when its browser is closed and reopened, or is signed out when
+the tab closes. It applies from the account's next sign-in. Either way a session lasts
+12 hours; the app installed on a phone's home screen always keeps its session when it is
+closed, for the same 12 hours.
 
 ## The Settings panel
 
@@ -79,8 +95,12 @@ Monitor and control individual systemd services in real time.
   DISABLED** badge controls whether it starts at boot. Uptime is shown next to the
   unit name.
 - **Detail** — click a service name for live metrics (CPU, memory, tasks, network,
-  disk) and the session action history. Metrics are colour-coded LOW / MEDIUM / HIGH,
-  tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, >20 % high).
+  disk) and the last actions made on it from this browser. Metrics are colour-coded
+  LOW / MEDIUM / HIGH, tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium,
+  >20 % high).
+- **Graphs** — each figure on a tile has a small graph of its recent values; click the
+  graph to unfold a larger chart on the tile, and **×** to fold it away. Network and
+  disk draw two lines: received and sent, read and written.
 - **Filter** — ALL / RUNNING / STOPPED / FAILED.
 
 > **A dash means "not measured", not "zero".** Three of the figures depend on counters
@@ -103,25 +123,26 @@ Monitor and control individual systemd services in real time.
 Safely edit the real configuration files of your audio services (see also
 [3. First run](03-first-run.md) for the guided setup).
 
-- **Guided mode** (MPD / AirPlay / UPnP / HQPlayer Embedded) — change output or library
-  in a couple of clicks; only the changed setting is rewritten. *Reset to default*
-  regenerates a minimal config (current file backed up first) — except for HQPlayer
-  Embedded, whose settings are its own: only its output is chosen here.
-- **Form mode** — edit common settings through a friendly interface with field
-  descriptions and validation. HQPlayer Embedded has none: its file is edited in Expert
-  mode.
-- **Expert (Raw) mode** — edit the raw file directly, with syntax validation before
-  save.
+- **Guided mode** (admins; MPD, AirPlay, UPnP, HQPlayer Embedded) — choose the output,
+  and for MPD the music library, in a couple of clicks; only the changed setting is
+  rewritten. UPnP has nothing to choose there, because it plays through MPD. *Reset to
+  default* regenerates a minimal config (current file backed up first) — except for
+  HQPlayer Embedded, whose settings are its own: only its output is chosen here.
+- **Form mode** (called *Structured* next to *Guided*) — edit common settings through a
+  friendly interface, with a description for each field. HQPlayer Embedded has none: its
+  file is edited in Expert mode.
+- **Expert (Raw) mode** — edit the raw file directly. A basic check before saving
+  catches a broken structure (an unclosed section or tag), not a wrong value.
 - **Preview changes (Diff)** — a unified diff (raw) or a before/after field table
   (form) of your unsaved edits.
-- **Automatic backups** — every save creates a timestamped backup; the **Backups**
-  button browses and restores any previous version.
+- **Automatic backups** — every save, and every restore, first backs up the current
+  file; the **Backups** button lists the last 10 and restores any of them.
 - **Restart after save** — on by default (applies changes immediately); uncheck to
   batch several edits.
 
 Each tile carries the state of its service — **RUNNING**, **STOPPED** or **FAILED** —
-and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
-**CONFIGURED** or still on the package defaults. HQPlayer Embedded is **CONFIGURED** once
+and, for admins, whether a service Audiogravi<sup>ty</sup> can set up itself is
+**CONFIGURED** or still on its package defaults. HQPlayer Embedded is **CONFIGURED** once
 its output has been chosen here.
 
 <img src="images/ios-config-editor.webp" alt="The Config tab: one tile per audio service with its file path, its output, its RUNNING or STOPPED state, its CONFIGURED badge and the Edit config button" width="360">
@@ -242,7 +263,9 @@ reach the graph. Every save is backed up automatically, so you can always roll b
 Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, upmpdcli,
 shairport-sync, Roon Bridge…).
 
-- **States** — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.
+- **Filter** — ALL / INSTALLED / UPDATES narrows the list of cards.
+- **States** — NOT INSTALLED, INSTALLED, INSTALLING / UPDATING / UNINSTALLING (with a
+  progress bar), ERROR.
 - **Actions** — INSTALL, UPDATE (to the version its publisher offers), UNINSTALL. After a failed
   operation the card offers the way out that fits it: an install that failed left
   nothing behind, so it offers to try again; an update that failed left the previous
@@ -290,15 +313,19 @@ shairport-sync, Roon Bridge…).
 - **Restart required** — a pulsing badge appears when a service needs a restart after
   install/update; click to restart it. HQPlayer Embedded is restarted for you once
   installed, so it only shows the badge when that restart failed.
-- **Architecture** — the CPU badge shows supported architectures (amd64, arm64…).
-  A **DRY-RUN** mode simulates operations safely.
+- **Documentation** — the book icon at the foot of a card opens the publisher's
+  documentation in a new tab.
+- **Architecture** — the CPU badge lists the processor types the package is published
+  for.
+- **DRY-RUN** (admins) — goes through an operation without changing anything. It only
+  walks the steps: a dry run that succeeds does not prove the real one will.
 
 ## System
 
 Real-time monitoring and box-level actions.
 
-- **Metrics** — CPU, temperature, memory, disk and network, updated every few seconds
-  over SSE (the **LIVE** badge shows the stream is active).
+- **Metrics** — CPU, temperature, memory, disk and network, updated live; the **SSE
+  Stream** tile shows whether the live feed is connected.
 - **System & audio hardware** — hostname, OS, kernel, CPU model/cores; every audio
   card, USB interface and subdevice.
 - **Event log** — system events and live updates; RUNNING/STOPPED to pause, CLEAR to
@@ -308,8 +335,8 @@ Real-time monitoring and box-level actions.
   reconnects automatically. While software is being installed, both are refused with a
   message naming what is being installed: try again once it has finished. *Support
   Report* is described below.
-- **Terminal (admin)** — a full interactive bash shell in the browser (runs as the
-  backend user — use with care).
+- **Terminal (admin)** — a full interactive shell on the box, in the browser. It can
+  change anything on the machine: use it with care.
 
 ### Support report
 
@@ -354,19 +381,68 @@ attach it to a message yourself.
 
 ## Performance tuning (Pro)
 
-Tune CPU scheduling for bit-perfect, glitch-free playback.
+Keep the processor at the right speed for glitch-free playback, and measure how well
+the box — and your network — keep up.
 
-- **CPU governor** — *performance* (max frequency always, lowest latency),
-  *schedutil* (adapts to load), *powersave* (not recommended for audio). *Apply All*
-  sets it on every core; *Save Conf* persists it; *Create Service* restores it at boot.
-- **THROTTLED badge** — appears on a core when the kernel reports thermal throttling;
-  sustained throttling during playback causes glitches.
-- **Latency test** — runs `cyclictest` to measure real-time scheduling latency (µs);
-  lower max = fewer dropouts. History of the last 10 runs.
-- **Network test** — ping jitter/loss or iperf3 throughput; useful for Roon, AirPlay
-  or NAS playback.
-- **RT process monitor** — shows the scheduling policy of audio processes: SCHED_FIFO
-  / SCHED_RR = real-time (green); NON-RT = risk of glitches under load (red).
+- **CPU governor** — how the processor adjusts its speed. The choices are those your
+  processor offers, typically *performance* (full speed at all times, the steadiest for
+  audio), *schedutil* (follows the load) and *powersave* (not recommended for audio).
+  Set it per core on each card, or with *Apply All* for every core — its confirmation
+  names the governor it will set. *Save Conf* keeps the current choice, and *Create
+  Service* puts the saved choice back at every start-up: save first, or there is
+  nothing to put back.
+- **THROTTLED badge** — appears on a core the processor had to slow down since the
+  previous measurement: because it ran too hot, on processors that report it (Intel's),
+  or, on a Raspberry Pi, because its power supply could not keep up — the whole
+  processor slows then, and every core shows the badge. Sustained throttling during
+  playback causes glitches.
+- **RT process monitor** — shows whether the audio programs run in real time: MPD,
+  AirPlay, and Roon Bridge with its RAAT server. A green badge (SCHED_FIFO / SCHED_RR)
+  means real time; a red **NON-RT** badge means the program can be held up while the box
+  is busy — give it a real-time policy in [Systemd tuning](#systemd-tuning-pro).
+
+### Latency test
+
+Measures how quickly the box answers a timer: the worst delay it finds is what an audio
+program risks when the box is busy. Set the test, click **TEST**, and read the result.
+
+- **Threads** (1–16) — how many measurements run side by side: 1 for a quick look, one
+  per processor core to load the whole box.
+- **Priority (RT)** (1–99) — the real-time priority the test runs at; 99 by default.
+- **Loops** (at least 1 000) — how many measurements each thread takes. The test lasts
+  loops × interval: the default 10 000 loops take one second, 1 000 000 under two
+  minutes — a longer run catches rarer delays.
+- **EXPERT** shows the finer settings: the **Interval** between measurements (100 µs by
+  default), the range of the histogram, the **CPU Affinity** — the cores the test runs
+  on, such as `2,3`; left empty, any of them — and two switches best left on, **Memory
+  Lock** and **Quiet Mode**.
+
+In the result, **Max** is the figure that matters: the worst delay seen, in
+microseconds. The histogram shows how often each delay occurred.
+
+### Network test
+
+Checks that your network carries audio without hiccups — worth running when streaming,
+Roon, AirPlay or a NAS stalls. Choose a mode, set it, and click **TEST**.
+
+- **PING (Quick Check)** — sends 20 small packets to a host (1.1.1.1 by default; your
+  router's address tests your home network alone) and reports the delay, how much it
+  varies (*jitter*) and any packet lost.
+- **IPERF3 UDP (Audio Streaming)** and **IPERF3 TCP (Throughput)** — a test server
+  sends a steady stream to the box for the chosen **Duration**, at the chosen
+  **Bandwidth**. The server runs on another machine of your network: install iperf3
+  there, start it with `iperf3 -s`, and enter its address in **Server**. Set
+  **Bandwidth** to what your music needs — DSD512 and PCM 768 kHz take close to
+  50 Mbit/s (`50M`). UDP reports jitter and loss at that rate; TCP reports whether the
+  rate holds, and how many packets had to be sent again.
+- **Internal Server Service** — **START SERVICE** runs a test server on the box itself,
+  so that another machine can test its way to the box.
+
+The verdict — **EXCELLENT**, **GOOD**, **FAIR** or **CRITICAL** — sums up the jitter, the
+loss and, for iperf3, the bandwidth reached.
+
+Each test keeps a **History** of the last ten tests run from this browser, latency and
+network together; **Clear** empties both.
 
 ## Systemd tuning (Pro)
 
@@ -376,16 +452,18 @@ Low-level, per-service OS tuning using systemd **drop-in overrides** — the nat
 
 - **CPU affinity** — pin a service to specific cores to cut context-switching jitter.
 - **RT scheduling** — FIFO/RR policy and priority (1–99) for guaranteed CPU time.
-- **CPU weight / I/O priority / OOM score** — bias the scheduler, disk/network I/O and
-  the out-of-memory killer in favour of audio.
+- **CPU weight / I/O priority / OOM score** — bias the scheduler, disk access and the
+  out-of-memory killer in favour of audio.
 - **RT preset** — *Audio Optimized* pre-fills a battle-tested config (SCHED_FIFO 80,
   LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).
-- **Safety** — a diff preview before applying, automatic backups (*Restore Backup*),
-  and *Remove Override* to roll a service back to factory behaviour instantly.
+- **Safety** — a diff preview before applying; *Restore Backup* puts the previous
+  settings back, and *Remove Override* returns the service to its original settings. A
+  running service is restarted on them at once; if it does not start with them, it gets
+  back the settings it was running on, and you are told. A stopped service stays
+  stopped.
 - **Settings a service cannot start with are refused** before anything is saved, with
   the reason: a real-time priority without a real-time policy or the reverse, a CPU the
   box does not have, a memory limit under 16 MB, an open-file limit under 1024.
-  **Validate** gives the same answers.
 - **A change that stops a service is undone.** A running service is restarted on its
   new settings and watched for a few seconds; if it does not stay up, the previous
   settings are put back, the service is started again, and you are told. A service that
@@ -405,17 +483,21 @@ The licence panel opens from the **Admin** tab (and automatically when a **Start
 install taps a Pro tab — those carry a small lock icon in the tab bar).
 
 - **Trial** — 30 days of full access, auto-activated on first run.
-- **Lifetime** — a single-device `.lic` file cryptographically tied to this device's
-  hardware fingerprint (the **Device ID**). One-time payment, no expiry, no
-  subscription.
+- **Buying** — the licence panel lists the steps: *Pay with PayPal*, receive your
+  licence key by email, then **LICENSE KEY**, enter the key, **CHECK KEY** and
+  **ACTIVATE THIS MACHINE**. No restart is needed.
+- **Lifetime** — a `.lic` file for this one installation, identified by its
+  **Device ID**. One-time payment, no subscription, no end date; it covers every 1.x
+  version, and the 0.9 beta before it (see
+  [11. FAQ → Are updates included?](11-faq.md#are-updates-included)).
 - **Time-limited** — the same file, issued to run until a given date. The panel shows
   that date while the licence is valid, and the plan reads *Time-limited* rather than
   *Perpetual*. Every Pro feature is unlocked exactly as with a lifetime licence.
 - **Import / re-download** — import a `.lic` file, or re-download yours from the
   self-service portal (purchase email + Device ID, no account needed) if it has gone
   missing from this installation.
-- **Reinstalled the system, or moved to another machine?** The box then has a new
-  **Device ID**, and your licence no longer matches it — neither the portal nor your old
+- **Reinstalled the system, moved to another machine, or replaced its network card?**
+  The box then has a new **Device ID**, and your licence no longer matches it — neither the portal nor your old
   file can fix that. Write to [support@audiogravity.app](mailto:support@audiogravity.app)
   with your **Order ID** and the new **Device ID**: a licence reset is available on
   request (see

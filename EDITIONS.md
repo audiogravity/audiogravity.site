@@ -18,14 +18,14 @@ Activated automatically when the trial expires — no action required. Includes 
 to run and monitor your audio system:
 
 - **Profiles** — one-click switching between pre-configured audio chain scenarios; activates required services and stops conflicting ones automatically
-- **Services** — real-time monitoring and control of audio services (start / stop / restart / enable at boot) with live CPU, memory, I/O metrics and 60 s sparklines
+- **Services** — real-time monitoring and control of audio services (start / stop / restart / enable at boot) with live CPU, memory and I/O metrics, each with a sparkline of its recent values
 - **Software** — install, update and remove audio packages with dry-run simulation before committing changes
 - **System** — hardware dashboard: CPU, temperature, memory, disk and network at a glance; full audio device inventory (ALSA cards, USB interfaces, subdevices)
 - **Users** — role-based access management (Admin, User, Guest) with WebAuthn / passkeys login
-- **Output steering** — switch between USB, Toslink and HDMI outputs without touching the streamer
-- **Push notifications** — iOS, Android and desktop alerts for playback events
-- **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with diff, validation and automatic backups
+- **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, a software update is available or a profile is activated
+- **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups
 - **Guided provisioning** — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)
+- **DSD bit-perfect protection** — automatic ALSA hardware volume lock during DSD playback
 - **Now Playing** — display-only: shows current track, cover art, format and progress across all sources (transport controls require Pro)
 
 ---
@@ -40,12 +40,12 @@ Everything in Starter, plus:
 
 - **Player** — full transport controls across all sources (MPD, Roon, AirPlay, UPnP, HQPlayer): play/pause, seek, next/prev, volume, repeat/shuffle and real-time Hi-Fi format readout (PCM / DSD, sample rate, bit depth, bitrate)
 - **Library** — high-resolution music library for Roon, MPD, UPnP servers (MinimServer, upmpdcli), Qobuz, Tidal and HIGHRESAUDIO: album browsing, full-text search, queue management and output zone selection; **UPnP Control Point** to send audio directly to any DLNA/UPnP MediaRenderer on the network (amplifiers, networked speakers…)
+- **Output steering** — switch between USB, Toslink and HDMI outputs without touching the streamer
 - **Internet radio** — Radio Browser directory, custom stations, favourites with Hi-Res filtering
 - **HQPlayer DSP remote** — change filter, noise shaper, output mode and volume from the couch, with automatic network discovery
-- **Audio Pipeline** — interactive DAG visualisation of the full signal chain from source to DAC: bit-perfection badge, format per link, real-time output steering without stopping playback
+- **Audio Pipeline** — interactive DAG visualisation of the full signal chain from source to DAC: full-resolution badge on the link to the DAC, format per link, real-time output steering without stopping playback
 - **Systemd Configuration** — fine-tune audio service drop-ins: CPU affinity, SCHED_FIFO / RR priority, MEMLOCK and RTPRIO — eliminates scheduling jitter for bit-perfect, glitch-free playback
 - **Performance Optimization** — per-core CPU governor control, real-time thermal throttle detection, µs-scale latency benchmarks (cyclictest) and live RT process monitor
-- **DSD bit-perfect protection** — automatic ALSA hardware volume lock during DSD playback
 - **Sleep timer** — automatic pause after a set duration
 
 > Qobuz, Tidal and HIGHRESAUDIO require an active subscription to their respective services.
@@ -66,11 +66,11 @@ Everything in Starter, plus:
 | **Software** | ✓ | ✓ | ✓ |
 | **System** | ✓ | ✓ | ✓ |
 | **Users & WebAuthn** | ✓ | ✓ | ✓ |
-| **Output steering** | ✓ | ✓ | ✓ |
 | **Push notifications** | ✓ | ✓ | ✓ |
 | **Now Playing (display)** | ✓ | ✓ | ✓ |
 | **Player (controls)** | ✓ | — | ✓ |
 | **Library** | ✓ | — | ✓ |
+| **Output steering** | ✓ | — | ✓ |
 | **Internet radio** | ✓ | — | ✓ |
 | **HQPlayer DSP** | ✓ | — | ✓ |
 | **Audio Pipeline** | ✓ | — | ✓ |
@@ -78,7 +78,7 @@ Everything in Starter, plus:
 | **Guided provisioning** | ✓ | ✓ | ✓ |
 | **Systemd Config** | ✓ | — | ✓ |
 | **Performance** | ✓ | — | ✓ |
-| **DSD bit-perfect** | ✓ | — | ✓ |
+| **DSD bit-perfect** | ✓ | ✓ | ✓ |
 | **Sleep timer** | ✓ | — | ✓ |
 
 ---

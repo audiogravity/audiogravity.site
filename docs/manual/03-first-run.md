@@ -22,8 +22,9 @@ and asks for the passkey directly, with *Use password instead* as the fallback.
 (Passkeys require Audiogravi<sup>ty</sup> to be reachable over a real HTTPS
 **domain** — see the `--public-url` flag in [2. Installation](02-installation.md).)
 
-More accounts — family members, a read-only guest — can be added later from the
-**Admin** tab (see [7. Administration](07-administration.md#users--access)).
+More accounts — family members, a guest who can only control what is playing — can be
+added later from the **Admin** tab (see
+[7. Administration](07-administration.md#users--access)).
 
 **Light or dark, before you sign in.** A small button in the corner of the sign-in card
 switches the two — a moon when the page is light, a sun when it is dark; the icon always
@@ -68,16 +69,17 @@ Install what you need now — you can always come back for the rest later.
 
 ## 4. Configure the audio stack (guided)
 
-On a new box, the **Config** tab shows an **Initialize audio stack** panel
-(administrators only). It:
+On a new box, the **Config** tab shows a **Set up your audio stack** banner
+(administrators only). Its **Configure audio stack** button opens the **Initialize audio
+stack** panel, which:
 
 1. **Auto-detects** your DAC and your music library.
 2. **Generates a minimal, bit-perfect configuration** for the three audio services —
-   **MPD** (local library), **AirPlay** (shairport-sync) and **UPnP** (upmpdcli) —
-   all wired to the output you choose.
+   **MPD** (local library) and **AirPlay** (shairport-sync) wired to the output you
+   choose, and **UPnP** (upmpdcli), which plays through MPD.
 3. Asks for your **admin password** before applying.
 
-Once at least one service is set up, the panel disappears and each MPD / AirPlay /
+Once at least one service is set up, the banner disappears and each MPD / AirPlay /
 UPnP tile shows a **CONFIGURED** badge.
 
 <img src="images/ios-provisioning.webp" alt="The Initialize audio stack panel: detected DAC outputs and music library sources" width="360">
@@ -159,8 +161,9 @@ effect immediately; if the share is MPD's active library, it warns you first.
 
 ## 5. Change output or library later (Guided mode)
 
-For MPD, AirPlay and UPnP, the Config editor opens in a **Guided** view where you
-change the **audio output** or **music library** in a couple of clicks. Only the
+For administrators, the Config editor of MPD, AirPlay and UPnP opens in a **Guided**
+view. There you change the **audio output** — and, for MPD, the **music library** — in
+a couple of clicks; UPnP has nothing to choose, because it plays through MPD. Only the
 setting you touch is rewritten — the rest of your config is preserved. A **Reset to
 default** action regenerates a clean minimal config (admin password required; your
 current file is backed up first).

@@ -80,7 +80,8 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   always stays in view.
 - Remove an upcoming track with its **Remove** button or a **left-swipe** — the same
   gesture used across the app's lists. **Clear** empties the queue, and respects the
-  active filter.
+  active filter. A Roon queue is changed from the Roon app: here it has no **Remove**
+  button or swipe, and **Clear** is greyed out.
 
 <img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
 
@@ -116,18 +117,26 @@ for a radio station or a UPnP server it gives the name of the station or the ser
 
 A **profile** is a ready-made scenario for your audio system, named after what it runs.
 Switching one automatically **starts the services it needs and stops the conflicting
-ones**, so the chain is always coherent and bit-perfect. For example: *Roon Bridge +
+ones**, so the chain is always coherent. For example: *Roon Bridge +
 HQPlayer NAA* for serious listening, *UPnP Renderer* to expose the box as a UPnP
 renderer, *MPD* for your own music library. The profiles come with Audiogravi<sup>ty</sup>
 (see [7. Administration](07-administration.md#audio-configuration-services--profiles)).
 
-Each profile tile shows the services it starts/stops, the resolved output port (e.g.
-`usb`, `toslink`), a live **health bar** (active / failed / idle), and when it was
-last activated. Activation is atomic, with a detailed toast on failure.
+Each profile tile shows the services it starts/stops, the output they are set to play
+to (e.g. `usb`, `toslink`), a live **health bar** of those services — running (green),
+failed (red), stopped (grey) — and when it was last switched on since
+Audiogravi<sup>ty</sup> last started. Every switch asks for confirmation. The services to
+stop are stopped first, then the others started. If an essential service cannot be
+stopped, nothing is started; any other failure is named in a message, and the switch is
+not undone.
 
 If a service of the profile in use fails, its tile reads **FAILED** in red; tap
 **Activate** on it to start again what failed. The other profiles keep their state,
 with a small *failed* badge counting it.
+
+**ALL / ACTIVE / IDLE** filters the tiles, the active profile first. Click a profile's
+name for the full list of its services and the switches made from this browser; the
+**HISTORY** panel beside the tiles lists those switches for every profile.
 
 ## Sleep timer
 

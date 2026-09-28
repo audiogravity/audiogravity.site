@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.63] - 2026-09-28
+
 ### Changed
 - **[core][ui][manual] Restore Backup and Remove Override apply the settings they put back.** They rewrote a service's settings and stopped there: the service went on running on the settings being undone — those someone reaching for these buttons most wants gone — until its next start. They now apply them as a save does: a running service is restarted on them and watched; if it does not start, it gets back the settings it was running on and is restarted on those, and the message says so; a service already restarting in a loop keeps them and is stopped; a stopped service stays stopped. Remove Override now says when systemd refuses to reload, where it answered success. Like a save, both are refused on Audiogravi<sup>ty</sup>'s own service while software is being installed. The confirmation says a running service is restarted, and the message shown afterwards is the core's. API: both routes answer `{ success, message, service, service_restarted }`, **400** with the reason when the service did not start, and **409** on the core's own unit during an install.
 - **[ui][site] The pipeline's green badge reads FULL RES.** It read BIT-PERFECT, but what it checks is that the connection can carry the format sent to the card, not that nothing upstream altered the audio. The graph's bubble and legend, the Editions window, `EDITIONS.md` and the manual say FULL RES too.

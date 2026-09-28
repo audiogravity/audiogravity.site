@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.63 — 2026-09-28
+
 ### Accounts and sessions
 
 **A change to an account takes effect everywhere.** A new password, a new role, a disabled

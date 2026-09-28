@@ -127,12 +127,14 @@ amplifier, speakers — meant to be replaced by yours. Open <strong>Pipeline →
 It is a text file, so a computer is the comfortable place to write one from scratch, but
 it can be reached from a phone too.</p>
 <blockquote>
-<p><strong>Until it describes your gear, the signal path can look empty.</strong> The view draws a
-device only when audio is actually flowing through one of its declared connections, and
-the example chain declares USB and optical. A box playing through a <strong>HAT board</strong> — a
-converter mounted directly on a Raspberry Pi's connector — matches neither, so nothing
-lights up. The Pipeline tab says so, and names the output it found next to what your
-description declares: that is your cue to describe the real chain. See
+<p><strong>Until it describes your gear, the signal path can look empty.</strong> On a phone, the view
+draws a device only when audio is actually flowing through one of its declared
+connections, and the example chain declares USB and optical. A box playing through a
+<strong>HAT board</strong> — a converter mounted directly on a Raspberry Pi's connector — matches
+neither, so nothing lights up. The view says so, and names the output it found next to
+what your description declares: that is your cue to describe the real chain. On a
+larger screen the full graph still shows every device you declared, but none of them
+lights up either. See
 <a href="09-troubleshooting#the-signal-path-is-empty">9. Troubleshooting → The signal path is empty</a>.</p>
 </blockquote>
 <h2 id="hqplayer">HQPlayer</h2>
@@ -414,9 +416,16 @@ now-playing readout.</p>
 <h2 id="seeing-the-whole-chain">Seeing the whole chain</h2>
 <p>The <strong>Audio Pipeline</strong> view (Pro) draws your entire signal chain as a live graph —
 controller → server → streamer → converter/amp → output. Animated particles mean audio
-is flowing; <strong>green links</strong> mean lossless, no sample-rate conversion (bit-perfect); a
-<strong>bit-perfect</strong> badge confirms it. On small screens it falls back to a simplified Now
-Playing view with per-stream output steering (USB / Optical).</p>
+is flowing, and a link takes the colour of the service carrying the stream — <strong>LEGEND</strong>
+shows which is which. A <strong>FULL RES</strong> badge marks the cable to your converter when it
+can carry, untouched, the format the box is sending.</p>
+<p>Beside the graph, the controls zoom (<strong>FIT</strong> frames the whole chain), <strong>RESET</strong> the
+layout, and show or hide the <strong>LEGEND</strong>, a <strong>MINIMAP</strong> and the <strong>NETWORK</strong> links. Two
+switches, off by default, add your idle <strong>analog sources</strong> (turntable, tuner…) and the
+<strong>controllers</strong> — the phones and apps that drive the box.</p>
+<p>On small screens it falls back to a simplified Now Playing view: one card per stream,
+with the chain it takes and, for a service that can be steered, pills to send it to
+another output (USB, optical, HDMI…).</p>
 <img loading="lazy" src="images/ios-signal-chain.webp" alt="The Audio Pipeline on a phone: the Now Playing card, the output steering pills, and the signal chain from the streamer through the DAC and the amplifier to the speakers" width="360">
 <p>The graph is drawn from a map you own, <strong><code>audio-topology.json</code></strong> — see
 <a href="07-administration#audio-topology-signal-chain-map">7. Administration → Audio topology</a>

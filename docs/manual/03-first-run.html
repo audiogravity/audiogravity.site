@@ -66,8 +66,9 @@ Accept, and every later login becomes a tap: the login screen recognises the dev
 and asks for the passkey directly, with <em>Use password instead</em> as the fallback.
 (Passkeys require Audiogravi<sup>ty</sup> to be reachable over a real HTTPS
 <strong>domain</strong> — see the <code>--public-url</code> flag in <a href="02-installation">2. Installation</a>.)</p>
-<p>More accounts — family members, a read-only guest — can be added later from the
-<strong>Admin</strong> tab (see <a href="07-administration#users--access">7. Administration</a>).</p>
+<p>More accounts — family members, a guest who can only control what is playing — can be
+added later from the <strong>Admin</strong> tab (see
+<a href="07-administration#users--access">7. Administration</a>).</p>
 <p><strong>Light or dark, before you sign in.</strong> A small button in the corner of the sign-in card
 switches the two — a moon when the page is light, a sun when it is dark; the icon always
 shows where pressing it takes you. It changes the <em>appearance</em> only: which look you use
@@ -105,16 +106,17 @@ can cast to. It drives MPD, so it needs the player that is already there.</li>
 <p>Install what you need now — you can always come back for the rest later.</p>
 <img loading="lazy" src="images/ios-software.webp" alt="The Audio Software tab: engine cards with install, update and uninstall actions" width="360">
 <h2 id="4-configure-the-audio-stack-guided">4. Configure the audio stack (guided)</h2>
-<p>On a new box, the <strong>Config</strong> tab shows an <strong>Initialize audio stack</strong> panel
-(administrators only). It:</p>
+<p>On a new box, the <strong>Config</strong> tab shows a <strong>Set up your audio stack</strong> banner
+(administrators only). Its <strong>Configure audio stack</strong> button opens the <strong>Initialize audio
+stack</strong> panel, which:</p>
 <ol>
 <li><strong>Auto-detects</strong> your DAC and your music library.</li>
 <li><strong>Generates a minimal, bit-perfect configuration</strong> for the three audio services —
-<strong>MPD</strong> (local library), <strong>AirPlay</strong> (shairport-sync) and <strong>UPnP</strong> (upmpdcli) —
-all wired to the output you choose.</li>
+<strong>MPD</strong> (local library) and <strong>AirPlay</strong> (shairport-sync) wired to the output you
+choose, and <strong>UPnP</strong> (upmpdcli), which plays through MPD.</li>
 <li>Asks for your <strong>admin password</strong> before applying.</li>
 </ol>
-<p>Once at least one service is set up, the panel disappears and each MPD / AirPlay /
+<p>Once at least one service is set up, the banner disappears and each MPD / AirPlay /
 UPnP tile shows a <strong>CONFIGURED</strong> badge.</p>
 <img loading="lazy" src="images/ios-provisioning.webp" alt="The Initialize audio stack panel: detected DAC outputs and music library sources" width="360">
 <blockquote>
@@ -183,8 +185,9 @@ level (CIFS or NFS) under <code>/mnt</code> is detected exactly the same way —
 for the recipe. NFS is available from the terminal only.</p>
 </blockquote>
 <h2 id="5-change-output-or-library-later-guided-mode">5. Change output or library later (Guided mode)</h2>
-<p>For MPD, AirPlay and UPnP, the Config editor opens in a <strong>Guided</strong> view where you
-change the <strong>audio output</strong> or <strong>music library</strong> in a couple of clicks. Only the
+<p>For administrators, the Config editor of MPD, AirPlay and UPnP opens in a <strong>Guided</strong>
+view. There you change the <strong>audio output</strong> — and, for MPD, the <strong>music library</strong> — in
+a couple of clicks; UPnP has nothing to choose, because it plays through MPD. Only the
 setting you touch is rewritten — the rest of your config is preserved. A <strong>Reset to
 default</strong> action regenerates a clean minimal config (admin password required; your
 current file is backed up first).</p>

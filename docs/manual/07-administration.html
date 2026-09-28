@@ -53,31 +53,45 @@
 <p>Everything you need to run the box lives in the interface — no SSH required. Most of
 this section is available on <strong>Starter</strong>: Profiles, Services, Audio Software, System,
 Admin — and <strong>Config</strong>, the configuration editor and its guided setup. Four tabs are
-<strong>Pro</strong>: Systemd tuning, Performance tuning, the Audio Pipeline map and the Library.
-Every tab has an <strong>INFO</strong> badge that opens an in-app explanation.</p>
+<strong>Pro</strong>: Systemd tuning, Performance tuning, the Audio Pipeline map and the Library.</p>
 <h2 id="the-admin-tab">The Admin tab</h2>
 <p>The <strong>Admin</strong> tab gathers everything about accounts and the box's relationship with
 Audiogravi<sup>ty</sup>: the <strong>user cards</strong> (below), unread
 <a href="#announcements">announcements</a>, the <a href="08-updating">update banner</a> — and the
 <strong>licence</strong> panel, which also opens when a Starter install taps a locked Pro tab.</p>
+<p>At the bottom of the tab, the <strong>Frontend performance cockpit</strong> measures the app itself in
+your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
+and other Chromium browsers) and how long the page has been open. It is a diagnostic aid —
+nothing there changes how the box plays.</p>
 <h2 id="users--access">Users &amp; access</h2>
 <p>User management lives on the <strong>Admin</strong> tab — one card per account, with an online
 indicator for users currently connected. Three roles control who can do what:</p>
 <ul>
-<li><strong>Admin</strong> — full access to all features and user management. Cannot be deleted or
-demoted by others, and cannot delete their own account.</li>
-<li><strong>User</strong> — standard access to features, but cannot manage users or core settings.</li>
-<li><strong>Guest</strong> — read-only: can view status and logs but not change settings or toggle
-services.</li>
+<li><strong>Admin</strong> — full access, including user management. The <strong>admin</strong> account created at
+installation cannot be deleted, disabled or demoted; any other admin account can be, by
+another admin. Nobody can delete, disable or change the role of their own account.</li>
+<li><strong>User</strong> — everything except what is kept for admins: managing accounts, the guided
+setup of the audio stack and its network shares, the Config editor's <strong>Guided</strong> mode
+and <strong>CONFIGURED</strong> badges, the <strong>DRY-RUN</strong> switch of Audio Software, restarting or
+rebooting the box, updating Audiogravi<sup>ty</sup>, the support report, the terminal
+and removing the licence. The <strong>Admin</strong> tab is not shown to users.</li>
+<li><strong>Guest</strong> — can look at every tab except <strong>Admin</strong> and control what is playing — play
+and pause, skip, seek, volume, repeat, shuffle and the sleep timer, on the box, a
+network speaker or HQPlayer — but not start something else, send it to another output,
+change settings, start or stop services, or read the logs.</li>
 </ul>
+<p>Changing an account's password or role, disabling it or deleting it signs that account
+out on every device where it is open. When you change your own password, you stay signed
+in on the device you changed it from.</p>
 <img loading="lazy" src="images/ios-user-card.webp" alt="A user card: role, status, last login, the persist toggle, and the passkeys and edit actions" width="360">
 <p><strong>Passkeys</strong> — the <em>Passkeys</em> button on your own card registers WebAuthn credentials
 (Face ID, Touch ID, a hardware key). Each passkey is tied to one device and can be
-removed individually; use it instead of a password at login. Password changes take
-effect immediately on current sessions.</p>
-<p><strong>Session persistence</strong> — the <em>Persist</em> toggle chooses how your session is stored:
-persistent (stay logged in across browser restarts) or session-only (log out when
-the tab closes). Takes effect on your next login.</p>
+removed individually; use it instead of a password at login.</p>
+<p><strong>Session persistence</strong> — the <em>Persist</em> switch on each card decides whether that
+account stays signed in when its browser is closed and reopened, or is signed out when
+the tab closes. It applies from the account's next sign-in. Either way a session lasts
+12 hours; the app installed on a phone's home screen always keeps its session when it is
+closed, for the same 12 hours.</p>
 <h2 id="the-settings-panel">The Settings panel</h2>
 <p>The <strong>gear</strong> in the top bar opens the app-wide Settings panel:</p>
 <ul>
@@ -117,8 +131,15 @@ while a start/stop is pending. A segmented <strong>health bar</strong> shows the
 DISABLED</strong> badge controls whether it starts at boot. Uptime is shown next to the
 unit name.</li>
 <li><strong>Detail</strong> — click a service name for live metrics (CPU, memory, tasks, network,
-disk) and the session action history. Metrics are colour-coded LOW / MEDIUM / HIGH,
-tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium, &gt;20 % high).</li>
+disk) and the last actions made on it from this browser. Metrics are colour-coded
+LOW / MEDIUM / HIGH, tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium,
+<blockquote>
+<p>20 % high).</p>
+</blockquote>
+</li>
+<li><strong>Graphs</strong> — each figure on a tile has a small graph of its recent values; click the
+graph to unfold a larger chart on the tile, and <strong>×</strong> to fold it away. Network and
+disk draw two lines: received and sent, read and written.</li>
 <li><strong>Filter</strong> — ALL / RUNNING / STOPPED / FAILED.</li>
 </ul>
 <blockquote>
@@ -140,25 +161,26 @@ switched off, and no setting in the app can change that. See
 <p>Safely edit the real configuration files of your audio services (see also
 <a href="03-first-run">3. First run</a> for the guided setup).</p>
 <ul>
-<li><strong>Guided mode</strong> (MPD / AirPlay / UPnP / HQPlayer Embedded) — change output or library
-in a couple of clicks; only the changed setting is rewritten. <em>Reset to default</em>
-regenerates a minimal config (current file backed up first) — except for HQPlayer
-Embedded, whose settings are its own: only its output is chosen here.</li>
-<li><strong>Form mode</strong> — edit common settings through a friendly interface with field
-descriptions and validation. HQPlayer Embedded has none: its file is edited in Expert
-mode.</li>
-<li><strong>Expert (Raw) mode</strong> — edit the raw file directly, with syntax validation before
-save.</li>
+<li><strong>Guided mode</strong> (admins; MPD, AirPlay, UPnP, HQPlayer Embedded) — choose the output,
+and for MPD the music library, in a couple of clicks; only the changed setting is
+rewritten. UPnP has nothing to choose there, because it plays through MPD. <em>Reset to
+default</em> regenerates a minimal config (current file backed up first) — except for
+HQPlayer Embedded, whose settings are its own: only its output is chosen here.</li>
+<li><strong>Form mode</strong> (called <em>Structured</em> next to <em>Guided</em>) — edit common settings through a
+friendly interface, with a description for each field. HQPlayer Embedded has none: its
+file is edited in Expert mode.</li>
+<li><strong>Expert (Raw) mode</strong> — edit the raw file directly. A basic check before saving
+catches a broken structure (an unclosed section or tag), not a wrong value.</li>
 <li><strong>Preview changes (Diff)</strong> — a unified diff (raw) or a before/after field table
 (form) of your unsaved edits.</li>
-<li><strong>Automatic backups</strong> — every save creates a timestamped backup; the <strong>Backups</strong>
-button browses and restores any previous version.</li>
+<li><strong>Automatic backups</strong> — every save, and every restore, first backs up the current
+file; the <strong>Backups</strong> button lists the last 10 and restores any of them.</li>
 <li><strong>Restart after save</strong> — on by default (applies changes immediately); uncheck to
 batch several edits.</li>
 </ul>
 <p>Each tile carries the state of its service — <strong>RUNNING</strong>, <strong>STOPPED</strong> or <strong>FAILED</strong> —
-and, for the services Audiogravi<sup>ty</sup> can set up itself, whether it is
-<strong>CONFIGURED</strong> or still on the package defaults. HQPlayer Embedded is <strong>CONFIGURED</strong> once
+and, for admins, whether a service Audiogravi<sup>ty</sup> can set up itself is
+<strong>CONFIGURED</strong> or still on its package defaults. HQPlayer Embedded is <strong>CONFIGURED</strong> once
 its output has been chosen here.</p>
 <img loading="lazy" src="images/ios-config-editor.webp" alt="The Config tab: one tile per audio service with its file path, its output, its RUNNING or STOPPED state, its CONFIGURED badge and the Edit config button" width="360">
 <h3 id="when-the-software-behind-a-tile-is-not-installed">When the software behind a tile is not installed</h3>
@@ -261,7 +283,9 @@ reach the graph. Every save is backed up automatically, so you can always roll b
 <p>Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, upmpdcli,
 shairport-sync, Roon Bridge…).</p>
 <ul>
-<li><strong>States</strong> — NOT INSTALLED, INSTALLED, INSTALLING/UPDATING (progress bar), ERROR.</li>
+<li><strong>Filter</strong> — ALL / INSTALLED / UPDATES narrows the list of cards.</li>
+<li><strong>States</strong> — NOT INSTALLED, INSTALLED, INSTALLING / UPDATING / UNINSTALLING (with a
+progress bar), ERROR.</li>
 <li><strong>Actions</strong> — INSTALL, UPDATE (to the version its publisher offers), UNINSTALL. After a failed
 operation the card offers the way out that fits it: an install that failed left
 nothing behind, so it offers to try again; an update that failed left the previous
@@ -309,14 +333,18 @@ the middle of an album is a decision rather than a surprise.</li>
 <li><strong>Restart required</strong> — a pulsing badge appears when a service needs a restart after
 install/update; click to restart it. HQPlayer Embedded is restarted for you once
 installed, so it only shows the badge when that restart failed.</li>
-<li><strong>Architecture</strong> — the CPU badge shows supported architectures (amd64, arm64…).
-A <strong>DRY-RUN</strong> mode simulates operations safely.</li>
+<li><strong>Documentation</strong> — the book icon at the foot of a card opens the publisher's
+documentation in a new tab.</li>
+<li><strong>Architecture</strong> — the CPU badge lists the processor types the package is published
+for.</li>
+<li><strong>DRY-RUN</strong> (admins) — goes through an operation without changing anything. It only
+walks the steps: a dry run that succeeds does not prove the real one will.</li>
 </ul>
 <h2 id="system">System</h2>
 <p>Real-time monitoring and box-level actions.</p>
 <ul>
-<li><strong>Metrics</strong> — CPU, temperature, memory, disk and network, updated every few seconds
-over SSE (the <strong>LIVE</strong> badge shows the stream is active).</li>
+<li><strong>Metrics</strong> — CPU, temperature, memory, disk and network, updated live; the <strong>SSE
+Stream</strong> tile shows whether the live feed is connected.</li>
 <li><strong>System &amp; audio hardware</strong> — hostname, OS, kernel, CPU model/cores; every audio
 card, USB interface and subdevice.</li>
 <li><strong>Event log</strong> — system events and live updates; RUNNING/STOPPED to pause, CLEAR to
@@ -326,8 +354,8 @@ rebooting; <em>Reboot OS</em> performs a full reboot (double confirmation). The 
 reconnects automatically. While software is being installed, both are refused with a
 message naming what is being installed: try again once it has finished. <em>Support
 Report</em> is described below.</li>
-<li><strong>Terminal (admin)</strong> — a full interactive bash shell in the browser (runs as the
-backend user — use with care).</li>
+<li><strong>Terminal (admin)</strong> — a full interactive shell on the box, in the browser. It can
+change anything on the machine: use it with care.</li>
 </ul>
 <h3 id="support-report">Support report</h3>
 <p><em>Support Report</em> in <strong>System › Actions</strong> collects, in one gesture, everything someone
@@ -363,20 +391,64 @@ attach it to a message yourself.</p>
 <img loading="lazy" src="images/ios-system-info.webp" alt="The system information panel: hostname, OS, kernel, architecture, CPU model, cores, boot time and load average" width="360">
 <img loading="lazy" src="images/ios-system-actions.webp" alt="System actions: Restart Core and Support Report in neutral styling, Reboot OS framed in red with its double-confirmation warning" width="360">
 <h2 id="performance-tuning-pro">Performance tuning (Pro)</h2>
-<p>Tune CPU scheduling for bit-perfect, glitch-free playback.</p>
+<p>Keep the processor at the right speed for glitch-free playback, and measure how well
+the box — and your network — keep up.</p>
 <ul>
-<li><strong>CPU governor</strong> — <em>performance</em> (max frequency always, lowest latency),
-<em>schedutil</em> (adapts to load), <em>powersave</em> (not recommended for audio). <em>Apply All</em>
-sets it on every core; <em>Save Conf</em> persists it; <em>Create Service</em> restores it at boot.</li>
-<li><strong>THROTTLED badge</strong> — appears on a core when the kernel reports thermal throttling;
-sustained throttling during playback causes glitches.</li>
-<li><strong>Latency test</strong> — runs <code>cyclictest</code> to measure real-time scheduling latency (µs);
-lower max = fewer dropouts. History of the last 10 runs.</li>
-<li><strong>Network test</strong> — ping jitter/loss or iperf3 throughput; useful for Roon, AirPlay
-or NAS playback.</li>
-<li><strong>RT process monitor</strong> — shows the scheduling policy of audio processes: SCHED_FIFO
-/ SCHED_RR = real-time (green); NON-RT = risk of glitches under load (red).</li>
+<li><strong>CPU governor</strong> — how the processor adjusts its speed. The choices are those your
+processor offers, typically <em>performance</em> (full speed at all times, the steadiest for
+audio), <em>schedutil</em> (follows the load) and <em>powersave</em> (not recommended for audio).
+Set it per core on each card, or with <em>Apply All</em> for every core — its confirmation
+names the governor it will set. <em>Save Conf</em> keeps the current choice, and <em>Create
+Service</em> puts the saved choice back at every start-up: save first, or there is
+nothing to put back.</li>
+<li><strong>THROTTLED badge</strong> — appears on a core the processor had to slow down since the
+previous measurement: because it ran too hot, on processors that report it (Intel's),
+or, on a Raspberry Pi, because its power supply could not keep up — the whole
+processor slows then, and every core shows the badge. Sustained throttling during
+playback causes glitches.</li>
+<li><strong>RT process monitor</strong> — shows whether the audio programs run in real time: MPD,
+AirPlay, and Roon Bridge with its RAAT server. A green badge (SCHED_FIFO / SCHED_RR)
+means real time; a red <strong>NON-RT</strong> badge means the program can be held up while the box
+is busy — give it a real-time policy in <a href="#systemd-tuning-pro">Systemd tuning</a>.</li>
 </ul>
+<h3 id="latency-test">Latency test</h3>
+<p>Measures how quickly the box answers a timer: the worst delay it finds is what an audio
+program risks when the box is busy. Set the test, click <strong>TEST</strong>, and read the result.</p>
+<ul>
+<li><strong>Threads</strong> (1–16) — how many measurements run side by side: 1 for a quick look, one
+per processor core to load the whole box.</li>
+<li><strong>Priority (RT)</strong> (1–99) — the real-time priority the test runs at; 99 by default.</li>
+<li><strong>Loops</strong> (at least 1 000) — how many measurements each thread takes. The test lasts
+loops × interval: the default 10 000 loops take one second, 1 000 000 under two
+minutes — a longer run catches rarer delays.</li>
+<li><strong>EXPERT</strong> shows the finer settings: the <strong>Interval</strong> between measurements (100 µs by
+default), the range of the histogram, the <strong>CPU Affinity</strong> — the cores the test runs
+on, such as <code>2,3</code>; left empty, any of them — and two switches best left on, <strong>Memory
+Lock</strong> and <strong>Quiet Mode</strong>.</li>
+</ul>
+<p>In the result, <strong>Max</strong> is the figure that matters: the worst delay seen, in
+microseconds. The histogram shows how often each delay occurred.</p>
+<h3 id="network-test">Network test</h3>
+<p>Checks that your network carries audio without hiccups — worth running when streaming,
+Roon, AirPlay or a NAS stalls. Choose a mode, set it, and click <strong>TEST</strong>.</p>
+<ul>
+<li><strong>PING (Quick Check)</strong> — sends 20 small packets to a host (1.1.1.1 by default; your
+router's address tests your home network alone) and reports the delay, how much it
+varies (<em>jitter</em>) and any packet lost.</li>
+<li><strong>IPERF3 UDP (Audio Streaming)</strong> and <strong>IPERF3 TCP (Throughput)</strong> — a test server
+sends a steady stream to the box for the chosen <strong>Duration</strong>, at the chosen
+<strong>Bandwidth</strong>. The server runs on another machine of your network: install iperf3
+there, start it with <code>iperf3 -s</code>, and enter its address in <strong>Server</strong>. Set
+<strong>Bandwidth</strong> to what your music needs — DSD512 and PCM 768 kHz take close to
+50 Mbit/s (<code>50M</code>). UDP reports jitter and loss at that rate; TCP reports whether the
+rate holds, and how many packets had to be sent again.</li>
+<li><strong>Internal Server Service</strong> — <strong>START SERVICE</strong> runs a test server on the box itself,
+so that another machine can test its way to the box.</li>
+</ul>
+<p>The verdict — <strong>EXCELLENT</strong>, <strong>GOOD</strong>, <strong>FAIR</strong> or <strong>CRITICAL</strong> — sums up the jitter, the
+loss and, for iperf3, the bandwidth reached.</p>
+<p>Each test keeps a <strong>History</strong> of the last ten tests run from this browser, latency and
+network together; <strong>Clear</strong> empties both.</p>
 <h2 id="systemd-tuning-pro">Systemd tuning (Pro)</h2>
 <p>Low-level, per-service OS tuning using systemd <strong>drop-in overrides</strong> — the native
 <code>.service</code> files are <strong>never modified</strong>; everything lives in an isolated
@@ -384,16 +456,18 @@ or NAS playback.</li>
 <ul>
 <li><strong>CPU affinity</strong> — pin a service to specific cores to cut context-switching jitter.</li>
 <li><strong>RT scheduling</strong> — FIFO/RR policy and priority (1–99) for guaranteed CPU time.</li>
-<li><strong>CPU weight / I/O priority / OOM score</strong> — bias the scheduler, disk/network I/O and
-the out-of-memory killer in favour of audio.</li>
+<li><strong>CPU weight / I/O priority / OOM score</strong> — bias the scheduler, disk access and the
+out-of-memory killer in favour of audio.</li>
 <li><strong>RT preset</strong> — <em>Audio Optimized</em> pre-fills a battle-tested config (SCHED_FIFO 80,
 LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).</li>
-<li><strong>Safety</strong> — a diff preview before applying, automatic backups (<em>Restore Backup</em>),
-and <em>Remove Override</em> to roll a service back to factory behaviour instantly.</li>
+<li><strong>Safety</strong> — a diff preview before applying; <em>Restore Backup</em> puts the previous
+settings back, and <em>Remove Override</em> returns the service to its original settings. A
+running service is restarted on them at once; if it does not start with them, it gets
+back the settings it was running on, and you are told. A stopped service stays
+stopped.</li>
 <li><strong>Settings a service cannot start with are refused</strong> before anything is saved, with
 the reason: a real-time priority without a real-time policy or the reverse, a CPU the
-box does not have, a memory limit under 16 MB, an open-file limit under 1024.
-<strong>Validate</strong> gives the same answers.</li>
+box does not have, a memory limit under 16 MB, an open-file limit under 1024.</li>
 <li><strong>A change that stops a service is undone.</strong> A running service is restarted on its
 new settings and watched for a few seconds; if it does not stay up, the previous
 settings are put back, the service is started again, and you are told. A service that
@@ -410,17 +484,21 @@ are remembered per device.</p>
 install taps a Pro tab — those carry a small lock icon in the tab bar).</p>
 <ul>
 <li><strong>Trial</strong> — 30 days of full access, auto-activated on first run.</li>
-<li><strong>Lifetime</strong> — a single-device <code>.lic</code> file cryptographically tied to this device's
-hardware fingerprint (the <strong>Device ID</strong>). One-time payment, no expiry, no
-subscription.</li>
+<li><strong>Buying</strong> — the licence panel lists the steps: <em>Pay with PayPal</em>, receive your
+licence key by email, then <strong>LICENSE KEY</strong>, enter the key, <strong>CHECK KEY</strong> and
+<strong>ACTIVATE THIS MACHINE</strong>. No restart is needed.</li>
+<li><strong>Lifetime</strong> — a <code>.lic</code> file for this one installation, identified by its
+<strong>Device ID</strong>. One-time payment, no subscription, no end date; it covers every 1.x
+version, and the 0.9 beta before it (see
+<a href="11-faq#are-updates-included">11. FAQ → Are updates included?</a>).</li>
 <li><strong>Time-limited</strong> — the same file, issued to run until a given date. The panel shows
 that date while the licence is valid, and the plan reads <em>Time-limited</em> rather than
 <em>Perpetual</em>. Every Pro feature is unlocked exactly as with a lifetime licence.</li>
 <li><strong>Import / re-download</strong> — import a <code>.lic</code> file, or re-download yours from the
 self-service portal (purchase email + Device ID, no account needed) if it has gone
 missing from this installation.</li>
-<li><strong>Reinstalled the system, or moved to another machine?</strong> The box then has a new
-<strong>Device ID</strong>, and your licence no longer matches it — neither the portal nor your old
+<li><strong>Reinstalled the system, moved to another machine, or replaced its network card?</strong>
+The box then has a new <strong>Device ID</strong>, and your licence no longer matches it — neither the portal nor your old
 file can fix that. Write to <a href="mailto:support@audiogravity.app">support@audiogravity.app</a>
 with your <strong>Order ID</strong> and the new <strong>Device ID</strong>: a licence reset is available on
 request (see

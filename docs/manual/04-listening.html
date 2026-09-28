@@ -121,7 +121,8 @@ changes what you <em>see</em>: nothing moves or stops playing, and the current t
 always stays in view.</li>
 <li>Remove an upcoming track with its <strong>Remove</strong> button or a <strong>left-swipe</strong> — the same
 gesture used across the app's lists. <strong>Clear</strong> empties the queue, and respects the
-active filter.</li>
+active filter. A Roon queue is changed from the Roon app: here it has no <strong>Remove</strong>
+button or swipe, and <strong>Clear</strong> is greyed out.</li>
 </ul>
 <img loading="lazy" src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
 <p>Casting hands the audio over: what was playing on your DAC stops, and the speaker
@@ -148,16 +149,23 @@ for a radio station or a UPnP server it gives the name of the station or the ser
 <h2 id="profiles--switch-whole-chains-in-one-tap">Profiles — switch whole chains in one tap</h2>
 <p>A <strong>profile</strong> is a ready-made scenario for your audio system, named after what it runs.
 Switching one automatically <strong>starts the services it needs and stops the conflicting
-ones</strong>, so the chain is always coherent and bit-perfect. For example: <em>Roon Bridge +
+ones</strong>, so the chain is always coherent. For example: <em>Roon Bridge +
 HQPlayer NAA</em> for serious listening, <em>UPnP Renderer</em> to expose the box as a UPnP
 renderer, <em>MPD</em> for your own music library. The profiles come with Audiogravi<sup>ty</sup>
 (see <a href="07-administration#audio-configuration-services--profiles">7. Administration</a>).</p>
-<p>Each profile tile shows the services it starts/stops, the resolved output port (e.g.
-<code>usb</code>, <code>toslink</code>), a live <strong>health bar</strong> (active / failed / idle), and when it was
-last activated. Activation is atomic, with a detailed toast on failure.</p>
+<p>Each profile tile shows the services it starts/stops, the output they are set to play
+to (e.g. <code>usb</code>, <code>toslink</code>), a live <strong>health bar</strong> of those services — running (green),
+failed (red), stopped (grey) — and when it was last switched on since
+Audiogravi<sup>ty</sup> last started. Every switch asks for confirmation. The services to
+stop are stopped first, then the others started. If an essential service cannot be
+stopped, nothing is started; any other failure is named in a message, and the switch is
+not undone.</p>
 <p>If a service of the profile in use fails, its tile reads <strong>FAILED</strong> in red; tap
 <strong>Activate</strong> on it to start again what failed. The other profiles keep their state,
 with a small <em>failed</em> badge counting it.</p>
+<p><strong>ALL / ACTIVE / IDLE</strong> filters the tiles, the active profile first. Click a profile's
+name for the full list of its services and the switches made from this browser; the
+<strong>HISTORY</strong> panel beside the tiles lists those switches for every profile.</p>
 <h2 id="sleep-timer">Sleep timer</h2>
 <p>A built-in sleep timer pauses playback after a set duration — for falling asleep to
 music without leaving the system running all night.</p>

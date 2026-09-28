@@ -229,10 +229,11 @@ description is a text file, so writing one from scratch is far easier at a keybo
 <a href="06-outputs-engines#the-signal-path-and-the-chain-you-describe">6. Outputs &amp; engines → The signal path</a>.</p>
 <h2 id="a-service-wont-start">A service won't start</h2>
 <ul>
-<li>Open <strong>Services</strong> → click the service name for its detail modal (live metrics + the
-session action history), then <strong>restart</strong> it.</li>
-<li>If a <strong>Systemd</strong> tuning override made it unstable, use <strong>Restore Backup</strong> or <strong>Remove
-Override</strong> on the Systemd tab to roll it back to factory behaviour instantly.</li>
+<li>Open <strong>Services</strong> → click the service name for its detail modal (live metrics and its
+recent actions), then <strong>restart</strong> it.</li>
+<li>If a <strong>Systemd</strong> tuning override made it unstable, use <strong>Restore Backup</strong> (its previous
+settings) or <strong>Remove Override</strong> (its original settings) on the Systemd tab — a running
+service is restarted on them.</li>
 <li>For deeper output, use the browser <strong>Terminal</strong> (System tab, admin) — e.g.
 <code>systemctl status mpd</code> / <code>journalctl -u mpd -e</code>.</li>
 </ul>
@@ -409,8 +410,9 @@ being applied. Wait a moment and drag again.</li>
 <h2 id="casting-to-a-renderer-stalls">Casting to a renderer stalls</h2>
 <ul>
 <li>Check the renderer is reachable on the LAN and appears in the output selector.</li>
-<li>Network renderers depend on your local network — run the <strong>Network Test</strong>
-(Performance tab) to check jitter/loss.</li>
+<li>Network renderers depend on your local network — run the
+<a href="07-administration#network-test">Network test</a> (Performance tab) to check
+jitter/loss.</li>
 </ul>
 <img loading="lazy" src="images/ios-network-test.webp" alt="The network stability test after a ping run: an EXCELLENT verdict with min, average, max latency, jitter and packet loss" width="360">
 <h2 id="a-upnp-renderer-or-media-server-isnt-discovered">A UPnP renderer or media server isn't discovered</h2>
@@ -436,12 +438,14 @@ VLANs without an mDNS repeater on the router.</li>
 </ul>
 <h2 id="audio-glitches--dropouts">Audio glitches / dropouts</h2>
 <ul>
-<li>Watch for a <strong>THROTTLED</strong> badge on a CPU core (Performance tab) — sustained thermal
-throttling causes glitches; improve cooling or ease the CPU governor.</li>
+<li>Watch for a <strong>THROTTLED</strong> badge on a CPU core (Performance tab) — sustained
+throttling causes glitches. Improve cooling or ease the CPU governor; on a Raspberry
+Pi, a badge on every core points at the power supply: use one that can deliver the
+current the board needs.</li>
 <li>In the <strong>RT process monitor</strong>, audio processes should show <strong>SCHED_FIFO / SCHED_RR</strong>
 (green), not NON-RT (red). Apply the <em>Audio Optimized</em> preset on the Systemd tab.</li>
-<li>Run the <strong>Latency test</strong> (<code>cyclictest</code>) — a high max latency points at scheduling
-contention.</li>
+<li>Run the <a href="07-administration#latency-test">Latency test</a> — a high max latency points
+at scheduling contention.</li>
 </ul>
 <h2 id="manual-nas-mount-terminal">Manual NAS mount (terminal)</h2>
 <p>The library picker's <strong>Add network share</strong> covers CIFS/SMB. If you prefer the

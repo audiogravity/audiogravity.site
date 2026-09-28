@@ -28,7 +28,7 @@ it. Add the rest from the **Audio Software** tab if you want them: **Shairport S
 
 ## 4. Initialize the audio stack
 
-**Config** tab → **Initialize audio stack**: pick your **DAC** and your **music
+**Config** tab → **Configure audio stack**: pick your **DAC** and your **music
 library** — a USB drive, or a NAS share
 [added right from the picker](03-first-run.md#music-on-a-nas-add-the-share-from-the-picker)
 (mounted and tested on the spot) — and confirm with your admin password. The

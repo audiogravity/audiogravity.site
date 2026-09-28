@@ -7,7 +7,51 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Accounts and sessions
+
+**A change to an account takes effect everywhere.** A new password, a new role, a disabled
+or deleted account now signs that account out on every device where it is open, from its
+next click — the terminal included. An admin who changes their own password stays signed
+in on the device they changed it from. An account deleted and created again under the same
+name starts with no open session.
+
+**Nobody locks themselves out.** No one can disable their own account or change their own
+role, and the built-in `admin` keeps its role: the account window greys those fields out and
+says why.
+
+**A guest controls what is playing, and nothing else.** Play and pause, skip, seek, volume,
+repeat, shuffle and the sleep timer — on the box, a network speaker or HQPlayer. HQPlayer's
+settings, the streaming accounts, the radio library, the output, the services' settings and
+the licence are no longer open to a guest.
+
+### The app does what the manual says
+
+**Restore Backup and Remove Override apply at once.** A running service is restarted on the
+settings put back; if it does not start with them, it gets back the settings it was running
+on, and you are told.
+
+**A failed install shows as failed**, with the way out on its card — INSTALL again, UPDATE,
+UNINSTALL or REPAIR — until the next operation, or until the package is put right from a
+terminal.
+
+**The THROTTLED badge appears** on the Performance tab when a core is slowed down for heat,
+and on a Raspberry Pi when its power supply is too weak.
+
+**Restart Core and Reboot OS reconnect by themselves**, a service's detail window stays
+live, the latency test runs on the cores it is told to and measures its percentiles, and
+Apply All applies the governor you last chose.
+
+**FULL RES, not BIT-PERFECT.** The pipeline's green badge checks that the connection can
+carry the format sent to the card; its name now says so.
+
+### One explanation: the manual
+
+The INFO windows are gone, and so are the tooltips: the manual is the one explanation, and
+every sentence of it was checked against the app — roles, sessions, Config, Audio Software,
+Performance with its latency and network tests, Systemd, the licence, the Pipeline and the
+profiles. Buttons drawn as badges or icons now answer the keyboard, and the Editions window
+matches the editions as they are. The cockpit of the Admin tab loses its LOW POWER badge and
+its battery tile, which did nothing for the box.
 
 ---
 

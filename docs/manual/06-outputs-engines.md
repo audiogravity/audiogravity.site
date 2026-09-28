@@ -86,12 +86,14 @@ amplifier, speakers — meant to be replaced by yours. Open **Pipeline → CONFI
 It is a text file, so a computer is the comfortable place to write one from scratch, but
 it can be reached from a phone too.
 
-> **Until it describes your gear, the signal path can look empty.** The view draws a
-> device only when audio is actually flowing through one of its declared connections, and
-> the example chain declares USB and optical. A box playing through a **HAT board** — a
-> converter mounted directly on a Raspberry Pi's connector — matches neither, so nothing
-> lights up. The Pipeline tab says so, and names the output it found next to what your
-> description declares: that is your cue to describe the real chain. See
+> **Until it describes your gear, the signal path can look empty.** On a phone, the view
+> draws a device only when audio is actually flowing through one of its declared
+> connections, and the example chain declares USB and optical. A box playing through a
+> **HAT board** — a converter mounted directly on a Raspberry Pi's connector — matches
+> neither, so nothing lights up. The view says so, and names the output it found next to
+> what your description declares: that is your cue to describe the real chain. On a
+> larger screen the full graph still shows every device you declared, but none of them
+> lights up either. See
 > [9. Troubleshooting → The signal path is empty](09-troubleshooting.md#the-signal-path-is-empty).
 
 ## HQPlayer
@@ -385,9 +387,18 @@ now-playing readout.
 
 The **Audio Pipeline** view (Pro) draws your entire signal chain as a live graph —
 controller → server → streamer → converter/amp → output. Animated particles mean audio
-is flowing; **green links** mean lossless, no sample-rate conversion (bit-perfect); a
-**bit-perfect** badge confirms it. On small screens it falls back to a simplified Now
-Playing view with per-stream output steering (USB / Optical).
+is flowing, and a link takes the colour of the service carrying the stream — **LEGEND**
+shows which is which. A **FULL RES** badge marks the cable to your converter when it
+can carry, untouched, the format the box is sending.
+
+Beside the graph, the controls zoom (**FIT** frames the whole chain), **RESET** the
+layout, and show or hide the **LEGEND**, a **MINIMAP** and the **NETWORK** links. Two
+switches, off by default, add your idle **analog sources** (turntable, tuner…) and the
+**controllers** — the phones and apps that drive the box.
+
+On small screens it falls back to a simplified Now Playing view: one card per stream,
+with the chain it takes and, for a service that can be steered, pills to send it to
+another output (USB, optical, HDMI…).
 
 <img src="images/ios-signal-chain.webp" alt="The Audio Pipeline on a phone: the Now Playing card, the output steering pills, and the signal chain from the streamer through the DAC and the amplifier to the speakers" width="360">
 

@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[site] The landing promises what the app does.** Profiles are no longer sold as *atomic* — a service that fails does not undo the switch — but by their live health bar. The service tiles' sparklines are *live*, not *60 s*, and the throughput reference the tile quoted is dropped: it went with the INFO windows in 0.9.63, and its figures were eight times too high. The configuration editor offers a diff and an automatic backup restored in one click, not *live validation*. The passkeys card no longer mentions a session history the app does not keep. The login screenshot is retaken.
+
 ## [0.9.63] - 2026-09-28
 
 ### Changed

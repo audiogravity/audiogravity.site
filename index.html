@@ -407,8 +407,8 @@
                         renderer — controllable from any UPnP control point: JPLAY, BubbleUPnP, mconnect. OpenHome
                           apps such as Kazoo work too — one switch in the UPnP bridge's configuration form. "AirPlay only" for
                         background music. Each profile lists exactly which services to start and stop — conflicts
-                        resolved automatically. Atomic activation with detailed toast on failure.</p>
-                    <span class="fb-chip">Conflict resolution · atomic · history</span>
+                        resolved automatically, and a live health bar shows the whole chain is up.</p>
+                    <span class="fb-chip">Conflict resolution · live health · history</span>
                 </div>
 
                 <div class="fb span2 dark">
@@ -449,8 +449,8 @@
                     <p>New box? The guided setup detects your DAC and music library and generates a minimal,
                         <b>bit-perfect</b> config for MPD, AirPlay and UPnP; Guided mode then changes an output or
                         library in two clicks — only what you touch is rewritten. For deeper edits: form view, a full text
-                        editor with syntax highlighting (JSON, INI, XML, libconfig), live validation before save, side-by-side
-                        diff, automatic timestamped backup before every change.</p>
+                        editor with syntax highlighting (JSON, INI, XML, libconfig), a side-by-side diff to review every
+                        change, and an automatic backup before each save, restored in one click.</p>
                     <span class="fb-chip">guided setup · mpd.conf · roon · AirPlay · upmpdcli · live diff</span>
                 </div>
 
@@ -497,9 +497,9 @@
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2" /></svg></div>
-                    <h3>Service tile + 60 s sparklines</h3>
+                    <h3>Service tile + live sparklines</h3>
                     <p>Live systemd state. Instantaneous CPU, memory, network and disk with LOW/MEDIUM/HIGH thresholds.
-                        Expected throughput reference (CD ≈ 1.4 MB/s, Hi-Res ≈ 10 MB/s, DSD64 ≈ 22 MB/s). Uptime shown.
+                        Uptime shown.
                     </p>
                     <span class="fb-chip">Live systemd · sparklines · uptime</span>
                 </div>
@@ -520,7 +520,7 @@
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg></div>
                     <h3>WebAuthn passkeys</h3>
                     <p>Face ID, Touch ID, fingerprint, YubiKey. Multiple devices per user, managed individually.
-                        Role-based access — Admin, User, Guest — with session history.</p>
+                        Role-based access — Admin, User, Guest.</p>
                     <span class="fb-chip">FIDO2 · Face ID · YubiKey · RBAC</span>
                 </div>
 
@@ -1098,7 +1098,7 @@
                             <td class="cmp-no">—</td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">Audio config editor (diff + validation)</td>
+                            <td class="cmp-cap">Audio config editor (diff + automatic backup)</td>
                             <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-part">partial</td>

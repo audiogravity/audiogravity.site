@@ -11,6 +11,10 @@ and this landing) are documented here. Format based on
 
 ### Changed
 - **[site] The landing promises what the app does.** Profiles are no longer sold as *atomic* — a service that fails does not undo the switch — but by their live health bar. The service tiles' sparklines are *live*, not *60 s*, and the throughput reference the tile quoted is dropped: it went with the INFO windows in 0.9.63, and its figures were eight times too high. The configuration editor offers a diff and an automatic backup restored in one click, not *live validation*. The passkeys card no longer mentions a session history the app does not keep. The login screenshot is retaken.
+- **[ui] What acts as a button is a button.** The Enabled/Disabled badge of an account, the four actions of the Audio Software title (refresh, download, CHECK UPDATES, UPDATE ALL), the metrics icon of the Services title, the API icon of the Settings panel, the footer's icon, the player's source dots, in the bar and full screen, and the pull tab were spans and divs made to act as buttons, with code of ours for the keyboard. They are real buttons now, and look exactly as before — measured in Chromium, on a phone and a desktop, light and dark: same boxes, same pixels. The browser itself gives them Tab, Enter and Space, and announces them. A test fails on an element announced as a button that is not one, bar the two below.
+
+### Removed
+- **[ui] The radio card and the player's cover no longer answer the keyboard.** Audiogravi<sup>ty</sup> is used by touch, mostly on a phone, and neither can become a button: the card holds three buttons of its own, and the swipe that removes a station does not start on a button; the cover holds the album details. The keyboard code that stood in for a button is gone. Nothing changes by touch or with a mouse, and a screen reader still announces them as buttons.
 
 ## [0.9.63] - 2026-09-28
 

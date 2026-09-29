@@ -336,7 +336,9 @@ Real-time monitoring and box-level actions.
   message naming what is being installed: try again once it has finished. *Support
   Report* is described below.
 - **Terminal (admin)** — a full interactive shell on the box, in the browser. It can
-  change anything on the machine: use it with care.
+  change anything on the machine: use it with care. Closing it — or the end of your
+  session — stops everything running in it, even a command started with `nohup`: run a
+  long task over SSH instead.
 
 ### Support report
 
@@ -384,11 +386,18 @@ attach it to a message yourself.
 Keep the processor at the right speed for glitch-free playback, and measure how well
 the box — and your network — keep up.
 
+Each core has its card: its **frequency**, its **temperature** — green, amber above
+50 °C, red above 70 °C — and its **load**, one bar per measurement on the same 0–100 %
+scale for every core, so the cores compare at a glance. The time the bars cover is
+written next to *Load*.
+
+<img src="images/ios-cpu-cards.webp" alt="Two CPU cards of the Performance tab: the core's number, socket and core, its frequency and temperature, its load in bars and its governor" width="360">
+
 - **CPU governor** — how the processor adjusts its speed. The choices are those your
   processor offers, typically *performance* (full speed at all times, the steadiest for
   audio), *schedutil* (follows the load) and *powersave* (not recommended for audio).
-  Set it per core on each card, or with *Apply All* for every core — its confirmation
-  names the governor it will set. *Save Conf* keeps the current choice, and *Create
+  Set it per core with the menu at the bottom of its card, or with *Apply All*, under
+  the cards, for every core — its confirmation names the governor it will set. *Save Conf* keeps the current choice, and *Create
   Service* puts the saved choice back at every start-up: save first, or there is
   nothing to put back.
 - **THROTTLED badge** — appears on a core the processor had to slow down since the
@@ -420,6 +429,8 @@ program risks when the box is busy. Set the test, click **TEST**, and read the r
 In the result, **Max** is the figure that matters: the worst delay seen, in
 microseconds. The histogram shows how often each delay occurred.
 
+<img src="images/ios-latency-test.webp" alt="The latency test after a run: its settings, the minimum, average and maximum delay, the percentiles and the histogram" width="360">
+
 ### Network test
 
 Checks that your network carries audio without hiccups — worth running when streaming,
@@ -440,6 +451,8 @@ Roon, AirPlay or a NAS stalls. Choose a mode, set it, and click **TEST**.
 
 The verdict — **EXCELLENT**, **GOOD**, **FAIR** or **CRITICAL** — sums up the jitter, the
 loss and, for iperf3, the bandwidth reached.
+
+<img src="images/ios-network-test.webp" alt="The network stability test after a ping run: an EXCELLENT verdict with min, average, max latency, jitter and packet loss" width="360">
 
 Each test keeps a **History** of the last ten tests run from this browser, latency and
 network together; **Clear** empties both.

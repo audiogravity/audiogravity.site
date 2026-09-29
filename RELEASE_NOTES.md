@@ -7,7 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Performance
+
+**CPU load in bars.** Each CPU card of the Performance tab draws its load in bars, as the
+System tiles do, on one 0–100 % scale for every core — the cores compare at a glance — with
+the time the bars cover written beside *Load*. The card keeps its size: *CPU n* and its
+socket and core share one line, and the chart takes the room. The manual's Performance
+chapter now shows the cards and both tests.
 
 ---
 

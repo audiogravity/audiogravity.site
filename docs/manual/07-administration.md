@@ -63,13 +63,15 @@ The **gear** in the top bar opens the app-wide Settings panel:
 - **Notifications** — subscribe this device to **push notifications** (see below).
 - **Animations** — turns UI motion off (functional loading spinners keep animating so
   an operation never looks stuck).
+- **Top Bar Metrics** — shows or hides the figures of the top bar — uptime, CPU,
+  temperature and memory — on this device only. The **System** tab keeps showing them.
 - **Portrait Lock** — phones and tablets only; see
   [4. Listening](04-listening.md#portrait-lock).
 - **Face ID / Touch ID** — register this device as a **passkey** in one tap; each
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
-<img src="images/ios-settings.webp" alt="The Settings panel: theme, and one toggle per row — light/dark mode, notifications, animations, portrait lock and Face ID / Touch ID" width="360">
+<img src="images/ios-settings.webp" alt="The Settings panel: theme, and one toggle per row — light/dark mode, notifications, animations, top bar metrics, portrait lock and Face ID / Touch ID" width="360">
 
 ### Push notifications
 

@@ -7,6 +7,23 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Settings
+
+**Hide the top bar's figures.** A *Top Bar Metrics* switch in Settings hides uptime, CPU,
+temperature and memory from the top bar, on the device where you switch it; the System tab
+still shows them.
+
+**Animations, switched back on, move again at once.** The tabs' bell, the logs' LIVE badge
+and the update badges of Audio Software no longer wait for the page to be reloaded.
+
+### Notifications
+
+**Alerts that reach you with the app closed.** A service that stops unexpectedly, or a CPU
+that overheats, is now reported to your phone even when the app is closed everywhere — the
+moment a notification is for. A service that stays down is reported once, one that keeps
+failing at most every quarter of an hour; stopping a service yourself, or restarting the box,
+reports nothing.
+
 ### Performance
 
 **CPU load in bars.** Each CPU card of the Performance tab draws its load in bars, as the
@@ -14,6 +31,9 @@ System tiles do, on one 0–100 % scale for every core — the cores compare at 
 the time the bars cover written beside *Load*. The card keeps its size: *CPU n* and its
 socket and core share one line, and the chart takes the room. The manual's Performance
 chapter now shows the cards and both tests.
+
+**Temperatures read without a pause.** On a machine with many temperature sensors, reading
+them no longer stops Audiogravi<sup>ty</sup> for a moment every twenty seconds or so.
 
 ### HQPlayer
 

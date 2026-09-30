@@ -35,6 +35,10 @@ chapter now shows the cards and both tests.
 **Temperatures read without a pause.** On a machine with many temperature sensors, reading
 them no longer stops Audiogravi<sup>ty</sup> for a moment every twenty seconds or so.
 
+**Quieter while the music plays.** During playback, Audiogravi<sup>ty</sup> no longer keeps
+systemd busy loading and dropping, dozens of times a second, services that are stopped or
+that live on another machine — the NAS, the phone, Roon Server.
+
 ### HQPlayer
 
 **Each HQPlayer keeps its own settings.** If you use more than one HQPlayer, the filter,

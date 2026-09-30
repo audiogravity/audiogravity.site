@@ -39,7 +39,10 @@ them no longer stops Audiogravi<sup>ty</sup> for a moment every twenty seconds o
 systemd busy loading and dropping, dozens of times a second, services that are stopped or
 that live on another machine — the NAS, the phone, Roon Server. And with the app closed, it
 no longer rebuilds the whole audio chain every second: it watches playback only as closely
-as the DSD protection needs.
+as the DSD protection needs. A DAC with no volume control of its own — an HDMI output, many
+USB DACs — is no longer asked for one every few seconds, nor every second while DSD plays.
+And a Roon Server you declared in the topology is checked every 30 seconds, like the NAS,
+instead of at every refresh.
 
 ### HQPlayer
 

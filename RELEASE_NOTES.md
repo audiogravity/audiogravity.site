@@ -15,6 +15,30 @@ the time the bars cover written beside *Load*. The card keeps its size: *CPU n* 
 socket and core share one line, and the chart takes the room. The manual's Performance
 chapter now shows the cards and both tests.
 
+### HQPlayer
+
+**Each HQPlayer keeps its own settings.** If you use more than one HQPlayer, the filter,
+noise shaper and mode you pick stay with the HQPlayer you picked them on. Switching the card
+to another no longer hands them over — the same number names a different filter from one
+HQPlayer to another — and coming back gives each its own. An HQPlayer met for the first time
+keeps the settings it has.
+
+**Its volume is its own.** Audiogravi<sup>ty</sup> no longer sets HQPlayer's volume back when
+the card reconnects: a level you lowered in HQPlayer itself stays where you put it.
+
+### Volume
+
+**A lighter volume slider.** Dragging the volume no longer sends a request for every step it
+crosses: about four a second, and the level you stop on as soon as you let go. The player —
+HQPlayer above all — has far less to answer.
+
+### Security
+
+**What Audiogravi<sup>ty</sup> keeps on the box stays its own.** The streaming accounts, the
+licence and the keys kept on the box could be read by any account of the box; only
+Audiogravi<sup>ty</sup>'s own account can read them now, and the next update narrows what
+earlier versions wrote.
+
 ---
 
 ## 0.9.63 — 2026-09-28

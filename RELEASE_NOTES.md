@@ -37,7 +37,9 @@ them no longer stops Audiogravi<sup>ty</sup> for a moment every twenty seconds o
 
 **Quieter while the music plays.** During playback, Audiogravi<sup>ty</sup> no longer keeps
 systemd busy loading and dropping, dozens of times a second, services that are stopped or
-that live on another machine — the NAS, the phone, Roon Server.
+that live on another machine — the NAS, the phone, Roon Server. And with the app closed, it
+no longer rebuilds the whole audio chain every second: it watches playback only as closely
+as the DSD protection needs.
 
 ### HQPlayer
 
@@ -55,6 +57,10 @@ the card reconnects: a level you lowered in HQPlayer itself stays where you put 
 **A lighter volume slider.** Dragging the volume no longer sends a request for every step it
 crosses: about four a second, and the level you stop on as soon as you let go. The player —
 HQPlayer above all — has far less to answer.
+
+**DSD at full volume, app open or not.** The protection that sets the volume to 100 while a
+DSD track plays kept working only until the app had been opened and closed once. It now
+works whether the app is open or not.
 
 ### Security
 

@@ -113,7 +113,7 @@ It **installs and configures** the on-host daemons (MPD, upmpdcli, AirPlay), **d
 
 ## Requirements
 
-- **Host** — a Linux server: DietPi or Debian / Ubuntu, on **x86_64** or **aarch64** (Raspberry Pi)
+- **Host** — a Linux server running **Debian 13 (Trixie) or later** — DietPi and Raspberry Pi OS included, in their Trixie release — on **x86_64** or **aarch64** (Raspberry Pi)
 - **Audio output** — any ALSA-visible device: USB DAC, HAT, HDMI, S/PDIF…
 - **Network** — a local network; any browser (phone, tablet, laptop) reaches the UI
 - **Optional** — a public HTTPS **domain** for passkeys (WebAuthn) and Web Push

@@ -64,7 +64,8 @@ free 30-day trial; it activates automatically on first run.
 
 ## What you need
 
-- A **Linux box** (DietPi or Debian/Ubuntu, x86-64 or ARM/Raspberry Pi) next to your hi-fi
+- A **Linux box** running **Debian 13 (Trixie) or later** — DietPi and Raspberry Pi OS
+  included, in their Trixie release — on x86-64 or ARM/Raspberry Pi, next to your hi-fi
 - A **DAC or audio output** the box can see (USB, HAT, HDMI, S/PDIF…)
 - Your **home network**, and any device with a browser to control it
 

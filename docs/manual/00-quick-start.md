@@ -9,7 +9,7 @@ the detail.
 curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
-One command on your DietPi / Debian box — core and interface together, keys
+One command on your Debian 13 (Trixie) box, DietPi or Raspberry Pi OS included — core and interface together, keys
 generated, services started. *(Options and separate core / interface installs:
 [2. Installation](02-installation.md).)*
 

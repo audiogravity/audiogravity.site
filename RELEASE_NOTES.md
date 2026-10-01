@@ -81,6 +81,13 @@ licence and the keys kept on the box could be read by any account of the box; on
 Audiogravi<sup>ty</sup>'s own account can read them now, and the next update narrows what
 earlier versions wrote.
 
+### Installation
+
+**Debian 13 (Trixie) or later.** Audiogravi<sup>ty</sup> runs on Debian 13 or later — DietPi
+and Raspberry Pi OS included, in their Trixie release. The site and the manual now say so,
+and on another system the core installer stops and says why, instead of installing a core
+that cannot start there.
+
 ---
 
 ## 0.9.63 — 2026-09-28

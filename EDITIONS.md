@@ -49,7 +49,7 @@ Everything in Starter, plus:
 - **Sleep timer** — automatic pause after a set duration
 
 > Qobuz, Tidal and HIGHRESAUDIO require an active subscription to their respective services.
-> Recommended platform: Linux Debian / DietPi. Other Linux distributions may work but are not officially supported.
+> Platform: Debian 13 (Trixie) or later — DietPi and Raspberry Pi OS included, in their Trixie release. The core installer turns any other system down.
 
 ---
 

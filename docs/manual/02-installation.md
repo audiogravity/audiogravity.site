@@ -12,8 +12,9 @@ dependency hell, no manual configuration.
 
 ## Before you start
 
-- A **Linux host** next to your hi-fi — DietPi or Debian/Ubuntu, on **x86-64** or
-  **aarch64** (Raspberry Pi). See
+- A **Linux host** next to your hi-fi running **Debian 13 (Trixie) or later** — DietPi
+  and Raspberry Pi OS included, in their Trixie release — on **x86-64** or **aarch64**
+  (Raspberry Pi). On another system, the core installer stops and says why. See
   [1. Introduction → What you need](01-introduction.md#what-you-need).
 - The host reachable on your **local network**.
 

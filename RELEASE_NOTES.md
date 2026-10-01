@@ -48,6 +48,11 @@ instead of at every refresh.
 every 30 seconds, day and night: two quiet questions to the system do it, for a fraction of
 the work.
 
+**A lighter network view.** While the audio chain is on screen, the box's network interfaces
+are read without starting a program, and the WiFi is asked for its signal without
+administrator rights wherever its chip allows it. A network whose name has accents or
+spaces now shows it in full.
+
 ### HQPlayer
 
 **Each HQPlayer keeps its own settings.** If you use more than one HQPlayer, the filter,

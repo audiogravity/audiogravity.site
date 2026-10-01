@@ -58,6 +58,20 @@ are read without starting a program, and the WiFi is asked for its signal withou
 administrator rights wherever its chip allows it. A network whose name has accents or
 spaces now shows it in full.
 
+**A lighter Services tab.** While the app is open, the figures of each service — CPU, memory,
+disk, network — are read without starting a program every few seconds, and without making
+the system load the services that are stopped. The tab shows exactly the same figures.
+
+**AirPlay and UPnP asked less.** Audiogravi<sup>ty</sup> no longer asks AirPlay and UPnP to
+describe themselves before every question, and no longer asks a stopped AirPlay or MPD what
+it plays.
+
+### Audio chain
+
+**A slip in a hand-edited topology no longer empties the chain.** An entry written the wrong
+way, or left empty, is now left out, and the rest of the audio chain is drawn — on the audio
+chain's screen and in the player's signal path.
+
 ### HQPlayer
 
 **Each HQPlayer keeps its own settings.** If you use more than one HQPlayer, the filter,

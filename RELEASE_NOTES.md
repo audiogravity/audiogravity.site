@@ -44,6 +44,10 @@ USB DACs — is no longer asked for one every few seconds, nor every second whil
 And a Roon Server you declared in the topology is checked every 30 seconds, like the NAS,
 instead of at every refresh.
 
+**A quieter background.** Keeping the profiles up to date no longer starts seven programs
+every 30 seconds, day and night: two quiet questions to the system do it, for a fraction of
+the work.
+
 ### HQPlayer
 
 **Each HQPlayer keeps its own settings.** If you use more than one HQPlayer, the filter,

@@ -24,6 +24,11 @@ moment a notification is for. A service that stays down is reported once, one th
 failing at most every quarter of an hour; stopping a service yourself, or restarting the box,
 reports nothing.
 
+**Even a crash fixed within a second.** A service that crashes and is restarted at once — what
+the system does for most audio engines — went unreported: the check came every 30 seconds
+and found it running again. Audiogravi<sup>ty</sup> now listens to the system, and reports such a
+crash the moment it happens.
+
 ### Performance
 
 **CPU load in bars.** Each CPU card of the Performance tab draws its load in bars, as the

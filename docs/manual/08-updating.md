@@ -30,7 +30,7 @@ being installed. Try again once it has finished.
 ### Safety: automatic rollback
 
 If anything goes wrong, the box **automatically rolls back** to the previous version
-and tells you — you're never left on a broken update. There's **no OS reboot**; only a
+and tells you why, under the update banner — you're never left on a broken update. There's **no OS reboot**; only a
 brief pause while the audio service restarts.
 
 ## Split installs (different hosts)

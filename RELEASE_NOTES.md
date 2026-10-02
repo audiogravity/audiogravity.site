@@ -7,7 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Updates
+
+**A failed update says why.** When an update does not go through, the banner of the
+Admin page now says why, in the installer's own words — a system Audiogravi<sup>ty</sup>
+does not run on, a download that failed, a damaged package — and still says it when the
+page is opened again or from another device. When the installer cannot even be fetched,
+nothing on the box is touched, not even a restart of the core.
 
 ---
 

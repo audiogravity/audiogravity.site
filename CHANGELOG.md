@@ -9,6 +9,15 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core][ops][ui][manual] An update that does not go through says why, under the update banner.** Whatever stopped it, the banner said *Update failed — previous version restored*, and the reason the updater recorded — *reinstall failed* for any failure of the installer — reached no screen. It now gives the installer's own words — a system turned down (*This system (Debian GNU/Linux 12 (bookworm)) has glibc 2.36; this core needs 2.38 or later…*), a download that failed, a damaged package — or says that after the install the box was not running the new version, or that the updater could not be started. The reason stays under the banner and is read back when the Admin page is opened again or from another device, for admins only: they alone can act on it. The manual says the box tells why.
+- **[ops] An installer that never arrives no longer restarts the core.** When the installer cannot be fetched — no network, or an answer that is not a script, a captive portal's — nothing on the box has changed yet: the update now stops there and says so, without stopping and restarting the core.
+- **[ops] The update log keeps about the last twenty updates.** Each update added 10–15 KB to it and nothing ever shortened it — 749 KB on a box updated 52 times. It now keeps its last 256 KB, cut before each update, in a way a full disk cannot empty.
+- **[ui] The update banner no longer acts once it is off the page.** An answer that arrived after the banner was removed still set its state and the Admin tab's badge.
+
+### Removed
+- **[core][ops] `SELF_UPDATE_BOOTSTRAP_URL` is gone.** The updater fetches the installer from the address it carries, which its root launcher lets no caller change: the key steered nothing, and edited, it would have lied. Updated boxes lose it — the core refuses a key it does not know — and the support report shows the address the installed updater uses.
+
 ## [0.9.64] - 2026-10-02
 
 ### Added

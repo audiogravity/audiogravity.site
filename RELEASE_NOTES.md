@@ -70,7 +70,12 @@ it plays.
 
 **A slip in a hand-edited topology no longer empties the chain.** An entry written the wrong
 way, or left empty, is now left out, and the rest of the audio chain is drawn — on the audio
-chain's screen and in the player's signal path.
+chain's screen and in the player's signal path. And the topology editor now refuses an entry
+written the wrong way before it is saved.
+
+**Topology changes take effect at once.** A topology saved from the editor — or edited by
+hand — now reaches the output switching and the audio chain straight away, without
+restarting Audiogravi<sup>ty</sup>.
 
 ### HQPlayer
 

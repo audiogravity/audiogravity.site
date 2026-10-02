@@ -80,7 +80,7 @@ the outputs your hardware exposes. What it cannot detect is what sits *after* th
 machine can know that the optical cable goes to a Cambridge amplifier and then to a pair
 of Harbeths.
 
-That part is a description you write once, and Audiogravi<sup>ty</sup> **never rewrites it**.
+That part is a description you write once, and Audiogravi<sup>ty</sup> **never changes it**.
 A new box arrives with an example chain — a box, a converter over USB and optical, an
 amplifier, speakers — meant to be replaced by yours. Open **Pipeline → CONFIG** to do it.
 It is a text file, so a computer is the comfortable place to write one from scratch, but

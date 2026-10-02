@@ -73,6 +73,10 @@ way, or left empty, is now left out, and the rest of the audio chain is drawn �
 chain's screen and in the player's signal path. And the topology editor now refuses an entry
 written the wrong way before it is saved.
 
+**A broken topology is no longer wiped.** If a hand edit leaves the topology file broken,
+choosing an output no longer replaces it: the output changes, and the chain you described
+stays in the file, ready to be mended.
+
 **Topology changes take effect at once.** A topology saved from the editor — or edited by
 hand — now reaches the output switching and the audio chain straight away, without
 restarting Audiogravi<sup>ty</sup>.
@@ -104,7 +108,8 @@ DSD plays, and where to set your level instead.
 **What Audiogravi<sup>ty</sup> keeps on the box stays its own.** The streaming accounts, the
 licence and the keys kept on the box could be read by any account of the box; only
 Audiogravi<sup>ty</sup>'s own account can read them now, and the next update narrows what
-earlier versions wrote.
+earlier versions wrote. Audiogravi<sup>ty</sup> checks again each time it starts, so a backup
+restored from an earlier version is made private again too.
 
 ### Installation
 

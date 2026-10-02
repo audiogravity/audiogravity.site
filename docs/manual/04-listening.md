@@ -97,7 +97,14 @@ On every track change, Audiogravi<sup>ty</sup> shows exactly what's reaching you
 - **Format** (PCM / DSD), **sample rate**, **bit depth**, and instantaneous **bitrate**.
 
 This is your at-a-glance confirmation that a Hi-Res track really is playing at its
-native resolution. A DSD lock indicator appears for DSD streams.
+native resolution.
+
+**DSD plays at full volume.** While a DSD track plays, Audiogravi<sup>ty</sup> sets the
+volume to 100, and the volume control gives way to a padlock. When the DSD ends — a PCM
+track follows, or playback stops — the volume goes back to where it was.
+This happens with the app closed too, and for a DSD track started from another app: keep
+your listening level on the amplifier. Through HQPlayer, or on a network speaker, the
+volume stays yours to set.
 
 ## The stream-origin badge
 

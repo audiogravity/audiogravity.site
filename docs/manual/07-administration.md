@@ -195,8 +195,9 @@ feeds the signal-path view.
 The **Audio Pipeline** graph (see [6. Outputs & engines](06-outputs-engines.md)) is drawn
 from a single file you own: **`audio-topology.json`**. It is a plain description of your
 hi-fi chain — which devices you have (streamer, DAC, amplifier, speakers, the app driving
-it…) and how they are wired together. Audiogravi<sup>ty</sup> **reads** it to draw the picture;
-it **never rewrites** it, so the map always reflects exactly what you declared.
+it…) and how they are wired together. Audiogravi<sup>ty</sup> **reads** it to draw the picture
+and **never changes** the chain you describe. The one thing it writes there is the output you
+choose for each service, in the guided setup or in Guided mode.
 
 - **What it declares vs. what is detected.** The topology describes the *chain* — the boxes
   downstream of your streamer and how they connect. The streamer's own **physical outputs**
@@ -211,7 +212,8 @@ it **never rewrites** it, so the map always reflects exactly what you declared.
   **Upload** loads a file back into the editor for review, and the usual save-time validation
   runs when you click **Save** (nothing is written until you do).
 - **Validation on save.** Before the file is written, Audiogravi<sup>ty</sup> checks it:
-  a malformed file or an unknown device type is an **error** and blocks the save; a broken
+  a malformed file, an unknown device type or a value of the wrong kind — a number where a
+  name is expected, say — is an **error** and blocks the save; a broken
   link (an output pointing at a device that doesn't exist) or a connector that maps to no real
   output is a **warning** you can review and accept. Once saved, the graph reloads immediately.
 
@@ -258,7 +260,8 @@ example, then Upload it back).
 Edit the map whenever your physical setup changes — a new DAC, a different amplifier, a cable
 moved from optical to USB. Keep the `target_device_id` values consistent (an output should
 point at a device id that exists), and the save-time validation will flag typos before they
-reach the graph. Every save is backed up automatically, so you can always roll back.
+reach the graph. Before a big change, **Download** the file: if the new version does not suit
+you, **Upload** it back and save.
 
 ## Audio Software
 

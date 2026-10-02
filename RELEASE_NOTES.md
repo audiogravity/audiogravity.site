@@ -96,7 +96,8 @@ HQPlayer above all — has far less to answer.
 
 **DSD at full volume, app open or not.** The protection that sets the volume to 100 while a
 DSD track plays kept working only until the app had been opened and closed once. It now
-works whether the app is open or not.
+works whether the app is open or not. The manual now says what happens to the volume while
+DSD plays, and where to set your level instead.
 
 ### Security
 

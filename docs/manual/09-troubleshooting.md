@@ -181,7 +181,8 @@ one you are in:
 **CONFIG** sits at the top of the Pipeline tab, on a phone as on a computer. The
 description is a text file, so writing one from scratch is far easier at a keyboard.
 
-The description is yours to maintain: Audiogravi<sup>ty</sup> never rewrites it. See
+The description is yours to maintain: Audiogravi<sup>ty</sup> never changes the chain you
+describe. See
 [6. Outputs & engines → The signal path](06-outputs-engines.md#the-signal-path-and-the-chain-you-describe).
 
 ## A service won't start

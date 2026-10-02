@@ -102,7 +102,8 @@ If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with
 
 - **DSP remote** — change the interpolation **filter**, **noise shaper**, output
   **mode** and **volume** on your HQPlayer instance from the interface. It's
-  auto-discovered on the LAN — connect in one tap.
+  auto-discovered on the LAN — connect in one tap. If you use more than one HQPlayer,
+  each keeps the filter, noise shaper and mode you chose for it.
 - **NAA endpoint** — the box can run HQPlayer's Network Audio Adapter so HQPlayer
   streams to it and out to your DAC.
 - **As your output** — the **Use as output** switch on the HQPlayer card sends your

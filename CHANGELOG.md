@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.64] - 2026-10-02
+
 ### Added
 - **[ui][manual] A Settings switch hides the top bar's figures, on this device.** *Top Bar Metrics*, under Animations and on by default: switched off, the top bar no longer shows uptime, CPU, temperature and memory, and no longer handles them — they still reach the device, on the stream every live update travels on, and the System tab keeps showing them. Switched back on, it shows at once the last reading of the live stream, or dashes if there is none yet, and asks the box nothing: the box's own answer is partial, and its CPU figure covers the few milliseconds since the stream's last one. Each device keeps its own choice. The manual lists it in the Settings panel, whose figure is retaken.
 

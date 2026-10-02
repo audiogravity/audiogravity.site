@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.64 — 2026-10-02
+
 ### Settings
 
 **Hide the top bar's figures.** A *Top Bar Metrics* switch in Settings hides uptime, CPU,

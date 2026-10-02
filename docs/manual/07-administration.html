@@ -222,8 +222,9 @@ feeds the signal-path view.</p>
 <p>The <strong>Audio Pipeline</strong> graph (see <a href="06-outputs-engines">6. Outputs &amp; engines</a>) is drawn
 from a single file you own: <strong><code>audio-topology.json</code></strong>. It is a plain description of your
 hi-fi chain — which devices you have (streamer, DAC, amplifier, speakers, the app driving
-it…) and how they are wired together. Audiogravi<sup>ty</sup> <strong>reads</strong> it to draw the picture;
-it <strong>never rewrites</strong> it, so the map always reflects exactly what you declared.</p>
+it…) and how they are wired together. Audiogravi<sup>ty</sup> <strong>reads</strong> it to draw the picture
+and <strong>never changes</strong> the chain you describe. The one thing it writes there is the output you
+choose for each service, in the guided setup or in Guided mode.</p>
 <ul>
 <li><strong>What it declares vs. what is detected.</strong> The topology describes the <em>chain</em> — the boxes
 downstream of your streamer and how they connect. The streamer's own <strong>physical outputs</strong>
@@ -238,7 +239,8 @@ JSON, then <strong>Save</strong>.</li>
 <strong>Upload</strong> loads a file back into the editor for review, and the usual save-time validation
 runs when you click <strong>Save</strong> (nothing is written until you do).</li>
 <li><strong>Validation on save.</strong> Before the file is written, Audiogravi<sup>ty</sup> checks it:
-a malformed file or an unknown device type is an <strong>error</strong> and blocks the save; a broken
+a malformed file, an unknown device type or a value of the wrong kind — a number where a
+name is expected, say — is an <strong>error</strong> and blocks the save; a broken
 link (an output pointing at a device that doesn't exist) or a connector that maps to no real
 output is a <strong>warning</strong> you can review and accept. Once saved, the graph reloads immediately.</li>
 </ul>
@@ -280,7 +282,8 @@ example, then Upload it back).</p>
 <p>Edit the map whenever your physical setup changes — a new DAC, a different amplifier, a cable
 moved from optical to USB. Keep the <code>target_device_id</code> values consistent (an output should
 point at a device id that exists), and the save-time validation will flag typos before they
-reach the graph. Every save is backed up automatically, so you can always roll back.</p>
+reach the graph. Before a big change, <strong>Download</strong> the file: if the new version does not suit
+you, <strong>Upload</strong> it back and save.</p>
 <h2 id="audio-software">Audio Software</h2>
 <p>Install, update and uninstall the services Audiogravi<sup>ty</sup> uses (MPD, upmpdcli,
 shairport-sync, Roon Bridge…).</p>

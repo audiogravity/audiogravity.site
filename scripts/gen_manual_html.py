@@ -636,6 +636,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         }})();
     </script>
     <script src="../../assets/manual-copy.js" defer></script>
+    <script src="../../assets/to-top.js" defer></script>
 </head>
 
 <body class="man-body">

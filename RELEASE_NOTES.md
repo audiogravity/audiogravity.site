@@ -37,6 +37,15 @@ on a slow connection the app took seconds longer to appear, and without Internet
 screens had nothing to run on. All of it now comes from your box, and only when the screen
 that needs it opens.
 
+### On audiogravity.app
+
+**Back to the top, in one tap.** On the landing and on every page of the online manual, a round
+button in the corner takes you back to the top, and its ring shows how far you have read.
+
+**The site reads better.** Every text on the landing now meets the usual contrast floor in both
+themes, the page holds together better on a phone, and its Now playing strip shows what the
+app's player screen shows.
+
 ---
 
 ## 0.9.64 — 2026-10-02

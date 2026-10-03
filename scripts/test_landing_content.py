@@ -84,3 +84,18 @@ def test_the_pages_were_found_to_point_somewhere():
     assert len([f for f in LOCAL_FILES if f[0] == "index.html"]) > 10
     assert [f for f in LOCAL_FILES if f[0] == "404.html"]
     assert len(MANUAL_LINKS) > 5
+
+
+def test_the_back_to_top_control_says_where_it_goes():
+    """The corner control leads to the top of the page and names itself to a screen reader.
+
+    The button is built by assets/to-top.js, shared with the manual's pages: the landing must
+    load that script, and the script must give the link its target and its name. The click
+    itself is handled by the script, which scrolls up without writing ``#top`` into the address;
+    the target still says where the link leads, to assistive technology and to a new tab.
+    """
+    assert 'src="assets/to-top.js"' in PAGES["index.html"], "the landing no longer loads the button"
+    script = (ROOT / "assets" / "to-top.js").read_text(encoding="utf-8")
+    assert re.search(r"""(\.href\s*=\s*|setAttribute\(\s*['"]href['"]\s*,\s*)['"]#top['"]""", script), "no #top target"
+    label = re.search(r"""setAttribute\(\s*['"]aria-label['"]\s*,\s*['"]([^'"]*)['"]\s*\)""", script)
+    assert label and label.group(1).strip(), "the control has no accessible name"

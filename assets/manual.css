@@ -136,7 +136,7 @@ footer.man-foot,
 }
 
 .man-nav-item.active {
-    border-left-color: var(--ok);
+    border-left-color: var(--ok-line); /* a mark: 3:1 floor, #22c55e drew 2.3:1 on white */
     color: var(--text);
     font-weight: 600
 }
@@ -217,7 +217,7 @@ footer.man-foot,
 }
 
 .man-md a {
-    color: var(--ok);
+    color: var(--ok-text); /* text: #22c55e read 2.3:1 on white; --ok-text is 5.0:1 */
     text-decoration: none
 }
 
@@ -484,7 +484,7 @@ footer.man-foot,
 
     .man-nav-item.active {
         border-left-color: transparent;
-        border-bottom-color: var(--ok)
+        border-bottom-color: var(--ok-line)
     }
 
     .man-main {

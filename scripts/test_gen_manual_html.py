@@ -426,6 +426,23 @@ class TestCopyScript:
         assert "data-copy" in js and "'no'" in js
 
 
+class TestBackToTop:
+    """The manual's pages carry the landing's back-to-top button, built by one shared script."""
+
+    def test_every_page_loads_it_deferred(self):
+        for args in (("Listening", "", TOC, "04-listening", "04-listening"), ("Contents", "", TOC, "", "")):
+            assert '<script src="../../assets/to-top.js" defer></script>' in page(*args)
+
+    def test_the_script_exists(self):
+        assert (REPO_DIR / "assets" / "to-top.js").is_file()
+
+    def test_the_pages_load_the_sheet_that_draws_it(self):
+        """The button's look is in the landing's sheet: a page without it shows a bare link."""
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<link rel="stylesheet" href="../../assets/style.css">' in out
+        assert ".to-top {" in (REPO_DIR / "assets" / "style.css").read_text(encoding="utf-8")
+
+
 class TestTrademarkNotice:
     """The notice is shown once wherever the manual is read, never at the end of a chapter."""
 

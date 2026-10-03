@@ -110,12 +110,27 @@
     --text: #000;
     --text2: #262626;
     --text3: #5e5e5e;
-    --text4: #8a8a8a;
+    /* The palest text: section labels, chips, small print. #8a8a8a read at 3.2 to 3.5:1
+       (measured 2026-10-03); #6b6b6b reads at 5.3:1 on white, 5.0:1 on the grey bands. */
+    --text4: #6b6b6b;
     --border: #c4c4c4;
     --border2: #9a9a9a;
     --ok: #22c55e;
     --warn: #f59e0b;
     --err: #ef4444;
+    /* Green and orange as the colour of TEXT on the page's own ground. The two above are
+       fills, edges and dots: on white they read at 2.3:1 and 2.2:1 as words (measured
+       2026-10-03), under the 4.5:1 floor. These are 5.0:1 on white. Dark theme: the same
+       as above, which already read. Islands that stay dark in the light theme (the Now
+       playing strip, the code panels, the featured plan) keep --ok / --warn. */
+    --ok-text: #15803d;
+    --warn-text: #b45309;
+    /* The same two colours as lines, edges and marks, and the grey of an idle link: a
+       graphic needs 3:1 against its ground. On white, #f59e0b drew at 2.2:1, #22c55e at
+       2.3:1 and the idle grey at 2.9:1 (measured 2026-10-03); these are 3.2, 3.3 and 3.4:1. */
+    --warn-line: #d97706;
+    --ok-line: #16a34a;
+    --idle-line: #8a8a8a;
     /* SYNTAX — the manual's code blocks. The values of the app's default theme ("minimal"),
        so a command reads the same on the site and in the app. Each clears 4.5:1 on --bg2,
        where code sits: 6.3 to 6.7 here, 10.5 to 13.4 in dark (computed 2026-09-26).
@@ -165,7 +180,12 @@
         --text: #fff;
         --text2: #d4d4d4;
         --text3: #a3a3a3;
-        --text4: #666;
+        --text4: #8a8a8a;
+        --ok-text: #22c55e;
+        --warn-text: #f59e0b;
+        --warn-line: #f59e0b;
+        --ok-line: #22c55e;
+        --idle-line: #666;
         --border: #2a2a2a;
         --border2: #3a3a3a;
         --nav-bg: rgba(10,10,10,.92);
@@ -200,7 +220,12 @@
     --text: #fff;
     --text2: #d4d4d4;
     --text3: #a3a3a3;
-    --text4: #666;
+    --text4: #8a8a8a;
+    --ok-text: #22c55e;
+    --warn-text: #f59e0b;
+    --warn-line: #f59e0b;
+    --ok-line: #22c55e;
+    --idle-line: #666;
     --border: #2a2a2a;
     --border2: #3a3a3a;
     --nav-bg: rgba(10,10,10,.92);
@@ -255,6 +280,18 @@ a {
     .w {
         padding: 0 max(20px, env(safe-area-inset-left)) 0 max(20px, env(safe-area-inset-right))
     }
+}
+
+/* The brand is written Audiogravi<sup>ty</sup>, and every <sup> on these pages is that
+   "ty". In a capitalised label it turned into "TY" in superscript, which reads as a
+   footnote mark; the logo writes it lowercase, and so do labels now.
+   No line height of its own: raised, it made its line taller than the others, and every
+   paragraph naming the product had one line pushed down — 2 to 4px, in 5 blocks at
+   1440px and 11 at 390px (measured 2026-10-03). It still sits raised; only its line no
+   longer grows. */
+sup {
+    text-transform: none;
+    line-height: 0
 }
 
 .mono {
@@ -331,17 +368,42 @@ a {
 }
 
 .announce-date {
-    opacity: .55;
+    /* Quieter than the sentence, not under the floor: at .55 it read 4.4:1 on the dark
+       theme's white bar (measured 2026-10-03); .6 reads 5.2:1 there, 7.4:1 on black. */
+    opacity: .6;
     font-weight: 400;
 }
 
-@media(max-width:720px) {
+/* Room on the right for the "Public beta" ribbon, fixed to the top-right corner and drawn
+   above everything. Below 1100px the sentence ran under it — on two or three lines, to the
+   ribbon's very corner. Measured on 2026-10-03, with the visible text against the ribbon's
+   own shape: 120px of room clears it from 721 to 900px, 92px above; 4px more is kept here.
+   The sentence holds one line and is cut where it meets that room. It is cut here rather
+   than shortened in the page: the release script rewrites it at every release (ops
+   scripts/changelog_rollover.py), and would bring the long one back. */
+@media(max-width:1100px) {
     .announce-bar {
-        /* Room on the right for the "Public beta" ribbon. It is fixed to the top-right
-           corner and sits above everything, so on a narrow screen — where this text wraps
-           onto three lines instead of one — it landed squarely on the words. */
-        padding: 8px 92px 8px 16px;
+        padding-right: 124px
+    }
+
+    .announce-bar a {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+}
+
+@media(max-width:720px) {
+    /* Phones: a smaller ribbon, 100px of room measured, and the sentence starts at the left.
+       The date gives way first. */
+    .announce-bar {
+        padding: 8px 104px 8px 16px;
         text-align: left;
+    }
+
+    .announce-date {
+        display: none
     }
 }
 
@@ -474,6 +536,29 @@ nav {
     border-color: var(--text)
 }
 
+/* Below 1100px the GitHub button is gone and the toggle ends the bar, under the "Public
+   beta" ribbon fixed to that corner. It moves clear of it: measured on 2026-10-03 against
+   the ribbon's own shape, 30px from 851 to 1100px, 80px where the bar takes two rows and
+   the toggle sits higher in the ribbon's path, 60px under a phone's smaller ribbon; 4px
+   more is kept here. */
+@media(max-width:1100px) {
+    .theme-toggle {
+        margin-right: 34px
+    }
+}
+
+@media(max-width:850px) {
+    .theme-toggle {
+        margin-right: 84px
+    }
+}
+
+@media(max-width:720px) {
+    .theme-toggle {
+        margin-right: 64px
+    }
+}
+
 .theme-toggle svg {
     width: 16px;
     height: 16px;
@@ -531,7 +616,13 @@ nav {
         gap: 18px;
         overflow-x: auto;
         scrollbar-width: none;
-        white-space: nowrap
+        white-space: nowrap;
+        /* The row runs on past the edge of a phone, cut mid-word with nothing saying so: the
+           fade says it continues. The padding lets the last link scroll clear of the fade;
+           where the row fits, the fade falls on empty space. */
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+        padding-right: 32px
     }
 
     .nav-links::-webkit-scrollbar {
@@ -562,7 +653,6 @@ nav {
 
 @media(max-width:900px) {
     .hero {
-        grid-template-columns: 1fr;
         min-height: auto
     }
 }
@@ -573,14 +663,6 @@ nav {
     flex-direction: column;
     justify-content: center;
     border-right: 1px solid var(--border)
-}
-
-@media(max-width:900px) {
-    .hero-left {
-        padding: 60px 24px 40px;
-        border-right: 0;
-        border-bottom: 1px solid var(--border)
-    }
 }
 
 .hero-kicker {
@@ -600,7 +682,7 @@ nav {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: var(--ok)
+    color: var(--ok-text)
 }
 
 .hero-kicker .live::before {
@@ -666,21 +748,25 @@ nav {
     margin-bottom: 36px
 }
 
+.lede-short {
+    display: none
+}
+
+@media(max-width:720px) {
+    .lede-long {
+        display: none
+    }
+
+    .lede-short {
+        display: inline
+    }
+}
+
 .hero-cta {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 48px
-}
-
-/* Mobile: the buttons stack vertically, and the ``::after`` label
-   (Public beta) sits at top: -22px above its own button. Without a large
-   enough gap, a label visually sticks to the button above it. 32px leaves
-   room for the label (~22px) plus some air. */
-@media (max-width: 720px) {
-    .hero-cta {
-        gap: 32px;
-    }
 }
 
 .cta-primary {
@@ -793,6 +879,72 @@ nav {
 @media(max-width:900px) {
     .hero-right {
         padding: 40px 24px
+    }
+}
+
+/* Stacked, the hero put every word first and the product last: on a 390px phone the first
+   capture came 1,070px down. The left column now dissolves so that its pieces and the
+   capture order as one list: the title, the button, then the product, then the rest. The
+   button stays above the capture so that it is still on the first screen. */
+@media(max-width:900px) {
+    .hero {
+        display: flex;
+        flex-direction: column
+    }
+
+    .hero-left {
+        display: contents
+    }
+
+    .hero-kicker,
+    .hero-h1,
+    .hero-tag,
+    .hero-cta,
+    .hero-lede,
+    .hero-proof {
+        margin-inline: 24px
+    }
+
+    .hero-kicker {
+        order: 1;
+        margin-top: 60px
+    }
+
+    .hero-h1 {
+        order: 2
+    }
+
+    .hero-tag {
+        order: 3
+    }
+
+    .hero-cta {
+        order: 4;
+        margin-bottom: 40px
+    }
+
+    .hero-right {
+        order: 5;
+        border-block: 1px solid var(--border)
+    }
+
+    .hero-lede {
+        order: 6;
+        margin-top: 36px
+    }
+
+    .hero-proof {
+        order: 7;
+        margin-bottom: 40px
+    }
+}
+
+/* On a phone the capture is drawn smaller, so that its top half already shows on the
+   first screen, under the button. Two classes: the carousel's own rule comes later in this
+   sheet and would win a tie. */
+@media(max-width:720px) {
+    .hero-right .hero-carousel {
+        max-width: 280px
     }
 }
 
@@ -911,6 +1063,16 @@ nav {
     background: var(--bg2)
 }
 
+/* The figures under "End the jitter" are its proof: one band with it, no rule between them.
+   Down the page the backgrounds alternate section by section, and these two count as one. */
+#rt {
+    border-bottom: 0
+}
+
+.section.rt-proof {
+    padding-top: 0
+}
+
 .section-label {
     font-family: var(--font);
     font-size: var(--font-size-xs);
@@ -945,7 +1107,7 @@ nav {
 
 /* The quieter line under a section's lead: a remark, not the argument. It used to be an
    inline .9em at 70 % opacity, which put it between two steps of the scale. Only its size
-   sets it apart: dimmer, as --text4, it measured 3.2:1 on the section's grey, under the
+   sets it apart: dimmer, as --text4 then was (#8a8a8a, until 2026-10-03), it measured 3.2:1 on the section's grey, under the
    4.5:1 floor for text. It comes after .section-sub on purpose: both classes sit on one
    element, and the later rule wins. */
 .section-note {
@@ -957,8 +1119,18 @@ nav {
     text-decoration: underline
 }
 
-/* NOW PLAYING STRIP */
+/* NOW PLAYING STRIP
+   The player screen while a track plays (ui: ag-now-playing-fullscreen): the cover, the
+   signal path, the four format cells, the progress and the output. Everything drawn here
+   exists in the app: the landing promises only what the app does.
+   The strip stays dark in both themes (#000 in light, #1a1a1a in dark), so its greys are its
+   own; each passes 5:1 on #1a1a1a, the lighter of the two grounds. */
 .np-strip {
+    --np-fg2: #a3a3a3;
+    --np-fg3: #8f8f8f;
+    --np-line: #3a3a3a;
+    --np-track: #333;
+    --np-cover: 96px;
     background: var(--inv);
     color: #fff;
     padding: 40px 48px;
@@ -969,6 +1141,14 @@ nav {
     align-items: center;
 }
 
+/* Wide screens: a full-size cover, and room beside it for the chain on one line at 1440px. */
+@media(min-width:1200px) {
+    .np-strip {
+        --np-cover: 200px;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr)
+    }
+}
+
 @media(max-width:720px) {
     .np-strip {
         padding: 40px 24px;
@@ -977,19 +1157,70 @@ nav {
     }
 }
 
+/* A thumbnail beside the title, the chain and the link under both; on wide screens the
+   full-size cover takes the left and the text centres beside it. */
 .np-meta {
+    display: grid;
+    grid-template-columns: var(--np-cover) minmax(0, 1fr);
+    grid-template-areas: "cover head" "tail tail";
+    column-gap: 20px;
+    row-gap: 12px;
+    align-items: center
+}
+
+@media(min-width:1200px) {
+    .np-meta {
+        grid-template-rows: 1fr auto auto 1fr;
+        grid-template-areas: "cover ." "cover head" "cover tail" "cover .";
+        column-gap: 28px;
+        row-gap: 0
+    }
+
+    .np-cover {
+        align-self: start
+    }
+
+    .np-tail {
+        margin-top: 12px
+    }
+}
+
+.np-cover {
+    grid-area: cover;
+    display: block;
+    width: var(--np-cover);
+    height: auto;
+    aspect-ratio: 1;
+    /* An edge, so that a dark sleeve does not melt into the strip. */
+    box-shadow: 0 0 0 1px rgba(255,255,255,.14)
+}
+
+.np-head {
+    grid-area: head;
     display: flex;
     flex-direction: column;
-    gap: 8px
+    gap: 8px;
+    min-width: 0
+}
+
+.np-tail {
+    grid-area: tail;
+    display: flex;
+    flex-direction: column;
+    min-width: 0
 }
 
 .np-meta .label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
     font-family: var(--font);
     font-size: var(--font-size-xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .12em;
-    color: #555
+    color: var(--np-fg3)
 }
 
 .np-meta .track-name {
@@ -1001,109 +1232,225 @@ nav {
 
 .np-meta .track-artist {
     font-size: var(--font-size-lg);
-    color: #666;
+    color: var(--np-fg2);
     margin-top: 4px
 }
 
-.np-meta .service-badge {
+/* "Playing", in three small bars. The app has no visualiser, so the strip draws none. */
+.np-eq {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 12px
+}
+
+.np-eq i {
+    width: 3px;
+    height: 100%;
+    background: var(--warn);
+    transform-origin: bottom;
+    animation: np-eq var(--d) ease-in-out infinite alternate
+}
+
+.np-eq i:nth-child(1) { --d: .9s; --rest: .55 }
+.np-eq i:nth-child(2) { --d: .6s; --rest: 1; animation-delay: .2s }
+.np-eq i:nth-child(3) { --d: .75s; --rest: .75; animation-delay: .1s }
+
+@keyframes np-eq {
+    from { transform: scaleY(.25) }
+    to { transform: scaleY(1) }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .np-eq i {
+        animation: none;
+        transform: scaleY(var(--rest))
+    }
+}
+
+/* The signal path as the player draws it, a dot per step. An arrow travels with the step it
+   leads to, so a line never ends on one. */
+.np-path {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 0;
+    font-size: var(--font-size-sm);
+    color: var(--np-fg2)
+}
+
+.np-path .step {
+    display: inline-flex;
+    align-items: center
+}
+
+.np-path .arr {
+    color: var(--np-fg3);
+    padding: 0 8px
+}
+
+.np-path .sp {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-family: var(--font);
+    white-space: nowrap
+}
+
+.np-path .sp::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warn)
+}
+
+.np-more {
+    align-self: flex-start;
+    margin-top: 12px;
     font-size: var(--font-size-xs);
     font-weight: 600;
     letter-spacing: .12em;
     text-transform: uppercase;
-    border: 1px solid #2a2a2a;
-    padding: 5px 10px;
-    color: #555;
-    margin-top: 8px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid var(--warn);
+    padding-bottom: 3px
 }
 
-.np-meta .service-badge .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--warn);
-    box-shadow: 0 0 6px var(--warn)
-}
-
-.np-visual {
-    display: flex;
-    flex-direction: column;
-    gap: 10px
-}
-
-.np-bar {
-    display: flex;
-    gap: 3px;
-    align-items: flex-end;
-    height: 60px
-}
-
-.np-bar-col {
-    flex: 1;
-    background: #222;
-    border-radius: 1px;
-    animation: dance var(--dur) ease-in-out infinite alternate;
-}
-
-@keyframes dance {
-    from { transform: scaleY(.2) }
-    to { transform: scaleY(1) }
-}
-
-.np-bar-col:nth-child(1) { --dur: 0.6s }
-.np-bar-col:nth-child(2) { --dur: 0.9s; animation-delay: .1s }
-.np-bar-col:nth-child(3) { --dur: 0.7s; animation-delay: .2s }
-.np-bar-col:nth-child(4) { --dur: 1.1s; animation-delay: .05s }
-.np-bar-col:nth-child(5) { --dur: 0.8s; animation-delay: .15s }
-.np-bar-col:nth-child(6) { --dur: 0.65s; animation-delay: .25s }
-.np-bar-col:nth-child(7) { --dur: 1.0s; animation-delay: .08s }
-.np-bar-col:nth-child(8) { --dur: 0.75s; animation-delay: .18s }
-.np-bar-col:nth-child(9) { --dur: 0.85s; animation-delay: .3s }
-.np-bar-col:nth-child(10) { --dur: 0.7s; animation-delay: .12s }
-.np-bar-col:nth-child(11) { --dur: 0.95s; animation-delay: .22s }
-.np-bar-col:nth-child(12) { --dur: 0.6s; animation-delay: .06s }
-
-.np-bar-col.active {
-    background: var(--warn)
-}
-
-.np-chain {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    font-family: var(--font);
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    color: #444;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    flex-wrap: wrap;
-}
-
-.np-chain .node {
-    border: 1px solid #2a2a2a;
-    padding: 5px 10px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.np-chain .node.active {
-    border-color: var(--warn);
+.np-more:hover,
+.np-more:focus-visible {
     color: var(--warn)
 }
 
-.np-chain .node.bitperfect {
-    border-color: var(--ok);
-    color: var(--ok)
+.np-more:focus-visible {
+    outline: 2px solid var(--warn);
+    outline-offset: 4px
 }
 
-.np-chain .arr {
-    padding: 0 4px;
-    color: #333
+/* The cells are sized on the room the column really has: it narrows between 721 and ~900px
+   (two columns) and on small phones, not only with the window. Measured 1440 to 320px. */
+.np-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    container-type: inline-size
+}
+
+.np-fmt {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px
+}
+
+.np-fmt .cell {
+    border: 1px solid var(--np-line);
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0
+}
+
+.np-fmt .cell.hi {
+    border-color: var(--warn)
+}
+
+.np-fmt span {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--np-fg3)
+}
+
+.np-fmt b {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap
+}
+
+@container (max-width: 400px) {
+    .np-fmt {
+        gap: 6px
+    }
+
+    .np-fmt .cell {
+        padding: 7px
+    }
+
+    .np-fmt b {
+        font-size: var(--font-size-sm)
+    }
+}
+
+@container (max-width: 330px) {
+    .np-fmt {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+.np-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--font-size-sm);
+    color: var(--np-fg3);
+    font-variant-numeric: tabular-nums
+}
+
+.np-progress .bar {
+    flex: 1;
+    height: 3px;
+    background: var(--np-track);
+    position: relative
+}
+
+.np-progress .fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--warn)
+}
+
+.np-progress .fill::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: #fff
+}
+
+.np-out {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    border: 1px solid var(--np-line);
+    padding: 10px 12px;
+    font-size: var(--font-size-md);
+    color: #fff
+}
+
+.np-out .k {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--np-fg3)
+}
+
+.np-out .np-chip {
+    border: 1px solid var(--np-line);
+    color: var(--np-fg2);
+    padding: 2px 7px;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: .1em
 }
 
 /* FEATURES BENTO */
@@ -1199,6 +1546,12 @@ nav {
     color: var(--text3)
 }
 
+/* On a black card, --text3 is a light-theme grey on black: 3.2:1. The card's own greys. */
+.fb.dark .fb-tier.starter {
+    border-color: #3a3a3a;
+    color: #9a9a9a
+}
+
 .fb.dark .fb-tier.pro {
     border-color: #fff;
     color: #fff
@@ -1264,10 +1617,12 @@ nav {
     overflow-x: auto
 }
 
+/* The drawing fills its frame: capped at its 1000 units, it stayed at 1:1 and its smallest
+   labels showed at 9px on a 1440px screen. Filling the frame (1134px there) and the sizes
+   below put the smallest at 11.3px, the floor of the page's scale. */
 .pipeline-frame svg {
     display: block;
     width: 100%;
-    max-width: 1000px;
     height: auto;
     margin: 0 auto
 }
@@ -1280,12 +1635,12 @@ nav {
 
 .pn rect.active-r {
     fill: rgb(245 158 11 / .06);
-    stroke: var(--warn)
+    stroke: var(--warn-line)
 }
 
 .pn rect.bp-r {
     fill: rgb(34 197 94 / .06);
-    stroke: var(--ok)
+    stroke: var(--ok-line)
 }
 
 /* The dashed frames marking what runs on the box, in the pipeline drawing (there are two:
@@ -1294,55 +1649,58 @@ nav {
    rectangle would blank out the arrows that cross them. */
 .pn rect.own-r {
     fill: none;
-    stroke: var(--warn);
+    /* Dimmed, as a frame should be, but not below 3:1: the text colour at 75%, measured
+       on 2026-10-03 against the frame's own ground. At 50% of #f59e0b it was 1.6:1 on white
+       and 2.9:1 on the dark ground; at 70% of this one, still 2.96:1 on white. */
+    stroke: var(--warn-text);
     stroke-dasharray: 5 4;
     stroke-width: 1;
-    opacity: .5
+    opacity: .75
 }
 
 .pn text.own-t {
-    font-size: 9px; /* scale exception: drawing units, the SVG scales as a whole */
+    font-size: 10px; /* scale exception: drawing units, the SVG scales as a whole */
     font-weight: 700;
-    fill: var(--warn);
+    fill: var(--warn-text);
     letter-spacing: .04em
 }
 
 .pn text {
     fill: var(--text);
     font-family: var(--font);
-    font-size: 11px; /* scale exception: drawing units, the SVG scales as a whole */
+    font-size: 12px; /* scale exception: drawing units, the SVG scales as a whole */
     font-weight: 700
 }
 
 .pn text.sub {
-    font-size: 9px; /* scale exception: drawing units, the SVG scales as a whole */
+    font-size: 10px; /* scale exception: drawing units, the SVG scales as a whole */
     fill: var(--text3);
     font-weight: 400
 }
 
 .pn text.active-t {
-    fill: var(--warn)
+    fill: var(--warn-text)
 }
 
 .pn text.bp-t {
-    fill: var(--ok)
+    fill: var(--ok-text)
 }
 
 .pl {
-    stroke: var(--border2);
+    stroke: var(--idle-line);
     stroke-width: 1.5;
     fill: none;
     stroke-dasharray: 4 3
 }
 
 .pl.active {
-    stroke: var(--warn);
+    stroke: var(--warn-line);
     stroke-width: 2;
     stroke-dasharray: none
 }
 
 .pl.bp {
-    stroke: var(--ok);
+    stroke: var(--ok-line);
     stroke-width: 2;
     stroke-dasharray: none
 }
@@ -1374,15 +1732,35 @@ nav {
 
 .pipeline-legend .sw.dashed {
     background: none;
-    border-bottom: 2px dashed var(--border2)
+    border-bottom: 2px dashed var(--idle-line)
 }
 
 .pipeline-legend .sw.active {
-    background: var(--warn)
+    background: var(--warn-line)
 }
 
 .pipeline-legend .sw.bp {
-    background: var(--ok)
+    background: var(--ok-line)
+}
+
+/* Arrowheads and moving dots are drawn with fill attributes, which a theme cannot reach;
+   these rules take them over. The note under the drawing is text, at the text floor. */
+.pipeline-frame #m0 path {
+    fill: var(--idle-line)
+}
+
+.pipeline-frame #m1 path,
+.pl-dot {
+    fill: var(--warn-line)
+}
+
+.pipeline-frame #m2 path,
+.pl-dot.bp {
+    fill: var(--ok-line)
+}
+
+.pl-note {
+    fill: var(--text3)
 }
 
 /* RT / SYSTEMD section */
@@ -1475,6 +1853,16 @@ nav {
     font-weight: 600
 }
 
+/* The board-and-software list has the whole width to itself, and its sentences ran to some
+   165 characters a line at 1440px: the eye loses the start of the next one. It takes the
+   measure of the paragraph above it instead, 62ch of that paragraph's type: measured at
+   1440px on 2026-10-03, its 13px sentences then run to 75 characters a line on average, 87
+   at most. The items set their sizes themselves, so this size only sets the unit. */
+#parts .rt-list {
+    font-size: var(--font-size-lg);
+    max-width: 62ch
+}
+
 .rt-config {
     background: var(--inv);
     color: #d4d4d4;
@@ -1491,7 +1879,7 @@ nav {
 }
 
 .rt-config .cmt {
-    color: #7a7a7a
+    color: #8a8a8a /* 5.0:1 on #1a1a1a, 6.1:1 on #000 */
 }
 
 .rt-config .k {
@@ -1700,7 +2088,9 @@ nav {
     font-size: var(--font-size-xs);
     font-weight: 600;
     color: var(--text3);
-    min-width: 80px;
+    /* As wide as the widest label, "Recommended" (103px measured), so that every value
+       starts on the same line; at 80px that one pushed its value 23px to the right. */
+    min-width: 104px;
     text-transform: uppercase;
     letter-spacing: .12em
 }
@@ -1737,7 +2127,7 @@ nav {
 }
 
 .terminal .cmt {
-    color: #7a7a7a
+    color: #8a8a8a /* 5.0:1 on #1a1a1a, 6.1:1 on #000 */
 }
 
 .terminal .cmd {
@@ -1961,7 +2351,7 @@ nav {
 }
 
 .pp-row .ck {
-    color: var(--ok);
+    color: var(--ok-text);
     font-weight: 700;
     font-size: var(--font-size-xs);
     min-width: 14px;
@@ -2166,6 +2556,13 @@ footer {
     }
 }
 
+/* Room under the last line for the back-to-top button, which rests in that corner at the
+   end of the page: without it the button sat on the trademark notice at most widths under
+   1100px (measured 2026-10-03). 20px from the edge + 52px of button + 12px of air. */
+footer {
+    padding-bottom: 84px
+}
+
 .footer-top {
     display: grid;
     grid-template-columns: 1.6fr 1fr 1fr 1fr;
@@ -2210,7 +2607,7 @@ footer {
     font-family: var(--font);
     font-size: var(--font-size-xs);
     font-weight: 600;
-    color: #7a7a7a;
+    color: #8a8a8a; /* #7a7a7a read 4.05:1 on the dark theme's #1a1a1a */
     text-transform: uppercase;
     letter-spacing: .12em
 }
@@ -2231,7 +2628,7 @@ footer {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .12em;
-    color: #7a7a7a;
+    color: #8a8a8a; /* #7a7a7a read 4.05:1 on the dark theme's #1a1a1a */
     margin-bottom: 18px
 }
 
@@ -2269,7 +2666,9 @@ footer {
     margin: 20px 0 0;
     font-size: var(--font-size-xs);
     line-height: 1.6;
-    color: var(--text3);
+    /* A fixed grey, as the rest of this footer: it stays dark in both themes, and
+       --text3 is the light theme's grey there, 3.2:1 on black. */
+    color: #9a9a9a;
 }
 
 .footer-bottom a {
@@ -2380,7 +2779,9 @@ footer {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--border);
+    /* A control drawn by its dot alone, so the 3:1 floor of a graphic: --border drew at
+       1.6:1 on the hero's grey; this is 3.2:1 there in both themes. */
+    background: var(--idle-line);
     cursor: pointer;
     transition: background var(--ease);
 }
@@ -2575,23 +2976,99 @@ footer {
     }
 }
 
-.cta-open {
-    position: relative;
+/* BACK TO TOP
+   The page runs to some 17,800px on a desktop and 28,400px on a phone. The logo in the bar
+   already leads to the top, but nothing says so, and on a phone the top of the screen is
+   far from the thumb. This control says it, from the corner the thumb reaches, once the
+   first screen is behind (to-top.js, shared with the manual's pages, which load this sheet
+   too). Under the bar (100) and the ribbon (1000).
+   A ring round it fills with the reading, from 12 o'clock: the one round shape of the page,
+   chosen over a labelled bar and over a square, the square tried in place (2026-10-03). */
+.to-top {
+    position: fixed;
+    right: max(20px, env(safe-area-inset-right));
+    bottom: max(20px, env(safe-area-inset-bottom));
+    z-index: 90;
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--text);
+    box-shadow: 0 8px 28px rgba(0,0,0,.22);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity var(--ease), transform var(--ease), visibility var(--ease), background var(--ease), color var(--ease)
 }
 
-.cta-open::after {
-    content: 'Public beta';
+.to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none
+}
+
+.to-top:hover {
+    background: var(--inv);
+    color: var(--bg)
+}
+
+.to-top:focus-visible {
+    outline: 2px solid var(--warn-line);
+    outline-offset: 3px
+}
+
+.to-top .tt-ring {
     position: absolute;
-    top: -22px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font);
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ok);
-    white-space: nowrap;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg)
+}
+
+.to-top .tt-track {
+    fill: none;
+    stroke: var(--border);
+    stroke-width: 2
+}
+
+/* to-top.js draws the ring as the page moves, by its dash offset (out of 100). A scroll-driven
+   animation would need no script, but Safari before 26 and Firefox cannot run one, and the
+   ring stayed empty there — seen in Safari on 2026-10-03. One path for every browser. */
+.to-top .tt-progress {
+    fill: none;
+    stroke: var(--warn-line);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100
+}
+
+.to-top .tt-arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: transform var(--ease)
+}
+
+.to-top:hover .tt-arrow {
+    transform: translateY(-3px)
+}
+
+/* The way back up is a jump, not a ride through the whole page, for whoever asked for
+   less motion. */
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto
+    }
+
+    .to-top,
+    .to-top .tt-arrow {
+        transition: none;
+        transform: none
+    }
 }
 
 /* HOW IT COMPARES */
@@ -2648,9 +3125,9 @@ footer {
 
 .cmp tr:hover td:not(.cmp-ag):not(.cmp-cap) { background: var(--bg2); }
 
-.cmp .cmp-yes { color: var(--ok); font-weight: 700; }
+.cmp .cmp-yes { color: var(--ok-text); font-weight: 700; }
 .cmp .cmp-no { color: var(--text4); }
-.cmp .cmp-part { color: var(--warn); }
+.cmp .cmp-part { color: var(--warn-text); }
 
 .cmp .cmp-ag.cmp-yes,
 .cmp .cmp-ag.cmp-no,
@@ -2838,6 +3315,10 @@ footer {
 }
 
 .stack-block.ag .stack-num { opacity: .6; color: #000; }
+
+/* The number of a managed layer is ghosted, not gone: at .35 it read 1.7:1 on the light
+   ground and 1.9:1 on the dark one (measured 2026-10-03), under the 3:1 of large text. */
+.stack-block.ghost .stack-num { opacity: .7; }
 
 .stack-name {
     font-size: var(--font-size-md);

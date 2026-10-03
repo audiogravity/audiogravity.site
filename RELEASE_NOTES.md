@@ -15,6 +15,23 @@ does not run on, a download that failed, a damaged package — and still says it
 page is opened again or from another device. When the installer cannot even be fetched,
 nothing on the box is touched, not even a restart of the core.
 
+**Updates clean up after themselves.** Each update of the interface left the previous
+version's files on the box for good — 94 MB on one of our test boxes. The box now keeps the
+new version and the one before it, which a page left open during the update still needs, and
+removes the rest.
+
+**A page left open catches up.** A page left open on a tablet through two updates could open
+empty screens. It now reloads onto the new version when it needs to — and if a screen cannot
+be loaded for another reason, it says so.
+
+### Everything from your box
+
+**Nothing fetched from the Internet any more.** The interface fetched its charts, its
+configuration editor and its terminal from a public server on the Internet, at every start:
+on a slow connection the app took seconds longer to appear, and without Internet those
+screens had nothing to run on. All of it now comes from your box, and only when the screen
+that needs it opens.
+
 ---
 
 ## 0.9.64 — 2026-10-02

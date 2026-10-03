@@ -109,13 +109,18 @@
             </div>
             <h1 class="hero-h1">Audiogravi<sup>ty</sup></h1>
             <p class="hero-tag">Audiogravi<sup>ty</sup> is a streamer. <em>A conductor, not a soloist.</em></p>
-            <p class="hero-lede">MPD, Roon, HQPlayer, AirPlay, UPnP sources and renderers, internet radio — every
-                engine, every source, down to DSD and Hi-Res PCM. Send your library to any network renderer.
-                Audiogravi<sup>ty</sup> installs, configures and conducts every one of them — from the system up to
-                your Qobuz, Tidal and HIGHRESAUDIO libraries. It replaces none of them. One interface. Total control.
+            <!-- Two versions of one paragraph: a phone shows the short one, under the capture.
+                 The short one says nothing the long one does not. -->
+            <p class="hero-lede"><span class="lede-long">MPD, Roon, HQPlayer, AirPlay, UPnP sources and renderers,
+                internet radio — every engine, every source, down to DSD and Hi-Res PCM. Send your library to any
+                network renderer. Audiogravi<sup>ty</sup> installs, configures and conducts every one of them — from
+                the system up to your Qobuz, Tidal and HIGHRESAUDIO libraries. It replaces none of them. One
+                interface. Total control.</span> <span class="lede-short">Every engine, every source, down to DSD and
+                Hi-Res PCM. Audiogravi<sup>ty</sup> installs, configures and conducts them, and replaces none of
+                them.</span>
             </p>
             <div class="hero-cta">
-                <a class="cta-primary cta-open" href="#install">Install now — 30-day trial included</a>
+                <a class="cta-primary" href="#install">Install now — 30-day trial included</a>
                 <a class="cta-ghost" href="#features">See features</a>
             </div>
             <div class="hero-proof">
@@ -132,8 +137,8 @@
                     <div class="l">Machine · perpetual</div>
                 </div>
                 <div class="hero-proof-item">
-                    <div class="n" style="color:var(--ok)">No</div>
-                    <div class="l" style="color:var(--ok)">Subscription · ever</div>
+                    <div class="n" style="color:var(--ok-text)">No</div>
+                    <div class="l" style="color:var(--ok-text)">Subscription · ever</div>
                 </div>
             </div>
         </div>
@@ -386,6 +391,10 @@
                 surface.</p>
 
             <div class="feat-bento">
+                <!-- Card order: rows of similar height, measured at 1440, 1280 and 1024px. The
+                     grid packs each row to its tallest card, so a short card beside a long one
+                     left up to 470px of empty card. Reordering cut that by 40%, keeping the
+                     performance trio together. Check the heights again before moving a card. -->
                 <div class="fb span4 dark">
                     <span class="fb-tier pro">PRO</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z" /> <circle cx="12" cy="12" r="10" /></svg></div>
@@ -399,6 +408,63 @@
                     <span class="fb-chip">MPD · Roon · HQPlayer · AirPlay · UPnP · stream origin · queue by source · sleep timer · live Hi-Fi readout</span>
                 </div>
 
+                <div class="fb span2 dark">
+                    <span class="fb-tier pro">PRO</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg></div>
+                    <h3>Auto-discovery</h3>
+                    <p>Audiogravi<sup>ty</sup> scans your network on demand. MPD instances, Roon Bridges, UPnP servers,
+                        AirPlay receivers — all picked up automatically.</p>
+                    <span class="fb-chip">MPD · Roon · UPnP · AirPlay · HQPlayer · SSDP</span>
+                </div>
+
+                <div class="fb span2 dark">
+                    <span class="fb-tier pro">PRO</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="m16 6 4 14" /> <path d="M12 6v14" /> <path d="M8 8v12" /> <path d="M4 4v16" /></svg></div>
+                    <h3>High-resolution library</h3>
+                    <p>Browse Roon, MPD, MinimServer, Qobuz, Tidal and HIGHRESAUDIO from one interface — album
+                        view, full-text search, direct playback with cover art. <b>Star an album</b> to favourite
+                        it on its streaming service; tap an <b>artist</b> in search to open their albums across
+                        every source. <b>Your Qobuz and HIGHRESAUDIO playlists</b> are managed from here too: add the track
+                        playing or a whole album, open a playlist to play it from any track, rename it or tidy it
+                        up. Pick a track, pick a renderer: the music flows at full resolution — even
+                        local NAS/USB files cast to a network renderer, bit-perfect. Qobuz, Tidal and HIGHRESAUDIO
+                        require an active subscription.</p>
+                    <span class="fb-chip">Roon · MPD · UPnP/DLNA · Qobuz · Tidal · HIGHRESAUDIO · favorites ★ · your Qobuz &amp; HIGHRESAUDIO playlists · local cast · UPnP renderers</span>
+                </div>
+
+                <div class="fb span2 dark">
+                    <span class="fb-tier pro">PRO</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M16.247 7.761a6 6 0 0 1 0 8.478" /> <path d="M19.075 4.933a10 10 0 0 1 0 14.134" /> <path d="M4.925 19.067a10 10 0 0 1 0-14.134" /> <path d="M7.753 16.239a6 6 0 0 1 0-8.478" /> <circle cx="12" cy="12" r="2" /></svg></div>
+                    <h3>Internet radio without a parallel signal path</h3>
+                    <p>Most apps treat radio as a second-class source — a different player, a degraded path to the DAC,
+                        no metadata, no cover art. Here it isn't. Stations flow through the same transport as your FLAC
+                        library, route to the same output zone, surface the same Hi-Fi readout. Curate your own
+                        collection, filter the catalogue down to Hi-Res, save the ones worth coming back to. With
+                        HQPlayer as your output, they can go through its filters too — stations broadcasting in AAC
+                        included, converted to FLAC as they arrive.</p>
+                    <span class="fb-chip">Same transport · Hi-Res filter · live metadata · cover art</span>
+                </div>
+
+                <div class="fb span2 dark">
+                    <span class="fb-tier pro">PRO</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /> <path d="M16 9a5 5 0 0 1 0 6" /> <path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></svg></div>
+                    <h3>HQPlayer — on the box, or on your network</h3>
+                    <p>Run HQPlayer Embedded on the box itself: install it from the Audio Software page — its
+                        licence is shown first, and nothing installs until you accept it — choose its output as you
+                        would any player's, and open its own settings page in one tap. Or control the HQPlayer you
+                        already run on your network, auto-discovered and connected in one tap. Either way, change
+                        its sound-shaping settings — interpolation filter, noise shaper, output mode and volume —
+                        without leaving the couch, and send anything you can browse — your own library, a media
+                        server, internet radio, Qobuz, Tidal and HIGHRESAUDIO — through its filters and
+                        upsampling, bit-perfect. Run more than one? Each keeps the filter, shaper and mode
+                        you chose for it. What HQPlayer cannot read — an ALAC library, a station
+                        broadcasting in AAC — is converted to FLAC on the way, losslessly; DSD is never converted.
+                        Move around inside a track from your phone, and the display follows the album, track by
+                        track. Audiogravi<sup>ty</sup> also recognises which HQPlayer it is connected to, and
+                        which version, and keeps the NAA on your box on the matching line.</p>
+                    <span class="fb-chip">HQPlayer Embedded on the box · Filter · Shaper · Mode · Volume · Auto-discovery · ALAC &amp; AAC converted · NAA kept in step · Any source through HQPlayer</span>
+                </div>
+
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></svg></div>
@@ -409,6 +475,28 @@
                         background music. Each profile lists exactly which services to start and stop — conflicts
                         resolved automatically, and a live health bar shows the whole chain is up.</p>
                     <span class="fb-chip">Conflict resolution · live health · history</span>
+                </div>
+
+                <div class="fb span2 dark">
+                    <span class="fb-tier pro">PRO</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" /> <path d="M2 12a9 9 0 0 1 8 8" /> <path d="M2 16a5 5 0 0 1 4 4" /> <line x1="2" x2="2.01" y1="20" y2="20" /></svg></div>
+                    <h3>UPnP Control Point — play to any renderer</h3>
+                    <p>Audiogravi<sup>ty</sup> becomes your UPnP control point: discover every renderer on your
+                        network — network amplifiers, dedicated streamers, DLNA speakers — and drive them directly
+                        from the interface. Browse any source, hit Play: the stream reaches the renderer
+                        <b>bit-perfect, at full resolution</b>, without touching the server's audio path. A live
+                        <b>"Up next"</b> strip shows the next track as it is loaded onto the renderer.</p>
+                    <span class="fb-chip">UPnP renderers · DLNA · bit-perfect · output selector · Up next</span>
+                </div>
+
+                <div class="fb span2">
+                    <span class="fb-tier starter">STARTER</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M10.268 21a2 2 0 0 0 3.464 0" /> <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></svg></div>
+                    <h3>Push notifications</h3>
+                    <p>Get notified the instant an audio service fails, the CPU crosses the critical
+                        temperature, a software update is available or a profile is activated. Even when the
+                        PWA is closed.</p>
+                    <span class="fb-chip">Service down · Critical temperature · Update available · Background push</span>
                 </div>
 
                 <div class="fb span2 dark">
@@ -466,34 +554,6 @@
                     <span class="fb-chip">interactive graph · pan · zoom · minimap · hot rerouting</span>
                 </div>
 
-                <div class="fb span2 dark">
-                    <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="m16 6 4 14" /> <path d="M12 6v14" /> <path d="M8 8v12" /> <path d="M4 4v16" /></svg></div>
-                    <h3>High-resolution library</h3>
-                    <p>Browse Roon, MPD, MinimServer, Qobuz, Tidal and HIGHRESAUDIO from one interface — album
-                        view, full-text search, direct playback with cover art. <b>Star an album</b> to favourite
-                        it on its streaming service; tap an <b>artist</b> in search to open their albums across
-                        every source. <b>Your Qobuz and HIGHRESAUDIO playlists</b> are managed from here too: add the track
-                        playing or a whole album, open a playlist to play it from any track, rename it or tidy it
-                        up. Pick a track, pick a renderer: the music flows at full resolution — even
-                        local NAS/USB files cast to a network renderer, bit-perfect. Qobuz, Tidal and HIGHRESAUDIO
-                        require an active subscription.</p>
-                    <span class="fb-chip">Roon · MPD · UPnP/DLNA · Qobuz · Tidal · HIGHRESAUDIO · favorites ★ · your Qobuz &amp; HIGHRESAUDIO playlists · local cast · UPnP renderers</span>
-                </div>
-
-                <div class="fb span2 dark">
-                    <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M16.247 7.761a6 6 0 0 1 0 8.478" /> <path d="M19.075 4.933a10 10 0 0 1 0 14.134" /> <path d="M4.925 19.067a10 10 0 0 1 0-14.134" /> <path d="M7.753 16.239a6 6 0 0 1 0-8.478" /> <circle cx="12" cy="12" r="2" /></svg></div>
-                    <h3>Internet radio without a parallel signal path</h3>
-                    <p>Most apps treat radio as a second-class source — a different player, a degraded path to the DAC,
-                        no metadata, no cover art. Here it isn't. Stations flow through the same transport as your FLAC
-                        library, route to the same output zone, surface the same Hi-Fi readout. Curate your own
-                        collection, filter the catalogue down to Hi-Res, save the ones worth coming back to. With
-                        HQPlayer as your output, they can go through its filters too — stations broadcasting in AAC
-                        included, converted to FLAC as they arrive.</p>
-                    <span class="fb-chip">Same transport · Hi-Res filter · live metadata · cover art</span>
-                </div>
-
                 <div class="fb span2">
                     <span class="fb-tier starter">STARTER</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2" /></svg></div>
@@ -524,57 +584,6 @@
                     <span class="fb-chip">FIDO2 · Face ID · YubiKey · RBAC</span>
                 </div>
 
-                <div class="fb span2">
-                    <span class="fb-tier starter">STARTER</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M10.268 21a2 2 0 0 0 3.464 0" /> <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></svg></div>
-                    <h3>Push notifications</h3>
-                    <p>Get notified the instant an audio service fails, the CPU crosses the critical
-                        temperature, a software update is available or a profile is activated. Even when the
-                        PWA is closed.</p>
-                    <span class="fb-chip">Service down · Critical temperature · Update available · Background push</span>
-                </div>
-
-                <div class="fb span2 dark">
-                    <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg></div>
-                    <h3>Auto-discovery</h3>
-                    <p>Audiogravi<sup>ty</sup> scans your network on demand. MPD instances, Roon Bridges, UPnP servers,
-                        AirPlay receivers — all picked up automatically.</p>
-                    <span class="fb-chip">MPD · Roon · UPnP · AirPlay · HQPlayer · SSDP</span>
-                </div>
-
-                <div class="fb span2 dark">
-                    <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /> <path d="M16 9a5 5 0 0 1 0 6" /> <path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></svg></div>
-                    <h3>HQPlayer — on the box, or on your network</h3>
-                    <p>Run HQPlayer Embedded on the box itself: install it from the Audio Software page — its
-                        licence is shown first, and nothing installs until you accept it — choose its output as you
-                        would any player's, and open its own settings page in one tap. Or control the HQPlayer you
-                        already run on your network, auto-discovered and connected in one tap. Either way, change
-                        its sound-shaping settings — interpolation filter, noise shaper, output mode and volume —
-                        without leaving the couch, and send anything you can browse — your own library, a media
-                        server, internet radio, Qobuz, Tidal and HIGHRESAUDIO — through its filters and
-                        upsampling, bit-perfect. Run more than one? Each keeps the filter, shaper and mode
-                        you chose for it. What HQPlayer cannot read — an ALAC library, a station
-                        broadcasting in AAC — is converted to FLAC on the way, losslessly; DSD is never converted.
-                        Move around inside a track from your phone, and the display follows the album, track by
-                        track. Audiogravi<sup>ty</sup> also recognises which HQPlayer it is connected to, and
-                        which version, and keeps the NAA on your box on the matching line.</p>
-                    <span class="fb-chip">HQPlayer Embedded on the box · Filter · Shaper · Mode · Volume · Auto-discovery · ALAC &amp; AAC converted · NAA kept in step · Any source through HQPlayer</span>
-                </div>
-
-                <div class="fb span2 dark">
-                    <span class="fb-tier pro">PRO</span>
-                    <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" /> <path d="M2 12a9 9 0 0 1 8 8" /> <path d="M2 16a5 5 0 0 1 4 4" /> <line x1="2" x2="2.01" y1="20" y2="20" /></svg></div>
-                    <h3>UPnP Control Point — play to any renderer</h3>
-                    <p>Audiogravi<sup>ty</sup> becomes your UPnP control point: discover every renderer on your
-                        network — network amplifiers, dedicated streamers, DLNA speakers — and drive them directly
-                        from the interface. Browse any source, hit Play: the stream reaches the renderer
-                        <b>bit-perfect, at full resolution</b>, without touching the server's audio path. A live
-                        <b>"Up next"</b> strip shows the next track as it is loaded onto the renderer.</p>
-                    <span class="fb-chip">UPnP renderers · DLNA · bit-perfect · output selector · Up next</span>
-                </div>
-
                 <div class="fb span6">
                     <span class="fb-tier starter">STARTER</span>
                     <div class="fb-icon"><svg viewBox="0 0 24 24"> <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg></div>
@@ -589,41 +598,41 @@
         </div>
     </section>
 
-    <!-- NOW PLAYING STRIP -->
+    <!-- NOW PLAYING STRIP: the player screen in the page's style. Every element here exists in
+         the app's own screen (ui: ag-now-playing-fullscreen), and the four cells read what it
+         shows for DSD256 (core: player/service.py, _parse_format). Come Together lasts 4:19 on
+         Qobuz (read through the box's Qobuz search, 2026-10-03), hence 2:14 played, 2:05 left. -->
     <section class="np-strip">
         <div class="np-meta">
-            <div class="label">Now playing · HQPlayer NAA · DSD256</div>
-            <div class="track-name">Shameika</div>
-            <div class="track-artist">Fiona Apple — Fetch the Bolt Cutters</div>
-            <div class="service-badge"><span class="dot"></span>Roon → HQPlayer → Heed Abacus S → Naim Nac 52 / Nap 250
+            <img class="np-cover" src="assets/pics/cover-abbey-road.webp" width="400" height="400"
+                loading="lazy" decoding="async" alt="Cover of Abbey Road by The Beatles">
+            <div class="np-head">
+                <div class="label"><span class="np-eq" aria-hidden="true"><i></i><i></i><i></i></span><span>Now playing</span></div>
+                <div class="track-name">Come Together</div>
+                <div class="track-artist">The Beatles — Abbey Road</div>
+            </div>
+            <div class="np-tail">
+                <div class="np-path">
+                    <span class="sp">Qobuz</span>
+                    <span class="step"><span class="arr">→</span><span class="sp">HQPlayer</span></span>
+                    <span class="step"><span class="arr">→</span><span class="sp">HQPlayer NAA</span></span>
+                    <span class="step"><span class="arr">→</span><span class="sp">USB</span></span>
+                    <span class="step"><span class="arr">→</span><span class="sp">Heed Abacus</span></span>
+                </div>
+                <a class="np-more" href="#pipeline">See the full signal path <span aria-hidden="true">↓</span></a>
             </div>
         </div>
         <div class="np-visual">
-            <div class="np-bar">
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
-                <div class="np-bar-col active" style="height:100%"></div>
+            <div class="np-fmt">
+                <div class="cell hi"><span>Format</span><b>DSD256</b></div>
+                <div class="cell hi"><span>Sample</span><b>11.3MHz</b></div>
+                <div class="cell"><span>Bitrate</span><b>22.6Mbps</b></div>
+                <div class="cell"><span>Codec</span><b>DSD</b></div>
             </div>
-            <div class="np-chain">
-                <span class="node">iOS</span>
-                <span class="arr">→</span>
-                <span class="node active">Roon Core</span>
-                <span class="arr">→</span>
-                <span class="node active">HQPlayer NAA</span>
-                <span class="arr">→</span>
-                <span class="node bitperfect">Heed Abacus</span>
-                <span class="arr">→</span>
-                <span class="node">Naim Nac 52 / Nap 250</span>
+            <div class="np-progress" role="img" aria-label="2:14 played, 2:05 left">
+                <span>2:14</span><span class="bar"><span class="fill" style="width:51.7%"></span></span><span>−2:05</span>
             </div>
+            <div class="np-out"><span class="k">Output → DAC</span><span class="v">Heed Abacus</span><span class="np-chip">USB</span></div>
         </div>
     </section>
 
@@ -675,30 +684,34 @@
                     <path class="pl active" d="M560 174 L625 174" marker-end="url(#m1)" />
                     <path class="pl bp" d="M755 174 L820 174" marker-end="url(#m2)" />
                     <path class="pl" d="M370 215 C500 215 500 318 625 318" marker-end="url(#m0)" />
-                    <circle r="4" fill="#f59e0b">
+                    <!-- The dots start already under way: a dot waiting for its turn sits at the
+                         drawing's origin, its top-left corner, so a positive delay showed it there
+                         for up to 1.8s after load. A negative one keeps the same stagger — each dot
+                         0.6s behind the one before — with no wait. -->
+                    <circle r="4" fill="#f59e0b" class="pl-dot">
                         <animateMotion dur="2.4s" repeatCount="indefinite" path="M145 38 C190 38 180 174 215 174" />
                     </circle>
-                    <circle r="4" fill="#f59e0b">
-                        <animateMotion dur="2.4s" repeatCount="indefinite" begin=".6s" path="M370 174 L430 174" />
+                    <circle r="4" fill="#f59e0b" class="pl-dot">
+                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="-1.8s" path="M370 174 L430 174" />
                     </circle>
-                    <circle r="4" fill="#f59e0b">
-                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s" path="M560 174 L625 174" />
+                    <circle r="4" fill="#f59e0b" class="pl-dot">
+                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="-1.2s" path="M560 174 L625 174" />
                     </circle>
-                    <circle r="4" fill="#22c55e">
-                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.8s" path="M755 174 L820 174" />
+                    <circle r="4" fill="#22c55e" class="pl-dot bp">
+                        <animateMotion dur="2.4s" repeatCount="indefinite" begin="-0.6s" path="M755 174 L820 174" />
                     </circle>
 
                     <g class="pn ag-box">
-                        <rect x="202" y="88" width="181" height="172" rx="6" class="own-r" /><text x="292" y="104"
+                        <rect x="202" y="80" width="181" height="187" rx="6" class="own-r" /><text x="292" y="96"
                             text-anchor="middle" class="own-t">Audiogravi<tspan dy="-3"
-                                font-size="7">ty</tspan><tspan dy="3" font-size="9"> — your box</tspan></text>
+                                font-size="8">ty</tspan><tspan dy="3" font-size="10"> — your box</tspan></text>
                     </g>
                     <!-- Same padding as the frame above (13 aside, 27 top and bottom, label 16 below
                          the top edge), so the two read as one convention rather than two drawings. -->
                     <g class="pn ag-box">
                         <rect x="612" y="117" width="156" height="114" rx="6" class="own-r" /><text x="690" y="133"
                             text-anchor="middle" class="own-t">Audiogravi<tspan dy="-3"
-                                font-size="7">ty</tspan><tspan dy="3" font-size="9"> — your box</tspan></text>
+                                font-size="8">ty</tspan><tspan dy="3" font-size="10"> — your box</tspan></text>
                     </g>
 
                     <g class="pn">
@@ -729,13 +742,14 @@
                     </g>
 
                     <g class="pn">
-                        <rect x="215" y="115" width="155" height="118" class="active-r" /><text x="292" y="138"
+                        <rect x="215" y="107" width="155" height="133" class="active-r" /><text x="292" y="130"
                             text-anchor="middle" class="active-t">Audiogravi<tspan dy="-4"
-                                font-size="8">ty</tspan></text><text x="292" y="157" text-anchor="middle"
-                            class="sub">Qobuz · Tidal · HIGHRESAUDIO</text><text x="292" y="172" text-anchor="middle"
-                            class="sub">internet radio · library</text><text x="292" y="187" text-anchor="middle"
-                            class="sub">MPD · queue · transport</text><text x="292" y="202" text-anchor="middle"
-                            class="sub">upmpdcli — UPnP renderer</text><text x="292" y="217" text-anchor="middle"
+                                font-size="9">ty</tspan></text><text x="292" y="149" text-anchor="middle"
+                            class="sub">Qobuz · Tidal · HIGHRESAUDIO</text><text x="292" y="164" text-anchor="middle"
+                            class="sub">internet radio · library</text><text x="292" y="179" text-anchor="middle"
+                            class="sub">MPD · queue · transport</text><text x="292" y="194" text-anchor="middle"
+                            class="sub">HQPlayer Embedded</text><text x="292" y="209" text-anchor="middle"
+                            class="sub">upmpdcli — UPnP renderer</text><text x="292" y="224" text-anchor="middle"
                             class="sub">UPnP control point</text>
                     </g>
                     <g class="pn">
@@ -753,7 +767,7 @@
                     <g class="pn">
                         <rect x="820" y="144" width="130" height="60" class="bp-r" /><text x="885" y="166"
                             text-anchor="middle" class="bp-t">DAC · USB</text><text x="885" y="182"
-                            text-anchor="middle" class="sub">Holo May KTE</text><text x="885" y="196"
+                            text-anchor="middle" class="sub">Heed Abacus</text><text x="885" y="196"
                             text-anchor="middle" class="sub">DSD256 · bit-perfect</text>
                     </g>
                     <g class="pn">
@@ -762,7 +776,7 @@
                             class="sub">network speaker</text>
                     </g>
 
-                    <text x="15" y="368" font-family="Inter,sans-serif" font-size="10.5" fill="#888">Click any link →
+                    <text x="15" y="368" font-family="Inter,sans-serif" font-size="10.5" fill="#888" class="pl-note">Click any link →
                         reroute the output: a different DAC, or any renderer on the network (gapless on MPD).
                         Latency, RSSI and 802.11 protocol shown for every network hop.</text>
                 </svg>
@@ -820,8 +834,9 @@
         </div>
     </section>
 
-    <!-- STATS -->
-    <section class="section alt">
+    <!-- STATS: the proof of "End the jitter", so one band with it rather than a section of its
+         own. That is also what lets the backgrounds alternate down the page again. -->
+    <section class="section rt-proof">
         <div class="w">
             <div class="detail-cols">
                 <div class="detail-col">
@@ -921,9 +936,11 @@
          obliges every one of those machines to publish the list, so the reader can settle it on
          their own device instead of taking our word. And it concedes the analog side outright,
          because conceding it is exactly what makes the rest credible to someone who builds power
-         supplies. Shares the `alt` band with #layers above: the two are one argument in two steps
-         — where Audiogravity sits, and what that leaves you free to choose. -->
-    <section class="section alt" id="parts">
+         supplies. With #layers above it is one argument in two steps — where Audiogravity sits,
+         and what that leaves you free to choose. The two shared one grey band until 2026-10-03,
+         when the backgrounds were made to alternate down the page again (the figures joined
+         #rt, this section went white, #compare grey); the argument now spans two bands. -->
+    <section class="section" id="parts">
         <div class="w">
             <div class="section-label">Board and software</div>
             <h2 class="section-title">A streamer is a board<br><em>and a software layer.</em></h2>
@@ -956,7 +973,7 @@
         </div>
     </section>
 
-    <section class="section" id="compare">
+    <section class="section alt" id="compare">
         <div class="w">
             <div class="section-label">How it compares</div>
             <h2 class="section-title">One orchestrator.<br><em>Every audiophile engine.</em></h2>
@@ -1388,7 +1405,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="docs/manual/07-administration#licence" style="color:var(--warn)">7. Administration → Licence</a>).</div>
+                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="docs/manual/07-administration#licence" style="color:var(--warn-text)">7. Administration → Licence</a>).</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1398,7 +1415,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli, Shairport-Sync and AirPlay are all optional — install whichever you want in one click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from there (configuration, tuning, orchestration). See <a href="docs/manual/03-first-run#3-install-the-audio-engines" style="color:var(--warn)">3. First run</a>.</div>
+                        <div class="faq-body-inner">Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli, Shairport-Sync and AirPlay are all optional — install whichever you want in one click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from there (configuration, tuning, orchestration). See <a href="docs/manual/03-first-run#3-install-the-audio-engines" style="color:var(--warn-text)">3. First run</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1408,7 +1425,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Only if you want to use those services, and everything else works without any third-party subscription.<br><br>To <b>listen</b> to them in full, yes: each needs its own active subscription. Browsing is another matter — Qobuz and Tidal let a lapsed account sign in and browse the whole catalogue, and play thirty seconds of each track; HIGHRESAUDIO refuses the catalogue but still plays what you bought from it. The sources card names the state in each case, so short tracks are never a mystery. See <a href="docs/manual/05-library-streaming#when-a-subscription-ends" style="color:var(--warn)">5. Library & streaming</a>.</div>
+                        <div class="faq-body-inner">Only if you want to use those services, and everything else works without any third-party subscription.<br><br>To <b>listen</b> to them in full, yes: each needs its own active subscription. Browsing is another matter — Qobuz and Tidal let a lapsed account sign in and browse the whole catalogue, and play thirty seconds of each track; HIGHRESAUDIO refuses the catalogue but still plays what you bought from it. The sources card names the state in each case, so short tracks are never a mystery. See <a href="docs/manual/05-library-streaming#when-a-subscription-ends" style="color:var(--warn-text)">5. Library & streaming</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1428,7 +1445,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">No. A Pro licence is bound to one installation. If you move to a new machine, a licence reset is available on request — contact us at <a href="mailto:support@audiogravity.app" style="color:var(--warn)">support@audiogravity.app</a>.</div>
+                        <div class="faq-body-inner">No. A Pro licence is bound to one installation. If you move to a new machine, a licence reset is available on request — contact us at <a href="mailto:support@audiogravity.app" style="color:var(--warn-text)">support@audiogravity.app</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1448,7 +1465,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="docs/manual/03-first-run#8-install-it-as-an-app-recommended-on-phones" style="color:var(--warn)">3. First run</a>.</div>
+                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="docs/manual/03-first-run#8-install-it-as-an-app-recommended-on-phones" style="color:var(--warn-text)">3. First run</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1458,7 +1475,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">All three connect from <b>Library → Sources</b>: open the service's card and tap <b>Connect</b>. <b>Qobuz</b> signs in and redirects back automatically. <b>Tidal</b> lands on a fixed URL that a web app can't intercept — copy that full URL from the address bar, paste it back into the Tidal card and tap <b>Finish login</b>, once. <b>HIGHRESAUDIO</b> is simpler: enter your account email and password directly in its card. Tokens are then stored and refreshed for you. The full walkthroughs are in <a href="docs/manual/05-library-streaming#streaming-services" style="color:var(--warn)">5. Library & streaming</a>.</div>
+                        <div class="faq-body-inner">All three connect from <b>Library → Sources</b>: open the service's card and tap <b>Connect</b>. <b>Qobuz</b> signs in and redirects back automatically. <b>Tidal</b> lands on a fixed URL that a web app can't intercept — copy that full URL from the address bar, paste it back into the Tidal card and tap <b>Finish login</b>, once. <b>HIGHRESAUDIO</b> is simpler: enter your account email and password directly in its card. Tokens are then stored and refreshed for you. The full walkthroughs are in <a href="docs/manual/05-library-streaming#streaming-services" style="color:var(--warn-text)">5. Library & streaming</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1468,7 +1485,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">A fully illustrated manual covers the whole journey — from installation to troubleshooting — with a one-page <a href="docs/manual/00-quick-start" style="color:var(--warn)">quick start</a> and a <a href="docs/manual/10-glossary" style="color:var(--warn)">glossary</a>. It is readable <b>inside the app</b> (the <b>Manual</b> tab — the manual of the version your box runs, even without internet access) and online, where the latest edition is published.</div>
+                        <div class="faq-body-inner">A fully illustrated manual covers the whole journey — from installation to troubleshooting — with a one-page <a href="docs/manual/00-quick-start" style="color:var(--warn-text)">quick start</a> and a <a href="docs/manual/10-glossary" style="color:var(--warn-text)">glossary</a>. It is readable <b>inside the app</b> (the <b>Manual</b> tab — the manual of the version your box runs, even without internet access) and online, where the latest edition is published.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1478,7 +1495,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">From the interface. When a new release is available, the <b>Admin</b> tab shows an update banner — one click and your admin password, and the box downloads, installs and health-checks the new version with live progress. If anything goes wrong it <b>automatically rolls back</b> to the previous version. No terminal, no re-running the installer. See <a href="docs/manual/08-updating" style="color:var(--warn)">8. Updating</a>.</div>
+                        <div class="faq-body-inner">From the interface. When a new release is available, the <b>Admin</b> tab shows an update banner — one click and your admin password, and the box downloads, installs and health-checks the new version with live progress. If anything goes wrong it <b>automatically rolls back</b> to the previous version. No terminal, no re-running the installer. See <a href="docs/manual/08-updating" style="color:var(--warn-text)">8. Updating</a>.</div>
                     </div>
                 </div>
 
@@ -1634,6 +1651,8 @@
         </div>
     </footer>
 
+    <!-- Back to top: the button is built by the script, shared with the manual's pages. -->
+    <script src="assets/to-top.js" defer></script>
     <script src="assets/main.js"></script>
 
 </body>

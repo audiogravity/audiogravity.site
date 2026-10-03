@@ -24,6 +24,11 @@ removes the rest.
 empty screens. It now reloads onto the new version when it needs to — and if a screen cannot
 be loaded for another reason, it says so.
 
+**Updates arrive in seconds.** After an update of the box, an open app said *Updating…* and
+then stayed on the old version for five minutes, before reloading by itself without a word. It
+now reloads onto the new version within seconds — open during the update, opened just after it,
+or in several tabs. Measured in Chrome; Safari not tried yet.
+
 ### Everything from your box
 
 **Nothing fetched from the Internet any more.** The interface fetched its charts, its

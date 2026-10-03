@@ -37,6 +37,14 @@ on a slow connection the app took seconds longer to appear, and without Internet
 screens had nothing to run on. All of it now comes from your box, and only when the screen
 that needs it opens.
 
+### Getting around
+
+**Back to the top of a chapter.** In the app's Manual window too, a round button takes you back
+to the top of a long chapter, and its ring shows how far you have read.
+
+**Less motion, when you ask for it.** If your phone or computer is set to reduce motion, the
+app's tab bars now jump into place instead of gliding.
+
 ### On audiogravity.app
 
 **Back to the top, in one tap.** On the landing and on every page of the online manual, a round

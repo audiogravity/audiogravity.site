@@ -7,7 +7,30 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### A visual pass
+
+**Light or dark, like your device.** Settings → Appearance now offers *Automatic*, *Light*
+and *Dark*. *Automatic* follows your device — light by day, dark at night on a device that
+switches by itself — down to the sign-in screen. A choice made with the old switch is kept.
+
+**Radio, live.** A live station has no end and no position: the progress bar gives way to a
+*LIVE* marker. In *My Live Radio*, a green tick on every card removed the station at a touch;
+a ⋯ button now opens *Edit station* and *Remove from My Live Radio*.
+
+**A phone that reads better.** The mini-player gives the title and the artist a line each
+instead of one scrolling line. Every page's title sits at the same distance from the tab
+menu, and the settings panel no longer lets the page show through.
+
+**Quiet, not faint.** Text that was faded at rest — stopped services, file dates — keeps a
+readable contrast, and check boxes and radio buttons take the theme's colours instead of the
+browser's blue.
+
+**On a computer.** The library's lists are centred, and the full-screen player uses the width
+of a landscape screen: the cover on the left, the track on the right.
+
+**Figures as they are.** The System tab shows the memory in use instead of *0.0 GB*, and
+writes its figures as they are written — *x86_64*, *MHz*. The live feed's tile now says
+*Live updates*.
 
 ---
 

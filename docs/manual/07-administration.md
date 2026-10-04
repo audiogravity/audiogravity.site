@@ -12,7 +12,7 @@ Audiogravi<sup>ty</sup>: the **user cards** (below), unread
 [announcements](#announcements), the [update banner](08-updating.md) — and the
 **licence** panel, which also opens when a Starter install taps a locked Pro tab.
 
-At the bottom of the tab, the **Frontend performance cockpit** measures the app itself in
+At the bottom of the tab, the **UI performance cockpit** measures the app itself in
 your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
 and other Chromium browsers) and how long the page has been open. It is a diagnostic aid —
 nothing there changes how the box plays.
@@ -56,10 +56,12 @@ closed, for the same 12 hours.
 The **gear** in the top bar opens the app-wide Settings panel:
 
 - **Theme** — three looks: *Minimal (Classic)*, *Slate (Modern)* and *Gravity (Bold &
-  Cosmic)* — plus a **Light/Dark Mode** toggle. The light/dark switch is also on the
-  sign-in screen, so the choice can be made before signing in (see
-  [3. First run](03-first-run.md#2-sign-in--and-secure-your-account)); the look itself is
-  chosen here.
+  Cosmic)*. The look is chosen here.
+- **Appearance** — **Automatic**, the default, follows your device: light by day, dark at
+  night on a device that switches by itself. **Light** and **Dark** keep one, whatever the
+  device does. The sign-in screen has a light/dark button too, so the choice can be made
+  before signing in (see
+  [3. First run](03-first-run.md#2-sign-in--and-secure-your-account)).
 - **Notifications** — subscribe this device to **push notifications** (see below).
 - **Animations** — turns UI motion off (functional loading spinners keep animating so
   an operation never looks stuck).
@@ -71,7 +73,7 @@ The **gear** in the top bar opens the app-wide Settings panel:
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
-<img src="images/ios-settings.webp" alt="The Settings panel: theme, and one toggle per row — light/dark mode, notifications, animations, top bar metrics, portrait lock and Face ID / Touch ID" width="360">
+<img src="images/ios-settings.webp" alt="The Settings panel: the theme and appearance menus, then one toggle per row — notifications, animations, top bar metrics, portrait lock and Face ID / Touch ID" width="360">
 
 ### Push notifications
 
@@ -329,8 +331,8 @@ shairport-sync, Roon Bridge…).
 
 Real-time monitoring and box-level actions.
 
-- **Metrics** — CPU, temperature, memory, disk and network, updated live; the **SSE
-  Stream** tile shows whether the live feed is connected.
+- **Metrics** — CPU, temperature, memory, disk and network, updated live; the **Live
+  updates** tile shows whether the live feed is connected.
 - **System & audio hardware** — hostname, OS, kernel, CPU model/cores; every audio
   card, USB interface and subdevice.
 - **Event log** — system events and live updates; RUNNING/STOPPED to pause, CLEAR to

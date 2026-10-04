@@ -19,7 +19,7 @@ to run and monitor your audio system:
 
 - **Profiles** — one-click switching between pre-configured audio chain scenarios; activates required services and stops conflicting ones automatically
 - **Services** — real-time monitoring and control of audio services (start / stop / restart / enable at boot) with live CPU, memory and I/O metrics, each with a sparkline of its recent values
-- **Software** — install, update and remove audio packages with dry-run simulation before committing changes
+- **Software** — install, update and remove audio packages, with a simulation before committing changes
 - **System** — hardware dashboard: CPU, temperature, memory, disk and network at a glance; full audio device inventory (ALSA cards, USB interfaces, subdevices)
 - **Users** — role-based access management (Admin, User, Guest) with WebAuthn / passkeys login
 - **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, a software update is available or a profile is activated

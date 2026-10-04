@@ -313,9 +313,11 @@ radio view has three sub-tabs:
 - **Search** — a query box with **country**, **genre** and **Hi-Res** filters, backed
   by the Radio Browser catalogue.
 
-On each station card: **tap** to play, the **star** toggles Favorites, the **+**
-toggles My Live Radio, the **pencil** edits a custom station, and a **left-swipe**
-removes it from the current list.
+On each station card: **tap** to play, the **star** toggles Favorites, and the **+**
+adds the station to My Live Radio. **⋯** unfolds what else the station allows, under
+it: **Edit station** on a saved station (in My Live Radio or Favorites), and **Remove
+from My Live Radio** on one already there. Outside Search, a **left-swipe** removes the
+station from the current list.
 
 <img src="images/ios-radio.webp" alt="My Live Radio: the three sub-tabs, the Add custom station button, and station rows with their logo, country, bitrate, codec badge and favourite star" width="360">
 

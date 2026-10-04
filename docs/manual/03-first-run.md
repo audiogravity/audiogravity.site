@@ -26,14 +26,16 @@ More accounts — family members, a guest who can only control what is playing �
 added later from the **Admin** tab (see
 [7. Administration](07-administration.md#users--access)).
 
-**Light or dark, before you sign in.** A small button in the corner of the sign-in card
-switches the two — a moon when the page is light, a sun when it is dark; the icon always
-shows where pressing it takes you. It changes the *appearance* only: which look you use
-— *Minimal*, *Slate* or *Gravity* — is chosen later in Settings
-([7. Administration](07-administration.md#the-settings-panel)), and this button flips
-that look's palette. Your choice is remembered and applied before the page is drawn the
-next time, so a box you left in dark opens dark, with no white flash — which matters on a
-box you start at night.
+**Light or dark, before you sign in.** The sign-in screen follows your device: light by
+day, dark at night on a device that switches by itself. A small button in the corner of
+the sign-in card switches the two — a moon when the page is light, a sun when it is dark;
+the icon always shows where pressing it takes you — and this device then keeps your
+choice instead of following its own; **Settings → Appearance → Automatic** gives it back
+([7. Administration](07-administration.md#the-settings-panel)). It changes the
+*appearance* only: which look you use — *Minimal*, *Slate* or *Gravity* — is chosen in
+Settings too, and this button flips that look's palette. The appearance is applied before
+the page is drawn, so a box you left in dark opens dark, with no white flash — which
+matters on a box you start at night.
 
 <img src="images/ios-login.webp" alt="The login screen: username and password, or one-tap sign-in with a passkey" width="360">
 

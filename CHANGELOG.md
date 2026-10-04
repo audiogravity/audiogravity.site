@@ -9,6 +9,26 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[ui][manual] The app can follow the device's light or dark mode.** Settings → Appearance offers *Automatic*, *Light* and *Dark* in place of the light/dark switch. *Automatic*, the default, follows the device — light by day, dark at night on a device that switches by itself — and so does the sign-in screen, from its first paint. A device set to light or dark with the old switch keeps that choice.
+- **[ui][manual] A live radio shows LIVE instead of a progress bar.** A live stream has no end and no position: the bar gives way to a *LIVE* marker under the transport, which dims while the stream is paused.
+
+### Changed
+- **[ui][manual] On a phone, the mini-player gives the title its room.** Title and artist shared one line, in the width four buttons left them — 115 px on an iPhone mini — and had to scroll to be read. *Previous* leaves the bar (the full player keeps it; volume stays), and title and artist take a line each: 159 px of text.
+- **[ui][manual] A radio card's actions open from ⋯.** In *My Live Radio* every card carried a green tick that meant *Remove from My Live Radio*: touching it removed the station. A ⋯ button now opens *Edit station* and *Remove from My Live Radio*.
+- **[ui] The settings panel and the tab menu are opaque.** At 40 % with a blur, the page showed through them: coloured smudges and stray words between the switches and under the tab names.
+- **[ui] On a phone, every page's title sits at the same distance from the tab menu.** Six tabs left 2 px between the menu and the title, three left 6 px; all now leave 6 px.
+- **[ui] Text faded at rest reads again.** The cards of stopped services, the dates of configuration files and the *PERSIST* label were faded down to 2.8–3.5:1; they now keep the contrast of the text around them.
+- **[ui] Check boxes and radio buttons take the theme's colours.** They took the browser's blue, and in the dark palette an unchecked box was a white square: they now take the text's colour, drawn in the light or dark palette in force.
+- **[ui] System figures are written as they are.** Values were set in capitals — *X86_64*, and *MHZ*, which is no unit; they now read *x86_64* and *MHz*, the unit smaller on the number's line.
+- **[ui][manual] Plainer words in Admin.** The live feed's tile is *Live updates*, no longer *SSE Stream*, and the cockpit at the bottom of the tab is the *UI performance cockpit*.
+- **[ui] On a computer, the library's lists are centred.** The queue, sources, outputs and radio lists stretched across the whole screen; they now keep to 900 px, centred, under a tab bar that stays in place from one view to the next.
+- **[ui] The full-screen player uses a landscape screen's width.** From 900 px wide in landscape, the cover sits on the left and the track, its controls and what comes next on the right, instead of one column under the cover.
+- **[site][ui] The editions speak of a simulation, not a dry-run.** The Starter edition's software line, on the landing and in the app.
+
+### Fixed
+- **[ui] The System tab shows the memory in use.** It read two fields the core does not send, and showed *0.0 GB / 0.0 GB* on every box; it now shows the memory in use and the total, such as *2.8 GB / 3.7 GB*.
+
 ## [0.9.65] - 2026-10-04
 
 ### Added

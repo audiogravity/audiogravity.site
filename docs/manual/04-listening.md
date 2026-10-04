@@ -8,7 +8,8 @@ of controls.
 
 A sticky **Now Playing** bar sits above the footer and shows **all active audio
 sources** at once, with quick transport — previous, play/pause, next, and volume.
-Repeat and shuffle are in the fullscreen player.
+Repeat and shuffle are in the fullscreen player — and on a phone, previous too: there
+the bar gives its room to the title and the artist, a line each.
 
 **Opening the fullscreen player.** There are three ways in, and tapping the bar
 itself is not one of them:
@@ -21,12 +22,13 @@ itself is not one of them:
 Tapping the **cover art** does something else: it opens the album's details —
 Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 
-<img src="images/ios-nowplaying-bar.webp" alt="The Now Playing bar: cover art, the stream-origin and output badges, the track, and the transport — previous, play/pause, next and volume" width="360">
+<img src="images/ios-nowplaying-bar.webp" alt="The Now Playing bar on a phone: cover art, the stream-origin and output badges, the title and the artist on a line each, and the transport — play/pause, next and volume" width="360">
 
 ## The fullscreen player
 
 - **Cover art** with a dynamic background derived from it, a **seekable progress
-  bar**, and full **transport**: repeat · previous · play/pause · next · shuffle.
+  bar** — **Live** in its place for an internet radio station, which has no end — and
+  full **transport**: repeat · previous · play/pause · next · shuffle.
 - **Album details** — Album, Artist, Format, Genre, Year, Position, Source and the
   full **Tracklist**.
 - A **Queue** view for what's coming up (see below).

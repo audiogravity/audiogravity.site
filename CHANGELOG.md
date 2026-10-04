@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.65] - 2026-10-04
+
 ### Added
 - **[site][manual] A button takes the reader back to the top.** A round button in the bottom-right corner of the landing and of every page of the manual on audiogravity.app, shown once the first screen is behind, with a ring round it that fills with the reading. It scrolls up without writing to the address or the history, so Back still leaves the page; it jumps instead of scrolling for whoever asks for less motion, and moves the keyboard focus to the bar's first link. The ring is drawn by a small script on every browser: drawn by the browser itself, it stayed empty in Safari. The landing's logo already led to the top, but nothing said so, and on a phone the top of the screen is far from the thumb.
 - **[ui] The Manual window has the same button back to the top.** Its chapters scroll inside the window, out of the website's button's reach. A round button in the chapter's bottom-right corner, shown once a full window of it is behind, with a ring round it that fills with the reading: it brings the chapter back to its top, jumping instead of scrolling for whoever asks for less motion, and moves the keyboard focus to the chapter, so the arrow keys keep scrolling it. It sits inside the chapter: a wheel or a finger that starts on it still scrolls the chapter, and at the end it rests under the last line instead of over it — chapters end 70 px lower to make room. On an iPhone, the end of a chapter now stops above the home indicator (not tried on an iPhone).

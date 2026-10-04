@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.65 — 2026-10-04
+
 ### Updates
 
 **A failed update says why.** When an update does not go through, the banner of the

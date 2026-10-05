@@ -15,7 +15,13 @@ switches by itself — down to the sign-in screen. A choice made with the old sw
 
 **Radio, live.** A live station has no end and no position: the progress bar gives way to a
 *LIVE* marker. In *My Live Radio*, a green tick on every card removed the station at a touch;
-a ⋯ button now opens *Edit station* and *Remove from My Live Radio*.
+a ⋯ button now opens *Edit station* and *Remove from My Live Radio*. And the player names the
+format a station broadcasts in — *MP3*, *AAC* — where it said *PCM* for a station whose address
+does not name its format.
+
+**Tags that are not buttons, one colour for deleting.** *CRITICAL* is a tint instead of an
+outline that looked like the buttons beside it. Every button that deletes — a licence, a user,
+a package, a station, a playlist, a passkey — is orange, its label included.
 
 **A phone that reads better.** The mini-player gives the title and the artist a line each
 instead of one scrolling line. Every page's title sits at the same distance from the tab

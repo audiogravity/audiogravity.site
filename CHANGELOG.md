@@ -31,6 +31,8 @@ and this landing) are documented here. Format based on
 - **[core] The audio pipeline goes out when it changes.** It went out every 30 seconds to every screen, identical but for its time. A screen that connects gets the last one at once — to it alone, without the box computing it again — and the pipeline's time is now written in universal time.
 - **[ui] The phone's pipeline list stops asking for its outputs every 15 seconds.** It reads them again when an output changes.
 - **[ui] In landscape, the full-screen player's column is centred on the cover whatever it shows**, and a phone held sideways has less to scroll.
+- **[ui] *CRITICAL* reads as a tag, not as a button.** On the Config, Services and Systemd cards, the badge that marks a service the audio chain depends on was outlined like the buttons beside it — next to *EDIT CONFIG* it read as a second one. It is now a tint without a frame, like *STOPPED* at the top of the same card, and reads *CRITICAL* on all three.
+- **[ui] Every button that deletes is orange.** Deleting the licence, removing a station from *My Live Radio*, confirming a playlist's deletion and removing a passkey were red, beside the orange of deleting a user, uninstalling a package or removing an override. All are orange now, their label too: on a light page the orange border alone read at 2.1:1. The controls that take a colour only under the pointer — a passkey's cross in the settings, a network share's, *Clear* in a test's history — turn orange as well, and a disabled button no longer fills on hover.
 - **[ui] The Pipeline tab opens on the pipeline the page already has.** The stream hands every screen the current pipeline as it connects; the tab, loaded at its first opening, missed it and asked the box to compute it again. The page now keeps it from the start.
 
 ### Fixed
@@ -44,6 +46,9 @@ and this landing) are documented here. Format based on
 - **[ui] The update window's title said *Updateing*.**
 - **[core] An MPD that stops answering no longer holds the screens for good.** An MPD that accepts a connection and never answers — a suspended one does exactly that — held the Pipeline page, the choice of an output, the library's indexing indicator, the tracks of the album playing and a cover read from its files. The Pipeline page now waits a few seconds at most, the others ten — a cover, asked twice, twenty.
 - **[ui] Started without a network, the Pipeline tab shows the last pipeline kept.** It said *Pipeline Inactive — No audio sources detected*.
+- **[core][manual] A radio station shows the format it broadcasts in, not *PCM*.** The box read the format from the stream's address: when the address does not name it — *…/stream/733765* — the player showed *PCM*, read as lossless, for a 128 kbps MP3, and the Pipeline tab's list showed no format at all. Both now show the codec the radio catalogue gives the station, the one the radio list already showed. A web stream whose format no one can tell is no longer called *PCM*; a CD still is. The manual's live hi-fi readout names the codec.
+- **[core] A station played from a search keeps its name, logo and format while it plays.** The box remembers the last thousand stations seen and let go of the oldest — the one playing among them, after enough searches.
+- **[core] Changing a station's address drops the old stream's format.** The radio list and the player kept the codec and bitrate of the previous address.
 - **[core] Simulating an install introduces itself as Audiogravi<sup>ty</sup>.** Its check that each download answers went out as a bare Python client, on a connection of its own; it now goes out as the download itself does.
 
 ## [0.9.65] - 2026-10-04

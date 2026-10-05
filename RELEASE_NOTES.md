@@ -58,6 +58,18 @@ shows the last pipeline known instead of *Pipeline Inactive*.
 **On a box with several outputs.** The output pills and the Config tab name the output MPD
 really plays on, as the diagram does.
 
+### Getting around
+
+**The library's views, straight from the menu.** On a phone — and wherever the tabs are a
+column — the ☰ menu carries the library's own tabs under *Library*: *Browse*, *Search*,
+*Queue*, *Sources* and *Radio*, in a tray set in from the edge, the one shown marked in
+orange. A tap opens it from any tab. *Library* is now the last tab, after *Admin*, and
+*Manual* sits at the foot of the menu.
+
+**Sources, by its name.** In the library, the tab that lists the sources to play from was
+called *Library*, like the tab it lives in. It is now *Sources* — the name the manual
+already gave it.
+
 ### Audio Software
 
 **Simulate, and see it was a simulation.** The *DRY-RUN* switch is now *SIMULATE*, and a

@@ -183,9 +183,10 @@ map:
   [7. Administration](07-administration.md)).
 - **Pipeline** — the live signal-path view (Pro; see
   [6. Outputs & engines](06-outputs-engines.md)).
-- **Library** (Pro) — browse, search, queue, sources and outputs: where you play
-  music.
 - **Admin** — users and access, announcements, updates and the licence.
+- **Library** (Pro) — browse, search, queue, sources and outputs: where you play
+  music. In the sidebar, the row of icons under it opens one of its views directly:
+  **Browse**, **Search**, **Queue**, **Sources** or **Radio**.
 - **Manual** — this manual, readable inside the app.
 
 On a **Starter** licence the Pro tabs carry a small lock — tapping one opens the

@@ -31,6 +31,7 @@ and this landing) are documented here. Format based on
 - **[core] The audio pipeline goes out when it changes.** It went out every 30 seconds to every screen, identical but for its time. A screen that connects gets the last one at once — to it alone, without the box computing it again — and the pipeline's time is now written in universal time.
 - **[ui] The phone's pipeline list stops asking for its outputs every 15 seconds.** It reads them again when an output changes.
 - **[ui] In landscape, the full-screen player's column is centred on the cover whatever it shows**, and a phone held sideways has less to scroll.
+- **[ui] The Pipeline tab opens on the pipeline the page already has.** The stream hands every screen the current pipeline as it connects; the tab, loaded at its first opening, missed it and asked the box to compute it again. The page now keeps it from the start.
 
 ### Fixed
 - **[ui] The System tab shows the memory in use.** It read two fields the core does not send, and showed *0.0 GB / 0.0 GB* on every box; it now shows the memory in use and the total, such as *2.8 GB / 3.7 GB*.
@@ -41,6 +42,9 @@ and this landing) are documented here. Format based on
 - **[ui] The Pipeline page no longer goes back in time.** A reading that came back late, or the pipeline kept for offline use, could put an older state back on screen.
 - **[core][ui] On a box with MPD on several outputs, the output pills and the Config tab name the output it plays on.** They named the first output of its configuration while the diagram showed the one playing. Asked of MPD, the answer waits two seconds at most: an MPD that stopped answering held the diagram for good.
 - **[ui] The update window's title said *Updateing*.**
+- **[core] An MPD that stops answering no longer holds the screens for good.** An MPD that accepts a connection and never answers — a suspended one does exactly that — held the Pipeline page, the choice of an output, the library's indexing indicator, the tracks of the album playing and a cover read from its files. The Pipeline page now waits a few seconds at most, the others ten — a cover, asked twice, twenty.
+- **[ui] Started without a network, the Pipeline tab shows the last pipeline kept.** It said *Pipeline Inactive — No audio sources detected*.
+- **[core] Simulating an install introduces itself as Audiogravi<sup>ty</sup>.** Its check that each download answers went out as a bare Python client, on a connection of its own; it now goes out as the download itself does.
 
 ## [0.9.65] - 2026-10-04
 

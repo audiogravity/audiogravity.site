@@ -39,6 +39,8 @@ over them on a small phone, and a figure takes a colour only when it needs your 
 output sits beside the diagram, with *Audio events* under it — which now records what the
 players did, and no longer playbacks that never happened. A screen that opens gets the
 current pipeline at once, and the box no longer sends it to every screen every 30 seconds.
+The Pipeline tab opens on it without asking the box again — and, started without a network,
+shows the last pipeline known instead of *Pipeline Inactive*.
 
 **On a box with several outputs.** The output pills and the Config tab name the output MPD
 really plays on, as the diagram does.
@@ -54,6 +56,12 @@ device.
 **UPDATE when there is something to update.** The button shows when another version is offered
 — and always for Roon, whose installer fetches the current build — instead of on every
 installed package.
+
+### When MPD stops answering
+
+**Nothing waits for good.** An MPD that accepts a connection and never answers — a suspended
+one does just that — held the Pipeline page, the choice of an output, the library's indexing
+indicator, the tracks of the album playing and its cover. Each now gives up within seconds.
 
 ---
 

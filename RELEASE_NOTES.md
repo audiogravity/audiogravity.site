@@ -23,16 +23,19 @@ does not name its format.
 *24bit* MPD decodes an MP3 at, its *FORMAT* now reads *Lossy*, and the Pipeline tab gives the
 bitrate — *MP3 · 128kbps · 44.1kHz*. Tidal's compressed tiers read *AAC* instead of *FLAC*.
 
-**Tags that are not buttons, one colour for deleting.** *CRITICAL*, *FAILED*, *UNAVAILABLE* and
-the other badges that sit among buttons are tints instead of outlines that looked like them. Every button that deletes — a licence, a user,
-a package, a station, a playlist, a passkey — is orange, its label included.
+**A frame means it can be pressed, one colour for deleting.** Every badge that is not a button is
+a tint, wherever it sits — *CRITICAL*, *FAILED*, *UNAVAILABLE*, *LIVE* in a page's title — and only
+what can be pressed keeps a frame. A pulsing badge no longer fades its words, the log's levels read in
+every theme, and the tile of software that is not installed fades what is inert, never the badge
+that says why. Every button that deletes — a licence, a user, a package, a station, a playlist, a
+passkey — is orange, its label included.
 
 **A phone that reads better.** The mini-player gives the title and the artist a line each
 instead of one scrolling line. Every page's title sits at the same distance from the tab
 menu, and the settings panel no longer lets the page show through.
 
-**Quiet, not faint.** Text that was faded at rest — stopped services, file dates — keeps a
-readable contrast, and check boxes and radio buttons take the theme's colours instead of the
+**Quiet, not faint.** Text that was faded at rest — stopped services, file dates, the number of
+backups — keeps a readable contrast, and check boxes and radio buttons take the theme's colours instead of the
 browser's blue.
 
 **On a computer.** The library's lists are centred, and the full-screen player uses the width

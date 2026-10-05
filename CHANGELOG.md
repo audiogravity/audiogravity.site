@@ -43,7 +43,7 @@ and this landing) are documented here. Format based on
 - **[ui] The Pipeline tab opens on the pipeline the page already has.** The stream hands every screen the current pipeline as it connects; the tab, loaded at its first opening, missed it and asked the box to compute it again. The page now keeps it from the start.
 - **[ui] The library's *Library* tab is now *Sources*.** It opens the list of sources to play from — local, streaming, Roon, media servers — and read twice in the tab menu, under the *Library* entry it belongs to. The manual already called it *Library → Sources*.
 - **[ui][manual] *Library* is the last tab, after *Admin*.** In the menu and in a computer's tab bar alike; for an account that does not see *Admin*, nothing moves.
-- **[ui] On a phone, *Manual* sits at the foot of the tab menu**, apart from the tabs.
+- **[ui] *Manual* sits at the foot of the tab menu**, apart from the tabs — just above *Switch* on a computer whose tabs are a column.
 
 ### Fixed
 - **[ui] The System tab shows the memory in use.** It read two fields the core does not send, and showed *0.0 GB / 0.0 GB* on every box; it now shows the memory in use and the total, such as *2.8 GB / 3.7 GB*.

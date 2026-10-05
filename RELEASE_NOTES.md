@@ -32,6 +32,29 @@ of a landscape screen: the cover on the left, the track on the right.
 writes its figures as they are written — *x86_64*, *MHz*. The live feed's tile now says
 *Live updates*.
 
+**A top bar that names its figures.** *CPU*, *Temp* and *RAM* read beside their numbers, or
+over them on a small phone, and a figure takes a colour only when it needs your attention.
+
+**The Pipeline page, on a computer.** The list of what plays, through what and to which
+output sits beside the diagram, with *Audio events* under it — which now records what the
+players did, and no longer playbacks that never happened. A screen that opens gets the
+current pipeline at once, and the box no longer sends it to every screen every 30 seconds.
+
+**On a box with several outputs.** The output pills and the Config tab name the output MPD
+really plays on, as the diagram does.
+
+### Audio Software
+
+**Simulate, and see it was a simulation.** The *DRY-RUN* switch is now *SIMULATE*, and a
+simulation says what it is from the first line of its log to the last: *the steps went
+through — nothing was changed*, or the step that failed. The card keeps its state, and no
+*Restart required* follows — nor after an update the box refused, or one run from another
+device.
+
+**UPDATE when there is something to update.** The button shows when another version is offered
+— and always for Roon, whose installer fetches the current build — instead of on every
+installed package.
+
 ---
 
 ## 0.9.65 — 2026-10-04

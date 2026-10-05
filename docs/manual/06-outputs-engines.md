@@ -397,9 +397,11 @@ layout, and show or hide the **LEGEND**, a **MINIMAP** and the **NETWORK** links
 switches, off by default, add your idle **analog sources** (turntable, tuner…) and the
 **controllers** — the phones and apps that drive the box.
 
-On small screens it falls back to a simplified Now Playing view: one card per stream,
-with the chain it takes and, for a service that can be steered, pills to send it to
-another output (USB, optical, HDMI…).
+Beside the graph — under it in a narrower window — the same chain reads as a list: one
+card per stream, with the chain it takes and, for a service that can be steered, pills
+to send it to another output (USB, optical, HDMI…). Next to the list, **Audio events**
+notes when a source starts or stops playing, and each new track — while the view is open
+on a computer. On a phone, the list is what the tab shows.
 
 <img src="images/ios-signal-chain.webp" alt="The Audio Pipeline on a phone: the Now Playing card, the output steering pills, and the signal chain from the streamer through the DAC and the amplifier to the speakers" width="360">
 

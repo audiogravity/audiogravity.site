@@ -27,7 +27,7 @@ indicator for users currently connected. Three roles control who can do what:
   another admin. Nobody can delete, disable or change the role of their own account.
 - **User** — everything except what is kept for admins: managing accounts, the guided
   setup of the audio stack and its network shares, the Config editor's **Guided** mode
-  and **CONFIGURED** badges, the **DRY-RUN** switch of Audio Software, restarting or
+  and **CONFIGURED** badges, the **SIMULATE** switch of Audio Software, restarting or
   rebooting the box, updating Audiogravi<sup>ty</sup>, the support report, the terminal
   and removing the licence. The **Admin** tab is not shown to users.
 - **Guest** — can look at every tab except **Admin** and control what is playing — play
@@ -66,7 +66,7 @@ The **gear** in the top bar opens the app-wide Settings panel:
 - **Animations** — turns UI motion off (functional loading spinners keep animating so
   an operation never looks stuck).
 - **Top Bar Metrics** — shows or hides the figures of the top bar — uptime, CPU,
-  temperature and memory — on this device only. The **System** tab keeps showing them.
+  temperature and memory; a phone shows the last three — on this device only. The **System** tab keeps showing them.
 - **Portrait Lock** — phones and tablets only; see
   [4. Listening](04-listening.md#portrait-lock).
 - **Face ID / Touch ID** — register this device as a **passkey** in one tap; each
@@ -273,7 +273,8 @@ shairport-sync, Roon Bridge…).
 - **Filter** — ALL / INSTALLED / UPDATES narrows the list of cards.
 - **States** — NOT INSTALLED, INSTALLED, INSTALLING / UPDATING / UNINSTALLING (with a
   progress bar), ERROR.
-- **Actions** — INSTALL, UPDATE (to the version its publisher offers), UNINSTALL. After a failed
+- **Actions** — INSTALL; UPDATE, shown when another version is offered — for HQPlayer NAA it
+  can be an older one, see below — and always for Roon; UNINSTALL. After a failed
   operation the card offers the way out that fits it: an install that failed left
   nothing behind, so it offers to try again; an update that failed left the previous
   version in place, so it offers to update or to remove.
@@ -306,7 +307,7 @@ shairport-sync, Roon Bridge…).
 - **Not available here** — a greyed-out INSTALL always says why, and the three reasons
   are not the same: the publisher has **no build** for your machine's architecture
   (nothing to be done); their site **could not be reached** when the list was worked
-  out (worth trying again — the refresh icon in the page header rebuilds it); or
+  out (worth trying again — **REFRESH** in the page header rebuilds it); or
   another installed package **rules it out**. Roon is the case you are most likely to
   meet: Roon Server already contains Roon Bridge, so the two cannot share a box, and
   the card names the one that is in the way.
@@ -324,8 +325,8 @@ shairport-sync, Roon Bridge…).
   documentation in a new tab.
 - **Architecture** — the CPU badge lists the processor types the package is published
   for.
-- **DRY-RUN** (admins) — goes through an operation without changing anything. It only
-  walks the steps: a dry run that succeeds does not prove the real one will.
+- **SIMULATE** (admins) — goes through an operation without changing anything. It only
+  walks the steps: a simulation that succeeds does not prove the real one will.
 
 ## System
 

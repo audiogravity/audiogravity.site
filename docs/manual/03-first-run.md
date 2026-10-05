@@ -56,7 +56,7 @@ daemon costs nothing, and that badge is what keeps it stopped after a reboot.
 
 The other engines are yours to choose, from the **Audio Software** tab (see
 [7. Administration → Audio Software](07-administration.md#audio-software)): each
-has a card with an **INSTALL** button.
+has a card, with an **INSTALL** button until it is installed.
 
 - **Shairport Sync** — to receive **AirPlay**.
 - **UPnP Bridge** (upmpdcli) — to expose the box as a **UPnP renderer** other apps
@@ -67,7 +67,7 @@ has a card with an **INSTALL** button.
 
 Install what you need now — you can always come back for the rest later.
 
-<img src="images/ios-software.webp" alt="The Audio Software tab: engine cards with install, update and uninstall actions" width="360">
+<img src="images/ios-software.webp" alt="The Audio Software tab: one card per engine with its installed and available versions — here three engines installed and up to date" width="360">
 
 ## 4. Configure the audio stack (guided)
 

@@ -60,7 +60,7 @@ Admin — and <strong>Config</strong>, the configuration editor and its guided s
 Audiogravi<sup>ty</sup>: the <strong>user cards</strong> (below), unread
 <a href="#announcements">announcements</a>, the <a href="08-updating">update banner</a> — and the
 <strong>licence</strong> panel, which also opens when a Starter install taps a locked Pro tab.</p>
-<p>At the bottom of the tab, the <strong>Frontend performance cockpit</strong> measures the app itself in
+<p>At the bottom of the tab, the <strong>UI performance cockpit</strong> measures the app itself in
 your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
 and other Chromium browsers) and how long the page has been open. It is a diagnostic aid —
 nothing there changes how the box plays.</p>
@@ -73,7 +73,7 @@ installation cannot be deleted, disabled or demoted; any other admin account can
 another admin. Nobody can delete, disable or change the role of their own account.</li>
 <li><strong>User</strong> — everything except what is kept for admins: managing accounts, the guided
 setup of the audio stack and its network shares, the Config editor's <strong>Guided</strong> mode
-and <strong>CONFIGURED</strong> badges, the <strong>DRY-RUN</strong> switch of Audio Software, restarting or
+and <strong>CONFIGURED</strong> badges, the <strong>SIMULATE</strong> switch of Audio Software, restarting or
 rebooting the box, updating Audiogravi<sup>ty</sup>, the support report, the terminal
 and removing the licence. The <strong>Admin</strong> tab is not shown to users.</li>
 <li><strong>Guest</strong> — can look at every tab except <strong>Admin</strong> and control what is playing — play
@@ -97,22 +97,24 @@ closed, for the same 12 hours.</p>
 <p>The <strong>gear</strong> in the top bar opens the app-wide Settings panel:</p>
 <ul>
 <li><strong>Theme</strong> — three looks: <em>Minimal (Classic)</em>, <em>Slate (Modern)</em> and <em>Gravity (Bold &amp;
-Cosmic)</em> — plus a <strong>Light/Dark Mode</strong> toggle. The light/dark switch is also on the
-sign-in screen, so the choice can be made before signing in (see
-<a href="03-first-run#2-sign-in--and-secure-your-account">3. First run</a>); the look itself is
-chosen here.</li>
+Cosmic)</em>. The look is chosen here.</li>
+<li><strong>Appearance</strong> — <strong>Automatic</strong>, the default, follows your device: light by day, dark at
+night on a device that switches by itself. <strong>Light</strong> and <strong>Dark</strong> keep one, whatever the
+device does. The sign-in screen has a light/dark button too, so the choice can be made
+before signing in (see
+<a href="03-first-run#2-sign-in--and-secure-your-account">3. First run</a>).</li>
 <li><strong>Notifications</strong> — subscribe this device to <strong>push notifications</strong> (see below).</li>
 <li><strong>Animations</strong> — turns UI motion off (functional loading spinners keep animating so
 an operation never looks stuck).</li>
 <li><strong>Top Bar Metrics</strong> — shows or hides the figures of the top bar — uptime, CPU,
-temperature and memory — on this device only. The <strong>System</strong> tab keeps showing them.</li>
+temperature and memory; a phone shows the last three — on this device only. The <strong>System</strong> tab keeps showing them.</li>
 <li><strong>Portrait Lock</strong> — phones and tablets only; see
 <a href="04-listening#portrait-lock">4. Listening</a>.</li>
 <li><strong>Face ID / Touch ID</strong> — register this device as a <strong>passkey</strong> in one tap; each
 registered device appears as a chip you can remove individually. (These are the
 same credentials as the <em>Passkeys</em> button on your user card above.)</li>
 </ul>
-<img loading="lazy" src="images/ios-settings.webp" alt="The Settings panel: theme, and one toggle per row — light/dark mode, notifications, animations, top bar metrics, portrait lock and Face ID / Touch ID" width="360">
+<img loading="lazy" src="images/ios-settings.webp" alt="The Settings panel: the theme and appearance menus, then one toggle per row — notifications, animations, top bar metrics, portrait lock and Face ID / Touch ID" width="360">
 <h3 id="push-notifications">Push notifications</h3>
 <p>With <strong>Notifications</strong> on, the box sends this device a system notification when
 something needs attention — even with the app closed:</p>
@@ -292,7 +294,8 @@ shairport-sync, Roon Bridge…).</p>
 <li><strong>Filter</strong> — ALL / INSTALLED / UPDATES narrows the list of cards.</li>
 <li><strong>States</strong> — NOT INSTALLED, INSTALLED, INSTALLING / UPDATING / UNINSTALLING (with a
 progress bar), ERROR.</li>
-<li><strong>Actions</strong> — INSTALL, UPDATE (to the version its publisher offers), UNINSTALL. After a failed
+<li><strong>Actions</strong> — INSTALL; UPDATE, shown when another version is offered — for HQPlayer NAA it
+can be an older one, see below — and always for Roon; UNINSTALL. After a failed
 operation the card offers the way out that fits it: an install that failed left
 nothing behind, so it offers to try again; an update that failed left the previous
 version in place, so it offers to update or to remove.</li>
@@ -325,7 +328,7 @@ answering, the line already installed is kept.</li>
 <li><strong>Not available here</strong> — a greyed-out INSTALL always says why, and the three reasons
 are not the same: the publisher has <strong>no build</strong> for your machine's architecture
 (nothing to be done); their site <strong>could not be reached</strong> when the list was worked
-out (worth trying again — the refresh icon in the page header rebuilds it); or
+out (worth trying again — <strong>REFRESH</strong> in the page header rebuilds it); or
 another installed package <strong>rules it out</strong>. Roon is the case you are most likely to
 meet: Roon Server already contains Roon Bridge, so the two cannot share a box, and
 the card names the one that is in the way.</li>
@@ -343,14 +346,14 @@ installed, so it only shows the badge when that restart failed.</li>
 documentation in a new tab.</li>
 <li><strong>Architecture</strong> — the CPU badge lists the processor types the package is published
 for.</li>
-<li><strong>DRY-RUN</strong> (admins) — goes through an operation without changing anything. It only
-walks the steps: a dry run that succeeds does not prove the real one will.</li>
+<li><strong>SIMULATE</strong> (admins) — goes through an operation without changing anything. It only
+walks the steps: a simulation that succeeds does not prove the real one will.</li>
 </ul>
 <h2 id="system">System</h2>
 <p>Real-time monitoring and box-level actions.</p>
 <ul>
-<li><strong>Metrics</strong> — CPU, temperature, memory, disk and network, updated live; the <strong>SSE
-Stream</strong> tile shows whether the live feed is connected.</li>
+<li><strong>Metrics</strong> — CPU, temperature, memory, disk and network, updated live; the <strong>Live
+updates</strong> tile shows whether the live feed is connected.</li>
 <li><strong>System &amp; audio hardware</strong> — hostname, OS, kernel, CPU model/cores; every audio
 card, USB interface and subdevice.</li>
 <li><strong>Event log</strong> — system events and live updates; RUNNING/STOPPED to pause, CLEAR to

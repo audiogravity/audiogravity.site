@@ -96,7 +96,8 @@ service serves it.
 
 On every track change, Audiogravi<sup>ty</sup> shows exactly what's reaching your DAC:
 
-- The **codec** (FLAC, MP3, AAC, DSD…), **sample rate**, **bit depth**, and instantaneous **bitrate**.
+- The **codec** (FLAC, MP3, AAC, DSD…), **sample rate**, **bit depth** — *Lossy* for a compressed
+  format such as MP3 or AAC, which has none — and instantaneous **bitrate**.
 
 This is your at-a-glance confirmation that a Hi-Res track really is playing at its
 native resolution.

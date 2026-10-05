@@ -19,8 +19,12 @@ a ⋯ button now opens *Edit station* and *Remove from My Live Radio*. And the p
 format a station broadcasts in — *MP3*, *AAC* — where it said *PCM* for a station whose address
 does not name its format.
 
-**Tags that are not buttons, one colour for deleting.** *CRITICAL* is a tint instead of an
-outline that looked like the buttons beside it. Every button that deletes — a licence, a user,
+**Formats as they are.** A compressed stream has no bit depth: where the player showed the
+*24bit* MPD decodes an MP3 at, its *FORMAT* now reads *Lossy*, and the Pipeline tab gives the
+bitrate — *MP3 · 128kbps · 44.1kHz*. Tidal's compressed tiers read *AAC* instead of *FLAC*.
+
+**Tags that are not buttons, one colour for deleting.** *CRITICAL*, *FAILED*, *UNAVAILABLE* and
+the other badges that sit among buttons are tints instead of outlines that looked like them. Every button that deletes — a licence, a user,
 a package, a station, a playlist, a passkey — is orange, its label included.
 
 **A phone that reads better.** The mini-player gives the title and the artist a line each

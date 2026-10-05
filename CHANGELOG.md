@@ -9,6 +9,39 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[ui][manual] The app can follow the device's light or dark mode.** Settings → Appearance offers *Automatic*, *Light* and *Dark* in place of the light/dark switch. *Automatic*, the default, follows the device — light by day, dark at night on a device that switches by itself — and so does the sign-in screen, from its first paint. A device set to light or dark with the old switch keeps that choice.
+- **[ui][manual] A live radio shows LIVE instead of a progress bar.** A live stream has no end and no position: the bar gives way to a *LIVE* marker under the transport, which dims while the stream is paused.
+- **[ui][manual] On a computer, the Pipeline page lists the streams beside the diagram.** What plays, through what, to which output — the list a phone shows — sits in the right-hand column, with *Audio events* under it; on a narrower window, the list and the events sit side by side under the diagram.
+
+### Changed
+- **[ui][manual] On a phone, the mini-player gives the title its room.** Title and artist shared one line, in the width four buttons left them — 115 px on an iPhone mini — and had to scroll to be read. *Previous* leaves the bar (the full player keeps it; volume stays), and title and artist take a line each: 159 px of text.
+- **[ui][manual] A radio card's actions open from ⋯.** In *My Live Radio* every card carried a green tick that meant *Remove from My Live Radio*: touching it removed the station. A ⋯ button now opens *Edit station* and *Remove from My Live Radio*.
+- **[ui] The settings panel and the tab menu are opaque.** At 40 % with a blur, the page showed through them: coloured smudges and stray words between the switches and under the tab names.
+- **[ui] On a phone, every page's title sits at the same distance from the tab menu.** Six tabs left 2 px between the menu and the title, three left 6 px; all now leave 6 px.
+- **[ui] Text faded at rest reads again.** The cards of stopped services, the dates of configuration files and the *PERSIST* label were faded down to 2.8–3.5:1; they now keep the contrast of the text around them.
+- **[ui] Check boxes and radio buttons take the theme's colours.** They took the browser's blue, and in the dark palette an unchecked box was a white square: they now take the text's colour, drawn in the light or dark palette in force.
+- **[ui] System figures are written as they are.** Values were set in capitals — *X86_64*, and *MHZ*, which is no unit; they now read *x86_64* and *MHz*, the unit smaller on the number's line.
+- **[ui][manual] Plainer words in Admin.** The live feed's tile is *Live updates*, no longer *SSE Stream*, and the cockpit at the bottom of the tab is the *UI performance cockpit*.
+- **[ui] On a computer, the library's lists are centred.** The queue, sources, outputs and radio lists stretched across the whole screen; they now keep to 900 px, centred, under a tab bar that stays in place from one view to the next.
+- **[ui] The full-screen player uses a landscape screen's width.** From 900 px wide in landscape, the cover sits on the left and the track, its controls and what comes next on the right, instead of one column under the cover.
+- **[site][ui] The editions speak of a simulation, not a dry-run.** The Starter edition's software line, on the landing and in the app.
+- **[ui][manual] The top bar names its figures.** *CPU*, *Temp* and *RAM* were hidden under 1,025 px, which left three numbers no one could name. They now read inline — *CPU: 12%* — wherever there is room, and over their figure on a phone under 430 px. A figure takes a colour only past a threshold, orange then red, where all three were always green. A phone keeps those three and leaves the uptime to a computer's bar; on a small tablet, the word *Connected* gives way to the figures, as on a phone.
+- **[ui][manual] Audio Software simulates, and offers UPDATE only when it does something.** The *DRY-RUN* switch is now *SIMULATE*. *REFRESH* and *DOWNLOAD* carry their word next to their icon. *UPDATE* shows when another version is offered — or for Roon, whose installer always fetches the current build — where it showed on every installed package and answered *Already Up-to-Date*.
+- **[core] The audio pipeline goes out when it changes.** It went out every 30 seconds to every screen, identical but for its time. A screen that connects gets the last one at once — to it alone, without the box computing it again — and the pipeline's time is now written in universal time.
+- **[ui] The phone's pipeline list stops asking for its outputs every 15 seconds.** It reads them again when an output changes.
+- **[ui] In landscape, the full-screen player's column is centred on the cover whatever it shows**, and a phone held sideways has less to scroll.
+
+### Fixed
+- **[ui] The System tab shows the memory in use.** It read two fields the core does not send, and showed *0.0 GB / 0.0 GB* on every box; it now shows the memory in use and the total, such as *2.8 GB / 3.7 GB*.
+- **[core][ui] A simulation no longer passes for the real thing.** It answered *Successfully installed …*, its log ended the same way, and a simulation that failed left its card in error. It now answers *the steps to install … went through* — or *a step … failed* — *nothing was changed*, its log ends on that sentence and its window on *Simulated: nothing was changed*, the card keeps the state it had, the history reads *Simulate install …*, and a simulated uninstall that would delete the settings says so.
+- **[ui] *Restart required* appears only after an install or an update that went through, on the device that ran it.** A simulation, an update the box refused and an operation run from another device lit it too, and a press restarted the service — cutting the music — for nothing.
+- **[core] A failure repaired outside Audiogravi<sup>ty</sup> stays repaired.** After a simulation or a refused operation, a card whose package had been repaired from a terminal went back to *ERROR* until the core restarted.
+- **[ui] *Audio events* records what the players did.** When the diagram's first reading of the pipeline failed, the speakers, the amplifier, the turntable and the phone all "started playback". A line is now written when a player starts, stops or moves to another track — a pause and a resume included.
+- **[ui] The Pipeline page no longer goes back in time.** A reading that came back late, or the pipeline kept for offline use, could put an older state back on screen.
+- **[core][ui] On a box with MPD on several outputs, the output pills and the Config tab name the output it plays on.** They named the first output of its configuration while the diagram showed the one playing. Asked of MPD, the answer waits two seconds at most: an MPD that stopped answering held the diagram for good.
+- **[ui] The update window's title said *Updateing*.**
+
 ## [0.9.65] - 2026-10-04
 
 ### Added

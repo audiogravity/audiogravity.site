@@ -386,14 +386,16 @@ tap, and repeating it will not help until the cause is fixed.
 
 ## The progress bar won't move
 
-Jumping inside a track is declined — and says so — in three cases, none of them a fault:
+Jumping inside a track is declined — and says so — in two cases, neither of them a fault:
 
-- **Internet radio.** A live broadcast has no end to jump to.
 - **The first seconds of a Tidal track's first listen.** The track plays while it is still
   arriving; the seekable copy is ready a few seconds in. Wait a moment and drag again — the
   rest of that first listen seeks normally.
 - **Two jumps in quick succession.** The second is declined while the first is still
   being applied. Wait a moment and drag again.
+
+An internet radio station shows **Live** instead of a progress bar: a live broadcast has
+no end to jump to.
 
 ## Casting to a renderer stalls
 

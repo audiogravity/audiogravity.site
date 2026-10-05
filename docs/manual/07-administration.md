@@ -12,7 +12,7 @@ Audiogravi<sup>ty</sup>: the **user cards** (below), unread
 [announcements](#announcements), the [update banner](08-updating.md) — and the
 **licence** panel, which also opens when a Starter install taps a locked Pro tab.
 
-At the bottom of the tab, the **Frontend performance cockpit** measures the app itself in
+At the bottom of the tab, the **UI performance cockpit** measures the app itself in
 your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
 and other Chromium browsers) and how long the page has been open. It is a diagnostic aid —
 nothing there changes how the box plays.
@@ -27,7 +27,7 @@ indicator for users currently connected. Three roles control who can do what:
   another admin. Nobody can delete, disable or change the role of their own account.
 - **User** — everything except what is kept for admins: managing accounts, the guided
   setup of the audio stack and its network shares, the Config editor's **Guided** mode
-  and **CONFIGURED** badges, the **DRY-RUN** switch of Audio Software, restarting or
+  and **CONFIGURED** badges, the **SIMULATE** switch of Audio Software, restarting or
   rebooting the box, updating Audiogravi<sup>ty</sup>, the support report, the terminal
   and removing the licence. The **Admin** tab is not shown to users.
 - **Guest** — can look at every tab except **Admin** and control what is playing — play
@@ -56,22 +56,24 @@ closed, for the same 12 hours.
 The **gear** in the top bar opens the app-wide Settings panel:
 
 - **Theme** — three looks: *Minimal (Classic)*, *Slate (Modern)* and *Gravity (Bold &
-  Cosmic)* — plus a **Light/Dark Mode** toggle. The light/dark switch is also on the
-  sign-in screen, so the choice can be made before signing in (see
-  [3. First run](03-first-run.md#2-sign-in--and-secure-your-account)); the look itself is
-  chosen here.
+  Cosmic)*. The look is chosen here.
+- **Appearance** — **Automatic**, the default, follows your device: light by day, dark at
+  night on a device that switches by itself. **Light** and **Dark** keep one, whatever the
+  device does. The sign-in screen has a light/dark button too, so the choice can be made
+  before signing in (see
+  [3. First run](03-first-run.md#2-sign-in--and-secure-your-account)).
 - **Notifications** — subscribe this device to **push notifications** (see below).
 - **Animations** — turns UI motion off (functional loading spinners keep animating so
   an operation never looks stuck).
 - **Top Bar Metrics** — shows or hides the figures of the top bar — uptime, CPU,
-  temperature and memory — on this device only. The **System** tab keeps showing them.
+  temperature and memory; a phone shows the last three — on this device only. The **System** tab keeps showing them.
 - **Portrait Lock** — phones and tablets only; see
   [4. Listening](04-listening.md#portrait-lock).
 - **Face ID / Touch ID** — register this device as a **passkey** in one tap; each
   registered device appears as a chip you can remove individually. (These are the
   same credentials as the *Passkeys* button on your user card above.)
 
-<img src="images/ios-settings.webp" alt="The Settings panel: theme, and one toggle per row — light/dark mode, notifications, animations, top bar metrics, portrait lock and Face ID / Touch ID" width="360">
+<img src="images/ios-settings.webp" alt="The Settings panel: the theme and appearance menus, then one toggle per row — notifications, animations, top bar metrics, portrait lock and Face ID / Touch ID" width="360">
 
 ### Push notifications
 
@@ -271,7 +273,8 @@ shairport-sync, Roon Bridge…).
 - **Filter** — ALL / INSTALLED / UPDATES narrows the list of cards.
 - **States** — NOT INSTALLED, INSTALLED, INSTALLING / UPDATING / UNINSTALLING (with a
   progress bar), ERROR.
-- **Actions** — INSTALL, UPDATE (to the version its publisher offers), UNINSTALL. After a failed
+- **Actions** — INSTALL; UPDATE, shown when another version is offered — for HQPlayer NAA it
+  can be an older one, see below — and always for Roon; UNINSTALL. After a failed
   operation the card offers the way out that fits it: an install that failed left
   nothing behind, so it offers to try again; an update that failed left the previous
   version in place, so it offers to update or to remove.
@@ -304,7 +307,7 @@ shairport-sync, Roon Bridge…).
 - **Not available here** — a greyed-out INSTALL always says why, and the three reasons
   are not the same: the publisher has **no build** for your machine's architecture
   (nothing to be done); their site **could not be reached** when the list was worked
-  out (worth trying again — the refresh icon in the page header rebuilds it); or
+  out (worth trying again — **REFRESH** in the page header rebuilds it); or
   another installed package **rules it out**. Roon is the case you are most likely to
   meet: Roon Server already contains Roon Bridge, so the two cannot share a box, and
   the card names the one that is in the way.
@@ -322,15 +325,15 @@ shairport-sync, Roon Bridge…).
   documentation in a new tab.
 - **Architecture** — the CPU badge lists the processor types the package is published
   for.
-- **DRY-RUN** (admins) — goes through an operation without changing anything. It only
-  walks the steps: a dry run that succeeds does not prove the real one will.
+- **SIMULATE** (admins) — goes through an operation without changing anything. It only
+  walks the steps: a simulation that succeeds does not prove the real one will.
 
 ## System
 
 Real-time monitoring and box-level actions.
 
-- **Metrics** — CPU, temperature, memory, disk and network, updated live; the **SSE
-  Stream** tile shows whether the live feed is connected.
+- **Metrics** — CPU, temperature, memory, disk and network, updated live; the **Live
+  updates** tile shows whether the live feed is connected.
 - **System & audio hardware** — hostname, OS, kernel, CPU model/cores; every audio
   card, USB interface and subdevice.
 - **Event log** — system events and live updates; RUNNING/STOPPED to pause, CLEAR to

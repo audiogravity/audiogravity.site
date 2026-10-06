@@ -7,7 +7,11 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Radio
+
+**A station shows its name when it names no song.** Some stations — France Inter among them —
+send no song title, and the full-screen player read *Nothing playing* while they played. The
+player, the Pipeline tab and the queue now show the station's name instead.
 
 ---
 

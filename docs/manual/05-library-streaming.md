@@ -7,18 +7,20 @@ output, and the music flows at full resolution.
 
 ## How the Library tab is organised
 
-The Library tab holds several views:
+The Library tab holds several views, one per tab of its bar:
 
 - **Browse** — albums for the active source, with infinite scroll.
 - **Search** — full-text across artists, albums and tracks. Tapping an **artist**
   opens that artist's albums — across your local library, Qobuz, Tidal and
   HIGHRESAUDIO — with a back control to return to your results.
+- **Queue** — what's playing and coming up.
 - **Sources** — pick the active source (local, streaming, Roon zone, UPnP server).
   Connecting or disconnecting a service updates this list straight away. Outputs
   never appear here: a network speaker and HQPlayer are destinations, not places to
-  browse — they live in **Outputs**.
-- **Outputs** — pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
-- **Queue** — what's playing and coming up.
+  browse. The **Outputs** button at the top of this view opens the list of outputs,
+  where you pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
+- **Radio** — internet radio, with tabs of its own (see [Internet radio](#internet-radio)
+  below).
 
 <img src="images/ios-sources.webp" alt="The Sources view: the active source at the top, then the other sources, the AirPlay and UPnP inputs, and the discovered UPnP servers" width="360">
 

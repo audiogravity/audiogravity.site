@@ -32,12 +32,17 @@ engines; it doesn't replace them.
 tracks — essential for live albums and continuous mixes.
 
 **Hi-Res** — better-than-CD resolution: more than 16-bit / 44.1 kHz, typically
-24-bit at 96 or 192 kHz. The **HI·RES** badge in the player flags it live.
+24-bit at 96 or 192 kHz. The player's **HI·RES** badge appears from 88.2 kHz; a DSD
+track shows its DSD rate instead, and a lossy stream never earns it.
 
 **HQPlayer Embedded** — HQPlayer installed on the box itself, playing straight to your DAC
 instead of running on a computer that sends its sound to the box through a NAA. Its output
 is chosen in Audiogravi<sup>ty</sup>, its other settings on its own web page. See
 [6. Outputs & engines](06-outputs-engines.md#hqplayer-embedded).
+
+**Lossy** — a compressed format that leaves part of the sound out to take less room:
+MP3, AAC, Ogg, Opus. It has no bit depth, so the player shows *Lossy* in its place, and
+it never earns the **HI·RES** badge, whatever its sample rate.
 
 **MPD** — Music Player Daemon, the core playback engine: it plays your local
 library and carries Qobuz, Tidal, HIGHRESAUDIO and internet radio.

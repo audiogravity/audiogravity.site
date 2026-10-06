@@ -9,6 +9,14 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[manual] Sixteen figures show the interface of 0.9.66.** Retaken on 2026-10-06 from the live interface, at the same iPhone 13 mini size: the queue's mini-player without *Previous*, its title and artist on a line each; *CRITICAL*, *CONFIGURED*, *ACTIVE*, *READY*, *MOUNTED* and the licence's tags as tints, no longer framed like buttons; *DELETE LICENSE* in orange; the buttons of the Audio Software and Pipeline headers in their own colours; check boxes and radio buttons in the theme's. The playback figures are taken with their original tracks.
+
+### Fixed
+- **[core][manual] A station that names no song is shown under its name.** France Inter sends no song title: the full-screen player read *Nothing playing* while it played, the Pipeline tab's card *Stream active* and the queue *franceinter-hifi.aac*. The player, the mini-player, the Pipeline card and the queue now show the station's name — the radio list's, else the one the stream announces, for a station another app started — as they already did through HQPlayer or a network speaker. A title made of dashes alone counts as none.
+- **[manual] The Library tab's views and the way to the outputs read as the app shows them.** The views are listed in the order of their bar, *Radio* among them; the list of outputs opens from the *Outputs* button of *Sources*, or from *Switch* under the full-screen player — there was no *Library → Outputs* view. On a computer, *Audio events* sits under the Pipeline tab's list, beside it only in a narrower window. The glossary gains *Lossy*, and says the *HI·RES* badge appears from 88.2 kHz.
+- **[ui] The manual's capture tool frames a radio's Pipeline card without cutting it.** The figure of the stream-origin badge stopped 22 px under the title, through the format row a radio's card now carries there: it stops before that row, keeps the card's text whole, and takes its boxes from one card.
+
 ## [0.9.66] - 2026-10-06
 
 ### Added

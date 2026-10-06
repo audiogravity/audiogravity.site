@@ -6,10 +6,11 @@ selector** switches between them in one tap.
 
 ## The output selector
 
-In **Library → Outputs**, Audiogravi<sup>ty</sup> lists every physical output the box exposes
-(USB, optical, HDMI…) alongside the network renderers it has discovered, and switches
-the active output when you pick one. Streaming and HQPlayer connections are managed
-next to it in **Library → Sources**.
+The list of outputs opens from **Library → Sources**, with the **Outputs** button at the top
+of the view — or with **Switch**, on the output line of the fullscreen player. It lists every
+physical output the box exposes (USB, optical, HDMI…) alongside the network renderers
+Audiogravi<sup>ty</sup> has discovered, and switches the active output when you pick one.
+Streaming and HQPlayer connections are managed in **Library → Sources** itself.
 
 <img src="images/ios-outputs.webp" alt="The output selector: the active USB DAC and the ready optical and HDMI outputs" width="360">
 
@@ -166,7 +167,7 @@ and both are cases where it cannot know what is playing:
 **Internet radio shows the station, not the song.** A station announces its current track
 inside the audio stream, and through HQPlayer it is HQPlayer that receives that stream.
 So a radio played this way shows the station and its logo, where the same station on your
-local output shows the song.
+local output shows the song — or, for a station that names none, its own name.
 
 ### What can and cannot go through HQPlayer
 
@@ -399,9 +400,10 @@ switches, off by default, add your idle **analog sources** (turntable, tuner…)
 
 Beside the graph — under it in a narrower window — the same chain reads as a list: one
 card per stream, with the chain it takes and, for a service that can be steered, pills
-to send it to another output (USB, optical, HDMI…). Next to the list, **Audio events**
-notes when a source starts or stops playing, and each new track — while the view is open
-on a computer. On a phone, the list is what the tab shows.
+to send it to another output (USB, optical, HDMI…). Under the list — beside it in a
+narrower window — **Audio events** notes when a source starts or stops playing, and each
+new track — while the view is open on a computer. On a phone, the list is what the tab
+shows.
 
 <img src="images/ios-signal-chain.webp" alt="The Audio Pipeline on a phone: the Now Playing card, the output steering pills, and the signal chain from the streamer through the DAC and the amplifier to the speakers" width="360">
 

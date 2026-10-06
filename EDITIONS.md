@@ -14,8 +14,9 @@ Days remaining are shown in **Admin › License**.
 
 ## Starter Edition — Free
 
-Activated automatically when the trial expires — no action required. Includes the essentials
-to run and monitor your audio system:
+Activated automatically when the trial expires — no action required. It keeps receiving the
+updates of its major version (e.g. v1.x), as Pro does. Includes the essentials to run and
+monitor your audio system:
 
 - **Profiles** — one-click switching between pre-configured audio chain scenarios; activates required services and stops conflicting ones automatically
 - **Services** — real-time monitoring and control of audio services (start / stop / restart / enable at boot) with live CPU, memory and I/O metrics, each with a sparkline of its recent values
@@ -60,7 +61,7 @@ Everything in Starter, plus:
 | **Cost** | Free | Free | One-time (€49) |
 | **Duration** | 30 days | Unlimited | Unlimited |
 | **Activation** | Automatic | Automatic | Manual |
-| **Updates** | — | — | v1.x included |
+| **Updates** (within the major version, e.g. v1.x) | ✓ | ✓ | ✓ |
 | **Profiles** | ✓ | ✓ | ✓ |
 | **Services** | ✓ | ✓ | ✓ |
 | **Software** | ✓ | ✓ | ✓ |

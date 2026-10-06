@@ -9,7 +9,18 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[manual] The manual says how to activate a licence key, and how to check one.** The Licence section of the administration chapter walks through the *License activation* window's three steps — key, host, activate — and every refusal it can show, at each step; then *Verify existing license* and what each status means: *ACTIVE* is a key already activated on this box. Three figures show the second step, a successful activation and a checked key, taken with an example key and a made-up Device ID.
+- **[manual] The introduction lists what each edition opens.** Sixteen rows, Starter against Pro, under the names of the app's own tabs. They come from what the app locks: the Library, Pipeline, Systemd and Performance tabs, the playback controls and the full-screen player. The short table above them no longer gives a partial list of its own.
+
+### Changed
+- **[ui][manual] The licence panel's *EDITIONS & LICENSE* button is gone.** It opened a copy of the editions and of the licence agreement kept by hand in the app. The editions are in the manual's introduction, and the licence agreement is linked from the sign-in page and from the footer. *LICENSE KEY* moves up beside the panel's title, and the manual's two figures of the panel are retaken without the button.
+- **[manual] A locked Pro tab is said to open the activation window.** On Starter, tapping one takes you to the licence panel with the *License activation* window open over it; the manual said it opened the panel.
+
 ### Fixed
+- **[site][manual] Every edition is said to receive updates.** `EDITIONS.md` gave the trial and Starter no updates, and the manual's FAQ named Pro alone. The trial, Starter and Pro all receive the updates of their major version, as the licence server offers them; Pro holders keep a preferential price for the next major version.
+- **[ui] The activation window shows its last step done.** Once the licence was active, *03 · ACTIVATE* stayed black under a green *Activation successful*: a step is done once a later one is shown, and none comes after the third. All three now turn green.
+- **[ui] The activated licence's Device ID stays inside its frame.** Sixty-four characters with nowhere to break, it ran past the certificate's edge on a phone; it now wraps.
 - **[ui] In the top bar, each name sits on its figure's line, beside its own figure.** Wherever the names read inline, from 430 px wide, a name sat 2 px above its figure and 10 px from it — the uptime's 4 px — and on a phone or a tablet a figure stood nearly as close to the next name as to its own. Each name now shares its figure's line, 8 px from it, and two pairs stand 16 px apart. A figure turning orange or red still moves none of its neighbours. Under 430 px, where each name sits over its figure, nothing changes.
 
 ## [0.9.67] - 2026-10-06

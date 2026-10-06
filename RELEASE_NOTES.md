@@ -7,7 +7,16 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Licence
+
+**What each edition opens, in the manual.** The licence panel's *Editions & License* window
+is gone: the manual's introduction now lists, tab by tab, what Starter and Pro open, and the
+licence agreement stays one tap away from the sign-in page and the footer. Every edition —
+the trial, Starter and Pro — receives the updates of its major version.
+
+**Activating a key, step by step.** The manual walks through the activation window and the
+check of an existing key, with what each answer means. Once the licence is active, the
+window now shows all three steps done.
 
 ---
 

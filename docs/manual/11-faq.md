@@ -57,8 +57,9 @@ licence reset is available on request — contact us at
 
 ## Are updates included?
 
-All v1.x updates are included with the Pro licence. Pro holders receive a
-preferential upgrade price for future major versions.
+Yes, on every edition: the trial, Starter and Pro all receive the updates of their
+major version (v1.x). Pro holders receive a preferential upgrade price for future
+major versions.
 
 ## How do I install Audiogravi<sup>ty</sup> on my phone?
 

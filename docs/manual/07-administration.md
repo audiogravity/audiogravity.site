@@ -10,7 +10,7 @@ Admin — and **Config**, the configuration editor and its guided setup. Four ta
 The **Admin** tab gathers everything about accounts and the box's relationship with
 Audiogravi<sup>ty</sup>: the **user cards** (below), unread
 [announcements](#announcements), the [update banner](08-updating.md) — and the
-**licence** panel, which also opens when a Starter install taps a locked Pro tab.
+**licence** panel, where a Starter install lands when it taps a locked Pro tab.
 
 At the bottom of the tab, the **UI performance cockpit** measures the app itself in
 your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
@@ -500,13 +500,14 @@ are remembered per device.
 
 ## Licence
 
-The licence panel opens from the **Admin** tab (and automatically when a **Starter**
-install taps a Pro tab — those carry a small lock icon in the tab bar).
+The licence panel opens from the **Admin** tab. On a **Starter** install, tapping a Pro
+tab — those carry a small lock icon in the tab bar — brings you here too, with the
+*License activation* window open over the panel.
 
 - **Trial** — 30 days of full access, auto-activated on first run.
 - **Buying** — the licence panel lists the steps: *Pay with PayPal*, receive your
-  licence key by email, then **LICENSE KEY**, enter the key, **CHECK KEY** and
-  **ACTIVATE THIS MACHINE**. No restart is needed.
+  licence key by email, then activate it (see
+  [Activating a licence key](#activating-a-licence-key)). No restart is needed.
 - **Lifetime** — a `.lic` file for this one installation, identified by its
   **Device ID**. One-time payment, no subscription, no end date; it covers every 1.x
   version, and the 0.9 beta before it (see
@@ -530,6 +531,62 @@ Once the licence is activated the same panel changes shape: the countdown gives 
 the plan, the order the key came from, and the date it was activated.
 
 <img src="images/ios-license-active.webp" alt="The licence panel on an activated box: the Lifetime badge, the licence-server status, the Device ID and Order ID with their copy buttons, the activation date and the plan" width="360">
+
+### Activating a licence key
+
+**LICENSE KEY**, at the top of the licence panel, opens the *License activation* window.
+Its three steps are marked across the top: the one you are on stands out, those done
+turn green.
+
+1. **Key** — paste the key from your purchase email, `AG-XXXX-XXXX-XXXX-XXXX`.
+   *✓ Valid format* only means it has the right shape: tap **CHECK KEY →** to have it
+   checked.
+2. **Host** — *Key validated* gives the plan, and says whether this is the key's first
+   activation or a new activation on this same box. The **Device ID** is filled in: it
+   is this box, the one the licence will be tied to. The **Hostname** is filled in with
+   the box's name on your network; change it if you like, or leave it empty — it helps
+   tell your boxes apart. Tap **ACTIVATE THIS MACHINE →**, or **← BACK** to change the
+   key.
+3. **Activate** — *Activation successful*, with the key, the Device ID, the date and
+   the plan, and all three steps in green. Every Pro feature is open at once.
+   **DOWNLOAD .LIC FILE ↓** saves a copy of the licence file.
+
+<img src="images/ios-license-activation.webp" alt="The License activation window at its second step: Key validated with the plan, the Device ID filled in, the Hostname field, and the Back and Activate this machine buttons" width="360">
+
+<img src="images/ios-license-activated.webp" alt="The License activation window after a successful activation: all three steps in green, the key, the Device ID, the activation date, the plan, the Active status and the Download .lic file button" width="360">
+
+When a key is refused, the window says why. At **CHECK KEY**:
+
+- *No license found for this key on this device.* — check the key against your
+  purchase email. If it is right, it is tied to another box: after a reinstall or on a
+  new machine, see
+  [9. Troubleshooting](09-troubleshooting.md#licence-not-recognised-after-a-reinstall-or-a-new-machine).
+- *This license has been revoked.* or *This license expired on …* — the key can no
+  longer be activated.
+- *Could not reach the license server. Please try again.* — try again in a moment.
+
+At **ACTIVATE THIS MACHINE**:
+
+- *This license is already activated on another machine.* — the same as a key tied to
+  another box, above.
+- *License server temporarily unavailable. Please retry.* — try again in a moment. The
+  key stays filled in, even after you reload the page.
+
+### Checking a licence key
+
+Under the activation steps, **Verify existing license** looks a key up without
+activating anything. Paste the key and tap **VERIFY →**: this box's **Device ID**,
+filled in, is checked with it. The answer gives the plan, the end date of a
+time-limited licence, and the key's status:
+
+- **NOT ACTIVATED** — the key is valid and not yet used: activate it with the steps
+  above.
+- **ACTIVE** — the key is already activated on this box.
+- **REVOKED** or **EXPIRED** — the key can no longer be used.
+- *No license found for this key on this device.* — the key does not exist, or it is
+  tied to another box.
+
+<img src="images/ios-license-verify.webp" alt="Verify existing license: the key typed in, this box's Device ID, the Verify button, and the answer with the key, the plan and the Active status" width="360">
 
 ### What the box sends to the licence server
 

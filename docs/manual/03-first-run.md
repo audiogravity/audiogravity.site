@@ -194,8 +194,8 @@ map:
 
 <img src="images/ios-tab-menu.webp" alt="The tab menu on a phone: the app's tabs, and Library unfolded into its views — Browse, Search, Queue, Sources and Radio — the one shown marked" width="216">
 
-On a **Starter** licence the Pro tabs carry a small lock — tapping one opens the
-licence panel. **Config is not one of them**: editing a service's configuration
+On a **Starter** licence the Pro tabs carry a small lock — tapping one takes you to the
+licence panel, with the *License activation* window open. **Config is not one of them**: editing a service's configuration
 file and the guided setup are available on every edition — configuring the
 machine is part of owning it. The sticky **Now Playing bar** sits above the
 footer whatever the

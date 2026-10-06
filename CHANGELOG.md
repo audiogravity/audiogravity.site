@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] In the top bar, each name sits on its figure's line, beside its own figure.** Wherever the names read inline, from 430 px wide, a name sat 2 px above its figure and 10 px from it — the uptime's 4 px — and on a phone or a tablet a figure stood nearly as close to the next name as to its own. Each name now shares its figure's line, 8 px from it, and two pairs stand 16 px apart. A figure turning orange or red still moves none of its neighbours. Under 430 px, where each name sits over its figure, nothing changes.
+
 ## [0.9.67] - 2026-10-06
 
 ### Changed

@@ -55,10 +55,11 @@
 attached DAC, a network renderer across the room, or HQPlayer's DSP engine. The <strong>output
 selector</strong> switches between them in one tap.</p>
 <h2 id="the-output-selector">The output selector</h2>
-<p>In <strong>Library → Outputs</strong>, Audiogravi<sup>ty</sup> lists every physical output the box exposes
-(USB, optical, HDMI…) alongside the network renderers it has discovered, and switches
-the active output when you pick one. Streaming and HQPlayer connections are managed
-next to it in <strong>Library → Sources</strong>.</p>
+<p>The list of outputs opens from <strong>Library → Sources</strong>, with the <strong>Outputs</strong> button at the top
+of the view — or with <strong>Switch</strong>, on the output line of the fullscreen player. It lists every
+physical output the box exposes (USB, optical, HDMI…) alongside the network renderers
+Audiogravi<sup>ty</sup> has discovered, and switches the active output when you pick one.
+Streaming and HQPlayer connections are managed in <strong>Library → Sources</strong> itself.</p>
 <img loading="lazy" src="images/ios-outputs.webp" alt="The output selector: the active USB DAC and the ready optical and HDMI outputs" width="360">
 <p>Switching is designed to be seamless. <strong>MPD's output flips gapless</strong> — no silence, and
 a cast already playing keeps going on the new output. <strong>AirPlay</strong> is the exception: its
@@ -197,7 +198,7 @@ it: labelling stops rather than putting your album's titles on someone else's tr
 <p><strong>Internet radio shows the station, not the song.</strong> A station announces its current track
 inside the audio stream, and through HQPlayer it is HQPlayer that receives that stream.
 So a radio played this way shows the station and its logo, where the same station on your
-local output shows the song.</p>
+local output shows the song — or, for a station that names none, its own name.</p>
 <h3 id="what-can-and-cannot-go-through-hqplayer">What can and cannot go through HQPlayer</h3>
 <p>One question decides it: <strong>what format the track is in</strong>. Every source
 Audiogravi<sup>ty</sup> can play reaches HQPlayer, so where the music comes from makes no
@@ -427,9 +428,10 @@ switches, off by default, add your idle <strong>analog sources</strong> (turntab
 <strong>controllers</strong> — the phones and apps that drive the box.</p>
 <p>Beside the graph — under it in a narrower window — the same chain reads as a list: one
 card per stream, with the chain it takes and, for a service that can be steered, pills
-to send it to another output (USB, optical, HDMI…). Next to the list, <strong>Audio events</strong>
-notes when a source starts or stops playing, and each new track — while the view is open
-on a computer. On a phone, the list is what the tab shows.</p>
+to send it to another output (USB, optical, HDMI…). Under the list — beside it in a
+narrower window — <strong>Audio events</strong> notes when a source starts or stops playing, and each
+new track — while the view is open on a computer. On a phone, the list is what the tab
+shows.</p>
 <img loading="lazy" src="images/ios-signal-chain.webp" alt="The Audio Pipeline on a phone: the Now Playing card, the output steering pills, and the signal chain from the streamer through the DAC and the amplifier to the speakers" width="360">
 <p>The graph is drawn from a map you own, <strong><code>audio-topology.json</code></strong> — see
 <a href="07-administration#audio-topology-signal-chain-map">7. Administration → Audio topology</a>

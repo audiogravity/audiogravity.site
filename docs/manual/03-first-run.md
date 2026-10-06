@@ -185,9 +185,14 @@ map:
   [6. Outputs & engines](06-outputs-engines.md)).
 - **Admin** — users and access, announcements, updates and the licence.
 - **Library** (Pro) — browse, search, queue, sources and outputs: where you play
-  music. In the sidebar, the row of icons under it opens one of its views directly:
-  **Browse**, **Search**, **Queue**, **Sources** or **Radio**.
+  music. In the sidebar, a tap on it unfolds a row of icons — **Browse**, **Search**,
+  **Queue**, **Sources** or **Radio** — and a tap on one opens that view; a second tap
+  on Library folds them. Coming from another tab, the view you were on opens as you
+  left it, an album or an artist still open. Across the top, a tap on Library opens the
+  page, its views in a bar of their own.
 - **Manual** — this manual, readable inside the app.
+
+<img src="images/ios-tab-menu.webp" alt="The tab menu on a phone: the app's tabs, and Library unfolded into its views — Browse, Search, Queue, Sources and Radio — the one shown marked" width="216">
 
 On a **Starter** licence the Pro tabs carry a small lock — tapping one opens the
 licence panel. **Config is not one of them**: editing a service's configuration

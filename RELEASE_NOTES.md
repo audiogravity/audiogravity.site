@@ -7,6 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Getting around
+
+**The library's views, one tap away.** In the menu on a phone, a tap on *Library* unfolds its
+views — *Browse*, *Search*, *Queue*, *Sources*, *Radio* — and you pick the one to open; the menu
+stays out of the way the rest of the time, its views folded. Back from another tab, the view you
+left opens just as you left it, the album or the artist still there.
+
 ### Radio
 
 **A station shows its name when it names no song.** Some stations — France Inter among them —

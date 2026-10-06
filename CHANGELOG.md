@@ -10,6 +10,7 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Changed
+- **[ui][manual] In the tab menu, a tap on *Library* unfolds its views.** It opened the page, with the library's views always spread under it. On a phone, and wherever the tabs are a column, *Library* now carries a chevron: a tap unfolds *Browse*, *Search*, *Queue*, *Sources* and *Radio* without leaving the page shown nor closing the menu, a second tap folds them, and the menu always opens with them folded. Coming from another tab, the view you were on opens as you left it, an album or an artist still open. On a computer's horizontal bar, a swipe or an arrow key, *Library* still opens the page. The manual's first-run chapter shows the menu, *Library* unfolded.
 - **[manual] Sixteen figures show the interface of 0.9.66.** Retaken on 2026-10-06 from the live interface, at the same iPhone 13 mini size: the queue's mini-player without *Previous*, its title and artist on a line each; *CRITICAL*, *CONFIGURED*, *ACTIVE*, *READY*, *MOUNTED* and the licence's tags as tints, no longer framed like buttons; *DELETE LICENSE* in orange; the buttons of the Audio Software and Pipeline headers in their own colours; check boxes and radio buttons in the theme's. The playback figures are taken with their original tracks.
 
 ### Fixed

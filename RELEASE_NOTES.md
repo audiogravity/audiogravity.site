@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.67 — 2026-10-06
+
 ### Getting around
 
 **The library's views, one tap away.** In the menu on a phone, a tap on *Library* unfolds its

@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.66] - 2026-10-06
+
 ### Added
 - **[ui][manual] The app can follow the device's light or dark mode.** Settings → Appearance offers *Automatic*, *Light* and *Dark* in place of the light/dark switch. *Automatic*, the default, follows the device — light by day, dark at night on a device that switches by itself — and so does the sign-in screen, from its first paint. A device set to light or dark with the old switch keeps that choice.
 - **[ui][manual] A live radio shows LIVE instead of a progress bar.** A live stream has no end and no position: the bar gives way to a *LIVE* marker under the transport, which dims while the stream is paused.

@@ -13,6 +13,7 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 buttons of the panels, the selectors of the Library, the log and the Pipeline diagram, and the
 small actions — a station's, the queue's, the history's *Clear* — now share one size: the same
 everywhere, and a little larger than the tiles' buttons used to be, easier to tap on a phone.
+In every row of filters, the chosen one is filled black.
 
 **Dialogs: one size, and orange for what deletes.** A dialog's buttons are the same size
 everywhere, phone included, and the main action is filled. A confirmation that deletes

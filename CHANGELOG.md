@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.68] - 2026-10-08
+
 ### Added
 - **[manual] The manual says how to activate a licence key, and how to check one.** The Licence section of the administration chapter walks through the *License activation* window's three steps — key, host, activate — and every refusal it can show, at each step; then *Verify existing license* and what each status means: *ACTIVE* is a key already activated on this box. Three figures show the second step, a successful activation and a checked key, taken with an example key and a made-up Device ID.
 - **[manual] The introduction lists what each edition opens.** Sixteen rows, Starter against Pro, under the names of the app's own tabs. They come from what the app locks: the Library, Pipeline, Systemd and Performance tabs, the playback controls and the full-screen player. The short table above them no longer gives a partial list of its own.

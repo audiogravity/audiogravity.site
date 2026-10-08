@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.68 — 2026-10-08
+
 ### Interface
 
 **Small buttons, one size.** The buttons of the tiles, the filters above them, the small

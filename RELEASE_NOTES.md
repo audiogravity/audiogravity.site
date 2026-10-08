@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Interface
+
+**Small buttons, one size.** The buttons of the tiles, the filters above them and the small
+buttons of the panels now share one size, a little larger than the tiles' used to be:
+easier to tap on a phone, and the same everywhere.
+
 ### Licence
 
 **What each edition opens, in the manual.** The licence panel's *Editions & License* window

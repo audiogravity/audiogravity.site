@@ -9,9 +9,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### Interface
 
-**Small buttons, one size.** The buttons of the tiles, the filters above them and the small
-buttons of the panels now share one size, a little larger than the tiles' used to be:
-easier to tap on a phone, and the same everywhere.
+**Small buttons, one size.** The buttons of the tiles, the filters above them, the small
+buttons of the panels and the selectors of the Library, the log and the Pipeline diagram now
+share one size: the same everywhere, and a little larger than the tiles' buttons used to be,
+easier to tap on a phone.
 
 ### Licence
 

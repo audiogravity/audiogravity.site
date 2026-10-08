@@ -20,6 +20,15 @@ everywhere, phone included, and the main action is filled. A confirmation that d
 something shows its button in orange, with *Cancel* selected so that *Enter* cannot delete by
 mistake.
 
+### Opening the app
+
+**A new opening screen.** Installed on a phone, the app now opens on its icon, its name and
+the line *Your audio chain, fully controlled*, then a wave goes out of the icon while it
+loads. It shows once per opening — not again after signing out or in — on a black ground
+whatever your theme, so the phone's own launch screen leads into it without a jump. With
+*Reduce motion* on in your device's settings, nothing moves: the icon's light pulses slowly
+instead.
+
 ### Licence
 
 **What each edition opens, in the manual.** The licence panel's *Editions & License* window

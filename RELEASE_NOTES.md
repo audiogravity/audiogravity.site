@@ -16,6 +16,12 @@ at the top a little larger. Where
 there is a sidebar, the connection dot beside the menu button no longer repeats the
 sidebar's own: it shows only when the box stops answering.
 
+**Signing in with the phone held sideways.** The sign-in card turns into two columns — the
+brand and the box's state on the left, the form on the right — and fits the screen; the
+passkey panel does the same, its key now filled like the Login button. On any screen too
+small for the card, the page scrolls instead of cutting it. After signing in, the app no
+longer flashes a bare tab bar before it appears.
+
 **Removing asks first.** A swipe to the left on a radio station, a UPnP server or a network
 renderer — or *Remove from My Live Radio* under a station's *⋯* — now asks before removing
 it, and names what goes and from which list. A swipe carried a little too far while

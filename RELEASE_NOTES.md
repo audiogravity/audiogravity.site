@@ -9,6 +9,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### Interface
 
+**Tabs: a bar on a computer, a sidebar on a phone.** On a computer the tabs stay across the
+top — the *Switch* button that turned them into a sidebar is gone — and *Manual* stands at the
+far end of the bar, apart from the tabs. A phone and a small tablet keep the sidebar. Where
+there is a sidebar, the connection dot beside the menu button no longer repeats the
+sidebar's own: it shows only when the box stops answering.
+
 **Removing asks first.** A swipe to the left on a radio station, a UPnP server or a network
 renderer — or *Remove from My Live Radio* under a station's *⋯* — now asks before removing
 it, and names what goes and from which list. A swipe carried a little too far while

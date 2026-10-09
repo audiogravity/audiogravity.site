@@ -174,8 +174,8 @@ current file is backed up first).
 
 ## 6. Find your way around
 
-The **tab bar** (across the top, or a sidebar in the vertical layout) is the app's
-map:
+The **tab bar** (across the top on a computer, a sidebar on a phone or a small tablet)
+is the app's map:
 
 - **Profiles · Services · Audio Software · Systemd · Performance · Config ·
   System** — running the box: audio scenarios, service control, engine installs,
@@ -190,7 +190,8 @@ map:
   on Library folds them. Coming from another tab, the view you were on opens as you
   left it, an album or an artist still open. Across the top, a tap on Library opens the
   page, its views in a bar of their own.
-- **Manual** — this manual, readable inside the app.
+- **Manual** — this manual, readable inside the app; it stands apart from the tabs, at
+  the far end of the bar or the foot of the sidebar.
 
 <img src="images/ios-tab-menu.webp" alt="The tab menu on a phone: the app's tabs, and Library unfolded into its views — Browse, Search, Queue, Sources and Radio — the one shown marked" width="216">
 

@@ -41,8 +41,8 @@ reaches the renderer at **full resolution, bit-perfect**, without touching the
 server's own audio path.
 
 - The output selector switches between physical DAC outputs and network renderers.
-  A **left-swipe** on a renderer removes it from the known list (a renderer still on
-  the network simply reappears at the next scan).
+  A **left-swipe** on a renderer removes it from the known list, once you confirm (a
+  renderer still on the network simply reappears at the next scan).
 - A live **"Up next"** strip shows the track being loaded onto the renderer.
 - Transport (next / prev / pause / seek / volume) is routed through the renderer that
   owns the queue.

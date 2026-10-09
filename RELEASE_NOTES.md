@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Interface
+
+**Removing asks first.** A swipe to the left on a radio station, a UPnP server or a network
+renderer — or *Remove from My Live Radio* under a station's *⋯* — now asks before removing
+it, and names what goes and from which list. A swipe carried a little too far while
+scrolling no longer costs you anything. If the station is one you added by hand and no other
+list keeps it, the question warns that its address will be lost; in that case only, the star
+asks too. The queue still removes a track in one swipe.
 
 ---
 

@@ -11,7 +11,8 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 **Tabs: a bar on a computer, a sidebar on a phone.** On a computer the tabs stay across the
 top — the *Switch* button that turned them into a sidebar is gone — and *Manual* stands at the
-far end of the bar, apart from the tabs. A phone and a small tablet keep the sidebar. Where
+far end of the bar, apart from the tabs. A phone and a small tablet keep the sidebar, its name
+at the top a little larger. Where
 there is a sidebar, the connection dot beside the menu button no longer repeats the
 sidebar's own: it shows only when the box stops answering.
 

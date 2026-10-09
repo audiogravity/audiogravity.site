@@ -35,7 +35,8 @@ also **cast local files to a network renderer**, just like a streaming service (
 
 In **Sources**, Audiogravi<sup>ty</sup> lists the UPnP media servers it already knows and lets
 you run a **manual scan** to discover more (e.g. **MinimServer**); found servers are
-saved automatically, and a **left-swipe** removes a saved server you no longer use.
+saved automatically, and a **left-swipe** removes a saved server you no longer use, once
+you confirm.
 Browse any server's tree; results play directly, with metadata and art.
 
 > **A scan only finds servers on the same network as the box.** A media server on
@@ -319,7 +320,9 @@ On each station card: **tap** to play, the **star** toggles Favorites, and the *
 adds the station to My Live Radio. **⋯** unfolds what else the station allows, under
 it: **Edit station** on a saved station (in My Live Radio or Favorites), and **Remove
 from My Live Radio** on one already there. Outside Search, a **left-swipe** removes the
-station from the current list.
+station from the current list. Both ask you to confirm first. If the station is one you
+added by hand and no other list keeps it, the question warns that its address will be
+lost — and in that case only, the star asks too.
 
 <img src="images/ios-radio.webp" alt="My Live Radio: the three sub-tabs, the Add custom station button, and station rows with their logo, country, bitrate, codec badge and favourite star" width="360">
 

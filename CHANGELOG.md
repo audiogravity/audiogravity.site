@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui][manual] Removing a station, a UPnP server or a renderer asks first.** A left-swipe past the threshold removed it at once, so a swipe carried a little too far while scrolling was enough to lose one; *Remove from My Live Radio*, under a station's *⋯*, did the same. Both now open a confirmation that names the item and the list it leaves — *Remove FIP from Favorites?* — with *Remove* in orange and *Cancel* selected; cancelled, the row stays where it was. This covers the swipe in My Live Radio and Favorites, on Sources' UPnP servers and on Audio Output's renderers; the queue's swipe still removes a track at once. When a removal would erase a station added by hand — no other list keeps it, and its address goes with it — the question says so, and in that one case the star asks too; anywhere else it still removes in one touch. The manual's Library and Outputs chapters say so.
+
 ## [0.9.68] - 2026-10-08
 
 ### Added

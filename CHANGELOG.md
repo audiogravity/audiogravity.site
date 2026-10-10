@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.69] - 2026-10-09
+
 ### Changed
 - **[ui][manual] On a computer, the tabs stay a bar across the top.** The *Switch* button at the end of the bar turned them into a sidebar and back, and the browser kept the choice; it is gone, and a sidebar chosen before turns back into the bar. A phone, and any screen whose short side is 768 px or less — a small tablet, a 1366 × 768 laptop — keeps the sidebar, as before. The layout now follows the screen both ways: a window carried from a small screen to a large one gets the bar back, where it used to keep the sidebar until *Switch* was pressed; the sidebar comes back as it was left. The manual says which screen gets which.
 - **[ui][manual] *Manual* stands at the right-hand end of the tab bar.** On a computer it followed the last tab; it now stands apart, at the far end, as it stands at the foot of the sidebar. When the tabs fill a narrow window it simply follows them.

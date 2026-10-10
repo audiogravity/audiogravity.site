@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.69 — 2026-10-09
+
 ### Interface
 
 **Tabs: a bar on a computer, a sidebar on a phone.** On a computer the tabs stay across the

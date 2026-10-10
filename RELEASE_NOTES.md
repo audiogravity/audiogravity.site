@@ -19,7 +19,8 @@ HQPlayer as the output, a paused station still resumes where it was paused.
 
 **A tap no longer leaves a button lit.** On a phone or a tablet, a tapped button kept its
 mouse-over colour until something else was tapped, as if it were still pressed or had been
-chosen. Mouse-over effects now wait for a mouse or a trackpad.
+chosen. Mouse-over effects now wait for a mouse or a trackpad; under your finger, a button
+fades while you press it and comes back as you lift it.
 
 **Accent-coloured text is easier to read.** In the Slate and Gravity light themes, and on grey
 panels in Slate dark, text in the accent colour — links, source badges, a favourite's star —

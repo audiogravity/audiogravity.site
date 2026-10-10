@@ -21,6 +21,11 @@ HQPlayer as the output, a paused station still resumes where it was paused.
 mouse-over colour until something else was tapped, as if it were still pressed or had been
 chosen. Mouse-over effects now wait for a mouse or a trackpad.
 
+**Accent-coloured text is easier to read.** In the Slate and Gravity light themes, and on grey
+panels in Slate dark, text in the accent colour — links, source badges, a favourite's star —
+was a little too pale to read comfortably. It now takes a deeper shade of the accent, a lighter
+one in Slate dark; fills and outlines keep the accent as it was.
+
 ### Security
 
 **A confirmation shows names as they are.** A name in a confirmation — a passkey, a network

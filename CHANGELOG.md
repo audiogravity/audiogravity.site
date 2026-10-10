@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] Play on a paused radio station picks up the live broadcast.** After a long pause, the station came back at the moment it was paused, then stopped a few seconds later: the box kept the station's connection open without reading it, the station dropped it, and only the seconds already received were left to play. Measured after a 30-minute pause: the box found the connection gone 20 s after Play, and the sound stopped at 60 s; a network renderer did the same after a 2-minute pause. Play now reconnects to the station — after a short pause too, so what was said during the pause is not kept. A paused track, from the library, a media server or a streaming service, still resumes where it was. This covers the box's own output and network renderers; with HQPlayer as the output, a paused station still resumes where it was paused.
+
 ## [0.9.69] - 2026-10-09
 
 ### Changed

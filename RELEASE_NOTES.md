@@ -15,6 +15,12 @@ whatever the length of the pause: you hear what is on air, not what was. A pause
 resumes where it was. This holds for the box's own output and for network renderers; with
 HQPlayer as the output, a paused station still resumes where it was paused.
 
+### Interface
+
+**A tap no longer leaves a button lit.** On a phone or a tablet, a tapped button kept its
+mouse-over colour until something else was tapped, as if it were still pressed or had been
+chosen. Mouse-over effects now wait for a mouse or a trackpad.
+
 ### Security
 
 **A confirmation shows names as they are.** A name in a confirmation — a passkey, a network

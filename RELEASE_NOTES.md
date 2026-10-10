@@ -7,7 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Radio
+
+**Play picks up the live broadcast.** A radio station paused for a while used to come back at
+the moment it was paused, then stop a few seconds later. Play now reconnects to the station,
+whatever the length of the pause: you hear what is on air, not what was. A paused track still
+resumes where it was. This holds for the box's own output and for network renderers; with
+HQPlayer as the output, a paused station still resumes where it was paused.
 
 ---
 

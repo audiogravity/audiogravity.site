@@ -15,6 +15,13 @@ whatever the length of the pause: you hear what is on air, not what was. A pause
 resumes where it was. This holds for the box's own output and for network renderers; with
 HQPlayer as the output, a paused station still resumes where it was paused.
 
+### Security
+
+**A confirmation shows names as they are.** A name in a confirmation — a passkey, a network
+share, a service, a backup file, the version an update offers — is now always shown as text,
+whatever it holds. Before, a name containing markup was read as markup. Only the box's owner,
+or the box itself, sets these names, so nothing was exposed; the dialog now guarantees it.
+
 ---
 
 ## 0.9.69 — 2026-10-09

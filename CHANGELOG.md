@@ -12,6 +12,9 @@ and this landing) are documented here. Format based on
 ### Fixed
 - **[core] Play on a paused radio station picks up the live broadcast.** After a long pause, the station came back at the moment it was paused, then stopped a few seconds later: the box kept the station's connection open without reading it, the station dropped it, and only the seconds already received were left to play. Measured after a 30-minute pause: the box found the connection gone 20 s after Play, and the sound stopped at 60 s; a network renderer did the same after a 2-minute pause. Play now reconnects to the station — after a short pause too, so what was said during the pause is not kept. A paused track, from the library, a media server or a streaming service, still resumes where it was. This covers the box's own output and network renderers; with HQPlayer as the output, a paused station still resumes where it was paused.
 
+### Security
+- **[ui] A confirmation shows the names in it as text.** The confirmation dialog read a text message as markup, so a name inserted into one — a passkey's, a network share's label and the box's message about it, a service, a backup file, the CPU governor, the version an update offers — was interpreted, not shown: a tag in it formatted the question, or could carry a script. Every one of these names is typed by the box's owner or comes from the box itself, so none could be used against it. The dialog now shows every text message as text, whatever it holds; the few questions that need bold or a list — removing a passkey or a user, a refused systemd setting, *Update All* — are built so that the names and versions in them are text too. A text message that holds a tag is reported in the browser console.
+
 ## [0.9.69] - 2026-10-09
 
 ### Changed

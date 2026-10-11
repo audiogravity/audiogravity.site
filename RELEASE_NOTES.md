@@ -36,6 +36,13 @@ reacts under the mouse.
 the same distance above what follows it — a clear line's worth of space, where some pages
 crowded their content under the title and others left it far below.
 
+**Every field looks the same.** The fields you type into — searching the library or the radio,
+adding a station, signing in to Tidal or HIGHRESAUDIO, a network share, a passkey's name, the
+user and systemd windows — came in a dozen sizes and two fonts, and those of the user and
+systemd windows were barely drawn at all. They now share one size and one font, the size of
+their labels, on a phone as on a computer. On an iPhone, touching a multi-line setting in the
+config editor no longer zooms the page in.
+
 ### Security
 
 **A confirmation shows names as they are.** A name in a confirmation — a passkey, a network

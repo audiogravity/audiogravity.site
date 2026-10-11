@@ -27,6 +27,11 @@ panels in Slate dark, text in the accent colour — links, source badges, a favo
 was a little too pale to read comfortably. It now takes a deeper shade of the accent, a lighter
 one in Slate dark; fills and outlines keep the accent as it was.
 
+**Windows answer the same way.** The buttons at the foot of the user, systemd, JSON, log and
+support report windows now read like a confirmation's: Cancel and Close outlined, the action
+that matters filled, an interruption in orange. A button that cannot be pressed no longer
+reacts under the mouse.
+
 **Titles line up.** Every page and panel title is now the same size on a phone, and stands
 the same distance above what follows it — a clear line's worth of space, where some pages
 crowded their content under the title and others left it far below.

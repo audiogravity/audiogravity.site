@@ -27,6 +27,10 @@ panels in Slate dark, text in the accent colour — links, source badges, a favo
 was a little too pale to read comfortably. It now takes a deeper shade of the accent, a lighter
 one in Slate dark; fills and outlines keep the accent as it was.
 
+**Titles line up.** Every page and panel title is now the same size on a phone, and stands
+the same distance above what follows it — a clear line's worth of space, where some pages
+crowded their content under the title and others left it far below.
+
 ### Security
 
 **A confirmation shows names as they are.** A name in a confirmation — a passkey, a network

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.70 — 2026-10-11
+
 ### Radio
 
 **Play picks up the live broadcast.** A radio station paused for a while used to come back at

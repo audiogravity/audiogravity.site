@@ -15,6 +15,13 @@ whatever the length of the pause: you hear what is on air, not what was. A pause
 resumes where it was. This holds for the box's own output and for network renderers; with
 HQPlayer as the output, a paused station still resumes where it was paused.
 
+### Playback
+
+**Play picks up again after the queue ends.** Once the last track had played, Play did
+nothing; it now starts the queue again from the top. And a tap on Play or Pause does exactly
+what the screen shows: a Pause can no longer start the music because the queue ended, or
+another source took over, a moment before — the sleep timer included.
+
 ### Interface
 
 **A tap no longer leaves a button lit.** On a phone or a tablet, a tapped button kept its

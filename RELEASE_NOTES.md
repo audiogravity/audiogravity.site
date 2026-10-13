@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.71 — 2026-10-13
+
 ### Playback
 
 **Buttons that would do nothing are greyed.** On a radio station, Next used to stop the music

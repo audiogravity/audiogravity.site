@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.71] - 2026-10-13
+
 ### Changed
 - **[ui] In the Minimal theme, what you type into or press has an outline you can see.** Fields, lists, framed buttons, selectors, filters and switches were drawn by the cards' hairline, #D0D0D0 — 1.45:1 on a panel, where accessibility guidance (WCAG 1.4.11) asks 3:1 for what tells a control apart. They now take a darker grey of their own, at least 3:1 on every ground of the theme: #858585 in light, #707070 in dark. Cards keep their hairline, the sign-in page is unchanged, and so are the Slate and Gravity themes.
 - **[ui] In the Minimal theme, colour marks a state, never an action or a figure at rest.** Some twenty green or orange marks showed at once on Services alone, where red, orange and green mean something only while they stay rare. START and ACTIVATE, a service's figure at rest, the running share of a health bar, the stripe and CRITICAL tag of a service the chain needs, the stripe of an installed package and the actions written as badges (REFRESH, CHECK UPDATES, NEW USER, CONFIG) now draw in the theme's text colours; UP, ENABLED, failures, warnings and what deletes keep theirs. The Slate and Gravity themes are unchanged.

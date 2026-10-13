@@ -133,8 +133,8 @@ renderer, *MPD* for your own music library. The profiles come with Audiogravi<su
 (see [7. Administration](07-administration.md#audio-configuration-services--profiles)).
 
 Each profile tile shows the services it starts/stops, the output they are set to play
-to (e.g. `usb`, `toslink`), a live **health bar** of those services — running (green),
-failed (red), stopped (grey) — and when it was last switched on since
+to (e.g. `usb`, `toslink`), a live **health bar** of those services — running, stopped in
+grey, failed in red — and when it was last switched on since
 Audiogravi<sup>ty</sup> last started. Every switch asks for confirmation. The services to
 stop are stopped first, then the others started. If an essential service cannot be
 stopped, nothing is started; any other failure is named in a message, and the switch is

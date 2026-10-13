@@ -9,6 +9,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### Interface
 
+**Controls stand out in Minimal.** In the Minimal theme, fields, lists and framed buttons now
+have a darker outline than the cards around them, in light and in dark, so what you can type
+into or press is easy to tell apart at a glance.
+
 **Scan buttons sized like the others.** In Library › Sources, *Scan renderers* and *Scan network*
 stretched across their whole card, which made them look lower than the buttons around them.
 They now take the width of their label, like every other button on the page.

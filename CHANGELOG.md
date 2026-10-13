@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui] In the Minimal theme, what you type into or press has an outline you can see.** Fields, lists, framed buttons, selectors and filters were drawn by the cards' hairline, #D0D0D0 — 1.45:1 on a panel, where accessibility guidance (WCAG 1.4.11) asks 3:1 for what tells a control apart. They now take a darker grey of their own, at least 3:1 on every ground of the theme: #858585 in light, #707070 in dark. Cards keep their hairline, the sign-in page is unchanged, and so are the Slate and Gravity themes.
+
 ### Fixed
 - **[ui] Library › Sources' Scan renderers and Scan network are as wide as their label.** Both stretched across their card — 327 px on a phone, 860 px on a computer — and a long bar at the compact buttons' 24 px read as lower than the DSP and Disconnect buttons beside it, though it measured the same height and type. They now keep the width of their label, aligned left like the page's other buttons; the renderers a scan finds, listed in the same column, keep the full width.
 

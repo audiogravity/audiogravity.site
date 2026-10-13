@@ -179,8 +179,8 @@ update: the services and profiles on your box are those of the version you run.
 - **A profile's name says what it starts** — *MPD + HQPlayer NAA* runs MPD and HQPlayer's NAA —
   and its description what it is for. Two exceptions: *UPnP Renderer* runs MPD and the UPnP
   bridge, and *Stop All* stops everything.
-- **A profile that starts HQPlayer's NAA or HQPlayer Embedded is critical**: its tile has an
-  orange left edge, and the confirmation of a switch is titled *Critical Profile*.
+- **A profile that starts HQPlayer's NAA or HQPlayer Embedded is critical**: its tile has a
+  stripe down its left edge, and the confirmation of a switch is titled *Critical Profile*.
 - **The services and profiles of software you have not installed stay listed**, greyed out,
   until you install it from [Audio Software](#audio-software).
 

@@ -103,8 +103,9 @@ Monitor and control individual systemd services in real time.
   LOW / MEDIUM / HIGH, tuned per audio service (e.g. CPU: ≤5 % low, 5–20 % medium,
   >20 % high).
 - **Graphs** — each figure on a tile has a small graph of its recent values; click the
-  graph to unfold a larger chart on the tile, and **×** to fold it away. Network and
-  disk draw two lines: received and sent, read and written.
+  graph to unfold a larger chart on the tile, one bar per measurement with the highest
+  written above, and **×** to fold it away. Network and disk unfold two charts: received
+  and sent, read and written.
 - **Filter** — ALL / RUNNING / STOPPED / FAILED.
 
 > **A dash means "not measured", not "zero".** Three of the figures depend on counters

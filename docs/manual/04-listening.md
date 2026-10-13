@@ -28,7 +28,10 @@ Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 
 - **Cover art** with a dynamic background derived from it, a **seekable progress
   bar** — **Live** in its place for an internet radio station, which has no end — and
-  full **transport**: repeat · previous · play/pause · next · shuffle.
+  full **transport**: repeat · previous · play/pause · next · shuffle. A button that
+  would do nothing is greyed, never removed: next on the last track, and on a station
+  played alone everything but play/pause — save a repeat or shuffle left on, which you
+  can still turn off.
 - **Album details** — Album, Artist, Format, Genre, Year, Position, Source and the
   full **Tracklist**.
 - A **Queue** view for what's coming up (see below).

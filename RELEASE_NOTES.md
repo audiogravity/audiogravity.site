@@ -7,7 +7,11 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Interface
+
+**Scan buttons sized like the others.** In Library › Sources, *Scan renderers* and *Scan network*
+stretched across their whole card, which made them look lower than the buttons around them.
+They now take the width of their label, like every other button on the page.
 
 ---
 

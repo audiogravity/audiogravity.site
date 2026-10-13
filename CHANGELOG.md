@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] Library › Sources' Scan renderers and Scan network are as wide as their label.** Both stretched across their card — 327 px on a phone, 860 px on a computer — and a long bar at the compact buttons' 24 px read as lower than the DSP and Disconnect buttons beside it, though it measured the same height and type. They now keep the width of their label, aligned left like the page's other buttons; the renderers a scan finds, listed in the same column, keep the full width.
+
 ## [0.9.70] - 2026-10-11
 
 ### Changed

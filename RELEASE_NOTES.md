@@ -9,6 +9,21 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### Interface
 
+**Controls stand out in Minimal.** In the Minimal theme, fields, lists, framed buttons and
+switches now have a darker outline than the cards around them, in light and in dark, so what
+you can type into or press is easy to tell apart at a glance.
+
+**Colour that means something, in Minimal.** Green and orange no longer decorate actions or
+figures at rest: START, ACTIVATE, a service at 0 %, the running count, the mark of a critical
+service and the buttons in a page's title are drawn in black — in white in the dark theme.
+What still has a colour is a state worth your eye: a service up, a failure, a warning,
+updates waiting.
+
+**Expanded charts in bars.** Opening a service's CPU, memory, network or disk chart now shows
+one bar per measurement, as on the System tab, with the highest value noted above and the
+current figure beside its label. Disk writes and outgoing traffic are no longer drawn in red
+and orange, as if they were errors.
+
 **Scan buttons sized like the others.** In Library › Sources, *Scan renderers* and *Scan network*
 stretched across their whole card, which made them look lower than the buttons around them.
 They now take the width of their label, like every other button on the page.

@@ -7,6 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Playback
+
+**Buttons that would do nothing are greyed.** On a radio station, Next used to stop the music
+and Previous only reconnected the station. Both players now grey what cannot act: Previous and
+Next on a station, Next on the last track, and Repeat and Shuffle on a station played alone —
+unless one is on, so you can still turn it off. Nothing is removed any more, so no button
+moves under your finger. With HQPlayer as the output, Previous and Next stay lit for now.
+
 ### Interface
 
 **Controls stand out in Minimal.** In the Minimal theme, fields, lists, framed buttons and

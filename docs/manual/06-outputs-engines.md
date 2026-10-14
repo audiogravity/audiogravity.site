@@ -334,7 +334,7 @@ setting. The formats HQPlayer cannot decode are converted here too — see
 
 **If something did not go through.** When HQPlayer Embedded is installed but a step after
 that could not be done, the result says **Install Incomplete** and what is left to do. If
-its password could not be set, the card shows **Set web password**: click it to set one.
+its password could not be set, the card shows **Set pwd**: click it to set one.
 HQPlayer then restarts, so anything it is playing stops for a moment.
 
 **Updating and removing it.** **UPDATE** brings the latest release of the version you

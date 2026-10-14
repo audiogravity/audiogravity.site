@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] A paused station's Live marker is greyed like the buttons beside it.** In the full-screen player, a paused station's *Live* took the secondary text grey, a shade darker than the greyed Repeat, Previous, Next and Shuffle just above it. It now takes theirs — the text colour at 30 % opacity — in every theme, light and dark.
+- **[ui] The full-screen player's sleep timer keeps its clock while it counts.** Once set, the timer replaced its clock with the time left, and a bare *14:52* beside the queue button read as the time of day. The clock now stays, with the time left beside it.
+
 ## [0.9.71] - 2026-10-13
 
 ### Changed

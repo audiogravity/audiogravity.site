@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Playback
+
+**A paused station looks paused.** In the full-screen player, the *Live* marker of a paused
+station now takes the same grey as the buttons that cannot act, instead of a darker one.
+
+**The sleep timer shows its clock.** While it counts down, the timer in the full-screen
+player's header keeps its clock icon beside the time left, so the figure is no longer mistaken
+for the time of day.
 
 ---
 

@@ -12,6 +12,7 @@ and this landing) are documented here. Format based on
 ### Fixed
 - **[ui] A paused station's Live marker is greyed like the buttons beside it.** In the full-screen player, a paused station's *Live* took the secondary text grey, a shade darker than the greyed Repeat, Previous, Next and Shuffle just above it. It now takes theirs — the text colour at 30 % opacity — in every theme, light and dark.
 - **[ui] The full-screen player's sleep timer keeps its clock while it counts.** Once set, the timer replaced its clock with the time left, and a bare *14:52* beside the queue button read as the time of day. The clock now stays, with the time left beside it.
+- **[core+ui] Library › Sources lists AirPlay and the UPnP bridge only when they are installed, and shows one switched off as *Off*.** Both inputs were listed on every box, *Idle* whether their software was missing, stopped or waiting for a stream. An input whose software is not installed is now left out; one installed but stopped reads *Off*, with an empty ring in place of the dot and its icon and name faded as an unavailable tile is; one running, or starting, still reads *Idle*. The screen follows the box live, without being reopened: measured on the x86 box, a stop or a start shows within 2 s, an install or a removal from Audio Software in the same second. Installed means systemd has the unit's file — or its template's, for an instance unit — the test the profiles now share.
 
 ## [0.9.71] - 2026-10-13
 

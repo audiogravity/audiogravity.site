@@ -16,6 +16,13 @@ station now takes the same grey as the buttons that cannot act, instead of a dar
 player's header keeps its clock icon beside the time left, so the figure is no longer mistaken
 for the time of day.
 
+### Library
+
+**Inputs show what is really there.** Library › Sources lists AirPlay and the UPnP bridge only
+when they are installed on the box. One that is installed but switched off reads *Off*, with an
+empty ring and a faded card: a phone cannot see the box through it. The list follows the box
+as it changes — start, stop, install or remove one, and its card follows within seconds.
+
 ---
 
 ## 0.9.71 — 2026-10-13

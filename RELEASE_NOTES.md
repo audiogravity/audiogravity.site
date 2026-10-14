@@ -16,6 +16,10 @@ station now takes the same grey as the buttons that cannot act, instead of a dar
 player's header keeps its clock icon beside the time left, so the figure is no longer mistaken
 for the time of day.
 
+**Webradios from other apps are shown as live.** A radio started on the box from another app,
+even one that is not in your radio list, now shows *Live* in the full-screen player, with
+Repeat and Shuffle greyed as on any station.
+
 ### Library
 
 **Inputs show what is really there.** Library › Sources lists AirPlay and the UPnP bridge only

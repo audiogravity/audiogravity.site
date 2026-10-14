@@ -27,6 +27,17 @@ when they are installed on the box. One that is installed but switched off reads
 empty ring and a faded card: a phone cannot see the box through it. The list follows the box
 as it changes — start, stop, install or remove one, and its card follows within seconds.
 
+### Interface
+
+**Back where you were after signing in.** When a session ends, signing in again now takes you
+back to the page and tab you were on, instead of the first tab — and never to a tab your role
+cannot see.
+
+**Buttons that look like buttons.** Every badge you can press — CONFIG, NEW USER, *Set pwd*,
+*Restart required*, ENABLED / DISABLED — now has the size of the buttons beside it, and the
+CRITICAL tag of a Services tile sits at its right edge. On a tablet or a phone held sideways,
+the audio pipeline diagram's buttons react to your finger like every other button.
+
 ---
 
 ## 0.9.71 — 2026-10-13

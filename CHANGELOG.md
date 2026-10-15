@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[site][manual] Every page of the online manual has the light / dark toggle.** The manual's pages on audiogravity.app followed the theme chosen on the landing, else the system's, and offered no way to change it: a reader who arrived on a chapter from a search was left with their system's. Each page's top bar now ends with the landing's toggle — the moon for dark, the sun back to light — and one choice holds across the site, switched on the landing or in the manual. Without a choice, a page still follows the system. The landing and the manual share one small script for it; in a private window it still switches, for as long as the page is open. On a 320 px phone the bar's gaps narrow so that *User manual* stays on one line. Tried in Chromium from 320 to 1440 px; not in Safari.
+
 ### Changed
 - **[ui] Every badge you can press has the small button size, wherever it sits.** CONFIG (Pipeline), NEW USER (Admin), an Audio Software tile's password and *Restart required* pills, and a Services tile's ENABLED / DISABLED were 18 to 20 px high in 10 px type, beside 24 px buttons in 11 px — a list of places held the others to the size, and missed them. One rule now sizes every pressable badge, a button or a clickable tag. An Audio Software tile's footer wraps on a phone instead of running past the card, which it already did by 36 px at 320 px. The password pill reads *Set pwd*; a screen reader hears "Set pwd: the web interface password", the words shown first, so a voice command naming them finds it.
 - **[ui] CRITICAL sits at the right edge of a Services tile**, under the state it qualifies (UP, IDLE…), apart from the buttons. On a narrow phone, or a computer showing three columns of tiles, it takes its own line, at the right.

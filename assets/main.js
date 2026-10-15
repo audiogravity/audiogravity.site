@@ -80,38 +80,7 @@ function spark(id, seed) {
 }
 spark('ds1', 1.2); spark('ds2', 2.8);
 
-// Theme toggle
-(function () {
-    var root = document.documentElement;
-    var KEY = 'ag-theme';
-    var SUN = '<circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" />';
-    var MOON = '<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />';
-
-    function isDark() {
-        var t = root.getAttribute('data-theme');
-        if (t === 'dark') return true;
-        if (t === 'light') return false;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-
-    function applyIcon() {
-        var icon = document.getElementById('themeIcon');
-        if (icon) icon.innerHTML = isDark() ? SUN : MOON;
-    }
-
-    function toggle() {
-        root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
-        localStorage.setItem(KEY, root.getAttribute('data-theme'));
-        applyIcon();
-    }
-
-    var saved = localStorage.getItem(KEY);
-    if (saved) root.setAttribute('data-theme', saved);
-
-    var btn = document.getElementById('themeToggle');
-    if (btn) btn.addEventListener('click', toggle);
-    applyIcon();
-})();
+// The theme toggle is assets/theme-toggle.js, shared with the manual's pages.
 
 // Right-edge scroll cue on the comparison table.
 //

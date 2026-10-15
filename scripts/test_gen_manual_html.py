@@ -443,6 +443,52 @@ class TestBackToTop:
         assert ".to-top {" in (REPO_DIR / "assets" / "style.css").read_text(encoding="utf-8")
 
 
+class TestThemeToggle:
+    """The manual's pages carry the landing's light / dark toggle (2026-10-15): a reader who
+    arrived on a chapter from a search had no way to change the theme their system chose."""
+
+    PAGES = (("Listening", "", TOC, "04-listening", "04-listening"), ("Contents", "", TOC, "", ""))
+
+    def test_every_page_has_the_button_in_its_bar(self):
+        for args in self.PAGES:
+            out = page(*args)
+            bar = re.search(r'<header class="man-top">(.*?)</header>', out, re.S).group(1)
+            assert 'class="theme-toggle" id="themeToggle" type="button"' in bar
+            assert 'aria-label="Toggle dark mode"' in bar
+            assert '<svg id="themeIcon"' in bar
+
+    def test_every_page_loads_the_shared_script_deferred(self):
+        """Deferred, it runs once the bar is parsed: the button it looks for is there."""
+        for args in self.PAGES:
+            assert '<script src="../../assets/theme-toggle.js" defer></script>' in page(*args)
+        assert (REPO_DIR / "assets" / "theme-toggle.js").is_file()
+
+    def test_the_choice_is_one_for_the_site(self):
+        """The script and the inline guard before the first paint read the landing's key: a
+        theme switched on the landing holds in the manual, and the other way round."""
+        js = (REPO_DIR / "assets" / "theme-toggle.js").read_text(encoding="utf-8")
+        assert "var KEY = 'ag-theme';" in js
+        assert "localStorage.getItem('ag-theme')" in page(*self.PAGES[0])
+        assert "localStorage.getItem('ag-theme')" in (REPO_DIR / "index.html").read_text(encoding="utf-8")
+
+    def test_it_keeps_the_bar_edge_the_landing_leaves_for_its_ribbon(self):
+        """style.css moves the landing's toggle 34 to 84px off the corner below 1100px, clear
+        of the "Public beta" ribbon; the manual has none, so its bar puts the toggle back."""
+        css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
+        rule = re.search(r"\.man-top \.theme-toggle \{([^}]*)\}", css)
+        assert rule, "no rule for the manual's toggle"
+        assert re.search(r"margin-left:\s*auto", rule.group(1))
+        assert re.search(r"margin-right:\s*0\b", rule.group(1))
+        assert 'class="ribbon"' not in page(*self.PAGES[0])
+
+    def test_it_leaves_the_bar_label_on_one_line_at_320px(self):
+        """With the toggle, "User manual" broke onto two lines below 327px (Chromium,
+        2026-10-15): a 12px gap instead of 16 keeps it on one at 320."""
+        css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
+        narrow = re.search(r"@media\(max-width:340px\)\s*\{\s*\.man-top\s*\{([^}]*)\}", css)
+        assert narrow and re.search(r"gap:\s*12px", narrow.group(1))
+
+
 class TestTrademarkNotice:
     """The notice is shown once wherever the manual is read, never at the end of a chapter."""
 

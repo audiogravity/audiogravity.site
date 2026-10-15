@@ -637,6 +637,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     </script>
     <script src="../../assets/manual-copy.js" defer></script>
     <script src="../../assets/to-top.js" defer></script>
+    <script src="../../assets/theme-toggle.js" defer></script>
 </head>
 
 <body class="man-body">
@@ -645,6 +646,8 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
                  width="28" height="28" decoding="async">{BRAND}</a>
         <span class="man-crumb">User manual</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
 
     <div class="man-shell">

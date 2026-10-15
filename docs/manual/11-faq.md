@@ -19,13 +19,18 @@ fixed — report anything you hit.
 The Starter Edition activates automatically — no action required. You keep full
 access to all Starter features indefinitely, for free. Pro features are locked
 until you purchase a licence (see [7. Administration → Licence](07-administration.md#licence)).
+Streaming tracks left in your queue no longer play; the music on the box plays on. The
+table in [1. Introduction → Editions](01-introduction.md#editions) lists what each edition
+includes.
 
 ## Does it work without Roon?
 
 Yes. MPD alone is enough for the Starter Edition. Roon, HQPlayer, upmpdcli,
 Shairport-Sync and AirPlay are all optional — install whichever you want in one
 click from the Audio Software tab, and Audiogravi<sup>ty</sup> manages them from
-there (configuration, tuning, orchestration). See
+there (configuration, tuning, orchestration). Using them from Audiogravi<sup>ty</sup> — Roon
+as a source, HQPlayer as the output, and their settings — comes with **Pro**, and so does
+the tuning. See
 [3. First run](03-first-run.md#3-install-the-audio-engines).
 
 ## Do I need a Qobuz, Tidal or HIGHRESAUDIO subscription?

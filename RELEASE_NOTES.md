@@ -22,7 +22,8 @@ licence panel.
 
 **At the end of the trial.** Streaming tracks still in the queue no longer play once the trial
 ends; the music on the box plays on. If HQPlayer Embedded runs on the box, stop it from Services
-to play on the box's DAC.
+to play on the box's DAC. The licence panel says the box carries on in Starter, and that a
+licence brings the Pro features back.
 
 **A licence for good is never held back by the clock.** A licence with no end date no longer
 depends on the box's clock, which a Raspberry Pi can start far off the right time.

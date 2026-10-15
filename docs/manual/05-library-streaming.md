@@ -11,11 +11,12 @@ The Library tab holds several views, one per tab of its bar:
 
 - **Browse** — albums for the active source, with infinite scroll.
 - **Search** — full-text across artists, albums and tracks. Tapping an **artist**
-  opens that artist's albums — across your local library, Qobuz, Tidal and
-  HIGHRESAUDIO — with a back control to return to your results.
+  opens that artist's albums — across your local library and, with Pro, Qobuz, Tidal
+  and HIGHRESAUDIO — with a back control to return to your results.
 - **Queue** — what's playing and coming up.
-- **Sources** — pick the active source (local, streaming, Roon zone, UPnP server).
-  Connecting or disconnecting a service updates this list straight away. Outputs
+- **Sources** — pick the active source (local, streaming, Roon zone, UPnP server);
+  on Starter, those that come with Pro carry a padlock. Connecting or disconnecting a
+  service updates this list straight away. Outputs
   never appear here: a network speaker and HQPlayer are destinations, not places to
   browse. The **Outputs** button at the top of this view opens the list of outputs,
   where you pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
@@ -33,6 +34,7 @@ also **cast local files to a network renderer**, just like a streaming service (
 
 ## UPnP / DLNA media servers
 
+Media servers come with **Pro**.
 In **Sources**, Audiogravi<sup>ty</sup> lists the UPnP media servers it already knows and lets
 you run a **manual scan** to discover more (e.g. **MinimServer**); found servers are
 saved automatically, and a **left-swipe** removes a saved server you no longer use, once
@@ -45,11 +47,14 @@ Browse any server's tree; results play directly, with metadata and art.
 
 ## Roon
 
+Roon comes with **Pro**.
 Connect a Roon source in **Sources**; it expands to show the available **zones**.
 A dedicated Roon browser navigates the Roon library hierarchy.
 
 ## Streaming services
 
+The streaming services come with **Pro** — once the trial is over, without a licence,
+their tracks left in the queue no longer play.
 All three deliver audio at its native resolution. Each requires **your own active
 subscription** — Audiogravi<sup>ty</sup> provides no access itself.
 

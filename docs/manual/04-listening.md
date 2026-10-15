@@ -172,7 +172,7 @@ destination — your DAC or the speaker you selected — even when nothing is pl
 and marks it **Stopped** when it sits idle or **Unreachable** when it cannot be
 contacted. Any reason the sound is not coming out appears on that same line.
 
-Choosing **where** music plays — your local DAC, a network renderer, HQPlayer or
-AirPlay — is covered in **[6. Outputs & engines](06-outputs-engines.md)**. Connecting
+Choosing **where** music plays — your local DAC, a network renderer or HQPlayer — is
+covered in **[6. Outputs & engines](06-outputs-engines.md)**, and so is receiving AirPlay. Connecting
 streaming services and browsing your library is in
 **[5. Library & streaming](05-library-streaming.md)**.

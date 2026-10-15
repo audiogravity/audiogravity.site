@@ -38,6 +38,10 @@ cannot see.
 CRITICAL tag of a Services tile sits at its right edge. On a tablet or a phone held sideways,
 the audio pipeline diagram's buttons react to your finger like every other button.
 
+**Clearer for screen readers.** A screen reader now hears the main bar as
+the app's navigation, with the page you are on marked, instead of a list of tabs mixed with
+other buttons.
+
 **Charts easier to read in Slate and Gravity.** In the light themes, the bars of the System,
 Performance and Services charts take a deeper shade of their colour, and older bars are less
 faded, so every bar stands out clearly from its background, in light and in dark.

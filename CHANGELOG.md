@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.72] - 2026-10-15
+
 ### Added
 - **[site][manual] Every page of the online manual has the light / dark toggle.** The manual's pages on audiogravity.app followed the theme chosen on the landing, else the system's, and offered no way to change it: a reader who arrived on a chapter from a search was left with their system's. Each page's top bar now ends with the landing's toggle — the moon for dark, the sun back to light — and one choice holds across the site, switched on the landing or in the manual. Without a choice, a page still follows the system. The landing and the manual share one small script for it; in a private window it still switches, for as long as the page is open. On a 320 px phone the bar's gaps narrow so that *User manual* stays on one line. Tried in Chromium from 320 to 1440 px; not in Safari.
 

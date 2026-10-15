@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.72 — 2026-10-15
+
 ### Playback
 
 **A paused station looks paused.** In the full-screen player, the *Live* marker of a paused

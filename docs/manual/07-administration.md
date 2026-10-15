@@ -2,15 +2,17 @@
 
 Everything you need to run the box lives in the interface — no SSH required. Most of
 this section is available on **Starter**: Profiles, Services, Audio Software, System,
-Admin — and **Config**, the configuration editor and its guided setup. Four tabs are
-**Pro**: Systemd tuning, Performance tuning, the Audio Pipeline map and the Library.
+Admin — and **Config**, the configuration editor and its guided setup. Three tabs are
+**Pro**: Systemd tuning, Performance tuning and the Audio Pipeline map; in Config, HQPlayer
+Embedded's and the NAA's files are Pro too.
 
 ## The Admin tab
 
 The **Admin** tab gathers everything about accounts and the box's relationship with
 Audiogravi<sup>ty</sup>: the **user cards** (below), unread
 [announcements](#announcements), the [update banner](08-updating.md) — and the
-**licence** panel, where a Starter install lands when it taps a locked Pro tab.
+**licence** panel, where a Starter install lands when it taps anything that carries the Pro
+padlock.
 
 At the bottom of the tab, the **UI performance cockpit** measures the app itself in
 your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
@@ -501,9 +503,9 @@ are remembered per device.
 
 ## Licence
 
-The licence panel opens from the **Admin** tab. On a **Starter** install, tapping a Pro
-tab — those carry a small lock icon in the tab bar — brings you here too, with the
-*License activation* window open over the panel.
+The licence panel opens from the **Admin** tab. On a **Starter** install, tapping anything
+Pro adds — it carries a padlock and a light tint: a tab, a Library source, a Config tile —
+brings you here too, with the *License activation* window open over the panel.
 
 - **Trial** — 30 days of full access, auto-activated on first run.
 - **Buying** — the licence panel lists the steps: *Pay with PayPal*, receive your

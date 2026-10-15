@@ -15,8 +15,8 @@ Days remaining are shown in **Admin › License**.
 ## Starter Edition — Free
 
 Activated automatically when the trial expires — no action required. It keeps receiving the
-updates of its major version (e.g. v1.x), as Pro does. Includes the essentials to run and
-monitor your audio system:
+updates of its major version (e.g. v1.x), as Pro does. Includes the essentials to run your audio
+system and play the music stored on it:
 
 - **Profiles** — one-click switching between pre-configured audio chain scenarios; activates required services and stops conflicting ones automatically
 - **Services** — real-time monitoring and control of audio services (start / stop / restart / enable at boot) with live CPU, memory and I/O metrics, each with a sparkline of its recent values
@@ -24,10 +24,17 @@ monitor your audio system:
 - **System** — hardware dashboard: CPU, temperature, memory, disk and network at a glance; full audio device inventory (ALSA cards, USB interfaces, subdevices)
 - **Users** — role-based access management (Admin, User, Guest) with WebAuthn / passkeys login
 - **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, a software update is available or a profile is activated
-- **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups
+- **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups (HQPlayer Embedded's and the NAA's come with Pro)
 - **Guided provisioning** — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)
 - **DSD bit-perfect protection** — automatic ALSA hardware volume lock during DSD playback
-- **Now Playing** — display-only: shows current track, cover art, format and progress across all sources (transport controls require Pro)
+- **Library** — the music stored on the box: album browsing, full-text search and queue management
+- **Internet radio** — Radio Browser directory, custom stations, favourites with Hi-Res filtering
+- **Player** — play/pause, seek, next/prev, volume, repeat/shuffle for the box's music and the radio, in the mini-player and the full-screen player, with its **sleep timer**
+- **Outputs** — the box's DAC (USB, Toslink, HDMI…), switched without touching the streamer, or a DLNA/UPnP network speaker (**UPnP Control Point**)
+- **Now Playing** — current track, cover art, format and progress across all sources
+
+What Pro adds stays in view on a Starter box, behind a padlock: a tap opens the licence panel.
+When the trial ends, streaming tracks still in the queue no longer play; the music on the box plays on.
 
 ---
 
@@ -39,15 +46,13 @@ Existing holders receive a **preferential upgrade price** for new major versions
 
 Everything in Starter, plus:
 
-- **Player** — full transport controls across all sources (MPD, Roon, AirPlay, UPnP, HQPlayer): play/pause, seek, next/prev, volume, repeat/shuffle and real-time Hi-Fi format readout (PCM / DSD, sample rate, bit depth, bitrate)
-- **Library** — high-resolution music library for Roon, MPD, UPnP servers (MinimServer, upmpdcli), Qobuz, Tidal and HIGHRESAUDIO: album browsing, full-text search, queue management and output zone selection; **UPnP Control Point** to send audio directly to any DLNA/UPnP MediaRenderer on the network (amplifiers, networked speakers…)
-- **Output steering** — switch between USB, Toslink and HDMI outputs without touching the streamer
-- **Internet radio** — Radio Browser directory, custom stations, favourites with Hi-Res filtering
-- **HQPlayer DSP remote** — change filter, noise shaper, output mode and volume from the couch, with automatic network discovery
+- **Streaming** — Qobuz, Tidal and HIGHRESAUDIO: album browsing, full-text search, queue, favourites and playlists
+- **UPnP media servers** — MinimServer and the other servers of your network, browsed and searched like the box's own library
+- **Roon** — your Roon library, its zones and their transport controls
+- **HQPlayer** — HQPlayer as the output, and its DSP remote: filter, noise shaper, output mode and volume from the couch, with automatic network discovery; HQPlayer Embedded's and the NAA's output and settings
 - **Audio Pipeline** — interactive DAG visualisation of the full signal chain from source to DAC: full-resolution badge on the link to the DAC, format per link, real-time output steering without stopping playback
 - **Systemd Configuration** — fine-tune audio service drop-ins: CPU affinity, SCHED_FIFO / RR priority, MEMLOCK and RTPRIO — eliminates scheduling jitter for bit-perfect, glitch-free playback
 - **Performance Optimization** — per-core CPU governor control, real-time thermal throttle detection, µs-scale latency benchmarks (cyclictest) and live RT process monitor
-- **Sleep timer** — automatic pause after a set duration
 
 > Qobuz, Tidal and HIGHRESAUDIO require an active subscription to their respective services.
 > Platform: Debian 13 (Trixie) or later — DietPi and Raspberry Pi OS included, in their Trixie release. The core installer turns any other system down.
@@ -68,19 +73,22 @@ Everything in Starter, plus:
 | **System** | ✓ | ✓ | ✓ |
 | **Users & WebAuthn** | ✓ | ✓ | ✓ |
 | **Push notifications** | ✓ | ✓ | ✓ |
-| **Now Playing (display)** | ✓ | ✓ | ✓ |
-| **Player (controls)** | ✓ | — | ✓ |
-| **Library** | ✓ | — | ✓ |
-| **Output steering** | ✓ | — | ✓ |
-| **Internet radio** | ✓ | — | ✓ |
-| **HQPlayer DSP** | ✓ | — | ✓ |
+| **Now Playing** | ✓ | ✓ | ✓ |
+| **Library — the music on the box** | ✓ | ✓ | ✓ |
+| **Internet radio** | ✓ | ✓ | ✓ |
+| **Player — the box's music and the radio** | ✓ | ✓ | ✓ |
+| **Outputs — DAC and network speakers** | ✓ | ✓ | ✓ |
+| **Streaming — Qobuz, Tidal, HIGHRESAUDIO** | ✓ | — | ✓ |
+| **UPnP media servers** | ✓ | — | ✓ |
+| **Roon** | ✓ | — | ✓ |
+| **HQPlayer** | ✓ | — | ✓ |
 | **Audio Pipeline** | ✓ | — | ✓ |
 | **Audio Services Config** | ✓ | ✓ | ✓ |
 | **Guided provisioning** | ✓ | ✓ | ✓ |
 | **Systemd Config** | ✓ | — | ✓ |
 | **Performance** | ✓ | — | ✓ |
 | **DSD bit-perfect** | ✓ | ✓ | ✓ |
-| **Sleep timer** | ✓ | — | ✓ |
+| **Sleep timer** | ✓ | ✓ | ✓ |
 
 ---
 

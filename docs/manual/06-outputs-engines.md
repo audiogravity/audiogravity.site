@@ -99,7 +99,8 @@ it can be reached from a phone too.
 
 ## HQPlayer
 
-If you run **HQPlayer** on your network, Audiogravi<sup>ty</sup> integrates with it three ways:
+HQPlayer — as the output, and its settings — comes with **Pro**. If you run **HQPlayer** on
+your network, Audiogravi<sup>ty</sup> integrates with it three ways:
 
 - **DSP remote** — change the interpolation **filter**, **noise shaper**, output
   **mode** and **volume** on your HQPlayer instance from the interface. It's
@@ -345,7 +346,7 @@ your licence first, as this cannot be undone.
 
 ## Roon
 
-Audiogravi<sup>ty</sup> works with a **Roon Bridge** endpoint and connects to your remote **Roon
+Roon comes with **Pro**. Audiogravi<sup>ty</sup> works with a **Roon Bridge** endpoint and connects to your remote **Roon
 Core** for metadata and transport — so a Roon zone can sit alongside your other
 outputs in the same interface.
 

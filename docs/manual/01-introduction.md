@@ -53,7 +53,7 @@ though everything remains open and inspectable if you want to.
 | Edition | Price | What you get |
 |---------|-------|--------------|
 | **Trial** | Free · 30 days | Everything, including all Pro features |
-| **Starter** | Free · forever | Running and setting up the box — see the table below |
+| **Starter** | Free · forever | Running the box and playing the music on it — see the table below |
 | **Pro** | €49 · lifetime, one machine | Everything, for good |
 
 Pro is a **lifetime licence** — no subscription, no renewal. You can start on the
@@ -67,22 +67,27 @@ What each edition opens — the trial opens everything:
 | **Services** — watch and control the audio services | ✓ | ✓ |
 | **Audio Software** — install, update and remove audio engines | ✓ | ✓ |
 | **System** — the hardware and the audio devices at a glance | ✓ | ✓ |
-| **Config** — each service's own settings, and the guided setup (administrators) | ✓ | ✓ |
+| **Config** — each service's own settings, and the guided setup (administrators); HQPlayer Embedded's and the NAA's come with Pro | ✓ | ✓ |
 | **Admin** — users and passkeys, announcements, updates, the licence | ✓ | ✓ |
 | **Push notifications** | ✓ | ✓ |
 | **Now playing** — the track, its cover and its format, in the mini-player | ✓ | ✓ |
 | **DSD at full volume** — the volume locked while a DSD track plays | ✓ | ✓ |
-| **Playback controls** — play, pause, skip, seek, volume, and the full-screen player with its sleep timer | — | ✓ |
-| **Library** — browse, search and queue your music, UPnP servers, Roon, Qobuz, Tidal and HIGHRESAUDIO; send it to a network renderer | — | ✓ |
-| **Internet radio** | — | ✓ |
-| **Outputs and HQPlayer** — switch outputs, change HQPlayer's filter and noise shaper | — | ✓ |
+| **Library** — browse, search and queue the music on the box | ✓ | ✓ |
+| **Internet radio** | ✓ | ✓ |
+| **Playback controls** — play, pause, skip, seek, volume, and the full-screen player with its sleep timer | ✓ | ✓ |
+| **Outputs** — the box's DAC, or a network renderer | ✓ | ✓ |
+| **Streaming** — Qobuz, Tidal and HIGHRESAUDIO | — | ✓ |
+| **UPnP media servers and Roon** — browse them, and control Roon's zones | — | ✓ |
+| **HQPlayer** — as the output, its filter and noise shaper, HQPlayer Embedded and the NAA | — | ✓ |
 | **Pipeline** — the live signal path, from the source to the DAC | — | ✓ |
 | **Systemd** — real-time priorities and CPU pinning for the audio services | — | ✓ |
 | **Performance** — CPU governors and the latency test | — | ✓ |
 
-On Starter, a Pro tab carries a small lock; tapping it takes you to the licence panel,
+On Starter, what Pro adds stays in view with a padlock and a light tint of the theme's
+colour — a tab, a Library source, a Config tile; tapping it takes you to the licence panel,
 with the *License activation* window open (see
-[7. Administration → Licence](07-administration.md#licence)).
+[7. Administration → Licence](07-administration.md#licence)). When the trial ends, streaming
+tracks still in the queue no longer play; the music on the box plays on.
 
 > **Note:** streaming from Qobuz, Tidal or HIGHRESAUDIO requires your own active
 > subscription to each service. Audiogravi<sup>ty</sup> does not provide access to them.

@@ -35,7 +35,8 @@ SITE = "https://audiogravity.app/"
 LOCAL_FILES = sorted({
     (name, path)
     for name, html in PAGES.items()
-    for path in (re.findall(r'\s(?:src|href)="/?(assets/[^"#?]+)"', html)
+    # A stylesheet or a script carries a stamp of its content (scripts/asset_versions.py).
+    for path in (re.findall(r'\s(?:src|href)="/?(assets/[^"#?]+)(?:\?v=[0-9a-f]+)?"', html)
                  + [u[len(SITE):] for u in re.findall(
                      r'<meta [^>]*content="(https://audiogravity\.app/assets/[^"]+)"', html)])
 })
@@ -82,6 +83,10 @@ def test_every_link_into_the_manual_lands_on_its_section(page, chapter, anchor):
 def test_the_pages_were_found_to_point_somewhere():
     """The collections above are empty if the markup changes shape; that must not pass."""
     assert len([f for f in LOCAL_FILES if f[0] == "index.html"]) > 10
+    # The stylesheet and the scripts are named with a stamp: read without it, they would drop
+    # out of the list above and nothing would check them any more.
+    for name, path in (("index.html", "assets/style.css"), ("index.html", "assets/main.js"), ("404.html", "assets/style.css")):
+        assert (name, path) in LOCAL_FILES, f"{name} no longer reads as loading {path}"
     assert [f for f in LOCAL_FILES if f[0] == "404.html"]
     assert len(MANUAL_LINKS) > 5
 
@@ -90,7 +95,7 @@ def test_the_theme_toggle_comes_from_the_script_shared_with_the_manual():
     """The light / dark toggle is assets/theme-toggle.js, loaded by the landing and by every
     page of the manual, so that one choice holds across the site. main.js held its own copy
     until 2026-10-15; two copies could drift apart, and the manual had none."""
-    assert 'src="assets/theme-toggle.js" defer' in PAGES["index.html"], "the landing no longer loads the toggle"
+    assert re.search(r'src="assets/theme-toggle\.js(\?v=[0-9a-f]+)?" defer', PAGES["index.html"]), "the landing no longer loads the toggle"
     assert 'id="themeToggle"' in PAGES["index.html"] and 'id="themeIcon"' in PAGES["index.html"]
     main = (ROOT / "assets" / "main.js").read_text(encoding="utf-8")
     assert "themeToggle" not in main and "ag-theme" not in main, "main.js restates the toggle"
@@ -104,7 +109,7 @@ def test_the_back_to_top_control_says_where_it_goes():
     itself is handled by the script, which scrolls up without writing ``#top`` into the address;
     the target still says where the link leads, to assistive technology and to a new tab.
     """
-    assert 'src="assets/to-top.js"' in PAGES["index.html"], "the landing no longer loads the button"
+    assert re.search(r'src="assets/to-top\.js(\?v=[0-9a-f]+)?"', PAGES["index.html"]), "the landing no longer loads the button"
     script = (ROOT / "assets" / "to-top.js").read_text(encoding="utf-8")
     assert re.search(r"""(\.href\s*=\s*|setAttribute\(\s*['"]href['"]\s*,\s*)['"]#top['"]""", script), "no #top target"
     label = re.search(r"""setAttribute\(\s*['"]aria-label['"]\s*,\s*['"]([^'"]*)['"]\s*\)""", script)

@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gen_manual_html import (  # noqa: E402
     MANUAL_DIR,
     REPO_DIR,
+    build,
     heading_ids,
     highlight_code,
     highlight_fence,
@@ -487,6 +488,20 @@ class TestThemeToggle:
         css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
         narrow = re.search(r"@media\(max-width:340px\)\s*\{\s*\.man-top\s*\{([^}]*)\}", css)
         assert narrow and re.search(r"gap:\s*12px", narrow.group(1))
+
+
+class TestAssetStamps:
+    """Every page the generator writes asks for its stylesheets and scripts with a stamp of
+    their content (scripts/asset_versions.py): Safari showed a new page with a stylesheet kept
+    from before the update (2026-10-15)."""
+
+    def test_every_page_built_asks_for_the_current_files(self):
+        from asset_versions import out_of_date
+        built = build()
+        assert len(built) > 10
+        for path, text in built.items():
+            assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == 5, path.name
+            assert out_of_date(text, MANUAL_DIR) == [], path.name
 
 
 class TestTrademarkNotice:

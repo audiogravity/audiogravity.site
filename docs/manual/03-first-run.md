@@ -184,8 +184,8 @@ is the app's map:
 - **Pipeline** — the live signal-path view (Pro; see
   [6. Outputs & engines](06-outputs-engines.md)).
 - **Admin** — users and access, announcements, updates and the licence.
-- **Library** (Pro) — browse, search, queue, sources and outputs: where you play
-  music. In the sidebar, a tap on it unfolds a row of icons — **Browse**, **Search**,
+- **Library** — browse, search, queue, sources and outputs: where you play
+  music (the streaming services, the media servers and Roon come with Pro). In the sidebar, a tap on it unfolds a row of icons — **Browse**, **Search**,
   **Queue**, **Sources** or **Radio** — and a tap on one opens that view; a second tap
   on Library folds them. Coming from another tab, the view you were on opens as you
   left it, an album or an artist still open. Across the top, a tap on Library opens the
@@ -195,10 +195,11 @@ is the app's map:
 
 <img src="images/ios-tab-menu.webp" alt="The tab menu on a phone: the app's tabs, and Library unfolded into its views — Browse, Search, Queue, Sources and Radio — the one shown marked" width="216">
 
-On a **Starter** licence the Pro tabs carry a small lock — tapping one takes you to the
-licence panel, with the *License activation* window open. **Config is not one of them**: editing a service's configuration
-file and the guided setup are available on every edition — configuring the
-machine is part of owning it. The sticky **Now Playing bar** sits above the
+On a **Starter** licence, what Pro adds carries a padlock — the Pipeline, Systemd and
+Performance tabs, Library's Pro sources — and tapping one takes you to the licence panel, with
+the *License activation* window open. **Config stays open**: editing a service's configuration
+file and the guided setup are available on every edition — configuring the machine is part of
+owning it; only HQPlayer Embedded's and the NAA's files come with Pro. The sticky **Now Playing bar** sits above the
 footer whatever the
 tab, and the **gear** in the top bar opens
 [Settings](07-administration.md#the-settings-panel).

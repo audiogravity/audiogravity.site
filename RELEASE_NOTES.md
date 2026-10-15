@@ -7,7 +7,25 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Editions
+
+**Starter now plays your music.** The free Starter edition plays the music stored on the box
+and the internet radio: browse and search your library, build the queue, choose the output —
+the box's DAC or a network speaker — and control playback from the mini-player or the
+full-screen player, sleep timer included. Pro adds the streaming services (Qobuz, Tidal,
+HIGHRESAUDIO), your UPnP media servers, Roon and HQPlayer, along with the Pipeline, systemd
+tuning and Performance.
+
+**What Pro adds stays in sight.** On a Starter box, every Pro feature is shown with a padlock
+and a light tint of the theme's colour — a tab, a Library source, a Config tile; a tap opens the
+licence panel.
+
+**At the end of the trial.** Streaming tracks still in the queue no longer play once the trial
+ends; the music on the box plays on. If HQPlayer Embedded runs on the box, stop it from Services
+to play on the box's DAC.
+
+**A licence for good is never held back by the clock.** A licence with no end date no longer
+depends on the box's clock, which a Raspberry Pi can start far off the right time.
 
 ---
 

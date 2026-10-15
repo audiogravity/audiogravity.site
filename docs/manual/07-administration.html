@@ -56,13 +56,15 @@
 <h1>7. Administration</h1>
 <p>Everything you need to run the box lives in the interface — no SSH required. Most of
 this section is available on <strong>Starter</strong>: Profiles, Services, Audio Software, System,
-Admin — and <strong>Config</strong>, the configuration editor and its guided setup. Four tabs are
-<strong>Pro</strong>: Systemd tuning, Performance tuning, the Audio Pipeline map and the Library.</p>
+Admin — and <strong>Config</strong>, the configuration editor and its guided setup. Three tabs are
+<strong>Pro</strong>: Systemd tuning, Performance tuning and the Audio Pipeline map; in Config, HQPlayer
+Embedded's and the NAA's files are Pro too.</p>
 <h2 id="the-admin-tab">The Admin tab</h2>
 <p>The <strong>Admin</strong> tab gathers everything about accounts and the box's relationship with
 Audiogravi<sup>ty</sup>: the <strong>user cards</strong> (below), unread
 <a href="#announcements">announcements</a>, the <a href="08-updating">update banner</a> — and the
-<strong>licence</strong> panel, where a Starter install lands when it taps a locked Pro tab.</p>
+<strong>licence</strong> panel, where a Starter install lands when it taps anything that carries the Pro
+padlock.</p>
 <p>At the bottom of the tab, the <strong>UI performance cockpit</strong> measures the app itself in
 your browser: the live updates it receives, its timers, the memory it uses (in Chrome, Edge
 and other Chromium browsers) and how long the page has been open. It is a diagnostic aid —
@@ -502,9 +504,9 @@ the top of the <strong>Admin</strong> page, and the Admin tab carries a small ma
 seen them (the same cue it uses for a <a href="08-updating">waiting update</a>). Dismissals
 are remembered per device.</p>
 <h2 id="licence">Licence</h2>
-<p>The licence panel opens from the <strong>Admin</strong> tab. On a <strong>Starter</strong> install, tapping a Pro
-tab — those carry a small lock icon in the tab bar — brings you here too, with the
-<em>License activation</em> window open over the panel.</p>
+<p>The licence panel opens from the <strong>Admin</strong> tab. On a <strong>Starter</strong> install, tapping anything
+Pro adds — it carries a padlock and a light tint: a tab, a Library source, a Config tile —
+brings you here too, with the <em>License activation</em> window open over the panel.</p>
 <ul>
 <li><strong>Trial</strong> — 30 days of full access, auto-activated on first run.</li>
 <li><strong>Buying</strong> — the licence panel lists the steps: <em>Pay with PayPal</em>, receive your
@@ -528,6 +530,9 @@ request (see
 <a href="09-troubleshooting#licence-not-recognised-after-a-reinstall-or-a-new-machine">9. Troubleshooting</a>).</li>
 </ul>
 <img loading="lazy" src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
+<p>When the trial ends without a licence, the badge reads <strong>Starter</strong> and the panel keeps the
+steps to buy one; the box carries on in the Starter Edition.</p>
+<img loading="lazy" src="images/ios-license-starter.webp" alt="The licence panel on a Starter box: the Starter badge, the trial-expired message, the Device ID with its copy button, and the purchase steps" width="360">
 <p>Once the licence is activated the same panel changes shape: the countdown gives way to
 the plan, the order the key came from, and the date it was activated.</p>
 <img loading="lazy" src="images/ios-license-active.webp" alt="The licence panel on an activated box: the Lifetime badge, the licence-server status, the Device ID and Order ID with their copy buttons, the activation date and the plan" width="360">

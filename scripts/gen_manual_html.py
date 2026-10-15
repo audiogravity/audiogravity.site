@@ -43,6 +43,8 @@ import re
 import sys
 from pathlib import Path
 
+from asset_versions import stamp as stamp_assets
+
 try:
     from markdown_it import MarkdownIt
 except ImportError:  # pragma: no cover - environment guard
@@ -729,7 +731,9 @@ def build() -> dict[Path, str]:
     # and the chapters link to.
     out[MANUAL_DIR / "index.html"] = page(
         "Contents", stamp_version(render(readme), read_version()), toc, "", "")
-    return out
+    # Each stylesheet and script is asked for with a stamp of its content, so a page never
+    # meets a file a browser kept from before an update (scripts/asset_versions.py).
+    return {path: stamp_assets(text, MANUAL_DIR) for path, text in out.items()}
 
 
 #: Where the trademark notice may appear in the Markdown: README.md only. It used to close all

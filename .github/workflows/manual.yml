@@ -19,6 +19,11 @@ on:
     paths:
       - 'docs/manual/*.md'
       - 'scripts/gen_manual_html.py'
+      # Each page asks for its stylesheets and scripts with a stamp of their content
+      # (scripts/asset_versions.py): a changed file means new stamps, so the pages are rewritten.
+      - 'assets/*.css'
+      - 'assets/*.js'
+      - 'scripts/asset_versions.py'
       - '.github/workflows/manual.yml'
   workflow_dispatch:
 
@@ -50,7 +55,7 @@ jobs:
       # only: scripts/ also holds the landing's guards, which the Landing workflow runs, and a
       # stylesheet regression must not hold the manual back.
       - name: Test the generator
-        run: python3 -m pytest scripts/test_gen_manual_html.py -q
+        run: python3 -m pytest scripts/test_gen_manual_html.py scripts/test_asset_versions.py -q
 
       - name: Render the manual
         run: python3 scripts/gen_manual_html.py

@@ -47,6 +47,10 @@ faded, so every bar stands out clearly from its background, in light and in dark
 **Light or dark, in the manual too.** Every page of the online manual now ends its top bar with
 the landing's light / dark button, and your choice holds across the whole site.
 
+**No more half-updated pages.** After an update of the site, a page could show with a stylesheet
+your browser kept from before, until a forced reload. Each page now always gets the files that
+go with it.
+
 ---
 
 ## 0.9.71 — 2026-10-13

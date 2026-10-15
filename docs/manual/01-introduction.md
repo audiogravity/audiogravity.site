@@ -36,11 +36,12 @@ though everything remains open and inspectable if you want to.
 
 ## What you can do with it
 
-- **Play everything from one place** — local files, Qobuz / Tidal / HIGHRESAUDIO,
-  internet radio, and your UPnP/DLNA media servers, with unified transport,
+- **Play everything from one place** — local files, internet radio and, with Pro,
+  Qobuz / Tidal / HIGHRESAUDIO and your UPnP/DLNA media servers, with unified transport,
   cover art and a live hi-fi readout (format, sample rate, bit depth, bitrate).
+  Your iPhone, iPad or Mac can stream to the box over AirPlay too.
 - **Send music where you want** — your local DAC, a network UPnP renderer
-  (Marantz, Linn, DLNA speakers), HQPlayer's DSP engine, or an AirPlay receiver.
+  (Marantz, Linn, DLNA speakers) or HQPlayer's DSP engine (Pro).
 - **Set up your audio stack in a few clicks** — a guided setup detects your DAC
   and music library and generates minimal, bit-perfect configurations for you.
 - **Tune for sound quality** — real-time kernel scheduling, per-core CPU pinning,
@@ -88,6 +89,8 @@ colour — a tab, a Library source, a Config tile; tapping it takes you to the l
 with the *License activation* window open (see
 [7. Administration → Licence](07-administration.md#licence)). When the trial ends, streaming
 tracks still in the queue no longer play; the music on the box plays on.
+
+<img src="images/ios-sources-starter.webp" alt="The Library's sources on a Starter box: the local library active; Roon, Qobuz, HIGHRESAUDIO and Tidal each behind a PRO padlock; the radio open" width="360">
 
 > **Note:** streaming from Qobuz, Tidal or HIGHRESAUDIO requires your own active
 > subscription to each service. Audiogravi<sup>ty</sup> does not provide access to them.

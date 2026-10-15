@@ -244,7 +244,8 @@ those stations play through HQPlayer like any other, converted as they arrive.
 HQPlayer can also run **on the box itself**. HQPlayer Embedded is the version of HQPlayer
 that Signalyst, its maker, publishes for a machine without a screen: you set it up from a
 web page, and the processing happens on the box, next to your DAC, with no computer to
-keep on. It needs a licence from Signalyst.
+keep on. It needs a licence from Signalyst. In Audiogravi<sup>ty</sup> it comes with **Pro** —
+as the output, and its settings — like HQPlayer on your network.
 
 > **Without a licence, it runs for 30 minutes at a time.** Signalyst lets you try HQPlayer
 > Embedded before buying one, and that trial stops 30 minutes after HQPlayer Embedded

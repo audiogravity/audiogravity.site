@@ -199,10 +199,12 @@ On a **Starter** licence, what Pro adds carries a padlock — the Pipeline, Syst
 Performance tabs, Library's Pro sources — and tapping one takes you to the licence panel, with
 the *License activation* window open. **Config stays open**: editing a service's configuration
 file and the guided setup are available on every edition — configuring the machine is part of
-owning it; only HQPlayer Embedded's and the NAA's files come with Pro. The sticky **Now Playing bar** sits above the
-footer whatever the
-tab, and the **gear** in the top bar opens
-[Settings](07-administration.md#the-settings-panel).
+owning it; only HQPlayer Embedded's and the NAA's files come with Pro.
+
+<img src="images/ios-tab-menu-starter.webp" alt="The tab menu on a Starter box: the Starter badge at the top, and a padlock on Systemd, Performance and Pipeline" width="216">
+
+The sticky **Now Playing bar** sits above the footer whatever the tab, and the **gear** in the
+top bar opens [Settings](07-administration.md#the-settings-panel).
 
 ## 7. Trust the box's certificate (once per device)
 

@@ -272,6 +272,13 @@ listen, tell us through [Getting help](#getting-help).
 
 ## Streaming fails or a track won't play
 
+- **Streaming tracks no longer play, while the music on the box does.** The box is on
+  the Starter Edition — the trial, or a time-limited licence, has ended — and the
+  streaming services come with Pro. Their tracks left in the queue are skipped: a queue
+  of streaming tracks only stops, and one that also holds music from the box plays that
+  music and says *Streaming services are part of the Pro edition*. Library → Sources
+  shows the three services with a padlock; they play again once a licence is activated
+  (see [7. Administration → Licence](07-administration.md#licence)).
 - Confirm the service is **Connected** in Library → Sources, and **read the line under
   the account name** — it states what the service will actually play, which is not the
   quality Audiogravi<sup>ty</sup> asks for (see

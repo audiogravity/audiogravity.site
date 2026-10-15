@@ -530,6 +530,11 @@ brings you here too, with the *License activation* window open over the panel.
 
 <img src="images/ios-license.webp" alt="The licence panel during the trial: days remaining, server status, the Device ID with its copy button, and the activation steps" width="360">
 
+When the trial ends without a licence, the badge reads **Starter** and the panel keeps the
+steps to buy one; the box carries on in the Starter Edition.
+
+<img src="images/ios-license-starter.webp" alt="The licence panel on a Starter box: the Starter badge, the trial-expired message, the Device ID with its copy button, and the purchase steps" width="360">
+
 Once the licence is activated the same panel changes shape: the countdown gives way to
 the plan, the order the key came from, and the date it was activated.
 

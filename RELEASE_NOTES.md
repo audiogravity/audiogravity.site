@@ -42,6 +42,11 @@ the audio pipeline diagram's buttons react to your finger like every other butto
 Performance and Services charts take a deeper shade of their colour, and older bars are less
 faded, so every bar stands out clearly from its background, in light and in dark.
 
+### On audiogravity.app
+
+**Light or dark, in the manual too.** Every page of the online manual now ends its top bar with
+the landing's light / dark button, and your choice holds across the whole site.
+
 ---
 
 ## 0.9.71 — 2026-10-13

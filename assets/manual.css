@@ -94,6 +94,22 @@ footer.man-foot,
     color: var(--text4)
 }
 
+/* The landing's light / dark toggle (style.css, assets/theme-toggle.js), at the end of the
+   bar. Below 1100px the landing moves its toggle clear of the "Public beta" ribbon fixed to
+   that corner; the manual has no ribbon, so its toggle keeps the bar's own edge. */
+.man-top .theme-toggle {
+    margin-left: auto;
+    margin-right: 0
+}
+
+/* With the toggle in the bar, "User manual" broke onto two lines below 327px (measured in
+   Chromium on 2026-10-15); a narrower gap keeps it on one at 320px. */
+@media(max-width:340px) {
+    .man-top {
+        gap: 12px
+    }
+}
+
 .man-shell {
     display: grid;
     grid-template-columns: 240px minmax(0, 1fr);

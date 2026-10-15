@@ -86,6 +86,16 @@ def test_the_pages_were_found_to_point_somewhere():
     assert len(MANUAL_LINKS) > 5
 
 
+def test_the_theme_toggle_comes_from_the_script_shared_with_the_manual():
+    """The light / dark toggle is assets/theme-toggle.js, loaded by the landing and by every
+    page of the manual, so that one choice holds across the site. main.js held its own copy
+    until 2026-10-15; two copies could drift apart, and the manual had none."""
+    assert 'src="assets/theme-toggle.js" defer' in PAGES["index.html"], "the landing no longer loads the toggle"
+    assert 'id="themeToggle"' in PAGES["index.html"] and 'id="themeIcon"' in PAGES["index.html"]
+    main = (ROOT / "assets" / "main.js").read_text(encoding="utf-8")
+    assert "themeToggle" not in main and "ag-theme" not in main, "main.js restates the toggle"
+
+
 def test_the_back_to_top_control_says_where_it_goes():
     """The corner control leads to the top of the page and names itself to a screen reader.
 

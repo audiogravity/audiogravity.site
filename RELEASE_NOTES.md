@@ -29,6 +29,12 @@ as it changes — start, stop, install or remove one, and its card follows withi
 
 ### Interface
 
+**One device can no longer freeze the app for the others.** A phone or a computer that stopped
+answering while it connected to the box — off the network at the wrong moment — could leave the
+app waiting on every other device until it closed its connection, and indefinitely if it never
+did. Each device now connects on its own, and one that stops answering is let go after half a
+minute. When a device refuses the box's certificate, the box's journal now says so.
+
 **Back where you were after signing in.** When a session ends, signing in again now takes you
 back to the page and tab you were on, instead of the first tab — and never to a tab your role
 cannot see.

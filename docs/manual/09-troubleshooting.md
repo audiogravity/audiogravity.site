@@ -415,8 +415,8 @@ no end to jump to.
 - **It is still playing.** A listen appears once it ends — when the next track starts,
   or shortly after you stop.
 - **It played for less than 30 seconds.** Shorter plays are not counted.
-- **Recording is off.** Check the **Keep a history of what plays** switch at the bottom
-  of **Library → Stats**.
+- **Recording is off.** **Library → Stats** then says so at the top: tap **Go to the
+  switch** and turn **Keep a history of what plays** back on.
 - **It played through Roon or HQPlayer.** Those are not counted.
 
 See [5. Library & streaming → Listening history](05-library-streaming.md#listening-history).

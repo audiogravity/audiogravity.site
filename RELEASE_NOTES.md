@@ -18,8 +18,8 @@ your latest listens. A track counts once it has played for 30 seconds, and a rad
 listen for as long as you stay on it. Roon and HQPlayer are not counted.
 
 The figures come with Pro. The box keeps the history on every edition, so on every edition you
-can switch it off or clear it, from the bottom of the same tab. It stays on the box: nothing of it
-is sent anywhere.
+can switch it off or clear it, from the bottom of the same tab; while it is off, the top of the tab
+says so. It stays on the box: nothing of it is sent anywhere.
 
 ---
 

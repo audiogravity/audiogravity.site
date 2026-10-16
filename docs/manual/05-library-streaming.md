@@ -387,7 +387,8 @@ The box keeps the history on every edition, and on every edition you can stop it
 bottom of **Stats**:
 
 - the **Keep a history of what plays** switch turns recording off — the listen in
-  progress is dropped too — and back on;
+  progress is dropped too — and back on. While it is off, a line at the top of **Stats**
+  says so; its **Go to the switch** button takes you to it;
 - **Clear history…** erases everything recorded, once you confirm. This cannot be
   undone.
 

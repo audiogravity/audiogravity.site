@@ -30,6 +30,17 @@ says the box carries on in Starter, and that a licence brings the Pro features b
 **A licence for good is never held back by the clock.** A licence with no end date no longer
 depends on the box's clock, which a Raspberry Pi can start far off the right time.
 
+### Library
+
+**Long lists come back whole.** The queue, the album list, an artist's tracks and search results
+stopped short once they grew past a certain size: a queue of 1,000 tracks showed 282 of them, a
+library of 3,000 albums 245. They now come back in full.
+
+**Large libraries are listed without holding up the player.** Building the album list of a
+large library kept the box's music player from answering anything else for several seconds, and
+from about 6,000 albums the list failed. The player now keeps answering while the list is built,
+and every album is listed.
+
 ---
 
 ## 0.9.72 — 2026-10-15

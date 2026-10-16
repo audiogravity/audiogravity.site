@@ -19,6 +19,10 @@ answer is usually on screen:
   makes bit-perfect playback possible), so only one player can hold it at a time.
   Stop the other one — often HQPlayer: turn its **Use as output** switch off and the
   card is released (see [6. Outputs & engines](06-outputs-engines.md)).
+- *"HQPlayer Embedded runs on this box and holds its DAC"* — the box is on the Starter
+  Edition, and HQPlayer comes with Pro: the HQPlayer Embedded running on the box keeps the
+  DAC to itself. Stop it from **Services** to play on the DAC, or activate a licence (see
+  [7. Administration → Licence](07-administration.md#licence)).
 - *"its network audio daemon (NAA) is not running"* — HQPlayer is your output but the
   piece that feeds your DAC is stopped. Start it in **Services**, or turn the switch
   off to play locally.

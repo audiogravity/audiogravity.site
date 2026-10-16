@@ -40,6 +40,8 @@ though everything remains open and inspectable if you want to.
   Qobuz / Tidal / HIGHRESAUDIO and your UPnP/DLNA media servers, with unified transport,
   cover art and a live hi-fi readout (format, sample rate, bit depth, bitrate).
   Your iPhone, iPad or Mac can stream to the box over AirPlay too.
+- **See what you listen to** — time listened, sources, sound quality and your most
+  played, kept on the box (Pro).
 - **Send music where you want** — your local DAC, a network UPnP renderer
   (Marantz, Linn, DLNA speakers) or HQPlayer's DSP engine (Pro).
 - **Set up your audio stack in a few clicks** — a guided setup detects your DAC
@@ -80,6 +82,7 @@ What each edition opens — the trial opens everything:
 | **Streaming** — Qobuz, Tidal and HIGHRESAUDIO | — | ✓ |
 | **UPnP media servers and Roon** — browse them, and control Roon's zones | — | ✓ |
 | **HQPlayer** — as the output, its filter and noise shaper, HQPlayer Embedded and the NAA | — | ✓ |
+| **Listening history** — what the box played: time, sources, sound quality, most played (on Starter, it can still be switched off and cleared) | — | ✓ |
 | **Pipeline** — the live signal path, from the source to the DAC | — | ✓ |
 | **Systemd** — real-time priorities and CPU pinning for the audio services | — | ✓ |
 | **Performance** — CPU governors and the latency test | — | ✓ |

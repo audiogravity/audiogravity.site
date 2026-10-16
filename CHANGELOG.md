@@ -9,7 +9,19 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core+ui] Library → Stats: what the box played.** A sixth tab in Library shows the time listened over the last 7 or 30 days, 12 months or the whole history — one bar per day or month, tap one to read it —, where it came from and went to, its sound quality (DSD, Hi-Res, CD quality, lossy), its genres, the most played artists, albums and tracks, and the latest listens. A listen counts from 30 seconds actually played, pauses left out; a station is one listen for as long as you stay on it, its genre taken from its tags. The box records on every edition, from what its player already announces — the player reads nothing more for it, with or without a screen open (measured: 8 reads in two minutes of playback, none following a screen); the figures come with Pro. Roon and HQPlayer are not counted. A listen whose source vanishes from the player for a moment, or that plays across a restart of the core, stays one listen. The history is one file on the box, readable by the core's account only, never sent anywhere; ten years of listens open in 40 ms, 12 months in 270 ms at most, on the ARM box (200,000 synthetic listens, measured on a 1.8 GHz board). New routes: `GET /listening/summary` (Pro), `GET`/`PUT /listening/settings` and `DELETE /listening/history` (every edition, refused to a guest account).
+- **[ui] Recording can be switched off and the history cleared on every edition.** At the bottom of Library → Stats, *Keep a history of what plays* and *Clear history…* (asked first) work on a Starter box too, where the figures stay behind the padlock.
+- **[ops] installer — the listening history is enabled on an existing box at its next update.**
+- **[manual] Library & streaming describes Stats**: the periods, the charts, what counts as a listen, switching the recording off and clearing it. The editions table, Troubleshooting (*A listen is missing from Stats*) and the backup list (`listening.db`) follow.
+- **[site] The landing has a Pro card for the listening history**, beside the self-update card, now half width.
+
+### Changed
+- **[ui] In the tab menu, a Library tab sent to a new line starts it at the left.** With six tabs, the sixth took the menu's whole width alone under the five others. The page's own Library bar is unchanged: it scrolls.
+- **[ui] A switch names what it turns on to screen readers, and a filter bar says which option is chosen.** The switch's checkbox had no name of its own; the filter buttons said their choice by colour only (`aria-pressed`).
+
 ### Fixed
+- **[core] Closing a subscription the event bus had dropped as too slow no longer raises.**
 - **[site] The landing says what Starter and Pro each bring.** The configuration card counted Roon among what Starter edits — Roon's settings come with Pro, as HQPlayer's do. The library card said the music on the box was only browsable on Starter: Starter browses, searches and queues it, and casts it to a renderer. The FAQ now says that listening to a streaming service, and connecting one, come with Pro, and the introduction to the features names what Pro adds: the streaming services, the media servers, Roon and HQPlayer.
 - **[manual] The manual says what comes with Pro wherever it sends you there.** Roon's settings come with Pro, alongside HQPlayer Embedded's and the NAA's (Introduction, First run, Administration, and the editions page). Troubleshooting marks the tools it suggests from the Systemd and Performance tabs as Pro, and Administration says the 30-day trial is the time to tune the box — the Systemd overrides, the disk and network counting among them, stay in force once it ends. The FAQ says connecting a streaming service comes with Pro, Listening describes the padlock a streaming track wears in the queue on Starter, and Outputs & engines marks the Pipeline tab as Pro where it first describes it.
 

@@ -410,6 +410,17 @@ Jumping inside a track is declined — and says so — in two cases, neither of 
 An internet radio station shows **Live** instead of a progress bar: a live broadcast has
 no end to jump to.
 
+## A listen is missing from Stats
+
+- **It is still playing.** A listen appears once it ends — when the next track starts,
+  or shortly after you stop.
+- **It played for less than 30 seconds.** Shorter plays are not counted.
+- **Recording is off.** Check the **Keep a history of what plays** switch at the bottom
+  of **Library → Stats**.
+- **It played through Roon or HQPlayer.** Those are not counted.
+
+See [5. Library & streaming → Listening history](05-library-streaming.md#listening-history).
+
 ## Casting to a renderer stalls
 
 - Check the renderer is reachable on the LAN and appears in the output selector.

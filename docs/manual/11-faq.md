@@ -19,7 +19,8 @@ fixed — report anything you hit.
 The Starter Edition activates automatically — no action required. You keep full
 access to all Starter features indefinitely, for free. Pro features are locked
 until you purchase a licence (see [7. Administration → Licence](07-administration.md#licence)).
-Streaming tracks left in your queue no longer play; the music on the box plays on. The
+Streaming tracks left in your queue no longer play, and the queue shows them with a
+padlock; the music on the box plays on. The
 table in [1. Introduction → Editions](01-introduction.md#editions) lists what each edition
 includes.
 

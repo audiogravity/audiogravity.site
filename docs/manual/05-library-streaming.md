@@ -54,7 +54,7 @@ A dedicated Roon browser navigates the Roon library hierarchy.
 ## Streaming services
 
 The streaming services come with **Pro** — once the trial is over, without a licence,
-their tracks left in the queue no longer play.
+their tracks left in the queue no longer play, and **Queue** shows them with a padlock.
 All three deliver audio at its native resolution. Each requires **your own active
 subscription** — Audiogravi<sup>ty</sup> provides no access itself.
 

@@ -21,9 +21,11 @@ and a light tint of the theme's colour — a tab, a Library source, a Config til
 licence panel.
 
 **At the end of the trial.** Streaming tracks still in the queue no longer play once the trial
-ends; the music on the box plays on. If HQPlayer Embedded runs on the box, stop it from Services
-to play on the box's DAC. The licence panel says the box carries on in Starter, and that a
-licence brings the Pro features back.
+ends; the music on the box plays on. The queue shows them in advance, with a padlock where their
+length was — on a network speaker's *Next* too — and when nothing else is left to play, Play says
+so instead of doing nothing. If HQPlayer Embedded runs on the box, the box says to stop it from
+Services to play on its DAC, at the Play button and on the Radio screen alike. The licence panel
+says the box carries on in Starter, and that a licence brings the Pro features back.
 
 **A licence for good is never held back by the clock.** A licence with no end date no longer
 depends on the box's clock, which a Raspberry Pi can start far off the right time.

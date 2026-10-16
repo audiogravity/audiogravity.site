@@ -17,6 +17,7 @@ and this landing) are documented here. Format based on
 - **[site] The landing has a Pro card for the listening history**, beside the self-update card, now half width.
 
 ### Changed
+- **[ui] Stats says when recording is off.** The switch sat at the bottom of the view, under the rankings: with it off, Stats simply stopped growing and nothing said why. A line at the top now says *Recording is off: nothing new is recorded*, with a button that takes you to the switch. Its words are in the text colour on the warning tint — the warning's own text colour read 4.35:1 there in Slate light; 12:1 to 19:1 now, measured in the six palettes.
 - **[ui] In the tab menu, a Library tab sent to a new line starts it at the left.** With six tabs, the sixth took the menu's whole width alone under the five others. The page's own Library bar is unchanged: it scrolls.
 - **[ui] A switch names what it turns on to screen readers, and a filter bar says which option is chosen.** The switch's checkbox had no name of its own; the filter buttons said their choice by colour only (`aria-pressed`).
 

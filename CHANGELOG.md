@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.73] - 2026-10-16
+
 ### Added
 - **[core+ui] On a Starter box, the queue shows which tracks will not play.** The streaming services' tracks left in the queue — Qobuz, Tidal, HIGHRESAUDIO, queued during the trial — wear the Pro tint and a padlock in place of their length, in Library → Queue (the track playing included) and on the full-screen player's *Next*, a network speaker's too; a tap on the padlock opens the licence panel, and the track can still be removed. The core marks each queued track from its address — a station saved with a streaming relay's address is marked as well: `pro` on `/library/queue`, on the player state's `queue_next` and on a renderer's status (`queue_next_pro`).
 - **[core+ui] Play says why when only streaming tracks are left in the queue.** On a Starter box, Play on such a queue did nothing and said nothing: the box's player skipped every track and stopped, a network speaker replayed a refused one. It is now refused with *Only streaming tracks are left in the queue…*, shown by the full-screen player; the box's queue is judged whole, a speaker's from the track it is on. A queue holding anything else plays as before, the streaming tracks skipped. Measured on MPD 0.24.5, and on a UPnP renderer (upmpdcli) driven by the box.

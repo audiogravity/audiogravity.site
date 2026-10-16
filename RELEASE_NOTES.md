@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.73 — 2026-10-16
+
 ### Editions
 
 **Starter now plays your music.** The free Starter edition plays the music stored on the box

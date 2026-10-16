@@ -42,8 +42,8 @@ action updates the box it runs on.
 ## Manual update
 
 You can always update by re-running the installer; your configuration is preserved —
-both `.env` and your files under `/etc/audiogravity` (the signal-chain map, and your saved
-radio stations). A **fresh** install seeds those files with sensible defaults; an
+both `.env` and your files under `/etc/audiogravity` (the signal-chain map, your saved
+radio stations, and your listening history). A **fresh** install seeds those files with sensible defaults; an
 **upgrade never overwrites them**, so your edits survive. The services and profiles are
 the exception: they come with each version, and the installer puts them back every time
 it runs (see [7. Administration](07-administration.md#audio-configuration-services--profiles)):
@@ -66,6 +66,7 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:
 | What | Where |
 |------|-------|
 | Audio setup — hi-fi chain map, saved radio stations | `/etc/audiogravity/` (`audio-topology.json`, `radio.json`) |
+| Your **listening history** | `/etc/audiogravity/listening.db` |
 | Your **licence** and its public key — valid on this installation only (see below) | `/etc/audiogravity/audiogravity.lic`, `license.pub` |
 | **Accounts** — users, roles, password hashes, passkeys | `/opt/audiogravity/core/users.json` |
 | Core **runtime config** — API key, security secrets, enabled modules | `/opt/audiogravity/core/.env` |

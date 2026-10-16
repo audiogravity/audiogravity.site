@@ -85,8 +85,8 @@ run on <strong>different hosts</strong>, update each side separately (see below)
 action updates the box it runs on.</p>
 <h2 id="manual-update">Manual update</h2>
 <p>You can always update by re-running the installer; your configuration is preserved —
-both <code>.env</code> and your files under <code>/etc/audiogravity</code> (the signal-chain map, and your saved
-radio stations). A <strong>fresh</strong> install seeds those files with sensible defaults; an
+both <code>.env</code> and your files under <code>/etc/audiogravity</code> (the signal-chain map, your saved
+radio stations, and your listening history). A <strong>fresh</strong> install seeds those files with sensible defaults; an
 <strong>upgrade never overwrites them</strong>, so your edits survive. The services and profiles are
 the exception: they come with each version, and the installer puts them back every time
 it runs (see <a href="07-administration#audio-configuration-services--profiles">7. Administration</a>):</p>
@@ -110,6 +110,10 @@ an OS reinstall (or on a schedule) and you can rebuild the box in minutes:</p>
 <tr>
 <td>Audio setup — hi-fi chain map, saved radio stations</td>
 <td><code>/etc/audiogravity/</code> (<code>audio-topology.json</code>, <code>radio.json</code>)</td>
+</tr>
+<tr>
+<td>Your <strong>listening history</strong></td>
+<td><code>/etc/audiogravity/listening.db</code></td>
 </tr>
 <tr>
 <td>Your <strong>licence</strong> and its public key — valid on this installation only (see below)</td>

@@ -50,6 +50,7 @@ Everything in Starter, plus:
 - **UPnP media servers** — MinimServer and the other servers of your network, browsed and searched like the box's own library
 - **Roon** — your Roon library, its zones and their transport controls
 - **HQPlayer** — HQPlayer as the output, and its DSP remote: filter, noise shaper, output mode and volume from the couch, with automatic network discovery; HQPlayer Embedded's and the NAA's output and settings
+- **Listening history** — what the box played: time listened per day or month, sources, outputs, sound quality, genres, and the most played artists, albums and tracks; kept on the box, recorded on every edition and switched off or cleared from any of them
 - **Audio Pipeline** — interactive DAG visualisation of the full signal chain from source to DAC: full-resolution badge on the link to the DAC, format per link, real-time output steering without stopping playback
 - **Systemd Configuration** — fine-tune audio service drop-ins: CPU affinity, SCHED_FIFO / RR priority, MEMLOCK and RTPRIO — eliminates scheduling jitter for bit-perfect, glitch-free playback
 - **Performance Optimization** — per-core CPU governor control, real-time thermal throttle detection, µs-scale latency benchmarks (cyclictest) and live RT process monitor
@@ -82,6 +83,7 @@ Everything in Starter, plus:
 | **UPnP media servers** | ✓ | — | ✓ |
 | **Roon** | ✓ | — | ✓ |
 | **HQPlayer** | ✓ | — | ✓ |
+| **Listening history** | ✓ | — | ✓ |
 | **Audio Pipeline** | ✓ | — | ✓ |
 | **Audio Services Config** | ✓ | ✓ | ✓ |
 | **Guided provisioning** | ✓ | ✓ | ✓ |

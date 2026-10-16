@@ -7,7 +7,19 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Library
+
+**Your listening, in figures.** A new **Stats** tab in Library shows what the box has played:
+how long you listened over the last week, month or year, or since the very first track, day by
+day or month by month; where it came from — your library, a streaming service, the radio,
+AirPlay or a media server — and which output it went to; how much of it was DSD, Hi-Res, CD
+quality or lossy; the genres you came back to; your most played artists, albums and tracks; and
+your latest listens. A track counts once it has played for 30 seconds, and a radio station is one
+listen for as long as you stay on it. Roon and HQPlayer are not counted.
+
+The figures come with Pro. The box keeps the history on every edition, so on every edition you
+can switch it off or clear it, from the bottom of the same tab. It stays on the box: nothing of it
+is sent anywhere.
 
 ---
 

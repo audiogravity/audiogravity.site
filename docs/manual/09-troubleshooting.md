@@ -194,8 +194,8 @@ describe. See
 - Open **Services** → click the service name for its detail modal (live metrics and its
   recent actions), then **restart** it.
 - If a **Systemd** tuning override made it unstable, use **Restore Backup** (its previous
-  settings) or **Remove Override** (its original settings) on the Systemd tab — a running
-  service is restarted on them.
+  settings) or **Remove Override** (its original settings) on the Systemd tab (Pro) — a
+  running service is restarted on them.
 - For deeper output, use the browser **Terminal** (System tab, admin) — e.g.
   `systemctl status mpd` / `journalctl -u mpd -e`.
 
@@ -206,7 +206,8 @@ Its **DISK** or **NET** figure shows a dash and draws no graph, while CPU moves.
 Those two are counted per service, and the counting is off until you ask for it. Open the
 **Systemd** tab, pick the service, and enable **IO Accounting** and **IP Accounting** in
 its override editor. The figures appear within seconds — no reboot, and no effect on
-playback.
+playback. The Systemd tab comes with Pro: switched on during the trial, the counting stays on
+once it ends.
 
 A dash is not a zero: a service that genuinely reads nothing from disk shows `0`, not a
 dash.
@@ -413,7 +414,7 @@ no end to jump to.
 
 - Check the renderer is reachable on the LAN and appears in the output selector.
 - Network renderers depend on your local network — run the
-  [Network test](07-administration.md#network-test) (Performance tab) to check
+  [Network test](07-administration.md#network-test) (Performance tab, Pro) to check
   jitter/loss.
 
 <img src="images/ios-network-test.webp" alt="The network stability test after a ping run: an EXCELLENT verdict with min, average, max latency, jitter and packet loss" width="360">
@@ -442,6 +443,8 @@ AirPlay is announced over **mDNS/Bonjour** (UDP 5353 multicast):
   "client/guest isolation" on the Wi-Fi network) also hide AirPlay devices.
 
 ## Audio glitches / dropouts
+
+These checks use the Performance and Systemd tabs, which come with Pro — the trial opens them.
 
 - Watch for a **THROTTLED** badge on a CPU core (Performance tab) — sustained
   throttling causes glitches. Improve cooling or ease the CPU governor; on a Raspberry

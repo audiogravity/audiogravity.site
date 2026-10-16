@@ -241,8 +241,8 @@ describe. See
 <li>Open <strong>Services</strong> → click the service name for its detail modal (live metrics and its
 recent actions), then <strong>restart</strong> it.</li>
 <li>If a <strong>Systemd</strong> tuning override made it unstable, use <strong>Restore Backup</strong> (its previous
-settings) or <strong>Remove Override</strong> (its original settings) on the Systemd tab — a running
-service is restarted on them.</li>
+settings) or <strong>Remove Override</strong> (its original settings) on the Systemd tab (Pro) — a
+running service is restarted on them.</li>
 <li>For deeper output, use the browser <strong>Terminal</strong> (System tab, admin) — e.g.
 <code>systemctl status mpd</code> / <code>journalctl -u mpd -e</code>.</li>
 </ul>
@@ -251,7 +251,8 @@ service is restarted on them.</li>
 <p>Those two are counted per service, and the counting is off until you ask for it. Open the
 <strong>Systemd</strong> tab, pick the service, and enable <strong>IO Accounting</strong> and <strong>IP Accounting</strong> in
 its override editor. The figures appear within seconds — no reboot, and no effect on
-playback.</p>
+playback. The Systemd tab comes with Pro: switched on during the trial, the counting stays on
+once it ends.</p>
 <p>A dash is not a zero: a service that genuinely reads nothing from disk shows <code>0</code>, not a
 dash.</p>
 <h2 id="memory-shows-a-dash-for-every-service">Memory shows a dash for every service</h2>
@@ -429,7 +430,7 @@ no end to jump to.</p>
 <ul>
 <li>Check the renderer is reachable on the LAN and appears in the output selector.</li>
 <li>Network renderers depend on your local network — run the
-<a href="07-administration#network-test">Network test</a> (Performance tab) to check
+<a href="07-administration#network-test">Network test</a> (Performance tab, Pro) to check
 jitter/loss.</li>
 </ul>
 <img loading="lazy" src="images/ios-network-test.webp" alt="The network stability test after a ping run: an EXCELLENT verdict with min, average, max latency, jitter and packet loss" width="360">
@@ -455,6 +456,7 @@ VLANs without an mDNS repeater on the router.</li>
 &quot;client/guest isolation&quot; on the Wi-Fi network) also hide AirPlay devices.</li>
 </ul>
 <h2 id="audio-glitches--dropouts">Audio glitches / dropouts</h2>
+<p>These checks use the Performance and Systemd tabs, which come with Pro — the trial opens them.</p>
 <ul>
 <li>Watch for a <strong>THROTTLED</strong> badge on a CPU core (Performance tab) — sustained
 throttling causes glitches. Improve cooling or ease the CPU governor; on a Raspberry

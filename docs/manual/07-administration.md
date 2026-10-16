@@ -4,7 +4,8 @@ Everything you need to run the box lives in the interface — no SSH required. M
 this section is available on **Starter**: Profiles, Services, Audio Software, System,
 Admin — and **Config**, the configuration editor and its guided setup. Three tabs are
 **Pro**: Systemd tuning, Performance tuning and the Audio Pipeline map; in Config, HQPlayer
-Embedded's and the NAA's files are Pro too.
+Embedded's, the NAA's and Roon's files are Pro too. The 30-day trial opens them all: it is the
+time to tune the box, and the Systemd overrides you save stay in force once it ends.
 
 ## The Admin tab
 
@@ -116,7 +117,8 @@ Monitor and control individual systemd services in real time.
 >
 > - **Disk** and **Network** are counted per service, and only when **IO Accounting** and
 >   **IP Accounting** are enabled on that service — two switches in the **Systemd** tab's
->   override editor. They take effect at once, without a reboot.
+>   override editor (Pro). They take effect at once, without a reboot, and stay on once the
+>   trial ends.
 > - **Memory** depends on the machine: a Raspberry Pi kernel starts with its memory counter
 >   switched off, and no setting in the app can change that. See
 >   [9. Troubleshooting → Memory shows a dash for every service](09-troubleshooting.md#memory-shows-a-dash-for-every-service).

@@ -87,6 +87,9 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   gesture used across the app's lists. **Clear** empties the queue, and respects the
   active filter. A Roon queue is changed from the Roon app: here it has no **Remove**
   button or swipe, and **Clear** is greyed out.
+- On **Starter**, a streaming service's track carries a padlock in place of its length:
+  it will be skipped, since the streaming services come with Pro. A tap on the padlock
+  opens the licence panel, and the track can still be removed.
 
 <img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
 

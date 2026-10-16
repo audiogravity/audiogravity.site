@@ -68,7 +68,7 @@ What each edition opens — the trial opens everything:
 | **Services** — watch and control the audio services | ✓ | ✓ |
 | **Audio Software** — install, update and remove audio engines | ✓ | ✓ |
 | **System** — the hardware and the audio devices at a glance | ✓ | ✓ |
-| **Config** — each service's own settings, and the guided setup (administrators); HQPlayer Embedded's and the NAA's come with Pro | ✓ | ✓ |
+| **Config** — each service's own settings, and the guided setup (administrators); HQPlayer Embedded's, the NAA's and Roon's come with Pro | ✓ | ✓ |
 | **Admin** — users and passkeys, announcements, updates, the licence | ✓ | ✓ |
 | **Push notifications** | ✓ | ✓ |
 | **Now playing** — the track, its cover and its format, in the mini-player | ✓ | ✓ |

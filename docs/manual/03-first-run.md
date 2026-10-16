@@ -199,7 +199,7 @@ On a **Starter** licence, what Pro adds carries a padlock — the Pipeline, Syst
 Performance tabs, Library's Pro sources — and tapping one takes you to the licence panel, with
 the *License activation* window open. **Config stays open**: editing a service's configuration
 file and the guided setup are available on every edition — configuring the machine is part of
-owning it; only HQPlayer Embedded's and the NAA's files come with Pro.
+owning it; only HQPlayer Embedded's, the NAA's and Roon's files come with Pro.
 
 <img src="images/ios-tab-menu-starter.webp" alt="The tab menu on a Starter box: the Starter badge at the top, and a padlock on Systemd, Performance and Pipeline" width="216">
 

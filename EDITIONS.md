@@ -24,7 +24,7 @@ system and play the music stored on it:
 - **System** — hardware dashboard: CPU, temperature, memory, disk and network at a glance; full audio device inventory (ALSA cards, USB interfaces, subdevices)
 - **Users** — role-based access management (Admin, User, Guest) with WebAuthn / passkeys login
 - **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, a software update is available or a profile is activated
-- **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups (HQPlayer Embedded's and the NAA's come with Pro)
+- **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups (HQPlayer Embedded's, the NAA's and Roon's come with Pro)
 - **Guided provisioning** — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)
 - **DSD bit-perfect protection** — automatic ALSA hardware volume lock during DSD playback
 - **Library** — the music stored on the box: album browsing, full-text search and queue management

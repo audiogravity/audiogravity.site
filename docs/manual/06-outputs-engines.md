@@ -74,7 +74,7 @@ server's own audio path.
 
 ## The signal path, and the chain you describe
 
-The **Pipeline** tab draws the route your music takes, device by device: the box, the
+The **Pipeline** tab (Pro) draws the route your music takes, device by device: the box, the
 converter, the amplifier, the speakers, and the cables between them. Audiogravi<sup>ty</sup>
 detects everything that happens **inside** the box on its own — the services, the formats,
 the outputs your hardware exposes. What it cannot detect is what sits *after* the box: no

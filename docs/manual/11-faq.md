@@ -39,7 +39,8 @@ the tuning. See
 Only if you want to use those services, and everything else works without any
 third-party subscription.
 
-To **listen** to them in full, yes: each needs its own active subscription. Browsing is
+To **listen** to them in full, yes: each needs its own active subscription, and the streaming
+services come with Pro. Browsing is
 another matter — Qobuz and Tidal let a lapsed account sign in and browse the whole
 catalogue, and play thirty seconds of each track; HIGHRESAUDIO refuses the catalogue but
 still plays what you bought from it. The sources card names the state in each case, so
@@ -79,7 +80,7 @@ push notifications. Note: on iOS, only Safari supports PWA installation. See
 
 ## How do I connect Qobuz, Tidal or HIGHRESAUDIO?
 
-All three connect from **Library → Sources**: open the service's card and tap
+With Pro, all three connect from **Library → Sources**: open the service's card and tap
 **Connect**. **Qobuz** signs in and redirects back automatically. **Tidal** lands
 on a fixed URL that a web app can't intercept — copy that full URL from the
 address bar, paste it back into the Tidal card and tap **Finish login**, once.

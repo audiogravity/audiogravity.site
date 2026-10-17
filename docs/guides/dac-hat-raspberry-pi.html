@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it — Audiogravity</title>
+    <meta name="description" content="Why a HiFiBerry or other DAC board on a Raspberry Pi is not detected, the config.txt line for each common board, and how to check it is seen.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/dac-hat-raspberry-pi">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">Guides</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item active" href="dac-hat-raspberry-pi" aria-current="page"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</h1>
+<p><strong>Short answer:</strong> a DAC board stacked on the Pi's pins (HiFiBerry, Raspberry Pi DAC+, Allo…) is
+not found on its own the way a USB DAC is. Linux creates its sound card once the Pi's boot
+configuration names the board's <em>overlay</em>: one line in <code>/boot/firmware/config.txt</code>, then a reboot.
+Some boards carry a memory chip that names it for you; many audio boards do not, or name one that
+no longer works.</p>
+<p>Checked on 2026-10-17 against Raspberry Pi's and HiFiBerry's documentation, and on my own
+Raspberry Pi 4 with a HiFiBerry DAC+ Pro under Raspberry Pi OS (Debian 13).</p>
+<h2 id="why-it-is-not-automatic">Why it is not automatic</h2>
+<p>At boot, the Pi's firmware looks for a memory chip on the board (an EEPROM) and loads the overlay
+it names, &quot;without any user intervention&quot;, in Raspberry Pi's words. That works when the chip is
+there and up to date. With audio boards, it often is not:</p>
+<ul>
+<li><strong>No chip.</strong> A board may have none: it can then not be called a HAT, but it works once declared.</li>
+<li><strong>An outdated chip.</strong> HiFiBerry: on some of its cards, such as the DAC+ Pro, the configuration
+stored on the board &quot;might not load correctly&quot; with today's systems. Declare the board, and add
+<code>force_eeprom_read=0</code> so the firmware stops reading the chip.</li>
+<li><strong>Two versions of one board.</strong> Raspberry Pi's own audio boards exist in green (Raspberry Pi) and
+black (IQaudIO): &quot;electrically equivalent, but have different EEPROM contents&quot;.</li>
+</ul>
+<p>My own Pi shows the result: the firmware reports no HAT at all (<code>/proc/device-tree/hat</code> is
+absent), and the DAC+ Pro works because of one line in <code>config.txt</code>.</p>
+<h2 id="the-line-for-your-board">The line for your board</h2>
+<p>On Raspberry Pi OS, the file is <code>/boot/firmware/config.txt</code>. On older images it was
+<code>/boot/config.txt</code>, which now holds only a note saying the file has moved. Put the lines at the top
+of the file, before any line in brackets such as <code>[pi4]</code>: what follows such a line applies to that
+model only.</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Board</th>
+<th>Line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HiFiBerry DAC+ Pro, DAC2 Pro</td>
+<td><code>dtoverlay=hifiberry-dacplus-pro</code></td>
+</tr>
+<tr>
+<td>HiFiBerry DAC+ Standard, Amp2, Amp4</td>
+<td><code>dtoverlay=hifiberry-dacplus-std</code></td>
+</tr>
+<tr>
+<td>HiFiBerry DAC2 HD</td>
+<td><code>dtoverlay=hifiberry-dacplushd</code></td>
+</tr>
+<tr>
+<td>HiFiBerry DAC+ Light, DAC Zero, MiniAmp</td>
+<td><code>dtoverlay=hifiberry-dac</code></td>
+</tr>
+<tr>
+<td>HiFiBerry Digi+, Digi2 Standard</td>
+<td><code>dtoverlay=hifiberry-digi</code></td>
+</tr>
+<tr>
+<td>HiFiBerry Digi+ Pro, Digi2 Pro</td>
+<td><code>dtoverlay=hifiberry-digi-pro</code></td>
+</tr>
+<tr>
+<td>HiFiBerry DAC8x (Raspberry Pi 5 only)</td>
+<td><code>dtoverlay=hifiberry-dac8x</code></td>
+</tr>
+<tr>
+<td>Raspberry Pi DAC+, DAC Pro, DigiAMP+, Codec Zero (green boards)</td>
+<td><code>dtoverlay=rpi-dacplus</code>, <code>rpi-dacpro</code>, <code>rpi-digiampplus</code>, <code>rpi-codeczero</code></td>
+</tr>
+<tr>
+<td>IQaudIO DAC+ (black board)</td>
+<td><code>dtoverlay=iqaudio-dacplus</code></td>
+</tr>
+<tr>
+<td>Allo Boss</td>
+<td><code>dtoverlay=allo-boss-dac-pcm512x-audio</code></td>
+</tr>
+<tr>
+<td>Allo DigiOne</td>
+<td><code>dtoverlay=allo-digione</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Check the name against your board maker's own documentation. The Pi holds the full catalogue, with
+a description of each overlay, in <code>/boot/firmware/overlays/README</code>.</p>
+<ul>
+<li><strong>Pro and Standard are not interchangeable.</strong> A HiFiBerry &quot;Pro&quot; board has its own clocks; its
+<code>-pro</code> line uses them. The Standard line on a Pro board still plays, but with the Pi driving the
+clock. The two names date from Linux 6.1.77; before that, both boards used <code>hifiberry-dacplus</code>.</li>
+<li><strong>Nothing else to switch on.</strong> The overlay does all of it: no <code>dtparam=i2s=on</code> or
+<code>dtparam=i2c_arm=on</code> needed, as the Raspberry Pi kernel's maintainer put it.</li>
+</ul>
+<h2 id="turn-the-pis-own-audio-off">Turn the Pi's own audio off</h2>
+<p>With the Pi's own outputs still on, your DAC is one sound card among several. My Pi 4 has these two
+lines beside the DAC's:</p>
+<pre data-copy="no"><code class="language-text">dtparam=audio=off
+dtoverlay=vc4-kms-v3d,noaudio
+</code></pre>
+<p>The first turns off the Pi's headphone jack and its basic HDMI audio; the second, the HDMI audio of
+its display driver. The Raspberry Pi 5 has no headphone jack: there, <code>noaudio</code> is what keeps HDMI
+from appearing as a sound card.</p>
+<p>Changes take effect after a reboot.</p>
+<h2 id="check-it">Check it</h2>
+<pre><code class="language-bash"><span class="hl-cmd">aplay</span> <span class="hl-opt">-l</span>
+</code></pre>
+<p>The board should appear under its own name. On my Pi:</p>
+<pre data-copy="no"><code class="language-text">card 0: sndrpihifiberry [snd_rpi_hifiberry_dacplus], device 0: HiFiBerry DAC+ Pro HiFi pcm512x-hifi-0 [HiFiBerry DAC+ Pro HiFi pcm512x-hifi-0]
+</code></pre>
+<p>If it does not, check that the board is fully seated on the pins, then try <code>force_eeprom_read=0</code>.
+To list sound cards, your account must belong to the <code>audio</code> group.</p>
+<h2 id="debian-13-without-raspberry-pi-os">Debian 13 without Raspberry Pi OS</h2>
+<p>Everything above is for Raspberry Pi OS. Debian's own image for the Raspberry Pi works
+differently: <code>config.txt</code> is rewritten at every kernel or firmware update (&quot;Do not modify this
+file!&quot;), lasting additions go in <code>/etc/default/raspi-firmware-custom</code>, and Debian ships only a
+couple of overlays, <code>hifiberry-dac</code> among them. For most DAC boards, Raspberry Pi OS is the simpler
+base.</p>
+<h2 id="dsd-on-a-dac-hat">DSD on a DAC HAT</h2>
+<p>The Pi's I2S connection, the one these boards use, carries PCM only: up to 384 kHz in 16, 24 or 32
+bits, in the drivers of the Pi 4 and the Pi 5 alike. Native DSD does not pass. A board whose chip
+decodes DoP can still play DSD wrapped in PCM; the others, such as the PCM5122 of the HiFiBerry
+DAC+ Pro, play PCM only.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Audiogravi<sup>ty</sup> lists the sound cards Linux exposes, so a DAC board appears once it is
+declared. Then, in <strong>Config → Guided</strong>, choose it as the output: that writes it into each audio
+service's configuration. Audiogravi<sup>ty</sup> does not edit <code>config.txt</code> for you; the manual
+walks through it, with a backup first and what to do if the Pi does not come back:
+<a href="../manual/09-troubleshooting#my-dac-is-not-in-the-output-list-raspberry-pi-hat">Troubleshooting → My DAC is not in the output list</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Raspberry Pi documentation (GitHub copy, read on 2026-10-17): <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/config_txt/what_is_config_txt.adoc">config.txt location</a>, <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/configuration/reference.adoc">device trees and HATs</a>, <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/accessories/audio/configuration.adoc">audio boards</a>, <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/config_txt/audio.adoc">HDMI audio</a>.</li>
+<li>The overlays: <a href="https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/README">overlays README</a>, Raspberry Pi kernel. Phil Elwell on <code>i2s</code> and <code>i2c_arm</code>: <a href="https://github.com/raspberrypi/linux/issues/5843">raspberrypi/linux #5843</a>, January 2024.</li>
+<li>HiFiBerry: <a href="https://www.hifiberry.com/docs/software/configuring-linux-3-18-x/">configuration</a> (February 2025), <a href="https://www.hifiberry.com/blog/changes-in-hifiberry-drivers/">changes in HiFiBerry drivers</a> (March 2024).</li>
+<li>Debian's own image: the <code>raspi-firmware</code> package, <a href="https://deb.debian.org/debian/pool/non-free-firmware/r/raspi-firmware/">Debian archive</a>.</li>
+<li>The Pi's I2S drivers: <a href="https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/bcm/bcm2835-i2s.c">bcm2835-i2s.c</a> (Pi 4 and earlier), <a href="https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/dwc/dwc-i2s.c">dwc-i2s.c</a> (Pi 5).</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

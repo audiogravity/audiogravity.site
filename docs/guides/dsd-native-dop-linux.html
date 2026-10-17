@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>DSD on a Linux streamer: native, DoP, or converted to PCM — Audiogravity</title>
+    <meta name="description" content="The three ways DSD reaches a DAC on Linux — native, DoP, converted to PCM — what decides between them, how to check yours, and what Audiogravity does.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/dsd-native-dop-linux">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">Guides</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item active" href="dsd-native-dop-linux" aria-current="page"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>DSD on a Linux streamer: native, DoP, or converted to PCM</h1>
+<p><strong>Short answer:</strong> DSD reaches a DAC in one of three ways. <em>Native</em>, as DSD itself. <em>DoP</em>, DSD
+wrapped in PCM words that the DAC unwraps. Or <em>converted to PCM</em>, which any DAC plays but which is
+no longer DSD. Native needs a USB DAC whose Linux driver exposes DSD. DoP needs a DAC that decodes
+it: one that does not receives PCM full of markers. And a DAC board on the Raspberry Pi's pins
+cannot take native DSD at all.</p>
+<h2 id="the-three-ways-as-the-dac-sees-them">The three ways, as the DAC sees them</h2>
+<p>Measured on my test box (2026-10-17) with a DSD128 file and a USB DAC that accepts native DSD:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Sent as</th>
+<th>What the DAC receives (<code>hw_params</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native DSD</td>
+<td><code>format: DSD_U32_BE</code>, <code>rate: 176400</code></td>
+</tr>
+<tr>
+<td>DoP</td>
+<td><code>format: S32_LE</code>, <code>rate: 352800</code></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Native</strong> carries 32 bits of DSD per sample, so DSD128 needs 176.4 kHz and DSD256 352.8 kHz.</li>
+<li><strong>DoP</strong> carries 16 bits of DSD in each 24-bit word, the other 8 being the marker. So it needs
+twice the rate: 176.4 kHz for DSD64 and 352.8 kHz for DSD128 (the DoP standard), and 705.6 kHz
+for DSD256. On a card that stops at 384 kHz, like mine, DSD256 fits natively (352.8 kHz) but not
+as DoP (705.6 kHz).</li>
+<li><strong>Converted to PCM</strong> works with any DAC, at the cost of what DSD was chosen for.</li>
+</ul>
+<h2 id="what-decides-it-on-linux">What decides it on Linux</h2>
+<p><strong>A USB DAC.</strong> The USB audio standard has no flag for &quot;this device accepts DSD&quot;, so Linux keeps a
+list of the DACs known to, plus a generic detection that catches many others. The list grows with
+each kernel version: a recent DAC may need a newer kernel for native DSD. What your DAC accepts
+is one command away, with the DAC free and its card number in place of <code>0</code>:</p>
+<pre><code class="language-bash"><span class="hl-cmd">aplay</span> <span class="hl-opt">-D</span> hw:0,0 <span class="hl-opt">--dump-hw-params</span> <span class="hl-opt">-d</span> 1 <span class="hl-opt">-f</span> S32_LE <span class="hl-opt">-r</span> 44100 <span class="hl-opt">-c</span> 2 /dev/zero
+</code></pre>
+<p>It plays one second of silence and lists what the card takes. Mine says
+<code>FORMAT: S32_LE SPECIAL DSD_U32_BE</code> and <code>RATE: [44100 384000]</code>: native DSD, PCM up to 384 kHz.
+A <code>DSD_…</code> format in that list means native DSD is possible.</p>
+<p><strong>A DAC board on the Pi's pins.</strong> The Pi's I2S drivers, on the Pi 4 and the Pi 5 alike, offer PCM
+only: 16, 24 or 32 bits, up to 384 kHz. Native DSD cannot pass. DoP can, if the board's chip
+decodes it, up to DSD128: 352.8 kHz fits under 384 kHz, the 705.6 kHz of DSD256 does not. Boards
+built on a chip that does not decode DSD, such as the PCM5122 of the HiFiBerry DAC+ Pro, play
+DSD only once converted to PCM.</p>
+<p><strong>MPD</strong>, which many Linux streamers play through, decides in this order: native when the card
+accepts it, DoP only if its <code>dop</code> option says <code>yes</code> (it has no way of knowing whether the DAC
+decodes DoP), and otherwise a conversion to PCM. One trap: <code>dsd_usb</code> is the name <code>dop</code> had until
+MPD 0.18, and MPD still reads it as the same option. With <code>dsd_usb &quot;yes&quot;</code>, DSD leaves as DoP even
+beside <code>dop &quot;no&quot;</code>: that is the pair behind the second row of the table above.</p>
+<p><strong>Roon</strong> decides with its own <em>DSD Playback Strategy</em> setting, <em>Convert to PCM</em> by default (see
+<a href="roon-raspberry-pi">Roon on a Raspberry Pi</a>).</p>
+<h2 id="volume-and-dsd">Volume and DSD</h2>
+<p>A DSD stream cannot be turned down in software without converting it. On DoP, a digital volume
+would also alter the markers, and the DAC would no longer recognise DSD. Play DSD at full digital
+level and set your level on the amplifier, or on the DAC if it has its own volume.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>From version 0.9.74, the configuration Audiogravi<sup>ty</sup>'s guided setup writes for MPD
+leaves DoP off: DSD goes out natively to a DAC that accepts it, and MPD converts it to PCM for one
+that does not. Nothing reaches a DAC in a form it may not decode.</p>
+<ul>
+<li><strong>Boxes set up by an earlier version</strong> had DoP on, through the old <code>dsd_usb</code> line. The update
+removes that line where it sits beside <code>dop &quot;no&quot;</code>, keeps the previous file among the
+configuration editor's saved copies, and restarts MPD.</li>
+<li><strong>A DAC that decodes DoP but not native DSD under Linux</strong> can still have DoP: set <code>dop &quot;yes&quot;</code> in
+MPD's file, from <strong>Config</strong>.</li>
+<li><strong>DSD plays at 100 on the box's own output.</strong> While a DSD track plays there, the volume is set to
+100 and locked, then put back when the DSD ends.</li>
+<li><strong>Through HQPlayer, DSD is never converted behind your back.</strong> A file HQPlayer cannot read in
+DSD, a DST-compressed DFF, is refused with the reason.</li>
+</ul>
+<p>The details are in the manual:
+<a href="../manual/04-listening">Listening</a>, and
+<a href="../manual/06-outputs-engines#what-can-and-cannot-go-through-hqplayer">Outputs &amp; engines → What can and cannot go through HQPlayer</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>The DoP standard, version 1.1: <a href="https://dsd-guide.com/sites/default/files/white-papers/DoP_openStandard_1v1.pdf">DoP open standard</a>, 2012.</li>
+<li>Linux and native DSD over USB: <a href="https://github.com/torvalds/linux/blob/master/sound/usb/quirks.c">sound/usb/quirks.c</a>, <a href="https://github.com/torvalds/linux/blob/master/sound/usb/format.c">sound/usb/format.c</a>.</li>
+<li>The Pi's I2S drivers: <a href="https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/bcm/bcm2835-i2s.c">bcm2835-i2s.c</a>, <a href="https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/dwc/dwc-i2s.c">dwc-i2s.c</a>.</li>
+<li>MPD and DSD, version 0.24.5: <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/user.rst">user manual</a>, and <code>dsd_usb</code> read as <code>dop</code>: <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/src/output/plugins/AlsaOutputPlugin.cxx">AlsaOutputPlugin.cxx</a>.</li>
+<li>Roon's DSD setting: <a href="https://help.roonlabs.com/portal/en/kb/articles/audio-setup-basics">audio setup basics</a>.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

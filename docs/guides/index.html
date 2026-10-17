@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Guides — Audiogravity</title>
-    <meta name="description" content="Practical answers to questions audiophiles ask on forums about HQPlayer and the Raspberry Pi as a streamer, each checked against Audiogravity and dated.">
+    <meta name="description" content="Answers to the questions audiophiles ask about Raspberry Pi and Linux streamers — DACs, libraries, streaming, Roon, HQPlayer, DSD — checked and dated.">
     <link rel="canonical" href="https://audiogravity.app/docs/guides/">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
@@ -37,23 +37,35 @@
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="Guides">
-            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
             <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
             <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
             <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
             <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
         </nav>
 
         <main class="man-main">
             <article class="man-md">
 <h1>Guides</h1>
-<p>Practical answers to questions audiophiles ask on forums about HQPlayer and the Raspberry Pi as a
-streamer, each checked against Audiogravi<sup>ty</sup> and dated.</p>
+<p>Answers to the questions audiophiles ask about Raspberry Pi and Linux streamers — DACs, libraries,
+streaming, Roon, HQPlayer, DSD — checked and dated.</p>
 <ul>
-<li><a href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a> — Two ways to install HQPlayer Embedded on a Pi 5, what the board can handle, and how Audiogravi<sup>ty</sup> sets it up next to your other players.</li>
+<li><a href="dac-hat-raspberry-pi">A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</a> — Why a HiFiBerry or other DAC board on a Raspberry Pi is not detected, the config.txt line for each common board, and how to check it is seen.</li>
+<li><a href="nas-music-library-raspberry-pi">Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</a> — Two ways to play the music on your NAS from a Pi streamer — mount the share, or use a UPnP server such as MinimServer — and how Audiogravi<sup>ty</sup> does both.</li>
 <li><a href="qobuz-tidal-highresaudio-raspberry-pi">Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</a> — The ways to play Qobuz, Tidal and HIGHRESAUDIO on a Pi — Volumio, Lyrion, moOde, HQPlayer — what each costs and offers, and how Audiogravi<sup>ty</sup> does it.</li>
+<li><a href="roon-raspberry-pi">Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</a> — Why a Pi is a Roon endpoint and not a Core, the ways to set one up, how to listen to Roon through HQPlayer and its NAA, and what Audiogravi<sup>ty</sup> does.</li>
+<li><a href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a> — Two ways to install HQPlayer Embedded on a Pi 5, what the board can handle, and how Audiogravi<sup>ty</sup> sets it up next to your other players.</li>
 <li><a href="hqplayer-naa-raspberry-pi">HQPlayer NAA on a Raspberry Pi</a> — What an NAA does, the two ways to install it on a Pi, the version rule, Pi 4 or Pi 5 for a USB DAC, and how Audiogravi<sup>ty</sup> sets it up.</li>
+<li><a href="dsd-native-dop-linux">DSD on a Linux streamer: native, DoP, or converted to PCM</a> — The three ways DSD reaches a DAC on Linux — native, DoP, converted to PCM — what decides between them, how to check yours, and what Audiogravi<sup>ty</sup> does.</li>
 <li><a href="check-bit-perfect-playback-linux">How to check bit-perfect playback on a Linux streamer</a> — Three checks to see whether a Linux streamer sends your files to the DAC untouched, what MPD's software volume does, and what Audiogravi<sup>ty</sup> shows.</li>
+<li><a href="realtime-cpu-cores-audio-linux">Real-time priority and reserved CPU cores for audio on Linux</a> — Real-time priority, pinned and reserved CPU cores for audio on Linux: what each does, what it changes in measured latency, and what Audiogravi<sup>ty</sup> does.</li>
+<li><a href="device-or-resource-busy-dac">“Device or resource busy”: two players, one DAC</a> — The error message two players get when they share one DAC on Linux, how to find which program holds it, when each lets go, and what to do instead.</li>
 <li><a href="audiogravity-volumio-moode">Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</a> — A sourced, dated comparison by the maker of Audiogravi<sup>ty</sup>: price, streaming services, Qobuz and TIDAL Connect, HQPlayer, Roon, DSD and apps.</li>
 </ul>
 

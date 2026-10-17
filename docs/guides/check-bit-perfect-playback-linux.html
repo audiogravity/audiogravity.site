@@ -37,10 +37,16 @@
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="Guides">
-            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
             <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
             <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
             <a class="man-nav-item active" href="check-bit-perfect-playback-linux" aria-current="page"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
             <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
         </nav>
 
@@ -114,8 +120,9 @@ card's; on the cable to your DAC, the connector can carry that format. It compar
 not samples: it is not a proof of bit-perfect playback, and a volume at 90 % does not change it.</li>
 <li><strong>The configuration Audiogravi<sup>ty</sup>'s guided setup writes for MPD</strong> sends each output
 straight to its card (<code>hw:</code>), with ALSA's conversions off (<code>auto_resample</code>, <code>auto_format</code>,
-<code>auto_channels</code> set to <code>no</code>), DoP off, and a software volume. With it, 24-bit audio passes untouched at 100 %, 16-bit audio is widened to 24 bits
-with its values unchanged, and below 100 % the samples are recalculated. For strict
+<code>auto_channels</code> set to <code>no</code>), and a software volume. With it, 24-bit audio passes untouched at
+100 %, 16-bit audio is widened to 24 bits with its values unchanged, and below 100 % the samples
+are recalculated. For strict
 bit-perfect playback, leave the volume at 100 and set your listening level on the amplifier.</li>
 <li><strong>DSD plays at 100 on the box's own output.</strong> While a DSD track plays there,
 Audiogravi<sup>ty</sup> sets the volume to 100 and locks it, then puts it back when the DSD

@@ -7,6 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Playback
+
+**DSD reaches your DAC as DSD.** On a DAC that accepts native DSD, DSD now arrives as DSD; on one
+that does not, it is converted to PCM, which every DAC plays. Until now, the configuration
+Audiogravi<sup>ty</sup> wrote sent DSD wrapped in PCM (DoP), which only a DAC that decodes DoP can
+play. Boxes already set up are corrected when they update, and keep their previous player
+configuration among the saved copies of the configuration editor.
+
 ### Library
 
 **Your listening, in figures.** A new **Stats** tab in Library shows what the box has played:

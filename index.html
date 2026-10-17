@@ -12,14 +12,19 @@
     <meta name="apple-mobile-web-app-title" content="Audiogravity">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Audiogravity — Your audio chain, fully controlled</title>
+    <!-- The search result's snippet, so it says what the product is, within the ~155 characters
+         a result shows before cutting. The link previews below keep the longer wording, tagline
+         included: a preview card has the room. -->
     <meta name="description"
-        content="Audiogravity is a streamer. A conductor, not a soloist. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
+        content="Audiogravity turns a Raspberry Pi or a Linux mini-PC into an audiophile streamer: MPD, Roon, HQPlayer, AirPlay, UPnP, Qobuz, Tidal — down to DSD.">
+    <!-- www.audiogravity.app serves this same page: this names the one address to index. -->
+    <link rel="canonical" href="https://audiogravity.app/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Audiogravity">
     <meta property="og:title" content="Audiogravity — Your audio chain, fully controlled">
     <meta property="og:description"
         content="Audiogravity is a streamer. A conductor, not a soloist. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
-    <meta property="og:url" content="https://audiogravity.app">
+    <meta property="og:url" content="https://audiogravity.app/">
     <meta property="og:image" content="https://audiogravity.app/assets/ag-image_black-og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,6 +33,31 @@
     <meta name="twitter:description"
         content="Audiogravity is a streamer. A conductor, not a soloist. MPD, Roon, HQPlayer, AirPlay, UPnP, internet radio — every engine, every source, down to DSD and Hi-Res PCM. One interface. Total control.">
     <meta name="twitter:image" content="https://audiogravity.app/assets/ag-image_black-og.png">
+    <!-- What search engines are told beside the page itself: the site's name, so a result reads
+         "Audiogravity" rather than the bare domain, and what the product is. No price: €49 is
+         already copied by hand from the licence server's settings into this page (see the
+         purchase card), and one more copy here would be one more to fall out of step. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "name": "Audiogravity",
+                "url": "https://audiogravity.app/"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Audiogravity",
+                "url": "https://audiogravity.app/",
+                "applicationCategory": "MultimediaApplication",
+                "operatingSystem": "Linux",
+                "image": "https://audiogravity.app/assets/ag-image_black-og.png",
+                "softwareHelp": { "@type": "CreativeWork", "url": "https://audiogravity.app/docs/manual/" }
+            }
+        ]
+    }
+    </script>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">

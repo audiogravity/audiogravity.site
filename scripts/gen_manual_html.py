@@ -18,7 +18,8 @@ Why generate rather than render in the browser:
 
 Output lands **next to the Markdown**, in ``docs/manual/``, so the ``images/…`` sources the
 chapters already use resolve unchanged — no src rewriting, and the .md and .html copies cannot
-drift apart in the file tree.
+drift apart in the file tree. The one file written elsewhere is ``sitemap.xml``, at the root,
+which lists the landing and these pages (see ``SITEMAP``).
 
 The chapter list comes from the manual's own README "Contents" list, the same single source of
 truth ``ag-manual-modal.js`` parses in the interface. Add a chapter there and it appears here.
@@ -31,8 +32,9 @@ Usage::
 
     python3 scripts/gen_manual_html.py [--check]
 
-``--check`` regenerates into memory and exits non-zero if any committed page is stale, so a
-release can fail rather than publish documentation that no longer matches its source.
+``--check`` regenerates into memory and exits non-zero if any committed page, or the sitemap,
+is stale, so a release can fail rather than publish documentation that no longer matches its
+source.
 """
 
 from __future__ import annotations
@@ -52,6 +54,15 @@ except ImportError:  # pragma: no cover - environment guard
 
 REPO_DIR = Path(__file__).resolve().parent.parent
 MANUAL_DIR = REPO_DIR / "docs" / "manual"
+
+#: The site's address, as the canonical links and the sitemap name it.
+SITE_URL = "https://audiogravity.app/"
+
+#: The sitemap sits at the root, the only place one may list the whole site from. It is written
+#: here, with the pages, because the manual is the only part of the site that grows: a chapter
+#: added to the Contents is announced to search engines in the same run that renders it, at the
+#: very address its canonical link gives.
+SITEMAP = REPO_DIR / "sitemap.xml"
 
 #: Matches a numbered Contents entry: ``3. [First run](03-first-run.md) — guided audio setup``.
 TOC_LINE = re.compile(r"^\s*\d+\.\s*\[(?P<label>.+?)\]\((?P<id>\d{2}-[a-z0-9-]+)\.md\)")
@@ -580,6 +591,40 @@ def highlight_fence(content: str, lang: str, attrs: str) -> str:
     return f"<pre{flag}><code{cls}>{body if body is not None else _esc(content)}</code></pre>"
 
 
+def manual_url(canonical: str) -> str:
+    """The public address of a manual page.
+
+    Args:
+        canonical: Path of the page under ``docs/manual/``, without the .html suffix (see
+            page()); empty for the contents page.
+
+    Returns:
+        The absolute address, as the page's canonical link and the sitemap both give it.
+    """
+    return f"{SITE_URL}docs/manual/{canonical}"
+
+
+def sitemap(toc: list[tuple[str, str]]) -> str:
+    """The site's sitemap: the landing, the manual's contents page, then each chapter.
+
+    Addresses only. Google ignores ``changefreq`` and ``priority``, and uses ``lastmod`` only
+    where it proves accurate — which it could not be here, since every release rewrites each
+    page for its version label without changing a word of it.
+
+    Args:
+        toc: Chapter list, as parse_toc() reads it.
+
+    Returns:
+        A sitemap document.
+    """
+    urls = [SITE_URL, manual_url("")] + [manual_url(cid) for cid, _ in toc]
+    entries = "\n".join(f"  <url><loc>{html.escape(u)}</loc></url>" for u in urls)
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            f"{entries}\n"
+            "</urlset>\n")
+
+
 def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonical: str) -> str:
     """Assemble one manual page.
 
@@ -623,7 +668,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{html.escape(plain)} — Audiogravity manual</title>
     <meta name="description" content="Audiogravity user manual — {html.escape(plain)}.">
-    <link rel="canonical" href="https://audiogravity.app/docs/manual/{canonical}">
+    <link rel="canonical" href="{manual_url(canonical)}">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css">
     <link rel="stylesheet" href="../../assets/manual.css">
@@ -776,11 +821,22 @@ def check_notice() -> list[str]:
     return problems
 
 
+def outputs() -> dict[Path, str]:
+    """Everything a run writes: the manual's pages and the sitemap that lists them.
+
+    Returns:
+        Mapping of output path to file contents.
+    """
+    files = build()
+    files[SITEMAP] = sitemap(parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8")))
+    return files
+
+
 def main() -> int:
     """Entry point.
 
     Returns:
-        Process exit status: 0 on success, 1 if ``--check`` found a stale page.
+        Process exit status: 0 on success, 1 if ``--check`` found a stale file.
     """
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--check", action="store_true",
@@ -793,21 +849,21 @@ def main() -> int:
         print("It belongs in README.md only — each chapter page shows it in its footer.")
         return 1
 
-    pages = build()
+    files = outputs()
     if args.check:
-        stale = [p for p, content in pages.items()
+        stale = [p for p, content in files.items()
                  if not p.exists() or p.read_text(encoding="utf-8") != content]
         if stale:
             for p in stale:
-                print(f"stale: {p.relative_to(MANUAL_DIR.parent.parent)}")
-            print(f"\n{len(stale)} page(s) out of date — run scripts/gen_manual_html.py")
+                print(f"stale: {p.relative_to(REPO_DIR)}")
+            print(f"\n{len(stale)} file(s) out of date — run scripts/gen_manual_html.py")
             return 1
-        print(f"{len(pages)} manual page(s) up to date")
+        print(f"{len(files) - 1} manual page(s) and the sitemap up to date")
         return 0
 
-    for p, content in pages.items():
+    for p, content in files.items():
         p.write_text(content, encoding="utf-8")
-    print(f"wrote {len(pages)} manual page(s) to {MANUAL_DIR}")
+    print(f"wrote {len(files) - 1} manual page(s) to {MANUAL_DIR}, and {SITEMAP.name}")
     return 0
 
 

@@ -277,6 +277,48 @@ class TestBuildCanonicals:
         assert 'href="https://audiogravity.app/docs/manual/">' in pages[index]
 
 
+class TestSitemap:
+    """The sitemap is written with the pages, from the same Contents list and the same address
+    function, so it cannot announce a chapter that has no page or miss one that has."""
+
+    def test_lists_the_landing_the_contents_then_each_chapter_in_order(self):
+        import gen_manual_html as g
+        locs = re.findall(r"<loc>([^<]+)</loc>", g.sitemap(TOC))
+        assert locs == [
+            "https://audiogravity.app/",
+            "https://audiogravity.app/docs/manual/",
+            "https://audiogravity.app/docs/manual/00-quick-start",
+            "https://audiogravity.app/docs/manual/04-listening",
+        ]
+
+    def test_is_a_sitemap_document(self):
+        import xml.etree.ElementTree as ET
+        import gen_manual_html as g
+        root = ET.fromstring(g.sitemap(TOC))
+        assert root.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
+        assert len(root) == len(TOC) + 2
+
+    def test_names_each_page_at_the_address_its_canonical_gives(self):
+        """A sitemap address that differs from the page's canonical — a suffix, a missing
+        slash — sends search engines to an address the page itself disowns."""
+        import gen_manual_html as g
+        canonicals = {re.search(r'<link rel="canonical" href="([^"]+)">', text).group(1)
+                      for text in g.build().values()}
+        listed = set(re.findall(r"<loc>([^<]+)</loc>", g.outputs()[g.SITEMAP]))
+        assert listed == canonicals | {g.SITE_URL}
+
+    def test_a_run_writes_the_pages_and_the_sitemap_at_the_root(self):
+        import gen_manual_html as g
+        files = g.outputs()
+        assert g.SITEMAP == REPO_DIR / "sitemap.xml"
+        assert set(files) == set(g.build()) | {g.SITEMAP}
+
+    def test_the_committed_sitemap_is_current(self):
+        """What --check holds a release to, and what the Manual workflow keeps true on a push."""
+        import gen_manual_html as g
+        assert g.SITEMAP.read_text(encoding="utf-8") == g.outputs()[g.SITEMAP]
+
+
 class TestHeadingIds:
     def test_matches_the_ids_the_pages_carry(self):
         """The landing's links are checked against these: they must be the pages' own."""

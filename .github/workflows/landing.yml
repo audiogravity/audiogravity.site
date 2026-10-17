@@ -25,6 +25,7 @@ on:
       - 'robots.txt'
       - 'sitemap.xml'
       - 'docs/manual/*.md'
+      - 'docs/guides/*.md'
       - 'scripts/gen_manual_html.py'
       - 'scripts/asset_versions.py'
       - 'scripts/test_asset_versions.py'

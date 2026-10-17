@@ -14,4 +14,10 @@
   <url><loc>https://audiogravity.app/docs/manual/09-troubleshooting</loc></url>
   <url><loc>https://audiogravity.app/docs/manual/10-glossary</loc></url>
   <url><loc>https://audiogravity.app/docs/manual/11-faq</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/hqplayer-embedded-raspberry-pi-5</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/qobuz-tidal-highresaudio-raspberry-pi</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/hqplayer-naa-raspberry-pi</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/check-bit-perfect-playback-linux</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/audiogravity-volumio-moode</loc></url>
 </urlset>

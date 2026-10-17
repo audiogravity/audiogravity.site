@@ -6,6 +6,7 @@ so a regression reaches the published site without anyone reading a diff.
 Run with ``python3 -m pytest scripts/`` from the repository root.
 """
 
+import html
 import re
 import sys
 from pathlib import Path
@@ -257,7 +258,7 @@ class TestBuildCanonicals:
 
     def test_no_canonical_carries_a_suffix_that_redirects(self):
         import gen_manual_html as g
-        for path, content in g.build().items():
+        for path, content in (g.build() | g.build_guides()).items():
             m = re.search(r'<link rel="canonical" href="([^"]+)">', content)
             assert m, f"{path.name} has no canonical"
             assert not m.group(1).endswith(".html"), (
@@ -303,20 +304,151 @@ class TestSitemap:
         slash — sends search engines to an address the page itself disowns."""
         import gen_manual_html as g
         canonicals = {re.search(r'<link rel="canonical" href="([^"]+)">', text).group(1)
-                      for text in g.build().values()}
+                      for text in (g.build() | g.build_guides()).values()}
         listed = set(re.findall(r"<loc>([^<]+)</loc>", g.outputs()[g.SITEMAP]))
         assert listed == canonicals | {g.SITE_URL}
+
+    def test_lists_the_guides_after_the_manual(self):
+        import gen_manual_html as g
+        locs = re.findall(r"<loc>([^<]+)</loc>", g.sitemap(TOC, ["hqplayer-on-a-pi"]))
+        assert locs[-2:] == ["https://audiogravity.app/docs/guides/",
+                             "https://audiogravity.app/docs/guides/hqplayer-on-a-pi"]
+
+    def test_lists_no_guides_page_while_there_is_no_guide(self):
+        import gen_manual_html as g
+        assert "docs/guides" not in g.sitemap(TOC, [])
 
     def test_a_run_writes_the_pages_and_the_sitemap_at_the_root(self):
         import gen_manual_html as g
         files = g.outputs()
         assert g.SITEMAP == REPO_DIR / "sitemap.xml"
-        assert set(files) == set(g.build()) | {g.SITEMAP}
+        assert set(files) == set(g.build()) | set(g.build_guides()) | {g.SITEMAP}
 
     def test_the_committed_sitemap_is_current(self):
         """What --check holds a release to, and what the Manual workflow keeps true on a push."""
         import gen_manual_html as g
         assert g.SITEMAP.read_text(encoding="utf-8") == g.outputs()[g.SITEMAP]
+
+
+class TestGuides:
+    """The guides share the manual's shell and pipeline; what differs is checked here, and so
+    is everything they point at, since nothing else reads them."""
+
+    README = (
+        "# Guides\n\nAnswers to forum questions.\n\n"
+        "- [HQPlayer on a Pi](hqplayer-on-a-pi.md) — How to run it, by Audiogravi<sup>ty</sup>.\n"
+        "- [NAA on a Pi](naa-on-a-pi.md) — The other end of the network.\n"
+        "- [Not a guide](elsewhere.md)\n"
+    )
+
+    def test_reads_each_guide_with_its_summary_in_order(self):
+        import gen_manual_html as g
+        assert g.parse_guides(self.README) == [
+            ("hqplayer-on-a-pi", "HQPlayer on a Pi", "How to run it, by Audiogravi<sup>ty</sup>."),
+            ("naa-on-a-pi", "NAA on a Pi", "The other end of the network."),
+        ]
+
+    def _page(self):
+        import gen_manual_html as g
+        toc = [("hqplayer-on-a-pi", "HQPlayer on a Pi"), ("naa-on-a-pi", "NAA on a Pi")]
+        return g.page("HQPlayer on a Pi", "<p>x</p>", toc, "hqplayer-on-a-pi", "hqplayer-on-a-pi",
+                      g.GUIDES, g.plain_text("How to run it, by Audiogravi<sup>ty</sup>."))
+
+    def test_a_guide_page_names_its_address_and_its_question(self):
+        out = self._page()
+        assert '<link rel="canonical" href="https://audiogravity.app/docs/guides/hqplayer-on-a-pi">' in out
+        assert "<title>HQPlayer on a Pi — Audiogravity</title>" in out
+
+    def test_its_search_snippet_is_its_summary_without_markup(self):
+        """An attribute shows a tag as typed: the brand is written plain there."""
+        assert '<meta name="description" content="How to run it, by Audiogravity.">' in self._page()
+
+    def test_it_is_filed_under_guides_without_numbers(self):
+        out = self._page()
+        assert '<span class="man-crumb">Guides</span>' in out
+        assert '<nav class="man-nav" aria-label="Guides">' in out
+        assert "man-nav-n" not in out
+        assert 'href="hqplayer-on-a-pi" aria-current="page">HQPlayer on a Pi</a>' in out
+
+    def test_it_carries_the_trademark_notice(self):
+        """A guide names HQPlayer, Roon and the streaming services as much as a chapter does."""
+        assert '<p class="man-notice">' in self._page()
+
+    def test_the_manual_keeps_its_own_labels(self):
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<span class="man-crumb">User manual</span>' in out
+        assert '<span class="man-nav-n">04</span>' in out
+        assert "<title>Listening — Audiogravity manual</title>" in out
+
+    def test_no_guides_folder_means_no_guide_pages(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        monkeypatch.setattr(g, "GUIDES_DIR", tmp_path / "guides")
+        assert g.build_guides() == {}
+
+    def test_a_guide_listed_but_missing_stops_the_run(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text(self.README)
+        monkeypatch.setattr(g, "GUIDES_DIR", tmp_path)
+        with pytest.raises(SystemExit):
+            g.build_guides()
+
+    def test_a_readme_listing_nothing_stops_the_run(self, tmp_path, monkeypatch):
+        """A summary wrapped onto a second line does not match: better a stop than no page."""
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("# Guides\n\n- [A guide](a-guide.md) —\n  its summary\n")
+        monkeypatch.setattr(g, "GUIDES_DIR", tmp_path)
+        with pytest.raises(SystemExit):
+            g.build_guides()
+
+
+class TestPublishedGuides:
+    """The guides as they are in docs/guides."""
+
+    @staticmethod
+    def _guides():
+        import gen_manual_html as g
+        return g.read_guides()
+
+    def test_every_guide_written_is_listed(self):
+        """A guide missing from the README gets no page, and nothing would say so."""
+        import gen_manual_html as g
+        listed = {gid for gid, _, _ in self._guides()}
+        written = {p.stem for p in g.GUIDES_DIR.glob("*.md")} - {"README"}
+        assert written and written == listed
+
+    def test_every_snippet_fits_a_search_result(self):
+        import gen_manual_html as g
+        snippets = [re.search(r'<meta name="description" content="([^"]*)">', text).group(1)
+                    for text in g.build_guides().values()]
+        assert len(snippets) == len(self._guides()) + 1
+        for s in snippets:
+            assert 70 <= len(html.unescape(s)) <= 155, s
+
+    def test_every_link_and_image_of_a_guide_lands(self):
+        """A guide links into the manual by chapter and heading, and borrows its figures: a
+        heading reworded or a figure renamed there breaks the guide without a sound."""
+        import gen_manual_html as g
+        chapters = {cid for cid, _ in parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8"))}
+        guides = {gid for gid, _, _ in self._guides()}
+        checked = 0
+        for path, text in g.build_guides().items():
+            for target in re.findall(r'\s(?:href|src)="(?!https?:|mailto:|#)([^"]+)"', text):
+                target = target.split("?v=")[0]
+                where, _, anchor = target.partition("#")
+                if where.startswith("../manual/"):
+                    chapter = where[len("../manual/"):]
+                    if chapter.startswith("images/"):
+                        assert (MANUAL_DIR / chapter).is_file(), f"{path.name}: {target}"
+                    else:
+                        assert chapter in chapters | {""}, f"{path.name}: {target}"
+                        if anchor:
+                            assert anchor in heading_ids((MANUAL_DIR / f"{chapter}.md").read_text(encoding="utf-8")), f"{path.name}: {target}"
+                elif where.startswith("../../"):
+                    assert (REPO_DIR / where[len("../../"):]).is_file(), f"{path.name}: {target}"
+                else:
+                    assert where in guides | {""}, f"{path.name}: {target}"
+                checked += 1
+        assert checked > 20
 
 
 class TestHeadingIds:
@@ -538,12 +670,14 @@ class TestAssetStamps:
     from before the update (2026-10-15)."""
 
     def test_every_page_built_asks_for_the_current_files(self):
+        import gen_manual_html as g
         from asset_versions import out_of_date
         built = build()
         assert len(built) > 10
-        for path, text in built.items():
-            assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == 5, path.name
-            assert out_of_date(text, MANUAL_DIR) == [], path.name
+        for directory, pages in ((MANUAL_DIR, built), (g.GUIDES_DIR, g.build_guides())):
+            for path, text in pages.items():
+                assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == 5, path.name
+                assert out_of_date(text, directory) == [], path.name
 
 
 class TestTrademarkNotice:

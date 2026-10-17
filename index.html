@@ -69,7 +69,7 @@
          Both come from this site, like every font on it (the FONTS block of style.css). -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/style.css?v=881223e621">
+    <link rel="stylesheet" href="assets/style.css?v=61ac599701">
     <script>
         /* Apply saved theme before first paint to avoid flash */
         (function () {
@@ -117,6 +117,7 @@
                 <a href="#faq">FAQ</a>
                 <a href="#install">Install</a>
                 <a href="docs/manual/">Manual</a>
+                <a href="docs/guides/">Guides</a>
             </div>
             <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
                 <svg id="themeIcon" viewBox="0 0 24 24"></svg>
@@ -1069,20 +1070,27 @@
                             <td class="cmp-part">partial (HQPlayer)</td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">Native Tidal, Qobuz &amp; HIGHRESAUDIO streaming (official APIs)</td>
+                            <!-- No "official APIs" here: Audiogravity is a partner of none of the three
+                                 services (user, 2026-10-17). Cells checked against each vendor's pages on
+                                 2026-10-17: Roon lists no HIGHRESAUDIO; HQPlayer streams Qobuz and
+                                 HIGHRESAUDIO (Signalyst's streaming partners); JPLAY iOS plays all three;
+                                 moOde offers Qobuz only, through upmpdcli. -->
+                            <td class="cmp-cap">Tidal, Qobuz &amp; HIGHRESAUDIO in the library</td>
                             <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
-                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
+                            <td class="cmp-part">partial (Tidal, Qobuz)</td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg> (Premium)</td>
-                            <td class="cmp-part">partial (via upmpdcli)</td>
-                            <td class="cmp-no">—</td>
-                            <td class="cmp-no">—</td>
+                            <td class="cmp-part">partial (Qobuz, via upmpdcli)</td>
+                            <td class="cmp-part">partial (Qobuz, HIGHRESAUDIO)</td>
+                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                         </tr>
                         <tr>
                             <td class="cmp-cap">UPnP MediaServer browse &amp; search (NAS via MinimServer, upmpdcli — results directly playable)</td>
                             <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
-                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
+                            <!-- moOde removed its UPnP browser in 8.1.0 (2022) and has not brought it
+                                 back (release notes, read 2026-10-17). -->
+                            <td class="cmp-no">—</td>
                             <td class="cmp-no">—</td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                         </tr>
@@ -1207,7 +1215,8 @@
                             <td class="cmp-cap">Self-hosted (no cloud account)</td>
                             <td class="cmp-ag cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td>account required</td>
-                            <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
+                            <!-- Premium needs a MyVolumio account (Volumio help, read 2026-10-17). -->
+                            <td class="cmp-part">partial (Premium needs an account)</td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
                             <td class="cmp-yes"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg></td>
@@ -1218,16 +1227,21 @@
                             <td>Multi-OS (native apps)</td>
                             <td>Linux server · browser UI + native apps</td>
                             <td>Linux server · browser UI</td>
-                            <td>Linux server</td>
-                            <td>iOS only</td>
+                            <!-- HQPlayer Desktop runs on Windows and macOS, Embedded on Linux; a JPLAY
+                                 licence covers Apple-silicon Macs too (vendors' pages, read 2026-10-17). -->
+                            <td>Windows · macOS · Linux</td>
+                            <td>iOS · Apple-silicon Macs</td>
                         </tr>
                         <tr>
                             <td class="cmp-cap"><b>Pricing model</b></td>
                             <td class="cmp-ag"><b>Free (Starter) / €49 lifetime (Pro)</b></td>
                             <td>$14.99 / month or $829.99 lifetime</td>
-                            <td>Free / Premium €69.99 / year</td>
+                            <!-- Volumio and Signalyst prices read on their own pages on 2026-10-17;
+                                 HQPlayer 6 Desktop and Embedded are €319 each, and a v5 → v6 upgrade is
+                                 sold apart, so a licence covers one major version. -->
+                            <td>Free / Premium €7.49 / month or €69.99 / year</td>
                             <td>Free</td>
-                            <td>€265 lifetime</td>
+                            <td>€319 (version 6)</td>
                             <td>$49.99 / year or $199 lifetime</td>
                         </tr>
                     </tbody>
@@ -1235,7 +1249,7 @@
             </div>
             </div>
             <p class="cmp-note"><svg class="cmp-ic" viewBox="0 0 24 24" aria-label="yes" role="img"><use href="#ic-check" /></svg> supported · partial = limited · — not available. Comparison based on public
-                information from each vendor's documentation as of 2026.</p>
+                information from each vendor's documentation, checked on 17 October 2026.</p>
         </div>
     </section>
 

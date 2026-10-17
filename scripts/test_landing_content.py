@@ -1,5 +1,5 @@
 """Guards for what the landing and the 404 page point at: the files they load, and their
-links into the manual.
+links into the manual and the guides.
 
 A capture renamed in assets/pics, or a manual heading reworded, breaks a page without a sound:
 the image shows its alt text, the link lands at the top of the chapter instead of the section.
@@ -22,7 +22,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from gen_manual_html import heading_ids, parse_toc  # noqa: E402
+from gen_manual_html import GUIDES_DIR, heading_ids, parse_toc, read_guides  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 MANUAL = ROOT / "docs" / "manual"
@@ -48,6 +48,12 @@ MANUAL_LINKS = sorted({
 })
 #: The chapters the generator turns into pages: the Contents list, not the files on disk.
 CHAPTERS = {cid for cid, _ in parse_toc((MANUAL / "README.md").read_text(encoding="utf-8"))}
+#: Every link to the guides, as (page, guide).
+GUIDE_LINKS = sorted({
+    (name, guide)
+    for name, html in PAGES.items()
+    for guide in re.findall(r'href="/?docs/guides/([^"#]*)(?:#[^"]*)?"', html)
+})
 
 
 @functools.lru_cache(maxsize=None)
@@ -80,6 +86,21 @@ def test_every_link_into_the_manual_lands_on_its_section(page, chapter, anchor):
         assert anchor in _anchors(f"{chapter}.md")
 
 
+@pytest.mark.parametrize("page,guide", GUIDE_LINKS, ids=lambda v: v or "-")
+def test_every_link_to_the_guides_lands_on_one(page, guide):
+    """The guides' pages come from their README's list, like the chapters from the Contents."""
+    if guide in ("", "index"):
+        assert (GUIDES_DIR / "README.md").is_file()
+        return
+    assert guide in {gid for gid, _, _ in read_guides()}, f"{guide} is not in the guides' README"
+
+
+def test_the_bar_offers_the_guides_beside_the_manual():
+    """The guides were given their own tab in the landing's bar (2026-10-17)."""
+    bar = re.search(r'<div class="nav-links">(.*?)</div>', PAGES["index.html"], re.S).group(1)
+    assert re.search(r'<a href="docs/manual/">Manual</a>\s*<a href="docs/guides/">Guides</a>', bar)
+
+
 def test_the_pages_were_found_to_point_somewhere():
     """The collections above are empty if the markup changes shape; that must not pass."""
     assert len([f for f in LOCAL_FILES if f[0] == "index.html"]) > 10
@@ -89,6 +110,7 @@ def test_the_pages_were_found_to_point_somewhere():
         assert (name, path) in LOCAL_FILES, f"{name} no longer reads as loading {path}"
     assert [f for f in LOCAL_FILES if f[0] == "404.html"]
     assert len(MANUAL_LINKS) > 5
+    assert GUIDE_LINKS
 
 
 def test_the_theme_toggle_comes_from_the_script_shared_with_the_manual():

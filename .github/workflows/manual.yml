@@ -18,6 +18,8 @@ on:
     branches: [main]
     paths:
       - 'docs/manual/*.md'
+      # The guides are rendered by the same script, on the same shell.
+      - 'docs/guides/*.md'
       - 'scripts/gen_manual_html.py'
       # Each page asks for its stylesheets and scripts with a stamp of their content
       # (scripts/asset_versions.py): a changed file means new stamps, so the pages are rewritten.
@@ -60,16 +62,17 @@ jobs:
       - name: Render the manual
         run: python3 scripts/gen_manual_html.py
 
-      # sitemap.xml lists the manual's pages and is written in the same run: a chapter added to
-      # the Contents reaches the sitemap in the same commit as its page.
+      # sitemap.xml lists the manual's pages and the guides, and is written in the same run: a
+      # chapter or a guide added to its list reaches the sitemap in the same commit as its page.
+      # A new guide's page is a new file, which `git diff` does not see: hence the status check.
       - name: Commit any change
         run: |
-          if git diff --quiet -- docs/manual sitemap.xml; then
+          if [ -z "$(git status --porcelain -- docs/manual docs/guides sitemap.xml)" ]; then
             echo "Manual pages already match their source — nothing to commit."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/manual sitemap.xml
+          git add docs/manual docs/guides sitemap.xml
           git commit -m "docs: regenerate the manual pages from their Markdown"
           git push

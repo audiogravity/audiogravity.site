@@ -185,15 +185,16 @@ is the app's map:
   [6. Outputs & engines](06-outputs-engines.md)).
 - **Admin** — users and access, announcements, updates and the licence.
 - **Library** — browse, search, queue, sources and outputs: where you play
-  music (the streaming services, the media servers and Roon come with Pro). In the sidebar, a tap on it unfolds a row of icons — **Browse**, **Search**,
-  **Queue**, **Sources** or **Radio** — and a tap on one opens that view; a second tap
-  on Library folds them. Coming from another tab, the view you were on opens as you
+  music (the streaming services, the media servers and Roon come with Pro), and what the
+  box has played. In the sidebar, a tap on it unfolds a row of icons — **Browse**,
+  **Search**, **Queue**, **Sources**, **Radio** or **Stats** — and a tap on one opens that
+  view; a second tap on Library folds them. Coming from another tab, the view you were on opens as you
   left it, an album or an artist still open. Across the top, a tap on Library opens the
   page, its views in a bar of their own.
 - **Manual** — this manual, readable inside the app; it stands apart from the tabs, at
   the far end of the bar or the foot of the sidebar.
 
-<img src="images/ios-tab-menu.webp" alt="The tab menu on a phone: the app's tabs, and Library unfolded into its views — Browse, Search, Queue, Sources and Radio — the one shown marked" width="216">
+<img src="images/ios-tab-menu.webp" alt="The tab menu on a phone: the app's tabs, and Library unfolded into its views — Browse, Search, Queue, Sources, Radio and Stats — the one shown marked" width="216">
 
 On a **Starter** licence, what Pro adds carries a padlock — the Pipeline, Systemd and
 Performance tabs, Library's Pro sources — and tapping one takes you to the licence panel, with

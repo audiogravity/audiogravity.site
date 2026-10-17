@@ -17,6 +17,11 @@ quality or lossy; the genres you came back to; your most played artists, albums 
 your latest listens. A track counts once it has played for 30 seconds, and a radio station is one
 listen for as long as you stay on it. Roon and HQPlayer are not counted.
 
+**When you listen.** Stats also maps your week, Monday to Sunday and hour by hour: the darker a
+square, the more the box played at that hour, on average per week over the period you picked —
+your evenings, your weekend afternoons, the late Friday nights. A track counts in the hours it
+really played: pauses fill no square.
+
 The figures come with Pro. The box keeps the history on every edition, so on every edition you
 can switch it off or clear it, from the bottom of the same tab; while it is off, the top of the tab
 says so. It stays on the box: nothing of it is sent anywhere.

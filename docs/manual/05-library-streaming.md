@@ -22,8 +22,8 @@ The Library tab holds several views, one per tab of its bar:
   where you pick where the audio goes (see [6. Outputs & engines](06-outputs-engines.md)).
 - **Radio** — internet radio, with tabs of its own (see [Internet radio](#internet-radio)
   below).
-- **Stats** — what the box has played: time listened, sources, sound quality, most
-  played (see [Listening history](#listening-history) below).
+- **Stats** — what the box has played: time listened and when, sources, sound quality,
+  most played (see [Listening history](#listening-history) below).
 
 <img src="images/ios-sources.webp" alt="The Sources view: the active source at the top, then the other sources, the AirPlay and UPnP inputs, and the discovered UPnP servers" width="360">
 
@@ -356,25 +356,32 @@ only the report stops.
 
 ## Listening history
 
-The **Stats** tab shows what the box has played: how long you listened and on which
-days, through which sources and outputs, in what sound quality and which genres, your
-most played artists, albums and tracks, and your latest listens. The figures come with
-**Pro**; on Starter, the tab shows them behind a padlock.
+The **Stats** tab shows what the box has played: how long you listened, on which days
+and at what times of the week, through which sources and outputs, in what sound quality
+and which genres, your most played artists, albums and tracks, and your latest listens.
+The figures come with **Pro**; on Starter, the tab shows them behind a padlock.
 
 1. Open **Library**, then **Stats**.
 2. Pick a period at the top: **7 days**, **30 days**, **12 months** or **All**. Every
    figure below follows it.
 3. **Listening time** has one bar per day — per month for 12 months and All. Tap a bar
    to read its time above the chart.
-4. **By source**, **By output**, **Sound quality** and **Genres** show where that time
+4. **When you listen** maps your week: a row per day, Monday to Sunday, and a square
+   per hour. The darker a square, the more the box played at that hour, on average per
+   week over the period. Tap a square to read its time above the grid.
+5. **By source**, **By output**, **Sound quality** and **Genres** show where that time
    went. **Unknown** gathers what said nothing about itself: AirPlay and some streams
    carry no genre.
-5. Under **Most played**, switch between **Artists**, **Albums** and **Tracks**.
+6. Under **Most played**, switch between **Artists**, **Albums** and **Tracks**.
    **Recently played** lists your latest listens, whatever the period.
+
+<img src="images/ios-stats.webp" alt="The Stats view over 30 days: the time listened with its listens, albums and days with music, a bar per day, and the week's hours, Saturday 21:00 tapped" width="360">
 
 What counts as a listen:
 
 - a track counts once it has played for **30 seconds**; pauses are not counted;
+- a listen counts in the hours it actually played: one started at 20:50 for half an
+  hour fills 20:00 and 21:00 in **When you listen**, and a pause fills no square;
 - a radio station counts as **one listen** for as long as you stayed on it, whatever
   songs it announced;
 - a listen appears once it ends — when the next track starts, or shortly after you

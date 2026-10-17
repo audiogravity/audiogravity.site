@@ -77,8 +77,9 @@ a DAC that does not decode DTS, and start with the volume low: undecoded, it is 
   not samples: it is not a proof of bit-perfect playback, and a volume at 90 % does not change it.
 - **The configuration Audiogravi<sup>ty</sup>'s guided setup writes for MPD** sends each output
   straight to its card (`hw:`), with ALSA's conversions off (`auto_resample`, `auto_format`,
-  `auto_channels` set to `no`), DoP off, and a software volume. With it, 24-bit audio passes untouched at 100 %, 16-bit audio is widened to 24 bits
-  with its values unchanged, and below 100 % the samples are recalculated. For strict
+  `auto_channels` set to `no`), and a software volume. With it, 24-bit audio passes untouched at
+  100 %, 16-bit audio is widened to 24 bits with its values unchanged, and below 100 % the samples
+  are recalculated. For strict
   bit-perfect playback, leave the volume at 100 and set your listening level on the amplifier.
 - **DSD plays at 100 on the box's own output.** While a DSD track plays there,
   Audiogravi<sup>ty</sup> sets the volume to 100 and locks it, then puts it back when the DSD

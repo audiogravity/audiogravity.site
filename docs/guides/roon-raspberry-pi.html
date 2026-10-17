@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer — Audiogravity</title>
+    <meta name="description" content="Why a Pi is a Roon endpoint and not a Core, the ways to set one up, how to listen to Roon through HQPlayer and its NAA, and what Audiogravity does.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/roon-raspberry-pi">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">Guides</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item active" href="roon-raspberry-pi" aria-current="page"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</h1>
+<p><strong>Short answer:</strong> a Raspberry Pi makes a Roon endpoint, not a Roon Core. Roon Bridge, the part
+that plays, runs on a 64-bit Pi; Roon Server, the Core that holds your library, does not: on Linux
+it runs on x64 machines only. So the Pi plays what a Core elsewhere sends it: a PC, a Mac, a NAS. And to listen
+through HQPlayer, the Pi needs HQPlayer's NAA rather than Roon Bridge.</p>
+<p>Checked on 2026-10-17 against Roon's own help pages; the sources are at the end.</p>
+<h2 id="roon-bridge-roon-server-and-roon-ready">Roon Bridge, Roon Server and Roon Ready</h2>
+<ul>
+<li><strong>Roon Server</strong> is the Core: library, browsing, processing. Roon: &quot;Roon Server for Linux runs on
+x64 platforms&quot;, and &quot;ARM builds only support Output functions&quot;. Its recommended hardware is an
+Intel Core i3 or better, 4 GB of memory and an SSD.</li>
+<li><strong>Roon Bridge</strong> is &quot;a lightweight software package designed to do exactly one thing: add audio
+outputs to your Roon setup over the network&quot;. It runs on Linux x64, armv7hf and armv8 — armv8
+being a 64-bit Raspberry Pi.</li>
+<li><strong>Roon Ready</strong> is not software you install: it is Roon's certification of devices that carry
+Roon's streaming technology, RAAT, in their own firmware. A Pi with Roon Bridge receives the same
+RAAT stream, without the certification.</li>
+<li><strong>Roon itself</strong> costs $14.99 a month, $149.88 a year or $829.99 for life (US dollars, Roon's
+pricing page).</li>
+</ul>
+<h2 id="ways-to-turn-a-pi-into-a-roon-endpoint">Ways to turn a Pi into a Roon endpoint</h2>
+<ul>
+<li><strong>Verox, formerly RoPieee.</strong> A free system image dedicated to the job, for the Pi 3, 4 and 5:
+a Roon Bridge endpoint, plus AirPlay 2, Spotify Connect, an HQPlayer NAA and a UPnP renderer
+among others. RoPieee took the name Verox in September 2026; existing installations moved over
+with their settings.</li>
+<li><strong>Roon's own installer</strong> on Raspberry Pi OS or Debian, from Roon's Linux install page.</li>
+<li><strong>A general-purpose streamer</strong>: Volumio has a Roon Bridge plugin, moOde manages Roon Bridge once
+you have installed it, and Audiogravi<sup>ty</sup> installs it for you (below).</li>
+</ul>
+<h2 id="roon-through-hqplayer">Roon through HQPlayer</h2>
+<p>Roon can send to HQPlayer, which then does the processing and plays to its own output: on a
+Raspberry Pi next to the DAC, that output is HQPlayer's NAA (see
+<a href="hqplayer-naa-raspberry-pi">HQPlayer NAA on a Raspberry Pi</a>).</p>
+<ul>
+<li><strong>The Pi needs the NAA, not Roon Bridge.</strong> On my test box (2026-09-26), Roon played through
+HQPlayer to the NAA with Roon Bridge stopped.</li>
+<li><strong>The two should not fight over the DAC.</strong> Roon's help: &quot;Both Roon and HQPlayer expect to have
+exclusive access to the device&quot; — if HQPlayer uses a device, disable it in Roon's audio settings.
+HQPlayer's developer, Jussi Laako, said the same of a Roon Bridge left running beside an NAA on
+one machine: Roon takes the DAC unless that output is disabled in Roon.</li>
+<li><strong>In HQPlayer</strong>, turn on &quot;Allow control from network&quot; so that Roon can drive it.</li>
+</ul>
+<h2 id="dsd-from-roon-to-a-linux-endpoint">DSD from Roon to a Linux endpoint</h2>
+<p>Roon's <em>DSD Playback Strategy</em> setting decides what reaches the endpoint. Its default is
+<em>Convert to PCM</em>. Native DSD works on Linux when the system's driver exposes native DSD for your
+DAC; otherwise Roon's help suggests trying <em>DSD over PCM (DoP)</em>.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Audiogravi<sup>ty</sup> runs on a Raspberry Pi 4 or 5 with Debian 13 (Trixie), DietPi or
+Raspberry Pi OS included. Roon comes with the Pro edition; the 30-day trial includes it.</p>
+<ul>
+<li><strong>Roon Bridge, installed by Roon's own installer.</strong> From <strong>Audio Software</strong>, on a Pi or an x64
+machine. Roon Server is offered on x64 machines only, and never beside Roon Bridge: it already
+contains it.</li>
+<li><strong>Profiles that say what they run.</strong> <em>Roon Bridge</em> alone, <em>Roon Bridge + MPD</em> (&quot;Roon or MPD
+directly — one at a time&quot;), <em>Roon Bridge + HQPlayer NAA</em> (&quot;Roon directly, or through HQPlayer —
+one at a time&quot;), and the three together.</li>
+<li><strong>Your Roon zones in the same interface.</strong> Audiogravi<sup>ty</sup> registers as a Roon extension:
+enable it once in Roon, under <strong>Settings → Extensions</strong>. Your zones then appear in
+<strong>Library → Sources</strong> beside your other sources, with a browser for your Roon library. The Core
+is found on the network on its own.</li>
+<li><strong>Updates.</strong> Roon publishes no version number, so the box cannot tell you an update is waiting;
+the update button runs Roon's installer again, which always fetches the current build.</li>
+</ul>
+<p>The details are in the manual:
+<a href="../manual/06-outputs-engines#roon">Outputs &amp; engines → Roon</a>, and
+<a href="../manual/05-library-streaming#roon">Library &amp; streaming → Roon</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Roon on Linux: <a href="https://help.roonlabs.com/portal/en/kb/articles/linux-install">Linux install</a> (September 2026); hardware recommendations: <a href="https://help.roonlabs.com/portal/en/kb/articles/faq-what-are-the-minimum-requirements">Roon hardware specification recommendations</a> (September 2026); <a href="https://help.roonlabs.com/portal/en/kb/articles/software-packages">software packages</a> (June 2026); <a href="https://help.roonlabs.com/portal/en/kb/articles/roon-ready">Roon Ready</a>; prices: <a href="https://roon.app/en/pricing">roon.app/en/pricing</a>, read on 2026-10-17.</li>
+<li>Roon and HQPlayer: <a href="https://help.roonlabs.com/portal/en/kb/articles/hqplayer">HQPlayer</a> (June 2026). Jussi Laako on Roon Bridge beside an NAA: <a href="https://community.roonlabs.com/t/176288/80">Roon Community</a>, August 2022.</li>
+<li>Roon and DSD: <a href="https://help.roonlabs.com/portal/en/kb/articles/audio-setup-basics">audio setup basics</a> (March 2026), <a href="https://help.roonlabs.com/portal/en/kb/articles/audio-on-linux">audio on Linux</a>.</li>
+<li>Verox: <a href="https://verox.audio/">verox.audio</a>, <a href="https://ropieee.org/stable/release/2026/09/26/release-2026.09.html">release 2026.09</a>, <a href="https://docs.verox.audio/installation/">installation</a>, read on 2026-10-17.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

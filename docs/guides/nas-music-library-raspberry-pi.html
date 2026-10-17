@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server — Audiogravity</title>
+    <meta name="description" content="Two ways to play the music on your NAS from a Pi streamer — mount the share, or use a UPnP server such as MinimServer — and how Audiogravity does both.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/nas-music-library-raspberry-pi">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">Guides</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item active" href="nas-music-library-raspberry-pi" aria-current="page"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</h1>
+<p><strong>Short answer:</strong> there are two ways, and many setups use both. Mount the NAS share on the
+streamer: its player reads the files directly and keeps its own index of them. Or run a UPnP
+media server on the NAS, such as MinimServer: the server keeps the index, and the streamer asks
+it for each track over the network.</p>
+<h2 id="mounting-the-share">Mounting the share</h2>
+<p>The NAS shares a folder over SMB (what Synology, QNAP and most NAS speak) or NFS, and the
+streamer mounts it like a local disk. The player then reads the files as if they were on the box
+and builds its own index from their tags: search, the album list and the order by date added
+are the player's own.</p>
+<p>What makes a mount reliable:</p>
+<ul>
+<li><strong>Read-only.</strong> A music library does not need to be written to from the streamer.</li>
+<li><strong>No pinned SMB version.</strong> Left alone, the system agrees with the NAS on the highest version
+both support. Avoid <code>vers=1.0</code> (SMB1), which is obsolete and insecure.</li>
+<li><strong>Waiting for the network, or mounting on access.</strong> Mounted at boot, the share must wait for the
+network (<code>_netdev</code>). Mounted on first access instead, a NAS that is switched off when the
+streamer starts causes no trouble.</li>
+<li><strong>Indexing.</strong> The player has to index the share before its music shows, and again to find what
+you add later. MPD, which many Raspberry Pi streamers use, does not watch for new files unless
+its <code>auto_update</code> option is turned on.</li>
+</ul>
+<h2 id="using-a-upnp-media-server">Using a UPnP media server</h2>
+<p>A media server runs on the NAS (MinimServer, Plex and others), indexes the music there, and
+publishes it on the network. A control app browses the server's index, and the player fetches
+each track from the server over HTTP: nothing is mounted on the streamer.</p>
+<ul>
+<li><strong>One index for every player.</strong> Any UPnP player in the house sees the same library, browsed
+the way the server arranges it.</li>
+<li><strong>Same network only.</strong> UPnP devices find each other by announcing themselves on the local
+network: a server on another network segment or VLAN does not show up.</li>
+<li><strong>The original file, or not.</strong> Some servers can convert formats on the fly. If you want the
+file as it is stored, check that yours sends it unchanged.</li>
+</ul>
+<h2 id="which-one">Which one</h2>
+<ul>
+<li><strong>Mount the share</strong> if you want the streamer's own search and index, and no server to run.</li>
+<li><strong>Use a UPnP server</strong> if one already serves your other players, or if you like the way it
+arranges the library.</li>
+<li><strong>Both work side by side.</strong> My own test box does just that: its library is the SMB share of a
+Raspberry Pi that also runs MinimServer, and both paths reach the same files.</li>
+</ul>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p><strong>Mounting from the app.</strong> In the <strong>Music library</strong> picker of the guided setup, <strong>Add network
+share (NAS)</strong> asks for a name, the NAS address, the share, and a username and password unless the
+share is open to guests. Audiogravi<sup>ty</sup> mounts the share and tests it on the spot: you
+see it appear, or the actual error, such as a wrong password or an unreachable NAS. The share is
+mounted read-only, on first access, so a NAS that is off when the box starts causes no trouble;
+the password is kept in a file only the system can read. Once you confirm it as the library,
+MPD points at it and starts indexing, with an indicator until it is done.</p>
+<p><strong>NFS from the terminal.</strong> The app mounts SMB only, so as not to add NFS's own services to every
+box. A share you mount yourself under <code>/mnt</code>, NFS or SMB, is offered as a library just the same.</p>
+<p><strong>UPnP servers</strong> (Pro). <strong>Library → Sources</strong> lists the servers Audiogravi<sup>ty</sup> already
+knows, and <strong>Re-scan</strong> looks for more. You browse a server's tree, search it when the server
+supports search, and play what you find: on the DAC attached to the box, on a UPnP renderer, or
+through HQPlayer. A track in a format HQPlayer cannot read reaches it converted to FLAC, without
+loss; the file on your NAS is never touched.</p>
+<p>The details are in the manual:
+<a href="../manual/03-first-run#music-on-a-nas-add-the-share-from-the-picker">First run → Music on a NAS</a>,
+<a href="../manual/09-troubleshooting#manual-nas-mount-terminal">Troubleshooting → Manual NAS mount</a>,
+and <a href="../manual/05-library-streaming#upnp--dlna-media-servers">Library &amp; streaming → UPnP / DLNA media servers</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>MPD's <code>auto_update</code>, off by default: <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/mpd.conf.5.rst">mpd.conf(5)</a>, version 0.24.5.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -717,8 +717,11 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     Returns:
         A complete HTML document.
     """
+    # The label is wrapped: the item is a flex row, and a label carrying markup — the brand's
+    # <sup> — would otherwise split into one flex item per text run, laid out side by side
+    # like columns (seen on "Audiogravity, Volumio or moOde", 2026-10-17).
     links = "\n".join(
-        '            <a class="man-nav-item{cls}" href="{cid}"{cur}>{n}{label}</a>'.format(
+        '            <a class="man-nav-item{cls}" href="{cid}"{cur}>{n}<span>{label}</span></a>'.format(
             cls=" active" if cid == active else "",
             # Assistive technology reads aria-current; the class only paints a border.
             cur=' aria-current="page"' if cid == active else "",

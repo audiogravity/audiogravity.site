@@ -368,7 +368,17 @@ class TestGuides:
         assert '<span class="man-crumb">Guides</span>' in out
         assert '<nav class="man-nav" aria-label="Guides">' in out
         assert "man-nav-n" not in out
-        assert 'href="hqplayer-on-a-pi" aria-current="page">HQPlayer on a Pi</a>' in out
+        assert 'href="hqplayer-on-a-pi" aria-current="page"><span>HQPlayer on a Pi</span></a>' in out
+
+    def test_a_label_with_markup_stays_one_piece_in_the_sidebar(self):
+        """The sidebar item is a flex row: unwrapped, "Audiogravi<sup>ty</sup>, Volumio or moOde"
+        became three flex items set side by side, like columns."""
+        import gen_manual_html as g
+        toc = [("ag-vs", "Audiogravi<sup>ty</sup>, Volumio or moOde")]
+        out = g.page("x", "", toc, "ag-vs", "ag-vs", g.GUIDES)
+        assert '><span>Audiogravi<sup>ty</sup>, Volumio or moOde</span></a>' in out
+        chapter = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<span class="man-nav-n">04</span><span>Listening</span></a>' in chapter
 
     def test_it_carries_the_trademark_notice(self):
         """A guide names HQPlayer, Roon and the streaming services as much as a chapter does."""

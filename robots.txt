@@ -1,0 +1,6 @@
+# Every page of this site may be crawled. The sitemap lists the ones worth indexing: the landing
+# and the manual. It is written by scripts/gen_manual_html.py, with the manual's pages.
+User-agent: *
+Allow: /
+
+Sitemap: https://audiogravity.app/sitemap.xml

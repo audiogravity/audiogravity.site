@@ -21,6 +21,10 @@ chapters already use resolve unchanged — no src rewriting, and the .md and .ht
 drift apart in the file tree. The one file written elsewhere is ``sitemap.xml``, at the root,
 which lists the landing and these pages (see ``SITEMAP``).
 
+The guides in ``docs/guides`` are rendered the same way, on the same page shell: answers to
+questions asked on audiophile forums, listed in their own README the way the manual's chapters
+are in its Contents (see ``GUIDES``).
+
 The chapter list comes from the manual's own README "Contents" list, the same single source of
 truth ``ag-manual-modal.js`` parses in the interface. Add a chapter there and it appears here.
 
@@ -43,6 +47,7 @@ import argparse
 import html
 import re
 import sys
+from dataclasses import dataclass
 from pathlib import Path
 
 from asset_versions import stamp as stamp_assets
@@ -54,9 +59,36 @@ except ImportError:  # pragma: no cover - environment guard
 
 REPO_DIR = Path(__file__).resolve().parent.parent
 MANUAL_DIR = REPO_DIR / "docs" / "manual"
+GUIDES_DIR = REPO_DIR / "docs" / "guides"
 
 #: The site's address, as the canonical links and the sitemap name it.
 SITE_URL = "https://audiogravity.app/"
+
+
+@dataclass(frozen=True)
+class Section:
+    """One set of pages rendered on the shared shell: the manual, or the guides.
+
+    Attributes:
+        path: Where its pages are served under the site root, with a trailing slash.
+        crumb: What the top bar calls it.
+        name: What a browser tab calls it, after the page's own title.
+        nav_label: The sidebar's name, for assistive technology.
+        numbered: Whether the sidebar shows each page's number. A chapter has one, taken from
+            its id; a guide is named by its subject alone, and its address carries no number
+            that a reordering would break.
+    """
+
+    path: str
+    crumb: str
+    name: str
+    nav_label: str
+    numbered: bool
+
+
+MANUAL = Section("docs/manual/", "User manual", "Audiogravity manual", "Manual chapters", True)
+#: A guide's tab reads "<its question> — Audiogravity": the question is what was searched for.
+GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", False)
 
 #: The sitemap sits at the root, the only place one may list the whole site from. It is written
 #: here, with the pages, because the manual is the only part of the site that grows: a chapter
@@ -119,6 +151,38 @@ def parse_toc(readme: str) -> list[tuple[str, str]]:
         if m:
             out.append((m.group("id"), m.group("label")))
     return out
+
+
+#: Matches a guide in the guides' README, one line each:
+#: ``- [HQPlayer Embedded on a Raspberry Pi 5](hqplayer-embedded-raspberry-pi-5.md) — what it answers``.
+GUIDE_LINE = re.compile(
+    r"^\s*[-*]\s*\[(?P<label>.+?)\]\((?P<id>[a-z0-9-]+)\.md\)\s*—\s*(?P<summary>\S.*?)\s*$")
+
+
+def parse_guides(readme: str) -> list[tuple[str, str, str]]:
+    """Extract the ordered guide list from the guides' README.
+
+    Args:
+        readme: Contents of ``docs/guides/README.md``.
+
+    Returns:
+        ``(guide_id, label, summary)`` triples in document order. The summary is what the list
+        says of the guide, and the page's description for search engines.
+    """
+    return [(m.group("id"), m.group("label"), m.group("summary"))
+            for m in map(GUIDE_LINE.match, readme.split("\n")) if m]
+
+
+def plain_text(fragment: str) -> str:
+    """Text of an HTML or Markdown fragment, its tags dropped and its entities decoded.
+
+    Args:
+        fragment: Inline markup, e.g. a label carrying the brand's ``<sup>``.
+
+    Returns:
+        The text a reader sees, ready to be escaped into an attribute.
+    """
+    return html.unescape(re.sub(r"<[^>]+>", "", fragment))
 
 
 def slugify(text: str) -> str:
@@ -591,21 +655,22 @@ def highlight_fence(content: str, lang: str, attrs: str) -> str:
     return f"<pre{flag}><code{cls}>{body if body is not None else _esc(content)}</code></pre>"
 
 
-def manual_url(canonical: str) -> str:
-    """The public address of a manual page.
+def page_url(canonical: str, section: Section = MANUAL) -> str:
+    """The public address of a page of the manual or of the guides.
 
     Args:
-        canonical: Path of the page under ``docs/manual/``, without the .html suffix (see
-            page()); empty for the contents page.
+        canonical: Path of the page under its section, without the .html suffix (see page());
+            empty for the section's contents page.
+        section: The section the page belongs to.
 
     Returns:
         The absolute address, as the page's canonical link and the sitemap both give it.
     """
-    return f"{SITE_URL}docs/manual/{canonical}"
+    return f"{SITE_URL}{section.path}{canonical}"
 
 
-def sitemap(toc: list[tuple[str, str]]) -> str:
-    """The site's sitemap: the landing, the manual's contents page, then each chapter.
+def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None) -> str:
+    """The site's sitemap: the landing, the manual's contents then its chapters, then the guides.
 
     Addresses only. Google ignores ``changefreq`` and ``priority``, and uses ``lastmod`` only
     where it proves accurate — which it could not be here, since every release rewrites each
@@ -613,11 +678,15 @@ def sitemap(toc: list[tuple[str, str]]) -> str:
 
     Args:
         toc: Chapter list, as parse_toc() reads it.
+        guides: Guide ids, as parse_guides() reads them; the guides' contents page is listed
+            only when there is at least one.
 
     Returns:
         A sitemap document.
     """
-    urls = [SITE_URL, manual_url("")] + [manual_url(cid) for cid, _ in toc]
+    urls = [SITE_URL, page_url("")] + [page_url(cid) for cid, _ in toc]
+    if guides:
+        urls += [page_url("", GUIDES)] + [page_url(gid, GUIDES) for gid in guides]
     entries = "\n".join(f"  <url><loc>{html.escape(u)}</loc></url>" for u in urls)
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -625,38 +694,43 @@ def sitemap(toc: list[tuple[str, str]]) -> str:
             "</urlset>\n")
 
 
-def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonical: str) -> str:
-    """Assemble one manual page.
+def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonical: str,
+         section: Section = MANUAL, description: str | None = None) -> str:
+    """Assemble one page of the manual or of the guides.
 
     Args:
-        title: Chapter label, may carry inline markup; stripped for ``<title>``.
-        body: Rendered chapter HTML.
-        toc: Chapter list for the sidebar.
-        active: Id of the chapter being rendered, highlighted in the sidebar. Empty on the
+        title: Page label, may carry inline markup; stripped for ``<title>``.
+        body: Rendered page HTML.
+        toc: Page list for the sidebar: the chapters, or the guides.
+        active: Id of the page being rendered, highlighted in the sidebar. Empty on the
             contents page, which is not itself a chapter.
-        canonical: Path of this page under the site root, **without the .html suffix**.
+        canonical: Path of this page under its section, **without the .html suffix**.
             GitHub Pages serves these pages at the extension-less address and 308-redirects
             the ``.html`` one to it, so a canonical carrying the suffix names an address that
             redirects — the one thing a canonical link must never do. Passed in rather than
             derived from ``active``, which has no value on the contents page and produced a
             canonical pointing at ``/docs/manual/.html``.
+        section: Which set of pages this one belongs to.
+        description: What a search result says of the page, as plain text. A guide gives its
+            own; a manual page falls back on its title.
 
     Returns:
         A complete HTML document.
     """
     links = "\n".join(
-        '            <a class="man-nav-item{cls}" href="{cid}"{cur}>'
-        '<span class="man-nav-n">{n:02d}</span>{label}</a>'.format(
+        '            <a class="man-nav-item{cls}" href="{cid}"{cur}>{n}{label}</a>'.format(
             cls=" active" if cid == active else "",
             # Assistive technology reads aria-current; the class only paints a border.
             cur=' aria-current="page"' if cid == active else "",
             cid=cid,
-            n=int(cid[:2]),
+            n=f'<span class="man-nav-n">{int(cid[:2]):02d}</span>' if section.numbered else "",
             label=label,
         )
         for cid, label in toc
     )
     plain = re.sub(r"<[^>]+>", "", title)
+    if description is None:
+        description = f"Audiogravity user manual — {plain}."
     # A chapter carries the trademark notice in its footer; the contents page does not,
     # since README.md — its body — already ends with it.
     notice = f'\n                <p class="man-notice">{footer_notice()}</p>' if active else ""
@@ -666,9 +740,9 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>{html.escape(plain)} — Audiogravity manual</title>
-    <meta name="description" content="Audiogravity user manual — {html.escape(plain)}.">
-    <link rel="canonical" href="{manual_url(canonical)}">
+    <title>{html.escape(plain)} — {section.name}</title>
+    <meta name="description" content="{html.escape(description)}">
+    <link rel="canonical" href="{page_url(canonical, section)}">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css">
     <link rel="stylesheet" href="../../assets/manual.css">
@@ -692,13 +766,13 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
                  width="28" height="28" decoding="async">{BRAND}</a>
-        <span class="man-crumb">User manual</span>
+        <span class="man-crumb">{section.crumb}</span>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
 
     <div class="man-shell">
-        <nav class="man-nav" aria-label="Manual chapters">
+        <nav class="man-nav" aria-label="{section.nav_label}">
 {links}
         </nav>
 
@@ -742,6 +816,22 @@ def heading_ids(source: str) -> set[str]:
     return set(re.findall(r'<h[234] id="([^"]+)"', stamp_heading_ids(markdown().render(source))))
 
 
+def render_body(md: MarkdownIt, source: str, known: set[str]) -> str:
+    """Run one Markdown source through every post-processing pass, in order.
+
+    Args:
+        md: The renderer, from markdown().
+        source: A page's Markdown.
+        known: Page stems of its section, so links between them reach the generated pages.
+
+    Returns:
+        The page's body HTML.
+    """
+    return lazy_load_images(
+        wrap_tables(
+            link_between_pages(stamp_heading_ids(md.render(source)), known)))
+
+
 def build() -> dict[Path, str]:
     """Render every chapter.
 
@@ -758,9 +848,7 @@ def build() -> dict[Path, str]:
 
     def render(source: str) -> str:
         """Run one Markdown source through every post-processing pass, in order."""
-        return lazy_load_images(
-            wrap_tables(
-                link_between_pages(stamp_heading_ids(md.render(source)), known)))
+        return render_body(md, source, known)
 
     out: dict[Path, str] = {}
     for cid, label in toc:
@@ -779,6 +867,52 @@ def build() -> dict[Path, str]:
     # Each stylesheet and script is asked for with a stamp of its content, so a page never
     # meets a file a browser kept from before an update (scripts/asset_versions.py).
     return {path: stamp_assets(text, MANUAL_DIR) for path, text in out.items()}
+
+
+def read_guides() -> list[tuple[str, str, str]]:
+    """The guides' README list, or nothing while there is no guides folder.
+
+    Returns:
+        ``(guide_id, label, summary)`` triples, as parse_guides() reads them.
+    """
+    readme = GUIDES_DIR / "README.md"
+    return parse_guides(readme.read_text(encoding="utf-8")) if readme.exists() else []
+
+
+def build_guides() -> dict[Path, str]:
+    """Render every guide, and their contents page, on the manual's shell.
+
+    Returns:
+        Mapping of output path to file contents; empty while there is no guides folder.
+    """
+    if not (GUIDES_DIR / "README.md").exists():
+        return {}
+    guides = read_guides()
+    if not guides:
+        sys.exit("no guides found in docs/guides/README.md — is each one a "
+                 "'- [Title](id.md) — summary' line?")
+
+    md = markdown()
+    known = {gid for gid, _, _ in guides} | {"README"}
+    toc = [(gid, label) for gid, label, _ in guides]
+
+    out: dict[Path, str] = {}
+    for gid, label, summary in guides:
+        src = GUIDES_DIR / f"{gid}.md"
+        if not src.exists():
+            sys.exit(f"{src} is listed in the guides' README but does not exist")
+        out[GUIDES_DIR / f"{gid}.html"] = page(
+            label, render_body(md, src.read_text(encoding="utf-8"), known), toc, gid, gid,
+            GUIDES, plain_text(summary))
+
+    # The README is the guides' front page; its first paragraph says what they are, and is
+    # what a search result shows of that page.
+    body = render_body(md, (GUIDES_DIR / "README.md").read_text(encoding="utf-8"), known)
+    intro = re.search(r"<p>(.*?)</p>", body, re.S)
+    out[GUIDES_DIR / "index.html"] = page(
+        "Guides", body, toc, "", "", GUIDES,
+        " ".join(plain_text(intro.group(1)).split()) if intro else None)
+    return {path: stamp_assets(text, GUIDES_DIR) for path, text in out.items()}
 
 
 #: Where the trademark notice may appear in the Markdown: README.md only. It used to close all
@@ -822,13 +956,14 @@ def check_notice() -> list[str]:
 
 
 def outputs() -> dict[Path, str]:
-    """Everything a run writes: the manual's pages and the sitemap that lists them.
+    """Everything a run writes: the manual's pages, the guides, and the sitemap that lists them.
 
     Returns:
         Mapping of output path to file contents.
     """
-    files = build()
-    files[SITEMAP] = sitemap(parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8")))
+    files = build() | build_guides()
+    files[SITEMAP] = sitemap(parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8")),
+                             [gid for gid, _, _ in read_guides()])
     return files
 
 
@@ -858,12 +993,12 @@ def main() -> int:
                 print(f"stale: {p.relative_to(REPO_DIR)}")
             print(f"\n{len(stale)} file(s) out of date — run scripts/gen_manual_html.py")
             return 1
-        print(f"{len(files) - 1} manual page(s) and the sitemap up to date")
+        print(f"{len(files) - 1} page(s) of the manual and the guides, and the sitemap, up to date")
         return 0
 
     for p, content in files.items():
         p.write_text(content, encoding="utf-8")
-    print(f"wrote {len(files) - 1} manual page(s) to {MANUAL_DIR}, and {SITEMAP.name}")
+    print(f"wrote {len(files) - 1} page(s) to {MANUAL_DIR} and {GUIDES_DIR}, and {SITEMAP.name}")
     return 0
 
 

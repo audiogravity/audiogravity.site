@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi — Audiogravity</title>
+    <meta name="description" content="The ways to play Qobuz, Tidal and HIGHRESAUDIO on a Pi — Volumio, Lyrion, moOde, HQPlayer — what each costs and offers, and how Audiogravity does it.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/qobuz-tidal-highresaudio-raspberry-pi">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">Guides</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a>
+            <a class="man-nav-item active" href="qobuz-tidal-highresaudio-raspberry-pi" aria-current="page">Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi">HQPlayer NAA on a Raspberry Pi</a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux">How to check bit-perfect playback on a Linux streamer</a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode">Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</h1>
+<p><strong>Short answer:</strong> a Raspberry Pi can play all three, but few setups offer all three at once, and
+they differ in what they cost, how they connect to each service, and how they are driven: from
+the service's own app (Qobuz Connect, TIDAL Connect) or from the streamer's own library. Each
+service needs your own subscription, whichever way you choose.</p>
+<p>Checked on 2026-10-17. These products change often: the sources are listed at the end of the
+page, with their dates.</p>
+<h2 id="the-ways-to-do-it">The ways to do it</h2>
+<p><strong>Volumio Premium.</strong> Qobuz, TIDAL and HIGHRESAUDIO are built into Volumio's library, and Premium
+adds Qobuz Connect and TIDAL Connect. Premium costs €7.49 a month or €69.99 a year, with a
+14-day trial, and needs a MyVolumio account. Qobuz
+lists Volumio among its Qobuz Connect partners, and HIGHRESAUDIO names Volumio as a partner.
+Volumio 4 runs on the Raspberry Pi 4 and 5.</p>
+<p><strong>piCorePlayer, or Lyrion Music Server.</strong> Free. Qobuz and TIDAL come as plugins from the
+server's official plugin list, both updated in October 2026. There is no HIGHRESAUDIO plugin in
+that list.</p>
+<p><strong>moOde.</strong> Free and open source. Qobuz goes through upmpdcli, which moOde sets up as a UPnP media
+server: you browse it from a separate UPnP control app. Since September 2026, moOde can also
+install Pibuz, for Qobuz Connect. For TIDAL, moOde's founder wrote in August 2024 that the UPnP
+option &quot;doesn't work anymore&quot;. HIGHRESAUDIO is not offered in moOde's interface.</p>
+<p><strong>HQPlayer.</strong> HQPlayer streams Qobuz and HIGHRESAUDIO itself: Signalyst lists both as streaming
+partners. It runs on the Pi (see <a href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a>),
+and is driven from its own interface or another controller.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Audiogravi<sup>ty</sup> runs on a Raspberry Pi 4 or 5 with Debian 13 (Trixie), DietPi or
+Raspberry Pi OS included. The three services come with the Pro edition; the 30-day trial
+includes them.</p>
+<p><strong>One library for the three.</strong> Qobuz, Tidal and HIGHRESAUDIO sit side by side with your own
+files and your UPnP media servers. <strong>Search</strong> looks through all of them at once, and an
+artist's page gathers their albums across the services. Each service keeps its own shelves:
+favourites, playlists, genres, Qobuz purchases, the HIGHRESAUDIO vault.</p>
+<p><strong>Connecting each service</strong>, from <strong>Library → Sources</strong>:</p>
+<ul>
+<li><strong>Qobuz</strong>: tap <strong>Connect</strong>, sign in on Qobuz's page, and you are sent back connected.</li>
+<li><strong>Tidal</strong>: tap <strong>Connect</strong> and sign in; Tidal then shows a page the app cannot read on its own,
+so you copy that page's address back into Audiogravi<sup>ty</sup>, once.</li>
+<li><strong>HIGHRESAUDIO</strong>: your email and password, kept encrypted on the box. HIGHRESAUDIO allows one
+active device per account: connecting the box signs your other HIGHRESAUDIO players out.</li>
+</ul>
+<p><strong>The best quality each service offers.</strong> Audiogravi<sup>ty</sup> asks Qobuz and Tidal for their
+highest quality, up to 24-bit / 192 kHz, and plays what HIGHRESAUDIO publishes, up to
+24-bit / 352.8 kHz. The audio is not re-encoded: Qobuz and HIGHRESAUDIO send it as it is, and
+Tidal's is repackaged without being changed. Keep Tidal on a lossless setting: its lower ones
+produce no sound.</p>
+<p><strong>Where it plays.</strong> On the DAC attached to the box, on a UPnP renderer elsewhere on your network,
+or through HQPlayer.</p>
+<p><strong>What it does not do.</strong> There is no Qobuz Connect and no TIDAL Connect: you choose the music in
+Audiogravi<sup>ty</sup>, not in the Qobuz or TIDAL apps.</p>
+<p>The details are in the manual:
+<a href="../manual/05-library-streaming#streaming-services">Library &amp; streaming → Streaming services</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Volumio editions and prices: <a href="https://volumio.com/en/get-started/">volumio.com/en/get-started</a>, read on 2026-10-17. Volumio 4 and the Pi 5: <a href="https://volumio.com/volumio-4-os/">Volumio 4 OS</a>, November 2025; <a href="https://help.volumio.com/en/articles/10-what-3rd-party-devices-are-supported">supported devices</a>.</li>
+<li>Qobuz Connect partners: <a href="https://community.qobuz.com/press-en/qobuz-connect-celebrates-over-100-partners">Qobuz Connect celebrates over 100 partners</a>, Qobuz, December 2025.</li>
+<li>HIGHRESAUDIO's partners: <a href="https://www.highresaudio.com/en/content/streaming-app">HIGHRESAUDIO streaming app</a>, read on 2026-10-17.</li>
+<li>Lyrion Music Server plugins: <a href="https://github.com/LMS-Community/lms-plugin-repository/blob/master/extensions.xml">the official plugin list</a>, read on 2026-10-17 (Qobuz 3.7.2, TIDAL 1.8.2).</li>
+<li>moOde: <a href="https://github.com/moode-player/moode/blob/master/www/relnotes.txt">release notes</a> (Pibuz in 10.3.4 and 10.3.5, September 2026); <a href="https://github.com/PhilipVinc/pibuz">Pibuz</a>; Tim Curtis on Tidal: <a href="https://moodeaudio.org/forum/showthread.php?pid=57024">moOde forum</a>, August 2024.</li>
+<li>HQPlayer's streaming partners: <a href="https://signalyst.com/?page_id=124">signalyst.com</a>, read on 2026-10-17.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Guides — Audiogravity</title>
+    <meta name="description" content="Practical answers to questions audiophiles ask on forums about HQPlayer and the Raspberry Pi as a streamer, each checked against Audiogravity and dated.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">Guides</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi">Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi">HQPlayer NAA on a Raspberry Pi</a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux">How to check bit-perfect playback on a Linux streamer</a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode">Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Guides</h1>
+<p>Practical answers to questions audiophiles ask on forums about HQPlayer and the Raspberry Pi as a
+streamer, each checked against Audiogravi<sup>ty</sup> and dated.</p>
+<ul>
+<li><a href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a> — Two ways to install HQPlayer Embedded on a Pi 5, what the board can handle, and how Audiogravi<sup>ty</sup> sets it up next to your other players.</li>
+<li><a href="qobuz-tidal-highresaudio-raspberry-pi">Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</a> — The ways to play Qobuz, Tidal and HIGHRESAUDIO on a Pi — Volumio, Lyrion, moOde, HQPlayer — what each costs and offers, and how Audiogravi<sup>ty</sup> does it.</li>
+<li><a href="hqplayer-naa-raspberry-pi">HQPlayer NAA on a Raspberry Pi</a> — What an NAA does, the two ways to install it on a Pi, the version rule, Pi 4 or Pi 5 for a USB DAC, and how Audiogravi<sup>ty</sup> sets it up.</li>
+<li><a href="check-bit-perfect-playback-linux">How to check bit-perfect playback on a Linux streamer</a> — Three checks to see whether a Linux streamer sends your files to the DAC untouched, what MPD's software volume does, and what Audiogravi<sup>ty</sup> shows.</li>
+<li><a href="audiogravity-volumio-moode">Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</a> — A sourced, dated comparison by the maker of Audiogravi<sup>ty</sup>: price, streaming services, Qobuz and TIDAL Connect, HQPlayer, Roon, DSD and apps.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

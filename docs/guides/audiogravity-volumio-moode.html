@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Audiogravity, Volumio or moOde: which to choose? — Audiogravity</title>
+    <meta name="description" content="A sourced, dated comparison by the maker of Audiogravity: price, streaming services, Qobuz and TIDAL Connect, HQPlayer, Roon, DSD and apps.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/audiogravity-volumio-moode">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <span class="man-crumb">Guides</span>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi">Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi">HQPlayer NAA on a Raspberry Pi</a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux">How to check bit-perfect playback on a Linux streamer</a>
+            <a class="man-nav-item active" href="audiogravity-volumio-moode" aria-current="page">Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</h1>
+<p><strong>Short answer:</strong> moOde if you want a free, open-source player and do not need Tidal or
+HIGHRESAUDIO in its library. Volumio if you want to pick music in the Qobuz and TIDAL apps
+(Qobuz Connect, TIDAL Connect) and accept a subscription and an account. Audiogravi<sup>ty</sup>
+if you use HQPlayer, or want Qobuz, Tidal and HIGHRESAUDIO in one library without a
+subscription to the player itself.</p>
+<p>I make Audiogravi<sup>ty</sup>: read this page with that in mind. Everything said here about
+Volumio and moOde comes from their own sites, documentation and release notes, read on
+2026-10-17 and listed at the end. A row appears in the table only where I could check all three.</p>
+<h2 id="side-by-side">Side by side</h2>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Audiogravi<sup>ty</sup></th>
+<th>Volumio</th>
+<th>moOde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>Starter free; Pro is a one-off licence, no subscription (<a href="https://audiogravity.app/#pricing">price</a>)</td>
+<td>Free; Premium €7.49 a month or €69.99 a year</td>
+<td>Free, open source (GPL 3)</td>
+</tr>
+<tr>
+<td>Online account</td>
+<td>None</td>
+<td>MyVolumio, for Premium</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Qobuz, Tidal, HIGHRESAUDIO in the library</td>
+<td>All three (Pro)</td>
+<td>All three (Premium)</td>
+<td>Qobuz, through upmpdcli and a separate UPnP control app</td>
+</tr>
+<tr>
+<td>Qobuz Connect, TIDAL Connect</td>
+<td>No</td>
+<td>Both (Premium)</td>
+<td>Qobuz Connect through Pibuz, installed by the user</td>
+</tr>
+<tr>
+<td>HQPlayer</td>
+<td>HQPlayer Embedded on the box, NAA, HQPlayer as the output, its filters from the app</td>
+<td>Not offered</td>
+<td>Not offered</td>
+</tr>
+<tr>
+<td>Roon</td>
+<td>Roon Bridge or Roon Server on the box, Roon zones as a source</td>
+<td>Roon Bridge plugin</td>
+<td>Roon Bridge, installed by the user</td>
+</tr>
+<tr>
+<td>AirPlay</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>AirPlay 1 and 2</td>
+</tr>
+<tr>
+<td>Browsing UPnP media servers</td>
+<td>Yes (Pro)</td>
+<td>Yes</td>
+<td>Removed in 2022 (version 8.1.0)</td>
+</tr>
+<tr>
+<td>DSD</td>
+<td>Native to a USB DAC that accepts it</td>
+<td>DoP; native since Volumio 4</td>
+<td>Native and DoP</td>
+</tr>
+<tr>
+<td>Apps</td>
+<td>Installable web app (iPhone, Android), browser</td>
+<td>Browser, native apps</td>
+<td>Browser</td>
+</tr>
+<tr>
+<td>System</td>
+<td>Debian 13 (Trixie): Raspberry Pi 4 and 5, x86-64 PCs</td>
+<td>Debian 12 (Bookworm): Raspberry Pi 4 and 5, PCs</td>
+<td>Raspberry Pi OS (Trixie), 64-bit Raspberry Pi</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="moode">moOde</h2>
+<p>A free, open-source player built on MPD, actively developed: version 10.3.6 came out on
+10 October 2026. Besides MPD it manages AirPlay, Spotify Connect, Squeezelite, Plexamp and Roon
+Bridge as renderers, and plays multichannel. Qobuz goes through upmpdcli, which moOde sets up as
+a UPnP media server for a separate control app. Since September 2026, Pibuz brings Qobuz
+Connect. Tidal and HIGHRESAUDIO are not in its interface.</p>
+<h2 id="volumio">Volumio</h2>
+<p>Volumio 4 is built on Debian 12 and runs on the Raspberry Pi 4 and 5 and on PCs, with apps in
+the app stores. The free edition plays your files, AirPlay and UPnP; Premium adds Qobuz, TIDAL
+and HIGHRESAUDIO in the library, Qobuz Connect and TIDAL Connect, and needs a MyVolumio account.
+Qobuz lists Volumio among its Qobuz Connect partners, and HIGHRESAUDIO names it as a partner.
+Volumio's own devices are Roon Ready.</p>
+<h2 id="audiogravity">Audiogravi<sup>ty</sup></h2>
+<p>Audiogravi<sup>ty</sup> installs and drives the audio software on the box — MPD, AirPlay, Roon
+Bridge or Roon Server, HQPlayer Embedded or HQPlayer's NAA, a UPnP renderer — and switches
+between them by profile. It also drives UPnP renderers elsewhere on your network. The free
+Starter edition plays your own library and internet radio; Pro adds the streaming services, UPnP
+media servers, Roon, HQPlayer, the signal path view and the tuning of the box. Pro is a one-off
+licence for one machine; the 30-day trial opens everything. Each streaming service needs your
+own subscription.</p>
+<p>What it does not have: Qobuz Connect, TIDAL Connect, Spotify Connect, Squeezelite, Plexamp.</p>
+<p>The guides go further on two of its subjects:
+<a href="hqplayer-embedded-raspberry-pi-5">HQPlayer Embedded on a Raspberry Pi 5</a> and
+<a href="qobuz-tidal-highresaudio-raspberry-pi">Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Volumio: <a href="https://volumio.com/en/get-started/">editions and prices</a> (version 4.119, 24 March 2026), <a href="https://volumio.com/volumio-4-os/">Volumio 4 OS</a> (November 2025), <a href="https://help.volumio.com/en/articles/10-what-3rd-party-devices-are-supported">supported devices</a>, <a href="https://help.volumio.com/en/articles/5-what-is-myvolumio-account">MyVolumio account</a>, <a href="https://github.com/volumio/volumio-plugins-sources-bookworm">plugins for Volumio 4</a>, <a href="https://shop.volumio.com/product/rivo">Rivo</a>; all read on 2026-10-17.</li>
+<li>Qobuz Connect partners: <a href="https://community.qobuz.com/press-en/qobuz-connect-celebrates-over-100-partners">Qobuz</a>, December 2025. HIGHRESAUDIO's partners: <a href="https://www.highresaudio.com/en/content/streaming-app">highresaudio.com</a>, read on 2026-10-17.</li>
+<li>moOde: <a href="https://moodeaudio.org/">moodeaudio.org</a> and <a href="https://github.com/moode-player/moode/blob/master/www/relnotes.txt">release notes</a>, read on 2026-10-17; <a href="https://github.com/moode-player/docs/blob/main/setup_guide.md">setup guide</a>; <a href="https://github.com/PhilipVinc/pibuz">Pibuz</a>.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

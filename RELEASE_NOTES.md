@@ -22,6 +22,12 @@ square, the more the box played at that hour, on average per week over the perio
 your evenings, your weekend afternoons, the late Friday nights. A track counts in the hours it
 really played: pauses fill no square.
 
+**One list of genres, whatever the service.** Qobuz, Tidal and HIGHRESAUDIO each file music
+their own way — the same soul album is *Soul/Funk/R&B* at one service and *R&B/Soul* at
+another. Stats counts your streaming listens under one shared list of genres, so a style shows
+once whichever service played it, and the track playing names its genre in its details. Your own
+files and radio stations are read against the same list.
+
 The figures come with Pro. The box keeps the history on every edition, so on every edition you
 can switch it off or clear it, from the bottom of the same tab; while it is off, the top of the tab
 says so. It stays on the box: nothing of it is sent anywhere.

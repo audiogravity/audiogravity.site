@@ -370,8 +370,10 @@ The figures come with **Pro**; on Starter, the tab shows them behind a padlock.
    per hour. The darker a square, the more the box played at that hour, on average per
    week over the period. Tap a square to read its time above the grid.
 5. **By source**, **By output**, **Sound quality** and **Genres** show where that time
-   went. **Unknown** gathers what said nothing about itself: AirPlay and some streams
-   carry no genre.
+   went. Genres follow one list whatever the service: an album Qobuz files under
+   *Soul/Funk/R&B* and a track Tidal files under *R&B/Soul* both count as **Soul & R&B**,
+   and your own files and radio stations are read against the same list. **Unknown**
+   gathers what said nothing about itself: AirPlay and some streams carry no genre.
 6. Under **Most played**, switch between **Artists**, **Albums** and **Tracks**.
    **Recently played** lists your latest listens, whatever the period.
 

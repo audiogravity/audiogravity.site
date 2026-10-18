@@ -42,8 +42,8 @@ each track from the server over HTTP: nothing is mounted on the streamer.
 - **Mount the share** if you want the streamer's own search and index, and no server to run.
 - **Use a UPnP server** if one already serves your other players, or if you like the way it
   arranges the library.
-- **Both work side by side.** My own test box does just that: its library is the SMB share of a
-  Raspberry Pi that also runs MinimServer, and both paths reach the same files.
+- **Both work side by side.** A NAS can share a folder and serve it through its UPnP server at the
+  same time; the two paths reach the same files.
 
 ## With Audiogravi<sup>ty</sup>
 

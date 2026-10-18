@@ -6,7 +6,7 @@ configuration names the board's *overlay*: one line in `/boot/firmware/config.tx
 Some boards carry a memory chip that names it for you; many audio boards do not, or name one that
 no longer works.
 
-Checked on 2026-10-17 against Raspberry Pi's and HiFiBerry's documentation, and on my own
+Checked on 2026-10-17 against Raspberry Pi's and HiFiBerry's documentation, and on a test
 Raspberry Pi 4 with a HiFiBerry DAC+ Pro under Raspberry Pi OS (Debian 13).
 
 ## Why it is not automatic
@@ -22,8 +22,9 @@ there and up to date. With audio boards, it often is not:
 - **Two versions of one board.** Raspberry Pi's own audio boards exist in green (Raspberry Pi) and
   black (IQaudIO): "electrically equivalent, but have different EEPROM contents".
 
-My own Pi shows the result: the firmware reports no HAT at all (`/proc/device-tree/hat` is
-absent), and the DAC+ Pro works because of one line in `config.txt`.
+The result, measured on a Raspberry Pi 4 with a DAC+ Pro (2026-10-17): the firmware reports no HAT
+at all (`/proc/device-tree/hat` is absent), and the board works because of one line in
+`config.txt`.
 
 ## The line for your board
 
@@ -57,8 +58,9 @@ a description of each overlay, in `/boot/firmware/overlays/README`.
 
 ## Turn the Pi's own audio off
 
-With the Pi's own outputs still on, your DAC is one sound card among several. My Pi 4 has these two
-lines beside the DAC's:
+With the Pi's own outputs still on, your DAC is one sound card among several. Raspberry Pi OS's
+`config.txt` already holds the two lines behind them, `dtparam=audio=on` and
+`dtoverlay=vc4-kms-v3d`. Edit those two rather than adding new ones, so that they read:
 
 ```text nocopy
 dtparam=audio=off
@@ -77,7 +79,7 @@ Changes take effect after a reboot.
 aplay -l
 ```
 
-The board should appear under its own name. On my Pi:
+The board should appear under its own name. For a DAC+ Pro:
 
 ```text nocopy
 card 0: sndrpihifiberry [snd_rpi_hifiberry_dacplus], device 0: HiFiBerry DAC+ Pro HiFi pcm512x-hifi-0 [HiFiBerry DAC+ Pro HiFi pcm512x-hifi-0]

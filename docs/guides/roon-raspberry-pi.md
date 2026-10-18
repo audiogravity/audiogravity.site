@@ -37,8 +37,8 @@ Roon can send to HQPlayer, which then does the processing and plays to its own o
 Raspberry Pi next to the DAC, that output is HQPlayer's NAA (see
 [HQPlayer NAA on a Raspberry Pi](hqplayer-naa-raspberry-pi)).
 
-- **The Pi needs the NAA, not Roon Bridge.** On my test box (2026-09-26), Roon played through
-  HQPlayer to the NAA with Roon Bridge stopped.
+- **The Pi needs the NAA, not Roon Bridge.** Tested on 2026-09-26: Roon played through HQPlayer
+  to the NAA with Roon Bridge stopped.
 - **The two should not fight over the DAC.** Roon's help: "Both Roon and HQPlayer expect to have
   exclusive access to the device" — if HQPlayer uses a device, disable it in Roon's audio settings.
   HQPlayer's developer, Jussi Laako, said the same of a Roon Bridge left running beside an NAA on

@@ -64,6 +64,26 @@ decode DoP receives PCM full of markers instead of music.
   DSD output on its own page (see [HQPlayer Embedded](#hqplayer-embedded)); AirPlay
   carries no DSD.
 
+**Your DAC's volume during DSD.** Some DACs play nothing, or noise, when their own volume
+is lowered while they receive DSD. So while your DAC receives DSD — as DSD or as DoP, from
+any player, HQPlayer included — Audiogravi<sup>ty</sup> sets your DAC's own volume to
+maximum, and puts it back when the DSD ends. When MPD converts the DSD to PCM, your DAC's
+volume is put back as soon as the player shows **Converted to PCM**: what your DAC
+receives is PCM.
+
+If your DAC lowers DSD properly and you set your listening level with its volume, turn
+this off:
+
+1. Open **Config → MPD**, then the **Guided** view.
+2. Under **DSD**, turn off **Full DAC volume during DSD**, then **Apply changes**.
+
+<img src="images/ios-guided-dsd.webp" alt="The DSD settings of MPD's Guided view: Send DSD as DoP, off, and Full DAC volume during DSD, on, each with what it does" width="360">
+
+It takes effect at once, even on a DSD track already playing, and stays with your DAC
+whichever player sends it DSD. To check that your DAC lowers DSD properly, turn your
+amplifier down first, play a DSD track and lower your DAC's volume: if the music stops or
+turns to noise, turn the switch back on.
+
 ## Network UPnP renderers
 
 Audiogravi<sup>ty</sup> is a **UPnP Control Point**: it discovers every renderer on your LAN —

@@ -72,8 +72,15 @@ that does not. Nothing reaches a DAC in a form it may not decode.
   takes it without a restart.
 - **The player says how DSD reaches the DAC**: nothing more when it arrives as DSD, a **DoP** tag,
   or a warning when MPD converted it to PCM.
-- **DSD plays at 100 on the box's own output.** While a DSD track plays there, the volume is set to
-  100 and locked, then put back when the DSD ends.
+- **The player's volume does nothing to DSD.** I measured it on MPD 0.24.5: its volume at 30, then
+  at 5, changed neither the level nor the DoP of a DSD128 track, and a DSD it converted to PCM came
+  out byte for byte the same at 100 and at 30. The volume control gives way to a padlock while DSD
+  plays: set your level on the amplifier.
+- **Your DAC's own volume goes to full while it receives DSD.** On the USB DAC of my test box, that
+  volume lowered by 10 dB silenced DoP and turned native DSD to noise. So while a DSD track reaches
+  the DAC as DSD or as DoP, from any player, Audiogravi<sup>ty</sup> sets the DAC's volume to
+  maximum, then puts it back. For a DAC that lowers DSD properly, turn off **Full DAC volume during
+  DSD** in MPD's **Guided** view.
 - **Through HQPlayer, DSD is never converted behind your back.** A file HQPlayer cannot read in
   DSD, a DST-compressed DFF, is refused with the reason.
 

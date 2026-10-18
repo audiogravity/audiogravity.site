@@ -23,8 +23,9 @@ decodes DoP but that Linux cannot send DSD to as it is. Off unless you turn it o
 MPD's Guided view; see [6. Outputs & engines → DSD](06-outputs-engines.md#dsd-as-dsd-as-dop-or-converted-to-pcm).
 
 **DSD** — Direct Stream Digital, the 1-bit high-rate format of SACD lineage
-(DSD64/128/256…). While a DSD track plays on the box's own output, the volume is locked
-at 100: the player shows a **DSD lock**.
+(DSD64/128/256…). While a DSD track plays on the box's own output, the player's volume
+has no effect on it: the player shows a **DSD lock** in its place, and your DAC's own
+volume is set to maximum until the DSD ends.
 
 **Engine** — the software that actually renders audio on the box: MPD, shairport-sync
 (AirPlay), Roon Bridge, HQPlayer NAA, HQPlayer Embedded. Audiogravi<sup>ty</sup> conducts

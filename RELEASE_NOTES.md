@@ -23,6 +23,14 @@ MPD plays on, without restarting anything, and *Reset to default* keeps it.
 *DSD128* even when your DAC received PCM. A couple of seconds into a DSD track, the player now adds
 a *DoP* tag, or *Converted to PCM*, when it does not reach your DAC as DSD.
 
+**Your DAC's volume during DSD.** Some DACs play nothing, or noise, when their own volume is
+lowered while they receive DSD. So while your DAC receives DSD — as DSD or as DoP, from any player,
+HQPlayer included — Audiogravi<sup>ty</sup> sets its volume to maximum and puts it back when the
+DSD ends; when the DSD reaches it converted to PCM, its volume is left as it is. The player's own
+volume, which does nothing to DSD, is no longer set to 100 and back. If your DAC lowers DSD
+properly and you set your listening level with it, turn off *Full DAC volume during DSD* in
+**Config → MPD → Guided**: it applies at once, for every player of that DAC.
+
 ### Library
 
 **Your listening, in figures.** A new **Stats** tab in Library shows what the box has played:

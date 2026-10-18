@@ -81,9 +81,10 @@ a DAC that does not decode DTS, and start with the volume low: undecoded, it is 
   100 %, 16-bit audio is widened to 24 bits with its values unchanged, and below 100 % the samples
   are recalculated. For strict
   bit-perfect playback, leave the volume at 100 and set your listening level on the amplifier.
-- **DSD plays at 100 on the box's own output.** While a DSD track plays there,
-  Audiogravi<sup>ty</sup> sets the volume to 100 and locks it, then puts it back when the DSD
-  ends.
+- **During DSD, the player's volume does nothing**: MPD leaves DSD untouched, whatever its
+  volume. Audiogravi<sup>ty</sup> sets your DAC's own volume to maximum while the DAC receives
+  DSD, then puts it back — some DACs play nothing, or noise, when that volume is lowered during
+  DSD. A switch in MPD's **Guided** view turns this off for a DAC that lowers DSD properly.
 
 The details are in the manual:
 [Outputs & engines → The signal path](../manual/06-outputs-engines#the-signal-path-and-the-chain-you-describe),

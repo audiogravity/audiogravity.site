@@ -111,12 +111,14 @@ On every track change, Audiogravi<sup>ty</sup> shows the format of the track pla
 This is your at-a-glance confirmation that a Hi-Res track really is playing at its
 native resolution.
 
-**DSD plays at full volume.** While a DSD track plays, Audiogravi<sup>ty</sup> sets the
-volume to 100, and the volume control gives way to a padlock. When the DSD ends — a PCM
-track follows, or playback stops — the volume goes back to where it was.
-This happens with the app closed too, and for a DSD track started from another app: keep
-your listening level on the amplifier. Through HQPlayer, or on a network speaker, the
-volume stays yours to set.
+**DSD plays at full volume.** While a DSD track plays, the volume control gives way to a
+padlock: the player's volume has no effect on DSD, so keep your listening level on the
+amplifier. Your DAC's own volume is set to maximum too, and put back when the DSD ends —
+some DACs play nothing, or noise, otherwise. This happens with the app closed too, and
+for a DSD track started from another app. To leave the volume of a DAC that lowers DSD
+properly as you set it, see
+[6. Outputs & engines → DSD](06-outputs-engines.md#dsd-as-dsd-as-dop-or-converted-to-pcm).
+Through HQPlayer, or on a network speaker, the volume stays yours to set.
 
 ## The stream-origin badge
 

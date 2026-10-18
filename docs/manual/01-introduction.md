@@ -74,7 +74,7 @@ What each edition opens — the trial opens everything:
 | **Admin** — users and passkeys, announcements, updates, the licence | ✓ | ✓ |
 | **Push notifications** | ✓ | ✓ |
 | **Now playing** — the track, its cover and its format, in the mini-player | ✓ | ✓ |
-| **DSD at full volume** — the volume locked while a DSD track plays | ✓ | ✓ |
+| **DSD at full volume** — your DAC's volume at maximum while it receives DSD, then put back | ✓ | ✓ |
 | **Library** — browse, search and queue the music on the box | ✓ | ✓ |
 | **Internet radio** | ✓ | ✓ |
 | **Playback controls** — play, pause, skip, seek, volume, and the full-screen player with its sleep timer | ✓ | ✓ |

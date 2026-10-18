@@ -164,14 +164,14 @@ effect immediately; if the share is MPD's active library, it warns you first.
 ## 5. Change output or library later (Guided mode)
 
 For administrators, the Config editor of MPD, AirPlay and UPnP opens in a **Guided**
-view. There you change the **audio output** — and, for MPD, the **music library**, and
-whether DSD leaves as DoP — in a couple of clicks; UPnP has nothing to choose, because
-it plays through MPD. Only the
+view. There you change the **audio output** — and, for MPD, the **music library**,
+whether DSD leaves as DoP, and whether your DAC's volume goes to full during DSD — in a
+couple of clicks; UPnP has nothing to choose, because it plays through MPD. Only the
 setting you touch is rewritten — the rest of your config is preserved. A **Reset to
 default** action regenerates a clean minimal config (admin password required; your
 current file is backed up first).
 
-<img src="images/ios-guided.webp" alt="The Guided editor: pick the audio output and the music library in a couple of clicks" width="360">
+<img src="images/ios-guided.webp" alt="The Guided editor: pick the audio output, how DSD reaches your DAC and its volume during DSD, and the music library in a couple of clicks" width="360">
 
 ## 6. Find your way around
 

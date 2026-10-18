@@ -26,7 +26,7 @@ system and play the music stored on it:
 - **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, a software update is available or a profile is activated
 - **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups (HQPlayer Embedded's, the NAA's and Roon's come with Pro)
 - **Guided provisioning** — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)
-- **DSD bit-perfect protection** — automatic ALSA hardware volume lock during DSD playback
+- **DSD protection** — your DAC's own volume set to maximum while it receives DSD, then put back; switchable for a DAC that lowers DSD properly
 - **Library** — the music stored on the box: album browsing, full-text search and queue management
 - **Internet radio** — Radio Browser directory, custom stations, favourites with Hi-Res filtering
 - **Player** — play/pause, seek, next/prev, volume, repeat/shuffle for the box's music and the radio, in the mini-player and the full-screen player, with its **sleep timer**
@@ -89,7 +89,7 @@ Everything in Starter, plus:
 | **Guided provisioning** | ✓ | ✓ | ✓ |
 | **Systemd Config** | ✓ | — | ✓ |
 | **Performance** | ✓ | — | ✓ |
-| **DSD bit-perfect** | ✓ | ✓ | ✓ |
+| **DSD protection** | ✓ | ✓ | ✓ |
 | **Sleep timer** | ✓ | ✓ | ✓ |
 
 ---

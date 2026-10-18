@@ -18,8 +18,8 @@ Measured on my test box (2026-10-17) with a DSD128 file and a USB DAC that accep
 - **Native** carries 32 bits of DSD per sample, so DSD128 needs 176.4 kHz and DSD256 352.8 kHz.
 - **DoP** carries 16 bits of DSD in each 24-bit word, the other 8 being the marker. So it needs
   twice the rate: 176.4 kHz for DSD64 and 352.8 kHz for DSD128 (the DoP standard), and 705.6 kHz
-  for DSD256. On a card that stops at 384 kHz, like mine, DSD256 fits natively (352.8 kHz) but not
-  as DoP (705.6 kHz).
+  for DSD256. On a card that stops at 384 kHz, like the one measured above, DSD256 fits natively
+  (352.8 kHz) but not as DoP (705.6 kHz).
 - **Converted to PCM** works with any DAC, at the cost of what DSD was chosen for.
 
 ## What decides it on Linux
@@ -33,7 +33,7 @@ is one command away, with the DAC free and its card number in place of `0`:
 aplay -D hw:0,0 --dump-hw-params -d 1 -f S32_LE -r 44100 -c 2 /dev/zero
 ```
 
-It plays one second of silence and lists what the card takes. Mine says
+It plays one second of silence and lists what the card takes. The DAC measured above answers
 `FORMAT: S32_LE SPECIAL DSD_U32_BE` and `RATE: [44100 384000]`: native DSD, PCM up to 384 kHz.
 A `DSD_…` format in that list means native DSD is possible.
 

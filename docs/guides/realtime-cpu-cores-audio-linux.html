@@ -78,9 +78,10 @@ are not, so on a Pi <code>isolcpus=</code> works and those two have no effect.</
 <code>LimitMEMLOCK=</code>.</p>
 <h2 id="what-it-changes-measured">What it changes, measured</h2>
 <p>On my x86 test box: Debian 13 with its standard kernel (6.12, not a real-time one), two of its four
-cores reserved at boot (<code>isolcpus=2-3 nohz_full=2-3 rcu_nocbs=2-3 irqaffinity=0-1</code>). Each run is
-one minute of <code>cyclictest</code> at priority 99, waking every 100 µs; the figure is the worst delay seen
-(2026-10-17).</p>
+cores reserved at boot (<code>isolcpus=2-3 nohz_full=2-3 rcu_nocbs=2-3 irqaffinity=0-1</code>). The other two
+run everything else, device interrupts included, so the <em>Ordinary core</em> column describes this box,
+not one that reserves no core; I have not measured one. Each run is one minute of <code>cyclictest</code> at
+priority 99, waking every 100 µs; the figure is the worst delay seen (2026-10-17).</p>
 <div class="man-table"><table>
 <thead>
 <tr>
@@ -111,9 +112,11 @@ one minute of <code>cyclictest</code> at priority 99, waking every 100 µs; the 
 <li><strong>The ordinary core was late by more than 0.4 ms about once a second</strong>, even with nothing to do
 (59 times in the minute); the reserved core, never.</li>
 <li><strong>Under load on the other cores</strong>, the reserved core stayed under 0.3 ms.</li>
-<li><strong>What that means for sound here: nothing audible.</strong> MPD fills a buffer of half a second of
-audio on this box (its own log), and a delay of a few milliseconds leaves it far from empty.
-These figures matter when buffers are short, or when the box is busy with something heavy.</li>
+<li><strong>What that means for sound: nothing audible.</strong> MPD keeps a buffer of audio ahead of the DAC:
+half a second with its default settings (its own log, MPD 0.24.5), which the configuration
+Audiogravi<sup>ty</sup> writes leaves as they are. A delay of a few milliseconds leaves it far
+from empty. These figures matter when buffers are short, or when the box is busy with something
+heavy.</li>
 </ul>
 <h2 id="measuring-your-own-box">Measuring your own box</h2>
 <pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">cyclictest</span> <span class="hl-opt">-p99</span> <span class="hl-opt">-t1</span> <span class="hl-opt">-i100</span> <span class="hl-opt">-l600000</span> <span class="hl-opt">-m</span> <span class="hl-opt">-q</span> <span class="hl-opt">-a3</span>
@@ -123,7 +126,8 @@ microseconds. Two things to know about it:</p>
 <ul>
 <li><strong>cyclictest flatters the box by default.</strong> It keeps the processor out of its deep sleep states
 while it measures (it writes 0 to <code>/dev/cpu_dma_latency</code>). Add <code>--default-system</code> to measure the
-box as it normally runs: on mine, the worst delay of the reserved core went from 43 to 211 µs.</li>
+box as it normally runs: on my test box, the worst delay of the reserved core went from 43 to
+211 µs.</li>
 <li><strong>Compare like with like</strong>: the same core, the same length, the same load, before and after a
 change.</li>
 </ul>
@@ -144,8 +148,7 @@ the processor governor of each core, and a mark on a core the processor had to s
 cores to choose. It runs with cyclictest's default, deep sleep held off, so its figures are on
 the good side of how the box runs.</li>
 <li><strong>What it does not do: reserve cores.</strong> Audiogravi<sup>ty</sup> pins a service to its cores but
-does not keep other programs off them. On my test box, the cores are reserved by the boot
-parameters above, set by hand.</li>
+does not keep other programs off them.</li>
 </ul>
 <p>The details are in the manual:
 <a href="../manual/07-administration#performance-tuning-pro">Administration → Performance tuning</a>, and

@@ -82,8 +82,8 @@ cannot take native DSD at all.</p>
 <li><strong>Native</strong> carries 32 bits of DSD per sample, so DSD128 needs 176.4 kHz and DSD256 352.8 kHz.</li>
 <li><strong>DoP</strong> carries 16 bits of DSD in each 24-bit word, the other 8 being the marker. So it needs
 twice the rate: 176.4 kHz for DSD64 and 352.8 kHz for DSD128 (the DoP standard), and 705.6 kHz
-for DSD256. On a card that stops at 384 kHz, like mine, DSD256 fits natively (352.8 kHz) but not
-as DoP (705.6 kHz).</li>
+for DSD256. On a card that stops at 384 kHz, like the one measured above, DSD256 fits natively
+(352.8 kHz) but not as DoP (705.6 kHz).</li>
 <li><strong>Converted to PCM</strong> works with any DAC, at the cost of what DSD was chosen for.</li>
 </ul>
 <h2 id="what-decides-it-on-linux">What decides it on Linux</h2>
@@ -93,7 +93,7 @@ each kernel version: a recent DAC may need a newer kernel for native DSD. What y
 is one command away, with the DAC free and its card number in place of <code>0</code>:</p>
 <pre><code class="language-bash"><span class="hl-cmd">aplay</span> <span class="hl-opt">-D</span> hw:0,0 <span class="hl-opt">--dump-hw-params</span> <span class="hl-opt">-d</span> 1 <span class="hl-opt">-f</span> S32_LE <span class="hl-opt">-r</span> 44100 <span class="hl-opt">-c</span> 2 /dev/zero
 </code></pre>
-<p>It plays one second of silence and lists what the card takes. Mine says
+<p>It plays one second of silence and lists what the card takes. The DAC measured above answers
 <code>FORMAT: S32_LE SPECIAL DSD_U32_BE</code> and <code>RATE: [44100 384000]</code>: native DSD, PCM up to 384 kHz.
 A <code>DSD_…</code> format in that list means native DSD is possible.</p>
 <p><strong>A DAC board on the Pi's pins.</strong> The Pi's I2S drivers, on the Pi 4 and the Pi 5 alike, offer PCM

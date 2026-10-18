@@ -28,9 +28,10 @@ Holding the player's memory in RAM, so that none of it is ever swapped out, is a
 ## What it changes, measured
 
 On my x86 test box: Debian 13 with its standard kernel (6.12, not a real-time one), two of its four
-cores reserved at boot (`isolcpus=2-3 nohz_full=2-3 rcu_nocbs=2-3 irqaffinity=0-1`). Each run is
-one minute of `cyclictest` at priority 99, waking every 100 µs; the figure is the worst delay seen
-(2026-10-17).
+cores reserved at boot (`isolcpus=2-3 nohz_full=2-3 rcu_nocbs=2-3 irqaffinity=0-1`). The other two
+run everything else, device interrupts included, so the *Ordinary core* column describes this box,
+not one that reserves no core; I have not measured one. Each run is one minute of `cyclictest` at
+priority 99, waking every 100 µs; the figure is the worst delay seen (2026-10-17).
 
 | Situation | Reserved core | Ordinary core |
 |---|---|---|
@@ -41,9 +42,11 @@ one minute of `cyclictest` at priority 99, waking every 100 µs; the figure is t
 - **The ordinary core was late by more than 0.4 ms about once a second**, even with nothing to do
   (59 times in the minute); the reserved core, never.
 - **Under load on the other cores**, the reserved core stayed under 0.3 ms.
-- **What that means for sound here: nothing audible.** MPD fills a buffer of half a second of
-  audio on this box (its own log), and a delay of a few milliseconds leaves it far from empty.
-  These figures matter when buffers are short, or when the box is busy with something heavy.
+- **What that means for sound: nothing audible.** MPD keeps a buffer of audio ahead of the DAC:
+  half a second with its default settings (its own log, MPD 0.24.5), which the configuration
+  Audiogravi<sup>ty</sup> writes leaves as they are. A delay of a few milliseconds leaves it far
+  from empty. These figures matter when buffers are short, or when the box is busy with something
+  heavy.
 
 ## Measuring your own box
 
@@ -56,7 +59,8 @@ microseconds. Two things to know about it:
 
 - **cyclictest flatters the box by default.** It keeps the processor out of its deep sleep states
   while it measures (it writes 0 to `/dev/cpu_dma_latency`). Add `--default-system` to measure the
-  box as it normally runs: on mine, the worst delay of the reserved core went from 43 to 211 µs.
+  box as it normally runs: on my test box, the worst delay of the reserved core went from 43 to
+  211 µs.
 - **Compare like with like**: the same core, the same length, the same load, before and after a
   change.
 
@@ -78,8 +82,7 @@ for the Pi 4. I have not measured them.
   cores to choose. It runs with cyclictest's default, deep sleep held off, so its figures are on
   the good side of how the box runs.
 - **What it does not do: reserve cores.** Audiogravi<sup>ty</sup> pins a service to its cores but
-  does not keep other programs off them. On my test box, the cores are reserved by the boot
-  parameters above, set by hand.
+  does not keep other programs off them.
 
 The details are in the manual:
 [Administration → Performance tuning](../manual/07-administration#performance-tuning-pro), and

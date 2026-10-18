@@ -58,7 +58,7 @@ not found on its own the way a USB DAC is. Linux creates its sound card once the
 configuration names the board's <em>overlay</em>: one line in <code>/boot/firmware/config.txt</code>, then a reboot.
 Some boards carry a memory chip that names it for you; many audio boards do not, or name one that
 no longer works.</p>
-<p>Checked on 2026-10-17 against Raspberry Pi's and HiFiBerry's documentation, and on my own
+<p>Checked on 2026-10-17 against Raspberry Pi's and HiFiBerry's documentation, and on a test
 Raspberry Pi 4 with a HiFiBerry DAC+ Pro under Raspberry Pi OS (Debian 13).</p>
 <h2 id="why-it-is-not-automatic">Why it is not automatic</h2>
 <p>At boot, the Pi's firmware looks for a memory chip on the board (an EEPROM) and loads the overlay
@@ -72,8 +72,9 @@ stored on the board &quot;might not load correctly&quot; with today's systems. D
 <li><strong>Two versions of one board.</strong> Raspberry Pi's own audio boards exist in green (Raspberry Pi) and
 black (IQaudIO): &quot;electrically equivalent, but have different EEPROM contents&quot;.</li>
 </ul>
-<p>My own Pi shows the result: the firmware reports no HAT at all (<code>/proc/device-tree/hat</code> is
-absent), and the DAC+ Pro works because of one line in <code>config.txt</code>.</p>
+<p>The result, measured on a Raspberry Pi 4 with a DAC+ Pro (2026-10-17): the firmware reports no HAT
+at all (<code>/proc/device-tree/hat</code> is absent), and the board works because of one line in
+<code>config.txt</code>.</p>
 <h2 id="the-line-for-your-board">The line for your board</h2>
 <p>On Raspberry Pi OS, the file is <code>/boot/firmware/config.txt</code>. On older images it was
 <code>/boot/config.txt</code>, which now holds only a note saying the file has moved. Put the lines at the top
@@ -143,8 +144,9 @@ clock. The two names date from Linux 6.1.77; before that, both boards used <code
 <code>dtparam=i2c_arm=on</code> needed, as the Raspberry Pi kernel's maintainer put it.</li>
 </ul>
 <h2 id="turn-the-pis-own-audio-off">Turn the Pi's own audio off</h2>
-<p>With the Pi's own outputs still on, your DAC is one sound card among several. My Pi 4 has these two
-lines beside the DAC's:</p>
+<p>With the Pi's own outputs still on, your DAC is one sound card among several. Raspberry Pi OS's
+<code>config.txt</code> already holds the two lines behind them, <code>dtparam=audio=on</code> and
+<code>dtoverlay=vc4-kms-v3d</code>. Edit those two rather than adding new ones, so that they read:</p>
 <pre data-copy="no"><code class="language-text">dtparam=audio=off
 dtoverlay=vc4-kms-v3d,noaudio
 </code></pre>
@@ -155,7 +157,7 @@ from appearing as a sound card.</p>
 <h2 id="check-it">Check it</h2>
 <pre><code class="language-bash"><span class="hl-cmd">aplay</span> <span class="hl-opt">-l</span>
 </code></pre>
-<p>The board should appear under its own name. On my Pi:</p>
+<p>The board should appear under its own name. For a DAC+ Pro:</p>
 <pre data-copy="no"><code class="language-text">card 0: sndrpihifiberry [snd_rpi_hifiberry_dacplus], device 0: HiFiBerry DAC+ Pro HiFi pcm512x-hifi-0 [HiFiBerry DAC+ Pro HiFi pcm512x-hifi-0]
 </code></pre>
 <p>If it does not, check that the board is fully seated on the pins, then try <code>force_eeprom_read=0</code>.

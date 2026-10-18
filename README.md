@@ -48,7 +48,7 @@
 - HQPlayer DSP remote — filter, shaper, output mode, volume with auto-discovery
 - Output steering — USB, Toslink, HDMI
 - One-tap profile scenarios (switch entire audio chains instantly)
-- Bit-perfect lock with DSD volume protection
+- DSD protection — your DAC's own volume at full while it receives DSD, from any player
 - Sleep timer
 - Never a silent failure — when a track will not play, the reason is named: the sound card held by another player, a format HQPlayer cannot decode, a speaker that does not answer
 
@@ -76,7 +76,7 @@
 - µs-scale latency benchmarks from the browser
 - Service monitoring with 60s sparklines
 - Audio device inventory (ALSA cards, USB DACs)
-- Guided audio setup — auto-detect DAC + library, generate bit-perfect MPD / AirPlay / UPnP configs in a couple of clicks
+- Guided audio setup — auto-detect DAC + library, generate minimal MPD / AirPlay / UPnP configs in a couple of clicks, MPD's bit-perfect at full volume
 - One-click self-update — update to the latest release from the browser, no terminal (health-checked, automatic rollback)
 - Audio software manager — install, update, configure
 - Admin terminal — interactive shell in the browser

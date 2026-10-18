@@ -9,8 +9,11 @@ shairport-sync): your iPhone or Mac streams to it like to any AirPlay speaker.
 the OS sees it; Audiogravi<sup>ty</sup> resolves your DAC to one automatically.
 
 **Bit-perfect** — the audio samples reach the DAC exactly as stored in the file: no
-resampling, no software volume, no mixing. The guided setup generates bit-perfect
-configs by default.
+resampling, no mixing, no volume recalculating them. The MPD configuration the guided
+setup writes is bit-perfect with the volume at 100 (a 16-bit file reaches the DAC
+padded to 24 or 32 bits, its values unchanged), except on a DAC that accepts 16 bits
+only; below 100, the volume recalculates every sample. AirPlay is not bit-perfect: it
+adds or drops a sample now and then to stay in time with the sender.
 
 **Control point** — the UPnP role that *drives* playback on another device.
 Audiogravi<sup>ty</sup> is a control point when it casts to a network renderer.

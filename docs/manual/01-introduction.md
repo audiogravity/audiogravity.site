@@ -45,7 +45,8 @@ though everything remains open and inspectable if you want to.
 - **Send music where you want** — your local DAC, a network UPnP renderer
   (Marantz, Linn, DLNA speakers) or HQPlayer's DSP engine (Pro).
 - **Set up your audio stack in a few clicks** — a guided setup detects your DAC
-  and music library and generates minimal, bit-perfect configurations for you.
+  and music library and generates minimal configurations for you, MPD's bit-perfect
+  with the volume at 100.
 - **Tune for sound quality** — real-time kernel scheduling, per-core CPU pinning,
   latency benchmarks, and a live view of your entire signal path (Pro).
 - **Manage the box** — services, users with passkeys, config editing with backups,

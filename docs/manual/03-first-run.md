@@ -76,7 +76,7 @@ On a new box, the **Config** tab shows a **Set up your audio stack** banner
 stack** panel, which:
 
 1. **Auto-detects** your DAC and your music library.
-2. **Generates a minimal, bit-perfect configuration** for the three audio services —
+2. **Generates a minimal configuration** for the three audio services —
    **MPD** (local library) and **AirPlay** (shairport-sync) wired to the output you
    choose, and **UPnP** (upmpdcli), which plays through MPD.
 3. Asks for your **admin password** before applying.
@@ -86,9 +86,15 @@ UPnP tile shows a **CONFIGURED** badge.
 
 <img src="images/ios-provisioning.webp" alt="The Initialize audio stack panel: detected DAC outputs and music library sources" width="360">
 
-> **Why "bit-perfect"?** The generated configs send audio to your DAC untouched — no
-> resampling, no volume math in the digital domain — so what your DAC receives is
-> exactly what the file contains.
+> **Bit-perfect, at full volume.** MPD's configuration sends your music to the DAC
+> without resampling or converting it: with the volume at 100, what your DAC receives
+> is what the file contains — a 16-bit file padded to 24 or 32 bits, its values
+> unchanged. Below 100, the volume recalculates every sample, at a level below your
+> DAC's own noise; for strict bit-perfect playback, leave it at 100 and set your level
+> on your amplifier. One exception: a DAC that accepts 16 bits only. The volume works
+> on 24 bits, so even at 100 the music is brought back to 16 bits with a faint noise
+> added (dither). AirPlay is not bit-perfect: to stay in time with the sender, it adds
+> or drops a sample now and then.
 
 > **Raspberry Pi with a HAT DAC?** A board stacked on the GPIO header is not detected
 > until Linux is told it exists, so it will be missing from this panel. Declare it once

@@ -164,8 +164,9 @@ effect immediately; if the share is MPD's active library, it warns you first.
 ## 5. Change output or library later (Guided mode)
 
 For administrators, the Config editor of MPD, AirPlay and UPnP opens in a **Guided**
-view. There you change the **audio output** — and, for MPD, the **music library** — in
-a couple of clicks; UPnP has nothing to choose, because it plays through MPD. Only the
+view. There you change the **audio output** — and, for MPD, the **music library**, and
+whether DSD leaves as DoP — in a couple of clicks; UPnP has nothing to choose, because
+it plays through MPD. Only the
 setting you touch is rewritten — the rest of your config is preserved. A **Reset to
 default** action regenerates a clean minimal config (admin password required; your
 current file is backed up first).

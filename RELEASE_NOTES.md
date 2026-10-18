@@ -10,10 +10,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 ### Playback
 
 **DSD reaches your DAC as DSD.** On a DAC that accepts native DSD, DSD now arrives as DSD; on one
-that does not, it is converted to PCM, which every DAC plays. Until now, the configuration
-Audiogravi<sup>ty</sup> wrote sent DSD wrapped in PCM (DoP), which only a DAC that decodes DoP can
-play. Boxes already set up are corrected when they update, and keep their previous player
-configuration among the saved copies of the configuration editor.
+that does not, it is converted to PCM. Until now, the configuration Audiogravi<sup>ty</sup> wrote
+sent DSD wrapped in PCM (DoP), which only a DAC that decodes DoP can play. Boxes already set up are
+corrected when they update, and keep their previous player configuration among the saved copies of
+the configuration editor.
+
+**DoP, for a DAC that needs it.** A DAC that decodes DoP but that Linux cannot send DSD to as it is
+can still have it: in **Config → MPD → Guided**, turn on *Send DSD as DoP*. It applies to the DAC
+MPD plays on, without restarting anything, and *Reset to default* keeps it.
+
+**The player says how DSD reaches your DAC.** The format shown is the track's: a DSD128 file read
+*DSD128* even when your DAC received PCM. A couple of seconds into a DSD track, the player now adds
+a *DoP* tag, or *Converted to PCM*, when it does not reach your DAC as DSD.
 
 ### Library
 

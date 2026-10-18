@@ -77,6 +77,36 @@ the one the guided setup wires up first.</p>
 <p>A <strong>HAT</strong> — a DAC board stacked on a Raspberry Pi's GPIO header — is the one case that
 needs a manual step before it can be selected: Linux does not detect it on its own. See
 <a href="09-troubleshooting#my-dac-is-not-in-the-output-list-raspberry-pi-hat">9. Troubleshooting → My DAC is not in the output list</a>.</p>
+<h3 id="dsd-as-dsd-as-dop-or-converted-to-pcm">DSD: as DSD, as DoP, or converted to PCM</h3>
+<p>A DSD track reaches your DAC in one of three ways. Once the track has played a couple of
+seconds, the player says which, next to its format:</p>
+<ul>
+<li><strong>As DSD</strong> — nothing more is shown: the format already says DSD. This needs a DAC that
+Linux can send DSD to as it is.</li>
+<li><strong>DoP</strong> (<em>DSD over PCM</em>) — DSD wrapped in PCM words, which the DAC unwraps.</li>
+<li><strong>Converted to PCM</strong> — MPD turned the DSD into PCM before sending it: what your DAC
+receives is no longer DSD.</li>
+</ul>
+<p>DoP is off by default: DSD goes out as DSD when your DAC accepts it, converted to PCM
+when it does not. Nothing reaches your DAC in a form it may not decode.</p>
+<p><strong>The DoP switch.</strong> For a DAC that decodes DoP but that Linux cannot send DSD to as it
+is, open <strong>Config → MPD</strong>, turn on <strong>Send DSD as DoP</strong> under <strong>DSD</strong> in the <strong>Guided</strong>
+view, then <strong>Apply changes</strong>. It is set on the output MPD plays on, without restarting
+MPD, and takes effect the next time MPD opens your DAC: stop, then play again, to hear
+it at once. Leave it off for any other DAC. With it on, DSD leaves as DoP whenever your
+card takes its rate — even for a DAC that would take it as DSD — and a DAC that does not
+decode DoP receives PCM full of markers instead of music.</p>
+<ul>
+<li><strong>A HAT never receives DSD as it is</strong>: the Pi's pins carry PCM only. DoP passes if
+the board's chip decodes it, up to DSD128.</li>
+<li><strong>DoP needs twice the rate</strong> of DSD sent as it is: on a card that stops at 384 kHz,
+DSD256 does not fit as DoP. MPD then sends it as DSD if your DAC accepts that, converted
+to PCM otherwise — and the player says which.</li>
+<li><strong>What the switch covers</strong>: MPD, and what plays through it — your library, the
+streaming services, internet radio, and the box as a UPnP renderer. HQPlayer sets its
+DSD output on its own page (see <a href="#hqplayer-embedded">HQPlayer Embedded</a>); AirPlay
+carries no DSD.</li>
+</ul>
 <h2 id="network-upnp-renderers">Network UPnP renderers</h2>
 <p>Audiogravi<sup>ty</sup> is a <strong>UPnP Control Point</strong>: it discovers every renderer on your LAN —
 network amplifiers, dedicated streamers, DLNA speakers (Marantz, Linn…) — and drives

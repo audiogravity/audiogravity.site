@@ -31,6 +31,13 @@ volume, which does nothing to DSD, is no longer set to 100 and back. If your DAC
 properly and you set your listening level with it, turn off *Full DAC volume during DSD* in
 **Config → MPD → Guided**: it applies at once, for every player of that DAC.
 
+**HQPlayer's volume, on its card.** In **Library → Sources**, the HQPlayer card shows HQPlayer's
+volume in dB, and its slider sets it — for the HQPlayer running on the box as for one on your
+network, whether it plays through the box or not. The slider covers the range set in HQPlayer's own
+settings, from *Volume min* to *Volume max*: lower the maximum there, and the slider stops at it.
+While the card is on screen, it follows a change made in HQPlayer itself or by Roon. When HQPlayer
+plays through the box, the player's volume covers the same range.
+
 ### Library
 
 **Your listening, in figures.** A new **Stats** tab in Library shows what the box has played:

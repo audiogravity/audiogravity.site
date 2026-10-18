@@ -154,10 +154,16 @@ it can be reached from a phone too.
 HQPlayer — as the output, and its settings — comes with **Pro**. If you run **HQPlayer** on
 your network, Audiogravi<sup>ty</sup> integrates with it three ways:
 
-- **DSP remote** — change the interpolation **filter**, **noise shaper**, output
-  **mode** and **volume** on your HQPlayer instance from the interface. It's
-  auto-discovered on the LAN — connect in one tap. If you use more than one HQPlayer,
-  each keeps the filter, noise shaper and mode you chose for it.
+- **DSP remote** — change the interpolation **filter**, **noise shaper** and output
+  **mode** on your HQPlayer instance from the interface, under the **DSP** button of the
+  HQPlayer card. It's auto-discovered on the LAN — connect in one tap. If you use more
+  than one HQPlayer, each keeps the filter, noise shaper and mode you chose for it.
+- **Volume** — the HQPlayer card shows HQPlayer's volume, in dB, and its slider changes
+  it, whether HQPlayer plays through the box or not. The slider covers the range set in
+  HQPlayer's own settings, **Volume min** to **Volume max**: to cap the volume, lower
+  **Volume max** there. If HQPlayer's volume is fixed in its settings, the card shows the
+  level without a slider. While HQPlayer plays through the box, the player's volume
+  control sets it too, over the same range.
 - **NAA endpoint** — the box can run HQPlayer's Network Audio Adapter so HQPlayer
   streams to it and out to your DAC.
 - **As your output** — the **Use as output** switch on the HQPlayer card sends your
@@ -175,7 +181,7 @@ versions instead of letting the music fail without a word.
 
 ### Use as output
 
-<img src="images/ios-hqplayer-output.webp" alt="The HQPlayer card: HQPlayer Desktop and its version, connected, with the Use as output switch turned on" width="360">
+<img src="images/ios-hqplayer-output.webp" alt="The HQPlayer card: HQPlayer Desktop and its version, its output mode and rate, connected, with the Use as output switch turned on and its volume at -6.0 dB with a slider" width="360">
 
 With the switch on, playing an album routes it to HQPlayer, which processes it and
 sends it back to your DAC through the NAA. The player badges the track with where the
@@ -384,7 +390,7 @@ when HQPlayer Embedded stops, the card returns to it, with its own **Use as outp
 setting. The formats HQPlayer cannot decode are converted here too — see
 [What can and cannot go through HQPlayer](#what-can-and-cannot-go-through-hqplayer).
 
-<img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box, Connected, Use as output on and locked, the HQPlayer chosen before kept for when it stops, and the Web UI and Forget buttons" width="360">
+<img src="images/ios-hqplayer-embedded-card.webp" alt="The HQPlayer card while HQPlayer Embedded runs: This box with its output mode and rate, Connected, Use as output on and locked, the HQPlayer chosen before kept for when it stops, its volume at -3.0 dB with a slider, and the DSP, Web UI and Forget buttons" width="360">
 
 **If something did not go through.** When HQPlayer Embedded is installed but a step after
 that could not be done, the result says **Install Incomplete** and what is left to do. If

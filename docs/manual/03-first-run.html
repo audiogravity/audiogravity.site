@@ -117,7 +117,7 @@ can cast to. It drives MPD, so it needs the player that is already there.</li>
 stack</strong> panel, which:</p>
 <ol>
 <li><strong>Auto-detects</strong> your DAC and your music library.</li>
-<li><strong>Generates a minimal, bit-perfect configuration</strong> for the three audio services —
+<li><strong>Generates a minimal configuration</strong> for the three audio services —
 <strong>MPD</strong> (local library) and <strong>AirPlay</strong> (shairport-sync) wired to the output you
 choose, and <strong>UPnP</strong> (upmpdcli), which plays through MPD.</li>
 <li>Asks for your <strong>admin password</strong> before applying.</li>
@@ -126,9 +126,15 @@ choose, and <strong>UPnP</strong> (upmpdcli), which plays through MPD.</li>
 UPnP tile shows a <strong>CONFIGURED</strong> badge.</p>
 <img loading="lazy" src="images/ios-provisioning.webp" alt="The Initialize audio stack panel: detected DAC outputs and music library sources" width="360">
 <blockquote>
-<p><strong>Why &quot;bit-perfect&quot;?</strong> The generated configs send audio to your DAC untouched — no
-resampling, no volume math in the digital domain — so what your DAC receives is
-exactly what the file contains.</p>
+<p><strong>Bit-perfect, at full volume.</strong> MPD's configuration sends your music to the DAC
+without resampling or converting it: with the volume at 100, what your DAC receives
+is what the file contains — a 16-bit file padded to 24 or 32 bits, its values
+unchanged. Below 100, the volume recalculates every sample, at a level below your
+DAC's own noise; for strict bit-perfect playback, leave it at 100 and set your level
+on your amplifier. One exception: a DAC that accepts 16 bits only. The volume works
+on 24 bits, so even at 100 the music is brought back to 16 bits with a faint noise
+added (dither). AirPlay is not bit-perfect: to stay in time with the sender, it adds
+or drops a sample now and then.</p>
 </blockquote>
 <blockquote>
 <p><strong>Raspberry Pi with a HAT DAC?</strong> A board stacked on the GPIO header is not detected

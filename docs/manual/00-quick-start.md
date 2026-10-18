@@ -32,7 +32,7 @@ it. Add the rest from the **Audio Software** tab if you want them: **Shairport S
 library** — a USB drive, or a NAS share
 [added right from the picker](03-first-run.md#music-on-a-nas-add-the-share-from-the-picker)
 (mounted and tested on the spot) — and confirm with your admin password. The
-generated configs are minimal and **bit-perfect**.
+generated configs are minimal, and MPD's is **bit-perfect** with the volume at 100.
 
 ## 5. Connect your music
 

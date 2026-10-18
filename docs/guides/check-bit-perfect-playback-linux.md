@@ -53,7 +53,9 @@ manual keeps a check list for bit-perfect playback. In its configuration, the `a
   the DAC. I measured what the software volume does on MPD 0.24.5 (2026-10-17): even at 100 %,
   it widens 16-bit audio to 24 bits in a 32-bit word. Every sample of a 20-second test file came
   out at exactly 256 times its value, the same music in a longer word; a 24-bit file came out
-  byte for byte identical. Below 100 %, MPD recalculates every sample.
+  byte for byte identical. Towards a DAC that accepts 16 bits only, MPD then brings that audio
+  back to 16 bits with dither: at 100 % too, half the samples of a 3-second test came out
+  changed, by up to 3 steps (2026-10-18). Below 100 %, MPD recalculates every sample.
 - **No ReplayGain, no forced format** (`format`, `audio_output_format`).
 - **For DSD**, MPD sends DSD natively when the sound card accepts it, uses DoP only if you set
   `dop "yes"`, and otherwise converts DSD to PCM. Check 1 shows which happened.
@@ -78,8 +80,8 @@ a DAC that does not decode DTS, and start with the volume low: undecoded, it is 
 - **The configuration Audiogravi<sup>ty</sup>'s guided setup writes for MPD** sends each output
   straight to its card (`hw:`), with ALSA's conversions off (`auto_resample`, `auto_format`,
   `auto_channels` set to `no`), and a software volume. With it, 24-bit audio passes untouched at
-  100 %, 16-bit audio is widened to 24 bits with its values unchanged, and below 100 % the samples
-  are recalculated. For strict
+  100 %, 16-bit audio is widened to 24 bits with its values unchanged — unless the DAC accepts
+  16 bits only (check 2) — and below 100 % the samples are recalculated. For strict
   bit-perfect playback, leave the volume at 100 and set your listening level on the amplifier.
 - **During DSD, the player's volume does nothing**: MPD leaves DSD untouched, whatever its
   volume. Audiogravi<sup>ty</sup> sets your DAC's own volume to maximum while the DAC receives

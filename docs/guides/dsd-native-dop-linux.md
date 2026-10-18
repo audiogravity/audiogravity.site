@@ -67,8 +67,11 @@ that does not. Nothing reaches a DAC in a form it may not decode.
 - **Boxes set up by an earlier version** had DoP on, through the old `dsd_usb` line. The update
   removes that line where it sits beside `dop "no"`, keeps the previous file among the
   configuration editor's saved copies, and restarts MPD.
-- **A DAC that decodes DoP but not native DSD under Linux** can still have DoP: set `dop "yes"` in
-  MPD's file, from **Config**.
+- **A DAC that decodes DoP but not native DSD under Linux** can still have DoP: turn on **Send DSD
+  as DoP** in MPD's **Guided** view, under **Config**. It is set on the DAC MPD plays on, and MPD
+  takes it without a restart.
+- **The player says how DSD reaches the DAC**: nothing more when it arrives as DSD, a **DoP** tag,
+  or a warning when MPD converted it to PCM.
 - **DSD plays at 100 on the box's own output.** While a DSD track plays there, the volume is set to
   100 and locked, then put back when the DSD ends.
 - **Through HQPlayer, DSD is never converted behind your back.** A file HQPlayer cannot read in

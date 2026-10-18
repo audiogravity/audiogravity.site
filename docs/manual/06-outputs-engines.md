@@ -32,6 +32,38 @@ A **HAT** — a DAC board stacked on a Raspberry Pi's GPIO header — is the one
 needs a manual step before it can be selected: Linux does not detect it on its own. See
 [9. Troubleshooting → My DAC is not in the output list](09-troubleshooting.md#my-dac-is-not-in-the-output-list-raspberry-pi-hat).
 
+### DSD: as DSD, as DoP, or converted to PCM
+
+A DSD track reaches your DAC in one of three ways. Once the track has played a couple of
+seconds, the player says which, next to its format:
+
+- **As DSD** — nothing more is shown: the format already says DSD. This needs a DAC that
+  Linux can send DSD to as it is.
+- **DoP** (*DSD over PCM*) — DSD wrapped in PCM words, which the DAC unwraps.
+- **Converted to PCM** — MPD turned the DSD into PCM before sending it: what your DAC
+  receives is no longer DSD.
+
+DoP is off by default: DSD goes out as DSD when your DAC accepts it, converted to PCM
+when it does not. Nothing reaches your DAC in a form it may not decode.
+
+**The DoP switch.** For a DAC that decodes DoP but that Linux cannot send DSD to as it
+is, open **Config → MPD**, turn on **Send DSD as DoP** under **DSD** in the **Guided**
+view, then **Apply changes**. It is set on the output MPD plays on, without restarting
+MPD, and takes effect the next time MPD opens your DAC: stop, then play again, to hear
+it at once. Leave it off for any other DAC. With it on, DSD leaves as DoP whenever your
+card takes its rate — even for a DAC that would take it as DSD — and a DAC that does not
+decode DoP receives PCM full of markers instead of music.
+
+- **A HAT never receives DSD as it is**: the Pi's pins carry PCM only. DoP passes if
+  the board's chip decodes it, up to DSD128.
+- **DoP needs twice the rate** of DSD sent as it is: on a card that stops at 384 kHz,
+  DSD256 does not fit as DoP. MPD then sends it as DSD if your DAC accepts that, converted
+  to PCM otherwise — and the player says which.
+- **What the switch covers**: MPD, and what plays through it — your library, the
+  streaming services, internet radio, and the box as a UPnP renderer. HQPlayer sets its
+  DSD output on its own page (see [HQPlayer Embedded](#hqplayer-embedded)); AirPlay
+  carries no DSD.
+
 ## Network UPnP renderers
 
 Audiogravi<sup>ty</sup> is a **UPnP Control Point**: it discovers every renderer on your LAN —

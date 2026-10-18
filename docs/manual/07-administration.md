@@ -133,9 +133,11 @@ Safely edit the real configuration files of your audio services (see also
 [3. First run](03-first-run.md) for the guided setup).
 
 - **Guided mode** (admins; MPD, AirPlay, UPnP, HQPlayer Embedded) — choose the output,
-  and for MPD the music library, in a couple of clicks; only the changed setting is
-  rewritten. UPnP has nothing to choose there, because it plays through MPD. *Reset to
-  default* regenerates a minimal config (current file backed up first) — except for
+  and for MPD the music library and DoP for DSD
+  ([6. Outputs & engines → DSD](06-outputs-engines.md#dsd-as-dsd-as-dop-or-converted-to-pcm)),
+  in a couple of clicks; only the changed setting is rewritten. UPnP has nothing to
+  choose there, because it plays through MPD. *Reset to default* regenerates a minimal
+  config (current file backed up first), keeping the output and DoP chosen — except for
   HQPlayer Embedded, whose settings are its own: only its output is chosen here.
 - **Form mode** (called *Structured* next to *Guided*) — edit common settings through a
   friendly interface, with a description for each field. HQPlayer Embedded has none: its

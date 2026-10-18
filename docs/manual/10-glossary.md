@@ -18,8 +18,13 @@ Audiogravi<sup>ty</sup> is a control point when it casts to a network renderer.
 **DAC** — Digital-to-Analog Converter, the component that turns the digital stream
 into the analog signal your amplifier plays. USB, HAT, HDMI or S/PDIF-attached.
 
+**DoP** — *DSD over PCM*: DSD wrapped in PCM words that the DAC unwraps, for a DAC that
+decodes DoP but that Linux cannot send DSD to as it is. Off unless you turn it on, in
+MPD's Guided view; see [6. Outputs & engines → DSD](06-outputs-engines.md#dsd-as-dsd-as-dop-or-converted-to-pcm).
+
 **DSD** — Direct Stream Digital, the 1-bit high-rate format of SACD lineage
-(DSD64/128/256…). The player shows a **DSD lock** when a DSD stream plays natively.
+(DSD64/128/256…). While a DSD track plays on the box's own output, the volume is locked
+at 100: the player shows a **DSD lock**.
 
 **Engine** — the software that actually renders audio on the box: MPD, shairport-sync
 (AirPlay), Roon Bridge, HQPlayer NAA, HQPlayer Embedded. Audiogravi<sup>ty</sup> conducts

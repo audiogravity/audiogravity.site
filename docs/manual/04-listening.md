@@ -100,10 +100,13 @@ service serves it.
 
 ## The live hi-fi readout
 
-On every track change, Audiogravi<sup>ty</sup> shows exactly what's reaching your DAC:
+On every track change, Audiogravi<sup>ty</sup> shows the format of the track playing:
 
 - The **codec** (FLAC, MP3, AAC, DSD…), **sample rate**, **bit depth** — *Lossy* for a compressed
   format such as MP3 or AAC, which has none — and instantaneous **bitrate**.
+- For a DSD track, a couple of seconds in, how it reaches your DAC when that is not as
+  DSD: **DoP**, or **Converted to PCM** — see
+  [6. Outputs & engines → DSD](06-outputs-engines.md#dsd-as-dsd-as-dop-or-converted-to-pcm).
 
 This is your at-a-glance confirmation that a Hi-Res track really is playing at its
 native resolution.

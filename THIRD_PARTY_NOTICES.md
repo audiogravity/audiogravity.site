@@ -367,6 +367,15 @@ Same Apache-2.0 terms as above.
 
 ---
 
+### libconf
+**Copyright** © 2016 Christian Aichinger <Greek0@gmx.net>  
+**License** MIT  
+**Source** https://github.com/Grk0/python-libconf  
+
+Same MIT terms as above.
+
+---
+
 Besides its Python packages, the binary carries the Python interpreter, the runtime of
 Nuitka — the compiler that turns the core into one binary — and system libraries copied from the
 machine it is built on.

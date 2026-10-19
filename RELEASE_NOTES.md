@@ -29,6 +29,11 @@ covers it. When another device on your network already has the name, the box tak
 name can change at a restart, so give the box a hostname of its own and run the
 installer again.
 
+**The login the installer shows is the one that works.** Installed again over a box that
+already had accounts, the installer keeps them — and no longer announces admin / admin123
+as if it had created them. It says the accounts were kept, and gives the two commands that
+bring admin / admin123 back should the password be forgotten.
+
 **Uninstalling says what it kept.** An uninstall without `--purge` now ends by naming what
 it kept for a reinstall — your configuration, the backups of your audio services' files,
 the processor setting — and the command that removes it. The uninstaller itself is gone

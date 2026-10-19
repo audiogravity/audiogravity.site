@@ -7,7 +7,22 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Installation
+
+**Choose how the interface is served — and change it later.** The interface's installer
+takes `--http`, `--https` and `--port`: plain HTTP on port 8080 for a box behind a reverse
+proxy that handles HTTPS, HTTPS on 443 with the box's own certificate, or another port.
+Re-running it with one of them is how an installed box changes mode or port; without them,
+a re-run or an update keeps both as they are. Until now an installed interface kept its
+settings without asking, so the manual's way to switch to plain HTTP could not be
+followed. On a new install, the two questions are asked again when an answer is not one
+they can use: a "2" typed one question too late no longer gives an interface on port 2.
+
+**Uninstalling says what it kept.** An uninstall without `--purge` now ends by naming what
+it kept for a reinstall — your configuration, the backups of your audio services' files,
+the processor setting — and the command that removes it. The uninstaller itself is gone
+by then, so it cannot be run a second time with `--purge`; the manual now says to use
+`--purge` in place of the plain uninstall.
 
 ---
 

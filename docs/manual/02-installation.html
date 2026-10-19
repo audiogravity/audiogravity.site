@@ -132,6 +132,39 @@ and restart the core (<code>sudo systemctl restart ag-core-server</code>).</p>
 authorize the extension once inside Roon. See
 <a href="06-outputs-engines#roon">6. Outputs &amp; engines → Roon</a>.</p>
 </blockquote>
+<h2 id="optional-flags-ui-installer">Optional flags (ui installer)</h2>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--https</code></td>
+<td>Serves the interface over <strong>HTTPS</strong>, with the box's own certificate, on port <strong>443</strong>. What a new install chooses when you just press Enter.</td>
+</tr>
+<tr>
+<td><code>--http</code></td>
+<td>Serves it in <strong>plain HTTP</strong>, on port <strong>8080</strong> — for a box behind a reverse proxy that handles HTTPS (see below).</td>
+</tr>
+<tr>
+<td><code>--port 9000</code></td>
+<td>Another port: <strong>80</strong>, <strong>443</strong>, or from <strong>1024</strong> to <strong>65535</strong> — except the core's port when it runs on the same box (<strong>8000</strong>), and in HTTPS <strong>8081</strong>, where the box hands out its certificate.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Without them, a new install asks the two questions, and an existing one keeps its mode
+and its port without asking. So these flags are also how you change them later — re-run
+the installer with the one you want:</p>
+<pre><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install-ui.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span> <span class="hl-opt">-s</span> <span class="hl-opt">--</span> <span class="hl-opt">--http</span>
+</code></pre>
+<p><code>--http</code> or <code>--https</code> alone always means that mode's own port; add <code>--port</code> to choose
+another. The all-in-one installer takes them too.</p>
+<p>They exist from version <strong>0.9.75</strong>; an older installer refuses them. With one of those,
+uninstall the interface (<code>sudo /var/www/audiogravity-ui/uninstall.sh</code>), run its installer
+again without flags and answer <strong>2</strong> to the mode question.</p>
 <h2 id="getting-https--for-passkeys-and-push">Getting HTTPS — for passkeys and push</h2>
 <p>Passkeys (WebAuthn) and push notifications both require the browser to see
 Audiogravi<sup>ty</sup> on a <strong>real HTTPS domain</strong> — a bare IP or a self-signed
@@ -151,9 +184,12 @@ DNS record, so <strong>no port needs opening</strong> to the internet.</p>
 <li>
 <p><strong>A reverse proxy</strong> in front of Audiogravi<sup>ty</sup> that terminates TLS —
 nginx, Caddy or Traefik, on the box itself or another always-on host. The proxy
-now owns TLS, so first re-run the <strong>ui installer</strong> and pick <strong>plain HTTP</strong> mode
-(it serves on port <strong>8080</strong> by default — this also frees port 443 if the proxy
-runs on the box):</p>
+now owns TLS, so first switch the interface to <strong>plain HTTP</strong> — it then serves on
+port <strong>8080</strong>, which also frees port 443 if the proxy runs on the box (see
+<a href="#optional-flags-ui-installer">Optional flags (ui installer)</a>):</p>
+<pre><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install-ui.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span> <span class="hl-opt">-s</span> <span class="hl-opt">--</span> <span class="hl-opt">--http</span>
+</code></pre>
+<p>Then point the proxy at it:</p>
 <pre><code class="language-nginx">server {
     listen 443 ssl;
     server_name ag.example.com;

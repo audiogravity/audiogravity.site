@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Library
+
+**Stats shows what is playing.** A listen used to reach Stats once it had ended: a radio
+station left on all evening showed nowhere until you stopped it. What plays now counts as soon
+as it has played 30 seconds — in the time listened, the day's bar, the sources, the hours of
+the week and the rankings — and comes first in *Recently played*, marked **IN PROGRESS** with
+the time it has played so far. Left open, Stats keeps up with what plays: it updates when the
+track changes, and when you come back to the app.
 
 ---
 

@@ -386,8 +386,10 @@ What counts as a listen:
   hour fills 20:00 and 21:00 in **When you listen**, and a pause fills no square;
 - a radio station counts as **one listen** for as long as you stayed on it, whatever
   songs it announced;
-- a listen appears once it ends — when the next track starts, or shortly after you
-  stop;
+- what is playing counts too: once it has played 30 seconds, it comes first in
+  **Recently played**, marked **IN PROGRESS** with the time it has played so far, and
+  every figure includes it. While **Stats** is on screen, it keeps up with what plays;
+  a track on pause keeps its time, without the mark;
 - what plays through **Roon** or **HQPlayer** is not counted.
 
 ### Turning the history off, or clearing it

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.75 — 2026-10-19
+
 ### Installation
 
 **Choose how the interface is served — and change it later.** The interface's installer

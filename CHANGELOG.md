@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.75] - 2026-10-19
+
 ### Added
 - **[ops] installer — the interface's installer takes `--http`, `--https` and `--port`.** They choose how the interface is served and win over an existing install, so re-running the installer with one of them is how a box changes mode or port; `--http` or `--https` alone means that mode's own port (8080, 443), and nothing is asked. Without them a re-run, or a self-update, keeps the mode and port in place. The all-in-one installer passes them on, and both hosted installers check the port before downloading anything. An installer from before them refuses them instead of ignoring them.
 - **[ops] installer — the interface's installer ends on the box's name, and its QR code carries it.** `http(s)://<name>.local` comes first, the address below it should the name not open: without a fixed address, the name is the only way back to the box, and an app added to a home screen keeps for ever the address it was added from. The name is the one avahi announces, once settled — a box renamed because another device holds its name (`audiogravity-2.local`) shows the one it answers to, with a warning in yellow to give the box a hostname of its own and run the installer again, since which device keeps the plain name can change at a restart; in HTTPS it is offered only when the certificate carries it. The address is repeated under the QR code. The addresses to open stand out in green, and what blocks when skipped — trusting the certificate, its step 3, the limits of plain HTTP — in yellow.

@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.9.74_beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.9.75_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
   <img src="https://img.shields.io/badge/ui-MIT-green" alt="UI License" />
   <img src="https://img.shields.io/badge/core-proprietary-lightgrey" alt="Core License" />
@@ -237,7 +237,7 @@ Three components, three official logos:
 | UI | 3920 | ✅ |
 | **Total** | **9876** | ✅ |
 
-Last run: 2026-10-19 06:59 UTC
+Last run: 2026-10-19 15:09 UTC
 
 See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 

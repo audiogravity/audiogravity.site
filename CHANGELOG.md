@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] After an uninstall without `--purge`, the uninstaller names what it kept and the command that removes it.** It ended on "Run with --purge to remove them", but it lives in the directory it has just removed: there was nothing left to run.
+- **[manual] Installation → Uninstalling runs `--purge` in place of the plain uninstall, not after it.** It gives the command that removes what a plain uninstall kept — now naming the processor setting of the Performance page among them — and says that the interface keeps the box's certificate authority, and why.
+
 ## [0.9.74] - 2026-10-19
 
 ### Added

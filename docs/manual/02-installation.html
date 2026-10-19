@@ -192,12 +192,24 @@ On first run, Audiogravi<sup>ty</sup> activates a
 </code></pre>
 <p>This removes the services, the programs, the privileged rules Audiogravi<sup>ty</sup>
 granted itself and its system account — but <strong>keeps your configuration</strong> in
-<code>/etc/audiogravity</code> (your signal-chain map, saved radio stations and licence) and the
-backups of your audio services' configuration files in <code>/var/backups/audiogravity</code>.
+<code>/etc/audiogravity</code> (your signal-chain map, saved radio stations and licence), the
+backups of your audio services' configuration files in <code>/var/backups/audiogravity</code>, and
+the processor setting of the <strong>Performance</strong> page in <code>/etc/cpu-governor.conf</code>.
 Reinstalling afterwards picks up where you left off.</p>
-<p>To remove those too:</p>
-<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">/opt/audiogravity/uninstall.sh</span> <span class="hl-opt">--purge</span>
+<p>To remove those too, add <code>--purge</code> to the first command — <strong>in place of</strong> running it
+without, not after it: the uninstaller is removed with the programs, so there is no
+second run.</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">/opt/audiogravity/uninstall.sh</span> <span class="hl-opt">--purge</span>  <span class="hl-comment"># core — removes your configuration too</span>
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">/var/www/audiogravity-ui/uninstall.sh</span>   <span class="hl-comment"># ui</span>
 </code></pre>
+<p>Already uninstalled without <code>--purge</code>? Remove what was kept yourself:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">rm</span> <span class="hl-opt">-rf</span> /etc/audiogravity /var/backups/audiogravity /etc/cpu-governor.conf
+</code></pre>
+<p>The interface's uninstaller also keeps the box's <strong>certificate authority</strong>, in
+<code>/var/lib/audiogravity-ui</code>, so that your devices still trust the box when you
+reinstall. To start from a new one, delete that directory too — each of your devices
+will then have to trust the new certificate (see
+<a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → Trust the box's certificate</a>).</p>
 <p><strong>What is never removed, on purpose:</strong> the audio software itself — MPD, which came
 with the installer, and whatever you added from the <strong>Audio Software</strong> page
 (Shairport-Sync, upmpdcli, HQPlayer NAA, HQPlayer Embedded, Roon Bridge) — along with

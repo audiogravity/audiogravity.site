@@ -139,15 +139,31 @@ sudo /var/www/audiogravity-ui/uninstall.sh   # ui
 
 This removes the services, the programs, the privileged rules Audiogravi<sup>ty</sup>
 granted itself and its system account — but **keeps your configuration** in
-`/etc/audiogravity` (your signal-chain map, saved radio stations and licence) and the
-backups of your audio services' configuration files in `/var/backups/audiogravity`.
+`/etc/audiogravity` (your signal-chain map, saved radio stations and licence), the
+backups of your audio services' configuration files in `/var/backups/audiogravity`, and
+the processor setting of the **Performance** page in `/etc/cpu-governor.conf`.
 Reinstalling afterwards picks up where you left off.
 
-To remove those too:
+To remove those too, add `--purge` to the first command — **in place of** running it
+without, not after it: the uninstaller is removed with the programs, so there is no
+second run.
 
 ```bash
-sudo /opt/audiogravity/uninstall.sh --purge
+sudo /opt/audiogravity/uninstall.sh --purge  # core — removes your configuration too
+sudo /var/www/audiogravity-ui/uninstall.sh   # ui
 ```
+
+Already uninstalled without `--purge`? Remove what was kept yourself:
+
+```bash
+sudo rm -rf /etc/audiogravity /var/backups/audiogravity /etc/cpu-governor.conf
+```
+
+The interface's uninstaller also keeps the box's **certificate authority**, in
+`/var/lib/audiogravity-ui`, so that your devices still trust the box when you
+reinstall. To start from a new one, delete that directory too — each of your devices
+will then have to trust the new certificate (see
+[3. First run → Trust the box's certificate](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)).
 
 **What is never removed, on purpose:** the audio software itself — MPD, which came
 with the installer, and whatever you added from the **Audio Software** page

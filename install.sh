@@ -9,6 +9,7 @@
 #   curl -fsSL https://audiogravity.app/install.sh | sudo bash
 #   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --version 1.2.0
 #   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --public-url https://your-domain
+#   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --http [--port 8080]
 #   (add --token <PAT> only while the releases repo is private)
 
 set -e
@@ -17,12 +18,22 @@ TOKEN=""
 VERSION=""
 COMMON_ARGS=()    # forwarded to both core and ui
 CORE_ARGS=()   # core-only (the ui installer rejects unknown flags)
+UI_ARGS=()     # ui-only: how the interface is served (the core installer rejects them)
 while [[ $# -gt 0 ]]; do
     case $1 in
         --token)       TOKEN="$2";   COMMON_ARGS+=("--token" "$2");   shift 2 ;;
         --version)     VERSION="$2"; COMMON_ARGS+=("--version" "$2"); shift 2 ;;
         --vapid-email) CORE_ARGS+=("--vapid-email" "$2");          shift 2 ;;
         --public-url)  CORE_ARGS+=("--public-url" "$2");           shift 2 ;;
+        --http|--https) UI_ARGS+=("$1");                           shift ;;
+        --port)
+            [ -n "${2:-}" ] || { echo "✗ --port needs a number" >&2; exit 1; }
+            # The ui installer's rule, checked here so that a refused port does not
+            # surface only after the whole core has been installed.
+            [[ "$2" =~ ^[0-9]+$ ]] && { [ "$2" -eq 80 ] || [ "$2" -eq 443 ] \
+                || { [ "$2" -ge 1024 ] && [ "$2" -le 65535 ]; }; } \
+                || { echo "✗ --port $2: the interface takes 80, 443, or a port from 1024 to 65535" >&2; exit 1; }
+            UI_ARGS+=("--port" "$2");                              shift 2 ;;
         *) echo "Unknown argument: $1" >&2; exit 1 ;;
     esac
 done
@@ -70,7 +81,7 @@ fetch_script "$BASE/install-ui.sh"   "$TMP_DIR/install-ui.sh"
 # installers ask their questions on /dev/tty, and this script may itself be running
 # from a pipe whose remaining bytes a child must never consume.
 bash "$TMP_DIR/install-core.sh" "${COMMON_ARGS[@]}" "${CORE_ARGS[@]}" < /dev/null
-bash "$TMP_DIR/install-ui.sh" "${COMMON_ARGS[@]}" < /dev/null
+bash "$TMP_DIR/install-ui.sh" "${COMMON_ARGS[@]}" "${UI_ARGS[@]}" < /dev/null
 
 echo ""
 echo "✓ Audiogravity installed (core + ui)."

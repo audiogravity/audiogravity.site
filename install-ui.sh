@@ -7,6 +7,7 @@
 # Usage:
 #   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash
 #   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --http [--port 8080]
 #   (add --token <PAT> only while the releases repo is private)
 
 set -e
@@ -24,10 +25,18 @@ warn() { echo -e "  ${YELLOW}!${NC} $1"; }
 
 TOKEN=""
 VERSION=""
+UI_ARGS=()   # how the interface is served: passed on to the package's installer
 while [[ $# -gt 0 ]]; do
     case $1 in
         --token)   TOKEN="$2";   shift 2 ;;
         --version) VERSION="$2"; shift 2 ;;
+        --http|--https) UI_ARGS+=("$1"); shift ;;
+        --port)    [ -n "${2:-}" ] || fail "--port needs a number"
+                   # The package installer's rule (valid_port), checked before any download.
+                   [[ "$2" =~ ^[0-9]+$ ]] && { [ "$2" -eq 80 ] || [ "$2" -eq 443 ] \
+                       || { [ "$2" -ge 1024 ] && [ "$2" -le 65535 ]; }; } \
+                       || fail "--port $2: the interface takes 80, 443, or a port from 1024 to 65535"
+                   UI_ARGS+=("--port" "$2"); shift 2 ;;
         *) fail "Unknown argument: $1" ;;
     esac
 done
@@ -180,6 +189,14 @@ ok "Extracted"
 PACKAGE_DIR=$(find "$INSTALL_DIR" -maxdepth 1 -type d -name "audiogravity-ui-*" | head -1)
 [ -n "$PACKAGE_DIR" ] || fail "Could not find package directory after extraction."
 
+# A package older than --http/--https/--port takes no argument at all, and would serve
+# the interface in a mode nobody asked for without a word. Refuse instead.
+if [ ${#UI_ARGS[@]} -gt 0 ] && ! grep -q "AG-INSTALL-OPTIONS:" "$PACKAGE_DIR/install.sh"; then
+    fail "The installer of v${VERSION} does not take ${UI_ARGS[*]}. Uninstall the interface
+    (sudo /var/www/audiogravity-ui/uninstall.sh), then run this again without them and
+    answer the questions it asks."
+fi
+
 info "Running installer..."
 echo ""
-bash "$PACKAGE_DIR/install.sh"
+bash "$PACKAGE_DIR/install.sh" "${UI_ARGS[@]}"

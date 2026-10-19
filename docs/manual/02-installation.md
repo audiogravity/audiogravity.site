@@ -77,6 +77,29 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 > authorize the extension once inside Roon. See
 > [6. Outputs & engines → Roon](06-outputs-engines.md#roon).
 
+## Optional flags (ui installer)
+
+| Flag | What it does |
+|------|--------------|
+| `--https` | Serves the interface over **HTTPS**, with the box's own certificate, on port **443**. What a new install chooses when you just press Enter. |
+| `--http` | Serves it in **plain HTTP**, on port **8080** — for a box behind a reverse proxy that handles HTTPS (see below). |
+| `--port 9000` | Another port: **80**, **443**, or from **1024** to **65535** — except the core's port when it runs on the same box (**8000**), and in HTTPS **8081**, where the box hands out its certificate. |
+
+Without them, a new install asks the two questions, and an existing one keeps its mode
+and its port without asking. So these flags are also how you change them later — re-run
+the installer with the one you want:
+
+```bash
+curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --http
+```
+
+`--http` or `--https` alone always means that mode's own port; add `--port` to choose
+another. The all-in-one installer takes them too.
+
+They exist from version **0.9.75**; an older installer refuses them. With one of those,
+uninstall the interface (`sudo /var/www/audiogravity-ui/uninstall.sh`), run its installer
+again without flags and answer **2** to the mode question.
+
 ## Getting HTTPS — for passkeys and push
 
 Passkeys (WebAuthn) and push notifications both require the browser to see
@@ -92,9 +115,15 @@ anything to the internet:
    DNS record, so **no port needs opening** to the internet.
 3. **A reverse proxy** in front of Audiogravi<sup>ty</sup> that terminates TLS —
    nginx, Caddy or Traefik, on the box itself or another always-on host. The proxy
-   now owns TLS, so first re-run the **ui installer** and pick **plain HTTP** mode
-   (it serves on port **8080** by default — this also frees port 443 if the proxy
-   runs on the box):
+   now owns TLS, so first switch the interface to **plain HTTP** — it then serves on
+   port **8080**, which also frees port 443 if the proxy runs on the box (see
+   [Optional flags (ui installer)](#optional-flags-ui-installer)):
+
+   ```bash
+   curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash -s -- --http
+   ```
+
+   Then point the proxy at it:
 
    ```nginx
    server {

@@ -9,8 +9,14 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[ops] installer — the interface's installer takes `--http`, `--https` and `--port`.** They choose how the interface is served and win over an existing install, so re-running the installer with one of them is how a box changes mode or port; `--http` or `--https` alone means that mode's own port (8080, 443), and nothing is asked. Without them a re-run, or a self-update, keeps the mode and port in place. The all-in-one installer passes them on, and both hosted installers check the port before downloading anything. An installer from before them refuses them instead of ignoring them.
+
 ### Fixed
-- **[core] After an uninstall without `--purge`, the uninstaller names what it kept and the command that removes it.** It ended on "Run with --purge to remove them", but it lives in the directory it has just removed: there was nothing left to run.
+- **[ops] installer — the interface's installer asks again when an answer is not one it can use.** "2" typed for the mode and landing on the port question gave an interface on port 2: a port is now 80, 443, or 1024 to 65535 — not the core's port on the same box, nor in HTTPS the one that hands out the certificate (8081) — and the mode 1 or 2.
+- **[ops] installer — the core installer shows the API key once.** A new install printed it in two boxes in a row.
+- **[manual] Installation → Getting HTTPS switches the interface to plain HTTP with `--http`.** It said to re-run the ui installer and pick plain HTTP, but an installed interface was never asked again. The flags have their own table.
+- **[ops] uninstaller — after an uninstall without `--purge`, it names what it kept and the command that removes it.** It ended on "Run with --purge to remove them", but it lives in the directory it has just removed: there was nothing left to run.
 - **[manual] Installation → Uninstalling runs `--purge` in place of the plain uninstall, not after it.** It gives the command that removes what a plain uninstall kept — now naming the processor setting of the Performance page among them — and says that the interface keeps the box's certificate authority, and why.
 
 ## [0.9.74] - 2026-10-19

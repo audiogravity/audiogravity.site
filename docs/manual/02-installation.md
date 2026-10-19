@@ -27,10 +27,11 @@ This is the standard setup and the one one-click self-update fully supports.
 curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
-Then open the interface in any browser on your network:
+Then open, in any browser on your network, the address the installer prints at the end —
+the box by its name (see [First contact](#first-contact)):
 
 ```text nocopy
-https://<ip-of-your-streamer>
+https://<name>.local
 ```
 
 ## Advanced — core and ui separately

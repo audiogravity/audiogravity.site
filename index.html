@@ -1648,8 +1648,11 @@
                         <code><span class="cmt"># All-in-one — core + ui, works on your LAN</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> | <span class="cmd">sudo bash</span></code>
                         <code></code>
-                        <code><span class="cmt"># Then open in your browser:</span></code>
-                        <code><span class="url">https://&lt;ip-of-your-streamer&gt;</span></code>
+                        <code><span class="cmt"># Then open the address it prints — your streamer by name:</span></code>
+                        <code><span class="url">https://&lt;your-streamer&gt;.local</span></code>
+                        <code></code>
+                        <code><span class="cmt"># No certificate to set up on your phone? Plain HTTP:</span></code>
+                        <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> | <span class="cmd">sudo bash</span> -s -- --http</code>
                     </div>
 
                     <div class="terminal" style="margin-top:18px">

@@ -69,13 +69,25 @@ that does not. Nothing reaches a DAC in a form it may not decode.
   configuration editor's saved copies, and restarts MPD.
 - **A DAC that decodes DoP but not native DSD under Linux** can still have DoP: turn on **Send DSD
   as DoP** in MPD's **Guided** view, under **Config**. It is set on the DAC MPD plays on, and MPD
-  takes it without a restart.
+  takes it without a restart — unless MPD converts DSD before its volume on that box (below):
+  DoP ends that, and MPD restarts.
 - **The player says how DSD reaches the DAC**: nothing more when it arrives as DSD, a **DoP** tag,
   or a warning when MPD converted it to PCM.
 - **The player's volume does nothing to DSD.** I measured it on MPD 0.24.5: its volume at 30, then
   at 5, changed neither the level nor the DoP of a DSD128 track, and a DSD it converted to PCM came
   out byte for byte the same at 100 and at 30. The volume control gives way to a padlock while DSD
   plays: set your level on the amplifier.
+- **On a box whose DAC takes no DSD, the volume works on DSD.** Such a DAC — a HAT on a Raspberry
+  Pi, a USB DAC Linux sends no DSD to — receives DSD converted to PCM anyway. MPD converts it in
+  the last filter of its output, after its volume: hence the padlock. Where no output of the box
+  takes DSD as it is and DoP is off, the guided setup has MPD convert it at the decoder instead,
+  before the volume (`audio_output_format "*:32:*"`), and the volume control stays. Measured on
+  the HiFiBerry DAC+ Pro of my Raspberry Pi 4, with MPD 0.24.4 (2026-10-18): DSD64, DSD128 and
+  DSD256 reach the card as 32-bit PCM at 352.8 kHz, and MPD uses 3.9, 37.4 and 68.7 % of one core,
+  against 3.0, 36.6 and 65.1 % with the conversion in the output. Most of that is bringing DSD128
+  and DSD256 down to the card's 352.8 kHz, which MPD does either way. A box with a DAC that takes
+  DSD as it is, or with DoP on, keeps DSD as it is, and the padlock. Boxes already set up get the
+  change at their update to 0.9.74.
 - **Your DAC's own volume goes to full while it receives DSD.** On the USB DAC of my test box, that
   volume lowered by 10 dB silenced DoP and turned native DSD to noise. So while a DSD track reaches
   the DAC as DSD or as DoP, from any player, Audiogravi<sup>ty</sup> sets the DAC's volume to

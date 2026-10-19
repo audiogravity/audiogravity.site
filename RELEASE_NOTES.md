@@ -17,7 +17,8 @@ the configuration editor.
 
 **DoP, for a DAC that needs it.** A DAC that decodes DoP but that Linux cannot send DSD to as it is
 can still have it: in **Config → MPD → Guided**, turn on *Send DSD as DoP*. It applies to the DAC
-MPD plays on, without restarting anything, and *Reset to default* keeps it.
+MPD plays on, and *Reset to default* keeps it. On a box where the volume works on DSD (below),
+turning it on restarts the player, which stops the music for a moment.
 
 **The player says how DSD reaches your DAC.** The format shown is the track's: a DSD128 file read
 *DSD128* even when your DAC received PCM. A couple of seconds into a DSD track, the player now adds
@@ -27,9 +28,18 @@ a *DoP* tag, or *Converted to PCM*, when it does not reach your DAC as DSD.
 lowered while they receive DSD. So while your DAC receives DSD — as DSD or as DoP, from any player,
 HQPlayer included — Audiogravi<sup>ty</sup> sets its volume to maximum and puts it back when the
 DSD ends; when the DSD reaches it converted to PCM, its volume is left as it is. The player's own
-volume, which does nothing to DSD, is no longer set to 100 and back. If your DAC lowers DSD
+volume is no longer set to 100 and back: it does nothing to DSD, except on a DAC that does not take
+DSD (below). If your DAC lowers DSD
 properly and you set your listening level with it, turn off *Full DAC volume during DSD* in
 **Config → MPD → Guided**: it applies at once, for every player of that DAC.
+
+**The volume works on DSD, on a DAC that does not take DSD.** A HAT on a Raspberry Pi, or a USB DAC
+that Linux cannot send DSD to, receives DSD converted to PCM. Until now that conversion came after
+the volume: the volume did nothing to DSD, and the player showed a padlock. On a box where no output
+takes DSD as it is, the conversion now comes before the volume, so the volume control stays on DSD
+tracks and works as on any other — with nothing lost, since your DAC received PCM anyway. Boxes
+already set up get it when they update. A DAC that takes DSD, or DoP turned on, keeps DSD as it is,
+and the padlock.
 
 **HQPlayer's volume, on its card.** In **Library → Sources**, the HQPlayer card shows HQPlayer's
 volume in dB, and its slider sets it — for the HQPlayer running on the box as for one on your

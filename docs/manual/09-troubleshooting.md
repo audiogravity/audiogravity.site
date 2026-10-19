@@ -419,9 +419,8 @@ no end to jump to.
 
 ## A listen is missing from Stats
 
-- **It is still playing.** A listen appears once it ends — when the next track starts,
-  or shortly after you stop.
-- **It played for less than 30 seconds.** Shorter plays are not counted.
+- **It played for less than 30 seconds.** Shorter plays are not counted — what is
+  playing shows once it has played 30 seconds.
 - **Recording is off.** **Library → Stats** then says so at the top: tap **Go to the
   switch** and turn **Keep a history of what plays** back on.
 - **It played through Roon or HQPlayer.** Those are not counted.

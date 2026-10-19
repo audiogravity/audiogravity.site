@@ -9,6 +9,11 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core+ui] Library → Stats counts what is playing.** A listen was recorded once it ended, and Stats counted only what was recorded: a station left on all evening showed nowhere until it stopped, and Stats read *Nothing recorded yet* while it played. What plays now counts as it stands when Stats is read — once it has played 30 seconds — in every figure and in the count of listens, and comes first in *Recently played*, marked IN PROGRESS where the others show when they began, with its time so far; a track on pause keeps its time, without the mark. Nothing more is written for it, and it costs nothing while the music plays. While Stats is on screen it is read again when what plays changes, once a track just started counts, and when the app comes back to the foreground — from the player stream the mini player already holds open. The history's reads and writes now run one at a time, in the order asked, so a track ending as Stats opens is counted once, never left out or counted twice. A history file the core can no longer write (a card gone read-only) shows what it holds instead of an error. `GET /listening/summary` gives `recent[]` its `in_progress`; `listens` of `GET /listening/settings` counts the listens in progress.
+- **[core] A device that no longer takes notifications is forgotten at its first refusal.** One that had unsubscribed — the app removed from a home screen, its notifications turned off — was sent every notification again: the core never read the status of the push service's refusal. It is now forgotten as soon as the service answers that the subscription is gone — Apple's *410 Unregistered*, or an expired subscription's 404 —, and kept on any other refusal. On the lab's box, 7 of its 10 subscriptions had been refused 133 times over 19 notifications since 10 October, none forgotten; they go at the next notification.
+- **[manual] Library & streaming says what is playing counts in Stats, marked IN PROGRESS**, and Troubleshooting (*A listen is missing from Stats*) no longer says a listen shows only once it ends.
+
 ## [0.9.75] - 2026-10-19
 
 ### Added

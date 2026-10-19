@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.74 — 2026-10-19
+
 ### Playback
 
 **DSD reaches your DAC as DSD.** On a DAC that accepts native DSD, DSD now arrives as DSD; on one

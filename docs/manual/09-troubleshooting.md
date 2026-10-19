@@ -346,6 +346,13 @@ so does one called `musics.1`. That name follows the box when its address change
 **Add the app from the name rather than from the address** and the problem does not
 come back.
 
+- **Two devices with the same name** — when another device on the network already
+  answers to that name, the box takes the next free one, `musics-2.local`, and the
+  interface's installer says so in yellow. Which of the two keeps the plain name can
+  change when they restart, so a `-2` name is no address to keep. Give the box a hostname
+  of its own — on Debian, `sudo hostnamectl set-hostname <new-name>`, with the same new
+  name on the `127.0.1.1` line of `/etc/hosts` — restart it, then run the interface's
+  installer again: it prints the new name, and its certificate carries it.
 - **The name doesn't answer** — names are announced over multicast (mDNS), so the
   device asking must be on the **same subnet**: another VLAN needs an mDNS repeater on
   the router, and some access points filter multicast. On the same network it resolves

@@ -213,10 +213,17 @@ the app through that URL and the passkey / notification features light up.</p>
 automatically). This is the standard self-hosting pattern — any guide on &quot;Let's
 Encrypt DNS-01 + reverse proxy&quot; applies as-is.</p>
 <h2 id="first-contact">First contact</h2>
-<p>Open <code>https://&lt;box-ip&gt;</code> in a browser — or <code>https://&lt;name&gt;.local</code>, where <code>&lt;name&gt;</code> is the
-first part of the box's hostname (<code>musics</code> → <code>musics.local</code>). The box announces that
-name on the network, and unlike its address the name does not change when the router
-hands out a new lease, so it is the one to bookmark and the one to add the app from.
+<p>Open the address the installer prints at the end — the one its QR code carries:
+<code>https://&lt;name&gt;.local</code>. <code>&lt;name&gt;</code> is the first part of the box's hostname
+(<code>musics</code> → <code>musics.local</code>). The box announces that name on the network, and unlike its
+address the name does not change when the router hands out a new lease, so it is the one
+to bookmark and the one to add the app from. Should it not open, the box's address,
+<code>https://&lt;box-ip&gt;</code>, is printed just below it.</p>
+<p>When another device on your network already answers to that name, the box takes
+<code>&lt;name&gt;-2.local</code>, and the installer says so in yellow. Such a name is not one to keep:
+which of the two devices gets the <code>-2</code> can change when they restart. Give the box a
+hostname of its own, then run the installer again — see
+<a href="09-troubleshooting#a-bookmark-or-the-home-screen-icon-opens-on-nothing">9. Troubleshooting</a>.
 On first run, Audiogravi<sup>ty</sup> activates a
 <strong>30-day trial</strong> automatically — no action required — and you sign in with the
 <strong>default admin account</strong> (then change its password right away — see

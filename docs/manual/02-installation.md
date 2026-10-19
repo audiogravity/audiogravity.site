@@ -149,10 +149,18 @@ Encrypt DNS-01 + reverse proxy" applies as-is.
 
 ## First contact
 
-Open `https://<box-ip>` in a browser — or `https://<name>.local`, where `<name>` is the
-first part of the box's hostname (`musics` → `musics.local`). The box announces that
-name on the network, and unlike its address the name does not change when the router
-hands out a new lease, so it is the one to bookmark and the one to add the app from.
+Open the address the installer prints at the end — the one its QR code carries:
+`https://<name>.local`. `<name>` is the first part of the box's hostname
+(`musics` → `musics.local`). The box announces that name on the network, and unlike its
+address the name does not change when the router hands out a new lease, so it is the one
+to bookmark and the one to add the app from. Should it not open, the box's address,
+`https://<box-ip>`, is printed just below it.
+
+When another device on your network already answers to that name, the box takes
+`<name>-2.local`, and the installer says so in yellow. Such a name is not one to keep:
+which of the two devices gets the `-2` can change when they restart. Give the box a
+hostname of its own, then run the installer again — see
+[9. Troubleshooting](09-troubleshooting.md#a-bookmark-or-the-home-screen-icon-opens-on-nothing).
 On first run, Audiogravi<sup>ty</sup> activates a
 **30-day trial** automatically — no action required — and you sign in with the
 **default admin account** (then change its password right away — see

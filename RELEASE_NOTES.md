@@ -18,6 +18,17 @@ settings without asking, so the manual's way to switch to plain HTTP could not b
 followed. On a new install, the two questions are asked again when an answer is not one
 they can use: a "2" typed one question too late no longer gives an interface on port 2.
 
+**The box's name, first and in the QR code.** The installer now ends on the address by
+name, `http(s)://<name>.local`, with the IP address below it, and its QR code carries the
+name. Without a fixed address the name is the only way back to the box when the router
+hands out a new one — and an app added to a home screen keeps for ever the address it was
+added from. The address is repeated under the code, and what to act on stands out in
+colour. The name is the one the box really answers to — and the HTTPS certificate now
+covers it. When another device on your network already has the name, the box takes
+`<name>-2.local` and the installer warns you in yellow: which of the two keeps the plain
+name can change at a restart, so give the box a hostname of its own and run the
+installer again.
+
 **Uninstalling says what it kept.** An uninstall without `--purge` now ends by naming what
 it kept for a reinstall — your configuration, the backups of your audio services' files,
 the processor setting — and the command that removes it. The uninstaller itself is gone

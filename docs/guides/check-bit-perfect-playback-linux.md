@@ -83,10 +83,17 @@ a DAC that does not decode DTS, and start with the volume low: undecoded, it is 
   100 %, 16-bit audio is widened to 24 bits with its values unchanged — unless the DAC accepts
   16 bits only (check 2) — and below 100 % the samples are recalculated. For strict
   bit-perfect playback, leave the volume at 100 and set your listening level on the amplifier.
-- **During DSD, the player's volume does nothing**: MPD leaves DSD untouched, whatever its
-  volume. Audiogravi<sup>ty</sup> sets your DAC's own volume to maximum while the DAC receives
-  DSD, then puts it back — some DACs play nothing, or noise, when that volume is lowered during
-  DSD. A switch in MPD's **Guided** view turns this off for a DAC that lowers DSD properly.
+  On a box where no output takes DSD as it is, it also sets `audio_output_format "*:32:*"`, so
+  that the volume acts on DSD: MPD then works in 32-bit words, and a card that takes them shows
+  `S32_LE` in check 1, as a HiFiBerry DAC+ Pro does — 16- and 24-bit audio with its values
+  unchanged at 100 % (the values measured on MPD 0.24.5, the card's format on that HiFiBerry
+  with MPD 0.24.4, 2026-10-18).
+- **During DSD, the player's volume does nothing** — MPD leaves DSD untouched, whatever its
+  volume — except on such a box, where MPD converts DSD to PCM before its volume: the DAC
+  receives PCM there anyway. Audiogravi<sup>ty</sup> sets your DAC's own volume to maximum
+  while the DAC receives DSD, then puts it back — some DACs play nothing, or noise, when that
+  volume is lowered during DSD. A switch in MPD's **Guided** view turns this off for a DAC that
+  lowers DSD properly.
 
 The details are in the manual:
 [Outputs & engines → The signal path](../manual/06-outputs-engines#the-signal-path-and-the-chain-you-describe),

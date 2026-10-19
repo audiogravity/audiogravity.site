@@ -120,6 +120,10 @@ properly as you set it, see
 [6. Outputs & engines → DSD](06-outputs-engines.md#dsd-as-dsd-as-dop-or-converted-to-pcm).
 Through HQPlayer, or on a network speaker, the volume stays yours to set.
 
+On a box whose DAC does not take DSD — a HAT on a Raspberry Pi, for instance — the volume
+control stays too, and works on DSD tracks as on any other: the DSD is converted to PCM
+before the volume, and the player says **Converted to PCM**.
+
 ## The stream-origin badge
 
 A badge in the player always tells you **where the audio is coming from** — Tidal,

@@ -84,7 +84,7 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 |------|--------------|
 | `--https` | Serves the interface over **HTTPS**, with the box's own certificate, on port **443**. What a new install chooses when you just press Enter. |
 | `--http` | Serves it in **plain HTTP**, on port **8080** — for a box behind a reverse proxy that handles HTTPS (see below). |
-| `--port 9000` | Another port: **80**, **443**, or from **1024** to **65535** — except the core's port when it runs on the same box (**8000**), and in HTTPS **8081**, where the box hands out its certificate. |
+| `--port 9000` | Another port: **80**, **443**, or from **1024** to **65535** — except the core's two ports when it runs on the same box (**8000**, and **8010**, where it serves HQPlayer its radio stations), and in HTTPS **8081**, where the box hands out its certificate. |
 
 Without them, a new install asks the two questions, and an existing one keeps its mode
 and its port without asking. So these flags are also how you change them later — re-run

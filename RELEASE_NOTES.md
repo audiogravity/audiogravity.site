@@ -16,6 +16,22 @@ the week and the rankings — and comes first in *Recently played*, marked **IN 
 the time it has played so far. Left open, Stats keeps up with what plays: it updates when the
 track changes, and when you come back to the app.
 
+### Radio on HQPlayer
+
+**Stations hold.** Some internet radio stations stopped by themselves after half a minute
+when HQPlayer played them — Radio France's MP3 stations among them. Every station you send to
+HQPlayer now goes through the box, which passes it on as it is sent, or converted to FLAC when
+HQPlayer cannot read its format. In our tests, France Inter and FIP held every play, pause and
+resume, on HQPlayer Desktop and on HQPlayer Embedded. The box serves those stations on port
+8010, beside 8000: if something filters the traffic between HQPlayer's computer and the box,
+open that one too.
+
+**Pause and Play pick up the live broadcast**, as they already did on the box's own output
+and on network renderers: a paused station used to come back where it was paused, then stop.
+Previous and Next are now greyed on a station played alone — pressed, they stopped the music.
+And a station or an album started after HQPlayer had sat paused on a station for a while now
+plays.
+
 ---
 
 ## 0.9.75 — 2026-10-19

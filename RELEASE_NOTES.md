@@ -16,7 +16,7 @@ the week and the rankings — and comes first in *Recently played*, marked **IN 
 the time it has played so far. Left open, Stats keeps up with what plays: it updates when the
 track changes, and when you come back to the app.
 
-### Radio on HQPlayer
+### HQPlayer
 
 **Stations hold.** Some internet radio stations stopped by themselves after half a minute
 when HQPlayer played them — Radio France's MP3 stations among them. Every station you send to
@@ -31,6 +31,12 @@ and on network renderers: a paused station used to come back where it was paused
 Previous and Next are now greyed on a station played alone — pressed, they stopped the music.
 And a station or an album started after HQPlayer had sat paused on a station for a while now
 plays.
+
+**The signal path names the HQPlayer that plays.** Under the cover, the player now reads
+*HQPlayer Desktop → HQPlayer NAA → your DAC* when HQPlayer on another computer plays
+through the box, and *HQPlayer Embedded → your DAC* for the one on the box itself — as
+HQPlayer names itself. It used to show an internal name, *hqplayer*, without the DAC, or
+whatever name your chain description gave, whichever HQPlayer was playing.
 
 ---
 

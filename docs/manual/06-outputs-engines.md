@@ -193,9 +193,9 @@ versions instead of letting the music fail without a word.
 
 With the switch on, playing an album routes it to HQPlayer, which processes it and
 sends it back to your DAC through the NAA. The player badges the track with where the
-music actually comes from — **Library** — and the signal path shows the full chain:
-*Library → HQPlayer → NAA → your DAC*. HQPlayer is a **processor** in that chain, not
-the source of the music.
+music actually comes from — **Library** — and the signal path shows the full chain, with
+HQPlayer under the name it gives itself: *Library → HQPlayer Desktop → HQPlayer NAA → your
+DAC*. HQPlayer is a **processor** in that chain, not the source of the music.
 
 The setting lives **on the box, not in your browser**: turn it on from your phone and
 your laptop shows it on too. Turning it off releases the sound card so local playback

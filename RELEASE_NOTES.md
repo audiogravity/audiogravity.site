@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.76 — 2026-10-20
+
 ### Library
 
 **Stats shows what is playing.** A listen used to reach Stats once it had ended: a radio

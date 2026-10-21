@@ -11,6 +11,7 @@ and this landing) are documented here. Format based on
 
 ### Fixed
 - **[site] On a phone, the manual's and the guides' list of pages is a menu.** Below 860px it was a strip scrolled sideways: fine for the manual's one-word chapters, unusable for the guides, whose titles are whole questions — on a 375px phone not one title showed whole, and the guide being read sat far off to the right. An *All guides* or *All chapters* line now opens the list, every title on its own line and the page being read marked; closed, the page starts on the first screen. On a wider screen the column stays as it was. The *Guides* and *User manual* labels in the top bar now lead to their contents, which no guide page linked back to.
+- **[site] On a phone, *Pricing* and *Install* in the landing's bar bring their section to the top of the screen at the first touch.** The page stopped short, the section showing near the bottom of the screen, until a second touch: the app's sign-in screenshot further up took its room only once it loaded, during the scroll. It now has its size from the start; nothing else on the page moves.
 
 ## [0.9.77] - 2026-10-21
 

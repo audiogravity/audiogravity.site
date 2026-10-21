@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core] Library → Stats no longer counts a radio station under a word that names no genre.** A station's tags in the radio directory name its codec, its country or its owner as readily as its style: France Inter's are *aac, general, public radio, radio france*, and its listens were counted under a genre called *Aac*. A station — and anything played live — now counts only under a genre of AG's common list, from its tags as from what its stream announces, and under *Unknown* otherwise; a file still keeps its own word when it names a genre no service uses. The listens already recorded are put right at the box's next start, and so is what an older version records should the box go back to it: on the lab's box, *Aac* (1 h 41) and *Eclectic Programming* (29 min) moved to *Unknown*, the time listened unchanged.
+- **[manual] Library & streaming → Stats says a radio station counts as *Unknown* when its description names no genre of the list.**
+
 ## [0.9.76] - 2026-10-20
 
 ### Fixed

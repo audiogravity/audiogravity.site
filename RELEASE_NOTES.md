@@ -7,7 +7,11 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Library
+
+**Radio stations under their genre.** Stats counts a radio station under a genre of the shared
+list, or under *Unknown* when its description names none: France Inter no longer shows up as a
+genre called *Aac*. The listens already recorded are put right when the box updates.
 
 ---
 

@@ -373,7 +373,8 @@ The figures come with **Pro**; on Starter, the tab shows them behind a padlock.
    went. Genres follow one list whatever the service: an album Qobuz files under
    *Soul/Funk/R&B* and a track Tidal files under *R&B/Soul* both count as **Soul & R&B**,
    and your own files and radio stations are read against the same list. **Unknown**
-   gathers what said nothing about itself: AirPlay and some streams carry no genre.
+   gathers what names no genre: AirPlay and some streams carry none, and a radio station
+   counts there when its description names no genre of the list.
 6. Under **Most played**, switch between **Artists**, **Albums** and **Tracks**.
    **Recently played** lists your latest listens, whatever the period.
 

@@ -375,8 +375,10 @@ The figures come with **Pro**; on Starter, the tab shows them behind a padlock.
    and your own files and radio stations are read against the same list. **Unknown**
    gathers what names no genre: AirPlay and some streams carry none, and a radio station
    counts there when its description names no genre of the list.
-6. Under **Most played**, switch between **Artists**, **Albums** and **Tracks**.
-   **Recently played** lists your latest listens, whatever the period.
+6. Under **Most played**, switch between **Artists**, **Albums** and **Tracks**. Each row
+   shows its cover; an artist shows the cover of the album of theirs you play most.
+   **Recently played** lists your latest listens, whatever the period, a station with its
+   logo. Older listens may show a music note until you play the same track or album again.
 
 <img src="images/ios-stats.webp" alt="The Stats view over 30 days: the time listened with its listens, albums and days with music, a bar per day, and the week's hours, Saturday 21:00 tapped" width="360">
 

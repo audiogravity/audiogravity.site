@@ -86,12 +86,19 @@ footer.man-foot,
     vertical-align: super
 }
 
+/* A link to the section's contents: the way back to the list of guides, which no guide page
+   offered before. It keeps the label's look, and says it is a link on hover. */
 .man-crumb {
     font-family: var(--mono);
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: .2em;
-    color: var(--text4)
+    color: var(--text4);
+    text-decoration: none
+}
+
+.man-crumb:hover {
+    color: var(--text)
 }
 
 /* The landing's light / dark toggle (style.css, assets/theme-toggle.js), at the end of the
@@ -473,37 +480,85 @@ footer.man-foot,
     color: var(--text3)
 }
 
+/* The phone's page list: a menu above the text, closed until asked for (page() in
+   gen_manual_html.py writes it beside the sidebar). Closed, it takes one line, and the page
+   starts on the first screen; open, every title shows whole, the page being read marked as in
+   the sidebar. It replaces a strip scrolled sideways, which the guides' titles made unusable. */
+.man-menu {
+    display: none
+}
+
 @media(max-width:860px) {
     .man-shell {
         grid-template-columns: 1fr
     }
 
-    /* The chapter list becomes a scrolling strip above the text: a stacked column of twelve
-       entries would push the chapter itself off the first screen. */
-    .man-nav {
+    .man-shell > .man-nav {
+        display: none
+    }
+
+    .man-menu {
+        display: block;
+        border-bottom: 1px solid var(--border)
+    }
+
+    .man-menu > summary {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        padding: 0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+        list-style: none;
+        font-size: 14px;
+        color: var(--text2);
+        cursor: pointer
+    }
+
+    .man-menu > summary::-webkit-details-marker {
+        display: none
+    }
+
+    .man-menu-count {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--text4)
+    }
+
+    .man-menu-chev {
+        margin-left: auto;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        color: var(--text3);
+        transition: transform var(--ease)
+    }
+
+    .man-menu[open] .man-menu-chev {
+        transform: rotate(180deg)
+    }
+
+    .man-menu .man-nav {
         position: static;
         max-height: none;
-        flex-direction: row;
-        gap: 4px;
-        padding: 10px max(16px, env(safe-area-inset-left));
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-        overflow-x: auto
+        overflow: visible;
+        padding: 0 0 8px;
+        border-right: 0
     }
 
-    .man-nav-item {
-        padding: 6px 10px;
-        border-left: 0;
-        border-bottom: 2px solid transparent;
-        white-space: nowrap
-    }
-
-    .man-nav-item.active {
-        border-left-color: transparent;
-        border-bottom-color: var(--ok-line)
+    .man-menu .man-nav-item {
+        padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+        line-height: 1.4
     }
 
     .man-main {
         padding-top: 28px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .man-menu-chev {
+        transition: none
     }
 }

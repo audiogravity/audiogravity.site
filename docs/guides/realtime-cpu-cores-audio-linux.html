@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/guides/realtime-cpu-cores-audio-linux">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
-    <link rel="stylesheet" href="../../assets/manual.css?v=bf754856fc">
+    <link rel="stylesheet" href="../../assets/manual.css?v=277ca1e25a">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -30,10 +30,27 @@
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
                  width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <span class="man-crumb">Guides</span>
+        <a class="man-crumb" href="./">Guides</a>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
+
+    <details class="man-menu">
+        <summary><span>All guides</span><span class="man-menu-count">11</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item active" href="realtime-cpu-cores-audio-linux" aria-current="page"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+    </details>
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="Guides">

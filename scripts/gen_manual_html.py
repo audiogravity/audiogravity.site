@@ -77,6 +77,8 @@ class Section:
         numbered: Whether the sidebar shows each page's number. A chapter has one, taken from
             its id; a guide is named by its subject alone, and its address carries no number
             that a reordering would break.
+        menu: What the page list is called on a phone, where it is a menu closed until asked
+            for.
     """
 
     path: str
@@ -84,11 +86,17 @@ class Section:
     name: str
     nav_label: str
     numbered: bool
+    menu: str
 
 
-MANUAL = Section("docs/manual/", "User manual", "Audiogravity manual", "Manual chapters", True)
+MANUAL = Section("docs/manual/", "User manual", "Audiogravity manual", "Manual chapters", True,
+                 "All chapters")
 #: A guide's tab reads "<its question> — Audiogravity": the question is what was searched for.
-GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", False)
+GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", False, "All guides")
+
+#: The chevron of the phone's menu (Lucide: chevron-down); the stylesheet turns it when open.
+CHEVRON = ('<svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">'
+           '<path d="m6 9 6 6 6-6"/></svg>')
 
 #: The sitemap sits at the root, the only place one may list the whole site from. It is written
 #: here, with the pages, because the manual is the only part of the site that grows: a chapter
@@ -701,7 +709,12 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     Args:
         title: Page label, may carry inline markup; stripped for ``<title>``.
         body: Rendered page HTML.
-        toc: Page list for the sidebar: the chapters, or the guides.
+        toc: Page list for the sidebar and for the phone's menu: the chapters, or the guides.
+            Written twice: the sidebar for a wide screen, the menu for a phone, each hidden where
+            the other shows (manual.css). On a phone the list used to be a strip scrolled
+            sideways, which the guides' titles — whole questions — made unusable: 4,424px wide on
+            a 375px phone, not one title whole, the guide being read 3,696px off to the right
+            (Chromium, 2026-10-21). A <details> needs no script and opens in every browser.
         active: Id of the page being rendered, highlighted in the sidebar. Empty on the
             contents page, which is not itself a chapter.
         canonical: Path of this page under its section, **without the .html suffix**.
@@ -769,10 +782,17 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
                  width="28" height="28" decoding="async">{BRAND}</a>
-        <span class="man-crumb">{section.crumb}</span>
+        <a class="man-crumb" href="./">{section.crumb}</a>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
+
+    <details class="man-menu">
+        <summary><span>{section.menu}</span><span class="man-menu-count">{len(toc)}</span>{CHEVRON}</summary>
+        <nav class="man-nav" aria-label="{section.nav_label}">
+{links}
+        </nav>
+    </details>
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="{section.nav_label}">

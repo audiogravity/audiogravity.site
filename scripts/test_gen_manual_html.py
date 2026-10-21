@@ -223,16 +223,18 @@ class TestPage:
         assert "/docs/manual/.html" not in out
 
     def test_marks_the_active_chapter_for_assistive_technology(self):
+        """Once in each list — the sidebar and the phone's menu, one of them hidden at any
+        width, so a reader is told it once."""
         out = page("Listening", "", TOC, "04-listening", "04-listening")
         assert 'href="04-listening" aria-current="page"' in out
-        assert out.count('aria-current="page"') == 1
+        assert out.count('aria-current="page"') == 2
 
     def test_contents_page_marks_no_chapter_active(self):
         assert 'aria-current' not in page("Contents", "", TOC, "", "")
 
-    def test_lists_every_chapter_in_the_sidebar(self):
+    def test_lists_every_chapter_in_the_sidebar_and_in_the_phone_menu(self):
         out = page("Contents", "", TOC, "", "")
-        assert out.count('class="man-nav-item') == len(TOC)
+        assert out.count('class="man-nav-item') == 2 * len(TOC)
 
     def test_the_way_back_carries_the_app_icon_and_names_itself(self):
         """Two ways home per page: this one and the footer link. The icon is decorative — the
@@ -245,6 +247,40 @@ class TestPage:
     def test_strips_markup_from_the_document_title(self):
         out = page("About Audiogravi<sup>ty</sup>", "", TOC, "", "")
         assert "<title>About Audiogravity — Audiogravity manual</title>" in out
+
+    def test_the_crumb_leads_to_the_contents(self):
+        """No page of a section linked back to its list: the crumb in the top bar does."""
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<a class="man-crumb" href="./">User manual</a>' in out
+
+
+def _lists(out):
+    """The page lists of a page: the phone's menu's, then the sidebar's."""
+    return re.findall(r'<nav class="man-nav"[^>]*>(.*?)</nav>', out, re.S)
+
+
+class TestPhoneMenu:
+    """On a phone the page list is a menu, closed until asked for: the strip it replaces ran
+    to 4,424px for the guides on a 375px phone, not one title whole (2026-10-21)."""
+
+    def test_holds_the_same_list_as_the_sidebar(self):
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        menu, sidebar = _lists(out)
+        assert menu == sidebar and menu.count('class="man-nav-item') == len(TOC)
+
+    def test_comes_closed_and_names_the_section_and_its_count(self):
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<details class="man-menu">' in out          # no `open`: the page comes first
+        assert '<summary><span>All chapters</span><span class="man-menu-count">2</span>' in out
+
+    def test_sits_above_the_text_and_the_sidebar(self):
+        out = page("Listening", "<p>x</p>", TOC, "04-listening", "04-listening")
+        assert out.index('<details class="man-menu">') < out.index('<div class="man-shell">')
+
+    def test_the_guides_call_it_all_guides(self):
+        import gen_manual_html as g
+        out = g.page("x", "", [("a", "A"), ("b", "B"), ("c", "C")], "a", "a", g.GUIDES)
+        assert '<summary><span>All guides</span><span class="man-menu-count">3</span>' in out
 
 
 class TestBuildCanonicals:
@@ -365,7 +401,7 @@ class TestGuides:
 
     def test_it_is_filed_under_guides_without_numbers(self):
         out = self._page()
-        assert '<span class="man-crumb">Guides</span>' in out
+        assert '<a class="man-crumb" href="./">Guides</a>' in out
         assert '<nav class="man-nav" aria-label="Guides">' in out
         assert "man-nav-n" not in out
         assert 'href="hqplayer-on-a-pi" aria-current="page"><span>HQPlayer on a Pi</span></a>' in out
@@ -386,7 +422,7 @@ class TestGuides:
 
     def test_the_manual_keeps_its_own_labels(self):
         out = page("Listening", "", TOC, "04-listening", "04-listening")
-        assert '<span class="man-crumb">User manual</span>' in out
+        assert '<a class="man-crumb" href="./">User manual</a>' in out
         assert '<span class="man-nav-n">04</span>' in out
         assert "<title>Listening — Audiogravity manual</title>" in out
 
@@ -456,7 +492,8 @@ class TestPublishedGuides:
                 elif where.startswith("../../"):
                     assert (REPO_DIR / where[len("../../"):]).is_file(), f"{path.name}: {target}"
                 else:
-                    assert where in guides | {""}, f"{path.name}: {target}"
+                    # "./" is the guides' contents, which the crumb in the top bar leads to.
+                    assert where in guides | {"", "./"}, f"{path.name}: {target}"
                 checked += 1
         assert checked > 20
 

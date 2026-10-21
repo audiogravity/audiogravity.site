@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[site] On a phone, the manual's and the guides' list of pages is a menu.** Below 860px it was a strip scrolled sideways: fine for the manual's one-word chapters, unusable for the guides, whose titles are whole questions — on a 375px phone not one title showed whole, and the guide being read sat far off to the right. An *All guides* or *All chapters* line now opens the list, every title on its own line and the page being read marked; closed, the page starts on the first screen. On a wider screen the column stays as it was. The *Guides* and *User manual* labels in the top bar now lead to their contents, which no guide page linked back to.
+
 ## [0.9.77] - 2026-10-21
 
 ### Added

@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.77] - 2026-10-21
+
 ### Added
 - **[core+ui] Library → Stats shows covers.** *Most played* and *Recently played* show each row's cover — an album's, a track's, a station's logo — where they showed a music note, which stays when none is known. An artist shows the cover of the album of theirs listened to most over the whole history, the same whatever the period. A cover is kept as its address, never as an image, and read when Stats shows it: of the addresses an album's or a track's listens gave, the surest — the picture where it is kept, before a search by name, before a file AirPlay deletes once the track is over —, the latest among them; a track with none of its own takes its album's. What was recorded before keeps the note until the same track or album is heard again. Measured on ten years of synthetic listens: the history file grows from 33.0 MB to 39.7, and *12 months* takes 104 ms to read instead of 101 on x86, 256 instead of 248 on ARM. `GET /listening/summary` gives `top_artists[]`, `top_albums[]`, `top_tracks[]` and `recent[]` a `cover_token`, for `GET /audio_pipeline/cover`.
 - **[manual] Library & streaming → Stats says each row shows its cover**, an artist the cover of the album of theirs played most, a station its logo.

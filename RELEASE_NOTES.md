@@ -9,6 +9,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### Library
 
+**Covers in Stats.** *Most played* and *Recently played* now show covers: the album's, the
+track's, the station's logo — and for an artist, the album of theirs you play most. Listens
+recorded before keep a music note until you play the same track or album again.
+
 **Radio stations under their genre.** Stats counts a radio station under a genre of the shared
 list, or under *Unknown* when its description names none: France Inter no longer shows up as a
 genre called *Aac*. The listens already recorded are put right when the box updates.

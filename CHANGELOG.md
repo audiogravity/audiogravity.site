@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.78] - 2026-10-22
+
 ### Added
 - **[site] Four new guides**: *What your USB DAC accepts on Linux, and how to read it* — where Linux lists the formats, rates and DSD a USB DAC takes, why the list can stop at 96 kHz, and which settings copied from forums the kernel now ignores; *Software or hardware volume on a Linux streamer* — what a player's, a DAC's and an amplifier's volume each do to the music, MPD's settings, its slider in decibels (50 % is −18.5 dB), and DSD; *AirPlay to a Raspberry Pi: what quality actually arrives* — CD quality in classic AirPlay, lossy AAC in AirPlay 2 from an iPhone, iPad or Mac, and a Debian 13 receiver that plays classic AirPlay only; *Your streamer on the network* — the bandwidth music takes, Wi-Fi or cable for a streamer and an NAA, and how AirPlay, UPnP and NAA devices find each other across VLANs. Like the others, each gives the steps on Raspberry Pi OS and Debian and the messages as they show, says what it was checked with and when, and lists its sources, with a short Audiogravi<sup>ty</sup> section at the end.
 

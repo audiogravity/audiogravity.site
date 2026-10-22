@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.78 — 2026-10-22
+
 ### Audio Software
 
 **A vendor's site that is down no longer marks your software *Not Supported*.** When the

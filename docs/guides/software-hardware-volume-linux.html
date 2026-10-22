@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Software or hardware volume on a Linux streamer: what each does to your music — Audiogravity</title>
+    <meta name="description" content="What a player&#x27;s software volume, a DAC&#x27;s own volume and the amplifier each do to your music: MPD&#x27;s settings, its slider in decibels, and DSD.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/software-hardware-volume-linux">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=277ca1e25a">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Guides</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All guides</span><span class="man-menu-count">15</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item active" href="software-hardware-volume-linux" aria-current="page"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item active" href="software-hardware-volume-linux" aria-current="page"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Software or hardware volume on a Linux streamer: what each does to your music</h1>
+<p><strong>Short answer:</strong> you can turn the music down in three places. In the player, a software volume
+recalculates every sample, except at 100 %. In the DAC, a hardware volume leaves the samples as the
+player sent them, and the DAC lowers the level itself. On the amplifier, nothing digital is touched.
+For bit-perfect playback, keep the player's volume at 100 or off. With DSD, a player's software
+volume does nothing, and some DACs' own volume breaks it.</p>
+<p>Measured on 2026-10-22 on Debian 13 with MPD 0.24.5 and a USB DAC built on an XMOS interface; the
+16-bit and DSD cases on 2026-10-17 and 18.</p>
+<h2 id="the-three-places">The three places</h2>
+<ul>
+<li><strong>The player's software volume</strong> multiplies every sample by a factor below one. The result is a
+new set of numbers: below 100 %, nothing reaches the DAC as it is in the file.</li>
+<li><strong>The DAC's hardware volume</strong> is a control the DAC offers to the computer. The player sends the
+samples untouched and asks the DAC to lower the level; how the DAC does it, inside its chip or in
+its analogue stage, is up to the DAC.</li>
+<li><strong>The amplifier</strong> comes after the DAC: the whole digital chain stays as it is.</li>
+</ul>
+<h2 id="does-your-dac-have-a-volume-of-its-own">Does your DAC have a volume of its own</h2>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">amixer</span> <span class="hl-opt">-c</span> 0 scontrols
+<span class="hl-cmd">amixer</span> <span class="hl-opt">-c</span> 0 sget <span class="hl-string">'Heed Abacus '</span>,0
+</code></pre>
+<p>With your DAC's card number, from <code>aplay -l</code>, in place of <code>0</code>, and the name the first command
+prints in the second. For the DAC above:</p>
+<pre data-copy="no"><code class="language-text">Simple mixer control 'Heed Abacus ',0
+Simple mixer control 'Heed Abacus ',1
+  Limits: Playback 0 - 127
+  Front Left: Playback 127 [100%] [0.00dB] [on]
+</code></pre>
+<p>It has two, from −127 dB to 0 dB in steps of 1 dB. A DAC that lists no control has no volume of
+its own that Linux can set.</p>
+<h2 id="in-mpd">In MPD</h2>
+<p>Each output of <code>/etc/mpd.conf</code> chooses its volume with <code>mixer_type</code>:</p>
+<pre data-copy="no"><code class="language-text">audio_output {
+    type           "alsa"
+    name           "USB DAC"
+    device         "hw:0,0"
+    mixer_type     "hardware"
+    mixer_device   "hw:0"
+    mixer_control  "Heed Abacus "
+    mixer_index    "0"
+}
+</code></pre>
+<ul>
+<li><strong><code>hardware</code></strong> sets the DAC's own control. MPD looks for one named <code>PCM</code> unless told otherwise:
+copy the name <code>amixer</code> prints, between the quotes, spaces included, and its index when two share
+a name. A name MPD cannot find leaves the volume at <code>n/a</code>, and MPD's log says why:
+<code>Failed to read mixer for &quot;USB DAC&quot;: no such mixer control: PCM</code> with no name given, <code>…: Heed Abacus</code> without the final space of the name above.</li>
+<li><strong><code>software</code></strong> computes the volume in MPD.</li>
+<li><strong><code>none</code></strong> leaves the level at full: set it on the amplifier.</li>
+</ul>
+<p>By default, MPD uses the hardware volume of a device that has one, and none for the others.</p>
+<h2 id="what-mpds-software-volume-does">What MPD's software volume does</h2>
+<ul>
+<li><strong>The slider is not in decibels.</strong> Measured with a 1 kHz tone: 90 is −3.6 dB, 75 is −9.0 dB,
+50 is −18.5 dB, 25 is −29.8 dB, 10 is −41.1 dB and 1 is −60.2 dB, against 100.</li>
+<li><strong>At 100, 24-bit audio passes untouched.</strong> 16-bit audio is widened to 24 bits, every value
+multiplied by 256: the same music in a longer word (see
+<a href="check-bit-perfect-playback-linux">How to check bit-perfect playback</a>).</li>
+<li><strong>Below 100, every sample is recalculated.</strong></li>
+</ul>
+<h2 id="dsd-and-volume">DSD and volume</h2>
+<ul>
+<li><strong>MPD's software volume does nothing to DSD</strong>, even when MPD converts it to PCM for a DAC that
+takes no DSD: a DSD track came out the same at volume 100 and at 30.</li>
+<li><strong>A DAC's own volume may break DSD.</strong> The DAC above, its volume lowered by 10 dB, played DoP as
+silence and native DSD as noise. With such a DAC, leave its volume at maximum while it receives
+DSD, and set the level on the amplifier (see <a href="dsd-native-dop-linux">DSD on a Linux streamer</a>).</li>
+</ul>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Audiogravi<sup>ty</sup>'s guided setup gives MPD its software volume: the player's slider is MPD's,
+and at 100 your music reaches the DAC as described above. While the DAC receives DSD, the slider
+gives way to a padlock, and the DAC's own volume goes to its maximum, then back; <strong>Full DAC volume
+during DSD</strong>, in MPD's <strong>Guided</strong> view, turns that off for a DAC that lowers DSD properly.</p>
+<p>The details are in the manual: <a href="../manual/04-listening">Listening</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>MPD 0.24.5: <code>mixer_type</code> in its <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/user.rst">user manual</a>, <code>mixer_device</code>, <code>mixer_control</code> and <code>mixer_index</code> in its <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/plugins.rst">plugins reference</a>.</li>
+<li><code>amixer</code>: <a href="https://manpages.debian.org/trixie/alsa-utils/amixer.1.en.html">amixer(1)</a>, Debian 13.</li>
+<li>The slider's decibels: measured on 2026-10-22 with a private MPD 0.24.5 playing a 1 kHz tone to a pipe output, in floating point, with no sound card opened. The hardware volume's names and messages: a private MPD 0.24.5 reading the DAC's volume without setting it, the DAC's level the same before and after.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

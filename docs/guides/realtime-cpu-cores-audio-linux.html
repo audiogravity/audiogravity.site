@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Real-time priority and reserved CPU cores for audio on Linux — Audiogravity</title>
-    <meta name="description" content="Real-time priority, pinned and reserved CPU cores for audio on Linux: what each does, what it changes in measured latency, and what Audiogravity does.">
+    <meta name="description" content="Real-time priority, pinned and reserved CPU cores for audio on Linux: what each does, how to set it, and what it changes in measured latency.">
     <link rel="canonical" href="https://audiogravity.app/docs/guides/realtime-cpu-cores-audio-linux">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
@@ -36,16 +36,20 @@
     </header>
 
     <details class="man-menu">
-        <summary><span>All guides</span><span class="man-menu-count">11</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <summary><span>All guides</span><span class="man-menu-count">15</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <nav class="man-nav" aria-label="Guides">
             <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
             <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
             <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
             <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
             <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
             <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
             <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
             <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
             <a class="man-nav-item active" href="realtime-cpu-cores-audio-linux" aria-current="page"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
             <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
             <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
@@ -55,13 +59,17 @@
     <div class="man-shell">
         <nav class="man-nav" aria-label="Guides">
             <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
             <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
             <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
             <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
             <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
             <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
             <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
             <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
             <a class="man-nav-item active" href="realtime-cpu-cores-audio-linux" aria-current="page"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
             <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
             <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
@@ -76,6 +84,8 @@ cores; pinning alone does not do that. What they buy is shorter, rarer delays wh
 to wake up, and they matter most when the box is busy. MPD's own manual is plain about it:
 real-time scheduling does not improve audio quality, it reduces the risk of skipping under heavy
 load.</p>
+<p>Checked on 2026-10-22 on an x86 box under Debian 13 and on a Raspberry Pi 4 under Raspberry Pi
+OS (kernel 6.18); the latency figures were measured on 2026-10-17, on the x86 box.</p>
 <h2 id="the-three-tools">The three tools</h2>
 <ul>
 <li><strong>Real-time priority.</strong> A thread with the <code>SCHED_FIFO</code> policy takes the processor from any
@@ -93,6 +103,40 @@ are not, so on a Pi <code>isolcpus=</code> works and those two have no effect.</
 </ul>
 <p>Holding the player's memory in RAM, so that none of it is ever swapped out, is a fourth setting:
 <code>LimitMEMLOCK=</code>.</p>
+<h2 id="see-what-your-player-runs-with">See what your player runs with</h2>
+<p>For MPD, one line per thread:</p>
+<pre><code class="language-bash"><span class="hl-cmd">ps</span> <span class="hl-opt">-L</span> <span class="hl-opt">-o</span> tid,cls,rtprio,comm <span class="hl-opt">-p</span> <span class="hl-string">"$(pidof mpd)"</span>
+</code></pre>
+<p><code>CLS</code> is the policy: <code>TS</code> ordinary, <code>FF</code> and <code>RR</code> real time (<code>SCHED_FIFO</code>, and <code>SCHED_RR</code>, which
+takes turns at equal priority); <code>RTPRIO</code> is the priority. On my x86 box, shortened:</p>
+<pre data-copy="no"><code class="language-text">    TID CLS RTPRIO COMMAND
+ 290953  FF     40 rtio
+ 290956  FF     40 output:Heed Aba
+</code></pre>
+<p>The thread named <code>output:</code> and the output's name, cut to 15 characters, is the one that feeds the
+DAC, at the priority MPD asks for. The cores MPD may run on, and the cores reserved at boot (none
+when the answer is empty):</p>
+<pre><code class="language-bash"><span class="hl-cmd">taskset</span> <span class="hl-opt">-cp</span> <span class="hl-string">"$(pidof mpd)"</span>
+<span class="hl-cmd">cat</span> /sys/devices/system/cpu/isolated
+</code></pre>
+<h2 id="pin-a-player-reserve-a-core">Pin a player, reserve a core</h2>
+<p>To pin MPD to core 3, give its service a drop-in file: systemd's way of adding settings to a
+service without changing the service's own file.</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> edit mpd
+</code></pre>
+<p>Between the two comment lines at the top, write:</p>
+<pre><code class="language-text">[Service]
+CPUAffinity=3
+</code></pre>
+<p>Save, then run <code>sudo systemctl restart mpd</code>: <code>taskset</code> now answers <code>current affinity list: 3</code>.
+<code>CPUSchedulingPolicy=</code>, <code>CPUSchedulingPriority=</code> and <code>LimitMEMLOCK=</code> go in the same file.</p>
+<p>To reserve that core on a Raspberry Pi, add <code> isolcpus=3</code> at the end of the single line of
+<code>/boot/firmware/cmdline.txt</code>, then restart the Pi:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">nano</span> /boot/firmware/cmdline.txt
+</code></pre>
+<p><code>cat /sys/devices/system/cpu/isolated</code> then answers <code>3</code>. On Debian with GRUB, the parameter goes
+in <code>GRUB_CMDLINE_LINUX_DEFAULT</code>, in <code>/etc/default/grub</code>, followed by <code>sudo update-grub</code>. A reserved
+core runs only what is pinned to it: reserve it without pinning anything, and it sits idle.</p>
 <h2 id="what-it-changes-measured">What it changes, measured</h2>
 <p>On my x86 test box: Debian 13 with its standard kernel (6.12, not a real-time one), two of its four
 cores reserved at boot (<code>isolcpus=2-3 nohz_full=2-3 rcu_nocbs=2-3 irqaffinity=0-1</code>). The other two
@@ -130,13 +174,14 @@ priority 99, waking every 100 µs; the figure is the worst delay seen (2026-10-1
 (59 times in the minute); the reserved core, never.</li>
 <li><strong>Under load on the other cores</strong>, the reserved core stayed under 0.3 ms.</li>
 <li><strong>What that means for sound: nothing audible.</strong> MPD keeps a buffer of audio ahead of the DAC:
-half a second with its default settings (its own log, MPD 0.24.5), which the configuration
-Audiogravi<sup>ty</sup> writes leaves as they are. A delay of a few milliseconds leaves it far
-from empty. These figures matter when buffers are short, or when the box is busy with something
+half a second with its default settings (its own log, MPD 0.24.5). A delay of a few
+milliseconds leaves it far from empty. These figures matter when buffers are short, or when the box is busy with something
 heavy.</li>
 </ul>
 <h2 id="measuring-your-own-box">Measuring your own box</h2>
-<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">cyclictest</span> <span class="hl-opt">-p99</span> <span class="hl-opt">-t1</span> <span class="hl-opt">-i100</span> <span class="hl-opt">-l600000</span> <span class="hl-opt">-m</span> <span class="hl-opt">-q</span> <span class="hl-opt">-a3</span>
+<p><code>cyclictest</code> comes in the <code>rt-tests</code> package:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">apt</span> install rt-tests
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">cyclictest</span> <span class="hl-opt">-p99</span> <span class="hl-opt">-t1</span> <span class="hl-opt">-i100</span> <span class="hl-opt">-l600000</span> <span class="hl-opt">-m</span> <span class="hl-opt">-q</span> <span class="hl-opt">-a3</span>
 </code></pre>
 <p>That is one thread at priority 99 on core 3, for a minute. Read <code>Max</code>: the worst delay, in
 microseconds. Two things to know about it:</p>
@@ -152,21 +197,11 @@ change.</li>
 offers one (<code>linux-image-rt-amd64</code>, <code>linux-image-rt-arm64</code>), and Raspberry Pi's repository has one
 for the Pi 4. I have not measured them.</p>
 <h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
-<ul>
-<li><strong>Real-time priority and pinning, per service</strong> (Systemd tuning, Pro). For each audio service:
-its cores, a real-time policy and priority, its CPU weight, I/O priority and memory lock. The
-<em>Audio Optimized</em> preset fills in <code>SCHED_FIFO</code> at 80, memory locked, I/O in real time, and a lower
-risk of being stopped when memory runs short. Everything is written as systemd drop-in files, the
-service's own file is never changed, and a setting a service cannot start with is refused or
-undone.</li>
-<li><strong>What runs in real time, at a glance</strong> (Performance, Pro): the policy of the audio programs,
-the processor governor of each core, and a mark on a core the processor had to slow down.</li>
-<li><strong>The latency test</strong>, from the interface: <code>cyclictest</code>, with its threads, priority, length and
-cores to choose. It runs with cyclictest's default, deep sleep held off, so its figures are on
-the good side of how the box runs.</li>
-<li><strong>What it does not do: reserve cores.</strong> Audiogravi<sup>ty</sup> pins a service to its cores but
-does not keep other programs off them.</li>
-</ul>
+<p>Its <strong>Systemd tuning</strong> page (Pro) sets each audio service's cores, real-time policy and
+priority, and memory lock, in drop-in files as above; its <em>Audio Optimized</em> preset fills in
+<code>SCHED_FIFO</code> at 80. Its <strong>Performance</strong> page (Pro) shows what runs in real time and runs
+<code>cyclictest</code> with cyclictest's default, deep sleep held off. It pins services to cores; it does
+not reserve cores.</p>
 <p>The details are in the manual:
 <a href="../manual/07-administration#performance-tuning-pro">Administration → Performance tuning</a>, and
 <a href="../manual/07-administration#systemd-tuning-pro">Administration → Systemd tuning</a>.</p>

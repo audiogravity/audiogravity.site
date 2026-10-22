@@ -7,6 +7,9 @@ to wake up, and they matter most when the box is busy. MPD's own manual is plain
 real-time scheduling does not improve audio quality, it reduces the risk of skipping under heavy
 load.
 
+Checked on 2026-10-22 on an x86 box under Debian 13 and on a Raspberry Pi 4 under Raspberry Pi
+OS (kernel 6.18); the latency figures were measured on 2026-10-17, on the x86 box.
+
 ## The three tools
 
 - **Real-time priority.** A thread with the `SCHED_FIFO` policy takes the processor from any
@@ -24,6 +27,62 @@ load.
 
 Holding the player's memory in RAM, so that none of it is ever swapped out, is a fourth setting:
 `LimitMEMLOCK=`.
+
+## See what your player runs with
+
+For MPD, one line per thread:
+
+```bash
+ps -L -o tid,cls,rtprio,comm -p "$(pidof mpd)"
+```
+
+`CLS` is the policy: `TS` ordinary, `FF` and `RR` real time (`SCHED_FIFO`, and `SCHED_RR`, which
+takes turns at equal priority); `RTPRIO` is the priority. On my x86 box, shortened:
+
+```text nocopy
+    TID CLS RTPRIO COMMAND
+ 290953  FF     40 rtio
+ 290956  FF     40 output:Heed Aba
+```
+
+The thread named `output:` and the output's name, cut to 15 characters, is the one that feeds the
+DAC, at the priority MPD asks for. The cores MPD may run on, and the cores reserved at boot (none
+when the answer is empty):
+
+```bash
+taskset -cp "$(pidof mpd)"
+cat /sys/devices/system/cpu/isolated
+```
+
+## Pin a player, reserve a core
+
+To pin MPD to core 3, give its service a drop-in file: systemd's way of adding settings to a
+service without changing the service's own file.
+
+```bash
+sudo systemctl edit mpd
+```
+
+Between the two comment lines at the top, write:
+
+```text
+[Service]
+CPUAffinity=3
+```
+
+Save, then run `sudo systemctl restart mpd`: `taskset` now answers `current affinity list: 3`.
+`CPUSchedulingPolicy=`, `CPUSchedulingPriority=` and `LimitMEMLOCK=` go in the same file.
+
+To reserve that core on a Raspberry Pi, add ` isolcpus=3` at the end of the single line of
+`/boot/firmware/cmdline.txt`, then restart the Pi:
+
+```bash
+sudo nano /boot/firmware/cmdline.txt
+```
+
+`cat /sys/devices/system/cpu/isolated` then answers `3`. On Debian with GRUB, the parameter goes
+in `GRUB_CMDLINE_LINUX_DEFAULT`, in `/etc/default/grub`, followed by `sudo update-grub`. A reserved
+core runs only what is pinned to it: reserve it without pinning anything, and it sits idle.
 
 ## What it changes, measured
 
@@ -43,14 +102,16 @@ priority 99, waking every 100 µs; the figure is the worst delay seen (2026-10-1
   (59 times in the minute); the reserved core, never.
 - **Under load on the other cores**, the reserved core stayed under 0.3 ms.
 - **What that means for sound: nothing audible.** MPD keeps a buffer of audio ahead of the DAC:
-  half a second with its default settings (its own log, MPD 0.24.5), which the configuration
-  Audiogravi<sup>ty</sup> writes leaves as they are. A delay of a few milliseconds leaves it far
-  from empty. These figures matter when buffers are short, or when the box is busy with something
+  half a second with its default settings (its own log, MPD 0.24.5). A delay of a few
+  milliseconds leaves it far from empty. These figures matter when buffers are short, or when the box is busy with something
   heavy.
 
 ## Measuring your own box
 
+`cyclictest` comes in the `rt-tests` package:
+
 ```bash
+sudo apt install rt-tests
 sudo cyclictest -p99 -t1 -i100 -l600000 -m -q -a3
 ```
 
@@ -70,19 +131,11 @@ for the Pi 4. I have not measured them.
 
 ## With Audiogravi<sup>ty</sup>
 
-- **Real-time priority and pinning, per service** (Systemd tuning, Pro). For each audio service:
-  its cores, a real-time policy and priority, its CPU weight, I/O priority and memory lock. The
-  *Audio Optimized* preset fills in `SCHED_FIFO` at 80, memory locked, I/O in real time, and a lower
-  risk of being stopped when memory runs short. Everything is written as systemd drop-in files, the
-  service's own file is never changed, and a setting a service cannot start with is refused or
-  undone.
-- **What runs in real time, at a glance** (Performance, Pro): the policy of the audio programs,
-  the processor governor of each core, and a mark on a core the processor had to slow down.
-- **The latency test**, from the interface: `cyclictest`, with its threads, priority, length and
-  cores to choose. It runs with cyclictest's default, deep sleep held off, so its figures are on
-  the good side of how the box runs.
-- **What it does not do: reserve cores.** Audiogravi<sup>ty</sup> pins a service to its cores but
-  does not keep other programs off them.
+Its **Systemd tuning** page (Pro) sets each audio service's cores, real-time policy and
+priority, and memory lock, in drop-in files as above; its *Audio Optimized* preset fills in
+`SCHED_FIFO` at 80. Its **Performance** page (Pro) shows what runs in real time and runs
+`cyclictest` with cyclictest's default, deep sleep held off. It pins services to cores; it does
+not reserve cores.
 
 The details are in the manual:
 [Administration → Performance tuning](../manual/07-administration#performance-tuning-pro), and

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>What your USB DAC accepts on Linux, and how to read it — Audiogravity</title>
+    <meta name="description" content="Where Linux lists what a USB DAC accepts — formats, rates, DSD — how to read it, why it may stop at 96 kHz, and which forum settings still count.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/usb-dac-formats-linux">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=277ca1e25a">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Guides</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All guides</span><span class="man-menu-count">15</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item active" href="usb-dac-formats-linux" aria-current="page"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item active" href="usb-dac-formats-linux" aria-current="page"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>What your USB DAC accepts on Linux, and how to read it</h1>
+<p><strong>Short answer:</strong> Linux writes down, for each USB DAC, every format and rate the DAC offers, in one
+file per card. Read it before blaming a player: it says whether a 192 kHz or a DSD file can reach
+your DAC as it is. The line above it says whether the DAC came up on a high-speed USB link: on a
+full-speed link, 24-bit audio stops at 96 kHz.</p>
+<p>Checked on 2026-10-22 on Debian 13 (Linux 6.12) with a USB DAC built on an XMOS interface, and
+against the kernel's own sources.</p>
+<h2 id="find-your-dac">Find your DAC</h2>
+<pre><code class="language-bash"><span class="hl-cmd">lsusb</span>
+<span class="hl-cmd">cat</span> /proc/asound/cards
+<span class="hl-cmd">aplay</span> <span class="hl-opt">-l</span>
+</code></pre>
+<ul>
+<li><strong><code>lsusb</code></strong> lists what is plugged in, by name: <code>ID 20b1:30ab XMOS Ltd Heed Abacus</code>. The first
+four characters name the maker of the DAC's USB interface, here XMOS. If the DAC is missing,
+<code>sudo dmesg | tail</code> right after plugging it in says what Linux saw: a line such as
+<code>New USB device found, idVendor=20b1, idProduct=30ab</code> means it was seen. Nothing at all points
+to the cable, the port or the DAC's power.</li>
+<li><strong><code>/proc/asound/cards</code></strong> lists the sound cards with their number, and a USB DAC with its link:
+<code>HEED Heed Abacus at usb-0000:00:14.0-8, high speed</code>.</li>
+<li><strong><code>aplay -l</code></strong> lists the same cards, to an account allowed to use them. If it answers
+<code>aplay: device_list:279: no soundcards found...</code> while <code>/proc/asound/cards</code> lists your DAC, your
+account is not in the <code>audio</code> group: <code>sudo usermod -aG audio $USER</code>, then log in again.</li>
+</ul>
+<h2 id="read-what-it-accepts">Read what it accepts</h2>
+<p>With your DAC's card number in place of <code>0</code>:</p>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">cat</span> /proc/asound/card0/stream0
+</code></pre>
+<p>For the DAC above, shortened:</p>
+<pre data-copy="no"><code class="language-text">HEED Heed Abacus at usb-0000:00:14.0-8, high speed : USB Audio
+
+Playback:
+  Status: Stop
+  Interface 1
+    Altset 1
+    Format: S32_LE
+    Channels: 2
+    Endpoint: 0x01 (1 OUT) (ASYNC)
+    Rates: 44100, 48000, 88200, 96000, 176400, 192000, 352800, 384000
+    Bits: 32
+  Interface 1
+    Altset 2
+    Format: SPECIAL DSD_U32_BE
+    Channels: 2
+    Endpoint: 0x01 (1 OUT) (ASYNC)
+    Rates: 44100, 48000, 88200, 96000, 176400, 192000, 352800, 384000
+    Bits: 32
+</code></pre>
+<ul>
+<li><strong>One block per format.</strong> <code>S32_LE</code> is PCM in 32-bit words; other DACs show <code>S24_3LE</code> (24 bits
+in three bytes) or <code>S16_LE</code>.</li>
+<li><strong><code>Rates</code></strong> are the sample rates the DAC takes in that format. A file at a rate missing from the
+list cannot reach the DAC as it is: something has to resample it.</li>
+<li><strong><code>SPECIAL DSD_U32_BE</code></strong> means Linux can send this DAC native DSD (see
+<a href="dsd-native-dop-linux">DSD on a Linux streamer</a>).</li>
+<li><strong><code>ASYNC</code></strong> means the DAC's own clock sets the pace. While it plays, the same file shows the
+clock as the computer sees it: <code>Momentary freq = 44101 Hz</code> for a 44.1 kHz stream, <code>192003 Hz</code>
+for 192 kHz, on the DAC above.</li>
+</ul>
+<h2 id="when-the-list-stops-at-96-khz">When the list stops at 96 kHz</h2>
+<ul>
+<li><strong>The link.</strong> <code>lsusb -t</code> gives each device's speed: <code>480M</code> is high speed, as for the DAC above,
+<code>12M</code> is full speed. At full speed, the USB link carries at most 1,023 bytes of audio per
+millisecond: 24-bit stereo fits at 96 kHz, not at 176.4 kHz, which needs 1,058. A DAC shown at
+full speed in <code>/proc/asound/cards</code> is held back by its link, not by Linux.</li>
+<li><strong>The class.</strong> <code>lsusb -v -d 20b1:30ab | grep bInterfaceProtocol</code>, with your DAC's two numbers:
+<code>32</code> on its audio interfaces means USB Audio Class 2, <code>0</code> means class 1. If your DAC's manual
+mentions a class 1 mode, for computers without a class 2 driver, make sure it is off.</li>
+</ul>
+<h2 id="settings-copied-from-forums">Settings copied from forums</h2>
+<p>Options for the USB audio driver sit in <code>/etc/modprobe.d/</code>, on <code>options snd_usb_audio …</code> lines.
+To see which ones your kernel takes:</p>
+<pre><code class="language-bash"><span class="hl-cmd">/sbin/modinfo</span> <span class="hl-opt">-p</span> snd_usb_audio
+</code></pre>
+<p>An option missing from that list does nothing, and the kernel log says so. On my test box, an old
+<code>nrpacks=1</code> gives <code>snd_usb_audio: unknown parameter 'nrpacks' ignored</code>. The kernel's own
+documentation still describes <code>nrpacks</code>: the list <code>modinfo</code> prints is the one that counts.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Audiogravi<sup>ty</sup> reads this same list to know whether your DAC takes DSD as DSD, and sets
+MPD up accordingly. Its support report, <strong>System › Actions › Support Report</strong>, names each sound
+card with the speed of its USB link.</p>
+<p>The details are in the manual:
+<a href="../manual/07-administration#support-report">Administration → Support report</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Linux 6.12: the link speed in a card's name, in <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/sound/usb/card.c?h=v6.12">sound/usb/card.c</a>; the USB Audio Class numbers in <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/include/uapi/linux/usb/audio.h?h=v6.12">include/uapi/linux/usb/audio.h</a>; the full-speed limit of 1,023 bytes per isochronous packet in <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/usb/core/config.c?h=v6.12">drivers/usb/core/config.c</a>; the USB audio driver's options in <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/sound/alsa-configuration.rst?h=v6.12">Documentation/sound/alsa-configuration.rst</a>.</li>
+<li>The outputs shown: measured on 2026-10-22 on the test box, Linux 6.12.111, playing silence for the <code>Momentary freq</code> lines.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

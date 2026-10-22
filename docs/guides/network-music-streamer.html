@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs — Audiogravity</title>
+    <meta name="description" content="The bandwidth music takes, Wi-Fi or cable for a streamer and an NAA, and how AirPlay, UPnP and NAA devices find each other across VLANs.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/network-music-streamer">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="../../assets/manual.css?v=277ca1e25a">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Guides</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All guides</span><span class="man-menu-count">15</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item active" href="network-music-streamer" aria-current="page"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item active" href="network-music-streamer" aria-current="page"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</h1>
+<p><strong>Short answer:</strong> music takes little bandwidth: about 1.4 Mbit/s at CD quality and 9.2 Mbit/s at
+24 bits and 192 kHz, before lossless compression shrinks it. Only HQPlayer feeding an NAA at DSD512
+or 768 kHz needs around 50 Mbit/s. A steady Wi-Fi link carries the rest; a cable removes the
+question. What breaks more setups is discovery: AirPlay, UPnP and the NAA find each other with
+messages that stay on the local network, so a guest Wi-Fi or another VLAN hides devices unless the
+router passes those messages on.</p>
+<p>Checked on 2026-10-22: measured on a Raspberry Pi 4 under Raspberry Pi OS, wired and on Wi-Fi, on a
+Debian 13 box on Wi-Fi, and on music files; the protocols from their standards, the routers from
+their makers' documentation, the NAA from HQPlayer's author.</p>
+<h2 id="how-much-bandwidth-music-takes">How much bandwidth music takes</h2>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Stream, stereo</th>
+<th>Rate, uncompressed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16 bits, 44.1 kHz (CD)</td>
+<td>1.41 Mbit/s</td>
+</tr>
+<tr>
+<td>24 bits, 96 kHz</td>
+<td>4.61 Mbit/s</td>
+</tr>
+<tr>
+<td>24 bits, 192 kHz</td>
+<td>9.22 Mbit/s</td>
+</tr>
+<tr>
+<td>DSD64</td>
+<td>5.64 Mbit/s</td>
+</tr>
+<tr>
+<td>DSD128</td>
+<td>11.29 Mbit/s</td>
+</tr>
+<tr>
+<td>DSD256</td>
+<td>22.58 Mbit/s</td>
+</tr>
+<tr>
+<td>HQPlayer to an NAA, DSD512</td>
+<td>45.16 Mbit/s</td>
+</tr>
+<tr>
+<td>HQPlayer to an NAA, PCM 768 kHz, 32 bits</td>
+<td>49.15 Mbit/s</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Lossless compression takes less.</strong> FLAC and ALAC carry the same music in fewer bits: in a
+sample of 147 CD-quality ALAC files, the median needed 861 kbit/s, 61 % of 1,411. Files that
+are not compressed, WAV and DSF, measured their full rate.</li>
+<li><strong>HQPlayer sends an NAA its finished output</strong>, at the full rate of what it converts to, whatever
+the file's own rate. DoP or native DSD makes no difference: DoP is handled at the NAA, in
+HQPlayer's author's words.</li>
+</ul>
+<h2 id="wi-fi-or-cable">Wi-Fi or cable</h2>
+<p>The Raspberry Pi 4 and 5 have Gigabit Ethernet and dual-band 802.11ac Wi-Fi. To see your Wi-Fi
+link, on the Pi:</p>
+<pre><code class="language-bash"><span class="hl-cmd">/sbin/iw</span> dev wlan0 link
+<span class="hl-cmd">/sbin/iw</span> dev wlan0 get power_save
+</code></pre>
+<p>On the Pi 4 above, shortened:</p>
+<pre data-copy="no"><code class="language-text">signal: -64 dBm
+rx bitrate: 150.0 MBit/s
+tx bitrate: 24.0 MBit/s
+Power save: on
+</code></pre>
+<ul>
+<li>
+<p><strong>The bitrates are what the link is set at</strong>, not what it delivers: test what it delivers with
+iperf3, below.</p>
+</li>
+<li>
+<p><strong>Power saving is on by default</strong> on a Raspberry Pi, as above. Raspberry Pi's documentation
+offers to turn it off in <code>raspi-config</code>, an option &quot;that we don't recommend setting unless
+instructed to by a Raspberry Pi engineer&quot;: it &quot;might improve connection stability but increase
+power consumption&quot;.</p>
+</li>
+<li>
+<p><strong>How steady the link is</strong>: with your router's address,</p>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">ping</span> <span class="hl-opt">-c</span> 100 <span class="hl-opt">-i</span> 0.2 192.168.1.1
+</code></pre>
+<p>The last two lines give the losses and the slowest answer. The Pi 4 above, pinged from a computer on
+Wi-Fi, answered in 1.4 ms on average and 2.5 ms at worst through its cable, 5.3 and 7.5 ms on
+Wi-Fi, with no loss either way.</p>
+</li>
+<li>
+<p><strong>Whether it carries 50 Mbit/s</strong>, for an NAA: install iperf3 on the Pi and on another computer
+(<code>sudo apt install iperf3</code>), run <code>iperf3 -s</code> on the computer, then on the Pi, with the computer's
+address:</p>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">iperf3</span> <span class="hl-opt">-c</span> 192.168.1.30 <span class="hl-opt">-u</span> <span class="hl-opt">-b</span> 50M <span class="hl-opt">-t</span> 10 <span class="hl-opt">-R</span>
+</code></pre>
+<p><code>-R</code> has the other computer send, as HQPlayer does. The <code>receiver</code> line gives the rate reached,
+the jitter and the datagrams lost: losses at 50M mean the link is short for DSD512.</p>
+</li>
+<li>
+<p><strong>For DSD512 and 768 kHz, a cable.</strong> HQPlayer's author writes that &quot;Ethernet provides practically
+unlimited reliable bandwidth with galvanic isolation (NAA works over WiFi as well)&quot;; in one of
+his tests, DSD512 did not get through Wi-Fi to an NAA where DSD256 did (January 2025).</p>
+</li>
+</ul>
+<h2 id="finding-each-other-across-the-network">Finding each other across the network</h2>
+<ul>
+<li><strong>AirPlay</strong> announces itself with mDNS: messages to 224.0.0.251, port 5353, an address routers
+do not pass on.</li>
+<li><strong>UPnP</strong> media servers and renderers announce themselves with SSDP: messages to
+239.255.255.250, port 1900, which a router passes on only when set to. On my test network, a
+media server one router away answered when asked by its address, not to a discovery search
+(2026-10-21).</li>
+<li><strong>HQPlayer and its NAA</strong> have a discovery of their own, which is not mDNS. Keep them on the same
+network, and the computer running HQPlayer without a second network connection, such as a VPN:
+its discovery could go out the wrong way, in its author's words.</li>
+</ul>
+<p>So the Apple device, the control app, the server and the streamer must be on the same network: a
+guest Wi-Fi or another VLAN hides them from each other. To cross VLANs anyway, the router must pass
+the messages on, and its firewall must let the devices talk:</p>
+<ul>
+<li><strong>For mDNS (AirPlay)</strong>, a reflector: Avahi's <code>enable-reflector=yes</code> on a Linux router, the
+<em>mDNS Proxy</em> of a UniFi gateway, the <em>mDNS Repeater</em> plugin of OPNsense, <em>Enable reflection</em> in
+pfSense's Avahi package.</li>
+<li><strong>For SSDP (UPnP)</strong>, a separate relay: the <em>UDP Broadcast Relay</em> of pfSense and OPNsense, set to
+239.255.255.250 and port 1900. pfSense's documentation: &quot;Firewall rules are not automatically
+created&quot;.</li>
+<li><strong>IGMP snooping</strong>, on managed switches, filters multicast: mDNS's addresses always get through,
+SSDP's may not. Ubiquiti's advice, for audio and video on its switches: &quot;enable IGMP Snooping
+and define a specific switch as the querier&quot;. HQPlayer's author: with such equipment, &quot;the network infrastructure must be up before
+NAA and HQPlayer are started&quot;.</li>
+</ul>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Its <strong>Network test</strong>, in the Performance tab (Pro), runs the same ping, or an iperf3 test at the
+rate you set, and gives a verdict. In <strong>Library → Sources</strong>, a UPnP server on another network can
+be added by its address, which discovery cannot cross.</p>
+<p>The details are in the manual:
+<a href="../manual/07-administration#network-test">Administration → Network test</a>, and
+<a href="../manual/09-troubleshooting#a-upnp-renderer-or-media-server-isnt-discovered">Troubleshooting → A UPnP renderer or media server isn't discovered</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Raspberry Pi: <a href="https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-product-brief.pdf">Pi 4</a> and <a href="https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-product-brief.pdf">Pi 5</a> product briefs, October 2026; WLAN power saving in its <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/configuration/configuring-networking.adoc">networking documentation</a>. Read on 2026-10-22.</li>
+<li>mDNS: <a href="https://www.rfc-editor.org/rfc/rfc6762">RFC 6762</a>, and <a href="https://www.rfc-editor.org/rfc/rfc5771">RFC 5771</a> for the addresses not forwarded off the link. SSDP: <a href="https://openconnectivity.org/upnp-specs/UPnP-arch-DeviceArchitecture-v2.0-20200417.pdf">UPnP Device Architecture 2.0</a>, section 1. IGMP snooping: <a href="https://www.rfc-editor.org/rfc/rfc4541">RFC 4541</a>.</li>
+<li>Avahi: <a href="https://manpages.debian.org/trixie/avahi-daemon/avahi-daemon.conf.5.en.html">avahi-daemon.conf(5)</a>. UniFi: <a href="https://help.ui.com/hc/en-us/articles/12648701398807-UniFi-Gateway-Multicast-DNS-mDNS-Proxy">mDNS Proxy</a> and <a href="https://help.ui.com/hc/en-us/articles/18125733726615-Pro-AV-Traffic-Optimization-on-UniFi-Switches">Pro AV traffic</a>. OPNsense: <a href="https://docs.opnsense.org/manual/how-tos/multicast-dns.html">multicast DNS</a>. pfSense: <a href="https://docs.netgate.com/pfsense/en/latest/packages/udpbroadcastrelay.html">UDP Broadcast Relay</a>. Read on 2026-10-22.</li>
+<li>iperf3 3.18: <a href="https://manpages.debian.org/trixie/iperf3/iperf3.1.en.html">iperf3(1)</a>, Debian 13.</li>
+<li>Jussi Laako, who writes HQPlayer, on the Roon forum: <a href="https://community.roonlabs.com/t/ifi-zen-stream/163860/1883">bandwidth</a> (April 2022), <a href="https://community.roonlabs.com/t/hqp-naa-raspberry-pi/6140/209">DoP at the NAA</a> (February 2018), <a href="https://community.roonlabs.com/t/usbridge-signature-at-dsd256-works-raat-but-fails-naa-audio-dropouts/226931/19">Ethernet and Wi-Fi</a> (December 2022), <a href="https://community.roonlabs.com/t/m4-pro-mac-mini/284772/81">DSD512 over Wi-Fi</a> (January 2025), <a href="https://community.roonlabs.com/t/hqplayer-client-setup-add-host-for-later-use/247384/9">discovery</a> (July 2023) and <a href="https://community.roonlabs.com/t/hqplayer-naa-thread/176288/571">IGMP</a> (November 2024).</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -5,7 +5,8 @@ that plays, runs on a 64-bit Pi; Roon Server, the Core that holds your library, 
 it runs on x64 machines only. So the Pi plays what a Core elsewhere sends it: a PC, a Mac, a NAS. And to listen
 through HQPlayer, the Pi needs HQPlayer's NAA rather than Roon Bridge.
 
-Checked on 2026-10-17 against Roon's own help pages; the sources are at the end.
+Checked on 2026-10-17 against Roon's own help pages, and on 2026-10-22 against Roon's installer
+for the 64-bit Pi; the sources are at the end.
 
 ## Roon Bridge, Roon Server and Roon Ready
 
@@ -27,9 +28,27 @@ Checked on 2026-10-17 against Roon's own help pages; the sources are at the end.
   a Roon Bridge endpoint, plus AirPlay 2, Spotify Connect, an HQPlayer NAA and a UPnP renderer
   among others. RoPieee took the name Verox in September 2026; existing installations moved over
   with their settings.
-- **Roon's own installer** on Raspberry Pi OS or Debian, from Roon's Linux install page.
-- **A general-purpose streamer**: Volumio has a Roon Bridge plugin, moOde manages Roon Bridge once
-  you have installed it, and Audiogravi<sup>ty</sup> installs it for you (below).
+- **Roon's own installer**, on Raspberry Pi OS or Debian, below.
+- **A general-purpose streamer**: Volumio has a Roon Bridge plugin, and moOde manages Roon Bridge
+  once you have installed it.
+
+### With Roon's installer
+
+On a 64-bit system, where `uname -m` answers `aarch64`. The installer needs `bzip2` to unpack
+Roon Bridge:
+
+```bash
+sudo apt install bzip2
+curl -O https://download.roonlabs.net/builds/roonbridge-installer-linuxarmv8.sh
+chmod +x roonbridge-installer-linuxarmv8.sh
+sudo ./roonbridge-installer-linuxarmv8.sh
+```
+
+It asks for a confirmation, then installs Roon Bridge in `/opt/RoonBridge`, keeps its data in
+`/var/roon/RoonBridge`, and runs it as root, as the `roonbridge` service, started at every boot.
+On a 32-bit system (`armv7l`), the same steps take `roonbridge-installer-linuxarmv7hf.sh`.
+
+On DietPi, Roon Bridge is in its software list: `dietpi-software install 121` (DietPi 9.20).
 
 ## Roon through HQPlayer
 
@@ -53,21 +72,11 @@ DAC; otherwise Roon's help suggests trying *DSD over PCM (DoP)*.
 
 ## With Audiogravi<sup>ty</sup>
 
-Audiogravi<sup>ty</sup> runs on a Raspberry Pi 4 or 5 with Debian 13 (Trixie), DietPi or
-Raspberry Pi OS included. Roon comes with the Pro edition; the 30-day trial includes it.
-
-- **Roon Bridge, installed by Roon's own installer.** From **Audio Software**, on a Pi or an x64
-  machine. Roon Server is offered on x64 machines only, and never beside Roon Bridge: it already
-  contains it.
-- **Profiles that say what they run.** *Roon Bridge* alone, *Roon Bridge + MPD* ("Roon or MPD
-  directly — one at a time"), *Roon Bridge + HQPlayer NAA* ("Roon directly, or through HQPlayer —
-  one at a time"), and the three together.
-- **Your Roon zones in the same interface.** Audiogravi<sup>ty</sup> registers as a Roon extension:
-  enable it once in Roon, under **Settings → Extensions**. Your zones then appear in
-  **Library → Sources** beside your other sources, with a browser for your Roon library. The Core
-  is found on the network on its own.
-- **Updates.** Roon publishes no version number, so the box cannot tell you an update is waiting;
-  the update button runs Roon's installer again, which always fetches the current build.
+In its Pro edition, and during its 30-day trial, Audiogravi<sup>ty</sup> installs Roon Bridge
+with Roon's own installer, from its **Audio Software** tab, and runs it through profiles that
+say what they play, such as *Roon Bridge + HQPlayer NAA*: "Roon directly, or through HQPlayer
+— one at a time". It also registers as a Roon extension: once you enable it in Roon, under
+**Settings → Extensions**, your Roon zones and library appear beside your other sources.
 
 The details are in the manual:
 [Outputs & engines → Roon](../manual/06-outputs-engines#roon), and
@@ -75,7 +84,7 @@ The details are in the manual:
 
 ## Sources
 
-- Roon on Linux: [Linux install](https://help.roonlabs.com/portal/en/kb/articles/linux-install) (September 2026); hardware recommendations: [Roon hardware specification recommendations](https://help.roonlabs.com/portal/en/kb/articles/faq-what-are-the-minimum-requirements) (September 2026); [software packages](https://help.roonlabs.com/portal/en/kb/articles/software-packages) (June 2026); [Roon Ready](https://help.roonlabs.com/portal/en/kb/articles/roon-ready); prices: [roon.app/en/pricing](https://roon.app/en/pricing), read on 2026-10-17.
+- Roon on Linux: [Linux install](https://help.roonlabs.com/portal/en/kb/articles/linux-install) (September 2026), and the installer itself, [roonbridge-installer-linuxarmv8.sh](https://download.roonlabs.net/builds/roonbridge-installer-linuxarmv8.sh), read on 2026-10-22; hardware recommendations: [Roon hardware specification recommendations](https://help.roonlabs.com/portal/en/kb/articles/faq-what-are-the-minimum-requirements) (September 2026); [software packages](https://help.roonlabs.com/portal/en/kb/articles/software-packages) (June 2026); [Roon Ready](https://help.roonlabs.com/portal/en/kb/articles/roon-ready); prices: [roon.app/en/pricing](https://roon.app/en/pricing), read on 2026-10-17.
 - Roon and HQPlayer: [HQPlayer](https://help.roonlabs.com/portal/en/kb/articles/hqplayer) (June 2026). Jussi Laako on Roon Bridge beside an NAA: [Roon Community](https://community.roonlabs.com/t/176288/80), August 2022.
 - Roon and DSD: [audio setup basics](https://help.roonlabs.com/portal/en/kb/articles/audio-setup-basics) (March 2026), [audio on Linux](https://help.roonlabs.com/portal/en/kb/articles/audio-on-linux).
 - Verox: [verox.audio](https://verox.audio/), [release 2026.09](https://ropieee.org/stable/release/2026/09/26/release-2026.09.html), [installation](https://docs.verox.audio/installation/), read on 2026-10-17.

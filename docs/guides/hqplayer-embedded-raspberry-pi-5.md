@@ -1,104 +1,124 @@
 # HQPlayer Embedded on a Raspberry Pi 5
 
 **Short answer:** yes, HQPlayer Embedded runs on a Raspberry Pi 5, and Signalyst publishes it
-for that board in two forms. The Pi 5 is a capable host for stereo with sensible settings. It is
-not one for multichannel, and its USB output has a known problem at the highest DSD rates.
-Whichever way you install it, HQPlayer Embedded needs a licence from Signalyst; without one, it
-runs for half an hour at a time.
+for that board in two forms. The Pi 5 suits stereo, not multichannel, and its USB output has a
+known problem at the highest rates. Whichever way you install it, HQPlayer Embedded needs a
+licence from Signalyst; without one, it runs for half an hour at a time.
 
-This guide covers the two ways to install it, what a Pi 5 can and cannot do with it, and how
-Audiogravi<sup>ty</sup> sets it up next to the rest of your music.
+Checked on 2026-10-22 against Signalyst's download pages and packages. The package was
+installed on a Raspberry Pi 4 under Raspberry Pi OS, built on Debian 13 (version 6.0.2,
+2026-09-22); what it does once installed was measured on an x86 box under Debian 13 in
+September 2026. The Pi 5's limits are Signalyst's, with their dates.
 
 ## Two ways to install it
 
-Signalyst offers both on its download pages (checked on 2026-10-17):
-
 - **A ready-made system image.** You write it to a microSD card and the Pi starts as an
-  HQPlayer machine. The image replaces the Pi's whole system with one built for HQPlayer. The
-  version 6 images exist for the Pi 5 only; the Pi 4 image stops at 5.17.2.
-- **A Debian package** (`hqplayerd`, for Debian 13 on arm64, from 5.16 to 6.1.1). It installs
-  on Raspberry Pi OS or Debian 13 like any other program, so HQPlayer sits beside your other
-  players: MPD, Roon Bridge, AirPlay, a UPnP renderer.
+  HQPlayer machine: the image replaces the Pi's whole system with one built for HQPlayer.
+  Version 6 images exist for the Pi 5 only; the only Pi 4 image is a 5.17.2.
+- **A Debian package**, `hqplayerd`, for Debian 13 on arm64, the same for a Pi 4 and a Pi 5. It
+  installs like any other program, so HQPlayer sits beside your other players: MPD, Roon
+  Bridge, AirPlay, a UPnP renderer.
 
-The image is the simpler route if the Pi will do nothing else. The package is the route if the
-Pi is also your streamer, and it is the one Audiogravi<sup>ty</sup> uses.
+The image is the simpler route if the Pi will do nothing else; the package, if the Pi is also
+your streamer.
 
-### What you meet with the package, by hand
+## Install the package on Raspberry Pi OS or Debian
 
-Measured on my own test boxes:
+The package needs Debian 13, or a Raspberry Pi OS built on it. To check:
 
-- **Its web page has no password.** The package installs it without one, so the settings pages
-  turn everybody away, and every refused sign-in is written to its log. Set a password with
-  Signalyst's own command, `hqplayerd -s <user> <password>`, then restart the service: it reads
-  the password only when it starts.
-- **Its log has no size limit.** It writes to `/tmp`, which is memory on Debian 13, and never
-  empties it. Most of the time that is a few lines. During one fault I saw it write 600 MB a
-  minute.
-- **The 5 line does not install on Debian 13.** Version 5.17.2 depends on `libgmpris`, which
-  Debian does not publish (checked for arm64 on 2026-10-17). Version 6 does not need it. Install
-  the line your licence covers.
-- **The trial counts from the start of the service, not from the first note.** HQPlayer stops
-  taking commands about 32 minutes after it starts, whether or not it played meanwhile. It writes
-  nothing about it in its log; it just stops answering.
-- **Nothing plays until you give it an output.** After installation it has none.
+```bash
+grep VERSION_CODENAME /etc/os-release
+```
+
+It must answer `VERSION_CODENAME=trixie`. Then take the newest version in Signalyst's
+[Debian 13 folder](https://signalyst.com/bins/hqplayerd/trixie/), 6.1.1 on 2026-10-22, a
+127 MB download, and install it:
+
+```bash
+wget https://signalyst.com/bins/hqplayerd/trixie/hqplayerd_6.1.1-5_arm64.deb
+sudo apt install ./hqplayerd_6.1.1-5_arm64.deb
+```
+
+Version 6 starts at once, and at every boot. Installed again after a removal, it stays off
+until you turn it on:
+
+```bash
+sudo systemctl enable --now hqplayerd
+```
+
+DietPi on Debian 13 takes the same commands: its software list does not offer HQPlayer
+Embedded (DietPi 9.20).
+
+**Version 5 does not install on Debian 13.** It depends on `libgmpris`, which neither Debian
+nor Signalyst's Debian 13 folder provides, and apt stops with:
+
+```text nocopy
+Unsatisfied dependencies:
+ hqplayerd : Depends: libgmpris but it is not installable
+```
+
+A licence for version 5 calls for Signalyst's 5.17.2 image instead.
+
+### Then, by hand
+
+- **Give its web page a password.** The package installs it without one, so the settings
+  pages turn everybody away, and each refused sign-in writes `OnAuthRequest(): digest not set`
+  to its log. Set one with Signalyst's own command, then restart the service: HQPlayer reads
+  it only when it starts.
+
+  ```bash nocopy
+  sudo hqplayerd -s hqplayer your-password
+  sudo systemctl restart hqplayerd
+  ```
+
+  Its web page is then at `http://<the Pi's address>:8088`: sign in as `hqplayer`. The
+  password stays in your shell's history, and in the system journal, where sudo records each
+  command it runs: choose one you use nowhere else.
+- **Give it an output.** It has none after installation, and plays nothing. On its web page,
+  open **Configuration** and choose your DAC under **ALSA backend → Device**. A DAC another
+  player is using is left off that list.
+- **Keep an eye on its log.** It writes to `/tmp/hqplayerd.log`, which is memory on Debian 13,
+  adds to it at every start, never empties it, and has no setting for its size. Most of the
+  time that is a few lines. During one fault, I saw it write 600 MB a minute.
+  `ls -lh /tmp/hqplayerd.log` shows the size; restarting the Pi empties it.
+- **The trial counts from the start of the service, not from the first note.** Without a
+  licence, HQPlayer stops taking commands about 32 minutes after it starts, whether or not it
+  played meanwhile. It writes nothing about it in its log; it just stops answering.
+  `sudo systemctl restart hqplayerd` gives you another half hour.
 
 ## What a Pi 5 can handle
 
 Jussi Laako, who writes HQPlayer, has answered this on the Roon forum:
 
-- **Stereo, yes; multichannel, no.** "Only quad-core, so not great for multichannel", since each
-  channel typically takes one or two cores (September 2023). He added that the Pi 5 "would be
-  already perfect" if it could run DSD256 with the ASDM7EC-light modulator: at the time, with
-  HQPlayer 5, that combination was beyond it.
-- **USB output above 44.1 kHz × 512.** "There are some hardware/OS issues with RPi5 and 48k x512
-  and higher output rates" (March 2024). The problem is specific to USB output; up to
-  44.1 kHz × 512 (DSD512 of the 44.1 kHz family) or 705.6 kHz PCM, it should work (May 2024).
-  In November 2024 he still saw a problem with 48k × 512 DSD. I have not measured it.
+- **Stereo, yes; multichannel, no.** "It's only quad-core, so not great for multichannel
+  (typically you'd have minimum one or two cores per channel)" (September 2023).
+- **Its USB output fails at the highest rates.** "There are some hardware/OS issues with RPi5
+  and 48k x512 and higher output rates" (March 2024). The issue "is specific to USB output":
+  up to 44.1k × 512 or 705.6k PCM, "it should work" (May 2024). In February 2025, still:
+  "native DSD256 output works on RPi5. On my testing issue appears on 768k PCM and 48k x512
+  DSD, and up". His way around it is a Raspberry Pi 4 as the NAA between the Pi 5 and the DAC,
+  "that way you avoid the USB issues of RPi5". Of the Pi as an NAA, in June 2025: "Only RPi4
+  works properly, RPi3 and RPi5 don't (due to hardware bugs)."
 
-I have not measured HQPlayer Embedded on a Pi 5 myself: the limits above are Signalyst's, with
-their dates. The package is the same arm64 build for a Pi 4 and a Pi 5.
+I have not measured HQPlayer Embedded on a Pi 5 myself.
 
 Two practical points:
 
-- **Power it with the official 27 W supply.** With a weaker one, the Pi 5 limits the current
-  its USB ports deliver, and a DAC powered from USB may not get enough.
+- **Power it with a 5 A supply**, such as the official 27 W one. With any other, the Pi 5
+  "restricts downstream USB devices to 600 mA of power", instead of 1.6 A: a DAC powered from
+  USB may not get enough.
 - **Set the DSD rate limit before the first play.** HQPlayer Embedded comes set to DSD256. If
-  your DAC stops lower, lower the limit on HQPlayer's web page, under **Configuration → SDM
-  settings → Rate limit**. Some DACs accept a rate they cannot convert and hiss instead of
-  playing.
+  your DAC stops lower, lower it on the web page, under **Configuration → SDM settings → Rate
+  limit**: 2822400 for DSD64, 5644800 for DSD128. Some DACs accept a rate they cannot convert
+  and hiss instead of playing.
 
 ## With Audiogravi<sup>ty</sup>
 
-Audiogravi<sup>ty</sup> installs Signalyst's own package on a Raspberry Pi running Debian 13
-(Trixie), DietPi or Raspberry Pi OS included, and takes care of what is listed above. HQPlayer
-comes with the Pro edition; the 30-day trial includes it.
-
-1. In **Audio Software**, click **INSTALL** on the **HQPlayer Embedded** card.
-2. **Choose the version** your licence covers. A version your Pi cannot install is listed with
-   the reason and cannot be chosen.
-3. **Read Signalyst's licence** and accept it.
-4. **Note down the password** for HQPlayer's web page, or type your own. Audiogravi<sup>ty</sup>
-   sets it with Signalyst's command and restarts the service for you.
-5. Click **Install**. HQPlayer Embedded starts, and starts again at every boot.
-6. In **Config**, open the **HQPlayer Embedded** tile and choose the **audio output** your DAC
-   is on.
-
-<img src="../manual/images/ios-hqplayer-embedded-install.webp" alt="The install window of HQPlayer Embedded: the version to install, the 30-minute limit without a licence key, the password for its web page, and Signalyst's licence" width="360">
-
-<img src="../manual/images/ios-hqplayer-embedded-output.webp" alt="HQPlayer Embedded in the Config tab: the Guided view, with the audio output to choose and the Apply changes button" width="360">
-
-From then on:
-
-- **What you play goes through it.** Qobuz, Tidal, HIGHRESAUDIO, internet radio and UPnP
-  media servers play through HQPlayer Embedded, straight to your DAC. Two profiles run it: the
-  one that keeps MPD beside it plays your own library through it too.
-- **Its log stays small.** Audiogravi<sup>ty</sup> moves it to 10 MB of memory of its own.
-  When that is full, HQPlayer keeps running.
-- **Updates keep your line.** A box on version 6 is never moved to another major version on
-  its own.
-- **Stop it, and the music goes back** to MPD, or to the HQPlayer you chose on your network.
-- **Its own web page is one tap away**, from the HQPlayer card in **Library → Sources**, for
-  its filters, modulators and DSD rate.
+In its Pro edition, and during its 30-day trial, Audiogravi<sup>ty</sup> installs Signalyst's
+package from its **Audio Software** tab. You choose the line your licence covers; it sets the
+password with Signalyst's command and restarts HQPlayer, keeps its log in 10 MB of memory of
+its own, lets you choose its output in the **Config** tab, and never moves an update to
+another major version.
 
 The details are in the manual:
 [Outputs & engines → HQPlayer Embedded](../manual/06-outputs-engines#hqplayer-embedded), and
@@ -106,6 +126,6 @@ The details are in the manual:
 
 ## Sources
 
-- Signalyst downloads, [signalyst.com](https://signalyst.com/), checked on 2026-10-17.
-- Jussi Laako on the Pi 5 and multichannel: [HQPlayer Embedded Discussion, page 25](https://community.roonlabs.com/t/hqplayer-embedded-discussion/244327?page=25), Roon Community, September 2023.
-- Jussi Laako on USB output: [HQPlayer NAA on Raspberry Pi 5](https://community.roonlabs.com/t/hqplayer-naa-on-raspberry-pi-5/269171), Roon Community, March to November 2024.
+- Signalyst: [system images](https://signalyst.com/bins/hqplayerd/images/) and [Debian 13 packages](https://signalyst.com/bins/hqplayerd/trixie/), read on 2026-10-22; the install scripts and settings file inside the 5.17.2-48 and 6.1.1-5 packages; the help on HQPlayer Embedded's own Configuration page, version 6.1.1.
+- Jussi Laako, who writes HQPlayer, on the Roon forum: [multichannel](https://community.roonlabs.com/t/hqplayer-embedded-discussion/244327/488) (September 2023), [USB output](https://community.roonlabs.com/t/hqplayer-naa-on-raspberry-pi-5/269171) (March to November 2024), [HQPlayer Embedded on a Pi 5](https://community.roonlabs.com/t/hqplayer-embedded-discussion/244327/1470) (February 2025) and [the Pi as an NAA](https://community.roonlabs.com/t/new-pc-stuttering-config-issue/301078/17) (June 2025).
+- Raspberry Pi documentation: [power supplies](https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/power-supplies.adoc), read on 2026-10-22.

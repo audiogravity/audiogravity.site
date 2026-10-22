@@ -360,8 +360,8 @@ Real-time monitoring and box-level actions.
 
 *Support Report* in **System › Actions** collects, in one gesture, everything someone
 helping you would otherwise have to ask for: the version and architecture, the licence
-verdict, system vitals, which audio packages are installed and at which versions, the
-state of each service and whether it starts at boot, the detected outputs — each with
+verdict, system vitals, which audio packages are installed and at which versions — and,
+for one the box cannot install, why —, the state of each service and whether it starts at boot, the detected outputs — each with
 its full label and its `hw:` address, so two sockets on the same card can be told apart
 — and, for every service, both the output Audiogravi<sup>ty</sup> pinned it to and the one its
 own configuration actually names, flagged when the two disagree. That last line is the

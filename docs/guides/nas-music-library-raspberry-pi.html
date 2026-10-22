@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server — Audiogravity</title>
-    <meta name="description" content="Two ways to play the music on your NAS from a Pi streamer — mount the share, or use a UPnP server such as MinimServer — and how Audiogravity does both.">
+    <meta name="description" content="Mount your NAS share on a Pi streamer, or use a UPnP server: the steps on Raspberry Pi OS, Debian and DietPi, and what each error means.">
     <link rel="canonical" href="https://audiogravity.app/docs/guides/nas-music-library-raspberry-pi">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=61ac599701">
@@ -72,36 +72,176 @@
 <h1>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</h1>
 <p><strong>Short answer:</strong> there are two ways, and many setups use both. Mount the NAS share on the
 streamer: its player reads the files directly and keeps its own index of them. Or run a UPnP
-media server on the NAS, such as MinimServer: the server keeps the index, and the streamer asks
-it for each track over the network.</p>
-<h2 id="mounting-the-share">Mounting the share</h2>
-<p>The NAS shares a folder over SMB (what Synology, QNAP and most NAS speak) or NFS, and the
-streamer mounts it like a local disk. The player then reads the files as if they were on the box
-and builds its own index from their tags: search, the album list and the order by date added
-are the player's own.</p>
-<p>What makes a mount reliable:</p>
+media server on the NAS, such as MinimServer: the server keeps the index, and the streamer plays
+each track from it over the network. If you mount the share, have it mounted when the folder is
+first opened rather than at startup: a NAS that is off then delays nothing, and your player's
+index survives it.</p>
+<p>Checked on 2026-10-21 on Debian 13, the base of today's Raspberry Pi OS (cifs-utils 7.4,
+nfs-common 2.8.3, systemd 257, MPD 0.24.5), against a Samba file server over SMB 3.1.1 and an
+NFS 4.2 server. DietPi and the UPnP servers: from their documentation and source code, read but
+not run, at the versions named below.</p>
+<h2 id="what-to-note-on-the-nas">What to note on the NAS</h2>
 <ul>
-<li><strong>Read-only.</strong> A music library does not need to be written to from the streamer.</li>
-<li><strong>No pinned SMB version.</strong> Left alone, the system agrees with the NAS on the highest version
-both support. Avoid <code>vers=1.0</code> (SMB1), which is obsolete and insecure.</li>
-<li><strong>Waiting for the network, or mounting on access.</strong> Mounted at boot, the share must wait for the
-network (<code>_netdev</code>). Mounted on first access instead, a NAS that is switched off when the
-streamer starts causes no trouble.</li>
-<li><strong>Indexing.</strong> The player has to index the share before its music shows, and again to find what
-you add later. MPD, which many Raspberry Pi streamers use, does not watch for new files unless
-its <code>auto_update</code> option is turned on.</li>
+<li><strong>Its address.</strong> An IP address, such as <code>192.168.1.20</code>, works on any network; a name works only
+if your network resolves it. Reserve the address in your router, so that it never changes.</li>
+<li><strong>For SMB</strong>, what Synology, QNAP, Windows and macOS shares speak: the share's name, and an
+account allowed to read it. Read-only access is enough. On a Synology, the SMB versions it
+accepts are under <strong>Control Panel → File Services → SMB → Advanced Settings</strong>.</li>
+<li><strong>For NFS</strong>: the folder's path on the NAS, and a rule on the NAS that lets the streamer's
+address read it. As usually set up, NFS asks for no password: the NAS goes by address. On a
+Synology, tick <strong>Enable NFS service</strong> under <strong>Control Panel → File Services → NFS</strong>, then, for
+the shared folder, <strong>Edit → NFS Permissions → Create</strong>, with the streamer's address under
+<strong>Hostname or IP</strong>.</li>
 </ul>
-<h2 id="using-a-upnp-media-server">Using a UPnP media server</h2>
-<p>A media server runs on the NAS (MinimServer, Plex and others), indexes the music there, and
-publishes it on the network. A control app browses the server's index, and the player fetches
-each track from the server over HTTP: nothing is mounted on the streamer.</p>
+<h2 id="mount-the-share-on-raspberry-pi-os-or-debian">Mount the share on Raspberry Pi OS or Debian</h2>
+<h3 id="smb">SMB</h3>
+<p>Raspberry Pi OS comes with SMB's mount tool, <code>cifs-utils</code>. Elsewhere, install it:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">apt</span> install cifs-utils
+</code></pre>
+<p>Keep the NAS account in a file only root can read: create it empty, then write two lines in it.</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">install</span> <span class="hl-opt">-m</span> 600 /dev/null /root/.smbcredentials
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">nano</span> /root/.smbcredentials
+</code></pre>
+<pre data-copy="no"><code class="language-text">username=nasuser
+password=naspassword
+</code></pre>
+<p>Then add one line to <code>/etc/fstab</code> (<code>sudo nano /etc/fstab</code>), with your NAS's address and share:</p>
+<pre data-copy="no"><code class="language-text">//192.168.1.20/music  /mnt/music  cifs  credentials=/root/.smbcredentials,ro,nofail,x-systemd.automount  0  0
+</code></pre>
 <ul>
-<li><strong>One index for every player.</strong> Any UPnP player in the house sees the same library, browsed
-the way the server arranges it.</li>
-<li><strong>Same network only.</strong> UPnP devices find each other by announcing themselves on the local
-network: a server on another network segment or VLAN does not show up.</li>
-<li><strong>The original file, or not.</strong> Some servers can convert formats on the fly. If you want the
-file as it is stored, check that yours sends it unchanged.</li>
+<li><strong><code>x-systemd.automount</code></strong> mounts the share when the folder is first opened, and <strong><code>nofail</code></strong>
+lets the streamer start as usual when the NAS is off.</li>
+<li><strong><code>ro</code></strong> mounts it read-only: a player writes nothing there.</li>
+<li><strong>No version.</strong> The streamer and the NAS agree on the newest SMB version both speak, from 2.1
+up: 3.1.1 with the server above. A NAS too old for SMB 2.1 needs its version written, <code>vers=2.0</code>
+or <code>vers=1.0</code>; SMB1 is insecure, so update the NAS if you can.</li>
+<li><strong>A space in the share's name</strong> is written <code>\040</code> in this file.</li>
+</ul>
+<h3 id="nfs">NFS</h3>
+<p>NFS's mount tool, <code>nfs-common</code>, is missing from Raspberry Pi OS Lite. Install it if need be:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">apt</span> install nfs-common
+</code></pre>
+<p>The line for <code>/etc/fstab</code>:</p>
+<pre data-copy="no"><code class="language-text">192.168.1.20:/volume1/music  /mnt/music  nfs  ro,nofail,x-systemd.automount  0  0
+</code></pre>
+<p>To see which folders the NAS exports, and to which addresses:</p>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">showmount</span> <span class="hl-opt">-e</span> 192.168.1.20
+</code></pre>
+<pre data-copy="no"><code class="language-text">Export list for 192.168.1.20:
+/volume1/music 192.168.1.0/24
+</code></pre>
+<h3 id="start-it-and-check">Start it, and check</h3>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> daemon-reload
+<span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> start mnt-music.automount
+<span class="hl-cmd">ls</span> /mnt/music
+</code></pre>
+<p>The second command is named after the folder: <code>/mnt/music</code> gives <code>mnt-music</code>. After a restart,
+there is nothing to start by hand. Your music's folders should be listed; then check that the
+account your player runs as can read them — for MPD:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-opt">-u</span> mpd <span class="hl-cmd">ls</span> /mnt/music
+</code></pre>
+<p>With SMB and the options above, every file is readable by every account. With NFS, files keep the
+permissions they have on the NAS.</p>
+<h3 id="when-it-fails">When it fails</h3>
+<p>If <code>ls</code> answers <code>No such device</code>, the share could not be mounted. The reason is in:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> status mnt-music.mount
+</code></pre>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Message</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mount error(13): Permission denied</code></td>
+<td>Wrong username or password, or a share that refuses guests.</td>
+</tr>
+<tr>
+<td><code>mount error(2): No such file or directory</code></td>
+<td>No share by that name on the NAS.</td>
+</tr>
+<tr>
+<td><code>mount error(95): Operation not supported</code></td>
+<td>No SMB version in common, such as <code>vers=1.0</code> with a NAS that has SMB1 off.</td>
+</tr>
+<tr>
+<td><code>mount error: could not resolve address for mynas: Unknown error</code></td>
+<td>Your network does not know that name: use the address.</td>
+</tr>
+<tr>
+<td><code>mount error(113): could not connect to 192.168.1.20Unable to find suitable address.</code></td>
+<td>SMB: the NAS is off, or out of reach. It takes about six seconds.</td>
+</tr>
+<tr>
+<td><code>mount: /mnt/music: cannot mount //192.168.1.20/music read-only.</code></td>
+<td><code>cifs-utils</code> is not installed.</td>
+</tr>
+<tr>
+<td><code>mount.nfs: access denied by server while mounting 192.168.1.20:/volume1/music</code></td>
+<td>The path is wrong, or the NAS does not let this address in.</td>
+</tr>
+<tr>
+<td><code>mount.nfs: Failed to resolve server mynas: Name or service not known</code></td>
+<td>Your network does not know that name.</td>
+</tr>
+<tr>
+<td><code>Mounting timed out. Terminating.</code></td>
+<td>NFS: the NAS is off, or out of reach. Opening the folder waits a minute and a half first.</td>
+</tr>
+<tr>
+<td><code>mount: /mnt/music: fsconfig() failed: NFS: mount program didn't pass remote address.</code></td>
+<td><code>nfs-common</code> is not installed.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For SMB, <code>sudo dmesg</code> adds the NAS's own answer: <code>STATUS_LOGON_FAILURE</code> for a wrong password,
+<code>BAD_NETWORK_NAME</code> for a wrong share.</p>
+<h3 id="on-dietpi">On DietPi</h3>
+<p><code>dietpi-drive_manager</code>, then <strong>Add network drive</strong>, then <strong>Samba</strong> or <strong>NFS</strong>, asks for the
+address, the share, the account and where to mount it, installs the tools, and writes the
+<code>/etc/fstab</code> line itself, with <code>x-systemd.automount</code> as above. For SMB, it tries the versions from
+3.1.1 down, and keeps the first that mounts.</p>
+<h2 id="have-the-player-index-it">Have the player index it</h2>
+<p>MPD, on Raspberry Pi OS or Debian: set the folder in <code>/etc/mpd.conf</code>,</p>
+<pre data-copy="no"><code class="language-text">music_directory "/mnt/music"
+</code></pre>
+<p>then restart MPD and have it index the share (<code>mpc</code> comes with <code>sudo apt install mpc</code>):</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> restart mpd
+<span class="hl-cmd">mpc</span> update <span class="hl-opt">--wait</span>
+<span class="hl-cmd">mpc</span> stats
+</code></pre>
+<p><code>mpc stats</code> counts the songs MPD found.</p>
+<ul>
+<li><strong>Music added later is not seen on its own.</strong> MPD's <code>auto_update</code> relies on the kernel's file
+notifications, inotify, and inotify &quot;does not catch remote events that occur on network
+filesystems&quot;. Run <code>mpc update</code> after adding music.</li>
+<li><strong>Update with the share there.</strong> On my test box (2026-10-21), an update run while the share was
+not mounted found an empty folder, and removed every song from MPD's index without a word.
+With <code>x-systemd.automount</code> and the NAS off, MPD logged <code>Failed to open /mnt/music: No such device</code> instead, and kept them all.</li>
+</ul>
+<h2 id="use-a-upnp-server-instead">Use a UPnP server instead</h2>
+<p>A media server on the NAS indexes the music there and publishes it on your network. A control app
+browses that index and has the streamer play each track, fetched from the server over HTTP:
+nothing is mounted on the streamer.</p>
+<ul>
+<li><strong>On the NAS.</strong> MinimServer has packages for Synology and QNAP, among others; MiniDLNA (also
+called ReadyMedia) and Asset UPnP are other servers. Point the server at your music folder: it
+reads the tags, and arranges the library its own way.</li>
+<li><strong>The original file, or not.</strong> MiniDLNA never converts. MinimServer converts only once you add
+its MinimStreamer package and fill in its <code>stream.transcode</code> setting, which takes a full licence.
+Asset UPnP lets you choose, format by format, between sending the file as it is and converting
+it.</li>
+<li><strong>On the streamer, a renderer.</strong> On Raspberry Pi OS or Debian, upmpdcli makes MPD one; it is not
+in Debian's archive, and its author distributes it from
+<a href="https://www.lesbonscomptes.com/upmpdcli/">lesbonscomptes.com/upmpdcli</a>. Control apps list it
+under a name that starts with <code>UpMpd-</code>.</li>
+<li><strong>To choose the music, a control app</strong>, such as BubbleUPnP (Android) or mconnect Player (iPhone,
+iPad, Android).</li>
+<li><strong>Same network.</strong> UPnP devices find each other through announcements sent to the whole local
+network. The NAS, the streamer and the phone must be on the same network: a guest Wi-Fi or
+another VLAN hides them from each other, unless your router passes those announcements on.</li>
 </ul>
 <h2 id="which-one">Which one</h2>
 <ul>
@@ -112,27 +252,27 @@ arranges the library.</li>
 same time; the two paths reach the same files.</li>
 </ul>
 <h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
-<p><strong>Mounting from the app.</strong> In the <strong>Music library</strong> picker of the guided setup, <strong>Add network
-share (NAS)</strong> asks for a name, the NAS address, the share, and a username and password unless the
-share is open to guests. Audiogravi<sup>ty</sup> mounts the share and tests it on the spot: you
-see it appear, or the actual error, such as a wrong password or an unreachable NAS. The share is
-mounted read-only, on first access, so a NAS that is off when the box starts causes no trouble;
-the password is kept in a file only the system can read. Once you confirm it as the library,
-MPD points at it and starts indexing, with an indicator until it is done.</p>
-<p><strong>NFS from the terminal.</strong> The app mounts SMB only, so as not to add NFS's own services to every
-box. A share you mount yourself under <code>/mnt</code>, NFS or SMB, is offered as a library just the same.</p>
-<p><strong>UPnP servers</strong> (Pro). <strong>Library → Sources</strong> lists the servers Audiogravi<sup>ty</sup> already
-knows, and <strong>Re-scan</strong> looks for more. You browse a server's tree, search it when the server
-supports search, and play what you find: on the DAC attached to the box, on a UPnP renderer, or
-through HQPlayer. A track in a format HQPlayer cannot read reaches it converted to FLAC, without
-loss; the file on your NAS is never touched.</p>
+<p><strong>Add network share (NAS)</strong>, at the bottom of the <strong>Music library</strong> picker of the guided setup,
+mounts an SMB share as above — read-only, when first opened, the password in a file only the
+system reads — and tests it on the spot: you see the share appear, or the error. Once you confirm
+it as the library, MPD indexes it. An NFS share, or any share you mount yourself under <code>/mnt</code>, is
+offered in the same picker. With Pro, <strong>Library → Sources</strong> lists the UPnP servers of your
+network, and takes the address of one on another part of it; you browse and search them, and
+play on the box's DAC, on a UPnP renderer, or through HQPlayer.</p>
 <p>The details are in the manual:
 <a href="../manual/03-first-run#music-on-a-nas-add-the-share-from-the-picker">First run → Music on a NAS</a>,
 <a href="../manual/09-troubleshooting#manual-nas-mount-terminal">Troubleshooting → Manual NAS mount</a>,
 and <a href="../manual/05-library-streaming#upnp--dlna-media-servers">Library &amp; streaming → UPnP / DLNA media servers</a>.</p>
 <h2 id="sources">Sources</h2>
 <ul>
-<li>MPD's <code>auto_update</code>, off by default: <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/mpd.conf.5.rst">mpd.conf(5)</a>, version 0.24.5.</li>
+<li>Mount options: <a href="https://manpages.debian.org/trixie/cifs-utils/mount.cifs.8.en.html">mount.cifs(8)</a>, cifs-utils 7.4; <a href="https://manpages.debian.org/trixie/nfs-common/nfs.5.en.html">nfs(5)</a>, nfs-common 2.8.3; <a href="https://manpages.debian.org/trixie/systemd/systemd.mount.5.en.html">systemd.mount(5)</a>, systemd 257 — Debian 13, read on 2026-10-21.</li>
+<li>What Raspberry Pi OS installs: the <a href="https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2026-10-06/2026-10-06-raspios-trixie-arm64-lite.info">Lite image's package list</a>, release of 2026-10-06.</li>
+<li>File notifications on network shares: <a href="https://man7.org/linux/man-pages/man7/inotify.7.html">inotify(7)</a>, <em>Limitations and caveats</em>. MPD's <code>auto_update</code>: <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/mpd.conf.5.rst">mpd.conf(5)</a>, and the code that watches the folder, <a href="https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/src/db/update/InotifyUpdate.cxx">InotifyUpdate.cxx</a>, version 0.24.5.</li>
+<li>Synology: <a href="https://kb.synology.com/en-global/DSM/tutorial/Why_cant_access_shared_folder">SMB protocols</a> and <a href="https://kb.synology.com/en-global/DSM/help/DSM/AdminCenter/file_share_privilege_nfs?version=7">NFS permissions</a>, DSM 7, read on 2026-10-21.</li>
+<li>DietPi 9.20: <a href="https://github.com/MichaIng/DietPi/blob/v9.20/dietpi/dietpi-drive_manager">dietpi-drive_manager</a>.</li>
+<li>MinimServer 2.2: <a href="https://minimserver.com/ug-other.html">transcoding</a> and <a href="https://minimserver.com/downloads.html">downloads</a>. MiniDLNA 1.3.3: its <a href="https://sourceforge.net/p/minidlna/git/ci/v1_3_3/tree/TODO">to-do list</a>, where transcoding is a wish. Asset UPnP: <a href="https://doc.dbpoweramp.com/asset/en/custom.htm">audio streaming options</a>.</li>
+<li>upmpdcli 1.9.17: its default name, in the <code>/etc/upmpdcli.conf</code> of its package.</li>
+<li>UPnP discovery: <a href="https://openconnectivity.org/upnp-specs/UPnP-arch-DeviceArchitecture-v2.0-20200417.pdf">UPnP Device Architecture 2.0</a>, section 1.</li>
 </ul>
 
             </article>

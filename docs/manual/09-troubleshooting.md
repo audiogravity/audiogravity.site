@@ -475,54 +475,55 @@ These checks use the Performance and Systemd tabs, which come with Pro — the t
 ## Manual NAS mount (terminal)
 
 The library picker's **Add network share** covers CIFS/SMB. If you prefer the
-terminal, or need **NFS**, mount at the OS level — anything mounted under
-`/mnt` is detected as a library source.
+terminal, or need **NFS**, mount the share yourself under `/mnt`: it is then offered as a
+library source. Replace the address, the share and the account below with your NAS's own:
+that is why these blocks come without a copy button.
 
-**1. Create a mount point:**
+**1. For CIFS / SMB, store the account** in a file only root can read: create it empty, then
+write two lines in it.
 
 ```bash
-sudo mkdir -p /mnt/music
+sudo install -m 600 /dev/null /root/.smbcredentials
+sudo nano /root/.smbcredentials
 ```
 
-**2. Describe the share** — CIFS/SMB *or* NFS, not both. Replace the address, the share and
-the credentials below with your NAS's own before running them: that is why these blocks come
-without a copy button.
-
-For **CIFS / SMB**, store the credentials first — the quoted heredoc keeps special characters
-in the password intact — then add the share:
-
-```bash nocopy
-sudo tee /root/.smbcredentials >/dev/null <<'EOF'
+```text nocopy
 username=nasuser
 password=naspass
-EOF
-sudo chmod 600 /root/.smbcredentials
 ```
 
-```bash nocopy
-echo "//192.168.1.20/music /mnt/music cifs credentials=/root/.smbcredentials,ro,_netdev 0 0" \
-    | sudo tee -a /etc/fstab
+**2. Add one line to `/etc/fstab`** (`sudo nano /etc/fstab`) — CIFS/SMB *or* NFS, not both.
+
+For **CIFS / SMB**:
+
+```text nocopy
+//192.168.1.20/music  /mnt/music  cifs  credentials=/root/.smbcredentials,ro,nofail,x-systemd.automount  0  0
 ```
 
-For **NFS** (requires `sudo apt-get install nfs-common`):
+For **NFS**, install its mount tool first, with `sudo apt-get install nfs-common`:
 
-```bash nocopy
-echo "192.168.1.20:/volume1/music /mnt/music nfs ro,_netdev 0 0" | sudo tee -a /etc/fstab
+```text nocopy
+192.168.1.20:/volume1/music  /mnt/music  nfs  ro,nofail,x-systemd.automount  0  0
 ```
 
-**3. Mount and verify:**
+The share is mounted read-only, when its folder is first opened: a NAS that is off when the
+box starts delays nothing. Leave the SMB version out, and the box and the NAS agree on the
+newest one both speak. Only a NAS too old for SMB 2.1 needs `vers=2.0` added to the line, or
+`vers=1.0` as a last resort: SMB1 is insecure.
+
+**3. Start it and check:**
 
 ```bash
-sudo systemctl daemon-reload && sudo mount -a && ls /mnt/music
+sudo systemctl daemon-reload
+sudo systemctl start mnt-music.automount
+ls /mnt/music
 ```
 
-`_netdev` makes the mount wait for the network at boot, and `ro` (read-only) is
-a sensible default for a music library. The SMB version is best left
-unpinned — the kernel negotiates the highest dialect both ends support (SMB 2.1
-to 3.1.1). As a **last resort** for legacy NAS firmware you can add `vers=2.0`;
-avoid `vers=1.0` (SMB1) unless you have no other option — it is deprecated and
-insecure, and modern kernels disable it by default. Back in the picker, hit
-refresh — the share appears as a library choice.
+The second command is named after the folder: `/mnt/music` gives `mnt-music`. Your music's
+folders should be listed. If `ls` answers `No such device`, the share could not be mounted, and
+`sudo systemctl status mnt-music.mount` shows why: `mount error(13): Permission denied` for a
+wrong username or password, `mount error(2): No such file or directory` for a share name the
+NAS does not know. Back in the picker, hit refresh — the share appears as a library choice.
 
 ## Locked out — no admin can log in
 

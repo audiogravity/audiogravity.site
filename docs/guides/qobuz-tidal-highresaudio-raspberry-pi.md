@@ -1,73 +1,121 @@
 # Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi
 
-**Short answer:** a Raspberry Pi can play all three, but few setups offer all three at once, and
-they differ in what they cost, how they connect to each service, and how they are driven: from
-the service's own app (Qobuz Connect, TIDAL Connect) or from the streamer's own library. Each
-service needs your own subscription, whichever way you choose.
+**Short answer:** a Raspberry Pi can play all three, but few setups offer all three at once. They
+differ in what they cost, in the quality they reach, and in where you choose the music: in the
+service's own app, with Qobuz Connect or TIDAL Connect, or in the streamer's app or a UPnP control
+app. Each service needs your own subscription, whichever way you choose.
 
-Checked on 2026-10-17. These products change often: the sources are listed at the end of the
-page, with their dates.
+Checked on 2026-10-21 against each product's official pages and source code, read but not run.
+Prices are those shown that day, and they change: the sources are listed at the end.
 
-## The ways to do it
+## The ways, side by side
 
-**Volumio Premium.** Qobuz, TIDAL and HIGHRESAUDIO are built into Volumio's library, and Premium
-adds Qobuz Connect and TIDAL Connect. Premium costs €7.49 a month or €69.99 a year, with a
-14-day trial, and needs a MyVolumio account. Qobuz
-lists Volumio among its Qobuz Connect partners, and HIGHRESAUDIO names Volumio as a partner.
-Volumio 4 runs on the Raspberry Pi 4 and 5.
+| | Qobuz | TIDAL | HIGHRESAUDIO | From the service's app | Cost |
+|---|---|---|---|---|---|
+| upmpdcli, on Raspberry Pi OS or Debian | Yes | Yes | Yes | No | Free |
+| Volumio Premium | Yes | Yes | Yes | Qobuz Connect, TIDAL Connect | €7.49 a month, or €69.99 a year |
+| moOde | Yes | No | No | Qobuz Connect | Free |
+| piCorePlayer with Lyrion Music Server | Yes | Up to CD quality | No | No | Free |
+| HQPlayer | Yes | No | Yes | No | €319 for HQPlayer 6 Embedded |
+| Roon, with the Pi as a Roon Bridge | Yes | Yes | No | No | $14.99 a month |
 
-**piCorePlayer, or Lyrion Music Server.** Free. Qobuz and TIDAL come as plugins from the
-server's official plugin list, both updated in October 2026. There is no HIGHRESAUDIO plugin in
-that list.
+## upmpdcli, on Raspberry Pi OS or Debian
 
-**moOde.** Free and open source. Qobuz goes through upmpdcli, which moOde sets up as a UPnP media
-server: you browse it from a separate UPnP control app. Since September 2026, moOde can also
-install Pibuz, for Qobuz Connect. For TIDAL, moOde's founder wrote in August 2024 that the UPnP
-option "doesn't work anymore". HIGHRESAUDIO is not offered in moOde's interface.
+upmpdcli makes MPD a UPnP renderer and, with one module per service, adds a UPnP media server for
+Qobuz, TIDAL and HIGHRESAUDIO. You browse it from a UPnP control app, such as BubbleUPnP (Android)
+or mconnect Player (iPhone, iPad, Android), and the Pi plays.
 
-**HQPlayer.** HQPlayer streams Qobuz and HIGHRESAUDIO itself: Signalyst lists both as streaming
-partners. It runs on the Pi (see [HQPlayer Embedded on a Raspberry Pi 5](hqplayer-embedded-raspberry-pi-5)),
-and is driven from its own interface or another controller.
+- **Install** upmpdcli and the module of each service, `upmpdcli-qobuz`, `upmpdcli-tidal` and
+  `upmpdcli-hra`, from [upmpdcli's site](https://www.lesbonscomptes.com/upmpdcli/): none is in
+  Debian's archive. The TIDAL module also needs the Python package `tidalapi`, version 0.8.11,
+  which upmpdcli's manual has you install with `pip`.
+- **Turn each service on** in `/etc/upmpdcli.conf`:
+
+  ```text nocopy
+  qobuzuser = me
+  qobuzformatid = 27
+  tidaluser = me
+  tidalaudioquality = HI_RES_LOSSLESS
+  hrauser = you@example.com
+  hrapass = your-password
+  ```
+
+  `qobuzuser` and `tidaluser` only switch the service on, whatever their value. `27` asks Qobuz
+  for its highest quality, `HI_RES_LOSSLESS` asks TIDAL for its. The HIGHRESAUDIO password sits in
+  this file in clear: upmpdcli's manual advises making it readable by its owner only
+  (`sudo chmod 600 /etc/upmpdcli.conf`). Then restart upmpdcli: `sudo systemctl restart upmpdcli`.
+- **Sign in once** to Qobuz and TIDAL. Each module comes with a script that prints a web address:
+  open it, sign in, and the module keeps the authorisation. upmpdcli's manual names the scripts and
+  their options.
+- **TIDAL's highest quality reaches MPD only.** TIDAL sends it as MPEG-DASH, which MPD plays; other
+  renderers are served CD quality, says upmpdcli's manual.
+
+## Volumio 4.231
+
+The three services, Qobuz Connect and TIDAL Connect come with Volumio Premium: €7.49 a month or
+€69.99 a year, for up to 6 devices, with a MyVolumio account and a 14-day trial. Connect each
+service under **Settings → Sources**, with **Connect**. For TIDAL's highest quality, Volumio's help
+says to set its quality to **Hi-Res**. Qobuz lists Volumio among its Qobuz Connect brands.
+
+## moOde 10.3.6
+
+- **Qobuz Connect.** In **Configure → Renderers**, under **Qobuz Connect**, **Install** builds
+  Pibuz on the Pi itself: about 10 minutes on a Pi 5 with 4 GB, 20 to 40 on a Pi 4, by moOde's own
+  timings. The Qobuz app then plays on moOde; its quality starts at *Hi-Res 24/192K*.
+- **Qobuz as a UPnP media server**, through upmpdcli: in **Configure → Renderers**, **Edit** on the
+  UPnP renderer, then **Qobuz Music Service**, with a userid, a password and a quality. You browse
+  it from a UPnP control app. moOde ships upmpdcli 1.9.17, whose manual says that Qobuz now signs in
+  once through a web page, with a script run on the box.
+- **No TIDAL and no HIGHRESAUDIO.** moOde removed TIDAL from its settings in 2021.
+
+## piCorePlayer 11.1 with Lyrion Music Server 9.1
+
+Qobuz and TIDAL come as free plugins from Lyrion's official list: install them under **Settings →
+Manage Plugins**, then set each one up in its page under **Settings → Advanced**.
+
+- **Qobuz 3.7.3**: your username and password. Its **Preferred format** starts at *FLAC 16 bits /
+  44.1 kHz*: choose *FLAC Hi-Res 24 bits / >96 kHz* for its highest.
+- **TIDAL 1.8.2**: **Add Account** takes you to TIDAL to sign in. Its **Quality** starts at *AAC
+  320Kbps* and stops at *CD (FLAC)*: no hi-res in this version.
+- No HIGHRESAUDIO plugin in the official list.
+
+## HQPlayer and Roon
+
+- **HQPlayer** streams Qobuz and HIGHRESAUDIO itself: Signalyst lists both as streaming partners,
+  and you sign in from HQPlayer Client. HQPlayer Embedded runs on a Pi (see
+  [HQPlayer Embedded on a Raspberry Pi 5](hqplayer-embedded-raspberry-pi-5)): HQPlayer 6 Embedded
+  costs €319, and plays 30 minutes at a time without a licence.
+- **Roon** streams Qobuz and TIDAL, as well as KKBOX and nugs, not HIGHRESAUDIO. Its server does
+  not run on a Pi: the Pi plays as a Roon Bridge, and the server runs on a computer (see
+  [Roon on a Raspberry Pi](roon-raspberry-pi)). Roon costs $14.99 a month or $149.88 a year.
+
+## Check what you get
+
+- **Your subscription sets the ceiling.** Qobuz's highest quality, FLAC 24-bit up to 192 kHz,
+  needs its Studio plan: €14.99 a month in France. TIDAL's goes up to 24-bit / 192 kHz.
+- **The DAC shows what reaches it.** While a track plays,
+  `cat /proc/asound/card0/pcm0p/sub0/hw_params` gives the rate it receives, `rate: 192000` for a
+  24/192 album played untouched (see
+  [How to check bit-perfect playback](check-bit-perfect-playback-linux)).
 
 ## With Audiogravi<sup>ty</sup>
 
-Audiogravi<sup>ty</sup> runs on a Raspberry Pi 4 or 5 with Debian 13 (Trixie), DietPi or
-Raspberry Pi OS included. The three services come with the Pro edition; the 30-day trial
-includes them.
-
-**One library for the three.** Qobuz, Tidal and HIGHRESAUDIO sit side by side with your own
-files and your UPnP media servers. **Search** looks through all of them at once, and an
-artist's page gathers their albums across the services. Each service keeps its own shelves:
-favourites, playlists, genres, Qobuz purchases, the HIGHRESAUDIO vault.
-
-**Connecting each service**, from **Library → Sources**:
-
-- **Qobuz**: tap **Connect**, sign in on Qobuz's page, and you are sent back connected.
-- **Tidal**: tap **Connect** and sign in; Tidal then shows a page the app cannot read on its own,
-  so you copy that page's address back into Audiogravi<sup>ty</sup>, once.
-- **HIGHRESAUDIO**: your email and password, kept encrypted on the box. HIGHRESAUDIO allows one
-  active device per account: connecting the box signs your other HIGHRESAUDIO players out.
-
-**The best quality each service offers.** Audiogravi<sup>ty</sup> asks Qobuz and Tidal for their
-highest quality, up to 24-bit / 192 kHz, and plays what HIGHRESAUDIO publishes, up to
-24-bit / 352.8 kHz. The audio is not re-encoded: Qobuz and HIGHRESAUDIO send it as it is, and
-Tidal's is repackaged without being changed. Keep Tidal on a lossless setting: its lower ones
-produce no sound.
-
-**Where it plays.** On the DAC attached to the box, on a UPnP renderer elsewhere on your network,
-or through HQPlayer.
-
-**What it does not do.** There is no Qobuz Connect and no TIDAL Connect: you choose the music in
-Audiogravi<sup>ty</sup>, not in the Qobuz or TIDAL apps.
+The three services come with the Pro edition. They sit beside your own files and your UPnP media
+servers, in one library and one search. Connect each one from **Library → Sources**: Qobuz and
+Tidal through their own sign-in page, HIGHRESAUDIO with your email and password.
+Audiogravi<sup>ty</sup> asks Qobuz and Tidal for their highest quality, and plays on the box's DAC,
+on a UPnP renderer, or through HQPlayer. There is no Qobuz Connect and no TIDAL Connect: you choose
+the music in Audiogravi<sup>ty</sup>.
 
 The details are in the manual:
 [Library & streaming → Streaming services](../manual/05-library-streaming#streaming-services).
 
 ## Sources
 
-- Volumio editions and prices: [volumio.com/en/get-started](https://volumio.com/en/get-started/), read on 2026-10-17. Volumio 4 and the Pi 5: [Volumio 4 OS](https://volumio.com/volumio-4-os/), November 2025; [supported devices](https://help.volumio.com/en/articles/10-what-3rd-party-devices-are-supported).
-- Qobuz Connect partners: [Qobuz Connect celebrates over 100 partners](https://community.qobuz.com/press-en/qobuz-connect-celebrates-over-100-partners), Qobuz, December 2025.
-- HIGHRESAUDIO's partners: [HIGHRESAUDIO streaming app](https://www.highresaudio.com/en/content/streaming-app), read on 2026-10-17.
-- Lyrion Music Server plugins: [the official plugin list](https://github.com/LMS-Community/lms-plugin-repository/blob/master/extensions.xml), read on 2026-10-17 (Qobuz 3.7.2, TIDAL 1.8.2).
-- moOde: [release notes](https://github.com/moode-player/moode/blob/master/www/relnotes.txt) (Pibuz in 10.3.4 and 10.3.5, September 2026); [Pibuz](https://github.com/PhilipVinc/pibuz); Tim Curtis on Tidal: [moOde forum](https://moodeaudio.org/forum/showthread.php?pid=57024), August 2024.
-- HQPlayer's streaming partners: [signalyst.com](https://signalyst.com/?page_id=124), read on 2026-10-17.
+- upmpdcli 1.9.17: its [manual](https://framagit.org/medoc92/upmpdcli/-/blob/master/doc/upmpdcli-manual.txt) and [configuration reference](https://framagit.org/medoc92/upmpdcli/-/blob/master/doc/upmpdcli-config.txt), read on 2026-10-21; the modules, in its Debian 13 package list.
+- Volumio: [editions and prices](https://volumio.com/get-started/), help on [streaming services](https://help.volumio.com/en/articles/8-what-audio-sources-can-i-add-to-volumio) and [TIDAL quality](https://help.volumio.com/en/articles/56-tidal-tracks-showing-as-16-bit-instead-of-24-bit-in-volumio), read on 2026-10-21. Qobuz Connect brands: [Qobuz help](https://help.qobuz.com/en/articles/314578-list-of-brands-integrated-into-qobuz-connect), updated on 2026-04-03.
+- moOde 10.3.6: [Renderers](https://github.com/moode-player/moode/blob/r1036/www/templates/ren-config.html), [UPnP settings](https://github.com/moode-player/moode/blob/r1036/www/templates/upp-config.html), [build times](https://github.com/moode-player/moode/blob/r1036/www/install_renderers.txt) and [release notes](https://github.com/moode-player/moode/blob/r1036/www/relnotes.txt); [Pibuz](https://github.com/PhilipVinc/pibuz), 2.7.1.
+- Lyrion plugins: [the official list](https://github.com/LMS-Community/lms-plugin-repository/blob/9d7afc19f5a3ed40a3cfd84d17c02d3af4269c03/extensions.xml), [Qobuz](https://github.com/LMS-Community/plugin-Qobuz) 3.7.3, [TIDAL](https://github.com/michaelherger/lms-plugin-tidal) 1.8.2, read on 2026-10-21.
+- HQPlayer: [Signalyst](https://signalyst.com/), its [quick start guide](https://signalyst.com/quickstart-guide/) and shop, read on 2026-10-21.
+- Roon: [compatibility](https://roon.app/en/compatibility) and [Linux install](https://help.roonlabs.com/portal/en/kb/articles/linux-install), read on 2026-10-21.
+- Qobuz Studio: [plans](https://www.qobuz.com/fr-fr/music/streaming/offers/studio), France, read on 2026-10-21. TIDAL's quality: [HiRes FLAC](https://support.tidal.com/hc/en-us/articles/17412130162961-HiRes-FLAC-audio), updated on 2026-01-09.

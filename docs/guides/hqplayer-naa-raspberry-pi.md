@@ -1,73 +1,91 @@
 # HQPlayer NAA on a Raspberry Pi
 
 **Short answer:** a Raspberry Pi makes a good NAA. HQPlayer does the heavy processing on a
-computer elsewhere in the house and sends the result over the network; the Pi passes it to
-your DAC, at almost no cost. Two things decide whether it works: the NAA must be on the same
-major version as your HQPlayer, and with a USB DAC at the highest DSD rates, Signalyst
-recommends a Pi 4 over a Pi 5.
+computer elsewhere in the house and sends the result over the network; the Pi passes it to your
+DAC, at almost no cost. It needs a licensed HQPlayer, and two things right: an NAA your HQPlayer
+accepts — NAA 6 needs HQPlayer 5.16 or later — and, for a USB DAC at the highest rates, a Pi 4
+rather than a Pi 5, as HQPlayer's author recommends.
+
+Checked on 2026-10-21 against Signalyst's download pages, its NAA 6.1.4 package and image (read,
+not run) and the statements of HQPlayer's author; measured on a Raspberry Pi 4 running NAA 5.1.8
+(2026-10-21) and on a test box with a USB DAC (2026-09-26).
 
 ## What an NAA does
 
 HQPlayer's filters and modulators need a powerful processor, and a powerful processor is hot
 and noisy: not something to put beside a DAC. NAA, Signalyst's Network Audio Adapter, splits
 the work in two. HQPlayer runs on a computer anywhere on your network. The NAA runs next to the
-DAC, receives what HQPlayer has already processed, and plays it. In HQPlayer's settings, you
-choose the NAA as its output.
+DAC, receives what HQPlayer has already processed, and plays it. The NAA's licence allows its use
+"provided that you have a valid license for the Signalyst HQPlayer".
 
-## Two ways to install it
+## Three ways to install it
 
-Signalyst offers both on its download pages (checked on 2026-10-17):
+### Signalyst's NAA OS image
 
-- **A ready-made system image** for the Raspberry Pi, in versions 5.1.8, 6.1.2 and 6.1.4.
-  Written to a microSD card, it turns the Pi into an NAA and nothing else.
-- **A Debian package** (`networkaudiod`, for Debian 13 on arm64, from 5.1.5 to 6.1.4). It
-  installs on Raspberry Pi OS or Debian 13 like any other program, beside your other players.
+Signalyst publishes one image per version, `naa-518`, `naa-612` and `naa-614`, each for the
+Raspberry Pi 4 and 5 alike. Extract the `.img` file from the `.7z` archive and write it to a
+microSD card of 4 GB or more, with balenaEtcher or `dd`. There is nothing to set up: the Pi takes
+its address from your router on the Ethernet port — the image turns Wi-Fi and Bluetooth off — and
+names itself. To update it, write the newer image.
+
+### The package, on Raspberry Pi OS or Debian
+
+Signalyst publishes the NAA as a Debian package, `networkaudiod`, beside your other players:
+
+```bash nocopy
+wget https://signalyst.com/bins/naa/linux/trixie/networkaudiod_6.1.4-71_arm64.deb
+sudo apt install ./networkaudiod_6.1.4-71_arm64.deb
+sudo systemctl start networkaudiod
+systemctl status networkaudiod
+```
+
+- **For an HQPlayer older than 5.16**, take `networkaudiod_5.1.8-68_arm64.deb` instead: both lines
+  sit in the same folder, the newest last.
+- **The install shows Signalyst's licence**, and sets the NAA to start with the Pi, but does not
+  start it: hence the third command. `active (running)` means it is up.
+- **To choose the name HQPlayer shows**, remove the `#` before `NETWORKAUDIOD_NAME` in
+  `/etc/default/networkaudiod`, put a one-word name between the quotes, then
+  `sudo systemctl restart networkaudiod`.
+
+### On DietPi
+
+In `dietpi-software`, **NAA Daemon** installs the newest package on Signalyst's page — 6.1.4
+today, which needs HQPlayer 5.16 or later.
+
+## In HQPlayer
+
+Open **File → Settings** (on macOS, **Preferences**) and choose **NetworkAudioAdapter IPv6**, or
+**NetworkAudioAdapter**, as the backend; HQPlayer's author finds that discovery usually works better
+over IPv6. The **Device** list then
+shows each NAA with its DAC, "always combination of the NAA device plus the hardware device ID".
+If the list stays empty, check that the NAA is running, that it is on the same network, and that
+it is not too new for your HQPlayer.
 
 ## What to get right
 
-- **The same major version as HQPlayer.** HQPlayer 5 plays to an NAA 5, HQPlayer 6 to an NAA 6.
-  I measured it: an NAA 6 does not work with HQPlayer 5. Signalyst publishes both lines side by
-  side, so the newest file on the page is not always the one you need.
-- **A Pi 4 or a Pi 5 for a USB DAC.** Jussi Laako, who writes HQPlayer, on the Roon forum:
-  "There are some hardware/OS issues with RPi5 and 48k x512 and higher output rates" (March
-  2024). The problem is specific to USB output; up to 44.1 kHz × 512 or 705.6 kHz PCM, it
-  should work (May 2024). In November 2024 he still saw a problem with 48k × 512 DSD, and found
-  the Pi 4 more reliable. I have not measured it.
+- **An NAA your HQPlayer accepts.** In HQPlayer's author's words: "NAA 6.x is not compatible with
+  HQPlayer versions prior to 5.16. While HQPlayer works with NAA versions up at least from NAA 3.x."
+  (February 2026). My own test agrees: an NAA 6 did not work with HQPlayer Desktop 5.13
+  (2026-09-20). With HQPlayer 6, an NAA 5 still plays; DAC corrections need it at 5.1.5 or
+  later, and the newest ones need NAA 6.
+- **A Pi 4 for a USB DAC at the highest rates.** HQPlayer's author found that a Pi 5's USB output
+  fails from 768 kHz PCM and 48 kHz × 512 DSD up (February 2025), and still recommended the Pi 4 in
+  January 2026: "Only RPi4 works properly" (June 2025). I have not measured it.
 - **It holds the DAC only while HQPlayer plays.** Measured on my x86 test box with a USB DAC
-  (2026-09-26): with the NAA running and HQPlayer idle, the DAC stays free and another player
-  can use it; when HQPlayer plays, the NAA takes it; when HQPlayer stops, the DAC is free again
-  within three seconds. An NAA can live beside your other players.
-- **It costs almost nothing at rest.** On a Raspberry Pi 4, idle: 4 MB of memory and no
-  measurable processor time (measured 2026-09-26, over 30 seconds).
+  (2026-09-26): with the NAA running and HQPlayer idle, the DAC stays free and another player can
+  use it; when HQPlayer plays, the NAA takes it; when HQPlayer stops, the DAC is free again within
+  three seconds. An NAA can live beside your other players.
+- **It costs almost nothing at rest.** On a Raspberry Pi 4 left idle for 30 hours, NAA 5.1.8 used
+  3.8 MB of memory and 20 seconds of processor time in all (2026-10-21).
 
 ## With Audiogravi<sup>ty</sup>
 
-Audiogravi<sup>ty</sup> installs Signalyst's own package on a Raspberry Pi running Debian 13
-(Trixie), DietPi or Raspberry Pi OS included, and keeps it on the right line. HQPlayer, the NAA
-included, comes with the Pro edition; the 30-day trial includes it.
-
-1. In **Library → Sources**, connect your HQPlayer: its card finds it on the network. The box
-   then knows which major version it runs.
-2. In **Audio Software**, click **INSTALL** on the **HQPlayer NAA** card. The version offered
-   is the one that matches the HQPlayer you are connected to, not simply the newest.
-3. Switch to a profile that runs it. Each says what it starts: **HQPlayer NAA** alone, or
-   **MPD + HQPlayer NAA**, **Roon Bridge + HQPlayer NAA**, **Roon Bridge + MPD + HQPlayer NAA**
-   to keep other players beside it.
-4. In HQPlayer, choose this NAA as the output.
-
-From then on:
-
-- **HQPlayer can be your output.** The **Use as output** switch on the HQPlayer card sends what
-  you play from Audiogravi<sup>ty</sup> — your library, Qobuz, Tidal, HIGHRESAUDIO, internet
-  radio, UPnP media servers — through HQPlayer and back to your DAC through the NAA. The signal
-  path shows *Library → HQPlayer → NAA → your DAC*.
-- **A pair that cannot work is refused, with the reason.** No HQPlayer configured, the NAA not
-  running, or a major version that does not match: the switch and playback say which, naming the
-  two versions, instead of playing silence.
-- **Formats HQPlayer cannot read are converted on the way.** ALAC, AAC, OGG and others reach
-  HQPlayer as FLAC, without loss; your own files are never touched. DSD is never converted.
-- **Updates follow your HQPlayer.** The NAA stays on the line of the HQPlayer you are connected
-  to; with no HQPlayer answering, the line already installed is kept.
+Audiogravi<sup>ty</sup> installs Signalyst's package itself, from **Audio Software**, on the major
+version of the HQPlayer it is connected to, and has profiles that run the NAA alone or beside MPD
+and Roon Bridge. HQPlayer, the NAA included, comes with the Pro edition. With **Use as output** on
+the HQPlayer card, what you play in Audiogravi<sup>ty</sup> goes through HQPlayer and back to your
+DAC through the NAA; if the two major versions differ, it says so instead of playing. Formats
+HQPlayer cannot read reach it as FLAC, without loss.
 
 The details are in the manual:
 [Outputs & engines → HQPlayer](../manual/06-outputs-engines#hqplayer), and
@@ -75,5 +93,6 @@ The details are in the manual:
 
 ## Sources
 
-- Signalyst downloads, [signalyst.com](https://signalyst.com/), checked on 2026-10-17.
-- Jussi Laako on the Raspberry Pi 5 as an NAA: [HQPlayer NAA on Raspberry Pi 5](https://community.roonlabs.com/t/hqplayer-naa-on-raspberry-pi-5/269171), Roon Community, March to November 2024.
+- Signalyst: [NAA images](https://www.signalyst.com/bins/naa/images/) and [Debian 13 packages](https://www.signalyst.com/bins/naa/linux/trixie/), read on 2026-10-21; [HQPlayer Desktop](https://signalyst.com/hqplayer-desktop/) (Raspberry Pi 4 or 5 as an NAA); [DAC corrections](https://signalyst.com/dac-corrections-updated-4/), June 2026. The licence and the service: in the `networkaudiod` 6.1.4-71 package. HQPlayer 6.1.1's manual: in the `hqplayer6desktop` package.
+- Jussi Laako, who writes HQPlayer, on the Roon forum: [NAA and HQPlayer versions](https://community.roonlabs.com/t/hqplayer-naa-thread/176288/764), February 2026, and [NAA for DAC corrections](https://community.roonlabs.com/t/is-there-a-compelling-v6-upgrade-argument-now-that-ahmxec4b-modulators-are-available/325365/4), September 2026; the Raspberry Pi 5, [February 2025](https://community.roonlabs.com/t/hqplayer-embedded-discussion/244327/1470) and [June 2025](https://community.roonlabs.com/t/new-pc-stuttering-config-issue/301078/17); writing the image, [January 2025](https://community.roonlabs.com/t/roon-disconnects-from-hqplayer/290465/4), and updating it, [May 2026](https://community.roonlabs.com/t/hqplayer-naa-thread/176288/801); the NAA's name, [November 2025](https://community.roonlabs.com/t/hqplayer-naa-thread/176288/742); IPv6, [March 2025](https://community.roonlabs.com/t/hqplayer-desktop-thread/166213/1707); the Pi 4 with NAA OS, [January 2026](https://community.roonlabs.com/t/which-hqp-filter-are-you-using-2024/261032/1272).
+- DietPi 10.7: [dietpi-software](https://github.com/MichaIng/DietPi/blob/v10.7/dietpi/dietpi-software).

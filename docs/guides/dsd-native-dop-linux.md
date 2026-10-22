@@ -3,107 +3,115 @@
 **Short answer:** DSD reaches a DAC in one of three ways. *Native*, as DSD itself. *DoP*, DSD
 wrapped in PCM words that the DAC unwraps. Or *converted to PCM*, which any DAC plays but which is
 no longer DSD. Native needs a USB DAC whose Linux driver exposes DSD. DoP needs a DAC that decodes
-it: one that does not receives PCM full of markers. And a DAC board on the Raspberry Pi's pins
-cannot take native DSD at all.
+it: one that does not receives PCM full of markers, heard as noise. And a DAC board on the
+Raspberry Pi's pins cannot take native DSD at all.
+
+Checked on 2026-10-17 and 18 on Debian 13 with a USB DAC that takes native DSD, and on a Raspberry
+Pi 4 with a HiFiBerry DAC+ Pro, with MPD 0.24.5 and 0.24.4; the Linux and MPD source code, read on
+2026-10-21.
 
 ## The three ways, as the DAC sees them
 
-Measured on my test box (2026-10-17) with a DSD128 file and a USB DAC that accepts native DSD:
+Measured with a DSD128 file and a USB DAC that accepts native DSD:
 
-| Sent as | What the DAC receives (`hw_params`) |
+| Sent as | What the DAC receives |
 |---|---|
 | Native DSD | `format: DSD_U32_BE`, `rate: 176400` |
 | DoP | `format: S32_LE`, `rate: 352800` |
 
-- **Native** carries 32 bits of DSD per sample, so DSD128 needs 176.4 kHz and DSD256 352.8 kHz.
-- **DoP** carries 16 bits of DSD in each 24-bit word, the other 8 being the marker. So it needs
-  twice the rate: 176.4 kHz for DSD64 and 352.8 kHz for DSD128 (the DoP standard), and 705.6 kHz
-  for DSD256. On a card that stops at 384 kHz, like the one measured above, DSD256 fits natively
-  (352.8 kHz) but not as DoP (705.6 kHz).
+- **Native** packs 32 bits of DSD into each sample: DSD64, DSD128 and DSD256 need 88.2, 176.4 and
+  352.8 kHz.
+- **DoP** carries 16 bits of DSD in each 24-bit word, the other 8 being the marker, so it needs
+  twice the rate: 176.4, 352.8 and 705.6 kHz. On a card that stops at 384 kHz, like the one above,
+  DSD256 fits natively but not as DoP.
 - **Converted to PCM** works with any DAC, at the cost of what DSD was chosen for.
 
-## What decides it on Linux
+## Check your DAC
 
-**A USB DAC.** The USB audio standard has no flag for "this device accepts DSD", so Linux keeps a
-list of the DACs known to, plus a generic detection that catches many others. The list grows with
-each kernel version: a recent DAC may need a newer kernel for native DSD. What your DAC accepts
-is one command away, with the DAC free and its card number in place of `0`:
+What it accepts, with nothing playing on it, and its card number, from `aplay -l`, in place of
+`0`:
 
-```bash
+```bash nocopy
 aplay -D hw:0,0 --dump-hw-params -d 1 -f S32_LE -r 44100 -c 2 /dev/zero
 ```
 
-It plays one second of silence and lists what the card takes. The DAC measured above answers
-`FORMAT: S32_LE SPECIAL DSD_U32_BE` and `RATE: [44100 384000]`: native DSD, PCM up to 384 kHz.
-A `DSD_…` format in that list means native DSD is possible.
+It plays one second of silence and lists what the card takes. A `DSD_…` format in the list means
+native DSD is possible: the DAC above answers `FORMAT: S32_LE SPECIAL DSD_U32_BE` and
+`RATE: [44100 384000]`.
+
+What it receives, while a DSD track plays:
+
+```bash nocopy
+cat /proc/asound/card0/pcm0p/sub0/hw_params
+```
+
+A `DSD_…` format means native DSD. A PCM format can be DoP or a conversion: DSD128 reached the USB
+DAC above as DoP, and the HiFiBerry board as converted PCM, both as `S32_LE` at 352.8 kHz. The
+DAC's own display, which says DSD or PCM, or the player's log, tells them apart.
+
+## What decides it on Linux
+
+**A USB DAC.** A DAC cannot say plainly that it takes DSD: the USB audio standard only lets it
+declare "raw data". So Linux recognises native DSD on a list of DACs by model, and on the
+raw-data devices of a list of makers, the XMOS- and Thesycon-based interfaces among them. Both
+lists grow with each kernel version: a recent DAC may need a newer kernel for native DSD.
 
 **A DAC board on the Pi's pins.** The Pi's I2S drivers, on the Pi 4 and the Pi 5 alike, offer PCM
 only: 16, 24 or 32 bits, up to 384 kHz. Native DSD cannot pass. DoP can, if the board's chip
 decodes it, up to DSD128: 352.8 kHz fits under 384 kHz, the 705.6 kHz of DSD256 does not. Boards
-built on a chip that does not decode DSD, such as the PCM5122 of the HiFiBerry DAC+ Pro, play
-DSD only once converted to PCM.
+built on a chip that does not decode DSD, such as the PCM5122 of the HiFiBerry DAC+ Pro, play DSD
+only once converted to PCM.
 
-**MPD**, which many Linux streamers play through, decides in this order: native when the card
-accepts it, DoP only if its `dop` option says `yes` (it has no way of knowing whether the DAC
-decodes DoP), and otherwise a conversion to PCM. One trap: `dsd_usb` is the name `dop` had until
-MPD 0.18, and MPD still reads it as the same option. With `dsd_usb "yes"`, DSD leaves as DoP even
-beside `dop "no"`: that is the pair behind the second row of the table above.
+## The setting in MPD
 
-**Roon** decides with its own *DSD Playback Strategy* setting, *Convert to PCM* by default (see
-[Roon on a Raspberry Pi](roon-raspberry-pi)).
+MPD, the player of many Linux streamers, decides in this order: native when the card accepts it,
+DoP only if the `dop` setting of its output says `yes`, and otherwise a conversion to PCM. MPD
+cannot know whether a DAC decodes DoP, so it never chooses DoP by itself:
+
+```text nocopy
+audio_output {
+    type    "alsa"
+    name    "USB DAC"
+    device  "hw:0,0"
+    dop     "yes"
+}
+```
+
+If DoP fails on the card, MPD falls back to native, or to a conversion. One trap: `dsd_usb` is the
+name `dop` had until MPD 0.18, and MPD still reads it as the same setting. With `dsd_usb "yes"`,
+DSD leaves as DoP even beside `dop "no"`.
 
 ## Volume and DSD
 
-A DSD stream cannot be turned down in software without converting it. On DoP, a digital volume
-would also alter the markers, and the DAC would no longer recognise DSD. Play DSD at full digital
-level and set your level on the amplifier, or on the DAC if it has its own volume.
+DSD cannot be turned down in software without becoming PCM, and on DoP a digital volume would
+damage the markers. Set your level on the amplifier, or on the DAC if its own volume works on DSD.
+
+- **MPD's software volume does nothing to DSD**, even when MPD converts it to PCM for a DAC that
+  takes no DSD: with MPD 0.24.5, a DSD track came out the same at volume 100 and at 30.
+- **To have MPD's volume act on DSD on a DAC that takes none**, a DAC board for instance, add
+  `audio_output_format "*:32:*"` to `mpd.conf`: MPD then converts DSD as it decodes it, before the
+  volume. It also widens all PCM to 32 bits, its values unchanged at full volume, and would turn
+  native DSD into PCM too, so keep it for a box where no output takes DSD. On the Raspberry Pi 4 above, DSD64,
+  DSD128 and DSD256 then reached the HiFiBerry board as 32-bit PCM at 352.8 kHz; the conversion took
+  about 4, 37 and 69 % of one processor core.
+- **A DAC's own volume may not work on DSD.** The USB DAC above, its volume lowered by 10 dB,
+  played DoP as silence and native DSD as noise.
 
 ## With Audiogravi<sup>ty</sup>
 
-From version 0.9.74, the configuration Audiogravi<sup>ty</sup>'s guided setup writes for MPD
-leaves DoP off: DSD goes out natively to a DAC that accepts it, and MPD converts it to PCM for one
-that does not. Nothing reaches a DAC in a form it may not decode.
+- **The guided setup configures MPD native first**: DSD goes out natively to a DAC that takes it,
+  and is converted for one that does not. For a DAC that decodes DoP but not native DSD under Linux,
+  turn on **Send DSD as DoP (DSD over PCM)** in MPD's **Guided** view.
+- **The player says how DSD reaches the DAC**: a **DoP** tag, or **Converted to PCM**.
+- **Volume.** While the DAC receives DSD, the volume control gives way to a padlock, and the DAC's
+  own volume goes to maximum, then back; **Full DAC volume during DSD** turns that off. On a box
+  whose outputs take no DSD, MPD converts it before its volume, and the volume stays.
 
-- **Boxes set up by an earlier version** had DoP on, through the old `dsd_usb` line. The update
-  removes that line where it sits beside `dop "no"`, keeps the previous file among the
-  configuration editor's saved copies, and restarts MPD.
-- **A DAC that decodes DoP but not native DSD under Linux** can still have DoP: turn on **Send DSD
-  as DoP** in MPD's **Guided** view, under **Config**. It is set on the DAC MPD plays on, and MPD
-  takes it without a restart — unless MPD converts DSD before its volume on that box (below):
-  DoP ends that, and MPD restarts.
-- **The player says how DSD reaches the DAC**: nothing more when it arrives as DSD, a **DoP** tag,
-  or a warning when MPD converted it to PCM.
-- **The player's volume does nothing to DSD.** I measured it on MPD 0.24.5: its volume at 30, then
-  at 5, changed neither the level nor the DoP of a DSD128 track, and a DSD it converted to PCM came
-  out byte for byte the same at 100 and at 30. The volume control gives way to a padlock while DSD
-  plays: set your level on the amplifier.
-- **On a box whose DAC takes no DSD, the volume works on DSD.** Such a DAC — a HAT on a Raspberry
-  Pi, a USB DAC Linux sends no DSD to — receives DSD converted to PCM anyway. MPD converts it in
-  the last filter of its output, after its volume: hence the padlock. Where no output of the box
-  takes DSD as it is and DoP is off, the guided setup has MPD convert it at the decoder instead,
-  before the volume (`audio_output_format "*:32:*"`), and the volume control stays. Measured on
-  the HiFiBerry DAC+ Pro of my Raspberry Pi 4, with MPD 0.24.4 (2026-10-18): DSD64, DSD128 and
-  DSD256 reach the card as 32-bit PCM at 352.8 kHz, and MPD uses 3.9, 37.4 and 68.7 % of one core,
-  against 3.0, 36.6 and 65.1 % with the conversion in the output. Most of that is bringing DSD128
-  and DSD256 down to the card's 352.8 kHz, which MPD does either way. A box with a DAC that takes
-  DSD as it is, or with DoP on, keeps DSD as it is, and the padlock. Boxes already set up get the
-  change at their update to 0.9.74.
-- **Your DAC's own volume goes to full while it receives DSD.** On the USB DAC of my test box, that
-  volume lowered by 10 dB silenced DoP and turned native DSD to noise. So while a DSD track reaches
-  the DAC as DSD or as DoP, from any player, Audiogravi<sup>ty</sup> sets the DAC's volume to
-  maximum, then puts it back. For a DAC that lowers DSD properly, turn off **Full DAC volume during
-  DSD** in MPD's **Guided** view.
-- **Through HQPlayer, DSD is never converted behind your back.** A file HQPlayer cannot read in
-  DSD, a DST-compressed DFF, is refused with the reason.
-
-The details are in the manual:
-[Listening](../manual/04-listening), and
-[Outputs & engines → What can and cannot go through HQPlayer](../manual/06-outputs-engines#what-can-and-cannot-go-through-hqplayer).
+The details are in the manual: [Listening](../manual/04-listening).
 
 ## Sources
 
 - The DoP standard, version 1.1: [DoP open standard](https://dsd-guide.com/sites/default/files/white-papers/DoP_openStandard_1v1.pdf), 2012.
-- Linux and native DSD over USB: [sound/usb/quirks.c](https://github.com/torvalds/linux/blob/master/sound/usb/quirks.c), [sound/usb/format.c](https://github.com/torvalds/linux/blob/master/sound/usb/format.c).
-- The Pi's I2S drivers: [bcm2835-i2s.c](https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/bcm/bcm2835-i2s.c), [dwc-i2s.c](https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/dwc/dwc-i2s.c).
-- MPD and DSD, version 0.24.5: [user manual](https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/user.rst), and `dsd_usb` read as `dop`: [AlsaOutputPlugin.cxx](https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/src/output/plugins/AlsaOutputPlugin.cxx).
-- Roon's DSD setting: [audio setup basics](https://help.roonlabs.com/portal/en/kb/articles/audio-setup-basics).
+- Linux 6.12 and native DSD over USB: [sound/usb/quirks.c](https://github.com/torvalds/linux/blob/v6.12/sound/usb/quirks.c) (the DACs by model, and the makers, in `snd_usb_interface_dsd_format_quirks`), [sound/usb/format.c](https://github.com/torvalds/linux/blob/v6.12/sound/usb/format.c) (the raw-data format).
+- The Pi's I2S drivers: [bcm2835-i2s.c](https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/bcm/bcm2835-i2s.c), [dwc-i2s.c](https://github.com/raspberrypi/linux/blob/rpi-6.12.y/sound/soc/dwc/dwc-i2s.c). The PCM5122's formats: [Texas Instruments](https://www.ti.com/product/PCM5122), read on 2026-10-21.
+- MPD 0.24.5: DSD in its [user manual](https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/doc/user.rst); `dop`, `dsd_usb` and the fallback in [AlsaOutputPlugin.cxx](https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/src/output/plugins/AlsaOutputPlugin.cxx); the rename in its [NEWS](https://github.com/MusicPlayerDaemon/MPD/blob/v0.24.5/NEWS), version 0.19.

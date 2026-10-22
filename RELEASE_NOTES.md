@@ -7,7 +7,19 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Audio Software
+
+**A vendor's site that is down no longer marks your software *Not Supported*.** When the
+site of UPnP Bridge's author went down for over a day in October, boxes updated meanwhile
+showed UPnP Bridge as *Not Supported* while it was installed and playing. When the box checks
+what a vendor publishes for it and gets no answer, it now keeps the vendor's last answer for up
+to five days and asks again every day; a check that could not be made is never shown as *Not
+Supported*. On a Raspberry Pi or another ARM box, UPnP Bridge comes from Audiogravi<sup>ty</sup>'s
+own build, whatever the state of its author's site.
+
+**The support report says why** a package cannot be installed — no build for your box, the
+vendor's site could not be reached, or another installed package is in the way — where it said
+*not supported on this architecture* for all three.
 
 ---
 

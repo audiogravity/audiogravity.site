@@ -73,9 +73,10 @@ major versions.
 Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser,
 no app store needed. **On iOS**: open Safari, navigate to your
 Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. **On Android**: open
-Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its
-own icon, just like a native app — and on iOS the installed app is what enables
-push notifications. Note: on iOS, only Safari supports PWA installation. See
+Chrome, tap the three-dot menu → Install app. Either way, trust the box's certificate on
+the phone first ([3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)).
+It then runs fullscreen with its own icon, just like a native app — and on iOS (16.4 or
+later) the installed app is what receives push notifications. See
 [3. First run](03-first-run.md#8-install-it-as-an-app-recommended-on-phones).
 
 ## How do I connect Qobuz, Tidal or HIGHRESAUDIO?

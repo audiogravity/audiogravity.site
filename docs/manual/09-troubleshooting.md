@@ -587,11 +587,30 @@ keeps hissing after the music stops, until it receives a rate it converts.
 
 ## Passkeys or push notifications unavailable
 
-Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS
-**domain** — they do **not** work over a bare IP, and `--public-url` alone is not
-enough: you also need the domain, a valid certificate and a reverse proxy. The full
-recipe is in
-[2. Installation → Getting HTTPS](02-installation.md#getting-https--for-passkeys-and-push).
+**Push notifications** need the app opened over HTTPS, with the box's certificate trusted
+on the device ([3. First run → Trust the box's certificate](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)),
+and, on an iPhone or iPad, the app added to the Home Screen
+([7. Administration → Push notifications](07-administration.md#push-notifications)).
+Turning **Notifications** on says what is missing.
+
+**Passkeys** (WebAuthn) need the box's **name**, never its address. On an iPhone or iPad, open
+the app from `https://<name>.local`, from the box's network, with its certificate trusted on
+the device.
+The interface installer turns them on for that name when it runs on the box in HTTPS —
+unless another device of the network already answers to it, which the installer says. They
+work from that one address only: a domain of your own, a reverse proxy or an interface on
+another machine needs `--public-url` with the address you open (see
+[2. Installation → Optional flags](02-installation.md#optional-flags-core-installer)). From
+another network, where the name does not open, a real domain is the way:
+[2. Installation → A real domain](02-installation.md#a-real-domain--optional).
+
+## Notifications never reach an iPhone, iPad or Mac
+
+Update the box ([8. Updating](08-updating.md)). Up to version 0.9.78, the box signed its
+notifications with a contact address Apple's notification service refuses, whatever
+`--vapid-email` said; the update replaces it — with Audiogravi<sup>ty</sup>'s own, or with
+yours if you pass `--vapid-email` to the installer — and the devices already subscribed stay
+subscribed.
 
 ## Version-mismatch banner
 

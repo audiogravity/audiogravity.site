@@ -114,8 +114,16 @@ and the switch goes back off:
   browser's own notification service failed it: the message says which;
 - **Test notification not delivered** — the message gives the reason, as the box got it.
 
-Like passkeys, push needs Audiogravi<sup>ty</sup> reachable over a real HTTPS **domain** —
-it does not work over a bare IP (see [2. Installation](02-installation.md)).
+Notifications need the app opened over **HTTPS**, with a certificate the device trusts. On an
+**iPhone or iPad** (iOS 16.4 or later), the box's own certificate is enough — no domain
+needed — and only the app added to the Home Screen receives them:
+
+1. trust the box's certificate on the device
+   ([3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device));
+2. add the app to the Home Screen
+   ([3. First run → 8](03-first-run.md#8-install-it-as-an-app-recommended-on-phones));
+3. open it from its icon, and sign in — it does not share Safari's sign-in;
+4. tap the gear → **Notifications**, then **Allow**: the test notification arrives.
 
 ## Services
 

@@ -19,8 +19,9 @@ After your first password login, Audiogravi<sup>ty</sup> offers to register a
 **passkey** on the device — Face ID, Touch ID, a fingerprint or a hardware key.
 Accept, and every later login becomes a tap: the login screen recognises the device
 and asks for the passkey directly, with *Use password instead* as the fallback.
-(Passkeys require Audiogravi<sup>ty</sup> to be reachable over a real HTTPS
-**domain** — see the `--public-url` flag in [2. Installation](02-installation.md).)
+(Passkeys work from the box's **name**, never from its address — on an iPhone or iPad from
+`https://<name>.local`, once the box's certificate is trusted on the device: see
+[7. Trust the box's certificate](#7-trust-the-boxs-certificate-once-per-device).)
 
 More accounts — family members, a guest who can only control what is playing — can be
 added later from the **Admin** tab (see
@@ -216,9 +217,9 @@ top bar opens [Settings](07-administration.md#the-settings-panel).
 
 ## 7. Trust the box's certificate (once per device)
 
-HTTPS is the recommended mode, and the one the installer offers first: passkeys and
-push notifications need it, and a browser treats an HTTPS page as a place it can install
-an app from. With it, the box created its own **certificate authority** and signed the
+HTTPS is the recommended mode, and the one the installer offers first: push
+notifications need it, and a browser treats an HTTPS page as a place it can install an app
+from. With it, the box created its own **certificate authority** and signed the
 interface's certificate with it. Your browser does not know that authority, so the first
 visit shows a security warning.
 
@@ -250,10 +251,9 @@ even when the interface's own certificate is renewed or the box changes address.
 
 > **Why not simply a real certificate?** Because a public authority will not certify a
 > private address like `192.168.1.30`. If you would rather have a certificate every
-> device trusts with no manual step — and you also want passkeys and push
-> notifications, which a self-signed setup can never provide — give the box a domain
-> name and a real certificate: see
-> [2. Installation → Getting HTTPS](02-installation.md#getting-https--for-passkeys-and-push).
+> device trusts with no manual step — or the app, passkeys included, from another network
+> than the box's — give the box a domain name and a real certificate: see
+> [2. Installation → A real domain](02-installation.md#a-real-domain--optional).
 
 ## 8. Install it as an app (recommended on phones)
 
@@ -261,28 +261,25 @@ Audiogravi<sup>ty</sup> is an installable web app (PWA): added to your home scre
 opens **fullscreen**, in its own window, with the app icon. On a self-signed setup,
 do step 7 first — an untrusted certificate is what stops the app from installing.
 
-> **Add it from the box's name, not from its address** — `https://<name>.local`, the
+> **Phone on the box's network: add it from the box's name** — `https://<name>.local`, the
 > address the installer prints first and puts in its QR code (see
 > [2. Installation → First contact](02-installation.md#first-contact)). An installed app
-> reopens for ever the address it was added from, with no address bar to correct it: the
-> day the router
-> hands the box a different address, an icon added on the address stops opening, while
-> one added on the name follows the box. See
-> [9. Troubleshooting](09-troubleshooting.md#a-bookmark-or-the-home-screen-icon-opens-on-nothing).
+> reopens for ever the address it was added from, with no address bar to correct it: one
+> added on the name follows the box when the router hands it a different address.
 
-> **Better still, give the box a fixed address.** Most routers can reserve one for a
-> given machine — look for *DHCP reservation*, *static lease* or *address reservation*
-> in their settings. Then the address never changes, bookmarks and home-screen icons
-> keep working whichever one you used, and the certificate is never reissued for a new
-> address. Doing both — a reserved address *and* adding the app from the `.local` name —
-> is belt and braces, and takes two minutes once.
+> **Phone on another network** — a separate Wi-Fi or VLAN for phones and computers: there,
+> the name usually does not open (unless your router relays it between networks). Add the
+> app from the box's address, `https://<box-ip>`, and **reserve that address for the box**
+> in your router — look for *DHCP reservation*, *static lease* or *address reservation*: an
+> icon added on an address stops opening the day the address changes. See
+> [9. Troubleshooting](09-troubleshooting.md#a-bookmark-or-the-home-screen-icon-opens-on-nothing).
 
 - **Android** — open the site in Chrome and accept the **Install app** prompt (or
   browser menu → *Add to Home screen*). The installed app also honours the
   [Portrait Lock](04-listening.md#portrait-lock) at the OS level.
 - **iPhone / iPad** — in Safari, tap **Share → Add to Home Screen**. On iOS this is
-  also **required for push notifications**: Safari tabs can't receive them, the
-  installed app can (see
+  also **required for push notifications** (iOS 16.4 or later): Safari tabs can't receive
+  them, the installed app can — turn them on from the app itself (see
   [7. Administration → Push notifications](07-administration.md#push-notifications)).
 - **Desktop** — Chrome and Edge offer an install icon in the address bar; handy for
   a dedicated always-open controller window.

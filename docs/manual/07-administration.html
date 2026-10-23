@@ -173,8 +173,17 @@ the core;</li>
 browser's own notification service failed it: the message says which;</li>
 <li><strong>Test notification not delivered</strong> — the message gives the reason, as the box got it.</li>
 </ul>
-<p>Like passkeys, push needs Audiogravi<sup>ty</sup> reachable over a real HTTPS <strong>domain</strong> —
-it does not work over a bare IP (see <a href="02-installation">2. Installation</a>).</p>
+<p>Notifications need the app opened over <strong>HTTPS</strong>, with a certificate the device trusts. On an
+<strong>iPhone or iPad</strong> (iOS 16.4 or later), the box's own certificate is enough — no domain
+needed — and only the app added to the Home Screen receives them:</p>
+<ol>
+<li>trust the box's certificate on the device
+(<a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → 7</a>);</li>
+<li>add the app to the Home Screen
+(<a href="03-first-run#8-install-it-as-an-app-recommended-on-phones">3. First run → 8</a>);</li>
+<li>open it from its icon, and sign in — it does not share Safari's sign-in;</li>
+<li>tap the gear → <strong>Notifications</strong>, then <strong>Allow</strong>: the test notification arrives.</li>
+</ol>
 <h2 id="services">Services</h2>
 <p>Monitor and control individual systemd services in real time.</p>
 <ul>

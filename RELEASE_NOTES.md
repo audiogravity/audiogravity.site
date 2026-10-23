@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.79 — 2026-10-23
+
 ### Notifications
 
 **Three new alerts.** Your phone is now told when a new version of Audiogravi<sup>ty</sup> is

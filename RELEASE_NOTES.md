@@ -23,6 +23,18 @@ missing its notification keys… — and the switch goes back off instead of pre
 activated, the device you activate a profile from is no longer told of its own change, and an
 update you have not installed yet is no longer announced again each time the box restarts.
 
+**Notifications now reach iPhones, iPads and Macs.** A box installed normally signed its
+notifications with a contact address Apple refuses, so they never arrived on an Apple device.
+Updating the box fixes it — devices already subscribed stay subscribed —, and a box with both
+Android and Apple devices now reaches both.
+
+### Sign-in
+
+**Face ID without a domain of your own.** Passkeys — Face ID, Touch ID — now work on your
+box's name, `https://<name>.local`, once its certificate is trusted on the phone: the installer
+sets them up. A domain of your own is now optional, for using the app from another network than
+the box's.
+
 ---
 
 ## 0.9.78 — 2026-10-22

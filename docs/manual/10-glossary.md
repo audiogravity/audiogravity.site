@@ -66,7 +66,7 @@ library and carries Qobuz, Tidal, HIGHRESAUDIO and internet radio.
 stream and hands it to the DAC, keeping the heavy DSP on another machine.
 
 **Passkey** — password-less login credential bound to a device (Face ID, Touch ID,
-hardware key) via the WebAuthn standard. Requires HTTPS on a real domain.
+hardware key) via the WebAuthn standard. Requires HTTPS and the box's name, never its address.
 
 **PCM** — Pulse-Code Modulation, the "normal" digital audio representation (CD,
 FLAC, streaming). Contrast with DSD.

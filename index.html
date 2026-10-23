@@ -1468,7 +1468,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="docs/manual/07-administration#licence" style="color:var(--warn-text)">7. Administration → Licence</a>).</div>
+                        <div class="faq-body-inner">The Starter Edition activates automatically — no action required. You keep full access to all Starter features indefinitely, for free. Pro features are locked until you purchase a licence (see <a href="docs/manual/07-administration#licence" style="color:var(--warn-text)">7. Administration → Licence</a>). Streaming tracks left in your queue no longer play, and the queue shows them with a padlock; the music on the box plays on. The table in <a href="docs/manual/01-introduction#editions" style="color:var(--warn-text)">1. Introduction → Editions</a> lists what each edition includes.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1528,7 +1528,7 @@
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. It then runs fullscreen with its own icon, just like a native app — and on iOS the installed app is what enables push notifications. Note: on iOS, only Safari supports PWA installation. See <a href="docs/manual/03-first-run#8-install-it-as-an-app-recommended-on-phones" style="color:var(--warn-text)">3. First run</a>.</div>
+                        <div class="faq-body-inner">Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser, no app store needed. <b>On iOS</b>: open Safari, navigate to your Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. <b>On Android</b>: open Chrome, tap the three-dot menu → Install app. Either way, trust the box's certificate on the phone first (<a href="docs/manual/03-first-run#7-trust-the-boxs-certificate-once-per-device" style="color:var(--warn-text)">3. First run → 7</a>). It then runs fullscreen with its own icon, just like a native app — and on iOS (16.4 or later) the installed app is what receives push notifications. See <a href="docs/manual/03-first-run#8-install-it-as-an-app-recommended-on-phones" style="color:var(--warn-text)">3. First run</a>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1650,18 +1650,19 @@
                         <code></code>
                         <code><span class="cmt"># Then open the address it prints — your streamer by name:</span></code>
                         <code><span class="url">https://&lt;your-streamer&gt;.local</span></code>
+                        <code><span class="cmt"># Trust its certificate once on each phone (it prints how):</span></code>
+                        <code><span class="cmt"># app icon, Face ID and notifications follow.</span></code>
                         <code></code>
-                        <code><span class="cmt"># No certificate to set up on your phone? Plain HTTP:</span></code>
+                        <code><span class="cmt"># Behind your own HTTPS reverse proxy? Plain HTTP:</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> | <span class="cmd">sudo bash</span> -s -- --http</code>
                     </div>
 
                     <div class="terminal" style="margin-top:18px">
-                        <code><span class="cmt"># Optional — passkeys (Face ID / Touch ID) + push.</span></code>
-                        <code><span class="cmt"># Only if AG is reachable via a public HTTPS domain:</span></code>
+                        <code><span class="cmt"># Optional — your own domain: Face ID from any network,</span></code>
+                        <code><span class="cmt"># and no certificate to trust on each phone:</span></code>
                         <code><span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="url">https://audiogravity.app/install.sh</span> \</code>
                         <code>  | <span class="cmd">sudo bash</span> -s -- \</code>
-                        <code>      --public-url <span class="url">https://your-domain</span> \</code>
-                        <code>      --vapid-email <span class="url">you@example.com</span></code>
+                        <code>      --public-url <span class="url">https://your-domain</span></code>
                     </div>
                 </div>
             </div>

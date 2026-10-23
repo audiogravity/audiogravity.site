@@ -583,11 +583,27 @@ to <strong>Auto</strong> as well — or both to a rate your DAC converts.</li>
 <li>Play something: as soon as the DAC receives a rate it converts, the hiss stops.</li>
 </ol>
 <h2 id="passkeys-or-push-notifications-unavailable">Passkeys or push notifications unavailable</h2>
-<p>Passkeys (WebAuthn) and Web Push need Audiogravi<sup>ty</sup> reachable over a real HTTPS
-<strong>domain</strong> — they do <strong>not</strong> work over a bare IP, and <code>--public-url</code> alone is not
-enough: you also need the domain, a valid certificate and a reverse proxy. The full
-recipe is in
-<a href="02-installation#getting-https--for-passkeys-and-push">2. Installation → Getting HTTPS</a>.</p>
+<p><strong>Push notifications</strong> need the app opened over HTTPS, with the box's certificate trusted
+on the device (<a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → Trust the box's certificate</a>),
+and, on an iPhone or iPad, the app added to the Home Screen
+(<a href="07-administration#push-notifications">7. Administration → Push notifications</a>).
+Turning <strong>Notifications</strong> on says what is missing.</p>
+<p><strong>Passkeys</strong> (WebAuthn) need the box's <strong>name</strong>, never its address. On an iPhone or iPad, open
+the app from <code>https://&lt;name&gt;.local</code>, from the box's network, with its certificate trusted on
+the device.
+The interface installer turns them on for that name when it runs on the box in HTTPS —
+unless another device of the network already answers to it, which the installer says. They
+work from that one address only: a domain of your own, a reverse proxy or an interface on
+another machine needs <code>--public-url</code> with the address you open (see
+<a href="02-installation#optional-flags-core-installer">2. Installation → Optional flags</a>). From
+another network, where the name does not open, a real domain is the way:
+<a href="02-installation#a-real-domain--optional">2. Installation → A real domain</a>.</p>
+<h2 id="notifications-never-reach-an-iphone-ipad-or-mac">Notifications never reach an iPhone, iPad or Mac</h2>
+<p>Update the box (<a href="08-updating">8. Updating</a>). Up to version 0.9.78, the box signed its
+notifications with a contact address Apple's notification service refuses, whatever
+<code>--vapid-email</code> said; the update replaces it — with Audiogravi<sup>ty</sup>'s own, or with
+yours if you pass <code>--vapid-email</code> to the installer — and the devices already subscribed stay
+subscribed.</p>
 <h2 id="version-mismatch-banner">Version-mismatch banner</h2>
 <p>The interface and core are on different versions — update the other component. See
 <a href="08-updating">8. Updating</a>.</p>

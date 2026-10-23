@@ -86,8 +86,9 @@ password <strong><code>admin123</code></strong>. Sign in with it, then <strong>c
 <strong>passkey</strong> on the device — Face ID, Touch ID, a fingerprint or a hardware key.
 Accept, and every later login becomes a tap: the login screen recognises the device
 and asks for the passkey directly, with <em>Use password instead</em> as the fallback.
-(Passkeys require Audiogravi<sup>ty</sup> to be reachable over a real HTTPS
-<strong>domain</strong> — see the <code>--public-url</code> flag in <a href="02-installation">2. Installation</a>.)</p>
+(Passkeys work from the box's <strong>name</strong>, never from its address — on an iPhone or iPad from
+<code>https://&lt;name&gt;.local</code>, once the box's certificate is trusted on the device: see
+<a href="#7-trust-the-boxs-certificate-once-per-device">7. Trust the box's certificate</a>.)</p>
 <p>More accounts — family members, a guest who can only control what is playing — can be
 added later from the <strong>Admin</strong> tab (see
 <a href="07-administration#users--access">7. Administration</a>).</p>
@@ -254,9 +255,9 @@ owning it; only HQPlayer Embedded's, the NAA's and Roon's files come with Pro.</
 <p>The sticky <strong>Now Playing bar</strong> sits above the footer whatever the tab, and the <strong>gear</strong> in the
 top bar opens <a href="07-administration#the-settings-panel">Settings</a>.</p>
 <h2 id="7-trust-the-boxs-certificate-once-per-device">7. Trust the box's certificate (once per device)</h2>
-<p>HTTPS is the recommended mode, and the one the installer offers first: passkeys and
-push notifications need it, and a browser treats an HTTPS page as a place it can install
-an app from. With it, the box created its own <strong>certificate authority</strong> and signed the
+<p>HTTPS is the recommended mode, and the one the installer offers first: push
+notifications need it, and a browser treats an HTTPS page as a place it can install an app
+from. With it, the box created its own <strong>certificate authority</strong> and signed the
 interface's certificate with it. Your browser does not know that authority, so the first
 visit shows a security warning.</p>
 <p><strong>On an iPhone or iPad, there is no way round it.</strong> Safari offers no way past that
@@ -310,40 +311,36 @@ else, and the address only works as written.</p>
 <blockquote>
 <p><strong>Why not simply a real certificate?</strong> Because a public authority will not certify a
 private address like <code>192.168.1.30</code>. If you would rather have a certificate every
-device trusts with no manual step — and you also want passkeys and push
-notifications, which a self-signed setup can never provide — give the box a domain
-name and a real certificate: see
-<a href="02-installation#getting-https--for-passkeys-and-push">2. Installation → Getting HTTPS</a>.</p>
+device trusts with no manual step — or the app, passkeys included, from another network
+than the box's — give the box a domain name and a real certificate: see
+<a href="02-installation#a-real-domain--optional">2. Installation → A real domain</a>.</p>
 </blockquote>
 <h2 id="8-install-it-as-an-app-recommended-on-phones">8. Install it as an app (recommended on phones)</h2>
 <p>Audiogravi<sup>ty</sup> is an installable web app (PWA): added to your home screen it
 opens <strong>fullscreen</strong>, in its own window, with the app icon. On a self-signed setup,
 do step 7 first — an untrusted certificate is what stops the app from installing.</p>
 <blockquote>
-<p><strong>Add it from the box's name, not from its address</strong> — <code>https://&lt;name&gt;.local</code>, the
+<p><strong>Phone on the box's network: add it from the box's name</strong> — <code>https://&lt;name&gt;.local</code>, the
 address the installer prints first and puts in its QR code (see
 <a href="02-installation#first-contact">2. Installation → First contact</a>). An installed app
-reopens for ever the address it was added from, with no address bar to correct it: the
-day the router
-hands the box a different address, an icon added on the address stops opening, while
-one added on the name follows the box. See
-<a href="09-troubleshooting#a-bookmark-or-the-home-screen-icon-opens-on-nothing">9. Troubleshooting</a>.</p>
+reopens for ever the address it was added from, with no address bar to correct it: one
+added on the name follows the box when the router hands it a different address.</p>
 </blockquote>
 <blockquote>
-<p><strong>Better still, give the box a fixed address.</strong> Most routers can reserve one for a
-given machine — look for <em>DHCP reservation</em>, <em>static lease</em> or <em>address reservation</em>
-in their settings. Then the address never changes, bookmarks and home-screen icons
-keep working whichever one you used, and the certificate is never reissued for a new
-address. Doing both — a reserved address <em>and</em> adding the app from the <code>.local</code> name —
-is belt and braces, and takes two minutes once.</p>
+<p><strong>Phone on another network</strong> — a separate Wi-Fi or VLAN for phones and computers: there,
+the name usually does not open (unless your router relays it between networks). Add the
+app from the box's address, <code>https://&lt;box-ip&gt;</code>, and <strong>reserve that address for the box</strong>
+in your router — look for <em>DHCP reservation</em>, <em>static lease</em> or <em>address reservation</em>: an
+icon added on an address stops opening the day the address changes. See
+<a href="09-troubleshooting#a-bookmark-or-the-home-screen-icon-opens-on-nothing">9. Troubleshooting</a>.</p>
 </blockquote>
 <ul>
 <li><strong>Android</strong> — open the site in Chrome and accept the <strong>Install app</strong> prompt (or
 browser menu → <em>Add to Home screen</em>). The installed app also honours the
 <a href="04-listening#portrait-lock">Portrait Lock</a> at the OS level.</li>
 <li><strong>iPhone / iPad</strong> — in Safari, tap <strong>Share → Add to Home Screen</strong>. On iOS this is
-also <strong>required for push notifications</strong>: Safari tabs can't receive them, the
-installed app can (see
+also <strong>required for push notifications</strong> (iOS 16.4 or later): Safari tabs can't receive
+them, the installed app can — turn them on from the app itself (see
 <a href="07-administration#push-notifications">7. Administration → Push notifications</a>).</li>
 <li><strong>Desktop</strong> — Chrome and Edge offer an install icon in the address bar; handy for
 a dedicated always-open controller window.</li>

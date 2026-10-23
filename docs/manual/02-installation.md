@@ -52,8 +52,8 @@ curl -fsSL https://audiogravity.app/install-ui.sh   | sudo bash
 
 | Flag | What it does |
 |------|--------------|
-| `--vapid-email you@example.com` | Contact address for Web Push notifications (the VAPID `sub`). Omitted → a placeholder is used and push stays basic. |
-| `--public-url https://your.domain` | Enables **passkeys** (WebAuthn) and derives the WebAuthn origin / RP ID. Passkeys need a real HTTPS **domain** — they do **not** work over a bare IP. |
+| `--vapid-email you@example.com` | The contact address push notifications are signed with, for the services that deliver them. Omitted → Audiogravi<sup>ty</sup>'s own, `push@audiogravity.app`. |
+| `--public-url https://your.domain` | The address **passkeys** (Face ID / Touch ID) work from — a name, never a bare IP. Needed only for a domain of your own, a reverse proxy or an interface on another machine: when the interface runs on the box in HTTPS, its installer sets the box's name — unless another device of the network already answers to it. |
 
 ```bash nocopy
 curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
@@ -69,10 +69,10 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 > complete, working configuration: it creates the security secrets (API key, session key)
 > and the Web Push keys for you, so the box is **fully functional out of the box** — you
 > can log in, control audio, browse the library and radio without touching any file. The
-> flags above are simply the recommended way to switch on the two **optional** features
-> (passkeys and a real push contact); skip them and everything else still works. To enable
-> them later, re-run the installer with the flag — or edit `/opt/audiogravity/core/.env`
-> and restart the core (`sudo systemctl restart ag-core-server`).
+> flags above are simply the recommended way to set the two **optional** things they
+> name (another address for passkeys, and your own push contact); skip them and everything
+> else still works. To set them later, re-run the installer with the flag: an update keeps
+> everything else.
 >
 > **Roon needs nothing here either**: install Roon Bridge from the Audio Software page and
 > authorize the extension once inside Roon. See
@@ -101,12 +101,15 @@ They exist from version **0.9.75**; an older installer refuses them. With one of
 uninstall the interface (`sudo /var/www/audiogravity-ui/uninstall.sh`), run its installer
 again without flags and answer **2** to the mode question.
 
-## Getting HTTPS — for passkeys and push
+## A real domain — optional
 
-Passkeys (WebAuthn) and push notifications both require the browser to see
-Audiogravi<sup>ty</sup> on a **real HTTPS domain** — a bare IP or a self-signed
-certificate won't do. The recipe that works well for a home box, without exposing
-anything to the internet:
+On an iPhone or iPad, passkeys and push notifications work without one: on the box's name,
+with its own certificate trusted on the device (see
+[3. First run → Trust the box's certificate](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)).
+A real domain adds two things: the app — passkeys included — from another network than the
+box's (a separate Wi-Fi or VLAN, where the box's name does not open), and no certificate to
+trust on each device — and it is the way on a device that refuses the box's own. The recipe that works well for a home box, without exposing anything
+to the internet:
 
 1. **A domain name** you control (any cheap domain works), with a record pointing at
    the box's **LAN address** — e.g. `ag.example.com → 192.168.1.30`. The name only
@@ -142,7 +145,7 @@ anything to the internet:
 
 4. **Tell Audiogravi<sup>ty</sup> its public origin** — re-run the core installer with
    `--public-url https://ag.example.com` (see the flags above). From then on, open
-   the app through that URL and the passkey / notification features light up.
+   the app through that URL: passkeys work from it, and only from it.
 
 Caddy users get steps 2–3 in two lines (`caddy` obtains and renews certificates
 automatically). This is the standard self-hosting pattern — any guide on "Let's

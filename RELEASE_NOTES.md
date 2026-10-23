@@ -7,7 +7,21 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Notifications
+
+**Three new alerts.** Your phone is now told when a new version of Audiogravi<sup>ty</sup> is
+ready to install — tap the notification and the Admin tab opens on the update banner —, when
+the box's disk is almost full, at 90 % and again at 95 %, and, on a Raspberry Pi, when its power
+supply is too weak, a classic cause of dropouts — at most once a day.
+
+**Turning notifications on proves they work.** The moment you turn **Notifications** on, the
+box sends your device a test notification. If they cannot be turned on, a message says why —
+blocked in your device's settings, the app not installed on your iPhone's Home Screen, the box
+missing its notification keys… — and the switch goes back off instead of pretending.
+
+**Fewer notifications you don't need.** Deactivating a profile no longer announces it as
+activated, the device you activate a profile from is no longer told of its own change, and an
+update you have not installed yet is no longer announced again each time the box restarts.
 
 ---
 

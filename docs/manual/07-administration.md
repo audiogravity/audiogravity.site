@@ -85,8 +85,34 @@ something needs attention — even with the app closed:
 
 - a monitored **service goes down**;
 - the **CPU reaches a critical temperature**;
+- the box's **disk is almost full** — at 90 %, then at 95 %; once space is freed below 85 %,
+  the next filling is reported again;
+- the **power supply is too weak** — on a Raspberry Pi, at most once a day; use a power
+  supply made for your Pi;
+- a **new version of Audiogravi<sup>ty</sup>** is available — tap the notification to open
+  the **Admin** tab, where the update banner installs it;
 - a **software package update** is available;
-- a **profile** is activated.
+- a **profile** is activated from another device — the device you activate it from is not
+  notified.
+
+A new version, a package update and a disk that stays full are each reported once — not
+again when the box restarts.
+
+Turning **Notifications** on sends this device a **test notification**: when it shows, this
+device receives the box's notifications. If they cannot be turned on, a message says why
+and the switch goes back off:
+
+- **Notifications blocked** — allow them for the site in the browser's settings (on an
+  iPhone or iPad: **Settings → Notifications → Audiogravi<sup>ty</sup>**), then turn the
+  switch on again;
+- **Notifications unavailable here** — open the app over HTTPS; on an iPhone or iPad, add
+  it to the Home Screen and open it from there (see
+  [3. First run](03-first-run.md#8-install-it-as-an-app-recommended-on-phones));
+- **The box cannot send notifications** — its notification keys are missing: reinstall
+  the core;
+- **Notifications not turned on** — the box did not answer, refused this device, or the
+  browser's own notification service failed it: the message says which;
+- **Test notification not delivered** — the message gives the reason, as the box got it.
 
 Like passkeys, push needs Audiogravi<sup>ty</sup> reachable over a real HTTPS **domain** —
 it does not work over a bare IP (see [2. Installation](02-installation.md)).

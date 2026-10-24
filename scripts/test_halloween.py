@@ -6,8 +6,8 @@ the address to preview it (index.html: the theme script in <head>, the loader at
 JavaScript in the page, run here under Node when Node is installed — as it is on the Landing
 workflow's runner — so that the date is checked as the browser reads it rather than as the
 source reads to a person. The rest is held by what the files say: a page that never fetches
-the decoration on another day, a flight for every bat, nothing over the text, nothing that
-moves for a visitor who asked for less motion.
+the decoration on another day, a flight for every bat, nothing over the text, a mist its own
+boxes do not cut, nothing that moves for a visitor who asked for less motion.
 
 Run with ``python3 -m pytest scripts/`` from the repository root.
 """
@@ -136,10 +136,32 @@ class TestTheDecoration:
         named = {int(n) for n in re.findall(r"animation-name:\s*hw-fly-b(\d)", CSS)}
         assert built == flights == named == set(range(1, 8))
 
+    def test_every_spider_has_its_drop_and_hangs_in_a_sky(self):
+        """In the panel's sky, which clips its thread and hides it for less motion."""
+        built = {int(n) for n in re.findall(r"\bspider\((\d)\)", JS)}
+        drops = {int(n) for n in re.findall(r"@keyframes hw-drop-(\d)", CSS)}
+        named = {int(n) for n in re.findall(r"animation-name:\s*hw-drop-(\d)", CSS)}
+        assert built == drops == named == {1, 2}
+        assert re.search(r"lay\(panel, 'hw-sky hw-sky-panel', spider\(1\)", JS)
+
+    def test_the_webs_stay_still_and_stay_for_less_motion(self):
+        """Laid outside the skies, which less motion hides: the hero's corner and the panel's."""
+        assert re.findall(r"lay\((\w+), 'hw-web [\w-]+', WEB\)", JS) == ["hero", "panel"]
+        assert not re.search(r"\.hw-web[\w-]*\s*\{[^}]*animation", CSS)
+
+    def test_the_carousel_controls_stay_above_it(self):
+        """The mist, the halos and the low bats pass behind the dots and the button."""
+        controls = re.search(r"\.halloween \.hero-controls \{([^}]*)\}", CSS).group(1)
+        assert re.search(r"position:\s*relative", controls)
+        above = int(re.search(r"z-index:\s*(\d+)", controls).group(1))
+        others = [int(z) for z in re.findall(r"z-index:\s*(\d+)", CSS.replace(controls, ""))]
+        assert others and above > max(others)
+
     def test_it_animates_only_what_the_browser_composites(self):
-        """transform and opacity: anything else would have the page painted at every frame."""
+        """transform and opacity: anything else would have the page painted at every frame. A
+        keyframe may carry its own timing, which is not a property it animates."""
         for name, body in re.findall(r"@keyframes ([\w-]+)\s*\{(.*?\})\s*\}", CSS, re.S):
-            props = set(re.findall(r"([a-z-]+)\s*:", body))
+            props = set(re.findall(r"([a-z-]+)\s*:", body)) - {"animation-timing-function"}
             assert props <= {"transform", "opacity"}, f"{name} animates {props - {'transform', 'opacity'}}"
 
     def test_it_gives_way_to_the_captions_at_their_own_width(self):
@@ -151,6 +173,22 @@ class TestTheDecoration:
         shown_from = int(hidden_below.group(1)) + 1
         gives_way = re.findall(r"@media\s*\(min-width:\s*(\d+)px\)", CSS)
         assert gives_way and set(gives_way) == {str(shown_from)}
+        # The spider on the phone's left hangs where the annotations are.
+        low = re.search(r"@media \(min-width: \d+px\) \{\s*\.hw-b3,(.*?)\{", CSS, re.S)
+        assert low and ".hw-s1" in low.group(1)
+
+    def test_no_mist_is_left_alone_where_the_pumpkins_give_way(self):
+        """Without the pumpkins on the phone's left, the mist there was a grey band running to
+        the panel's edge: from the same width, it starts at the phone, in both spellings of the
+        mask (Safari before 15.4 reads the prefixed one only)."""
+        block = re.search(r"@media \(min-width: \d+px\) \{\s*\.hw-pk-a,\s*\.hw-pk-f1 \{\s*display: none\s*\}(.*?)\n\}",
+                          CSS, re.S)
+        assert block, "the left pumpkins no longer give way to the captions"
+        fog = re.search(r"\.hw-fog \{(.*?)\}", block.group(1), re.S)
+        assert fog, "the mist stays on the left where the pumpkins are gone"
+        for prop in ("-webkit-mask-image", "mask-image"):
+            assert re.search(r"(^|[^-])%s: linear-gradient\(to right, transparent \d+%%, #000 \d+%%\)" % prop,
+                             fog.group(1), re.M), prop
 
     def test_less_motion_means_no_bats_and_no_flicker(self):
         block = re.search(r"@media \(prefers-reduced-motion: reduce\)\s*\{(.*?)\n\}", CSS, re.S).group(1)
@@ -164,3 +202,58 @@ class TestTheDecoration:
     def test_a_browser_without_container_units_gets_no_bats(self):
         """Rather than seven bats piled at the corner where an unread flight leaves them."""
         assert re.search(r"@supports not \(width: 1cqw\)\s*\{\s*\.hw-sky\s*\{\s*display:\s*none", CSS)
+
+
+def _mist_banks() -> dict:
+    """Each bank of mist in halloween.js: its viewBox, and the ellipses drawn in it.
+
+    Returns:
+        ``{"back" | "front": ([x, y, width, height], [{"cx", "cy", "rx", "ry"}, ...])}``.
+    """
+    banks = {}
+    for name, body in re.findall(r"var MIST_(BACK|FRONT) = (.*?);\n", JS, re.S):
+        view = [float(v) for v in re.search(r'viewBox="([^"]+)"', body).group(1).split()]
+        ellipses = [{k: float(v) for k, v in re.findall(r'\b(c[xy]|r[xy])="([\d.]+)"', e)}
+                    for e in re.findall(r"<ellipse [^>]*>", body)]
+        banks[name.lower()] = (view, ellipses)
+    return banks
+
+
+class TestTheMist:
+    """The mist is a blur, and an svg cuts what it draws at its own edges: a box smaller than
+    the blur cuts it straight, and the cut shows as an edge. It did, at both ends of the mist and
+    along its foot, until each box held the whole of its blur."""
+
+    def test_each_box_and_the_filter_hold_the_whole_blur(self):
+        """Three deviations past the banks, where a gaussian blur has faded out."""
+        flt = re.search(r'<filter id="hw-mist" x="(-?[\d.]+)%" y="(-?[\d.]+)%" width="([\d.]+)%" height="([\d.]+)%">'
+                        r'<feGaussianBlur stdDeviation="([\d.]+)" />', JS)
+        assert flt, "the mist's filter is gone or no longer a single blur"
+        fx, fy, fw, fh, sigma = (float(v) for v in flt.groups())
+        reach = 3 * sigma
+        banks = _mist_banks()
+        assert set(banks) == {"back", "front"}
+        for name, (view, ellipses) in banks.items():
+            x, y, w, h = view
+            left = min(e["cx"] - e["rx"] for e in ellipses)
+            right = max(e["cx"] + e["rx"] for e in ellipses)
+            top = min(e["cy"] - e["ry"] for e in ellipses)
+            bottom = max(e["cy"] + e["ry"] for e in ellipses)
+            assert x <= left - reach and right + reach <= x + w, f"{name}: the box cuts the blur across"
+            assert y <= top - reach and bottom + reach <= y + h, f"{name}: the box cuts the blur down"
+            # The filter's region is a share of the box the banks are drawn in.
+            bw, bh = right - left, bottom - top
+            assert left + bw * fx / 100 <= left - reach and right + reach <= left + bw * (fx + fw) / 100, name
+            assert top + bh * fy / 100 <= top - reach and bottom + reach <= top + bh * (fy + fh) / 100, name
+
+    def test_each_box_is_placed_from_its_viewbox(self):
+        """At the frame's scale, 760 units across 200% of the ground, its left edge at -50%: a
+        viewBox grown without its box would move the mist, or stretch it."""
+        for name, (view, _) in _mist_banks().items():
+            x, y, w, h = view
+            rule = re.search(r"^\.hw-fog-%s \{(.*?)\}" % name, CSS, re.S | re.M).group(1)
+            assert re.search(r"left: calc\(-50%% - 200%% \* %g / 760\)" % -x, rule), name
+            assert re.search(r"width: calc\(200%% \* %g / 760\)" % w, rule), name
+            assert re.search(r"aspect-ratio: %g / %g" % (w, h), rule), name
+            foot = re.search(r"bottom: calc\(-[\d.]+cqw - 200cqw \* \((\d+) - \d+\) / 760\)", rule)
+            assert foot and float(foot.group(1)) == y + h, f"{name}: the foot is not the viewBox's"

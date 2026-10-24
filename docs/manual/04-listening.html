@@ -156,14 +156,15 @@ opens the licence panel, and the track can still be removed.</li>
 </ul>
 <img loading="lazy" src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
 <p>Casting hands the audio over: what was playing on your DAC stops, and the speaker
-becomes the output. The hi-fi readout is absent here because a network speaker fetches
-the stream itself and reports no format back — what it receives is the file as the
-service serves it.</p>
+becomes the output. A network speaker reports no format back: the hi-fi readout shows
+what Audiogravi<sup>ty</sup> knows of the track it sent — codec, sample rate, bit depth,
+bitrate —, and a dash where it knows nothing.</p>
 <h2 id="the-live-hi-fi-readout">The live hi-fi readout</h2>
 <p>On every track change, Audiogravi<sup>ty</sup> shows the format of the track playing:</p>
 <ul>
-<li>The <strong>codec</strong> (FLAC, MP3, AAC, DSD…), <strong>sample rate</strong>, <strong>bit depth</strong> — <em>Lossy</em> for a compressed
-format such as MP3 or AAC, which has none — and instantaneous <strong>bitrate</strong>.</li>
+<li>The <strong>codec</strong> (FLAC, ALAC, MP3, AAC, DSD…), <strong>sample rate</strong>, <strong>bit depth</strong> — <em>Lossy</em> for a
+compressed format such as MP3 or AAC, which has none — and instantaneous <strong>bitrate</strong>. A
+cell shows a dash when nothing tells its value.</li>
 <li>For a DSD track, a couple of seconds in, how it reaches your DAC when that is not as
 DSD: <strong>DoP</strong>, or <strong>Converted to PCM</strong> — see
 <a href="06-outputs-engines#dsd-as-dsd-as-dop-or-converted-to-pcm">6. Outputs &amp; engines → DSD</a>.</li>

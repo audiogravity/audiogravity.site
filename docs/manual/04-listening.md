@@ -94,16 +94,17 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
 <img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
 
 Casting hands the audio over: what was playing on your DAC stops, and the speaker
-becomes the output. The hi-fi readout is absent here because a network speaker fetches
-the stream itself and reports no format back — what it receives is the file as the
-service serves it.
+becomes the output. A network speaker reports no format back: the hi-fi readout shows
+what Audiogravi<sup>ty</sup> knows of the track it sent — codec, sample rate, bit depth,
+bitrate —, and a dash where it knows nothing.
 
 ## The live hi-fi readout
 
 On every track change, Audiogravi<sup>ty</sup> shows the format of the track playing:
 
-- The **codec** (FLAC, MP3, AAC, DSD…), **sample rate**, **bit depth** — *Lossy* for a compressed
-  format such as MP3 or AAC, which has none — and instantaneous **bitrate**.
+- The **codec** (FLAC, ALAC, MP3, AAC, DSD…), **sample rate**, **bit depth** — *Lossy* for a
+  compressed format such as MP3 or AAC, which has none — and instantaneous **bitrate**. A
+  cell shows a dash when nothing tells its value.
 - For a DSD track, a couple of seconds in, how it reaches your DAC when that is not as
   DSD: **DoP**, or **Converted to PCM** — see
   [6. Outputs & engines → DSD](06-outputs-engines.md#dsd-as-dsd-as-dop-or-converted-to-pcm).

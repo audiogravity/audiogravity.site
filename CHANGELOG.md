@@ -9,6 +9,22 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core] Network renderer — the player shows the track's format.** FORMAT, SAMPLE and BITRATE stayed empty for whatever a network renderer played, and CODEC for anything but a DSD file: a renderer reports none of them. They are now filled as Audiogravi<sup>ty</sup> knows them — the header of the bytes the box relays to the renderer (Qobuz, HIGHRESAUDIO), Tidal's stream description, the file's own header for a library or media-server file (FLAC, WAV, AIFF, DSF, MP4), a station's catalogue bitrate —, read once per track in the background, at no request of its own for a streaming service. A value nothing tells shows a dash.
+
+### Changed
+- **[manual] Listening → casting to a network speaker**: the hi-fi readout shows what Audiogravi<sup>ty</sup> knows of the track sent, where it said the readout was absent; a cell nothing fills shows a dash.
+- **[ui] `API.md` documents `format.codec`**: none when nothing tells it, read a moment after an `.m4a`/`.mp4` starts (a further `state` event), and filled for a network renderer, with its `format`, `sample_rate` and `bitrate`.
+
+### Fixed
+- **[core] HIGHRESAUDIO tracks show their codec.** The CODEC cell stayed empty: MPD plays the box's relay, whose address names no format. The relay now records the codec of the file the service serves.
+- **[core] Qobuz shows the codec it serves**, read in the address Qobuz resolves for the track: the relay's address named none, and every track read FLAC — an MP3 included, on a box set to MP3.
+- **[core] An `.m4a` or `.mp4` file shows ALAC or AAC, as its header says.** Both were shown as ALAC: an AAC — an iTunes Store purchase — passed for lossless. Read once per track, from the box's disk or the media server.
+- **[core] Roon — the CODEC cell reads "—" when Roon names no codec**, no longer "Roon".
+- **[core] A file whose codec is not known yet is no longer shown as "PCM"** — an MP4 the moment its header is read, or an extension Audiogravi<sup>ty</sup> does not know.
+- **[core] DSD played on a network renderer no longer brings the box's DAC to full volume.** The DSD protection took the one card playing on the box — AirPlay's, say — and set it to 100 % while the DSD went out to the speaker.
+- **[core] A library file cast to a network renderer is recognised by its extension**, which a signature follows in its address: a DSD file there was not seen as DSD.
+
 ## [0.9.79] - 2026-10-23
 
 ### Added

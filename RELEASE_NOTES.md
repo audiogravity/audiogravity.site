@@ -7,7 +7,20 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Player
+
+**The codec, as each track really is.** HIGHRESAUDIO tracks now show FLAC instead of nothing,
+Qobuz shows what Qobuz serves — an MP3 is no longer called FLAC —, and an `.m4a` file is read
+to tell ALAC from AAC, so an iTunes Store purchase no longer passes for lossless. When nothing
+tells the codec, the cell shows a dash rather than "PCM" or "Roon".
+
+**A network speaker shows the format too.** Playing to a network speaker, the player now fills
+the format, sample rate and bitrate — 24 bit, 96 kHz and the track's real bitrate, say —, where
+it left them empty.
+
+**DSD to a network speaker leaves your DAC alone.** While a network speaker played DSD, the box
+could set its own DAC to full volume if something else played on it — AirPlay, say. It no
+longer does.
 
 ---
 

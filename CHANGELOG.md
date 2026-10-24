@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.80] - 2026-10-24
+
 ### Added
 - **[core] Network renderer — the player shows the track's format.** FORMAT, SAMPLE and BITRATE stayed empty for whatever a network renderer played, and CODEC for anything but a DSD file: a renderer reports none of them. They are now filled as Audiogravi<sup>ty</sup> knows them — the header of the bytes the box relays to the renderer (Qobuz, HIGHRESAUDIO), Tidal's stream description, the file's own header for a library or media-server file (FLAC, WAV, AIFF, DSF, MP4), a station's catalogue bitrate —, read once per track in the background, at no request of its own for a streaming service. A value nothing tells shows a dash.
 

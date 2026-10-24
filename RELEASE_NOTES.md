@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.80 — 2026-10-24
+
 ### Player
 
 **The codec, as each track really is.** HIGHRESAUDIO tracks now show FLAC instead of nothing,

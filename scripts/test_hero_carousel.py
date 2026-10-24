@@ -17,16 +17,32 @@ CAROUSEL = PAGE[PAGE.index('<div class="hero-carousel">'):PAGE.index('<div class
 SLIDES = re.findall(r'<picture class="hero-screenshot[^"]*">(.*?)</picture>', CAROUSEL, re.S)
 
 
+def _one_screen_in_both_themes(picture: str) -> None:
+    """A <picture> of the app: its dark capture marked for the theme script, its light one in
+    the <img>, of the same screen, both on the site."""
+    dark = re.search(r'<source srcset="(assets/pics/[^"]+)-black\.webp" media="\(prefers-color-scheme: dark\)"'
+                     r' data-dark>', picture)
+    light = re.search(r'<img [^>]*src="(assets/pics/[^"]+)-light\.webp"', picture)
+    assert dark and light, picture
+    assert dark.group(1) == light.group(1), f"two screens in one picture: {dark.group(1)} / {light.group(1)}"
+    for theme in ("black", "light"):
+        assert (ROOT / f"{dark.group(1)}-{theme}.webp").is_file(), f"{dark.group(1)}-{theme}.webp"
+
+
 def test_every_slide_has_a_light_and_a_dark_capture_of_one_screen():
     assert len(SLIDES) > 1
     for slide in SLIDES:
-        dark = re.search(r'<source srcset="(assets/pics/[^"]+)-black\.webp" media="\(prefers-color-scheme: dark\)">',
-                         slide)
-        light = re.search(r'<img [^>]*src="(assets/pics/[^"]+)-light\.webp"', slide)
-        assert dark and light, slide
-        assert dark.group(1) == light.group(1), f"two screens in one slide: {dark.group(1)} / {light.group(1)}"
-        for theme in ("black", "light"):
-            assert (ROOT / f"{dark.group(1)}-{theme}.webp").is_file(), f"{dark.group(1)}-{theme}.webp"
+        _one_screen_in_both_themes(slide)
+
+
+def test_every_capture_of_the_app_on_the_page_follows_the_theme():
+    """The carousel's and the others — the passkey login further down: a dark capture the theme
+    script cannot find would show the system's theme against the visitor's choice."""
+    pictures = re.findall(r"<picture[^>]*>(.*?)</picture>", PAGE, re.S)
+    assert len(pictures) > len(SLIDES)
+    for picture in pictures:
+        _one_screen_in_both_themes(picture)
+    assert PAGE.count('media="(prefers-color-scheme: dark)"') == len(re.findall(r"<source [^>]* data-dark>", PAGE))
 
 
 def test_every_capture_says_what_it_shows_and_holds_its_place():
@@ -69,6 +85,8 @@ def test_the_captures_follow_a_theme_chosen_with_the_button():
     script = re.findall(r"<script>(.*?)</script>", after, re.S)
     assert len(script) == 1, "the theme script is no longer right after the slides"
     script = script[0]
-    assert "querySelectorAll('.hero-screenshot source')" in script
+    assert "querySelectorAll('source[data-dark]')" in script
+    # The captures further down the page do not exist yet when it first runs.
+    assert "addEventListener('DOMContentLoaded', follow)" in script
     assert "attributeFilter: ['data-theme']" in script
     assert "'all'" in script and "'not all'" in script and "'(prefers-color-scheme: dark)'" in script

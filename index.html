@@ -69,7 +69,7 @@
          Both come from this site, like every font on it (the FONTS block of style.css). -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/style.css?v=61ac599701">
+    <link rel="stylesheet" href="assets/style.css?v=82615dfb71">
     <script>
         /* Apply saved theme before first paint to avoid flash */
         (function () {
@@ -188,41 +188,100 @@
                 <!-- Opening slide — the only one every visitor is guaranteed to see, so which
                      record is on screen is an editorial choice, not whatever happened to be
                      playing when the capture was taken. HQPlayer opens; HIGHRESAUDIO, Qobuz,
-                     Tidal and the radio follow. ag-player-black.webp, which once opened, is set
-                     aside and not deleted: a reader pointed out that its sleeve reads as the
-                     opposite of what a listener is after, which is a fair thing to say about a shop
-                     window.
+                     Tidal and the radio follow, then the library, then the box itself.
+                     ag-player-black.webp, which once opened, is set aside and not deleted: a
+                     reader pointed out that its sleeve reads as the opposite of what a listener is
+                     after, which is a fair thing to say about a shop window.
+                     Every screen is captured twice, in the app's light and dark themes, and shows
+                     in the page's: the <picture> takes the dark capture when the system is dark,
+                     and main.js points it at the theme chosen with the button when there is one.
+                     The two captures of a screen share its layout, so its caption and annotations
+                     serve both.
                      Captions and annotations travel WITH their capture, never with the slot: --y
                      is measured against the capture itself, so moving a slide changes nothing but
                      the data-slide number and which one carries `active`. -->
-                <img src="assets/pics/ag-player-hqplayer.webp" alt="Player, DSD through HQPlayer" class="hero-screenshot active">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-hra.webp" alt="Player, playing from HIGHRESAUDIO" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-qobuz.webp" alt="Player, playing from Qobuz" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-tidal.webp" alt="Player, playing from Tidal" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-radio.webp" alt="Player, internet radio" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-library-black.webp" alt="Library, dark theme" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-library.webp" alt="Library" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-pipeline.webp" alt="Signal path" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-player-source.webp" alt="Player, choosing a source" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-services.webp" alt="Services" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-profiles-black.webp" alt="Profiles, dark theme" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-audioconfig.webp" alt="Audio configuration" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-performence-black.webp" alt="Performance tuning" class="hero-screenshot">
-                <img loading="lazy" decoding="async" src="assets/pics/ag-settings.webp" alt="Settings" class="hero-screenshot">
+                <picture class="hero-screenshot active">
+                    <source srcset="assets/pics/ag-player-hqplayer-black.webp" media="(prefers-color-scheme: dark)">
+                    <img src="assets/pics/ag-player-hqplayer-light.webp" alt="Player, DSD through HQPlayer" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-player-hra-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-player-hra-light.webp" alt="Player, playing from HIGHRESAUDIO" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-player-qobuz-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-player-qobuz-light.webp" alt="Player, playing from Qobuz" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-player-tidal-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-player-tidal-light.webp" alt="Player, playing from Tidal" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-player-radio-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-player-radio-light.webp" alt="Player, internet radio" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-library-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-library-light.webp" alt="Library, a catalogue browsed by genre" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-stat-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-stat-light.webp" alt="Library, listening statistics" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-pipeline-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-pipeline-light.webp" alt="Signal path" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-player-source-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-player-source-light.webp" alt="Sources: streaming services and HQPlayer" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-menu-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-menu-light.webp" alt="The app's menu" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-services-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-services-light.webp" alt="Services" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-services-graph-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-services-graph-light.webp" alt="A service's network activity" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-profiles-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-profiles-light.webp" alt="Profiles" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-audioconfig-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-audioconfig-light.webp" alt="Audio configuration" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-audiosoftware-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-audiosoftware-light.webp" alt="Audio software" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-performence-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-performence-light.webp" alt="Performance tuning" width="760" height="1497">
+                </picture>
+                <picture class="hero-screenshot">
+                    <source srcset="assets/pics/ag-settings-black.webp" media="(prefers-color-scheme: dark)">
+                    <img loading="lazy" decoding="async" src="assets/pics/ag-settings-light.webp" alt="Settings" width="760" height="1497">
+                </picture>
 
                 <!-- Per-slide caption and annotations. Positioned against .hero-carousel,
                      which is exactly the phone's box, so they follow the device instead of
                      the column — the capture never moves or shrinks to make room. --y is
                      the height of the element each annotation names, as a share of the
-                     capture. -->
+                     capture. Measured on the captures of 2026-10-24. -->
                 <div class="hero-caption active" data-slide="0">
                     <span class="k">HQPlayer</span>
                     <span class="t">HQPlayer takes the stream, and Audiogravi<sup>ty</sup> still
                         reports what comes out of it — here DSD128, and the DAC receiving it.</span>
                 </div>
-                <span class="hero-note active" data-slide="0" style="--y:18.1%">Fed over UPnP</span>
-                <span class="hero-note active" data-slide="0" style="--y:55.1%">Through HQPlayer</span>
-                <span class="hero-note active" data-slide="0" style="--y:67.7%">What comes out</span>
+                <span class="hero-note active" data-slide="0" style="--y:16.6%">Fed over UPnP</span>
+                <span class="hero-note active" data-slide="0" style="--y:53.6%">Through HQPlayer</span>
+                <span class="hero-note active" data-slide="0" style="--y:63.8%">What comes out</span>
 
                 <div class="hero-caption" data-slide="1">
                     <span class="k">HIGHRESAUDIO</span>
@@ -268,91 +327,145 @@
                     <span class="t">Every service browsed the same way — genres, playlists, new
                         releases — from one screen.</span>
                 </div>
-                <span class="hero-note" data-slide="5" style="--y:25.3%">Their catalogue</span>
-                <span class="hero-note" data-slide="5" style="--y:36%">By sub-genre</span>
-                <span class="hero-note" data-slide="5" style="--y:50.3%">Add in one tap</span>
+                <span class="hero-note" data-slide="5" style="--y:24.2%">Their catalogue</span>
+                <span class="hero-note" data-slide="5" style="--y:35.5%">By sub-genre</span>
+                <span class="hero-note" data-slide="5" style="--y:54.9%">Add in one tap</span>
 
-                <!-- Browse tab again, as on slide 5 — checked on the capture's tab bar, not on the
-                     alt, which says "Library". What is its own here is the transport bar: this is
-                     the only browsing screen with something playing underneath. -->
                 <div class="hero-caption" data-slide="6">
-                    <span class="k">Always playing</span>
-                    <span class="t">Browse Qobuz's new releases while a station keeps playing — the
-                        transport never leaves the bottom of the screen.</span>
+                    <span class="k">Listening</span>
+                    <span class="t">Your listening, drawn: the hours played day by day, the times of
+                        the week you listen, and what each source plays.</span>
                 </div>
-                <span class="hero-note" data-slide="6" style="--y:27.8%">New releases</span>
-                <span class="hero-note" data-slide="6" style="--y:42.1%">Add to the queue</span>
-                <span class="hero-note" data-slide="6" style="--y:91.3%">Playing throughout</span>
+                <span class="hero-note" data-slide="6" style="--y:37.7%">Day by day</span>
+                <span class="hero-note" data-slide="6" style="--y:63.7%">Hour by hour</span>
+                <span class="hero-note" data-slide="6" style="--y:88.8%">By source</span>
 
                 <div class="hero-caption" data-slide="7">
                     <span class="k">Signal path</span>
                     <span class="t">The whole chain drawn out — streamer, DAC, amplifier, speakers —
                         with the link between each one named.</span>
                 </div>
-                <span class="hero-note" data-slide="7" style="--y:45.2%">The active output</span>
-                <span class="hero-note" data-slide="7" style="--y:59.5%">Every box, in order</span>
-                <span class="hero-note" data-slide="7" style="--y:76.2%">To the speakers</span>
+                <span class="hero-note" data-slide="7" style="--y:47%">The active output</span>
+                <span class="hero-note" data-slide="7" style="--y:60.5%">Every box, in order</span>
+                <span class="hero-note" data-slide="7" style="--y:77.1%">To the speakers</span>
 
                 <div class="hero-caption" data-slide="8">
                     <span class="k">Sources</span>
-                    <span class="t">Your library and your subscriptions, connected once and shown as
-                        they are — online, connected, or not.</span>
+                    <span class="t">Your streaming services and HQPlayer, connected once and shown as
+                        they are — connected or offline — with HQPlayer's own volume at hand.</span>
                 </div>
-                <span class="hero-note" data-slide="8" style="--y:27%">Your own files</span>
-                <span class="hero-note" data-slide="8" style="--y:55.1%">All connected</span>
-                <span class="hero-note" data-slide="8" style="--y:83.3%">HQPlayer too</span>
+                <span class="hero-note" data-slide="8" style="--y:30%">Signed in once</span>
+                <span class="hero-note" data-slide="8" style="--y:44.3%">All connected</span>
+                <span class="hero-note" data-slide="8" style="--y:75.5%">HQPlayer too</span>
+                <span class="hero-note" data-slide="8" style="--y:82%">Its own volume</span>
 
+                <!-- The figures beside three entries are the core's /stats/tabs: profiles active
+                     out of all, services running out of those configured, updates waiting out of
+                     the audio software installed. -->
                 <div class="hero-caption" data-slide="9">
+                    <span class="k">One menu</span>
+                    <span class="t">Profiles, services, audio software, tuning, the signal path, your
+                        library: the whole box in one menu — with what is on, and any update
+                        waiting, counted beside it.</span>
+                </div>
+                <span class="hero-note" data-slide="9" style="--y:24.8%">On, out of all</span>
+                <span class="hero-note" data-slide="9" style="--y:34.7%">An update waiting</span>
+                <span class="hero-note" data-slide="9" style="--y:69.4%">Your library too</span>
+
+                <div class="hero-caption" data-slide="10">
                     <span class="k">Services</span>
                     <span class="t">Every audio service on the box, what it is using, and the buttons
                         to stop or restart it.</span>
                 </div>
-                <span class="hero-note" data-slide="9" style="--y:37.8%">Up or down</span>
-                <span class="hero-note" data-slide="9" style="--y:57.9%">What it costs</span>
-                <span class="hero-note" data-slide="9" style="--y:66.1%">Start, stop, on boot</span>
+                <span class="hero-note" data-slide="10" style="--y:42.7%">Up or down</span>
+                <span class="hero-note" data-slide="10" style="--y:58%">What it costs</span>
+                <span class="hero-note" data-slide="10" style="--y:66.5%">Start, stop, on boot</span>
 
-                <div class="hero-caption" data-slide="10">
+                <div class="hero-caption" data-slide="11">
+                    <span class="k">Activity</span>
+                    <span class="t">Open a service and its network traffic is drawn as it flows, in
+                        and out — beside its share of processor, memory and disk.</span>
+                </div>
+                <span class="hero-note" data-slide="11" style="--y:33%">Its share</span>
+                <span class="hero-note" data-slide="11" style="--y:53.2%">What comes in</span>
+                <span class="hero-note" data-slide="11" style="--y:65.9%">What goes out</span>
+
+                <div class="hero-caption" data-slide="12">
                     <span class="k">Profiles</span>
                     <span class="t">One tap swaps the whole setup: what starts, what stops, which
                         output — and a log of every switch.</span>
                 </div>
-                <span class="hero-note" data-slide="10" style="--y:28.3%">One per use</span>
-                <span class="hero-note" data-slide="10" style="--y:36.7%">Starts and stops</span>
-                <span class="hero-note" data-slide="10" style="--y:77.6%">What ran, and when</span>
+                <span class="hero-note" data-slide="12" style="--y:28%">One per use</span>
+                <span class="hero-note" data-slide="12" style="--y:35.4%">Starts and stops</span>
+                <span class="hero-note" data-slide="12" style="--y:76.2%">Up or idle</span>
 
-                <div class="hero-caption" data-slide="11">
+                <div class="hero-caption" data-slide="13">
                     <span class="k">Configuration</span>
                     <span class="t">The real configuration files, editable in place — with the output
                         each service actually uses shown beside it.</span>
                 </div>
-                <span class="hero-note" data-slide="11" style="--y:29.9%">The real file</span>
-                <span class="hero-note" data-slide="11" style="--y:52.8%">Flagged if critical</span>
-                <span class="hero-note" data-slide="11" style="--y:67.4%">Its real device</span>
+                <span class="hero-note" data-slide="13" style="--y:27.5%">The real file</span>
+                <span class="hero-note" data-slide="13" style="--y:52%">Flagged if critical</span>
+                <span class="hero-note" data-slide="13" style="--y:66.5%">Its real device</span>
 
-                <div class="hero-caption" data-slide="12">
+                <div class="hero-caption" data-slide="14">
+                    <span class="k">Software</span>
+                    <span class="t">The audio software the box runs, each with its version and the
+                        newer one when there is — updated, or removed, from this screen.</span>
+                </div>
+                <span class="hero-note" data-slide="14" style="--y:21.9%">Check for updates</span>
+                <span class="hero-note" data-slide="14" style="--y:46.6%">What is newer</span>
+                <span class="hero-note" data-slide="14" style="--y:51.5%">Update or remove</span>
+
+                <!-- The dark capture of this screen sits 1.9% higher than the light one (the page
+                     was scrolled further): its annotations are halfway between the two, a few
+                     pixels off in each theme until the dark capture is taken again. -->
+                <div class="hero-caption" data-slide="15">
                     <span class="k">Tuning</span>
                     <span class="t">Jitter measured over time, and the scheduling priority of every
                         process that touches the audio.</span>
                 </div>
-                <span class="hero-note" data-slide="12" style="--y:32.1%">Jitter, measured</span>
-                <span class="hero-note" data-slide="12" style="--y:64.1%">RT priorities</span>
-                <span class="hero-note" data-slide="12" style="--y:74.8%">Set per process</span>
+                <span class="hero-note" data-slide="15" style="--y:26.2%">Jitter, measured</span>
+                <span class="hero-note" data-slide="15" style="--y:57.4%">RT priorities</span>
+                <span class="hero-note" data-slide="15" style="--y:71.5%">Set per process</span>
 
-                <!-- BACKLOG: this capture comes from 0.9.45. It shows Compact mode and the configuration
-                     export and import, all since removed, and not the Top Bar Metrics switch. The caption
-                     already says what the panel holds now, and the note that offered the export is gone.
-                     Retake the capture, then measure the two notes' --y on it: audiogravity.ops/BACKLOG.md,
-                     "La landing montre une app qui a changé". -->
-                <div class="hero-caption" data-slide="13">
+                <div class="hero-caption" data-slide="16">
                     <span class="k">Settings</span>
                     <span class="t">Pick a theme, light or dark, get notified on this device, and sign
                         in with Face ID instead of a password.</span>
                 </div>
-                <span class="hero-note" data-slide="13" style="--y:43.1%">Light or dark</span>
-                <span class="hero-note" data-slide="13" style="--y:62.7%">Face ID</span>
+                <span class="hero-note" data-slide="16" style="--y:33.2%">Light or dark</span>
+                <span class="hero-note" data-slide="16" style="--y:38.1%">Notified here</span>
+                <span class="hero-note" data-slide="16" style="--y:55.6%">Face ID</span>
             </div>
+            <script>
+                /* The captures follow the page's theme. Each slide's <picture> holds its dark
+                   capture behind a prefers-color-scheme query, which the browser answers on its
+                   own; a theme chosen with the button (data-theme on <html>, set in <head> and by
+                   theme-toggle.js) overrides the system, so the query is pointed at that choice,
+                   and again whenever it changes. Here, right after the slides, rather than in
+                   main.js at the end of the page: by then the browser has drawn the hero once and
+                   asked for the system's captures, and a visitor who chose the other theme
+                   downloaded all seventeen twice (Chromium, 2026-10-24). */
+                (function () {
+                    const sources = document.querySelectorAll('.hero-screenshot source');
+                    const SYSTEM = '(prefers-color-scheme: dark)';
+                    const follow = function () {
+                        const theme = document.documentElement.getAttribute('data-theme');
+                        const media = theme === 'dark' ? 'all' : theme === 'light' ? 'not all' : SYSTEM;
+                        sources.forEach(function (s) {
+                            if (s.media !== media) s.media = media;
+                        });
+                    };
+                    follow();
+                    new MutationObserver(follow).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+                })();
+            </script>
             <div class="hero-dots">
                 <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>

@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[site] Each guide says how long it takes to read, and the guides are numbered.** Under a guide's title, a line gives its number and its reading time — *Guide 10 · 5 min read* —, and the list of guides ends each entry with its time: the words a reader sees, at 238 words a minute, the mean silent reading speed for non-fiction in English (Brysbaert, 2019), rounded up — 3 to 8 minutes today. The sidebar, the phone's menu and the list number the guides by their place in the list; a guide's address carries no number, so a guide added in the middle renumbers the list without breaking a link.
+
+### Changed
+- **[site] The guides' sidebar gives their titles room.** At 240px a guide's title — a whole question — broke onto up to four lines, at the browser's tightest line spacing, and the list read as one block. The column now takes what its titles need, up to 320px, and the lines of a title are spaced a little, less than two titles: three lines at most, the guide's text keeping its width (Chromium, 1440 × 900). The manual's chapters keep their 240px column; their numbers now sit on their title's line, where they sat a little high.
+- **[site] The guides no longer carry the trademark notice**: it speaks for the app, which the manual documents and a guide does not. The manual's chapters keep it.
+
 ## [0.9.80] - 2026-10-24
 
 ### Added

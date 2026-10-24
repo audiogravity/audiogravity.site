@@ -45,6 +45,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import math
 import re
 import sys
 from dataclasses import dataclass
@@ -74,11 +75,15 @@ class Section:
         crumb: What the top bar calls it.
         name: What a browser tab calls it, after the page's own title.
         nav_label: The sidebar's name, for assistive technology.
-        numbered: Whether the sidebar shows each page's number. A chapter has one, taken from
-            its id; a guide is named by its subject alone, and its address carries no number
-            that a reordering would break.
+        numbered: Whether the sidebar shows each page's number: a chapter's is taken from its
+            id, a guide's is its rank in the list (page_number()). A guide's address carries no
+            number, so a reordering renumbers the list without breaking a link.
         menu: What the page list is called on a phone, where it is a menu closed until asked
             for.
+        notice: Whether its pages carry the trademark notice in their footer. It speaks for the
+            product — Audiogravity interoperating with these brands' software as a client —,
+            which a chapter documents and a guide does not: a guide answers a question for
+            whoever asks it.
     """
 
     path: str
@@ -87,12 +92,14 @@ class Section:
     nav_label: str
     numbered: bool
     menu: str
+    notice: bool
 
 
 MANUAL = Section("docs/manual/", "User manual", "Audiogravity manual", "Manual chapters", True,
-                 "All chapters")
+                 "All chapters", notice=True)
 #: A guide's tab reads "<its question> — Audiogravity": the question is what was searched for.
-GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", False, "All guides")
+GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", True, "All guides",
+                 notice=False)
 
 #: The chevron of the phone's menu (Lucide: chevron-down); the stylesheet turns it when open.
 CHEVRON = ('<svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">'
@@ -161,10 +168,11 @@ def parse_toc(readme: str) -> list[tuple[str, str]]:
     return out
 
 
-#: Matches a guide in the guides' README, one line each:
-#: ``- [HQPlayer Embedded on a Raspberry Pi 5](hqplayer-embedded-raspberry-pi-5.md) — what it answers``.
+#: Matches a guide in the guides' README, one line each, numbered like the manual's contents (a
+#: bullet is read too):
+#: ``1. [HQPlayer Embedded on a Raspberry Pi 5](hqplayer-embedded-raspberry-pi-5.md) — what it answers``.
 GUIDE_LINE = re.compile(
-    r"^\s*[-*]\s*\[(?P<label>.+?)\]\((?P<id>[a-z0-9-]+)\.md\)\s*—\s*(?P<summary>\S.*?)\s*$")
+    r"^\s*(?:[-*]|\d+\.)\s*\[(?P<label>.+?)\]\((?P<id>[a-z0-9-]+)\.md\)\s*—\s*(?P<summary>\S.*?)\s*$")
 
 
 def parse_guides(readme: str) -> list[tuple[str, str, str]]:
@@ -302,6 +310,21 @@ def read_version() -> str:
     return m.group(1)
 
 
+def under_title(rendered: str, line: str) -> str:
+    """Place a line just under a page's title, or at its top when it has none.
+
+    Args:
+        rendered: A page body.
+        line: The HTML to place.
+
+    Returns:
+        The body with the line inserted.
+    """
+    if "</h1>" in rendered:
+        return rendered.replace("</h1>", f"</h1>\n{line}", 1)
+    return line + rendered
+
+
 def stamp_version(rendered: str, version: str) -> str:
     """State which release the manual describes, once, on the contents page.
 
@@ -318,10 +341,66 @@ def stamp_version(rendered: str, version: str) -> str:
     """
     # The "v" is presentation and belongs here, not in read_version: the badge carries a bare
     # number, and the landing's footer writes it as v0.9.31 — the manual reads the same way.
-    line = f'<p class="man-version">Describes {BRAND} v{html.escape(version)}</p>'
-    if "</h1>" in rendered:
-        return rendered.replace("</h1>", f"</h1>\n{line}", 1)
-    return line + rendered
+    return under_title(rendered, f'<p class="man-version">Describes {BRAND} v{html.escape(version)}</p>')
+
+
+#: Silent reading speed for non-fiction in English, in words per minute: the mean of Brysbaert's
+#: meta-analysis ("How many words do we read per minute? A review and meta-analysis of reading
+#: rate", Journal of Memory and Language 109, 2019).
+READING_WPM = 238
+
+
+def reading_minutes(rendered: str) -> int:
+    """How long a page takes to read, in whole minutes.
+
+    Args:
+        rendered: The page's body HTML.
+
+    Returns:
+        Its words as a reader sees them — tags and the images' alternative text left out —
+        over READING_WPM, rounded up so that a reader does not overrun it; one at the least.
+    """
+    # A tag becomes a space, not nothing: the cells of a table, written side by side, would
+    # otherwise run into one word.
+    text = html.unescape(re.sub(r"<[^>]+>", " ", rendered))
+    return max(1, math.ceil(len(re.findall(r"\w+(?:['’-]\w+)*", text)) / READING_WPM))
+
+
+def stamp_guide_meta(rendered: str, rank: int, minutes: int) -> str:
+    """Say under a guide's title which one it is in the list, and how long it takes to read.
+
+    Args:
+        rendered: The guide's body.
+        rank: Its number, as the sidebar shows it.
+        minutes: Its reading time, from reading_minutes().
+
+    Returns:
+        The body with the line under its title.
+    """
+    return under_title(rendered, f'<p class="man-guide-meta">Guide {rank} · {minutes} min read</p>')
+
+
+#: A guide's entry in the rendered contents list: the item, opened by the link to its page.
+GUIDE_ITEM = re.compile(r'(?P<item><li><a href="(?P<id>[a-z0-9-]+)">.*?)</li>', re.S)
+
+
+def stamp_reading_times(rendered: str, minutes: dict[str, int]) -> str:
+    """End each guide's entry in the contents list with its reading time.
+
+    Args:
+        rendered: The contents page body.
+        minutes: Each guide's reading time, by id.
+
+    Returns:
+        The body, every entry that opens on a link to a guide carrying its time.
+    """
+    def stamp(m: re.Match[str]) -> str:
+        time = minutes.get(m.group("id"))
+        if time is None:
+            return m.group(0)
+        return f'{m.group("item")} <span class="man-guide-time">{time} min read</span></li>'
+
+    return GUIDE_ITEM.sub(stamp, rendered)
 
 
 def lazy_load_images(rendered: str) -> str:
@@ -702,6 +781,19 @@ def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None) -> str:
             "</urlset>\n")
 
 
+def page_number(page_id: str, rank: int) -> int:
+    """The number a page is shown with in the sidebar.
+
+    Args:
+        page_id: The page's id: a chapter's starts with its number, a guide's carries none.
+        rank: Its place in the list, counted from 1.
+
+    Returns:
+        The chapter's own number, or the guide's rank.
+    """
+    return int(page_id[:2]) if page_id[:2].isdigit() else rank
+
+
 def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonical: str,
          section: Section = MANUAL, description: str | None = None) -> str:
     """Assemble one page of the manual or of the guides.
@@ -739,17 +831,18 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
             # Assistive technology reads aria-current; the class only paints a border.
             cur=' aria-current="page"' if cid == active else "",
             cid=cid,
-            n=f'<span class="man-nav-n">{int(cid[:2]):02d}</span>' if section.numbered else "",
+            n=f'<span class="man-nav-n">{page_number(cid, rank):02d}</span>' if section.numbered else "",
             label=label,
         )
-        for cid, label in toc
+        for rank, (cid, label) in enumerate(toc, 1)
     )
     plain = re.sub(r"<[^>]+>", "", title)
     if description is None:
         description = f"Audiogravity user manual — {plain}."
     # A chapter carries the trademark notice in its footer; the contents page does not,
-    # since README.md — its body — already ends with it.
-    notice = f'\n                <p class="man-notice">{footer_notice()}</p>' if active else ""
+    # since README.md — its body — already ends with it. Nor does a guide (Section.notice).
+    notice = (f'\n                <p class="man-notice">{footer_notice()}</p>'
+              if active and section.notice else "")
     return f"""<!doctype html>
 <html lang="en">
 
@@ -913,24 +1006,28 @@ def build_guides() -> dict[Path, str]:
     guides = read_guides()
     if not guides:
         sys.exit("no guides found in docs/guides/README.md — is each one a "
-                 "'- [Title](id.md) — summary' line?")
+                 "'1. [Title](id.md) — summary' line?")
 
     md = markdown()
     known = {gid for gid, _, _ in guides} | {"README"}
     toc = [(gid, label) for gid, label, _ in guides]
 
     out: dict[Path, str] = {}
-    for gid, label, summary in guides:
+    minutes: dict[str, int] = {}
+    for rank, (gid, label, summary) in enumerate(guides, 1):
         src = GUIDES_DIR / f"{gid}.md"
         if not src.exists():
             sys.exit(f"{src} is listed in the guides' README but does not exist")
+        body = render_body(md, src.read_text(encoding="utf-8"), known)
+        minutes[gid] = reading_minutes(body)
         out[GUIDES_DIR / f"{gid}.html"] = page(
-            label, render_body(md, src.read_text(encoding="utf-8"), known), toc, gid, gid,
+            label, stamp_guide_meta(body, rank, minutes[gid]), toc, gid, gid,
             GUIDES, plain_text(summary))
 
     # The README is the guides' front page; its first paragraph says what they are, and is
     # what a search result shows of that page.
-    body = render_body(md, (GUIDES_DIR / "README.md").read_text(encoding="utf-8"), known)
+    body = stamp_reading_times(
+        render_body(md, (GUIDES_DIR / "README.md").read_text(encoding="utf-8"), known), minutes)
     intro = re.search(r"<p>(.*?)</p>", body, re.S)
     out[GUIDES_DIR / "index.html"] = page(
         "Guides", body, toc, "", "", GUIDES,

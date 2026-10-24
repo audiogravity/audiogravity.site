@@ -399,12 +399,19 @@ class TestGuides:
         """An attribute shows a tag as typed: the brand is written plain there."""
         assert '<meta name="description" content="How to run it, by Audiogravity.">' in self._page()
 
-    def test_it_is_filed_under_guides_without_numbers(self):
+    def test_reads_a_numbered_list_as_it_reads_bullets(self):
+        """The README numbers its guides, like the manual's contents."""
+        import gen_manual_html as g
+        assert g.parse_guides(self.README.replace("- [", "1. [")) == g.parse_guides(self.README)
+
+    def test_it_is_filed_under_guides_numbered_by_rank(self):
+        """A guide's address carries no number: the sidebar counts its place in the list."""
         out = self._page()
         assert '<a class="man-crumb" href="./">Guides</a>' in out
         assert '<nav class="man-nav" aria-label="Guides">' in out
-        assert "man-nav-n" not in out
-        assert 'href="hqplayer-on-a-pi" aria-current="page"><span>HQPlayer on a Pi</span></a>' in out
+        assert ('href="hqplayer-on-a-pi" aria-current="page"><span class="man-nav-n">01</span>'
+                '<span>HQPlayer on a Pi</span></a>') in out
+        assert '<span class="man-nav-n">02</span><span>NAA on a Pi</span></a>' in out
 
     def test_a_label_with_markup_stays_one_piece_in_the_sidebar(self):
         """The sidebar item is a flex row: unwrapped, "Audiogravi<sup>ty</sup>, Volumio or moOde"
@@ -416,9 +423,9 @@ class TestGuides:
         chapter = page("Listening", "", TOC, "04-listening", "04-listening")
         assert '<span class="man-nav-n">04</span><span>Listening</span></a>' in chapter
 
-    def test_it_carries_the_trademark_notice(self):
-        """A guide names HQPlayer, Roon and the streaming services as much as a chapter does."""
-        assert '<p class="man-notice">' in self._page()
+    def test_it_carries_no_trademark_notice(self):
+        """The notice speaks for the product, which a guide is not about."""
+        assert "man-notice" not in self._page()
 
     def test_the_manual_keeps_its_own_labels(self):
         out = page("Listening", "", TOC, "04-listening", "04-listening")
@@ -496,6 +503,58 @@ class TestPublishedGuides:
                     assert where in guides | {"", "./"}, f"{path.name}: {target}"
                 checked += 1
         assert checked > 20
+
+    def test_every_guide_says_its_number_and_reading_time(self):
+        """Under its title, and again in the list of guides."""
+        import gen_manual_html as g
+        pages = g.build_guides()
+        for rank, (gid, _, _) in enumerate(self._guides(), 1):
+            assert re.search(rf'<p class="man-guide-meta">Guide {rank} · \d+ min read</p>',
+                             pages[g.GUIDES_DIR / f"{gid}.html"]), gid
+        assert pages[g.GUIDES_DIR / "index.html"].count('class="man-guide-time"') == len(self._guides())
+
+
+class TestReadingTime:
+    """How long a page takes to read, and where a guide says it."""
+
+    WORDS = " ".join(["word"] * 238)
+
+    def test_is_its_words_over_the_reading_speed_rounded_up(self):
+        import gen_manual_html as g
+        assert g.READING_WPM == 238
+        assert g.reading_minutes(f"<p>{self.WORDS}</p>") == 1
+        assert g.reading_minutes(f"<p>{self.WORDS} one</p>") == 2
+
+    def test_counts_what_a_reader_sees_not_the_markup(self):
+        import gen_manual_html as g
+        alt = " ".join(["alt"] * 500)
+        assert g.reading_minutes(f'<p><b>{self.WORDS}</b></p><img alt="{alt}" src="x.webp">') == 1
+
+    def test_keeps_two_table_cells_two_words(self):
+        """Cells sit side by side in the HTML: dropping the tags alone would run them together."""
+        import gen_manual_html as g
+        cells = "".join(f"<td>w{i}</td>" for i in range(239))
+        assert g.reading_minutes(f"<table><tr>{cells}</tr></table>") == 2
+
+    def test_is_one_minute_at_the_least(self):
+        import gen_manual_html as g
+        assert g.reading_minutes("") == 1
+
+    def test_a_guide_says_it_under_its_title_with_its_number(self):
+        import gen_manual_html as g
+        assert g.stamp_guide_meta("<h1>DSD</h1>\n<p>Body</p>", 10, 5) == (
+            '<h1>DSD</h1>\n<p class="man-guide-meta">Guide 10 · 5 min read</p>\n<p>Body</p>')
+
+    def test_the_list_ends_each_guide_with_its_time(self):
+        import gen_manual_html as g
+        body = ('<ol>\n<li><a href="dsd">DSD</a> — Three ways.</li>\n'
+                '<li><a href="naa">NAA</a> — The other end.</li>\n'
+                '<li><a href="https://example.org">Elsewhere</a></li>\n</ol>')
+        out = g.stamp_reading_times(body, {"dsd": 5, "naa": 3})
+        assert ('<li><a href="dsd">DSD</a> — Three ways. '
+                '<span class="man-guide-time">5 min read</span></li>') in out
+        assert '— The other end. <span class="man-guide-time">3 min read</span></li>' in out
+        assert '<li><a href="https://example.org">Elsewhere</a></li>' in out
 
 
 class TestHeadingIds:

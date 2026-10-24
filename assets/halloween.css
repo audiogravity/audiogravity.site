@@ -3,11 +3,13 @@
    Fetched that day only: the theme script in index.html's <head> sets html.halloween, and the
    loader at the end of <body> then asks for this sheet and for assets/halloween.js, which
    builds the decoration. ?halloween in the address does the same on any day, to preview it.
-   Every rule below sits on the decoration's own elements, so nothing here touches the page.
+   Every rule below sits on the decoration's own elements, save three that make room for it on
+   the page's, prefixed with .halloween: the hero and the panel it is laid in, and the
+   carousel's controls, kept above it.
 
    The colours are the illustration's own — pumpkin, candlelight, night mist — not the
-   interface's tokens, and they stay the same in both themes, save the bats, drawn in the
-   page's ink so that they stand out on it (dark on light, pale on dark).
+   interface's tokens, and they stay the same in both themes, save the bats, the spiders and the
+   webs, drawn in the page's ink so that they stand out on it (dark on light, pale on dark).
 
    Cost: every animation moves transform or opacity only, which the browser composites without
    painting the page again; the blurs (glow, mist, distant pumpkins) are drawn once, then only
@@ -31,11 +33,19 @@
     overflow: clip
 }
 
+/* The carousel's controls stay above every piece of the decoration (3 at most): the mist, the
+   halos and the low bats would otherwise pass over the dots and the button. */
+.halloween .hero-controls {
+    position: relative;
+    z-index: 4
+}
+
 /* --------------------------------------------------------------------------
-   SKIES — where the bats fly. Two of them, so that a bat never crosses a line of text: a
-   band along the hero's top, above its first line (80px of padding on a wide screen, 60px of
-   margin on a phone), and the panel the phone stands in, whose overflow clips the flights.
-   Container units give each flight the same shape at every width.
+   SKIES — where the bats fly and the spiders come down. Two of them, so that neither ever
+   crosses a line of text: a band along the hero's top, above its first line (80px of padding
+   on a wide screen, 60px of margin on a phone), and the panel the phone stands in, whose
+   overflow clips the flights and the threads. Container units give each flight the same shape
+   at every width.
    -------------------------------------------------------------------------- */
 
 .hw-sky {
@@ -146,23 +156,190 @@
 .hw-b7 { animation-name: hw-fly-b7; animation-duration: 24s; animation-delay: -16s; opacity: .5 }
 .hw-b7 svg { width: 18px; height: 10px; margin: -5px 0 0 -9px }
 
-/* In a narrow panel — a phone — the near bats come down to scale with the phone drawn there. */
+/* SPIDERS — two, one on either side of the phone, each on a thread from the top of the panel:
+   it comes down, bounces a little on the silk, hangs there swaying, then climbs back out of
+   sight. The thread is the spider's ::before, longer than any panel and clipped by it, so that
+   it pays out as the spider goes down. */
+.hw-spider {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    margin-left: -15px;
+    animation-iteration-count: infinite;
+    will-change: transform
+}
+
+.hw-spider::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    width: 1px;
+    height: 150cqh;
+    margin-left: -.5px;
+    background: rgba(29, 26, 36, .45)
+}
+
+.hw-spider svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    fill: #1d1a24;
+    stroke: #1d1a24
+}
+
+[data-theme="dark"] .hw-spider::before {
+    background: rgba(195, 186, 214, .45)
+}
+
+[data-theme="dark"] .hw-spider svg {
+    fill: #c3bad6;
+    stroke: #c3bad6
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .hw-spider::before {
+        background: rgba(195, 186, 214, .45)
+    }
+
+    :root:not([data-theme="light"]) .hw-spider svg {
+        fill: #c3bad6;
+        stroke: #c3bad6
+    }
+}
+
+/* Hanging, a spider sways about the end of its thread, and its legs pump. */
+.hw-sway {
+    transform-origin: 50% 0;
+    animation: hw-sway 2.6s ease-in-out infinite alternate
+}
+
+.hw-legs {
+    transform-box: fill-box;
+    transform-origin: 50% 40%;
+    animation: hw-legs .45s ease-in-out infinite alternate
+}
+
+@keyframes hw-sway {
+    from { transform: rotate(-6deg) }
+    to { transform: rotate(6deg) }
+}
+
+@keyframes hw-legs {
+    from { transform: scaleX(1) }
+    to { transform: scaleX(.88) }
+}
+
+/* Each in the middle of the margin beside the phone, at every width: the phone is 380px wide,
+   280px on a phone (style.css, .hero-carousel), centred in the panel, so a margin is
+   (100cqw − phone) / 2 and its middle a quarter of that from the panel's edge. */
+.hw-s1 { left: calc((100cqw - 380px) / 4); animation-name: hw-drop-1; animation-duration: 17s; animation-delay: -4s }
+.hw-s2 { left: calc(100cqw - (100cqw - 380px) / 4); animation-name: hw-drop-2; animation-duration: 21s; animation-delay: -12s }
+
+@media (max-width: 720px) {
+    .hw-s1 { left: calc((100cqw - 280px) / 4) }
+    .hw-s2 { left: calc(100cqw - (100cqw - 280px) / 4) }
+}
+
+/* Down fast and slowing, a bounce on the silk, a long hang, up slowly, then a while out of
+   sight above the panel (-40px). The depth is a share of the panel's height (cqh). */
+@keyframes hw-drop-1 {
+    0%, 6% { transform: translateY(-40px); animation-timing-function: cubic-bezier(.25, .6, .3, 1) }
+    20% { transform: translateY(34cqh); animation-timing-function: ease-in-out }
+    24% { transform: translateY(31.5cqh); animation-timing-function: ease-in-out }
+    28% { transform: translateY(34cqh) }
+    60% { transform: translateY(34cqh); animation-timing-function: cubic-bezier(.5, 0, .75, .4) }
+    76%, 100% { transform: translateY(-40px) }
+}
+
+@keyframes hw-drop-2 {
+    0%, 12% { transform: translateY(-40px); animation-timing-function: cubic-bezier(.25, .6, .3, 1) }
+    26% { transform: translateY(24cqh); animation-timing-function: ease-in-out }
+    30% { transform: translateY(22cqh); animation-timing-function: ease-in-out }
+    34% { transform: translateY(24cqh) }
+    66% { transform: translateY(24cqh); animation-timing-function: cubic-bezier(.5, 0, .75, .4) }
+    82%, 100% { transform: translateY(-40px) }
+}
+
+/* In a narrow panel — a phone — the near bats and the spiders come down to scale with the phone
+   drawn there. */
 @container hw-sky (max-width: 639px) {
     .hw-b3 svg { width: 42px; height: 22px; margin: -11px 0 0 -21px }
     .hw-b4 svg { width: 30px; height: 16px; margin: -8px 0 0 -15px }
     .hw-b6 svg { width: 60px; height: 32px; margin: -16px 0 0 -30px }
+    .hw-spider { width: 22px; margin-left: -11px }
 }
 
 /* From 1551px the carousel writes its captions and annotations beside the phone (style.css,
    the `max-width:1550px` rule that hides them below). The three bats that fly low in the
-   panel would cross those lines, so they stay home there; the others keep to the panel's top.
-   Same threshold as style.css: test_halloween.py holds the two together. */
+   panel, and the spider on the phone's left, where the annotations are, would cross those
+   lines, so they stay home there; the others keep to the panel's top. Same threshold as
+   style.css: test_halloween.py holds the two together. */
 @media (min-width: 1551px) {
     .hw-b3,
     .hw-b4,
-    .hw-b5 {
+    .hw-b5,
+    .hw-s1 {
         display: none
     }
+}
+
+/* --------------------------------------------------------------------------
+   WEBS — in two corners: the hero's top left, inside the 80px above its first line (the 60px
+   on a phone), and the phone panel's top right, over its grid. They do not move, so a visitor
+   who asked for less motion keeps them. One-pixel threads whatever their size.
+   -------------------------------------------------------------------------- */
+
+.hw-web {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    aspect-ratio: 1
+}
+
+.hw-web svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: rgba(40, 38, 48, .32)
+}
+
+.hw-web path {
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke
+}
+
+[data-theme="dark"] .hw-web svg {
+    stroke: rgba(222, 216, 236, .26)
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .hw-web svg {
+        stroke: rgba(222, 216, 236, .26)
+    }
+}
+
+.hw-web-page {
+    top: 0;
+    left: 0;
+    width: 76px
+}
+
+@media (max-width: 900px) {
+    .hw-web-page {
+        width: 52px
+    }
+}
+
+/* The web's corner is its top left: mirrored, it hangs in the top right. */
+.hw-web-panel {
+    top: 0;
+    right: 0;
+    width: clamp(72px, 20cqw, 170px);
+    transform: scaleX(-1)
 }
 
 /* --------------------------------------------------------------------------
@@ -272,26 +449,52 @@
     .hw-pk-b { left: 86%; width: 28% }
 }
 
-/* Where the annotations show (see the bats above), the left of the phone is theirs. */
+/* Where the annotations show (see the bats above), the left of the phone is theirs: no
+   pumpkins there, and no mist either, which left alone read as a grey band with nothing in it,
+   running to the panel's edge. It fades in from the phone's left edge to about its middle:
+   31% and 50% of either bank's box (the viewBoxes in halloween.js). */
 @media (min-width: 1551px) {
     .hw-pk-a,
     .hw-pk-f1 {
         display: none
     }
+
+    .hw-fog {
+        -webkit-mask-image: linear-gradient(to right, transparent 31%, #000 50%);
+        mask-image: linear-gradient(to right, transparent 31%, #000 50%)
+    }
 }
 
-/* Mist, in the dark theme only: on a light page it would not show. It drifts, slowly. */
+/* Mist, in the dark theme only: on a light page it would not show. It drifts, slowly.
+   Each bank is drawn in a frame 760 wide laid across 200% of the ground, the frame's left edge
+   at -50%; each box is that frame grown to the bank's viewBox (halloween.js), which holds the
+   whole of its blur. Boxes the size of the frame cut the blur, and showed it: a straight edge
+   at both ends of the mist and along its foot, plain where the annotations leave the left of
+   the phone bare. A box below: its viewBox, then where the frame's foot is. */
+
 .hw-fog {
     position: absolute;
     display: none;
-    left: -50%;
-    width: 200%;
     animation: hw-drift 26s ease-in-out infinite alternate;
     will-change: transform
 }
 
-.hw-fog-back { bottom: -1cqw; aspect-ratio: 760 / 120 }
-.hw-fog-front { bottom: -10.4cqw; aspect-ratio: 760 / 80; animation-duration: 34s }
+/* viewBox -130 -14 1020 184; the frame's foot, 120 down it, is 1cqw under the ground. */
+.hw-fog-back {
+    left: calc(-50% - 200% * 130 / 760);
+    width: calc(200% * 1020 / 760);
+    bottom: calc(-1cqw - 200cqw * (170 - 120) / 760);
+    aspect-ratio: 1020 / 184
+}
+
+/* viewBox -110 -28 960 146; the frame's foot, 80 down it, is 10.4cqw under the ground. */
+.hw-fog-front {
+    left: calc(-50% - 200% * 110 / 760);
+    width: calc(200% * 960 / 760);
+    bottom: calc(-10.4cqw - 200cqw * (118 - 80) / 760);
+    aspect-ratio: 960 / 146;
+    animation-duration: 34s
+}
 
 [data-theme="dark"] .hw-fog {
     display: block
@@ -342,9 +545,9 @@
 }
 
 /* --------------------------------------------------------------------------
-   STILLNESS — a browser that cannot measure the skies gets no bats rather than bats piled in
-   a corner; a visitor who asked for less motion gets the pumpkins, unlit by any flicker; and
-   nothing moves while the hero is out of sight.
+   STILLNESS — a browser that cannot measure the skies gets no bats and no spiders rather than
+   both piled in a corner; a visitor who asked for less motion gets the webs and the pumpkins,
+   unlit by any flicker; and nothing moves while the hero is out of sight.
    -------------------------------------------------------------------------- */
 
 @supports not (width: 1cqw) {

@@ -879,6 +879,8 @@ nav {
     padding: 40px 32px;
     background: var(--bg2);
     position: relative;
+    /* Holds the grid's z-index (below) inside the panel. */
+    isolation: isolate;
     overflow: hidden
 }
 
@@ -954,9 +956,14 @@ nav {
     }
 }
 
+/* The grid is the panel's ground, under all that stands on it. A box placed absolutely is
+   painted after the boxes that are not, so it drew its lines across the dots and the buttons
+   under the phone; z-index -1 sends it to the bottom, and the panel's isolation keeps that
+   bottom above the panel's own background. */
 .hero-right::before {
     content: "";
     position: absolute;
+    z-index: -1;
     inset: 0;
     background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
     background-size: 32px 32px;
@@ -2783,25 +2790,74 @@ footer {
 
 .hero-screenshot.active { opacity: 1; }
 
+/* The dots, in a pill: a button per screen, as tall as the pill and as wide as its dot and the
+   space around it, so that no ground between two dots is dead to a tap; the dot itself is the
+   span. The current one is drawn long and fills from left to right over the time its screen
+   stays. The fill is the animation below, and main.js shows the next screen when it ends: the
+   bar and the change cannot drift apart, and a pause holds both where they are. The fill is
+   an element, the <i>, rather than a ::after: the end of an animation is an event the page
+   listens to, and an element is where every browser fires it. */
 .hero-dots {
     display: flex;
-    justify-content: center;
-    gap: 7px;
-    margin-top: 16px;
+    height: 36px;
+    padding: 0 9px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg);
 }
 
 .hero-dots .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    /* A control drawn by its dot alone, so the 3:1 floor of a graphic: --border drew at
-       1.6:1 on the hero's grey; this is 3.2:1 there in both themes. */
-    background: var(--idle-line);
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    border: 0;
+    background: none;
     cursor: pointer;
-    transition: background var(--ease);
 }
 
-.hero-dots .dot.active { background: var(--text); }
+.hero-dots .dot span {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    /* A control drawn by its dot alone, so the 3:1 floor of a graphic: on the pill's --bg this
+       is 3.4:1 in both themes (#8a8a8a on #fff, #666 on #0a0a0a). */
+    background: var(--idle-line);
+    transition: width .3s ease, background var(--ease);
+}
+
+.hero-dots .dot:hover span { background: var(--text3); }
+
+.hero-dots .dot:focus-visible { outline: none; }
+
+.hero-dots .dot:focus-visible span {
+    outline: 2px solid var(--warn-line);
+    outline-offset: 3px;
+}
+
+.hero-dots .dot.active span { width: 28px; }
+
+.hero-dots .dot i {
+    position: absolute;
+    inset: 0;
+    background: var(--text);
+    transform: translateX(-100%);
+}
+
+/* 3.5s a screen, held while the carousel does not play: play takes the fill on from where it
+   stopped. */
+.hero-dots .dot.active i {
+    animation: hero-progress 3.5s linear forwards paused;
+}
+
+.hero-controls.playing .dot.active i {
+    animation-play-state: running;
+}
+
+@keyframes hero-progress {
+    to { transform: none; }
+}
 
 /* Hero carousel — per-slide caption and annotations.
    Anchored to .hero-carousel, which is exactly the capture's box, so the labels follow the
@@ -2917,24 +2973,29 @@ footer {
     filter: drop-shadow(0 24px 48px rgba(0,0,0,.16));
 }
 
-/* Hero carousel controls */
+/* Hero carousel controls: the pill of dots (above) and a round play button beside it. The
+   carousel starts paused (main.js), at an empty bar. Positioned and raised: the captures are
+   placed absolutely, so their drop shadow (0 32px 64px), which reaches some 96px past their
+   foot, was painted over the pill. */
 .hero-controls {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    margin-top: 12px;
+    margin-top: 20px;
 }
 
 .hero-ctrl {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border: 1px solid var(--border);
     border-radius: 50%;
-    background: transparent;
+    background: var(--bg);
     color: var(--text);
     cursor: pointer;
-    transition: background var(--ease), border-color var(--ease);
+    transition: border-color var(--ease);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2942,8 +3003,12 @@ footer {
 }
 
 .hero-ctrl:hover {
-    background: var(--bg2);
     border-color: var(--text);
+}
+
+.hero-ctrl:focus-visible {
+    outline: 2px solid var(--warn-line);
+    outline-offset: 3px;
 }
 
 .hero-ctrl svg {
@@ -2957,10 +3022,26 @@ footer {
 }
 
 .hero-ctrl .ic-pause rect,
-.hero-ctrl .ic-play polygon { fill: currentColor; stroke: none; }
+.hero-ctrl .ic-play path { fill: currentColor; stroke: none; }
 .hero-ctrl .ic-play { display: none; }
 #heroPlay.paused .ic-pause { display: none; }
 #heroPlay.paused .ic-play { display: inline; }
+
+/* A phone: the seventeen dots and the button in 310px, then in the 272px a 320px screen
+   leaves inside the panel's padding. */
+@media(max-width:720px) {
+    .hero-dots { height: 32px; padding: 0 8px; }
+    .hero-dots .dot { padding: 0 4px; }
+    .hero-dots .dot.active span { width: 22px; }
+    .hero-controls { gap: 6px; }
+    .hero-ctrl { width: 32px; height: 32px; }
+}
+
+@media(max-width:400px) {
+    .hero-dots { padding: 0 7px; }
+    .hero-dots .dot { padding: 0 3px; }
+    .hero-dots .dot.active span { width: 18px; }
+}
 
 /* Status ribbon */
 .ribbon {

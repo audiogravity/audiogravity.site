@@ -1,70 +1,70 @@
 // Hero carousel — runs immediately, script is at end of body
+//
+// No timer here: the time a screen stays is the current dot's fill, an animation of the
+// stylesheet (hero-progress), and the next screen comes when it ends. The bar and the change
+// cannot drift apart, and a pause holds both where they are. A dot shown anew starts its fill
+// from empty.
 (function () {
     var imgs = document.querySelectorAll('.hero-screenshot');
     var dots = document.querySelectorAll('.hero-dots .dot');
     // Caption and annotations, each tagged with the slide it belongs to. Collected in one
     // list because they share a rule: shown only while their own slide is.
     var notes = document.querySelectorAll('.hero-caption, .hero-note');
-    var prevBtn = document.getElementById('heroPrev');
-    var nextBtn = document.getElementById('heroNext');
+    var controls = document.querySelector('.hero-controls');
     var playBtn = document.getElementById('heroPlay');
-    if (!imgs.length) return;
+    if (!imgs.length || !controls) return;
 
     var cur = 0;
-    var playing = false;
-    var timer = null;
 
+    /**
+     * Shows a screen, its dot and its words.
+     *
+     * @param {number} n - The screen's index; one past either end wraps round.
+     */
     function show(n) {
         imgs[cur].classList.remove('active');
-        if (dots[cur]) dots[cur].classList.remove('active');
+        if (dots[cur]) {
+            dots[cur].classList.remove('active');
+            dots[cur].removeAttribute('aria-current');
+        }
         cur = ((n % imgs.length) + imgs.length) % imgs.length;
         imgs[cur].classList.add('active');
-        if (dots[cur]) dots[cur].classList.add('active');
+        if (dots[cur]) {
+            dots[cur].classList.add('active');
+            dots[cur].setAttribute('aria-current', 'true');
+        }
         notes.forEach(function (el) {
             el.classList.toggle('active', Number(el.dataset.slide) === cur);
         });
     }
 
-    function startTimer() {
-        clearInterval(timer);
-        timer = setInterval(function () { show(cur + 1); }, 3500);
+    /**
+     * Plays or pauses the carousel: the class runs or holds the fill, the button says what a
+     * press would do.
+     *
+     * @param {boolean} on - True to play.
+     */
+    function setPlaying(on) {
+        controls.classList.toggle('playing', on);
+        if (playBtn) {
+            playBtn.classList.toggle('paused', !on);
+            playBtn.setAttribute('aria-label', on ? 'Pause' : 'Play');
+        }
     }
 
-    function pause() {
-        playing = false;
-        clearInterval(timer);
-        timer = null;
-        if (playBtn) playBtn.classList.add('paused');
-    }
-
-    function play() {
-        playing = true;
-        if (playBtn) playBtn.classList.remove('paused');
-        startTimer();
-    }
+    controls.addEventListener('animationend', function (e) {
+        if (e.animationName === 'hero-progress') show(cur + 1);
+    });
 
     dots.forEach(function (dot, i) {
-        dot.addEventListener('click', function () {
-            show(i);
-            if (playing) startTimer();
-        });
-    });
-
-    if (prevBtn) prevBtn.addEventListener('click', function () {
-        show(cur - 1);
-        if (playing) startTimer();
-    });
-
-    if (nextBtn) nextBtn.addEventListener('click', function () {
-        show(cur + 1);
-        if (playing) startTimer();
+        dot.addEventListener('click', function () { show(i); });
     });
 
     if (playBtn) playBtn.addEventListener('click', function () {
-        if (playing) pause(); else play();
+        setPlaying(!controls.classList.contains('playing'));
     });
 
-    pause();
+    setPlaying(false);
 })();
 
 // Sparklines

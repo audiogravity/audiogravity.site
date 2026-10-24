@@ -75,6 +75,15 @@
         (function () {
             const t = localStorage.getItem('ag-theme');
             if (t) document.documentElement.setAttribute('data-theme', t);
+            /* Halloween: every 31 October by the visitor's clock, or ?halloween to preview it.
+               The page opens dark that day unless the visitor chose a theme with the button;
+               nothing is stored, so the next day it follows their system again. The
+               decoration itself is fetched by the loader at the end of <body>. */
+            const d = new Date();
+            if ((d.getMonth() === 9 && d.getDate() === 31) || /[?&]halloween(?:[=&]|$)/.test(location.search)) {
+                document.documentElement.classList.add('halloween');
+                if (!t) document.documentElement.setAttribute('data-theme', 'dark');
+            }
         })();
     </script>
 </head>
@@ -1724,6 +1733,30 @@
     <script src="assets/to-top.js?v=61e28367a0" defer></script>
     <script src="assets/theme-toggle.js?v=0a2ce0015f" defer></script>
     <script src="assets/main.js?v=5d22019a7f"></script>
+
+    <!-- Halloween's decoration, asked for on 31 October only (html.halloween, set by the theme
+         script in <head>). A template keeps the two addresses here, where the version stamps
+         are kept up to date, without the browser fetching them on any other day. The script
+         comes once the sheet is in, so that nothing is drawn unstyled. -->
+    <template id="hw-assets">
+        <link rel="stylesheet" href="assets/halloween.css?v=d110212e65">
+        <script src="assets/halloween.js?v=797274043a"></script>
+    </template>
+    <script>
+        (function () {
+            if (!document.documentElement.classList.contains('halloween')) return;
+            const assets = document.getElementById('hw-assets').content;
+            const sheet = document.createElement('link');
+            sheet.rel = 'stylesheet';
+            sheet.href = assets.querySelector('link').getAttribute('href');
+            sheet.onload = function () {
+                const script = document.createElement('script');
+                script.src = assets.querySelector('script').getAttribute('src');
+                document.body.appendChild(script);
+            };
+            document.head.appendChild(sheet);
+        })();
+    </script>
 
 </body>
 

@@ -1,0 +1,390 @@
+/* ==========================================================================
+   HALLOWEEN — the landing on 31 October, every year, by the visitor's own clock
+   Fetched that day only: the theme script in index.html's <head> sets html.halloween, and the
+   loader at the end of <body> then asks for this sheet and for assets/halloween.js, which
+   builds the decoration. ?halloween in the address does the same on any day, to preview it.
+   Every rule below sits on the decoration's own elements, so nothing here touches the page.
+
+   The colours are the illustration's own — pumpkin, candlelight, night mist — not the
+   interface's tokens, and they stay the same in both themes, save the bats, drawn in the
+   page's ink so that they stand out on it (dark on light, pale on dark).
+
+   Cost: every animation moves transform or opacity only, which the browser composites without
+   painting the page again; the blurs (glow, mist, distant pumpkins) are drawn once, then only
+   moved or faded. Nothing moves while the hero is scrolled away (html.hw-paused, set by
+   halloween.js), nor for a visitor who asked their system for less motion.
+   ========================================================================== */
+
+.hw-decor {
+    pointer-events: none
+}
+
+.halloween .hero {
+    position: relative
+}
+
+/* The panel the phone stands in measures itself for the pumpkins' layout (below). It clips as
+   it always does, but with `clip` rather than `hidden`, which would make it a scroll box of its
+   own and keep the pumpkins from resting on the bottom of the screen (see .hw-ground). */
+.halloween .hero-right {
+    container: hw-panel / inline-size;
+    overflow: clip
+}
+
+/* --------------------------------------------------------------------------
+   SKIES — where the bats fly. Two of them, so that a bat never crosses a line of text: a
+   band along the hero's top, above its first line (80px of padding on a wide screen, 60px of
+   margin on a phone), and the panel the phone stands in, whose overflow clips the flights.
+   Container units give each flight the same shape at every width.
+   -------------------------------------------------------------------------- */
+
+.hw-sky {
+    position: absolute;
+    z-index: 3;
+    overflow: hidden;
+    container-type: size
+}
+
+.hw-sky-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px
+}
+
+.hw-sky-panel {
+    inset: 0;
+    container-name: hw-sky
+}
+
+.hw-bat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform
+}
+
+/* The flights place a bat's centre; the negative margins below centre the drawing on it. */
+.hw-bat svg {
+    display: block;
+    overflow: visible;
+    fill: #1d1a24
+}
+
+[data-theme="dark"] .hw-bat svg {
+    fill: #c3bad6
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .hw-bat svg {
+        fill: #c3bad6
+    }
+}
+
+/* One flap: the wings rise and fall about the shoulders, the body bobs against them. */
+.hw-bob {
+    animation: hw-bob .2s ease-in-out infinite alternate
+}
+
+.hw-wing-l,
+.hw-wing-r {
+    transform-box: view-box
+}
+
+.hw-wing-l {
+    transform-origin: 54px 28px;
+    animation: hw-flap-l .2s ease-in-out infinite alternate
+}
+
+.hw-wing-r {
+    transform-origin: 66px 28px;
+    animation: hw-flap-r .2s ease-in-out infinite alternate
+}
+
+.hw-fast,
+.hw-fast .hw-wing-l,
+.hw-fast .hw-wing-r {
+    animation-duration: .15s
+}
+
+.hw-slow,
+.hw-slow .hw-wing-l,
+.hw-slow .hw-wing-r {
+    animation-duration: .27s
+}
+
+@keyframes hw-bob {
+    from { transform: translateY(3px) }
+    to { transform: translateY(-3px) }
+}
+
+@keyframes hw-flap-l {
+    from { transform: rotate(25deg) }
+    to { transform: rotate(-18deg) }
+}
+
+@keyframes hw-flap-r {
+    from { transform: rotate(-25deg) }
+    to { transform: rotate(18deg) }
+}
+
+/* Seven bats. The small, faint ones read as far away; the big one crosses now and then. */
+.hw-b1 { animation-name: hw-fly-b1; animation-duration: 16s; animation-delay: -5s }
+.hw-b1 svg { width: 30px; height: 16px; margin: -8px 0 0 -15px }
+.hw-b2 { animation-name: hw-fly-b2; animation-duration: 21s; animation-delay: -13s; opacity: .6 }
+.hw-b2 svg { width: 22px; height: 12px; margin: -6px 0 0 -11px }
+.hw-b3 { animation-name: hw-fly-b3; animation-duration: 13s; animation-delay: -2s }
+.hw-b3 svg { width: 56px; height: 30px; margin: -15px 0 0 -28px }
+.hw-b4 { animation-name: hw-fly-b4; animation-duration: 15s; animation-delay: -9s }
+.hw-b4 svg { width: 40px; height: 21px; margin: -10px 0 0 -20px }
+.hw-b5 { animation-name: hw-fly-b5; animation-duration: 17s; animation-delay: -11s }
+.hw-b5 svg { width: 34px; height: 18px; margin: -9px 0 0 -17px }
+.hw-b6 { animation-name: hw-fly-b6; animation-duration: 11s; animation-delay: -4s }
+.hw-b6 svg { width: 88px; height: 47px; margin: -23px 0 0 -44px }
+.hw-b7 { animation-name: hw-fly-b7; animation-duration: 24s; animation-delay: -16s; opacity: .5 }
+.hw-b7 svg { width: 18px; height: 10px; margin: -5px 0 0 -9px }
+
+/* In a narrow panel — a phone — the near bats come down to scale with the phone drawn there. */
+@container hw-sky (max-width: 639px) {
+    .hw-b3 svg { width: 42px; height: 22px; margin: -11px 0 0 -21px }
+    .hw-b4 svg { width: 30px; height: 16px; margin: -8px 0 0 -15px }
+    .hw-b6 svg { width: 60px; height: 32px; margin: -16px 0 0 -30px }
+}
+
+/* From 1551px the carousel writes its captions and annotations beside the phone (style.css,
+   the `max-width:1550px` rule that hides them below). The three bats that fly low in the
+   panel would cross those lines, so they stay home there; the others keep to the panel's top.
+   Same threshold as style.css: test_halloween.py holds the two together. */
+@media (min-width: 1551px) {
+    .hw-b3,
+    .hw-b4,
+    .hw-b5 {
+        display: none
+    }
+}
+
+/* --------------------------------------------------------------------------
+   PUMPKINS — jack-o'-lanterns at the foot of the phone, after a night photograph: bodies
+   almost black, the carved faces lit from inside, a warm halo around, the distant ones blurred.
+   They stand on .hw-ground, a line as wide as the phone laid just under it: left and width are
+   shares of the phone's width, and so is bottom (cqw), the phone being 1.97 times taller than
+   wide. They do not move; only the candlelight in the halo flickers.
+
+   On a screen too short to show the foot of the phone — 1280 x 800, 1366 x 768, 1536 x 864:
+   the panel is taller than the screen — the line holds to the bottom of the screen instead,
+   12px above it, until the foot of the phone comes into view; there they settle and scroll
+   away with it. Always standing on something, never in mid-air. A phone in one column keeps
+   them at the foot of the phone: the buttons' pumpkins are its first screen's (below).
+   -------------------------------------------------------------------------- */
+
+.hw-ground {
+    position: sticky;
+    bottom: 12px;
+    z-index: 3;
+    width: 100%;
+    max-width: 380px;
+    height: 0;
+    margin: 0 auto;
+    container-type: inline-size
+}
+
+@media (max-width: 900px) {
+    .hw-ground {
+        position: relative;
+        bottom: auto
+    }
+}
+
+/* The phone is drawn smaller there (style.css, .hero-right .hero-carousel). */
+@media (max-width: 720px) {
+    .hw-ground {
+        max-width: 280px
+    }
+}
+
+.hw-pumpkin {
+    position: absolute;
+    display: block;
+    aspect-ratio: 200 / 170
+}
+
+.hw-pumpkin svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible
+}
+
+/* The halo is its own layer so that its flicker is a fade the browser composites; the face's
+   glow is a shadow drawn once. */
+.hw-halo {
+    animation: hw-flicker 2.6s ease-in-out infinite;
+    will-change: opacity
+}
+
+.hw-lit {
+    filter: drop-shadow(0 0 4px rgba(255, 179, 71, .9)) drop-shadow(0 0 10px rgba(255, 140, 40, .45))
+}
+
+/* A distant pumpkin is blurred as a whole, so its halo stays still: a fade under a blur would
+   have the blur drawn again at every frame. */
+.hw-far {
+    filter: blur(1.6px)
+}
+
+.hw-far .hw-halo {
+    animation: none
+}
+
+@keyframes hw-flicker {
+    0%, 100% { opacity: 1 }
+    35% { opacity: .82 }
+    50% { opacity: .96 }
+    68% { opacity: .78 }
+    82% { opacity: .92 }
+}
+
+/* Beside the phone, as on the mock-up: on the left a large one and a far one, on the right a
+   large one, one further back and a far one. Positions measured on the 1440 x 900 mock-up,
+   where the phone is 380 x 749. */
+.hw-pk-f1 { left: -43.2%; bottom: 15.6cqw; width: 14.7%; opacity: .7 }
+.hw-pk-a  { left: -37.6%; bottom: -3.2cqw; width: 36.3% }
+.hw-pk-f2 { left: 132.1%; bottom: 17.5cqw; width: 13.2%; opacity: .65 }
+.hw-pk-c  { left: 121.6%; bottom: 8.7cqw; width: 22.1%; opacity: .92 }
+.hw-pk-b  { left: 102.1%; bottom: -3.2cqw; width: 31.6% }
+
+/* A panel too narrow for the scene beside the phone — the two columns below 1328px, a phone:
+   the two large pumpkins come to the phone's lower corners, the others stay out. The width a
+   container query reads is the panel's content box, inside its 32px (24px) of padding: 600px
+   of it leave 150px beside a 380px phone, the large pumpkin's 143px and a margin. */
+@container hw-panel (max-width: 599px) {
+    .hw-pk-f1,
+    .hw-pk-f2,
+    .hw-pk-c,
+    .hw-fog-front {
+        display: none
+    }
+
+    .hw-pk-a { left: -16%; width: 30% }
+    .hw-pk-b { left: 86%; width: 28% }
+}
+
+/* Where the annotations show (see the bats above), the left of the phone is theirs. */
+@media (min-width: 1551px) {
+    .hw-pk-a,
+    .hw-pk-f1 {
+        display: none
+    }
+}
+
+/* Mist, in the dark theme only: on a light page it would not show. It drifts, slowly. */
+.hw-fog {
+    position: absolute;
+    display: none;
+    left: -50%;
+    width: 200%;
+    animation: hw-drift 26s ease-in-out infinite alternate;
+    will-change: transform
+}
+
+.hw-fog-back { bottom: -1cqw; aspect-ratio: 760 / 120 }
+.hw-fog-front { bottom: -10.4cqw; aspect-ratio: 760 / 80; animation-duration: 34s }
+
+[data-theme="dark"] .hw-fog {
+    display: block
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .hw-fog {
+        display: block
+    }
+}
+
+@keyframes hw-drift {
+    from { transform: translateX(-30px) }
+    to { transform: translateX(30px) }
+}
+
+/* On a phone the foot of the phone is below the first screen: three more pumpkins sit at the
+   end of the hero's buttons, where the second one leaves the row free. Distances from the
+   row's lower right corner, measured on the 390 x 844 mock-up; the near one is 64px, which
+   keeps its top 5px under the first button (70px touched it). */
+.hw-cta-patch {
+    display: none
+}
+
+@media (max-width: 900px) {
+    .halloween .hero-cta {
+        position: relative
+    }
+
+    .hw-cta-patch {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 3
+    }
+
+    .hw-pk-cf { right: 88px; bottom: 12px; width: 30px; opacity: .7 }
+    .hw-pk-cc { right: -12px; bottom: 5px; width: 44px; opacity: .92 }
+    .hw-pk-ca { right: 16px; bottom: -3px; width: 64px }
+}
+
+/* Under 360px the far one would touch the second button. */
+@media (max-width: 359px) {
+    .hw-pk-cf {
+        display: none
+    }
+}
+
+/* --------------------------------------------------------------------------
+   STILLNESS — a browser that cannot measure the skies gets no bats rather than bats piled in
+   a corner; a visitor who asked for less motion gets the pumpkins, unlit by any flicker; and
+   nothing moves while the hero is out of sight.
+   -------------------------------------------------------------------------- */
+
+@supports not (width: 1cqw) {
+    .hw-sky {
+        display: none
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hw-sky {
+        display: none
+    }
+
+    .hw-halo,
+    .hw-fog {
+        animation: none
+    }
+}
+
+.hw-paused .hw-decor,
+.hw-paused .hw-decor * {
+    animation-play-state: paused
+}
+
+/* --------------------------------------------------------------------------
+   FLIGHTS — each bat's path, sampled from a smooth curve through the points below and walked
+   at an even speed, the bat leaning a little toward where it goes. Drawn on the 1440 x 900
+   mock-up: the top band in cqw of its width and px of its 56px; the panel in cqw and cqh.
+   Points (x, y on that screen): b1 -60,20 300,12 640,28 980,14 1300,26 1520,16 · b2 1510,38
+   1150,30 800,42 450,32 120,40 -60,34 · b3 1520,660 1260,560 1060,430 900,320 800,190 770,60
+   800,-70 · b4 1520,330 1380,300 1310,410 1350,540 1440,560 1480,470 1420,400 1530,330 ·
+   b5 834,1027 784,827 824,627 764,447 814,287 924,127 974,7 · b6 (still until 55%) 1620,300
+   1380,220 1180,170 1000,110 880,-120 · b7 1520,240 1350,200 1200,250 1050,200 1150,150
+   1300,190 1530,170. The panel starts at x 720 and y 97 there, and measures 720 x 896.
+   -------------------------------------------------------------------------- */
+
+@keyframes hw-fly-b1{0.0%{transform:translate(-4.2cqw,20px) rotate(10deg)}3.1%{transform:translate(-0.7cqw,19px) rotate(10deg)}7.5%{transform:translate(4.1cqw,16px) rotate(10deg)}12.7%{transform:translate(9.7cqw,14px) rotate(10deg)}17.9%{transform:translate(15.5cqw,12px) rotate(10deg)}22.8%{transform:translate(20.8cqw,12px) rotate(10deg)}27.2%{transform:translate(25.6cqw,14px) rotate(10deg)}31.5%{transform:translate(30.4cqw,18px) rotate(10deg)}35.8%{transform:translate(35.1cqw,23px) rotate(10deg)}40.0%{transform:translate(39.7cqw,26px) rotate(10deg)}44.3%{transform:translate(44.4cqw,28px) rotate(10deg)}48.6%{transform:translate(49.2cqw,27px) rotate(10deg)}53.0%{transform:translate(54.0cqw,23px) rotate(10deg)}57.3%{transform:translate(58.7cqw,19px) rotate(10deg)}61.6%{transform:translate(63.4cqw,16px) rotate(10deg)}65.8%{transform:translate(68.1cqw,14px) rotate(10deg)}70.0%{transform:translate(72.7cqw,15px) rotate(10deg)}74.3%{transform:translate(77.4cqw,18px) rotate(10deg)}78.5%{transform:translate(82.0cqw,22px) rotate(10deg)}82.4%{transform:translate(86.3cqw,25px) rotate(10deg)}86.1%{transform:translate(90.3cqw,26px) rotate(10deg)}89.5%{transform:translate(94.0cqw,25px) rotate(10deg)}92.8%{transform:translate(97.6cqw,23px) rotate(10deg)}95.7%{transform:translate(100.9cqw,20px) rotate(10deg)}98.2%{transform:translate(103.6cqw,18px) rotate(10deg)}100.0%{transform:translate(105.6cqw,16px) rotate(10deg)}}
+@keyframes hw-fly-b2{0.0%{transform:translate(104.9cqw,38px) rotate(-10deg)}3.1%{transform:translate(101.5cqw,37px) rotate(-10deg)}7.6%{transform:translate(96.6cqw,34px) rotate(-10deg)}12.7%{transform:translate(91.0cqw,32px) rotate(-10deg)}18.0%{transform:translate(85.2cqw,30px) rotate(-10deg)}22.9%{transform:translate(79.9cqw,30px) rotate(-10deg)}27.4%{transform:translate(75.0cqw,31px) rotate(-10deg)}31.9%{transform:translate(70.1cqw,34px) rotate(-10deg)}36.3%{transform:translate(65.2cqw,38px) rotate(-10deg)}40.8%{transform:translate(60.4cqw,41px) rotate(-10deg)}45.2%{transform:translate(55.6cqw,42px) rotate(-10deg)}49.7%{transform:translate(50.7cqw,41px) rotate(-10deg)}54.2%{transform:translate(45.8cqw,39px) rotate(-10deg)}58.7%{transform:translate(40.9cqw,36px) rotate(-10deg)}63.1%{transform:translate(36.0cqw,33px) rotate(-10deg)}67.5%{transform:translate(31.2cqw,32px) rotate(-10deg)}72.0%{transform:translate(26.4cqw,33px) rotate(-10deg)}76.5%{transform:translate(21.5cqw,35px) rotate(-10deg)}80.9%{transform:translate(16.7cqw,37px) rotate(-10deg)}85.0%{transform:translate(12.2cqw,39px) rotate(-10deg)}88.5%{transform:translate(8.3cqw,40px) rotate(-10deg)}91.6%{transform:translate(5.0cqw,40px) rotate(-10deg)}94.4%{transform:translate(2.0cqw,38px) rotate(-10deg)}96.7%{transform:translate(-0.6cqw,37px) rotate(-10deg)}98.6%{transform:translate(-2.6cqw,35px) rotate(-10deg)}100.0%{transform:translate(-4.2cqw,34px) rotate(-10deg)}}
+@keyframes hw-fly-b3{0.0%{transform:translate(111.1cqw,62.8cqh) rotate(-9deg)}3.4%{transform:translate(106.1cqw,61.4cqh) rotate(-9deg)}8.2%{transform:translate(98.9cqw,59.3cqh) rotate(-9deg)}13.7%{transform:translate(90.6cqw,56.9cqh) rotate(-9deg)}19.3%{transform:translate(82.3cqw,54.3cqh) rotate(-9deg)}24.3%{transform:translate(75.0cqw,51.7cqh) rotate(-9deg)}28.8%{transform:translate(68.8cqw,49.0cqh) rotate(-9deg)}33.1%{transform:translate(63.0cqw,46.0cqh) rotate(-8deg)}37.3%{transform:translate(57.5cqw,43.0cqh) rotate(-8deg)}41.3%{transform:translate(52.3cqw,40.0cqh) rotate(-8deg)}45.2%{transform:translate(47.2cqw,37.2cqh) rotate(-8deg)}48.9%{transform:translate(42.3cqw,34.6cqh) rotate(-8deg)}52.4%{transform:translate(37.5cqw,32.2cqh) rotate(-8deg)}55.8%{transform:translate(33.0cqw,29.9cqh) rotate(-8deg)}59.0%{transform:translate(28.8cqw,27.5cqh) rotate(-8deg)}62.2%{transform:translate(25.0cqw,24.9cqh) rotate(-7deg)}65.2%{transform:translate(21.5cqw,22.1cqh) rotate(-7deg)}68.2%{transform:translate(18.4cqw,19.2cqh) rotate(-6deg)}71.1%{transform:translate(15.6cqw,16.3cqh) rotate(-6deg)}73.9%{transform:translate(13.1cqw,13.3cqh) rotate(-5deg)}76.6%{transform:translate(11.1cqw,10.4cqh) rotate(-4deg)}79.0%{transform:translate(9.5cqw,7.5cqh) rotate(-4deg)}81.4%{transform:translate(8.3cqw,4.6cqh) rotate(-3deg)}83.8%{transform:translate(7.5cqw,1.7cqh) rotate(-2deg)}86.0%{transform:translate(7.1cqw,-1.2cqh) rotate(-1deg)}88.3%{transform:translate(6.9cqw,-4.1cqh) rotate(0deg)}90.8%{transform:translate(7.3cqw,-7.3cqh) rotate(2deg)}93.5%{transform:translate(8.2cqw,-10.6cqh) rotate(2deg)}96.1%{transform:translate(9.3cqw,-13.9cqh) rotate(3deg)}98.4%{transform:translate(10.4cqw,-16.7cqh) rotate(3deg)}100.0%{transform:translate(11.1cqw,-18.6cqh) rotate(3deg)}}
+@keyframes hw-fly-b4{0.0%{transform:translate(111.1cqw,26.0cqh) rotate(-10deg)}2.5%{transform:translate(108.3cqw,25.3cqh) rotate(-9deg)}6.2%{transform:translate(104.3cqw,24.2cqh) rotate(-10deg)}10.2%{transform:translate(99.7cqw,23.0cqh) rotate(-10deg)}14.1%{transform:translate(95.2cqw,22.4cqh) rotate(-10deg)}17.2%{transform:translate(91.7cqw,22.7cqh) rotate(-9deg)}20.0%{transform:translate(88.9cqw,24.1cqh) rotate(-8deg)}23.2%{transform:translate(86.3cqw,26.3cqh) rotate(-6deg)}26.6%{transform:translate(84.3cqw,29.1cqh) rotate(-4deg)}30.0%{transform:translate(82.8cqw,32.1cqh) rotate(-3deg)}33.1%{transform:translate(81.9cqw,34.9cqh) rotate(-1deg)}36.3%{transform:translate(82.0cqw,37.9cqh) rotate(1deg)}39.8%{transform:translate(82.7cqw,41.2cqh) rotate(2deg)}43.4%{transform:translate(84.0cqw,44.4cqh) rotate(4deg)}46.8%{transform:translate(85.7cqw,47.3cqh) rotate(5deg)}49.5%{transform:translate(87.5cqw,49.4cqh) rotate(7deg)}51.9%{transform:translate(89.7cqw,50.9cqh) rotate(9deg)}54.4%{transform:translate(92.3cqw,51.8cqh) rotate(10deg)}56.9%{transform:translate(95.2cqw,52.3cqh) rotate(10deg)}59.1%{transform:translate(97.8cqw,52.2cqh) rotate(10deg)}61.1%{transform:translate(100.0cqw,51.7cqh) rotate(9deg)}63.1%{transform:translate(101.8cqw,50.4cqh) rotate(6deg)}65.6%{transform:translate(103.4cqw,48.4cqh) rotate(5deg)}68.3%{transform:translate(104.7cqw,46.1cqh) rotate(3deg)}71.0%{transform:translate(105.4cqw,43.7cqh) rotate(2deg)}73.1%{transform:translate(105.6cqw,41.6cqh) rotate(-2deg)}75.2%{transform:translate(104.4cqw,39.9cqh) rotate(-6deg)}77.8%{transform:translate(102.1cqw,38.3cqh) rotate(-8deg)}80.5%{transform:translate(99.5cqw,36.8cqh) rotate(-8deg)}82.8%{transform:translate(97.6cqw,35.3cqh) rotate(-5deg)}84.4%{transform:translate(97.2cqw,33.8cqh) rotate(3deg)}86.8%{transform:translate(99.0cqw,32.1cqh) rotate(8deg)}90.2%{transform:translate(102.4cqw,30.3cqh) rotate(9deg)}94.1%{transform:translate(106.4cqw,28.6cqh) rotate(9deg)}97.6%{transform:translate(110.0cqw,27.1cqh) rotate(9deg)}100.0%{transform:translate(112.5cqw,26.0cqh) rotate(9deg)}}
+@keyframes hw-fly-b5{0.0%{transform:translate(15.8cqw,103.8cqh) rotate(-3deg)}2.6%{transform:translate(14.7cqw,100.8cqh) rotate(-3deg)}6.3%{transform:translate(13.0cqw,96.5cqh) rotate(-3deg)}10.5%{transform:translate(11.1cqw,91.5cqh) rotate(-3deg)}14.9%{transform:translate(9.6cqw,86.3cqh) rotate(-2deg)}18.9%{transform:translate(8.9cqw,81.5cqh) rotate(-0deg)}22.6%{transform:translate(9.4cqw,77.0cqh) rotate(2deg)}26.4%{transform:translate(10.9cqw,72.4cqh) rotate(3deg)}30.2%{transform:translate(12.6cqw,67.9cqh) rotate(3deg)}34.0%{transform:translate(14.0cqw,63.5cqh) rotate(2deg)}37.5%{transform:translate(14.4cqw,59.2cqh) rotate(-1deg)}41.0%{transform:translate(13.4cqw,55.0cqh) rotate(-3deg)}44.6%{transform:translate(11.4cqw,50.8cqh) rotate(-4deg)}48.3%{transform:translate(9.0cqw,46.8cqh) rotate(-4deg)}51.7%{transform:translate(7.0cqw,42.9cqh) rotate(-3deg)}54.9%{transform:translate(6.1cqw,39.1cqh) rotate(-1deg)}58.0%{transform:translate(6.4cqw,35.3cqh) rotate(1deg)}61.0%{transform:translate(7.4cqw,31.8cqh) rotate(3deg)}64.0%{transform:translate(8.9cqw,28.2cqh) rotate(4deg)}67.2%{transform:translate(10.9cqw,24.7cqh) rotate(4deg)}70.4%{transform:translate(13.1cqw,21.2cqh) rotate(5deg)}73.8%{transform:translate(15.7cqw,17.6cqh) rotate(5deg)}77.6%{transform:translate(19.0cqw,13.8cqh) rotate(6deg)}81.3%{transform:translate(22.4cqw,10.2cqh) rotate(6deg)}84.9%{transform:translate(25.7cqw,6.6cqh) rotate(6deg)}88.1%{transform:translate(28.3cqw,3.3cqh) rotate(5deg)}91.0%{transform:translate(30.4cqw,0.2cqh) rotate(4deg)}93.8%{transform:translate(32.0cqw,-3.0cqh) rotate(4deg)}96.4%{transform:translate(33.4cqw,-5.9cqh) rotate(3deg)}98.5%{transform:translate(34.5cqw,-8.3cqh) rotate(3deg)}100.0%{transform:translate(35.3cqw,-10.0cqh) rotate(3deg)}}
+@keyframes hw-fly-b6{0%{transform:translate(125.0cqw,22.7cqh)}55.0%{transform:translate(125.0cqw,22.7cqh) rotate(-9deg)}56.7%{transform:translate(120.4cqw,21.4cqh) rotate(-9deg)}59.2%{transform:translate(113.8cqw,19.6cqh) rotate(-9deg)}62.1%{transform:translate(106.2cqw,17.5cqh) rotate(-9deg)}64.9%{transform:translate(98.5cqw,15.4cqh) rotate(-10deg)}67.5%{transform:translate(91.7cqw,13.7cqh) rotate(-10deg)}69.7%{transform:translate(85.7cqw,12.4cqh) rotate(-10deg)}71.8%{transform:translate(80.0cqw,11.3cqh) rotate(-10deg)}73.8%{transform:translate(74.5cqw,10.3cqh) rotate(-10deg)}75.7%{transform:translate(69.2cqw,9.3cqh) rotate(-10deg)}77.7%{transform:translate(63.9cqw,8.1cqh) rotate(-10deg)}79.6%{transform:translate(58.6cqw,7.2cqh) rotate(-10deg)}81.5%{transform:translate(53.3cqw,6.5cqh) rotate(-10deg)}83.4%{transform:translate(48.2cqw,5.5cqh) rotate(-10deg)}85.2%{transform:translate(43.3cqw,4.0cqh) rotate(-9deg)}87.1%{transform:translate(38.9cqw,1.5cqh) rotate(-7deg)}89.6%{transform:translate(34.8cqw,-2.9cqh) rotate(-5deg)}92.5%{transform:translate(30.8cqw,-8.7cqh) rotate(-4deg)}95.5%{transform:translate(27.3cqw,-14.9cqh) rotate(-4deg)}98.2%{transform:translate(24.4cqw,-20.4cqh) rotate(-4deg)}100.0%{transform:translate(22.2cqw,-24.2cqh) rotate(-4deg)}}
+@keyframes hw-fly-b7{0.0%{transform:translate(111.1cqw,16.0cqh) rotate(-10deg)}2.4%{transform:translate(107.9cqw,15.2cqh) rotate(-10deg)}5.9%{transform:translate(103.2cqw,14.0cqh) rotate(-10deg)}9.9%{transform:translate(97.9cqw,12.8cqh) rotate(-10deg)}14.0%{transform:translate(92.4cqw,11.8cqh) rotate(-10deg)}17.5%{transform:translate(87.5cqw,11.5cqh) rotate(-10deg)}20.7%{transform:translate(83.2cqw,12.1cqh) rotate(-10deg)}24.0%{transform:translate(79.0cqw,13.5cqh) rotate(-9deg)}27.3%{transform:translate(74.9cqw,15.2cqh) rotate(-9deg)}30.4%{transform:translate(70.8cqw,16.5cqh) rotate(-10deg)}33.5%{transform:translate(66.7cqw,17.1cqh) rotate(-10deg)}36.9%{transform:translate(61.9cqw,16.7cqh) rotate(-10deg)}40.8%{transform:translate(56.7cqw,15.6cqh) rotate(-10deg)}44.6%{transform:translate(51.7cqw,14.3cqh) rotate(-9deg)}47.7%{transform:translate(47.8cqw,12.8cqh) rotate(-9deg)}49.5%{transform:translate(45.8cqw,11.5cqh) rotate(-4deg)}50.7%{transform:translate(46.3cqw,10.2cqh) rotate(6deg)}52.8%{transform:translate(48.6cqw,8.8cqh) rotate(9deg)}55.5%{transform:translate(52.0cqw,7.4cqh) rotate(9deg)}58.5%{transform:translate(55.9cqw,6.4cqh) rotate(10deg)}61.3%{transform:translate(59.7cqw,5.9cqh) rotate(10deg)}63.9%{transform:translate(63.3cqw,6.3cqh) rotate(10deg)}66.7%{transform:translate(67.0cqw,7.3cqh) rotate(9deg)}69.9%{transform:translate(71.1cqw,8.6cqh) rotate(9deg)}73.3%{transform:translate(75.6cqw,9.8cqh) rotate(10deg)}76.9%{transform:translate(80.6cqw,10.4cqh) rotate(10deg)}81.3%{transform:translate(86.7cqw,10.3cqh) rotate(10deg)}86.6%{transform:translate(94.1cqw,9.9cqh) rotate(10deg)}92.0%{transform:translate(101.5cqw,9.2cqh) rotate(10deg)}96.7%{transform:translate(108.0cqw,8.6cqh) rotate(10deg)}100.0%{transform:translate(112.5cqw,8.1cqh) rotate(10deg)}}

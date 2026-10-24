@@ -69,7 +69,7 @@
          Both come from this site, like every font on it (the FONTS block of style.css). -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/style.css?v=82615dfb71">
+    <link rel="stylesheet" href="assets/style.css?v=224b1153b4">
     <script>
         /* Apply saved theme before first paint to avoid flash */
         (function () {
@@ -462,35 +462,31 @@
                     new MutationObserver(follow).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
                 })();
             </script>
-            <div class="hero-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+            <!-- The carousel's controls: a dot per screen in a pill, the current one filling over
+                 the time its screen stays, and the play button. It starts paused (main.js). -->
             <div class="hero-controls">
-                <button class="hero-ctrl" id="heroPrev" aria-label="Previous">
-                    <svg viewBox="0 0 24 24"> <path d="m15 18-6-6 6-6" /></svg>
-                </button>
-                <button class="hero-ctrl" id="heroPlay" aria-label="Pause">
+                <div class="hero-dots" role="group" aria-label="Screens">
+                    <button class="dot active" type="button" aria-label="Screen 1" aria-current="true"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 2"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 3"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 4"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 5"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 6"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 7"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 8"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 9"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 10"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 11"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 12"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 13"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 14"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 15"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 16"><span><i></i></span></button>
+                    <button class="dot" type="button" aria-label="Screen 17"><span><i></i></span></button>
+                </div>
+                <button class="hero-ctrl" id="heroPlay" type="button" aria-label="Play">
                     <svg class="ic-pause" viewBox="0 0 24 24"> <rect x="14" y="3" width="5" height="18" rx="1" /> <rect x="5" y="3" width="5" height="18" rx="1" /></svg>
                     <svg class="ic-play" viewBox="0 0 24 24"> <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></svg>
-                </button>
-                <button class="hero-ctrl" id="heroNext" aria-label="Next">
-                    <svg viewBox="0 0 24 24"> <path d="m9 18 6-6-6-6" /></svg>
                 </button>
             </div>
         </div>
@@ -1849,7 +1845,7 @@
     <!-- Back to top: the button is built by the script, shared with the manual's pages. -->
     <script src="assets/to-top.js?v=61e28367a0" defer></script>
     <script src="assets/theme-toggle.js?v=0a2ce0015f" defer></script>
-    <script src="assets/main.js?v=5d22019a7f"></script>
+    <script src="assets/main.js?v=a5a8bbe3e3"></script>
 
     <!-- Halloween's decoration, asked for on 31 October only (html.halloween, set by the theme
          script in <head>). A template keeps the two addresses here, where the version stamps

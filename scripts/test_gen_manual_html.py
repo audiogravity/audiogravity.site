@@ -200,6 +200,20 @@ class TestReadVersion:
         monkeypatch.setattr(g, "REPO_DIR", tmp_path)
         assert g.read_version() == "0.9.31"
 
+    @pytest.mark.parametrize("badge, version", [
+        ("version-1.0.0--rc.1-blue", "1.0.0-rc.1"),
+        ("version-1.0.0--rc.10-orange", "1.0.0-rc.10"),
+        ("version-1.0.0-blue", "1.0.0"),
+        ("version-1.2.3--beta.2_beta-blue", "1.2.3-beta.2"),
+    ])
+    def test_a_pre_release_keeps_its_suffix(self, tmp_path, monkeypatch, badge, version):
+        """The badge doubles the dash of a pre-release; the manual of a release candidate must
+        not claim to describe the final release."""
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text(f'<img src="https://img.shields.io/badge/{badge}" />')
+        monkeypatch.setattr(g, "REPO_DIR", tmp_path)
+        assert g.read_version() == version
+
     def test_fails_loudly_when_the_badge_is_gone(self, tmp_path, monkeypatch):
         """Silently omitting the version is the drift this line exists to prevent."""
         import gen_manual_html as g

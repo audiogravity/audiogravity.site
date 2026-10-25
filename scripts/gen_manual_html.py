@@ -296,18 +296,23 @@ def read_version() -> str:
     Deliberately not ``audiogravity.ops/VERSION``: that file carries ``-dev`` between releases,
     and the manual is published, so it must state what was released, not what is being built.
 
+    A pre-release keeps its suffix: the badge writes ``1.0.0--rc.1``, the dash doubled because a
+    single one separates the badge's fields, and the manual of a release candidate must not
+    claim to describe the final release (it read "v1.0.0" for ``1.0.0-rc.1`` until 2026-10-25).
+    The ``_beta`` of a 0.x badge is a word after the version, not part of it.
+
     Returns:
-        The version string, e.g. ``0.9.31``.
+        The version string, e.g. ``0.9.31`` or ``1.0.0-rc.1``.
 
     Raises:
         SystemExit: if the badge is gone or reshaped. Failing here is the point — a silently
             omitted version is the drift this line exists to prevent, and it would be invisible.
     """
     readme = (REPO_DIR / "README.md").read_text(encoding="utf-8")
-    m = re.search(r"badge/version-(\d+\.\d+\.\d+)", readme)
+    m = re.search(r"badge/version-(\d+\.\d+\.\d+(?:--[0-9A-Za-z][0-9A-Za-z.]*)?)", readme)
     if not m:
         sys.exit("no version badge found in README.md — has update-test-report.sh changed shape?")
-    return m.group(1)
+    return m.group(1).replace("--", "-")
 
 
 def under_title(rendered: str, line: str) -> str:

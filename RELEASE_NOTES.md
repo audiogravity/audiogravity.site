@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.0-rc.1 — 2026-10-25
+
 ### Release
 
 **The release candidate for 1.0.** The features of 0.9.80, proposed as Audiogravi<sup>ty</sup>

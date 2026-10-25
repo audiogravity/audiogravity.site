@@ -376,6 +376,23 @@ sup {
     font-weight: 400;
 }
 
+/* A day's news may say it shorter on a phone (index.html, agAnnounce): shown there instead of
+   the long sentence, below. */
+.announce-short {
+    display: none
+}
+
+/* The bar's two links take turns, the release's sentence and a day's news (index.html): the
+   one off its turn is hidden, which `hidden` alone would not do against the display above. The
+   turn fades through the links' own opacity transition. */
+.announce-bar a[hidden] {
+    display: none
+}
+
+.announce-bar.announce-turning a {
+    opacity: 0
+}
+
 /* Room on the right for the stage ribbon, fixed to the top-right corner and drawn above
    everything. Below 1100px the sentence ran under it — on two or three lines, to the
    ribbon's very corner. Measured against the ribbon's own band, with the visible text: for
@@ -409,6 +426,16 @@ sup {
 
     .announce-date {
         display: none
+    }
+
+    /* A day's news says it shorter here (index.html, agAnnounce): one line, which cut the long
+       sentence before its point. */
+    .announce-long {
+        display: none
+    }
+
+    .announce-short {
+        display: inline
     }
 }
 

@@ -69,7 +69,7 @@
          Both come from this site, like every font on it (the FONTS block of style.css). -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/style.css?v=4337d56c0a">
+    <link rel="stylesheet" href="assets/style.css?v=18dac994a6">
     <script>
         /* Apply saved theme before first paint to avoid flash */
         (function () {
@@ -114,7 +114,93 @@
             v1.0.0-rc.1 <span class="announce-date">· 25 Oct 2026</span> — Release candidate — every feature of 1.0, working today.
             <span class="announce-arrow">→</span>
         </a>
+        <a class="announce-news" hidden></a>
     </div>
+    <script>
+        /* A day's news takes turns with the release's sentence in the announce bar, six seconds each,
+           the release's first. The release's words are the release script's to write (ops:
+           scripts/changelog_rollover.py) and are never written here; the news has a link of its own:
+           a badge, a sentence, and where a press leads — a page, or something the page does instead
+           (open). No turn while the pointer is over the bar or the keyboard is in it, so that what is
+           being read stays put; the next comes six seconds after they leave. Right after the bar, so
+           that the news is ready from the first paint. The Halloween script words it for the game of
+           31 October. */
+        (function () {
+            var bar = document.querySelector('.announce-bar');
+            var release = bar && bar.querySelector('a:not(.announce-news)');
+            var news = bar && bar.querySelector('.announce-news');
+            if (!release || !news) return;
+            var hovered = false;
+            var focused = false;
+            var timer = 0;
+
+            // The next turn, six seconds from now: none while the bar is being read, nor without news.
+            function wait() {
+                clearTimeout(timer);
+                timer = news.firstChild && !hovered && !focused ? setTimeout(turn, 6000) : 0;
+            }
+
+            // Out, the links change places, in: through their own opacity transition (style.css), whose
+            // length is read there so that the two never disagree.
+            function turn() {
+                bar.classList.add('announce-turning');
+                setTimeout(function () {
+                    var shown = news.hidden ? news : release;
+                    news.hidden = shown !== news;
+                    release.hidden = shown !== release;
+                    // The link just shown has no opacity yet to fade from: read once at 0, it fades in.
+                    void getComputedStyle(shown).opacity;
+                    bar.classList.remove('announce-turning');
+                    wait();
+                }, parseFloat(getComputedStyle(release).transitionDuration) * 1000 || 0);
+            }
+
+            bar.addEventListener('mouseenter', function () { hovered = true; wait(); });
+            bar.addEventListener('mouseleave', function () { hovered = false; wait(); });
+            bar.addEventListener('focusin', function () { focused = true; wait(); });
+            bar.addEventListener('focusout', function () { focused = false; wait(); });
+
+            window.agAnnounce = function (item) {
+                var badge = document.createElement('span');
+                badge.className = 'announce-badge';
+                badge.textContent = item.badge;
+                var sentence = document.createElement('span');
+                sentence.textContent = item.sentence;
+                var arrow = document.createElement('span');
+                arrow.className = 'announce-arrow';
+                arrow.textContent = '→';
+                news.textContent = '';
+                // Spaced as the release's sentence is written, so that it is read as words. A phone's bar
+                // holds one line, which cut the long sentence before its point: a short one replaces it there.
+                if (item.short) {
+                    var short = document.createElement('span');
+                    short.className = 'announce-short';
+                    short.textContent = item.short;
+                    sentence.className = 'announce-long';
+                    news.append(badge, ' ', sentence, short, ' ', arrow);
+                } else {
+                    news.append(badge, ' ', sentence, ' ', arrow);
+                }
+                news.href = item.href;
+                news.onclick = item.open ? function (event) {
+                    event.preventDefault();
+                    item.open();
+                } : null;
+                wait();
+            };
+        })();
+        /* Until Halloween 2026, by the visitor's own clock as the day itself is, the news says what
+           comes on the 31st. That day the Halloween script words it for the game; from 1 November
+           there is no news, and the release's sentence stays alone. */
+        if (window.agAnnounce && new Date() < new Date(2026, 9, 31)) {
+            window.agAnnounce({
+                badge: '31 OCT',
+                sentence: 'An orange ghost haunts this page on 31 October: ten lifetime licences to win',
+                short: 'Ten lifetime licences to win',
+                href: 'orange-ghost.html'
+            });
+        }
+    </script>
 
     <nav>
         <div class="nav-inner">
@@ -1855,7 +1941,7 @@
          comes once the sheet is in, so that nothing is drawn unstyled. -->
     <template id="hw-assets">
         <link rel="stylesheet" href="assets/halloween.css?v=76ce8fd858">
-        <script src="assets/halloween.js?v=d4b2305fef"></script>
+        <script src="assets/halloween.js?v=814bdcc753"></script>
     </template>
     <script>
         (function () {

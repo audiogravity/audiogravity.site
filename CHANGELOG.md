@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[site] Halloween — the spider beside the phone hangs from its thread in Safari.** Safari drew the spider and not its thread, a pseudo-element sized with container units; each thread is now drawn in its spider's own box, its length in pixels.
+
 ## [1.0.0-rc.1] - 2026-10-25
 
 ### Added

@@ -358,6 +358,69 @@
 }
 
 /* --------------------------------------------------------------------------
+   GHOSTS — in the page's ink like the bats and the spiders, a little faded. Down the page, one
+   in each section's margin, on its spider's side and below it, rising through the margin as it
+   sways, then fading out; at the foot of the page, one rising from behind the pumpkins on the
+   footer's edge, looking round, and sinking back. None for a visitor who asked for less motion,
+   nor on a phone, whose margins are 20px and whose footer edge has 60px of room.
+   -------------------------------------------------------------------------- */
+
+.hw-ghost {
+    position: absolute;
+    width: 36px;
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite
+}
+
+.hw-ghost svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    fill: var(--hw-ink)
+}
+
+/* In the middle of a margin, at the height halloween.js gives it (top). */
+.hw-g1 { left: 50%; margin-left: -18px; animation-name: hw-haunt; animation-duration: 15s }
+
+/* Behind the middle pumpkin of the footer's group, its top 89px above the edge at the highest:
+   under the 100px the last section leaves there. It sinks 16px rather than 34, so that out of
+   sight it rests 2px above the edge, behind the pumpkin, whose foot is 2px under it: sunk 34px,
+   its tails showed over the footer as it faded in and out (36/255 on a pixel, measured). */
+.hw-g2 { right: 138px; bottom: 18px; --hw-sink: 16px; animation-name: hw-rise; animation-duration: 11s; animation-delay: -3s }
+
+/* In the hero, behind the right-hand pumpkins at the foot of the phone, its size a share of the
+   phone's: clear of the caption that, from 1551px, stands at the phone's mid-height on that
+   side. Out of a panel too narrow for the scene beside the phone (with the pumpkins it hides). */
+.hw-g3 { left: 116%; bottom: 56px; width: 9.5%; animation-name: hw-rise; animation-duration: 12s; animation-delay: -2s }
+
+/* In from below, swaying, out above, then a while unseen. */
+@keyframes hw-haunt {
+    0% { opacity: 0; transform: translate(0, 60px) rotate(-3deg) }
+    16% { opacity: .7; transform: translate(9px, 30px) rotate(3deg) }
+    34% { opacity: .78; transform: translate(-7px, 0) rotate(-3deg) }
+    52% { opacity: .7; transform: translate(9px, -30px) rotate(3deg) }
+    68%, 100% { opacity: 0; transform: translate(0, -60px) rotate(0deg) }
+}
+
+/* Up from behind the pumpkin, a look round, and back down out of sight: as far down as the
+   ghost's --hw-sink says, the depth its pumpkins hide. */
+@keyframes hw-rise {
+    0%, 12% { opacity: 0; transform: translateY(var(--hw-sink, 34px)) rotate(0deg) }
+    30% { opacity: .75; transform: translateY(0) rotate(-4deg) }
+    44% { opacity: .8; transform: translateY(-26px) rotate(4deg) }
+    58% { opacity: .75; transform: translateY(0) rotate(-2deg) }
+    76%, 100% { opacity: 0; transform: translateY(var(--hw-sink, 34px)) rotate(0deg) }
+}
+
+@media (max-width: 720px) {
+    .hw-g2 {
+        display: none
+    }
+}
+
+/* --------------------------------------------------------------------------
    WEBS — in two corners: the hero's top left, inside the 80px above its first line (the 60px
    on a phone), and the phone panel's top right, over its grid. They do not move, so a visitor
    who asked for less motion keeps them. One-pixel threads whatever their size.
@@ -520,7 +583,8 @@
     .hw-pk-f1,
     .hw-pk-f2,
     .hw-pk-c,
-    .hw-fog-front {
+    .hw-fog-front,
+    .hw-g3 {
         display: none
     }
 
@@ -695,6 +759,64 @@
 }
 
 /* --------------------------------------------------------------------------
+   THE STRIP'S SOUND — a round button before the time in the strip that shows a track playing,
+   which plays an excerpt of Danse macabre (halloween.js, listen). In the strip's own colours,
+   the same in both themes as the strip is: the accent of its bar, the icon in its black. The
+   only piece of the decoration that takes a press, so the only one with a focus ring.
+   -------------------------------------------------------------------------- */
+
+/* The row it shares with the strip's time: beside the progress row, not in it, which assistive
+   technology reads as an image. Its 32px take no more height than the time's 16px, the margins
+   giving the rest back, so that nothing under the strip moves when it is put in — 8 to 16px did
+   (measured in Chromium, 390 to 1440px). The strip's own gap, 14px, keeps the 8px it overhangs. */
+.hw-np-row {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.hw-np-row .np-progress {
+    flex: 1;
+    min-width: 0
+}
+
+.hw-np-play {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    margin: -8px 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--warn);
+    color: #000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
+}
+
+.hw-np-play svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor
+}
+
+.hw-np-play .ic-pause,
+.hw-np-play.playing .ic-play {
+    display: none
+}
+
+.hw-np-play.playing .ic-pause {
+    display: inline
+}
+
+.hw-np-play:focus-visible {
+    outline: 2px solid var(--warn-line);
+    outline-offset: 3px
+}
+
+/* --------------------------------------------------------------------------
    STILLNESS — a browser that cannot read container units (Safari before 16) drops every
    declaration written with them, so the pieces they place stay out rather than misplaced: the
    skies, not to pile the bats and spiders in a corner; the panel's web, which grew to 300px
@@ -712,7 +834,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hw-sky {
+    .hw-sky,
+    .hw-ghost {
         display: none
     }
 

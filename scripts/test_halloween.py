@@ -206,9 +206,29 @@ class TestTheDecoration:
                              fog.group(1), re.M), prop
 
     def test_less_motion_means_no_bats_and_no_flicker(self):
+        """Nor ghosts: the one at the foot of the page lives outside any sky."""
         block = re.search(r"@media \(prefers-reduced-motion: reduce\)\s*\{(.*?)\n\}", CSS, re.S).group(1)
-        assert re.search(r"\.hw-sky\s*\{\s*display:\s*none", block)
+        assert re.search(r"\.hw-sky,\s*\.hw-ghost\s*\{\s*display:\s*none", block)
         assert re.search(r"\.hw-halo,\s*\.hw-lit,\s*\.hw-fog\s*\{\s*animation:\s*none", block)
+
+    def test_the_heros_ghost_rises_behind_the_pumpkins_at_the_phones_foot(self):
+        """Laid before the near pumpkins, so behind them; out of a panel too narrow for the scene
+        beside the phone, with the pumpkins that leave; and clear of the caption, which from
+        1551px stands at the phone's mid-height on that side, far above the foot."""
+        assert re.search(r"MIST_BACK\s*\+ ghost\(3\) \+ pumpkin\('hw-pk-c', 'c'\)", JS)
+        narrow = re.search(r"@container hw-panel \(max-width: 599px\) \{\s*([^{]*)\{\s*display: none", CSS).group(1)
+        assert ".hw-g3" in narrow and ".hw-pk-c" in narrow
+        assert re.search(r"^\.hero-caption \{[^}]*top: 50%", SITE_CSS, re.M), "the caption moved: see the hero's ghost"
+
+    def test_every_ghost_has_its_motion(self):
+        """Each ghost built has its rule and its keyframes, and stays unseen without them."""
+        built = {int(n) for n in re.findall(r"\bghost\((\d)", JS)}
+        assert built == {1, 2, 3}
+        for n in built:
+            name = re.search(r"\.hw-g%d \{[^}]*animation-name: ([\w-]+)" % n, CSS).group(1)
+            assert re.search(r"@keyframes %s \{" % re.escape(name), CSS), f"ghost {n} has no {name}"
+        assert re.search(r"^\.hw-ghost \{[^}]*opacity: 0", CSS, re.M), "a ghost without its motion would stand still in sight"
+        assert re.search(r"^\.hw-ghost svg \{[^}]*fill: var\(--hw-ink\)", CSS, re.M)
 
     def test_it_rests_while_out_of_sight(self):
         """Part by part — the hero, each section, the footer — rather than the whole page with
@@ -316,7 +336,7 @@ class TestTheLastScene:
     """Lit pumpkins standing on the footer's top edge, and a last spider hung from it."""
 
     def test_it_stands_on_the_footers_top_edge(self):
-        assert re.search(r"lay\(footer, 'hw-foot', pumpkin\(", JS)
+        assert re.search(r"lay\(footer, 'hw-foot', ghost\(2\) \+ pumpkin\(", JS), "the ghost no longer rises from behind"
         assert re.search(r"\.halloween footer\s*\{\s*position:\s*relative", CSS)
         ground = re.search(r"^\.hw-foot \{([^}]*)\}", CSS, re.M).group(1)
         assert re.search(r"height:\s*0\b", ground)
@@ -347,6 +367,30 @@ class TestTheLastScene:
             bottom = _px(own, "bottom")
             bottom = _px(rule, "bottom") if bottom is None else bottom
             assert bottom + width * 170 / 200 <= room - 6, f"{place} on a {screen} screen"
+
+    def test_a_ghost_is_drawn_once(self):
+        """Like the pumpkins' bodies: one drawing in DEFS, used by every ghost down the page."""
+        assert '<symbol id="hw-ghost" viewBox="0 0 40 50">' in JS
+        assert "var GHOST = '<svg viewBox=\"0 0 40 50\"><use href=\"#hw-ghost\" /></svg>';" in JS
+        assert JS.count("M4 44V20A16 16 0 0 1 36 20V44") == 1
+
+    def test_the_ghost_stays_in_the_room_above_the_edge(self):
+        """At its highest, under the last section's bottom padding less 6px, as the pumpkins;
+        on a phone, whose room is 60px, it is not drawn."""
+        room = int(re.search(r"^\.section\s*\{\s*padding:\s*(\d+)px", SITE_CSS, re.M).group(1))
+        rule = re.search(r"^\.hw-g2 \{([^}]*)\}", CSS, re.M).group(1)
+        width = int(re.search(r"^\.hw-ghost \{[^}]*width: (\d+)px", CSS, re.M).group(1))
+        view = re.search(r'var GHOST = \'<svg viewBox="0 0 (\d+) (\d+)"', JS)
+        height = width * int(view.group(2)) / int(view.group(1))
+        rise = re.search(r"@keyframes hw-rise \{(.*?)\n\}", CSS, re.S).group(1)
+        highest = -min(float(v) for v in re.findall(r"translateY\((-?[\d.]+)px\)", rise))
+        assert _px(rule, "bottom") + height + highest <= room - 6
+        # And at its lowest, out of sight behind the pumpkin rather than over the footer: sunk
+        # 34px, its tails showed under the edge as it faded (36/255 on a pixel, measured).
+        assert rise.count("translateY(var(--hw-sink, 34px))") == 2
+        pumpkin = re.search(r"^\.hw-pk-eb \{([^}]*)\}", CSS, re.M).group(1)
+        assert _px(rule, "bottom") - _px(rule, "--hw-sink") >= _px(pumpkin, "bottom")
+        assert re.search(r"@media \(max-width: 720px\) \{\s*\.hw-g2 \{\s*display: none", CSS)
 
     @pytest.mark.parametrize("screen", ["wide", "phone"])
     def test_the_last_spider_hangs_in_the_footers_empty_top(self, screen):
@@ -394,6 +438,81 @@ class TestTheStrip:
         assert len(times) == 2 and re.fullmatch(r"\d+:\d\d", times[0])
         # The time left keeps its minus sign: only its figures are replaced.
         assert re.search(r"\d+:\d\d", times[1]) and not times[1][0].isdigit()
+
+    def test_it_can_play_an_excerpt_at_a_press_only(self):
+        """The excerpt is asked for at the first press, never by the page: a browser plays no
+        sound before the visitor has pressed something, and a file nobody plays costs nothing."""
+        code = JS[JS.index("function listen(progress)"):]
+        src = re.search(r"new Audio\('([^']+)'\)", code).group(1)
+        audio = ROOT / src
+        assert audio.is_file(), f"{src} is missing"
+        head = audio.read_bytes()[:12]
+        assert head[4:8] == b"ftyp", f"{src} is not an MP4 audio file"
+        assert audio.stat().st_size < 1_500_000, f"{src} weighs {audio.stat().st_size} bytes"
+        assert code.count("new Audio(") == 1 and code.count("fresh()") == 1
+        assert code.index("sound = fresh();") > code.index("button.addEventListener('click'"), "fetched before a press"
+        assert src not in PAGE and JS.count(src) == 1, "the excerpt is named outside the press"
+
+    def test_while_the_excerpt_plays_the_strip_shows_what_is_heard(self):
+        """Its own format, as the file says, and its own time, by the sound's own clock (no timer
+        of the page's); paused, over or failed, the box's again, as the strip stood. An
+        audiophile reading DSD256 over a browser's AAC preview would be right to feel misled."""
+        code = JS[JS.index("function listen(progress)"):JS.index("document.title =")]
+        heard = re.search(r"var heard = \['([^']*)', '([^']*)', '([^']*)', '([^']*)'\];", code).groups()
+        cells = re.findall(r'<div class="cell[^"]*"><span>([^<]+)</span>', PAGE)
+        assert cells == ["Format", "Sample", "Bitrate", "Codec"], "the strip's cells moved: see heard"
+        audio = (ROOT / re.search(r"new Audio\('([^']+)'\)", code).group(1)).read_bytes()
+        mp4a = audio.index(b"mp4a")
+        rate = int.from_bytes(audio[mp4a + 28:mp4a + 32], "big") >> 16
+        mvhd = audio.index(b"mvhd")
+        if audio[mvhd + 4] == 0:
+            scale, length = (int.from_bytes(audio[mvhd + i:mvhd + i + 4], "big") for i in (16, 20))
+        else:
+            scale = int.from_bytes(audio[mvhd + 24:mvhd + 28], "big")
+            length = int.from_bytes(audio[mvhd + 28:mvhd + 36], "big")
+        kbps = len(audio) * 8 / (length / scale) / 1000
+        assert heard[0] == heard[3] == "AAC"
+        assert heard[1] == f"{rate / 1000:g}kHz"
+        assert abs(int(heard[2].removesuffix("kbps")) - kbps) / kbps < .02
+        assert "if (!element.paused) show(element.currentTime, element.duration || 30);" in code
+        assert "show(element.currentTime, element.duration || 30);\n                return;" in code
+        pause = code[code.index("element.addEventListener('pause'"):]
+        error = code[code.index("element.addEventListener('error'"):]
+        assert "hearing(null);" in pause[:pause.index("});")] and "hearing(null);" in error[:error.index("});")]
+        assert not re.search(r"setInterval|setTimeout|requestAnimationFrame", code)
+        assert "progress.setAttribute('aria-label', clock(s) + ' played, ' + clock(total - s) + ' left')" in code
+
+    def test_a_failed_load_does_not_silence_the_button(self):
+        """A failed element stays failed: the next press must start from a new one."""
+        code = JS[JS.index("function listen(progress)"):JS.index("document.title =")]
+        error = code[code.index("element.addEventListener('error'"):]
+        assert "if (sound === element) sound = null;" in error[:error.index("});")]
+        assert "if (!sound) sound = fresh();" in code
+
+    def test_its_button_sits_beside_the_time_without_moving_the_page(self):
+        """Not in the progress row, which assistive technology reads as an image whose content is
+        not read; and no taller than the time's 16px row (measured in Chromium), so that nothing
+        under the strip moves when it is put in."""
+        assert re.search(r'<div class="np-progress" role="img"', PAGE)
+        code = JS[JS.index("function listen(progress)"):JS.index("document.title =")]
+        assert "row.appendChild(button);\n        row.appendChild(progress);" in code
+        assert "progress.insertBefore(button" not in code and "progress.appendChild(button" not in code
+        button = re.search(r"^\.hw-np-play \{([^}]*)\}", CSS, re.M).group(1)
+        margin = float(re.search(r"margin: (-[\d.]+)px 0;", button).group(1))
+        assert _px(button, "height") + 2 * margin <= 16
+        gap = int(re.search(r"^\.np-visual \{[^}]*gap: (\d+)px", SITE_CSS, re.M).group(1))
+        assert -margin < gap, "the button would reach the cells above or the line below"
+
+    def test_its_button_is_a_real_button_with_the_carousels_icons(self):
+        """Named for what a press will do, reached by the keyboard, and wearing the carousel's
+        play and pause icons, copied from it rather than drawn a second time."""
+        code = JS[JS.index("function listen(progress)"):]
+        assert "button.type = 'button';" in code
+        assert "playing ? 'Pause the excerpt' : 'Play an excerpt'" in code
+        assert "document.querySelector('#heroPlay .ic-play')" in code and "cloneNode(true)" in code
+        hero = re.search(r'<button class="hero-ctrl" id="heroPlay"[^>]*>(.*?)</button>', PAGE, re.S).group(1)
+        assert 'class="ic-play"' in hero and 'class="ic-pause"' in hero
+        assert re.search(r"^\.hw-np-play:focus-visible \{", CSS, re.M)
 
     def test_the_cover_is_named_as_the_title_is_written(self):
         """One work, one spelling, in the image's name as in the strip."""

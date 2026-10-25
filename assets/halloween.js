@@ -12,7 +12,8 @@
 // Everything built here is decoration: hidden from assistive technology, deaf to the pointer,
 // and laid over the page rather than into it, so that the page reads and works as on any day.
 // Two things are changed rather than built, the track in the strip and the title, and those are
-// read as they show, a screen reader's "jack-o'-lantern" included.
+// read as they show, a screen reader's "jack-o'-lantern" included. One thing is built to be
+// used: the strip's play button, a real button, named and reached like any other.
 (function () {
     var root = document.documentElement;
     var hero = document.querySelector('.hero');
@@ -67,6 +68,13 @@
         // The far one: two triangles and an open mouth, all that the distance leaves.
         + '<g id="hw-face-d"><path d="M62 84 L90 84 L77 62 Z" /><path d="M110 84 L138 84 L123 62 Z" />'
         + '<ellipse cx="100" cy="122" rx="22" ry="14" /></g>'
+        // A ghost seen face on: a dome, a hem hanging in four tails, and eyes and a mouth cut out of
+        // it — holes, so that the page shows through them. Its colour comes from where it is used.
+        + '<symbol id="hw-ghost" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M4 44V20A16 16 0 0 1 36 20V44'
+        + 'Q32 50 28 44Q24 50 20 44Q16 50 12 44Q8 50 4 44Z'
+        + 'M11 20a3 4.2 0 1 0 6 0a3 4.2 0 1 0-6 0Z'
+        + 'M23 20a3 4.2 0 1 0 6 0a3 4.2 0 1 0-6 0Z'
+        + 'M17 31a3 4 0 1 0 6 0a3 4 0 1 0-6 0Z" /></symbol>'
         + '</defs></svg>';
 
     // A bat seen from below, its wings pivoting about the shoulders (54,28) and (66,28).
@@ -131,6 +139,20 @@
         return '<div class="hw-spider hw-s' + n + '"' + inline(style) + '><div class="hw-sway">' + SPIDER + '</div></div>';
     }
 
+    // A ghost, drawn once in DEFS (hw-ghost): every one down the page uses that drawing.
+    var GHOST = '<svg viewBox="0 0 40 50"><use href="#hw-ghost" /></svg>';
+
+    /**
+     * One ghost, haunting the way hw-g<n> in halloween.css says.
+     *
+     * @param {number} n - Its number, which names its motion and its place.
+     * @param {string} [style] - Its own delay, and the height it haunts (top), down the page.
+     * @returns {string} The ghost's markup.
+     */
+    function ghost(n, style) {
+        return '<div class="hw-ghost hw-g' + n + '"' + inline(style) + '>' + GHOST + '</div>';
+    }
+
     /**
      * One bat, flying the path named after it in halloween.css.
      *
@@ -183,8 +205,9 @@
         + bat(3, 'slow') + bat(4) + bat(5) + bat(6, 'slow') + bat(7, 'fast'));
     // Just under the phone, back to front: the far ones, the mist between, then the near ones
     // and the mist before them.
+    // The ghost between the two banks of mist, so that it rises from behind the near pumpkins.
     lay(phone, 'hw-ground', pumpkin('hw-pk-f1 hw-far', 'd') + pumpkin('hw-pk-f2 hw-far', 'd') + MIST_BACK
-        + pumpkin('hw-pk-c', 'c') + pumpkin('hw-pk-a', 'a') + pumpkin('hw-pk-b', 'b') + MIST_FRONT, true);
+        + ghost(3) + pumpkin('hw-pk-c', 'c') + pumpkin('hw-pk-a', 'a') + pumpkin('hw-pk-b', 'b') + MIST_FRONT, true);
     lay(buttons, 'hw-cta-patch',
         pumpkin('hw-pk-cf hw-far', 'd') + pumpkin('hw-pk-cc', 'c') + pumpkin('hw-pk-ca', 'a'));
 
@@ -202,6 +225,8 @@
         var count = Math.max(1, Math.round(section.offsetHeight / 900));
         var margins = ['', ''];
         margins[i % 2] += spider(3, delay);
+        // Below the spider, on its side, a ghost rising through the margin.
+        margins[i % 2] += ghost(1, 'top:60%;animation-delay:' + (-4.1 * (i + 1)).toFixed(1) + 's');
         for (var j = 0; j < count; j++) {
             var perch = 'top:' + ((j + .5) / count * 100).toFixed(1) + '%;animation-delay:'
                 + (-5.3 * (i + j + 1)).toFixed(1) + 's';
@@ -217,13 +242,15 @@
     // footer's empty top, a last spider. Back to front, as at the foot of the phone.
     var footer = document.querySelector('footer');
     if (footer) {
-        lay(footer, 'hw-foot', pumpkin('hw-pk-ed', 'c') + pumpkin('hw-pk-ec hw-far', 'd')
+        // The ghost first, so that it rises from behind the pumpkins.
+        lay(footer, 'hw-foot', ghost(2) + pumpkin('hw-pk-ed', 'c') + pumpkin('hw-pk-ec hw-far', 'd')
             + pumpkin('hw-pk-eb', 'b') + pumpkin('hw-pk-ea', 'a'));
         lay(footer, 'hw-sky hw-sky-foot', spider(5));
     }
 
     // The strip that shows a track playing plays Danse macabre that day: its cover, its title,
-    // how far it has got. The path and the format stay: they are the box's, not the record's.
+    // how far it has got. The path and the format stay: they are the box's, not the record's —
+    // except while the excerpt plays, when the strip shows the excerpt's own (listen).
     // The cover, 400 x 400 as the usual one, is asked for only now, the image being lazy.
     var strip = document.querySelector('.np-strip');
     if (strip) {
@@ -240,6 +267,114 @@
         progress.firstElementChild.textContent = '3:33';
         progress.lastElementChild.textContent = progress.lastElementChild.textContent.replace(/\d+:\d\d/, '3:22');
         progress.querySelector('.fill').style.width = '51.3%';
+        listen(progress);
+    }
+
+    /**
+     * Lets the strip play what it shows: a round button beside the time plays an excerpt of the
+     * recording, Apple's 30 s preview of the Decca album, asked for only at the first press. While
+     * it plays, the strip tells the truth about what is heard: the excerpt's own format and its own
+     * time, 0:00 to 0:30. Paused or over, it shows the box's again. An audiophile reading DSD256
+     * over a browser's AAC preview would be right to feel misled. Never on its own: a browser plays
+     * no sound before the visitor has pressed something, and the page would not want to. The
+     * recording is protected (Decca, 1981): playing it that day is the site owner's decision, the
+     * risk taken knowingly (2026-10-25). The button wears the carousel's own play and pause icons,
+     * copied from it rather than drawn twice.
+     *
+     * @param {Element} progress - The strip's progress row: the time played, the bar, the time left.
+     */
+    function listen(progress) {
+        var playIcon = document.querySelector('#heroPlay .ic-play');
+        var pauseIcon = document.querySelector('#heroPlay .ic-pause');
+        if (!playIcon || !pauseIcon) return;
+        var played = progress.firstElementChild;
+        var left = progress.lastElementChild;
+        var fill = progress.querySelector('.fill');
+        var values = [].slice.call(document.querySelectorAll('.np-fmt .cell b'));
+        // What the box shows, put back when the excerpt stops; and what the excerpt is (ffprobe on
+        // its file: AAC, 44,100 Hz, 262,603 b/s, 30.0 s).
+        var box = {
+            values: values.map(function (b) { return b.textContent; }),
+            played: played.textContent,
+            left: left.textContent,
+            width: fill.style.width,
+            label: progress.getAttribute('aria-label')
+        };
+        var heard = ['AAC', '44.1kHz', '263kbps', 'AAC'];
+        var sound = null;
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'hw-np-play';
+        button.appendChild(playIcon.cloneNode(true));
+        button.appendChild(pauseIcon.cloneNode(true));
+        // Beside the progress row, not in it: the row is an image to assistive technology, whose
+        // content is not read, and a button there would be heard as nothing.
+        var row = document.createElement('div');
+        row.className = 'hw-np-row';
+        progress.parentNode.insertBefore(row, progress);
+        row.appendChild(button);
+        row.appendChild(progress);
+
+        var clock = function (s) {
+            return Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
+        };
+        var show = function (s, total) {
+            played.textContent = clock(s);
+            left.textContent = left.textContent.replace(/\d+:\d\d/, clock(total - s));
+            fill.style.width = (100 * s / total).toFixed(1) + '%';
+            progress.setAttribute('aria-label', clock(s) + ' played, ' + clock(total - s) + ' left');
+        };
+        // The strip as the excerpt is heard, from an element playing it; as the box shows it, from none.
+        var hearing = function (element) {
+            values.forEach(function (b, i) {
+                b.textContent = element ? heard[i] : box.values[i];
+            });
+            if (element) {
+                show(element.currentTime, element.duration || 30);
+                return;
+            }
+            played.textContent = box.played;
+            left.textContent = box.left;
+            fill.style.width = box.width;
+            progress.setAttribute('aria-label', box.label);
+        };
+        var state = function (playing) {
+            button.classList.toggle('playing', playing);
+            button.setAttribute('aria-label', playing ? 'Pause the excerpt' : 'Play an excerpt');
+        };
+        var fresh = function () {
+            var element = new Audio('assets/audio/danse-macabre.m4a');
+            element.addEventListener('timeupdate', function () {
+                if (!element.paused) show(element.currentTime, element.duration || 30);
+            });
+            element.addEventListener('play', function () {
+                state(true);
+                hearing(element);
+            });
+            element.addEventListener('pause', function () {
+                state(false);
+                hearing(null);
+            });
+            // A load that failed, or a network lost on the way: the element stays failed, so the
+            // next press starts again from a new one.
+            element.addEventListener('error', function () {
+                if (sound === element) sound = null;
+                state(false);
+                hearing(null);
+            });
+            return element;
+        };
+        state(false);
+
+        button.addEventListener('click', function () {
+            if (!sound) sound = fresh();
+            if (!sound.paused) {
+                sound.pause();
+                return;
+            }
+            var started = sound.play();
+            if (started && started.catch) started.catch(function () { state(false); });
+        });
     }
 
     // The tab says it too: a pumpkin before the page's name. Not the site's icon, which a

@@ -11,9 +11,10 @@
 //
 // Everything built here is decoration: hidden from assistive technology, deaf to the pointer,
 // and laid over the page rather than into it, so that the page reads and works as on any day.
-// Two things are changed rather than built, the track in the strip and the title, and those are
-// read as they show, a screen reader's "jack-o'-lantern" included. One thing is built to be
-// used: the strip's play button, a real button, named and reached like any other.
+// Three things are changed rather than built, the track in the strip, the title and, while the
+// day's game runs, the banner, and those are read as they show, a screen reader's
+// "jack-o'-lantern" included. Two things are built to be used, real buttons named and reached
+// like any other: the strip's play button, and the orange ghost of the day's game.
 (function () {
     var root = document.documentElement;
     var hero = document.querySelector('.hero');
@@ -380,6 +381,233 @@
     // The tab says it too: a pumpkin before the page's name. Not the site's icon, which a
     // browser may keep well past the day.
     document.title = String.fromCodePoint(0x1F383) + ' ' + document.title;
+
+    // THE ORANGE GHOST, the day's game, run by the licence server (its routers/ghost.py): ten
+    // licence keys wake through 31 October, Paris time, each at a secret instant, and the first
+    // visitor to ask after one wakes is shown an orange ghost somewhere down the page, with
+    // twenty minutes to catch it. The page asks once a visit and decides nothing: it can neither
+    // make a ghost appear nor know a key before the server gives it. The rules are on
+    // orange-ghost.html.
+    var LICENCE_SERVER = location.hostname === 'audiogravity.app'
+        ? 'https://lic.audiogravity.app:8443/ls/portal/'
+        // Anywhere else, the page is a developer's copy: it asks the licence server beside it.
+        : location.protocol + '//' + location.hostname + ':8100/ls/portal/';
+    var KEY = /^AG(-[A-Z0-9]{4}){4}$/;
+    var KEPT = 'ag-orange-ghost';
+    hunt();
+
+    /**
+     * Asks the licence server whether the game is on and whether a ghost is here for this
+     * visitor, words the banner from the answer, and hides the ghost when there is one. A visitor
+     * who caught one this year on this device is offered their key again, and asks nothing.
+     */
+    function hunt() {
+        var mine = kept();
+        if (mine) {
+            announce('You caught an orange ghost: show your licence key', function () {
+                reveal(mine);
+            });
+            return;
+        }
+        ask('ghost-draw').then(function (answer) {
+            var left = parseInt(answer.data.left, 10) || 0;
+            if (answer.data.state === 'open' && left > 0) {
+                announce('Find the orange ghost on this page today: ' + left
+                    + (left === 1 ? ' lifetime licence' : ' lifetime licences') + ' left to win');
+                if (answer.data.ghost && answer.data.ghost.ticket) haunt(answer.data.ghost);
+            } else if (answer.data.state === 'over') {
+                announce('Every orange ghost has been caught. Thank you for hunting!');
+            }
+        }, function () {});
+    }
+
+    /**
+     * Asks the licence server one of the game's two questions.
+     *
+     * @param {string} route - 'ghost-draw' or 'ghost-claim'.
+     * @param {Object} [body] - What the question sends, as JSON.
+     * @returns {Promise<{status: number, data: Object}>} The answer's status, and its JSON (empty
+     *     when it carries none); rejected when the server cannot be reached in time.
+     */
+    function ask(route, body) {
+        var options = { method: 'POST' };
+        if (body) {
+            options.headers = { 'Content-Type': 'application/json' };
+            options.body = JSON.stringify(body);
+        }
+        // A server that does not answer must not keep the page waiting: the game is just not there.
+        if (window.AbortSignal && AbortSignal.timeout) options.signal = AbortSignal.timeout(8000);
+        return fetch(LICENCE_SERVER + route, options).then(function (response) {
+            return response.json().then(null, function () {
+                return {};
+            }).then(function (data) {
+                return { status: response.status, data: data || {} };
+            });
+        });
+    }
+
+    /**
+     * Rewrites the banner above the page for the game: its badge, a sentence, and where a press
+     * leads — the rules, or the visitor's own key.
+     *
+     * @param {string} sentence - What it says.
+     * @param {Function} [open] - What a press does instead of leading to the rules.
+     */
+    function announce(sentence, open) {
+        var banner = document.querySelector('.announce-bar a');
+        if (!banner) return;
+        var badge = document.createElement('span');
+        badge.className = 'announce-badge';
+        badge.textContent = 'HALLOWEEN';
+        var arrow = document.createElement('span');
+        arrow.className = 'announce-arrow';
+        arrow.textContent = '→';
+        banner.textContent = '';
+        // Spaced as the page writes the release's sentence, so that it is read as words.
+        banner.append(badge, ' ' + sentence + ' ', arrow);
+        banner.href = 'orange-ghost.html';
+        banner.onclick = open ? function (event) {
+            event.preventDefault();
+            open();
+        } : null;
+    }
+
+    /**
+     * Hides the orange ghost in the band at the top of a section taken at random, somewhere
+     * along it: the band the bats and the spiders use, above every label. It stays there as long
+     * as the ticket the server gave with it lasts, counted from now rather than read off the
+     * visitor's clock, which may be wrong by any amount. Caught, it trades the ticket for the key.
+     *
+     * @param {{ticket: string, ttl: number}} ghost - The server's ticket, and the seconds it lasts.
+     */
+    function haunt(ghost) {
+        var section = sections[Math.floor(Math.random() * sections.length)];
+        if (!section) return;
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'hw-orange';
+        button.setAttribute('aria-label', 'An orange ghost: catch it to win a lifetime licence');
+        button.style.left = 'calc(' + (6 + Math.random() * 88).toFixed(1) + '% - 22px)';
+        button.innerHTML = GHOST;
+        section.appendChild(button);
+        var lapse = setTimeout(function () {
+            button.remove();
+        }, Math.max(0, +ghost.ttl || 0) * 1000);
+        button.addEventListener('click', function () {
+            if (button.getAttribute('aria-disabled') === 'true') return;
+            button.setAttribute('aria-disabled', 'true');
+            ask('ghost-claim', { ticket: ghost.ticket }).then(function (answer) {
+                clearTimeout(lapse);
+                button.remove();
+                var mine = { key: answer.data.key, year: new Date().getFullYear() };
+                if (answer.status === 200 && KEY.test(mine.key || '')) {
+                    try {
+                        localStorage.setItem(KEPT, JSON.stringify(mine));
+                    } catch (e) { /* refused storage: the key is shown this once */ }
+                    announce('You caught an orange ghost: show your licence key', function () {
+                        reveal(mine);
+                    });
+                    reveal(mine);
+                } else {
+                    tell(answer.status === 409
+                        ? 'One ghost per visitor: you caught one already today.'
+                        : 'Too late: this ghost has vanished. Another one may wake later today.');
+                }
+            }, function () {
+                // No answer, though the server may have given the key on its side: the ghost
+                // stays, past its time if need be, since the same ticket gives the same key again.
+                clearTimeout(lapse);
+                button.removeAttribute('aria-disabled');
+                tell('The licence server did not answer. The ghost is still there: try again in a moment.');
+            });
+        });
+    }
+
+    /**
+     * The key this device caught, kept so that a reload shows it again, for this year's game
+     * only. Storage may be refused (private browsing): the key was then shown once, when caught.
+     *
+     * @returns {?{key: string, year: number}} The key and its year, or null.
+     */
+    function kept() {
+        try {
+            var mine = JSON.parse(localStorage.getItem(KEPT));
+            return mine && mine.year === new Date().getFullYear() && KEY.test(mine.key) ? mine : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    /**
+     * Opens a window over the page, closed by its button or by Escape: a <dialog>, which keeps
+     * the focus inside while it is open and gives it back on closing. A browser without one
+     * (Safari before 15.4) is told the same in a plain message: a winner must see the key,
+     * whatever the browser.
+     *
+     * @param {string} label - Its name, for assistive technology.
+     * @param {string} html - Its content, the page's own words only.
+     * @param {function(HTMLDialogElement)} fill - Sets in it what comes from the server, as text.
+     * @param {string} plain - What it says, as plain text, for a browser without <dialog>.
+     */
+    function windowOf(label, html, fill, plain) {
+        var dialog = document.createElement('dialog');
+        if (typeof dialog.showModal !== 'function') {
+            window.alert(plain);
+            return;
+        }
+        dialog.className = 'hw-catch';
+        dialog.setAttribute('aria-label', label);
+        dialog.innerHTML = html + '<form method="dialog"><button class="hw-catch-close">Close</button></form>';
+        fill(dialog);
+        dialog.addEventListener('close', function () {
+            dialog.remove();
+        });
+        document.body.appendChild(dialog);
+        dialog.showModal();
+    }
+
+    /**
+     * Shows the key the visitor caught, how to activate it, and the rules.
+     *
+     * @param {{key: string}} mine - The key.
+     */
+    function reveal(mine) {
+        windowOf('Your lifetime licence', '<h2>You caught the orange ghost!</h2>'
+            + '<p>Your lifetime Audiogravi<sup>ty</sup> licence:</p>'
+            + '<p class="hw-catch-key"><code></code><button type="button" class="hw-catch-copy">Copy</button></p>'
+            + '<ol><li>In Audiogravi<sup>ty</sup>, open the <b>Admin</b> tab.</li>'
+            + '<li>Tap <b>LICENSE KEY</b>, at the top of the licence panel, and paste the key.</li>'
+            + '<li>Tap <b>CHECK KEY</b>, then <b>ACTIVATE THIS MACHINE</b>.</li></ol>'
+            + '<p class="hw-catch-note">The key works once: the first box to activate it keeps it, so keep'
+            + ' it to yourself. No box yet? It will wait for you, and this page keeps it on this device.</p>'
+            + '<p class="hw-catch-note"><a href="orange-ghost.html">The rules</a> · '
+            + '<a href="mailto:orange-ghost@audiogravity.app">orange-ghost@audiogravity.app</a></p>',
+        function (dialog) {
+            dialog.querySelector('code').textContent = mine.key;
+            var copy = dialog.querySelector('.hw-catch-copy');
+            copy.addEventListener('click', function () {
+                if (!navigator.clipboard) return;
+                navigator.clipboard.writeText(mine.key).then(function () {
+                    copy.textContent = 'Copied';
+                }, function () {});
+            });
+        },
+        // Plain text: the brand as an attribute writes it, there being no markup to raise "ty".
+        'You caught the orange ghost! Your lifetime Audiogravity licence key:\n\n' + mine.key
+            + '\n\nIn Audiogravity, open the Admin tab, tap LICENSE KEY and paste the key, then tap'
+            + ' CHECK KEY and ACTIVATE THIS MACHINE. The key works once: keep it to yourself.');
+    }
+
+    /**
+     * Says one sentence about the game in a window: a ghost gone, or a server that did not answer.
+     *
+     * @param {string} sentence - What it says.
+     */
+    function tell(sentence) {
+        windowOf('The orange ghost', '<p></p>', function (dialog) {
+            dialog.querySelector('p').textContent = sentence;
+        }, sentence);
+    }
 
     // Nothing moves in a part of the page scrolled out of sight: the hero, a section, the footer.
     // The screen is taken 120px taller at its foot: the pumpkins on the footer's edge stand

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <!-- The rules of one day's game: worth keeping where the banner and the game's window link
+         to them, not worth a place in search results. -->
+    <meta name="robots" content="noindex">
+    <title>Audiogravity — The orange ghost: rules</title>
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+    <meta name="theme-color" content="#2d2d2d">
+    <link rel="stylesheet" href="assets/style.css?v=4337d56c0a">
+    <script>
+        /* Apply saved theme before first paint to avoid flash — same as index.html. */
+        (function () {
+            const t = localStorage.getItem('ag-theme');
+            if (t) document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <style>
+        .rules {
+            min-height: 100vh;
+            box-sizing: border-box;
+            max-width: 68ch;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: var(--font-size-md);
+            line-height: 1.65;
+        }
+        .rules-kicker { font-size: var(--font-size-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--text4) }
+        .rules h1 { margin: 8px 0 24px; font-size: var(--font-size-xxl); letter-spacing: -.02em; line-height: 1.2 }
+        .rules h2 { margin: 32px 0 8px; font-size: var(--font-size-lg) }
+        .rules p, .rules ol { margin: 0 0 12px; color: var(--text2) }
+        .rules ol { padding-left: 22px }
+        .rules a { color: inherit; text-decoration: underline }
+        html { background: var(--bg) }
+    </style>
+</head>
+
+<body>
+    <main class="rules">
+        <p class="rules-kicker"><a href="./">Audiogravi<sup>ty</sup></a> · Halloween 2026</p>
+        <h1>The orange ghost: the rules</h1>
+
+        <h2>The game</h2>
+        <p>On 31 October 2026, ten orange ghosts haunt audiogravity.app. Each one is a lifetime
+            Audiogravi<sup>ty</sup> licence for whoever catches it.</p>
+
+        <h2>Who runs it</h2>
+        <p>Alexandre Di Marco, publisher of Audiogravi<sup>ty</sup> at audiogravity.app. For
+            anything about the game: <a href="mailto:orange-ghost@audiogravity.app">orange-ghost@audiogravity.app</a>.</p>
+
+        <h2>When</h2>
+        <p>From midnight to midnight on 31 October 2026, Paris time (UTC+1). The page shows it on 31
+            October by your own clock, so elsewhere you can play while both days meet: in New York
+            from midnight to 19:00, in Tokyo from 08:00 to midnight.</p>
+
+        <h2>How it works</h2>
+        <ol>
+            <li>Through the day, the ten licences wake one at a time, each at a moment drawn at random
+                and kept secret by the Audiogravi<sup>ty</sup> licence server: one moment in each tenth
+                of the day.</li>
+            <li>The first visitor to open audiogravity.app after a licence wakes is shown an orange
+                ghost, somewhere on the page. Nobody else sees it.</li>
+            <li>Catch it, with a click or a tap, within twenty minutes, and the page gives you the
+                licence key. If you do not, it goes back to sleep, and the next visitor has their
+                chance.</li>
+        </ol>
+        <p>Through the day, the banner at the top of the page says how many licences are left to
+            win. Those nobody has caught by midnight are not awarded.</p>
+
+        <h2>The prize</h2>
+        <p>A lifetime licence, the same as a bought one: Audiogravi<sup>ty</sup> Pro on one
+            installation, every 1.x version included, with no end date. It has no cash value and
+            cannot be exchanged for money.</p>
+
+        <h2>Using your key</h2>
+        <p>In Audiogravi<sup>ty</sup>, open the <b>Admin</b> tab, tap <b>LICENSE KEY</b> at the top of
+            the licence panel and paste the key, then tap <b>CHECK KEY</b> and
+            <b>ACTIVATE THIS MACHINE</b>. The key works once: the first box to activate it keeps it,
+            so keep it to yourself. It does not expire: with no box yet, it will wait for you. The page you caught
+            it on keeps it on that device.</p>
+
+        <h2>Who can play, and how often</h2>
+        <p>Anyone, free of charge: no purchase, no account, no email address. Each internet address
+            has one chance an hour, and can win one licence.</p>
+
+        <h2>Fair play</h2>
+        <p>Asking with automated requests, or through many addresses to multiply one's chances, is
+            not playing: a licence obtained that way may be revoked.</p>
+
+        <h2>Your data</h2>
+        <p>The game asks for nothing about you, and keeps no list of players or of winners. To give
+            each address one chance an hour and one licence, the licence server holds the addresses
+            of the visitors who ask in its memory, for the day of the game only. Like any web
+            server, it logs each request it receives, with the address it came from.</p>
+
+        <p><a href="./">← Back to audiogravity.app</a></p>
+    </main>
+</body>
+
+</html>

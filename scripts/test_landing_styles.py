@@ -20,7 +20,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 CSS = ROOT / "assets" / "style.css"
-PAGES = [ROOT / "index.html", ROOT / "404.html", *sorted((ROOT / "docs" / "manual").glob("*.html"))]
+PAGES = [ROOT / "index.html", ROOT / "404.html", ROOT / "orange-ghost.html", *sorted((ROOT / "docs" / "manual").glob("*.html"))]
 
 #: The six text steps, documented where they are declared (the :root block of style.css).
 TEXT_STEPS = {"xs": 11, "sm": 13, "md": 15, "lg": 17, "xl": 20, "xxl": 28}

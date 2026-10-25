@@ -817,6 +817,134 @@
 }
 
 /* --------------------------------------------------------------------------
+   THE ORANGE GHOST — the day's game (halloween.js, hunt): shown to one visitor at a time, in
+   the band at the top of a section, above its label, where the bats and the spiders go — 44px
+   from the band's top 6px, inside the 60px a phone leaves there. A real button, 44px to the
+   finger, the ghost in candlelight rather than in the page's ink. On the skies' level (3) and
+   laid after them in its section, so in front of them, and under the carousel's controls like
+   every piece of the day. It bobs where it stands; for a visitor who asked for less motion it
+   stands still, and stays: it is the game, not a decoration.
+   -------------------------------------------------------------------------- */
+
+.hw-orange {
+    position: absolute;
+    top: 6px;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    padding: 4px;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    animation: hw-bob 3.2s ease-in-out infinite
+}
+
+/* The orange of the app's own switches (audiogravity.ui, themes/minimal.css, dark:
+   --switch-notification-bg), so that the ghost reads as the app's. It needs no edge: it stands
+   at 3.6:1 on the light page's white and 3.3:1 on its grey band, 5.6:1 on the dark page — a
+   control's shape needs 3:1. */
+.hw-orange svg {
+    display: block;
+    width: 36px;
+    height: auto;
+    overflow: visible;
+    fill: #ea580c;
+    filter: drop-shadow(0 0 6px rgba(234, 88, 12, .7))
+}
+
+.hw-orange:focus-visible {
+    outline: 2px solid var(--warn-line);
+    outline-offset: 2px
+}
+
+@keyframes hw-bob {
+    0%, 100% { transform: translateY(0) rotate(-3deg) }
+    50% { transform: translateY(-4px) rotate(3deg) }
+}
+
+/* The window a caught ghost opens: the key, the three steps that activate it, the rules. In the
+   page's own colours and type, whichever theme it is in. Its margin given back: the browser
+   centres a modal window with `margin: auto`, which the page's reset (style.css, `*`) takes
+   away — it stood in the top left corner. */
+.hw-catch {
+    margin: auto;
+    width: min(440px, calc(100vw - 32px));
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: var(--font-size-md);
+    line-height: 1.55
+}
+
+.hw-catch::backdrop {
+    background: rgba(0, 0, 0, .55)
+}
+
+.hw-catch h2 {
+    margin: 0 0 12px;
+    font-size: var(--font-size-xl);
+    line-height: 1.25
+}
+
+.hw-catch p,
+.hw-catch ol {
+    margin: 0 0 12px
+}
+
+.hw-catch ol {
+    padding-left: 20px
+}
+
+/* Underlined: the page's links lose theirs (style.css, `a`), and these sit in a sentence. */
+.hw-catch a {
+    color: inherit;
+    text-decoration: underline
+}
+
+.hw-catch-key {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px
+}
+
+.hw-catch-key code {
+    font-family: var(--mono);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    letter-spacing: .04em;
+    user-select: all
+}
+
+.hw-catch-note {
+    color: var(--text3);
+    font-size: var(--font-size-sm)
+}
+
+.hw-catch-copy,
+.hw-catch-close {
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg2);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer
+}
+
+.hw-catch form {
+    margin: 4px 0 0;
+    text-align: right
+}
+
+/* --------------------------------------------------------------------------
    STILLNESS — a browser that cannot read container units (Safari before 16) drops every
    declaration written with them, so the pieces they place stay out rather than misplaced: the
    skies, not to pile the bats and spiders in a corner; the panel's web, which grew to 300px
@@ -844,10 +972,15 @@
     .hw-fog {
         animation: none
     }
+
+    .hw-orange {
+        animation: none
+    }
 }
 
 .hw-paused .hw-decor,
-.hw-paused .hw-decor * {
+.hw-paused .hw-decor *,
+.hw-paused .hw-orange {
     animation-play-state: paused
 }
 

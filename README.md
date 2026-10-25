@@ -257,7 +257,7 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 ## Roadmap
 
-Audiogravi<sup>ty</sup> is in **public beta** — open to everyone, no invitation and no token. On the horizon: multi-room fanout and an AirPlay sender.
+Audiogravi<sup>ty</sup> is a **release candidate** for 1.0 — open to everyone, no invitation and no token. On the horizon: multi-room fanout and an AirPlay sender.
 
 ## Contributing
 

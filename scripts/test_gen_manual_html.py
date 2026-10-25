@@ -753,8 +753,8 @@ class TestThemeToggle:
         assert "localStorage.getItem('ag-theme')" in (REPO_DIR / "index.html").read_text(encoding="utf-8")
 
     def test_it_keeps_the_bar_edge_the_landing_leaves_for_its_ribbon(self):
-        """style.css moves the landing's toggle 34 to 84px off the corner below 1100px, clear
-        of the "Public beta" ribbon; the manual has none, so its bar puts the toggle back."""
+        """style.css moves the landing's toggle 64 to 114px off the corner below 1160px, clear
+        of the stage ribbon; the manual has none, so its bar puts the toggle back."""
         css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
         rule = re.search(r"\.man-top \.theme-toggle \{([^}]*)\}", css)
         assert rule, "no rule for the manual's toggle"

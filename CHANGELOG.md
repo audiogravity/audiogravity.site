@@ -31,6 +31,7 @@ and this landing) are documented here. Format based on
 - **[ui] Update banner — a failed attempt at a release candidate is no longer shown against the offer of its final release.**
 - **[lic] The admin's device table sorts versions in the order updates are offered**: a release candidate before its release, `rc.2` before `rc.10`. Reading every digit of the version put a release candidate after its own release.
 - **[ops] release — the README version badges follow a release candidate.** `sync-version.mjs` skipped every version with a dash, which left the ui, lic and core badges on the release before; `update-test-report.sh` wrote the landing's with a single dash, which a shields.io address reads as a field separator. Both write a pre-release with the dash doubled (`1.0.0--rc.1`), and "beta" after a 0.x release only.
+- **[site] The pipeline drawing's moving dots no longer keep the whole page busy.** They kept the page redrawing sixty times a second wherever the reader was, the drawing on screen or not — on a modest phone, more than half of what the page asked of it; they now move only while the drawing is on screen, and stay still for a visitor whose system asks for less motion, which they used to ignore.
 
 ## [0.9.80] - 2026-10-24
 

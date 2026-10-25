@@ -110,3 +110,25 @@ spark('ds1', 1.2); spark('ds2', 2.8);
         update();
     });
 })();
+
+// The pipeline's moving dots. They are SMIL animations (animateMotion), which the browser runs
+// on the page's main thread and never stops by itself when the drawing is out of sight: left
+// running, they had the whole page redrawn sixty times a second wherever the reader was.
+// Measured in Chromium with the CPU slowed four times, as on a modest phone: mid-page, the main
+// thread was 49% busy with them and 20% with them stopped (2026-10-25). So they move only
+// while the drawing is on screen, and not at all for a visitor who asked for less motion, whom
+// they used to ignore: stopped at once, each dot holds the place its staggered start gives it,
+// one on each link.
+(function () {
+    var drawing = document.querySelector('.pipeline-frame svg');
+    if (!drawing || !drawing.pauseAnimations) return;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        drawing.pauseAnimations();
+        return;
+    }
+    if (!('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) drawing.unpauseAnimations();
+        else drawing.pauseAnimations();
+    }).observe(drawing);
+})();

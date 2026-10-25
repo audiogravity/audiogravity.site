@@ -1,6 +1,7 @@
-// Halloween on the landing, every 31 October by the visitor's own clock: bats over the hero,
-// spiders coming down on their threads, webs in the corners and jack-o'-lanterns at the foot of
-// the phone. Its look is in halloween.css.
+// Halloween on the landing, every 31 October by the visitor's own clock: bats and spiders from
+// the top of the page to its foot, webs in the hero's corners, jack-o'-lanterns at the foot of
+// the phone and on the footer's edge, Danse macabre in the strip that shows a track playing, and
+// a pumpkin in the tab's title. Its look is in halloween.css.
 //
 // Neither file is fetched on another day. The theme script in index.html's <head> decides —
 // the date, or ?halloween in the address to preview it — sets html.halloween, and opens the
@@ -10,6 +11,8 @@
 //
 // Everything built here is decoration: hidden from assistive technology, deaf to the pointer,
 // and laid over the page rather than into it, so that the page reads and works as on any day.
+// Two things are changed rather than built, the track in the strip and the title, and those are
+// read as they show, a screen reader's "jack-o'-lantern" included.
 (function () {
     var root = document.documentElement;
     var hero = document.querySelector('.hero');
@@ -108,13 +111,24 @@
         + '<ellipse cx="20" cy="13" rx="6.5" ry="8" /><circle cx="20" cy="26" r="4.6" /></svg>';
 
     /**
+     * The style attribute of a piece that carries its own, nothing for one that does not.
+     *
+     * @param {string} [style] - Its inline style.
+     * @returns {string} The attribute, with its leading space, or an empty string.
+     */
+    function inline(style) {
+        return style ? ' style="' + style + '"' : '';
+    }
+
+    /**
      * One spider, coming down on its thread and climbing back, as hw-drop-<n> in halloween.css says.
      *
      * @param {number} n - Its number, which names its drop and its place.
+     * @param {string} [style] - Its own delay, for the spiders that share a drop down the page.
      * @returns {string} The spider's markup, its thread drawn by the stylesheet.
      */
-    function spider(n) {
-        return '<div class="hw-spider hw-s' + n + '"><div class="hw-sway">' + SPIDER + '</div></div>';
+    function spider(n, style) {
+        return '<div class="hw-spider hw-s' + n + '"' + inline(style) + '><div class="hw-sway">' + SPIDER + '</div></div>';
     }
 
     /**
@@ -122,10 +136,12 @@
      *
      * @param {number} n - Its number, which names its flight (hw-fly-b<n>) and its size.
      * @param {string} [pace] - 'fast' or 'slow' wings; a medium beat when omitted.
+     * @param {string} [style] - Its own delay, and where its flight is laid (top), for the bats
+     *     that share a flight down the page.
      * @returns {string} The bat's markup.
      */
-    function bat(n, pace) {
-        return '<div class="hw-bat hw-b' + n + '"><div class="hw-bob' + (pace ? ' hw-' + pace : '') + '">'
+    function bat(n, pace, style) {
+        return '<div class="hw-bat hw-b' + n + '"' + inline(style) + '><div class="hw-bob' + (pace ? ' hw-' + pace : '') + '">'
             + '<svg viewBox="0 0 120 64">' + BAT + '</svg></div></div>';
     }
 
@@ -172,10 +188,75 @@
     lay(buttons, 'hw-cta-patch',
         pumpkin('hw-pk-cf hw-far', 'd') + pumpkin('hw-pk-cc', 'c') + pumpkin('hw-pk-ca', 'a'));
 
-    // Nothing moves while the hero is out of sight: it is the only place the decoration is.
+    // Down the page, every section but the figures that close "End the jitter" (one band with
+    // it, no edge of their own): a bat across the band above the section's label, and in the
+    // margins beside its text a spider let down from the section's top, and bats that come in
+    // from the screen's edge, fly a loop and go back out — about one for each 900px of the
+    // section, on alternate sides. A phone has no margins: its spider hangs in the band. Each
+    // piece starts its loop at its own point, so that no two along the page move as one.
+    var sections = [].filter.call(document.querySelectorAll('.section'), function (section) {
+        return !section.classList.contains('rt-proof');
+    });
+    sections.forEach(function (section, i) {
+        var delay = 'animation-delay:' + (-3.7 * (i + 1)).toFixed(1) + 's';
+        var count = Math.max(1, Math.round(section.offsetHeight / 900));
+        var margins = ['', ''];
+        margins[i % 2] += spider(3, delay);
+        for (var j = 0; j < count; j++) {
+            var perch = 'top:' + ((j + .5) / count * 100).toFixed(1) + '%;animation-delay:'
+                + (-5.3 * (i + j + 1)).toFixed(1) + 's';
+            margins[(i + j + 1) % 2] += j % 2 ? bat(9, 'slow', perch) : bat(8, '', perch);
+        }
+        lay(section, 'hw-sky hw-sky-top', spider(4, delay) + (i % 2 ? bat(2, 'fast', delay) : bat(1, '', delay)));
+        lay(section, 'hw-sky hw-sky-margin hw-margin-l', margins[0]);
+        lay(section, 'hw-sky hw-sky-margin hw-margin-r', margins[1]);
+    });
+
+    // The last scene: lit pumpkins standing on the footer's top edge, at the right of the text
+    // column, with one more on its left on a wider screen; and, hung from that edge into the
+    // footer's empty top, a last spider. Back to front, as at the foot of the phone.
+    var footer = document.querySelector('footer');
+    if (footer) {
+        lay(footer, 'hw-foot', pumpkin('hw-pk-ed', 'c') + pumpkin('hw-pk-ec hw-far', 'd')
+            + pumpkin('hw-pk-eb', 'b') + pumpkin('hw-pk-ea', 'a'));
+        lay(footer, 'hw-sky hw-sky-foot', spider(5));
+    }
+
+    // The strip that shows a track playing plays Danse macabre that day: its cover, its title,
+    // how far it has got. The path and the format stay: they are the box's, not the record's.
+    // The cover, 400 x 400 as the usual one, is asked for only now, the image being lazy.
+    var strip = document.querySelector('.np-strip');
+    if (strip) {
+        var cover = strip.querySelector('.np-cover');
+        cover.src = 'assets/pics/cover-danse-macabre.webp';
+        cover.alt = 'Cover of Saint-Saëns: Danse Macabre by Charles Dutoit';
+        strip.querySelector('.track-name').textContent = 'Danse macabre';
+        // No longer than the usual "The Beatles — Abbey Road": "Charles Dutoit" in full took a
+        // second line on a 390px phone, where the usual line takes one (measured in Chromium).
+        strip.querySelector('.track-artist').textContent = 'Saint-Saëns — C. Dutoit';
+        // 6:55 in all, the recording's length: 3:33 played, 3:22 left, the bar 51.3% full.
+        var progress = strip.querySelector('.np-progress');
+        progress.setAttribute('aria-label', '3:33 played, 3:22 left');
+        progress.firstElementChild.textContent = '3:33';
+        progress.lastElementChild.textContent = progress.lastElementChild.textContent.replace(/\d+:\d\d/, '3:22');
+        progress.querySelector('.fill').style.width = '51.3%';
+    }
+
+    // The tab says it too: a pumpkin before the page's name. Not the site's icon, which a
+    // browser may keep well past the day.
+    document.title = String.fromCodePoint(0x1F383) + ' ' + document.title;
+
+    // Nothing moves in a part of the page scrolled out of sight: the hero, a section, the footer.
     if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-            root.classList.toggle('hw-paused', !entries[0].isIntersecting);
-        }).observe(hero);
+        var rest = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                entry.target.classList.toggle('hw-paused', !entry.isIntersecting);
+            });
+        });
+        var parts = [hero].concat(sections);
+        if (footer) parts.push(footer);
+        parts.forEach(function (part) {
+            rest.observe(part);
+        });
     }
 })();

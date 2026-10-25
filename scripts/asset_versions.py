@@ -29,7 +29,7 @@ from pathlib import Path
 REPO_DIR = Path(__file__).resolve().parent.parent
 
 #: The pages written by hand. The manual's are generated, and stamped as they are written.
-HAND_WRITTEN = ("index.html", "404.html")
+HAND_WRITTEN = ("index.html", "404.html", "orange-ghost.html")
 
 #: A stylesheet or script a page names in an attribute, with its stamp if it has one.
 ASSET_REF = re.compile(r'(?P<attr>(?:href|src)=")(?P<url>[^"#?:]+\.(?:css|js))(?:\?v=[0-9a-f]*)?"')

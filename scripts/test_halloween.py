@@ -237,7 +237,7 @@ class TestTheDecoration:
         assert "entry.target.classList.toggle('hw-paused', !entry.isIntersecting)" in JS
         assert "var parts = [hero].concat(sections);" in JS and "if (footer) parts.push(footer);" in JS
         assert "rest.observe(part)" in JS
-        assert re.search(r"\.hw-paused \.hw-decor \*\s*\{\s*animation-play-state:\s*paused", CSS)
+        assert re.search(r"\.hw-paused \.hw-decor \*,?[^{]*\{\s*animation-play-state:\s*paused", CSS)
 
     def test_the_footers_pumpkins_keep_their_light_in_sight(self):
         """They stand above the footer that pauses them, their glow higher still: the screen is
@@ -552,7 +552,9 @@ class TestTheTitle:
 
     def test_the_sites_icon_is_left_alone(self):
         """A browser may keep an icon well past the day."""
-        assert not re.search(r"link\[rel|rel=.?icon|\.href\s*=", JS)
+        assert not re.search(r"link\[rel|rel=.?icon", JS)
+        # The one address it changes is the banner's, which leads to the game's rules.
+        assert set(re.findall(r"(\w+)\.href\s*=", JS)) == {"banner"}
 
 
 def _foot_rules() -> tuple[dict[str, str], dict[str, str]]:
@@ -744,3 +746,142 @@ class TestTheMist:
             assert re.search(r"aspect-ratio: %g / %g" % (w, h), rule), name
             foot = re.search(r"bottom: calc\(-[\d.]+cqw - 200cqw \* \((\d+) - \d+\) / 760\)", rule)
             assert foot and float(foot.group(1)) == y + h, f"{name}: the foot is not the viewBox's"
+
+
+RULES = (ROOT / "orange-ghost.html").read_text(encoding="utf-8")
+
+
+class TestTheOrangeGhost:
+    """The day's game. The licence server decides everything (audiogravity.lic, routers/ghost.py):
+    the page asks it once a visit, shows what it answers, and cannot make a ghost appear nor know
+    a key before it is given."""
+
+    def test_the_site_asks_the_licence_server_once_a_visit(self):
+        assert re.search(r"location\.hostname === 'audiogravity\.app'\s*\?\s*"
+                         r"'https://lic\.audiogravity\.app:8443/ls/portal/'", JS)
+        assert JS.count("ask('ghost-draw')") == 1
+        assert len(re.findall(r"^\s*hunt\(\);$", JS, re.M)) == 1, "the game is asked for more than once"
+        assert JS.count("ask('ghost-claim'") == 1
+        # Bounded: a server that does not answer leaves the page as it is.
+        assert "AbortSignal.timeout(8000)" in JS
+
+    def test_nothing_the_server_says_is_written_as_markup(self):
+        """The key and the counts go in as text; the only markup is the page's own words."""
+        for value in re.findall(r"innerHTML\s*=\s*([^;]+);", JS):
+            assert "answer" not in value and "mine" not in value and "data" not in value, value
+        assert "dialog.querySelector('code').textContent = mine.key" in JS
+        assert "banner.append(badge, ' ' + sentence + ' ', arrow)" in JS
+        # A key is shown, or kept, only in its own shape.
+        assert "var KEY = /^AG(-[A-Z0-9]{4}){4}$/;" in JS
+        assert "KEY.test(mine.key || '')" in JS and "KEY.test(mine.key)" in JS
+
+    def test_the_ghost_is_a_real_button_outside_the_hidden_decoration(self):
+        """In a section of its own, not in a piece laid with aria-hidden and deaf to the pointer."""
+        assert "var button = document.createElement('button');" in JS
+        assert "button.className = 'hw-orange';" in JS
+        assert "section.appendChild(button);" in JS
+        assert "button.setAttribute('aria-label', 'An orange ghost: catch it to win a lifetime licence');" in JS
+
+    def test_it_waits_in_the_band_above_every_label(self):
+        """The band the bats and the spiders use: under its height, which stays above every label
+        (TestDownThePage), on a phone as on a wide screen — and 44px to the finger."""
+        rule = re.search(r"^\.hw-orange \{([^}]*)\}", CSS, re.M).group(1)
+        band = int(re.search(r"\.hw-sky-top\s*\{[^}]*height:\s*(\d+)px", CSS).group(1))
+        assert _px(rule, "width") == _px(rule, "height") == 44
+        assert _px(rule, "top") + _px(rule, "height") <= band
+        # On the skies' level and laid after them, so in front: under them, a bat would hide it.
+        assert re.search(r"z-index: 3;", rule)
+        assert JS.index("hunt();") > JS.index("lay(section, 'hw-sky hw-sky-margin hw-margin-r', margins[1]);")
+
+    def test_it_stays_for_a_visitor_who_asked_for_less_motion(self):
+        """It is the game, not a decoration: still, but there."""
+        reduced = re.search(r"@media \(prefers-reduced-motion: reduce\) \{(.*?)\n\}", CSS, re.S).group(1)
+        hidden = re.search(r"\{\s*display: none\s*\}", reduced)
+        assert ".hw-orange" not in reduced[:hidden.end()]
+        assert re.search(r"\.hw-orange\s*\{\s*animation: none", reduced)
+
+    def test_it_rests_while_out_of_sight(self):
+        assert re.search(r"\.hw-paused \.hw-orange\s*\{\s*animation-play-state:\s*paused", CSS)
+
+    def test_it_goes_when_its_ticket_lapses(self):
+        """After the seconds the server gave, counted from now: the visitor's clock may be wrong
+        by any amount. Unless a claim got no answer — the server may have given the key, and the
+        same ticket gives it again: the ghost then stays, to be caught again."""
+        assert "}, Math.max(0, +ghost.ttl || 0) * 1000);" in JS
+        assert "Date.parse" not in JS
+        claim = JS[JS.index("ask('ghost-claim'"):JS.index("function kept()")]
+        answered, unanswered = claim.split("}, function () {")
+        assert "clearTimeout(lapse);" in answered and "button.remove();" in answered
+        assert "clearTimeout(lapse);" in unanswered and "button.remove();" not in unanswered
+
+    def test_a_caught_key_is_kept_on_this_device_for_this_year(self):
+        assert "var KEPT = 'ag-orange-ghost';" in JS
+        assert "localStorage.setItem(KEPT, JSON.stringify(mine));" in JS
+        assert "mine.year === new Date().getFullYear()" in JS
+
+    def test_the_banner_leads_to_the_rules(self):
+        assert "banner.href = 'orange-ghost.html';" in JS
+        assert '<a href="orange-ghost.html">The rules</a>' in JS
+
+    def test_the_rules_name_the_organiser_and_say_when_and_how(self):
+        for words in ("Alexandre Di Marco", "orange-ghost@audiogravity.app", "31 October 2026",
+                      "Paris time (UTC+1)", "ten orange ghosts", "twenty minutes",
+                      "one chance an hour", "can win one licence", "free of charge",
+                      "one moment in each tenth", "keeps no list of players or of winners",
+                      "logs each request it receives, with the address it came from"):
+            assert words in RULES, words
+
+    def test_the_steps_to_activate_are_the_manuals(self):
+        """The window and the rules name the app's own buttons: if the manual renames one, so must
+        they."""
+        manual = (ROOT / "docs" / "manual" / "07-administration.md").read_text(encoding="utf-8")
+        for label in ("LICENSE KEY", "CHECK KEY", "ACTIVATE THIS MACHINE"):
+            assert label in manual and label in JS and label in RULES, label
+
+    def test_the_brand_is_written_as_the_site_writes_it(self):
+        body = RULES[RULES.index("<body>"):]
+        assert "Audiogravi<sup>ty</sup>" in body and not re.search(r"Audiogravity(?!\.app)", body)
+        assert "Your lifetime Audiogravi<sup>ty</sup> licence" in JS
+
+    def test_its_window_is_centred_and_its_links_look_like_links(self):
+        """The page's reset takes away the margin a browser centres a modal window with, and its
+        links lose their underline: both are given back (measured: the window stood in the top
+        left corner, in Chromium and in WebKit)."""
+        assert re.search(r"^\* \{\s*margin: 0", SITE_CSS, re.M), "the reset moved: see .hw-catch"
+        assert re.search(r"^\.hw-catch \{\s*margin: auto;", CSS, re.M)
+        assert re.search(r"^\.hw-catch a \{[^}]*text-decoration: underline", CSS, re.M)
+        assert re.search(r"\.rules a \{[^}]*text-decoration: underline", RULES)
+
+    def test_it_stands_out_on_every_ground_in_the_apps_orange(self):
+        """The orange of the app's own switches (audiogravity.ui, themes/minimal.css, dark:
+        --switch-notification-bg), and a control's shape needs 3:1 against its ground: on the
+        light page's white and grey band as on the dark page's, it reaches it alone."""
+        def luminance(hex_colour):
+            if len(hex_colour) == 4:
+                hex_colour = "#" + "".join(c * 2 for c in hex_colour[1:])
+            channels = [int(hex_colour[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+            linear = [c / 12.92 if c <= .04045 else ((c + .055) / 1.055) ** 2.4 for c in channels]
+            return .2126 * linear[0] + .7152 * linear[1] + .0722 * linear[2]
+
+        def contrast(a, b):
+            hi, lo = sorted((luminance(a), luminance(b)), reverse=True)
+            return (hi + .05) / (lo + .05)
+
+        rule = re.search(r"^\.hw-orange svg \{([^}]*)\}", CSS, re.M).group(1)
+        fill = re.search(r"fill: (#[0-9a-f]{6})", rule).group(1)
+        assert fill == "#ea580c" and "stroke" not in rule
+        light = re.search(r":root \{[^}]*?--bg: (#[0-9a-f]{3,6});\s*--bg2: (#[0-9a-f]{3,6})", SITE_CSS, re.S)
+        dark = re.search(r':root\[data-theme="dark"\] \{[^}]*?--bg: (#[0-9a-f]{3,6});\s*--bg2: (#[0-9a-f]{3,6})',
+                         SITE_CSS, re.S)
+        grounds = [g for m in (light, dark) for g in m.groups()]
+        assert len(grounds) == 4
+        for ground in grounds:
+            assert contrast(fill, ground) >= 3, (fill, ground)
+
+    def test_a_browser_without_dialog_still_shows_the_key(self):
+        """Safari before 15.4 has no <dialog>: it is told the key in a plain message instead."""
+        body = JS[JS.index("function windowOf("):JS.index("function reveal(")]
+        assert "if (typeof dialog.showModal !== 'function') {\n            window.alert(plain);" in body
+        plain = JS[JS.index("function reveal("):JS.index("function tell(")]
+        assert re.search(r"'You caught the orange ghost! Your lifetime Audiogravity licence key:\\n\\n' \+ mine\.key", plain)
+        assert "ACTIVATE THIS MACHINE" in plain.split("function (dialog)")[1]

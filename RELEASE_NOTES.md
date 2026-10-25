@@ -7,7 +7,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Release
+
+**The release candidate for 1.0.** The features of 0.9.80, proposed as Audiogravi<sup>ty</sup>
+1.0: the V1 scope is complete, and every feature it describes runs today. From here to 1.0 only
+corrections go in — if no blocking bug turns up, this release becomes 1.0 as it stands. The
+badge in the corner of the app reads "1.0 RC" where it read BETA, and the landing says
+"Release candidate".
+
+**From the release candidate to 1.0.** A box on the release candidate is offered 1.0 when it
+comes out, like any update. The update checks that 1.0 is what runs afterwards, and rolls back
+if the box still answers with the release candidate; and the update banner no longer shows a
+failed attempt at the release candidate against the offer of 1.0.
 
 ---
 

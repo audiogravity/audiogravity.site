@@ -319,7 +319,9 @@ sup {
     font-weight: 500;
     letter-spacing: .02em;
     line-height: 1;
-    padding: 10px 24px;
+    /* The ribbon's room on the right (see below), and the same on the left so that the
+       sentence stays centred, however long the release makes it. */
+    padding: 10px 158px;
 }
 
 .announce-bar a {
@@ -374,16 +376,19 @@ sup {
     font-weight: 400;
 }
 
-/* Room on the right for the "Public beta" ribbon, fixed to the top-right corner and drawn
-   above everything. Below 1100px the sentence ran under it — on two or three lines, to the
-   ribbon's very corner. Measured on 2026-10-03, with the visible text against the ribbon's
-   own shape: 120px of room clears it from 721 to 900px, 92px above; 4px more is kept here.
-   The sentence holds one line and is cut where it meets that room. It is cut here rather
-   than shortened in the page: the release script rewrites it at every release (ops
-   scripts/changelog_rollover.py), and would bring the long one back. */
+/* Room on the right for the stage ribbon, fixed to the top-right corner and drawn above
+   everything. Below 1100px the sentence ran under it — on two or three lines, to the
+   ribbon's very corner. Measured against the ribbon's own band, with the visible text: for
+   the "Release candidate" ribbon (2026-10-24), 154px of room clears it from 721px up; 4px
+   more is kept here. Above 1100px the sentence is centred in the same room
+   on both sides (above), which a long one met from 1200px. Below, the sentence holds one
+   line and is cut where it meets that room. It is cut here rather than shortened in the
+   page: the release script rewrites it at every release (ops scripts/changelog_rollover.py),
+   and would bring the long one back. */
 @media(max-width:1100px) {
     .announce-bar {
-        padding-right: 124px
+        padding-left: 24px;
+        padding-right: 158px
     }
 
     .announce-bar a {
@@ -395,8 +400,8 @@ sup {
 }
 
 @media(max-width:720px) {
-    /* Phones: a smaller ribbon, 100px of room measured, and the sentence starts at the left.
-       The date gives way first. */
+    /* Phones: a smaller ribbon, 100px of room measured (2026-10-03, for a ribbon where the
+       phone's sits again), and the sentence starts at the left. The date gives way first. */
     .announce-bar {
         padding: 8px 104px 8px 16px;
         text-align: left;
@@ -536,20 +541,21 @@ nav {
     border-color: var(--text)
 }
 
-/* Below 1130px the GitHub button is gone and the toggle ends the bar, under the "Public
-   beta" ribbon fixed to that corner. It moves clear of it: measured on 2026-10-03 against
-   the ribbon's own shape, 30px while the bar is one row, 80px where the bar takes two rows
-   and the toggle sits higher in the ribbon's path, 60px under a phone's smaller ribbon; 4px
-   more is kept here. The two thresholds are the bar's own, below: they move together. */
-@media(max-width:1130px) {
+/* Below 1160px the GitHub button is gone and the toggle ends the bar, under the stage ribbon
+   fixed to that corner. It moves clear of it: measured against the ribbon's own band, for
+   the "Release candidate" ribbon (2026-10-24), 66px while the bar is one row, 110px where
+   the bar takes two rows and the toggle sits higher in the ribbon's path; under a phone's
+   smaller ribbon, 60px (2026-10-03, where the phone's sits again). 4px more is kept here.
+   The thresholds are the bar's own, below: they move together. */
+@media(max-width:1160px) {
     .theme-toggle {
-        margin-right: 34px
+        margin-right: 70px
     }
 }
 
 @media(max-width:950px) {
     .theme-toggle {
-        margin-right: 84px
+        margin-right: 114px
     }
 }
 
@@ -580,12 +586,25 @@ nav {
    Where both thresholds sit is measured, not chosen: with nine links (Guides added), two
    labels broke onto a second line from 1101 to 1118px and from 851 to 934px (Chromium,
    2026-10-17, every width scanned). Each threshold clears its band by 12 to 16px, for fonts
-   that render a little wider elsewhere. A link added to the bar means scanning again. */
-@media(max-width:1130px) {
+   that render a little wider elsewhere. A link added to the bar means scanning again.
+
+   The GitHub button goes a little earlier, from 1160px, for the stage ribbon: up to 1430px
+   it sits in the ribbon's path, so it stands 56px further in (below), and under 1150px the
+   bar has no slack left to give it (Chromium, 2026-10-25, every width from 1100 to 1460px:
+   the toggle ends 4.4px clear of the ribbon at the worst, the button 5.1px). */
+@media(max-width:1160px) {
     .nav-gh {
         display: none
     }
+}
 
+@media(max-width:1430px) {
+    .nav-gh {
+        margin-right: 56px
+    }
+}
+
+@media(max-width:1130px) {
     .nav-links {
         gap: 16px
     }
@@ -3043,11 +3062,19 @@ footer {
     .hero-dots .dot.active span { width: 18px; }
 }
 
-/* Status ribbon */
+/* Status ribbon — as long as its words, turned about its centre, so the centre is what places
+   it: on the corner's diagonal, far enough in for the words to show whole, some 15px from
+   either edge of the screen. For "Release candidate", 242 x 30: the centre 70px from both
+   edges, whence top = 70 - 30/2 and right = 70 - 242/2. Other words, other numbers — and the
+   room the announce bar and the theme toggle keep for it (above) follows.
+   A phone gets the short words (.ribbon-short): the long ones needed the centre 62px in,
+   where the ribbon covered the end of the links row and left no room beside the logo for
+   the toggle at 320px (measured 2026-10-24). "1.0 RC" sits where "Public beta" did, centre
+   44px from the right and 40 down, so the room measured for that one holds. */
 .ribbon {
     position: fixed;
-    top: 36px;
-    right: -42px;
+    top: 55px;
+    right: -51px;
     z-index: 1000;
     background: var(--warn);
     color: #000;
@@ -3064,11 +3091,23 @@ footer {
     box-shadow: 0 2px 8px rgba(0,0,0,.18);
 }
 
+.ribbon-short {
+    display: none;
+}
+
 @media(max-width:720px) {
     .ribbon {
         top: 26px;
-        right: -46px;
+        right: -25px;
         padding: 5px 48px;
+    }
+
+    .ribbon-long {
+        display: none;
+    }
+
+    .ribbon-short {
+        display: inline;
     }
 }
 

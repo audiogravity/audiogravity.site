@@ -7,12 +7,13 @@ covers the full story.
      section is generated from it (audiogravity.ops/scripts/sync-landing-faq.py).
      Edit here, then re-run the generator — never edit the landing FAQ by hand. -->
 
-## What does “Public beta” mean?
+## What does “Release candidate” mean?
 
-That the V1 scope is complete: every feature described exists and runs today —
-nothing here is a mock-up or a roadmap item. What remains is correction,
-refinement and optimisation, not missing features. Bugs do turn up, and they get
-fixed — report anything you hit.
+That this is the version proposed as 1.0: the V1 scope is complete, and every
+feature described exists and runs today — nothing here is a mock-up or a roadmap
+item. Until 1.0, only corrections go in, no new features: if no blocking bug turns
+up, this release becomes 1.0 as it stands. Bugs do turn up, and they get fixed —
+report anything you hit.
 
 ## What happens after the 30-day trial?
 

@@ -69,7 +69,7 @@
          Both come from this site, like every font on it (the FONTS block of style.css). -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/style.css?v=224b1153b4">
+    <link rel="stylesheet" href="assets/style.css?v=4337d56c0a">
     <script>
         /* Apply saved theme before first paint to avoid flash */
         (function () {
@@ -104,12 +104,14 @@
             <path d="M12 5v14" />
         </symbol>
     </svg>
-    <div class="ribbon">Public beta</div>
+    <!-- BACKLOG: the stage is written by hand here and in the footer; at 1.0 it has to change —
+         see audiogravity.ops/BACKLOG.md, « À la 1.0, la landing dirait encore « Release candidate » ». -->
+    <div class="ribbon"><span class="ribbon-long">Release candidate</span><span class="ribbon-short">1.0 RC</span></div>
 
     <div class="announce-bar">
         <a href="https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md">
             <span class="announce-badge">NEW</span>
-            v0.9.80 <span class="announce-date">· 24 Oct 2026</span> — Public beta — Qobuz, HIGHRESAUDIO, ALAC and AAC tracks name their real codec – and network speakers show their format.
+            v0.9.80 <span class="announce-date">· 24 Oct 2026</span> — Release candidate — every feature of 1.0, working today.
             <span class="announce-arrow">→</span>
         </a>
     </div>
@@ -1578,11 +1580,11 @@
                 <div class="faq-item">
                     <input type="checkbox" id="faq1">
                     <label class="faq-label" for="faq1">
-                        <span>What does “Public beta” mean?</span>
+                        <span>What does “Release candidate” mean?</span>
                         <svg viewBox="0 0 24 24"><use href="#ic-plus" /></svg>
                     </label>
                     <div class="faq-body">
-                        <div class="faq-body-inner">That the V1 scope is complete: every feature described exists and runs today — nothing here is a mock-up or a roadmap item. What remains is correction, refinement and optimisation, not missing features. Bugs do turn up, and they get fixed — report anything you hit.</div>
+                        <div class="faq-body-inner">That this is the version proposed as 1.0: the V1 scope is complete, and every feature described exists and runs today — nothing here is a mock-up or a roadmap item. Until 1.0, only corrections go in, no new features: if no blocking bug turns up, this release becomes 1.0 as it stands. Bugs do turn up, and they get fixed — report anything you hit.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1694,8 +1696,8 @@
     <!-- WHAT'S NEXT — deliberately non-committal, and saying so is the point: a roadmap that reads
          as a commitment turns every unshipped line into a broken promise. The list is here to
          collect opinions, not to sell them, which is why it ends on a way to answer. Placed after
-         the FAQ and before the call to action — a reader who has just been told the product is in
-         beta asks where it is going next, and the answer belongs there rather than in the pitch.
+         the FAQ and before the call to action — a reader who has just been told the product is a
+         release candidate asks where it is going next, and the answer belongs there rather than in the pitch.
          `alt` restores the banding, which FAQ and Install had broken by following each other.
          Reuses .rt-list — the site's label-plus-description list, a global class, not scoped to
          #rt — rather than adding a second class that would style exactly the same thing. -->
@@ -1803,7 +1805,7 @@
                     </div>
                     <div class="version"><a
                             href="https://github.com/audiogravity/audiogravity.site/blob/main/CHANGELOG.md">v0.9.80
-                            (Public beta)</a> · Open core</div>
+                            (Release candidate)</a> · Open core</div>
                 </div>
                 <div class="footer-col">
                     <h4>Product</h4>

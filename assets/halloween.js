@@ -12,7 +12,7 @@
 // Everything built here is decoration: hidden from assistive technology, deaf to the pointer,
 // and laid over the page rather than into it, so that the page reads and works as on any day.
 // Three things are changed rather than built, the track in the strip, the title and, while the
-// day's game runs, the banner, and those are read as they show, a screen reader's
+// day's game runs, the news in the announce bar, and those are read as they show, a screen reader's
 // "jack-o'-lantern" included. Two things are built to be used, real buttons named and reached
 // like any other: the strip's play button, and the orange ghost of the day's game.
 (function () {
@@ -404,7 +404,7 @@
     function hunt() {
         var mine = kept();
         if (mine) {
-            announce('You caught an orange ghost: show your licence key', function () {
+            announce('You caught an orange ghost: show your licence key', 'Show your licence key', function () {
                 reveal(mine);
             });
             return;
@@ -413,10 +413,11 @@
             var left = parseInt(answer.data.left, 10) || 0;
             if (answer.data.state === 'open' && left > 0) {
                 announce('Find the orange ghost on this page today: ' + left
-                    + (left === 1 ? ' lifetime licence' : ' lifetime licences') + ' left to win');
+                    + (left === 1 ? ' lifetime licence' : ' lifetime licences') + ' left to win',
+                    'Find the orange ghost');
                 if (answer.data.ghost && answer.data.ghost.ticket) haunt(answer.data.ghost);
             } else if (answer.data.state === 'over') {
-                announce('Every orange ghost has been caught. Thank you for hunting!');
+                announce('Every orange ghost has been caught. Thank you for hunting!', 'All the ghosts are caught');
             }
         }, function () {});
     }
@@ -447,29 +448,17 @@
     }
 
     /**
-     * Rewrites the banner above the page for the game: its badge, a sentence, and where a press
-     * leads — the rules, or the visitor's own key.
+     * Writes the game's news in the announce bar, where it takes turns with the release's sentence,
+     * with the page's own writer of that news (window.agAnnounce, in index.html): its badge, a
+     * sentence, and where a press leads — the rules, or the visitor's own key.
      *
      * @param {string} sentence - What it says.
+     * @param {string} short - The same for a phone, whose bar holds one line.
      * @param {Function} [open] - What a press does instead of leading to the rules.
      */
-    function announce(sentence, open) {
-        var banner = document.querySelector('.announce-bar a');
-        if (!banner) return;
-        var badge = document.createElement('span');
-        badge.className = 'announce-badge';
-        badge.textContent = 'HALLOWEEN';
-        var arrow = document.createElement('span');
-        arrow.className = 'announce-arrow';
-        arrow.textContent = '→';
-        banner.textContent = '';
-        // Spaced as the page writes the release's sentence, so that it is read as words.
-        banner.append(badge, ' ' + sentence + ' ', arrow);
-        banner.href = 'orange-ghost.html';
-        banner.onclick = open ? function (event) {
-            event.preventDefault();
-            open();
-        } : null;
+    function announce(sentence, short, open) {
+        if (!window.agAnnounce) return;
+        window.agAnnounce({ badge: 'HALLOWEEN', sentence: sentence, short: short, href: 'orange-ghost.html', open: open });
     }
 
     /**
@@ -504,7 +493,7 @@
                     try {
                         localStorage.setItem(KEPT, JSON.stringify(mine));
                     } catch (e) { /* refused storage: the key is shown this once */ }
-                    announce('You caught an orange ghost: show your licence key', function () {
+                    announce('You caught an orange ghost: show your licence key', 'Show your licence key', function () {
                         reveal(mine);
                     });
                     reveal(mine);

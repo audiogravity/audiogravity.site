@@ -70,6 +70,92 @@ def _run_head(now: str, search: str = "", saved: str | None = None) -> dict:
     return json.loads(out.stdout)
 
 
+
+def _announce_script() -> str:
+    """The script right after the announce bar: the bar's writer, and what it says before the day."""
+    after = PAGE[PAGE.index('<div class="announce-bar">'):]
+    return re.search(r"</div>\s*<script>(.*?)</script>", after, re.S).group(1)
+
+
+def _run_announce(now: str, steps: tuple = (), fade: str = "0.18s") -> dict:
+    """Run that script under Node at a given instant, on a stand-in for the bar and a clock of its own.
+
+    Args:
+        now: The visitor's local date and time, ISO 8601 without a zone.
+        steps: What happens next, in order: a number of milliseconds to let pass, or an event on
+            the bar ("mouseenter", "mouseleave", "focusin", "focusout").
+        fade: The links' transition length, as the browser reports it.
+
+    Returns:
+        Which link shows at the start and after each step ("release", "news", or "fading" while
+        the bar fades), where the news leads and what it says (None when it was never written),
+        every property the script wrote on the release's link, and each reading of a link's
+        opacity: which link, whether the bar was fading, whether the link was hidden.
+    """
+    harness = """
+        const RealDate = Date;
+        const fixed = new RealDate(%(now)s).getTime();
+        globalThis.Date = class extends RealDate {
+            constructor(...a) { a.length ? super(...a) : super(fixed); }
+            static now() { return fixed; }
+        };
+        let clock = 0;
+        let last = 0;
+        const timers = new Map();
+        globalThis.setTimeout = (fn, ms) => { timers.set(++last, { at: clock + (ms || 0), fn }); return last; };
+        globalThis.clearTimeout = (id) => { timers.delete(id); };
+        const pass = (ms) => {
+            const end = clock + ms;
+            for (;;) {
+                let due = null;
+                for (const [id, t] of timers) if (t.at <= end && (!due || t.at < due[1].at)) due = [id, t];
+                if (!due) break;
+                timers.delete(due[0]);
+                clock = due[1].at;
+                due[1].fn();
+            }
+            clock = end;
+        };
+        const wrote = [];
+        const release = new Proxy({ hidden: false }, { set(t, k, v) { wrote.push(k); t[k] = v; return true; } });
+        const news = { hidden: true, href: '', said: null, firstChild: null,
+                       set textContent(v) { this.said = null; this.firstChild = null; },
+                       append(...parts) {
+                           this.said = parts.map((p) => typeof p === 'string' ? p : p.textContent);
+                           this.firstChild = parts[0];
+                       } };
+        const classes = new Set();
+        const listeners = {};
+        const bar = {
+            classList: { add: (c) => classes.add(c), remove: (c) => classes.delete(c) },
+            addEventListener: (type, fn) => { listeners[type] = fn; },
+            querySelector: (s) => (s === 'a:not(.announce-news)' ? release : s === '.announce-news' ? news : null),
+        };
+        globalThis.window = globalThis;
+        const reads = [];
+        const name = (el) => (el === release ? 'release' : el === news ? 'news' : '?');
+        globalThis.getComputedStyle = (el) => ({
+            transitionDuration: %(fade)s,
+            get opacity() { reads.push([name(el), classes.has('announce-turning'), !!el.hidden]); return '0'; },
+        });
+        globalThis.document = {
+            querySelector: (s) => (s === '.announce-bar' ? bar : null),
+            createElement: () => ({ className: '', textContent: '' }),
+        };
+        %(script)s
+        const showing = () => (classes.has('announce-turning') ? 'fading'
+            : release.hidden === news.hidden ? 'both or none' : release.hidden ? 'news' : 'release');
+        const seen = [showing()];
+        for (const step of %(steps)s) {
+            if (typeof step === 'number') pass(step); else listeners[step]();
+            seen.push(showing());
+        }
+        console.log(JSON.stringify({ seen, href: news.href, said: news.said, wrote, reads }));
+    """ % {"now": json.dumps(now), "steps": json.dumps(list(steps)), "fade": json.dumps(fade),
+           "script": _announce_script()}
+    out = subprocess.run(["node", "-e", harness], capture_output=True, text=True, timeout=20, check=True)
+    return json.loads(out.stdout)
+
 needs_node = pytest.mark.skipif(shutil.which("node") is None, reason="Node is not installed")
 
 
@@ -553,8 +639,9 @@ class TestTheTitle:
     def test_the_sites_icon_is_left_alone(self):
         """A browser may keep an icon well past the day."""
         assert not re.search(r"link\[rel|rel=.?icon", JS)
-        # The one address it changes is the banner's, which leads to the game's rules.
-        assert set(re.findall(r"(\w+)\.href\s*=", JS)) == {"banner"}
+        # It changes no address itself: the news's, in the announce bar, is written by the page's
+        # own writer of that news (window.agAnnounce, in index.html).
+        assert not re.search(r"\.href\s*=", JS)
 
 
 def _foot_rules() -> tuple[dict[str, str], dict[str, str]]:
@@ -770,7 +857,8 @@ class TestTheOrangeGhost:
         for value in re.findall(r"innerHTML\s*=\s*([^;]+);", JS):
             assert "answer" not in value and "mine" not in value and "data" not in value, value
         assert "dialog.querySelector('code').textContent = mine.key" in JS
-        assert "banner.append(badge, ' ' + sentence + ' ', arrow)" in JS
+        bar = _announce_script()
+        assert "sentence.textContent = item.sentence;" in bar and "short.textContent = item.short;" in bar
         # A key is shown, or kept, only in its own shape.
         assert "var KEY = /^AG(-[A-Z0-9]{4}){4}$/;" in JS
         assert "KEY.test(mine.key || '')" in JS and "KEY.test(mine.key)" in JS
@@ -820,7 +908,8 @@ class TestTheOrangeGhost:
         assert "mine.year === new Date().getFullYear()" in JS
 
     def test_the_banner_leads_to_the_rules(self):
-        assert "banner.href = 'orange-ghost.html';" in JS
+        assert ("window.agAnnounce({ badge: 'HALLOWEEN', sentence: sentence, short: short, "
+                "href: 'orange-ghost.html', open: open });") in JS
         assert '<a href="orange-ghost.html">The rules</a>' in JS
 
     def test_the_rules_name_the_organiser_and_say_when_and_how(self):
@@ -885,3 +974,97 @@ class TestTheOrangeGhost:
         plain = JS[JS.index("function reveal("):JS.index("function tell(")]
         assert re.search(r"'You caught the orange ghost! Your lifetime Audiogravity licence key:\\n\\n' \+ mine\.key", plain)
         assert "ACTIVATE THIS MACHINE" in plain.split("function (dialog)")[1]
+
+
+
+@needs_node
+class TestTheAnnouncement:
+    """Until Halloween 2026 the announce bar's news, taking turns with the release's sentence, says
+    what comes on the 31st; that day the game words it; from 1 November there is none, and the
+    release's sentence stays alone. By the visitor's clock, as the day is."""
+
+    BEFORE = "2026-10-28T09:00:00"
+
+    def test_the_news_has_a_link_of_its_own_in_the_bar(self):
+        """The release's sentence keeps its link, the release script's to write; the news has one
+        beside it, hidden until there is news, so that a day without any shows the bar as it was."""
+        bar = PAGE[PAGE.index('<div class="announce-bar">'):]
+        bar = bar[:bar.index("</div>")]
+        assert bar.count("<a") == 2 and bar.rstrip().endswith('<a class="announce-news" hidden></a>')
+        assert PAGE.index('<a class="announce-news" hidden></a>') < PAGE.index("window.agAnnounce = function")
+
+    @pytest.mark.parametrize("now", ["2026-10-26T09:00:00", "2026-10-30T23:59:59"])
+    def test_until_the_day_the_bar_announces_the_ghost(self, now):
+        result = _run_announce(now)
+        assert result["href"] == "orange-ghost.html"
+        assert result["said"] == ["31 OCT", " ",
+                                  "An orange ghost haunts this page on 31 October: ten lifetime licences to win",
+                                  "Ten lifetime licences to win", " ", "→"]
+        assert result["seen"] == ["release"], "the release's sentence comes first"
+
+    @pytest.mark.parametrize("now", ["2026-10-31T00:00:00", "2026-11-01T08:00:00", "2027-10-25T12:00:00"])
+    def test_from_the_day_on_the_release_is_alone(self, now):
+        """Without news nothing turns, not even once the pointer or the keyboard has been in the bar
+        and left it — the turn would bring an empty link: the bar is the release's, as on any day."""
+        steps = (60000, "mouseenter", "mouseleave", "focusin", "focusout", 60000)
+        assert _run_announce(now, steps) == {"seen": ["release"] * 7, "href": "", "said": None,
+                                             "wrote": [], "reads": []}
+
+    def test_the_release_and_the_news_take_turns_six_seconds_each(self):
+        seen = _run_announce(self.BEFORE, (5999, 1, 179, 1, 5999, 1, 180))["seen"]
+        assert seen == ["release", "release", "fading", "fading", "news", "news", "fading", "release"]
+
+    @pytest.mark.parametrize("enter, leave", [("mouseenter", "mouseleave"), ("focusin", "focusout")])
+    def test_no_turn_while_the_bar_is_read(self, enter, leave):
+        """Under the pointer or with the keyboard in it the bar holds still (WCAG 2.2.2); the next
+        turn comes six seconds after they leave, not at once."""
+        seen = _run_announce(self.BEFORE, (3000, enter, 60000, leave, 5999, 1, 180))["seen"]
+        assert seen == ["release", "release", "release", "release", "release", "release", "fading", "news"]
+
+    def test_the_turn_waits_for_the_links_own_fade(self):
+        """The links change places once the fade the style sheet gives them is over, however long."""
+        seen = _run_announce(self.BEFORE, (6000, 499, 1), fade="0.5s")["seen"]
+        assert seen == ["release", "fading", "fading", "news"]
+
+    def test_the_link_shown_fades_in(self):
+        """Just shown, a link has no opacity yet for the fade to start from: its style is read while
+        the bar is still faded out, or it would appear at once instead of fading in."""
+        reads = _run_announce(self.BEFORE, (6180, 6180))["reads"]
+        assert reads == [["news", True, False], ["release", True, False]]
+
+    def test_the_releases_words_are_never_written(self):
+        """Over rounds of turns, the release's link is only ever shown and hidden."""
+        assert set(_run_announce(self.BEFORE, (6180, 6180, 6180))["wrote"]) == {"hidden"}
+
+    def test_a_link_off_its_turn_is_not_drawn(self):
+        """`hidden` alone loses to the links' own display (style.css): a rule gives it back. The
+        fade is the links' opacity transition, the one the script reads."""
+        assert re.search(r"^\.announce-bar a\[hidden\] \{\s*display: none\s*\}", SITE_CSS, re.M)
+        assert re.search(r"^\.announce-bar\.announce-turning a \{\s*opacity: 0\s*\}", SITE_CSS, re.M)
+        link = re.search(r"^\.announce-bar a \{([^}]*)\}", SITE_CSS, re.M).group(1)
+        assert "transition: opacity var(--ease);" in link
+
+    def test_it_leads_to_rules_that_exist(self):
+        assert (ROOT / "orange-ghost.html").is_file()
+        assert "href: 'orange-ghost.html'" in _announce_script()
+
+    def test_the_game_writes_the_bar_with_the_same_writer(self):
+        """One writer of the bar, in the page: the game's day calls it, it does not write its own."""
+        assert "window.agAnnounce = function (item) {" in _announce_script()
+        assert "createElement('span')" not in JS[JS.index("function announce("):JS.index("function haunt(")]
+        assert ".announce-bar" not in JS and ".announce-news" not in JS
+
+    def test_a_phone_reads_the_point_of_each_announcement(self):
+        """A phone's bar holds one line, which cut the long sentence before its point ("31 OCT An
+        orange ghost haunts this ...", measured at 390px): each says it shorter there."""
+        shorts = ["Ten lifetime licences to win", "Find the orange ghost", "Show your licence key",
+                  "All the ghosts are caught"]
+        assert "short: 'Ten lifetime licences to win'" in _announce_script()
+        for short in shorts[1:]:
+            assert "'%s'" % short in JS, short
+        assert all(len(t) <= 28 for t in shorts)
+        base = SITE_CSS.index(".announce-short {\n    display: none\n}")
+        phone = re.search(r"@media\(max-width:720px\) \{.*?\n\}", SITE_CSS[SITE_CSS.index(".announce-bar {"):], re.S)
+        assert re.search(r"\.announce-long \{\s*display: none", phone.group(0))
+        assert re.search(r"\.announce-short \{\s*display: inline", phone.group(0))
+        assert base < SITE_CSS.index(phone.group(0)), "the base rule comes after the phone's and wins"

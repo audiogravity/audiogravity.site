@@ -229,7 +229,7 @@
     if (strip) {
         var cover = strip.querySelector('.np-cover');
         cover.src = 'assets/pics/cover-danse-macabre.webp';
-        cover.alt = 'Cover of Saint-Saëns: Danse Macabre by Charles Dutoit';
+        cover.alt = 'Cover of Saint-Saëns: Danse macabre by Charles Dutoit';
         strip.querySelector('.track-name').textContent = 'Danse macabre';
         // No longer than the usual "The Beatles — Abbey Road": "Charles Dutoit" in full took a
         // second line on a 390px phone, where the usual line takes one (measured in Chromium).
@@ -247,12 +247,15 @@
     document.title = String.fromCodePoint(0x1F383) + ' ' + document.title;
 
     // Nothing moves in a part of the page scrolled out of sight: the hero, a section, the footer.
+    // The screen is taken 120px taller at its foot: the pumpkins on the footer's edge stand
+    // above the footer, their glow higher still, and froze in sight while the footer itself was
+    // just under the screen.
     if ('IntersectionObserver' in window) {
         var rest = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 entry.target.classList.toggle('hw-paused', !entry.isIntersecting);
             });
-        });
+        }, { rootMargin: '0px 0px 120px 0px' });
         var parts = [hero].concat(sections);
         if (footer) parts.push(footer);
         parts.forEach(function (part) {

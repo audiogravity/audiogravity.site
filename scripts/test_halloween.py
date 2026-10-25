@@ -219,6 +219,21 @@ class TestTheDecoration:
         assert "rest.observe(part)" in JS
         assert re.search(r"\.hw-paused \.hw-decor \*\s*\{\s*animation-play-state:\s*paused", CSS)
 
+    def test_the_footers_pumpkins_keep_their_light_in_sight(self):
+        """They stand above the footer that pauses them, their glow higher still: the screen is
+        taken taller at its foot by as much, or their candles froze in sight while the footer
+        was just under the screen (measured: 35px under it, the large one fully shown)."""
+        margin = re.search(r"rootMargin: '0px 0px (\d+)px 0px'", JS)
+        assert margin, "the screen is no longer taken taller at its foot"
+        # The glow is a circle drawn past the pumpkin's box: its top, in the box's units.
+        halo = re.search(r'<circle cx="100" cy="(\d+)" r="(\d+)" fill="url\(#hw-halo\)"', JS)
+        box = re.search(r'<svg class="hw-halo" viewBox="0 0 (\d+) (\d+)"', JS)
+        above = int(halo.group(2)) - int(halo.group(1))
+        width, height = (int(v) for v in box.groups())
+        wide, _ = _foot_rules()
+        tallest = max(_px(rule, "bottom") + _px(rule, "width") * (height + above) / width for rule in wide.values())
+        assert int(margin.group(1)) >= tallest
+
     def test_the_candle_flickers_in_the_face_and_the_halo_together(self):
         """One flame: the lit face and the halo on one animation, at the pace of their pumpkin.
         A near pumpkin has a pace of its own, so that no two flicker as one; a far one, blurred
@@ -357,8 +372,8 @@ class TestTheLastScene:
         assert re.search(r"^footer\s*\{\s*background:\s*var\(--inv\)", SITE_CSS, re.M)
         assert re.search(r"^:root\s*\{[^}]*--inv:\s*#000\b", SITE_CSS, re.M)
         assert re.search(r"\[data-theme=\"dark\"\] footer \{ background: #1a1a1a \}", SITE_CSS)
-        assert re.search(r"\.hw-sky-foot \.hw-spider svg \{\s*fill: #c3bad6;\s*stroke: #c3bad6", CSS)
-        assert re.search(r"\.hw-sky-foot \.hw-spider::before \{\s*background: rgba\(195, 186, 214", CSS)
+        assert re.search(r"\.hw-sky-foot \.hw-spider \{\s*--hw-ink: var\(--hw-pale-ink\);"
+                         r"\s*--hw-thread: var\(--hw-pale-thread\)", CSS)
 
 
 class TestTheStrip:
@@ -379,6 +394,12 @@ class TestTheStrip:
         assert len(times) == 2 and re.fullmatch(r"\d+:\d\d", times[0])
         # The time left keeps its minus sign: only its figures are replaced.
         assert re.search(r"\d+:\d\d", times[1]) and not times[1][0].isdigit()
+
+    def test_the_cover_is_named_as_the_title_is_written(self):
+        """One work, one spelling, in the image's name as in the strip."""
+        title = re.search(r"\.track-name'\)\.textContent = '([^']*)'", JS).group(1)
+        alt = re.search(r"cover\.alt = '([^']*)'", JS).group(1)
+        assert title in alt
 
     def test_its_lines_are_no_longer_than_the_usual_ones(self):
         """A longer line can take one more on a phone: "Saint-Saëns — Charles Dutoit" took two
@@ -476,9 +497,54 @@ def _column() -> tuple[int, int, int]:
     section = re.search(r"^\.section\s*\{\s*padding:\s*\d+px (\d+)px", SITE_CSS, re.M)
     return int(column.group(1)), int(column.group(2)), int(section.group(1))
 
-    def test_a_browser_without_container_units_gets_no_bats(self):
-        """Rather than seven bats piled at the corner where an unread flight leaves them."""
-        assert re.search(r"@supports not \(width: 1cqw\)\s*\{\s*\.hw-sky\s*\{\s*display:\s*none", CSS)
+
+class TestWhatItAsksOfTheBrowser:
+    """What a browser too old for some of it is spared, and what every browser is asked to
+    keep. These three sat for a while under a helper function, where pytest never collects a
+    test: the first of them, older, had stopped running unnoticed (found 2026-10-25, by a
+    mutation the suite let through)."""
+
+    def test_a_browser_without_container_units_gets_nothing_they_place(self):
+        """Such a browser (Safari before 16) drops every declaration written with them: the
+        bats piled in a corner, the panel's web grew to 300px over the phone, the pumpkins at the
+        phone's foot hung under it. What they place stays out instead — and every rule that
+        places with them names a piece of what stays out, so that a new one cannot slip past."""
+        block = re.search(r"@supports not \(width: 1cqw\)\s*\{\s*([^{]*)\{\s*display:\s*none", CSS)
+        assert block, "nothing is kept out for a browser without container units"
+        assert {s.strip() for s in block.group(1).split(",")} == {".hw-sky", ".hw-web-panel", ".hw-ground"}
+        plain = re.sub(r"/\*.*?\*/", "", CSS, flags=re.S)
+        # Flights and drops only run in the skies; container queries are skipped whole.
+        plain = re.sub(r"@(?:keyframes|container)[^{]*\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}", "", plain)
+        held = re.compile(r"\.hw-(?:sky|bat|b\d|spider|s\d|web-panel|ground|fog)|\.hw-pk-(?:a|b|c|f1|f2)(?![\w-])")
+        placed = 0
+        for selectors, body in re.findall(r"([^{}]+)\{([^{}]*)\}", plain):
+            if re.search(r"\dcq(?:w|h|i|b|min|max)\b", body):
+                for selector in selectors.split(","):
+                    placed += 1
+                    assert held.match(selector.strip()), \
+                        f"{selector.strip()} is placed with container units, outside what the fallback keeps out"
+        assert placed, "no rule uses container units any more: see what the fallback keeps out"
+
+    def test_each_ink_is_written_once(self):
+        """The bats', spiders' and webs' ink, dark on light and pale on dark: written once each,
+        and read by the pieces; it used to be repeated in six theme blocks."""
+        plain = re.sub(r"/\*.*?\*/", "", CSS, flags=re.S)
+        for value in ("#c3bad6", "rgba(195, 186, 214, .45)", "rgba(222, 216, 236, .26)",
+                      "#1d1a24", "rgba(29, 26, 36, .45)", "rgba(40, 38, 48, .32)"):
+            assert plain.count(value) == 1, f"{value} is written {plain.count(value)} times"
+        assert re.search(r"\.hw-bat svg \{[^}]*fill: var\(--hw-ink\)", plain)
+        assert re.search(r"\.hw-spider::before \{[^}]*background: var\(--hw-thread\)", plain)
+        assert re.search(r"\.hw-spider svg \{[^}]*fill: var\(--hw-ink\);\s*stroke: var\(--hw-ink\)", plain)
+        assert re.search(r"\.hw-web svg \{[^}]*stroke: var\(--hw-web\)", plain)
+        dark = r"\{\s*--hw-ink: var\(--hw-pale-ink\);\s*--hw-thread: var\(--hw-pale-thread\);\s*--hw-web: var\(--hw-pale-web\)"
+        assert re.search(r"^\[data-theme=\"dark\"\] " + dark, plain, re.M)
+        assert re.search(r":root:not\(\[data-theme=\"light\"\]\) " + dark, plain)
+
+    def test_nothing_asks_for_a_layer_of_its_own(self):
+        """The browser gives a piece a layer while it moves; will-change kept a hundred alive
+        down the page, which every frame had to lay out again (38% of a CPU slowed four times
+        mid-page against 30% without, measured in Chromium)."""
+        assert "will-change" not in re.sub(r"/\*.*?\*/", "", CSS, flags=re.S)
 
 
 def _mist_banks() -> dict:

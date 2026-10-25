@@ -15,11 +15,40 @@
    painting the page again; the blurs (glow, mist, distant pumpkins) are drawn once, then only
    moved or faded. Nothing moves in a part of the page scrolled away (hw-paused, which
    halloween.js sets on the hero or on a section), nor for a visitor who asked their system for
-   less motion.
+   less motion. Nothing asks for a layer of its own with will-change: the browser gives a piece
+   one while it moves, and the hints kept a hundred alive down the page, which every frame the
+   page draws had to lay out again — mid-page, a CPU slowed four times was 38% busy with them
+   and 30% without (Chromium, 2026-10-25).
    ========================================================================== */
 
 .hw-decor {
     pointer-events: none
+}
+
+/* The ink of the bats, the spiders and the webs: the page's own, dark on a light page and pale
+   on a dark one, so that they stand out on it. Written once here, read by each piece; the
+   footer, dark in both themes, gives its spider the pale one (THE FOOT OF THE PAGE). */
+:root {
+    --hw-pale-ink: #c3bad6;
+    --hw-pale-thread: rgba(195, 186, 214, .45);
+    --hw-pale-web: rgba(222, 216, 236, .26);
+    --hw-ink: #1d1a24;
+    --hw-thread: rgba(29, 26, 36, .45);
+    --hw-web: rgba(40, 38, 48, .32)
+}
+
+[data-theme="dark"] {
+    --hw-ink: var(--hw-pale-ink);
+    --hw-thread: var(--hw-pale-thread);
+    --hw-web: var(--hw-pale-web)
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --hw-ink: var(--hw-pale-ink);
+        --hw-thread: var(--hw-pale-thread);
+        --hw-web: var(--hw-pale-web)
+    }
 }
 
 .halloween .hero,
@@ -107,25 +136,14 @@
     top: 0;
     left: 0;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    will-change: transform
+    animation-iteration-count: infinite
 }
 
 /* The flights place a bat's centre; the negative margins below centre the drawing on it. */
 .hw-bat svg {
     display: block;
     overflow: visible;
-    fill: #1d1a24
-}
-
-[data-theme="dark"] .hw-bat svg {
-    fill: #c3bad6
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .hw-bat svg {
-        fill: #c3bad6
-    }
+    fill: var(--hw-ink)
 }
 
 /* One flap: the wings rise and fall about the shoulders, the body bobs against them. */
@@ -206,8 +224,7 @@
     top: 0;
     width: 30px;
     margin-left: -15px;
-    animation-iteration-count: infinite;
-    will-change: transform
+    animation-iteration-count: infinite
 }
 
 .hw-spider::before {
@@ -218,7 +235,7 @@
     width: 1px;
     height: 150cqh;
     margin-left: -.5px;
-    background: rgba(29, 26, 36, .45)
+    background: var(--hw-thread)
 }
 
 .hw-spider svg {
@@ -226,28 +243,8 @@
     width: 100%;
     height: auto;
     overflow: visible;
-    fill: #1d1a24;
-    stroke: #1d1a24
-}
-
-[data-theme="dark"] .hw-spider::before {
-    background: rgba(195, 186, 214, .45)
-}
-
-[data-theme="dark"] .hw-spider svg {
-    fill: #c3bad6;
-    stroke: #c3bad6
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .hw-spider::before {
-        background: rgba(195, 186, 214, .45)
-    }
-
-    :root:not([data-theme="light"]) .hw-spider svg {
-        fill: #c3bad6;
-        stroke: #c3bad6
-    }
+    fill: var(--hw-ink);
+    stroke: var(--hw-ink)
 }
 
 /* Hanging, a spider sways about the end of its thread, and its legs pump. */
@@ -376,22 +373,12 @@
     height: 100%;
     overflow: visible;
     fill: none;
-    stroke: rgba(40, 38, 48, .32)
+    stroke: var(--hw-web)
 }
 
 .hw-web path {
     stroke-width: 1;
     vector-effect: non-scaling-stroke
-}
-
-[data-theme="dark"] .hw-web svg {
-    stroke: rgba(222, 216, 236, .26)
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .hw-web svg {
-        stroke: rgba(222, 216, 236, .26)
-    }
 }
 
 .hw-web-page {
@@ -467,15 +454,15 @@
     overflow: visible
 }
 
-/* The candle inside: the lit face and the halo flicker together, as one flame. Each is a layer
-   of its own, so that the flicker is a fade the browser composites; the face's glow is a
-   shadow drawn once, then faded with it. As the face fades the dark body shows through it, and
-   the carving dims as a guttering candle would. Each pumpkin keeps its own pace, set with its
-   place below (--hw-flame, --hw-flame-at), so that no two flicker as one. */
+/* The candle inside: the lit face and the halo flicker together, as one flame. Each is its own
+   element, which the browser lays on a layer of its own while it fades, so that the flicker is
+   a fade it composites; the face's glow is a shadow drawn once, then faded with it. As the face
+   fades the dark body shows through it, and the carving dims as a guttering candle would. Each
+   pumpkin keeps its own pace, set with its place below (--hw-flame, --hw-flame-at), so that no
+   two flicker as one. */
 .hw-halo,
 .hw-lit {
-    animation: hw-flicker var(--hw-flame, 3s) ease-in-out var(--hw-flame-at, 0s) infinite;
-    will-change: opacity
+    animation: hw-flicker var(--hw-flame, 3s) ease-in-out var(--hw-flame-at, 0s) infinite
 }
 
 .hw-lit {
@@ -564,8 +551,7 @@
 .hw-fog {
     position: absolute;
     display: none;
-    animation: hw-drift 26s ease-in-out infinite alternate;
-    will-change: transform
+    animation: hw-drift 26s ease-in-out infinite alternate
 }
 
 /* viewBox -130 -14 1020 184; the frame's foot, 120 down it, is 1cqw under the ground. */
@@ -673,13 +659,9 @@
 .hw-s5 { left: 34%; animation-name: hw-drop-5; animation-duration: 16s; animation-delay: -6s }
 .hw-s5::before { height: 80px }
 
-.hw-sky-foot .hw-spider::before {
-    background: rgba(195, 186, 214, .45)
-}
-
-.hw-sky-foot .hw-spider svg {
-    fill: #c3bad6;
-    stroke: #c3bad6
+.hw-sky-foot .hw-spider {
+    --hw-ink: var(--hw-pale-ink);
+    --hw-thread: var(--hw-pale-thread)
 }
 
 @keyframes hw-drop-5 {
@@ -711,13 +693,18 @@
 }
 
 /* --------------------------------------------------------------------------
-   STILLNESS — a browser that cannot measure the skies gets no bats and no spiders rather than
-   both piled in a corner; a visitor who asked for less motion gets the webs and the pumpkins,
-   unlit by any flicker; and nothing moves in a part of the page out of sight.
+   STILLNESS — a browser that cannot read container units (Safari before 16) drops every
+   declaration written with them, so the pieces they place stay out rather than misplaced: the
+   skies, not to pile the bats and spiders in a corner; the panel's web, which grew to 300px
+   over the phone; the pumpkins at the foot of the phone, which hung under it. The buttons' and
+   the footer's are placed in px, and stay. A visitor who asked for less motion gets the webs
+   and the pumpkins, unlit by any flicker; and nothing moves in a part of the page out of sight.
    -------------------------------------------------------------------------- */
 
 @supports not (width: 1cqw) {
-    .hw-sky {
+    .hw-sky,
+    .hw-web-panel,
+    .hw-ground {
         display: none
     }
 }

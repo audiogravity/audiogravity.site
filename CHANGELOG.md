@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[site] Halloween — ghosts, and the strip's *Danse macabre* to hear.** On 31 October, ghosts in the page's ink rise through the margins beside each section's text, below its spider, and from behind the pumpkins on the footer's edge and at the foot of the phone — none on a phone, whose margins are too narrow, nor for a visitor whose system asks for less motion. A round button in the strip that shows a track playing plays a 30-second excerpt of the recording, fetched at the first press only; while it plays, the strip shows what is heard — AAC, 44.1 kHz and the excerpt's own time — and the box's again at the pause. A screen reader reaches and names the button, and putting it in moves nothing on the page.
+
 ### Fixed
 - **[site] Halloween — the spider beside the phone hangs from its thread in Safari.** Safari drew the spider and not its thread, a pseudo-element sized with container units; each thread is now drawn in its spider's own box, its length in pixels.
 

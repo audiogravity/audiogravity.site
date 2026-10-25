@@ -156,7 +156,7 @@ class TestTheDecoration:
         drop, it would end in mid-air with the spider hanging from nothing."""
         drop = re.search(r"@keyframes hw-drop-%d \{(.*?)\n\}" % n, CSS, re.S).group(1)
         deepest = max(float(v) for v in re.findall(r"translateY\((-?[\d.]+)px\)", drop))
-        thread = float(re.search(r"\.hw-s%d::before \{ height: ([\d.]+)px \}" % n, CSS).group(1))
+        thread = float(re.search(r"\.hw-s%d \{[^}]*--hw-thread-length: ([\d.]+)px" % n, CSS).group(1))
         assert thread > deepest
 
     def test_the_webs_stay_still_and_stay_for_less_motion(self):
@@ -533,12 +533,37 @@ class TestWhatItAsksOfTheBrowser:
                       "#1d1a24", "rgba(29, 26, 36, .45)", "rgba(40, 38, 48, .32)"):
             assert plain.count(value) == 1, f"{value} is written {plain.count(value)} times"
         assert re.search(r"\.hw-bat svg \{[^}]*fill: var\(--hw-ink\)", plain)
-        assert re.search(r"\.hw-spider::before \{[^}]*background: var\(--hw-thread\)", plain)
+        assert re.search(r"\.hw-spider \{[^}]*background: linear-gradient\(var\(--hw-thread\), var\(--hw-thread\)\)", plain)
         assert re.search(r"\.hw-spider svg \{[^}]*fill: var\(--hw-ink\);\s*stroke: var\(--hw-ink\)", plain)
         assert re.search(r"\.hw-web svg \{[^}]*stroke: var\(--hw-web\)", plain)
         dark = r"\{\s*--hw-ink: var\(--hw-pale-ink\);\s*--hw-thread: var\(--hw-pale-thread\);\s*--hw-web: var\(--hw-pale-web\)"
         assert re.search(r"^\[data-theme=\"dark\"\] " + dark, plain, re.M)
         assert re.search(r":root:not\(\[data-theme=\"light\"\]\) " + dark, plain)
+
+    def test_the_thread_is_drawn_in_the_spiders_own_box(self):
+        """Hanging out of the box as a ::before sized in container units, the thread showed in
+        Chromium and in WebKit 26 but not in the user's Safari (capture of 2026-10-25). In the box,
+        a stripe of background down its padding, in px: no pseudo-element anywhere in the
+        decoration, and every spider says how long its thread is."""
+        plain = re.sub(r"/\*.*?\*/", "", CSS, flags=re.S)
+        assert not re.search(r"::(?:before|after)", plain), "the decoration draws in a pseudo-element again"
+        box = re.search(r"^\.hw-spider \{([^}]*)\}", plain, re.M).group(1)
+        assert re.search(r"margin-top: calc\(-1 \* var\(--hw-thread-length\)\)", box)
+        assert re.search(r"padding-top: var\(--hw-thread-length\)", box)
+        assert re.search(r"background: linear-gradient\(var\(--hw-thread\), var\(--hw-thread\)\) 50% 0 / 1px "
+                         r"var\(--hw-thread-length\) no-repeat", box)
+        lengths = {}
+        for selectors, body in re.findall(r"([^{}]+)\{([^{}]*)\}", plain):
+            length = re.search(r"--hw-thread-length: ([^;\s}]+)", body)
+            if length:
+                for selector in selectors.split(","):
+                    lengths[selector.strip()] = length.group(1)
+        for n in {int(n) for n in re.findall(r"\bspider\((\d)", JS)}:
+            assert f".hw-s{n}" in lengths, f"spider {n} does not say how long its thread is"
+            assert re.fullmatch(r"\d+px", lengths[f".hw-s{n}"]), f"spider {n}'s thread is not in px"
+        # The hero's drops are shares of the panel, 34% at most.
+        for n in (1, 2):
+            assert int(lengths[f".hw-s{n}"][:-2]) >= 1000
 
     def test_nothing_asks_for_a_layer_of_its_own(self):
         """The browser gives a piece a layer while it moves; will-change kept a hundred alive

@@ -3,10 +3,10 @@
 </p>
 
 <p align="center">
-  <strong>Your streamer is your source. Audiogravi<sup>ty</sup> is the conductor.</strong>
+  <strong>Audiogravi<sup>ty</sup> is a streamer. <em>A conductor, not a soloist.</em></strong>
   <br/>
-  A native iOS / Android app (PWA) to pilot every audio engine your streamer runs —<br/>
-  MPD, Roon Bridge, HQPlayer NAA, AirPlay, UPnP — all the way down to the RT kernel.
+  An app installed from the browser on iOS and Android (PWA) to pilot every audio engine your streamer runs —<br/>
+  MPD, Roon, HQPlayer, AirPlay, UPnP — all the way down to the RT kernel.
   <br/><br/>
   <a href="https://audiogravity.app"><strong>audiogravity.app →</strong></a>
 </p>
@@ -59,10 +59,11 @@
 - High-resolution browsing — Roon, MPD, MinimServer, Qobuz, Tidal, HIGHRESAUDIO
 - Cast your local NAS / USB library to a network UPnP renderer, just like the streaming services
 - Qobuz Hi-Res streaming up to 24-bit / 192 kHz — favourites, new releases, editorial playlists
-- Tidal HiFi streaming — lossless FLAC, Favorites, New Releases, Charts, Editorial playlists, in-track seek
+- Tidal streaming — Hi-Res FLAC up to 24-bit / 192 kHz — Favorites, New Releases, Charts, Editorial playlists, in-track seek
 - HIGHRESAUDIO streaming — native-master FLAC up to 24-bit / 352.8 kHz — Favorites, Discover, Editor's Picks, Bestsellers, search
 - Internet radio — Radio Browser, custom stations, favourites
 - UPnP server auto-discovery & browsing
+- Listening history — time listened per day or month, sources, outputs, sound quality, genres, most played artists, albums and tracks; kept on the box
 
 </td>
   </tr>
@@ -74,7 +75,7 @@
 - Config editor — diff preview, backups, conditional restart (available on every edition)
 - RT scheduling, CPU pinning, per-core governor control — via systemd drop-ins
 - µs-scale latency benchmarks from the browser
-- Service monitoring with 60s sparklines
+- Service monitoring — live CPU, memory, network and disk, each with a sparkline of its recent values
 - Audio device inventory (ALSA cards, USB DACs)
 - Guided audio setup — auto-detect DAC + library, generate minimal MPD / AirPlay / UPnP configs in a couple of clicks, MPD's bit-perfect at full volume
 - One-click self-update — update to the latest release from the browser, no terminal (health-checked, automatic rollback)
@@ -95,7 +96,7 @@
   </tr>
 </table>
 
-> **Note:** Qobuz, Tidal and HIGHRESAUDIO streaming require an active subscription to their respective services — [Qobuz Studio or Sublime](https://www.qobuz.com) · [Tidal HiFi](https://tidal.com) · [HIGHRESAUDIO](https://www.highresaudio.com). Audiogravi<sup>ty</sup> does not provide access to these services. Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners; Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by them.
+> **Note:** Qobuz, Tidal and HIGHRESAUDIO streaming require an active subscription to their respective services — [Qobuz Studio or Sublime](https://www.qobuz.com) · [Tidal](https://tidal.com) · [HIGHRESAUDIO](https://www.highresaudio.com). Audiogravi<sup>ty</sup> does not provide access to these services. Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners; Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by them.
 
 ## Architecture
 
@@ -106,10 +107,10 @@ Audiogravi<sup>ty</sup> doesn't replace the engines audiophiles trust — it **o
 | **5 · Interface** | Browser · phone · tablet · PWA | Owns |
 | **4 · Orchestration** | Source switching · transport · volume · UPnP renderer control · monitoring | Owns |
 | **3 · Content sources** | NAS · Qobuz · Tidal · HIGHRESAUDIO · internet radio · MinimServer | Connects |
-| **2 · Audio engine** | MPD · Roon Bridge · HQPlayer NAA · AirPlay · upmpdcli · UPnP renderers | Installs, configures & drives |
+| **2 · Audio engine** | MPD · Roon Bridge / Server · HQPlayer Embedded / NAA · AirPlay · upmpdcli · UPnP renderers | Installs, configures & drives |
 | **1 · OS / kernel** | RT scheduling · CPU pinning · IRQs · ALSA | Tunes |
 
-It **installs and configures** the on-host daemons (MPD, upmpdcli, AirPlay), **drives** the ones that run elsewhere (Roon, HQPlayer, network renderers), **connects** your content sources, and **tunes** the OS kernel underneath — without replacing or hiding any of them.
+It **installs and configures** the engines that run on the box (MPD, AirPlay, upmpdcli, Roon Bridge or Roon Server, HQPlayer Embedded or its NAA), **drives** the ones that run elsewhere (a Roon Core, HQPlayer on another computer, network renderers), **connects** your content sources, and **tunes** the OS kernel underneath — without replacing or hiding any of them.
 
 ## Requirements
 
@@ -124,8 +125,8 @@ It **installs and configures** the on-host daemons (MPD, upmpdcli, AirPlay), **d
 | Edition | Price | What it unlocks |
 |---------|-------|-----------------|
 | **Trial** | Free · 30 days | Full access to every Pro feature |
-| **Starter** | Free · forever | Profiles, Services, Audio Software, System, Users, Config (editor + guided setup) |
-| **Pro** | €49 lifetime · 1 machine | Pipeline, Player, Library, Performance |
+| **Starter** | Free · forever | The music on the box and internet radio, with the player and Now Playing; outputs (the box's DAC or a network speaker); DSD protection; Profiles, Services, Audio Software, System, Users & passkeys, push notifications, Config (editor + guided setup) |
+| **Pro** | €49 lifetime · 1 machine | Everything in Starter, plus Qobuz, Tidal & HIGHRESAUDIO, UPnP media servers, Roon, HQPlayer, listening history, Pipeline, Systemd, Performance |
 
 Pro is a lifetime license — no subscription, no renewal. See [EDITIONS.md](EDITIONS.md) and [EULA.md](EULA.md). Licensing details in [License](#license) below.
 
@@ -146,15 +147,25 @@ curl -fsSL https://audiogravity.app/install-ui.sh | sudo bash
 
 ### Options
 
-The core installer accepts two optional flags:
+The installers accept optional flags; the all-in-one `install.sh` takes them all.
+
+Core (`install-core.sh`):
 
 - **`--vapid-email`** — contact address for Web Push (the VAPID `sub`). If
-  omitted, a generic placeholder is used and the installer prints a warning.
+  omitted, Audiogravi<sup>ty</sup>'s own push address is used.
 - **`--public-url`** — the public URL your users open Audiogravi<sup>ty</sup> from. The
   installer derives the WebAuthn origin and Relying Party ID from it, enabling
   **passkeys** (Face ID / Touch ID / Windows Hello). Passkeys require a real
   HTTPS **domain** — they do **not** work over a bare IP address, which browsers
   reject. Omit this flag if you don't use passkeys.
+
+Interface (`install-ui.sh`):
+
+- **`--https`** — serves the interface over HTTPS, with the box's own certificate, on port 443 (what a new install chooses by default).
+- **`--http`** — plain HTTP on port 8080, for a box behind a reverse proxy that handles HTTPS.
+- **`--port`** — another port. See the manual's [Installation](docs/manual/02-installation.md) chapter for the ports allowed.
+
+Both: **`--version`** installs a given release instead of the latest.
 
 ```bash
 curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
@@ -184,6 +195,10 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 
 ## Install as PWA
 
+On a self-signed setup, trust the box's certificate on the device first — an untrusted
+certificate stops the app from installing. See the manual's
+[First run → Trust the box's certificate](docs/manual/03-first-run.md#7-trust-the-boxs-certificate-once-per-device).
+
 <details>
 <summary><strong>iOS (Safari)</strong></summary>
 
@@ -192,7 +207,7 @@ curl -fsSL https://audiogravity.app/install-core.sh | sudo bash -s -- \
 3. **Add to Home Screen** → **Add**
 4. Open from home screen — runs fullscreen
 
-> iOS requires Safari. Chrome/Firefox on iOS cannot install PWAs.
+> On iOS (16.4 or later) the installed app is also what receives push notifications: a Safari tab cannot.
 </details>
 
 <details>
@@ -257,18 +272,18 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 ## Roadmap
 
-Audiogravi<sup>ty</sup> is a **release candidate** for 1.0 — open to everyone, no invitation and no token. On the horizon: multi-room fanout and an AirPlay sender.
+Audiogravi<sup>ty</sup> is a **release candidate** for 1.0 — open to everyone, no invitation and no token. On the horizon: a ready-to-flash system image, Diretta alongside the HQPlayer NAA already supported, sending to AirPlay devices, and multiroom.
 
 ## Contributing
 
-The interface — [audiogravity.ui](https://github.com/audiogravity/audiogravity.ui) — is **MIT-licensed** and open to contributions: issues and pull requests welcome. The core engine is proprietary (shipped as a compiled binary) and not open for external PRs.
+The interface — [audiogravity.ui](https://github.com/audiogravity/audiogravity.ui) — is **MIT-licensed**: read it, fork it, build on it. Pull requests are not accepted at this stage; to report a bug or suggest a feature, [open an issue](https://github.com/audiogravity/audiogravity.site/issues) here. The core engine is proprietary (shipped as a compiled binary).
 
 ## License
 
 Audiogravi<sup>ty</sup> uses a **dual-license** model:
 
-- **Interface** ([audiogravity.ui](https://github.com/audiogravity/audiogravity.ui)) — [MIT](https://github.com/audiogravity/audiogravity.ui/blob/main/LICENSE). Open source — fork it, contribute, or build on it.
-- **Core engine** ([audiogravity.core](https://github.com/audiogravity/audiogravity.core)) — Proprietary. Distributed as a compiled binary under the [EULA](EULA.md).
+- **Interface** ([audiogravity.ui](https://github.com/audiogravity/audiogravity.ui)) — [MIT](https://github.com/audiogravity/audiogravity.ui/blob/main/LICENSE). Open source — fork it or build on it.
+- **Core engine** — Proprietary. Distributed as a compiled binary under the [EULA](EULA.md).
 
 Audiogravi<sup>ty</sup> also incorporates open-source components — see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 

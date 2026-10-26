@@ -17,9 +17,11 @@
   <url><loc>https://audiogravity.app/docs/guides/</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/dac-hat-raspberry-pi</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/usb-dac-formats-linux</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/undervoltage-raspberry-pi</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/nas-music-library-raspberry-pi</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/network-music-streamer</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/qobuz-tidal-highresaudio-raspberry-pi</loc></url>
+  <url><loc>https://audiogravity.app/docs/guides/lossless-internet-radio</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/airplay-raspberry-pi-quality</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/roon-raspberry-pi</loc></url>
   <url><loc>https://audiogravity.app/docs/guides/hqplayer-embedded-raspberry-pi-5</loc></url>

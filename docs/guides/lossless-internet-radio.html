@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Lossless internet radio: which stations stream FLAC, and how to check what a station sends — Audiogravity</title>
+    <meta name="description" content="Which internet radio stations really stream lossless FLAC, how to check what a station sends in one command, and why station directories get it wrong.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/lossless-internet-radio">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=18dac994a6">
+    <link rel="stylesheet" href="../../assets/manual.css?v=50beeabb84">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Guides</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All guides</span><span class="man-menu-count">17</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item active" href="lossless-internet-radio" aria-current="page"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">15</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span class="man-nav-n">16</span><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">17</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item active" href="lossless-internet-radio" aria-current="page"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">15</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span class="man-nav-n">16</span><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">17</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</h1>
+<p class="man-guide-meta">Guide 7 · 7 min read</p>
+<p><strong>Short answer:</strong> most internet radio is MP3 or AAC, which drop part of the music on the way, whatever
+a station calls itself. Some stations stream FLAC, which drops nothing: of the 88 found here, three in
+four sent CD quality, 16 bits at 44.1 or 48 kHz, and five went above 48 kHz. Station directories are a
+poor guide: the largest lists five stations as FLAC, while 82 more of those found sit under &quot;OGG&quot;, next
+to lossy streams. Ask the stream itself: <code>ffprobe</code> names its format in a second.</p>
+<p>Checked on 2026-10-26: 333 streams read with ffprobe 7.1 on Debian 13, chosen in the Radio Browser
+directory (every station listed as FLAC or carrying FLAC, lossless or hi-res in its name or tags, the
+150 most-voted stations listed as Ogg, the 150 most-voted listed at 256 kbit/s or more), and eight of
+them played in MPD 0.24.5 without a sound card. The formats and the directory's workings come from
+their specifications and source code.</p>
+<h2 id="lossy-lossless-and-what-names-say">Lossy, lossless, and what names say</h2>
+<ul>
+<li><strong>MP3, AAC, Opus and Vorbis are lossy.</strong> Their bitrate, 128, 192 or 320 kbit/s, says how much of the
+music is kept, not a resolution. A name does not change it: France Inter's &quot;hifi&quot; stream is AAC at
+192 kbit/s, BBC Radio 3's &quot;HD Sound&quot; is AAC at 320 kbit/s, and &quot;Classic Vinyl HD&quot; is MP3.</li>
+<li><strong>FLAC is lossless.</strong> Its bits and its rate are the stream's real resolution.</li>
+<li><strong>Ogg is a wrapper</strong>, not a format: it carries FLAC, Vorbis or Opus, and a server sends all three as
+<code>audio/ogg</code>. Of the 125 most-voted stations listed as Ogg that answered, 56 sent FLAC, 35 Vorbis
+and 34 Opus.</li>
+<li><strong>HLS</strong>, an address ending in <code>.m3u8</code>, sends the stream in short files. Its specification allows
+AAC, MP3 and AC-3 on their own, and Apple's adds FLAC and Apple Lossless in MP4 files: SomaFM's
+Groove Salad sends FLAC that way.</li>
+</ul>
+<p>The 88 FLAC streams found:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Streams</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16 bits, 44.1 kHz</td>
+<td>47</td>
+</tr>
+<tr>
+<td>16 bits, 48 kHz</td>
+<td>21</td>
+</tr>
+<tr>
+<td>24 bits, 48 kHz</td>
+<td>12</td>
+</tr>
+<tr>
+<td>24 bits, 44.1 kHz</td>
+<td>3</td>
+</tr>
+<tr>
+<td>24 bits, 96 kHz</td>
+<td>2</td>
+</tr>
+<tr>
+<td>24 bits, 192 kHz</td>
+<td>2</td>
+</tr>
+<tr>
+<td>16 bits, 192 kHz</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="check-what-a-station-sends">Check what a station sends</h2>
+<p>ffprobe comes with ffmpeg: <code>sudo apt install ffmpeg</code>. Then, with the station's address:</p>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">ffprobe</span> <span class="hl-opt">-v</span> error <span class="hl-opt">-show_entries</span> stream=codec_name,sample_rate,bits_per_raw_sample,bit_rate:format_tags=icy-br <span class="hl-opt">-of</span> compact <span class="hl-string">"http://stream.radioparadise.com/mellow-flac"</span>
+</code></pre>
+<pre data-copy="no"><code class="language-text">stream|codec_name=flac|sample_rate=44100|bit_rate=N/A|bits_per_raw_sample=16
+format|tag:icy-br=1441
+</code></pre>
+<ul>
+<li><strong><code>codec_name</code></strong> is the format: <code>flac</code> is lossless; <code>mp3</code>, <code>aac</code>, <code>opus</code> and <code>vorbis</code> are not.</li>
+<li><strong><code>bits_per_raw_sample</code></strong> and <strong><code>sample_rate</code></strong> are the resolution of a FLAC stream. A lossy stream has
+no bit depth, <code>N/A</code>: its <code>bit_rate</code>, in bits per second, stands in its place.</li>
+<li><strong><code>icy-br</code></strong> is the bitrate the station announces about itself: an Icecast server passes on the
+figure the station's software gives it, and nothing checks it. Naim Jazz announces <code>128</code> for the
+same format as above, 16-bit FLAC.</li>
+</ul>
+<p>ffprobe reads a second or two of the stream, follows redirections and reads HLS addresses as they are.</p>
+<h2 id="what-station-directories-say">What station directories say</h2>
+<p>Radio Browser, a free directory to which anyone can add a station, listed nearly 70,000 stations on
+the day: two in three as MP3, five as FLAC. Its code explains why. A station's codec is what the
+server's <code>Content-Type</code> names, so every <code>audio/ogg</code> stream is listed as Ogg; its bitrate is the
+station's own <code>icy-br</code>. Read against the streams themselves:</p>
+<ul>
+<li><strong>&quot;OGG&quot; hides most FLAC stations.</strong> 82 of the 88 FLAC streams found were listed as Ogg, one as MP4
+(SomaFM's HLS), five as FLAC.</li>
+<li><strong>Bitrates are what stations announce.</strong> The FLAC streams were listed at anything from 0 to
+6,144 kbit/s.</li>
+<li><strong>Names are not formats.</strong> Of the 97 stations that answered and that call themselves FLAC or
+lossless in their name or tags, or are listed as FLAC, 17 sent MP3, AAC or Vorbis: often a lossy
+version of a FLAC station, under the same name.</li>
+<li><strong>&quot;High bitrate&quot; means lossy.</strong> Of the 141 most-voted stations listed at 256 kbit/s or more that
+answered, 113 sent MP3, 23 AAC and one Vorbis; two sent FLAC, and two could not be identified.</li>
+</ul>
+<p>So search a directory for &quot;flac&quot; in names and tags, then check each candidate with ffprobe.</p>
+<h2 id="stations-found-streaming-flac">Stations found streaming FLAC</h2>
+<p>Read on 2026-10-26. Stations change their addresses: if one no longer answers, its own website gives
+the current one.</p>
+<ul>
+<li><strong>Radio Club 80 Trance</strong>, Chile, 24 bits, 192 kHz: <code>https://stream.radioclub80.cl:8052/trance80.flac</code></li>
+<li><strong>SECTOR Jazz</strong>, Russia, 24 bits, 96 kHz: <code>http://89.223.45.5:8000/jazz-flac</code></li>
+<li><strong>Sveriges Radio P2</strong>, Sweden, 24 bits, 48 kHz, a stream its broadcaster calls experimental:
+<code>https://live1.sr.se/p2-flac</code></li>
+<li><strong>Radio Calico</strong>, United States, 24 bits, 48 kHz: <code>http://roon.radio-calico.com:8000/roon</code></li>
+<li><strong>Fréquence 3 Gold</strong>, France, 24 bits, 48 kHz: <code>https://frequence3.net-radio.fr/frequence3gold.flac</code></li>
+<li><strong>PureClassix</strong>, Netherlands, 24 bits, 44.1 kHz: <code>http://mscp4.live-streams.nl:8140/flac.ogg</code></li>
+<li><strong>Český rozhlas D-dur</strong>, Czechia, 16 bits, 48 kHz: <code>http://amp.cesnet.cz:8000/cro-d-dur.flac</code></li>
+<li><strong>Český rozhlas Jazz</strong>, Czechia, 16 bits, 48 kHz: <code>http://amp.cesnet.cz:8000/cro-jazz.flac</code></li>
+<li><strong>SomaFM Groove Salad</strong>, United States, 16 bits, 48 kHz:
+<code>https://hls.somafm.com/hls/groovesalad/FLAC/program.m3u8</code></li>
+<li><strong>Radio Paradise, Main Mix</strong>, United States, 16 bits, 44.1 kHz: <code>https://stream.radioparadise.com/flac</code></li>
+<li><strong>Naim Radio</strong>, United Kingdom, 16 bits, 44.1 kHz: <code>http://mscp3.live-streams.nl:8360/flac.flac</code></li>
+<li><strong>Naim Jazz</strong>, United Kingdom, 16 bits, 44.1 kHz: <code>http://mscp3.live-streams.nl:8340/jazz-flac.flac</code></li>
+<li><strong>Rondo Classic Klasu</strong>, Finland, 16 bits, 44.1 kHz: <code>https://iradio.fi/klasu.flac</code></li>
+</ul>
+<p>Some stations stream FLAC to one country only, for licensing reasons. Munich Vinyl Radio announces
+FLAC at 192 kHz for listeners in Germany: from France, its streams answered <code>401 Unauthorized</code>.</p>
+<h2 id="playing-them-with-mpd">Playing them with MPD</h2>
+<pre data-copy="no"><code class="language-bash"><span class="hl-cmd">mpc</span> add http://stream.radioparadise.com/mellow-flac
+<span class="hl-cmd">mpc</span> play
+<span class="hl-cmd">mpc</span> status <span class="hl-string">'%audioformat%, %kbitrate% kbit/s'</span>
+</code></pre>
+<ul>
+<li>
+<p><strong>An HLS address goes in as it is.</strong> MPD 0.24 played SomaFM's and France Inter's <code>.m3u8</code> from their
+<code>https://</code> addresses, 45 seconds each, across several of their files. Written <code>hls+https://</code>, a form
+MPD's code accepts and some guides give, it failed on SomaFM and played France Inter with decoding
+errors, and ffmpeg's own log advises the plain address.</p>
+</li>
+<li>
+<p><strong>What MPD shows is &quot;the format emitted by the decoder plugin&quot;</strong>, in its documentation's words, not
+what the station sent:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Station</th>
+<th>Sends</th>
+<th><code>%audioformat%</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio Club 80 Trance</td>
+<td>FLAC, 24 bits, 192 kHz</td>
+<td><code>192000:24:2</code></td>
+</tr>
+<tr>
+<td>Sveriges Radio P2</td>
+<td>FLAC, 24 bits, 48 kHz</td>
+<td><code>48000:24:2</code></td>
+</tr>
+<tr>
+<td>Radio Paradise, Mellow Mix</td>
+<td>FLAC, 16 bits, 44.1 kHz</td>
+<td><code>44100:16:2</code></td>
+</tr>
+<tr>
+<td>Classic Vinyl HD</td>
+<td>MP3, 320 kbit/s announced</td>
+<td><code>48000:24:2</code></td>
+</tr>
+<tr>
+<td>France Inter, hifi</td>
+<td>AAC, 192 kbit/s</td>
+<td><code>48000:16:2</code></td>
+</tr>
+<tr>
+<td>France Inter, HLS</td>
+<td>AAC</td>
+<td><code>48000:f:2</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>For a lossy stream, the bits are the decoder's working resolution: an app that shows &quot;24 bit,
+48 kHz&quot; for an MP3 says nothing of its quality.</p>
+</li>
+<li>
+<p><strong>To reach the DAC untouched</strong>, a FLAC stream needs what a file needs: no resampling and no software
+volume. See <a href="check-bit-perfect-playback-linux">How to check bit-perfect playback</a>.</p>
+</li>
+</ul>
+<h2 id="through-hqplayer">Through HQPlayer</h2>
+<p>HQPlayer's list of formats has FLAC and MP3, not AAC: &quot;AAC is not supported as it requires additional
+patent licenses&quot;, its author wrote in April 2025. An AAC station reaches it only decoded beforehand,
+by a player such as Roon, which &quot;always sends just raw decoded PCM or DSD to HQPlayer&quot;.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Its Radio tab searches the Radio Browser directory, and a station missing from it can be added by its
+address. A station plays like the music on the box, to the same outputs. For HQPlayer, the box relays
+each station, and converts to FLAC what HQPlayer does not read: the conversion keeps the sound as it
+arrived, it does not bring back what a lossy stream left out.</p>
+<p>The details are in the manual:
+<a href="../manual/05-library-streaming#internet-radio">Library &amp; streaming → Internet radio</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Measurements, 2026-10-26: 333 streams read with ffprobe 7.1.5 (Debian 13), from Radio Browser's answers to its station search; eight played in MPD 0.24.5 with its <code>null</code> output, the two HLS ones for 45 seconds; the directory's figures from its <code>/json/codecs</code> and <code>/json/stats</code> answers.</li>
+<li>Radio Browser: its <a href="https://api.radio-browser.info/">API documentation</a> and its server's source, <a href="https://gitlab.com/radiobrowser/radiobrowser-api-rust">radiobrowser-api-rust</a>, which writes a station's codec and bitrate only from its stream check; the check, <a href="https://docs.rs/crate/av-stream-info-rust/0.13.2">av-stream-info-rust 0.13.2</a>, reads them from the <code>Content-Type</code> and <code>icy-br</code> headers. Read on 2026-10-26.</li>
+<li>Formats: <a href="https://www.rfc-editor.org/rfc/rfc9639">RFC 9639</a> (FLAC in Ogg sent as <code>audio/ogg</code>), <a href="https://www.rfc-editor.org/rfc/rfc8216">RFC 8216</a> (HLS), Apple's <a href="https://developer.apple.com/streaming/hls-authoring-specification-for-apple-devices.html">HLS Authoring Specification</a> (FLAC and Apple Lossless, revision of June 2025); Icecast's <a href="https://icecast.org/docs/icecast-latest/config_file/">configuration reference</a> (an announced bitrate); FFmpeg's <a href="https://ffmpeg.org/ffprobe.html">ffprobe</a> documentation.</li>
+<li>MPD: its <a href="https://mpd.readthedocs.io/en/stable/plugins.html">plugins</a> and <a href="https://mpd.readthedocs.io/en/stable/protocol.html">protocol</a> documentation (the <code>audio</code> field).</li>
+<li>Stations, read on 2026-10-26: <a href="https://www.bbc.co.uk/sounds/help/questions/features/hd-sound">BBC Sounds</a> on Radio 3's HD Sound; Sveriges Radio's <a href="https://teknisk-support.sverigesradio.se/org/teknisk-support/d/flac-streams-for-radio/">technical support</a> on P2's FLAC stream (January 2024); <a href="https://munichvinylradio.de/">Munich Vinyl Radio</a>.</li>
+<li>Jussi Laako, who writes HQPlayer, on the Roon forum: <a href="https://community.roonlabs.com/t/244327/1598">AAC</a> (April 2025) and <a href="https://community.roonlabs.com/t/166652/13">Roon</a> (July 2021); HQPlayer's <a href="https://signalyst.com/hqplayer-desktop/">source formats</a>.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

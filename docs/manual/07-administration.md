@@ -480,7 +480,8 @@ program risks when the box is busy. Set the test, click **TEST**, and read the r
   Lock** and **Quiet Mode**.
 
 In the result, **Max** is the figure that matters: the worst delay seen, in
-microseconds. The histogram shows how often each delay occurred.
+microseconds. The histogram shows how often each delay occurred, in four bands: under
+50 µs, 50 to 200, 200 to 500, and 500 and over — the last two in orange and red.
 
 <img src="images/ios-latency-test.webp" alt="The latency test after a run: its settings, the minimum, average and maximum delay, the percentiles and the histogram" width="360">
 
@@ -495,10 +496,12 @@ Roon, AirPlay or a NAS stalls. Choose a mode, set it, and click **TEST**.
 - **IPERF3 UDP (Audio Streaming)** and **IPERF3 TCP (Throughput)** — a test server
   sends a steady stream to the box for the chosen **Duration**, at the chosen
   **Bandwidth**. The server runs on another machine of your network: install iperf3
-  there, start it with `iperf3 -s`, and enter its address in **Server**. Set
+  there, start it with `iperf3 -s`, and enter its address in **Server** — followed by
+  its port, as in `192.168.1.20:5202`, if it does not listen on iperf3's own, 5201. Set
   **Bandwidth** to what your music needs — DSD512 and PCM 768 kHz take close to
-  50 Mbit/s (`50M`). UDP reports jitter and loss at that rate; TCP reports whether the
-  rate holds, and how many packets had to be sent again.
+  50 Mbit/s (`50M`). UDP reports jitter and loss at that rate, and draws the jitter
+  second by second, one bar per second; TCP reports whether the rate holds, and how
+  many packets had to be sent again.
 - **Internal Server Service** — **START SERVICE** runs a test server on the box itself,
   so that another machine can test its way to the box.
 

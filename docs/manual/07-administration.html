@@ -509,7 +509,8 @@ on, such as <code>2,3</code>; left empty, any of them — and two switches best 
 Lock</strong> and <strong>Quiet Mode</strong>.</li>
 </ul>
 <p>In the result, <strong>Max</strong> is the figure that matters: the worst delay seen, in
-microseconds. The histogram shows how often each delay occurred.</p>
+microseconds. The histogram shows how often each delay occurred, in four bands: under
+50 µs, 50 to 200, 200 to 500, and 500 and over — the last two in orange and red.</p>
 <img loading="lazy" src="images/ios-latency-test.webp" alt="The latency test after a run: its settings, the minimum, average and maximum delay, the percentiles and the histogram" width="360">
 <h3 id="network-test">Network test</h3>
 <p>Checks that your network carries audio without hiccups — worth running when streaming,
@@ -521,10 +522,12 @@ varies (<em>jitter</em>) and any packet lost.</li>
 <li><strong>IPERF3 UDP (Audio Streaming)</strong> and <strong>IPERF3 TCP (Throughput)</strong> — a test server
 sends a steady stream to the box for the chosen <strong>Duration</strong>, at the chosen
 <strong>Bandwidth</strong>. The server runs on another machine of your network: install iperf3
-there, start it with <code>iperf3 -s</code>, and enter its address in <strong>Server</strong>. Set
+there, start it with <code>iperf3 -s</code>, and enter its address in <strong>Server</strong> — followed by
+its port, as in <code>192.168.1.20:5202</code>, if it does not listen on iperf3's own, 5201. Set
 <strong>Bandwidth</strong> to what your music needs — DSD512 and PCM 768 kHz take close to
-50 Mbit/s (<code>50M</code>). UDP reports jitter and loss at that rate; TCP reports whether the
-rate holds, and how many packets had to be sent again.</li>
+50 Mbit/s (<code>50M</code>). UDP reports jitter and loss at that rate, and draws the jitter
+second by second, one bar per second; TCP reports whether the rate holds, and how
+many packets had to be sent again.</li>
 <li><strong>Internal Server Service</strong> — <strong>START SERVICE</strong> runs a test server on the box itself,
 so that another machine can test its way to the box.</li>
 </ul>

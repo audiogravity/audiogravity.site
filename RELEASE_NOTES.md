@@ -7,7 +7,13 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Performance
+
+**A Raspberry Pi short of power reads *Slowed down*.** When a Pi's power supply falls short,
+its processor runs slower than the speed Linux gives — 600 MHz on a Pi 4 that Linux still
+showed at 1.8 GHz. While the THROTTLED badge shows on a Pi, the Performance tab no longer
+gives that figure: each core and *Current Freq* read *Slowed down*, and so does the support
+report. On an Intel processor the figure is a measured speed, and stays.
 
 ---
 

@@ -454,7 +454,10 @@ written next to *Load*.
   previous measurement: because it ran too hot, on processors that report it (Intel's),
   or, on a Raspberry Pi, because its power supply could not keep up — the whole
   processor slows then, and every core shows the badge. Sustained throttling during
-  playback causes glitches.
+  playback causes glitches. On a Raspberry Pi, while the badge shows, the core's
+  frequency, and *Current Freq* above the cards, read *Slowed down*: the figure the
+  system gives there is the speed it asked for, and a Pi short of power runs slower than
+  that. An Intel processor's figure is the speed it measured, and stays.
 - **RT process monitor** — shows whether the audio programs run in real time: MPD,
   AirPlay, and Roon Bridge with its RAAT server. A green badge (SCHED_FIFO / SCHED_RR)
   means real time; a red **NON-RT** badge means the program can be held up while the box

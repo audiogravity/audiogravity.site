@@ -28,7 +28,7 @@ system and play the music stored on it:
 - **Guided provisioning** — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)
 - **DSD protection** — your DAC's own volume set to maximum while it receives DSD, then put back; switchable for a DAC that lowers DSD properly
 - **Library** — the music stored on the box: album browsing, full-text search and queue management
-- **Internet radio** — Radio Browser directory, custom stations, favourites with Hi-Res filtering
+- **Internet radio** — Radio Browser directory, custom stations, favourites, and a filter that keeps the stations that really stream lossless
 - **Player** — play/pause, seek, next/prev, volume, repeat/shuffle for the box's music and the radio, in the mini-player and the full-screen player, with its **sleep timer**
 - **Outputs** — the box's DAC (USB, Toslink, HDMI…), switched without touching the streamer, or a DLNA/UPnP network speaker (**UPnP Control Point**)
 - **Now Playing** — current track, cover art, format and progress across all sources

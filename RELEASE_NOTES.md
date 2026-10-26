@@ -15,6 +15,18 @@ showed at 1.8 GHz. While the THROTTLED badge shows on a Pi, the Performance tab 
 gives that figure: each core and *Current Freq* read *Slowed down*, and so does the support
 report. On an Intel processor the figure is a measured speed, and stays.
 
+### Radio
+
+**Lossless only.** The radio search's *Hi-Res only* box becomes *Lossless only*, and means it.
+The old filter went by the bitrate stations announce: an MP3 at 320 kbps passed, while most FLAC
+stations — which the Radio Browser directory lists as Ogg, the wrapper they are sent in — were
+judged on a figure they choose. Ticked, the box now keeps the stations listed as FLAC, and reads
+the first bytes of each station the directory cannot vouch for, to keep those that really send
+FLAC. The first such search takes a few seconds; the next is immediate. A station checked that
+way shows *FLAC* and its resolution — *24bit / 48kHz* — in the search, My Live Radio and
+Favorites; and while it plays, the player shows FLAC and its bit depth where it called the
+stream lossy.
+
 ---
 
 ## 1.0.0-rc.1 — 2026-10-25

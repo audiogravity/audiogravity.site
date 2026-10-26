@@ -320,8 +320,12 @@ radio view has three sub-tabs:
   starter stations (FIP, Classic Vinyl HD…) already here — keep them or remove them.
   An upgrade never touches your collection.
 - **Favorites** — your starred stations.
-- **Search** — a query box with **country**, **genre** and **Hi-Res** filters, backed
-  by the Radio Browser catalogue.
+- **Search** — a query box with **country** and **genre** filters and a **Lossless
+  only** box, backed by the Radio Browser catalogue. Ticked, the box keeps only the
+  stations that stream without loss, in FLAC; the first such search can take a few
+  seconds, while the box checks the stations the catalogue cannot vouch for. A checked
+  station's row shows its format as its stream gives it: *FLAC* and its resolution,
+  such as *24bit / 48kHz*.
 
 On each station card: **tap** to play, the **star** toggles Favorites, and the **+**
 adds the station to My Live Radio. **⋯** unfolds what else the station allows, under

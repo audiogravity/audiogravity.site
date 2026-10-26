@@ -15,6 +15,15 @@ showed at 1.8 GHz. While the THROTTLED badge shows on a Pi, the Performance tab 
 gives that figure: each core and *Current Freq* read *Slowed down*, and so does the support
 report. On an Intel processor the figure is a measured speed, and stays.
 
+**Test results that read in every theme.** The network test's verdict is drawn like the app's
+other state badges, and now reads in every theme. A UDP test's jitter is one bar per second, in
+the theme's network colour. In Minimal, the latency histogram keeps colour for the delays from
+200 µs. And both charts follow a switch between light and dark mode.
+
+**The iperf3 test takes a port.** A server can be entered as `address:port`, as the field asks:
+with a port, the test stopped at once until now. An entry that names no server is refused
+before the test starts.
+
 ### Radio
 
 **Lossless only.** The radio search's *Hi-Res only* box becomes *Lossless only*, and means it.

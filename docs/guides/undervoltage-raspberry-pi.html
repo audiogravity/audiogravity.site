@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply — Audiogravity</title>
+    <meta name="description" content="What “Undervoltage detected!” means on a Raspberry Pi, how to tell if it happens, what it does to the processor and to USB, and which supply to use.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/undervoltage-raspberry-pi">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=18dac994a6">
+    <link rel="stylesheet" href="../../assets/manual.css?v=50beeabb84">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Guides</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All guides</span><span class="man-menu-count">17</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item active" href="undervoltage-raspberry-pi" aria-current="page"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="lossless-internet-radio"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">15</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span class="man-nav-n">16</span><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">17</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item active" href="undervoltage-raspberry-pi" aria-current="page"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="lossless-internet-radio"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">15</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span class="man-nav-n">16</span><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">17</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</h1>
+<p class="man-guide-meta">Guide 3 · 7 min read</p>
+<p><strong>Short answer:</strong> when its supply sags below about 4.63 V, a Raspberry Pi slows its processor down
+and the kernel writes <code>Undervoltage detected!</code> in its log. On the Pi 4 below, the processor fell from
+1.8 GHz to 600 MHz while Linux still showed 1.8 GHz, and it happened 68 times a day, often within
+seconds of a login. Playing a file kept up even then; heavier work has less room, and USB devices,
+a DAC among them, share the low voltage. <code>vcgencmd get_throttled</code> tells whether it has happened. The
+cure is the supply and its cable, not a setting.</p>
+<p>Checked on 2026-10-26 on a Raspberry Pi 4 Model B under Raspberry Pi OS (Debian 13, Linux 6.18)
+whose supply falls short: six days of its log, and a two-minute load test. The rest comes from
+Raspberry Pi's documentation, its engineers and the kernel's sources.</p>
+<h2 id="has-it-happened-on-yours">Has it happened on yours?</h2>
+<pre><code class="language-bash"><span class="hl-cmd">vcgencmd</span> get_throttled
+</code></pre>
+<p><code>throttled=0x0</code> means none of these has happened. Any other value adds them up, from Raspberry Pi's
+documentation:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Now</th>
+<th>Has occurred</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x1</code></td>
+<td><code>0x10000</code></td>
+<td>Undervoltage</td>
+</tr>
+<tr>
+<td><code>0x2</code></td>
+<td><code>0x20000</code></td>
+<td>Arm frequency capped</td>
+</tr>
+<tr>
+<td><code>0x4</code></td>
+<td><code>0x40000</code></td>
+<td>Throttled</td>
+</tr>
+<tr>
+<td><code>0x8</code></td>
+<td><code>0x80000</code></td>
+<td>Soft temperature limit</td>
+</tr>
+</tbody>
+</table></div>
+<p>On the Pi above, <code>0x50000</code> at rest: undervoltage and throttling have occurred, none is going on. It
+still read so five minutes after the last drop. During a drop, <code>0x50005</code>: both are going on too.</p>
+<p>The kernel's log gives the time of each drop:</p>
+<pre><code class="language-bash"><span class="hl-cmd">journalctl</span> <span class="hl-opt">-k</span> <span class="hl-opt">--no-hostname</span> | <span class="hl-cmd">grep</span> <span class="hl-opt">-i</span> voltage
+</code></pre>
+<pre data-copy="no"><code class="language-text">Oct 26 09:43:29 kernel: hwmon hwmon1: Undervoltage detected!
+Oct 26 09:43:50 kernel: hwmon hwmon1: Voltage normalised
+</code></pre>
+<ul>
+<li><strong>One pair of lines per drop.</strong> The kernel asks the firmware every two seconds and writes a line
+each time the state changes. To count the drops since the Pi started:
+<code>journalctl -k -b | grep -c &quot;Undervoltage detected&quot;</code>.</li>
+<li><strong>The same alarm, without <code>vcgencmd</code>:</strong> <code>grep -H . /sys/class/hwmon/hwmon*/in0_lcrit_alarm</code> reads
+<code>1</code> while a drop lasts, <code>0</code> otherwise.</li>
+<li><strong>On the desktop</strong>, Raspberry Pi OS shows a notification, &quot;Low voltage warning&quot;, over &quot;Please check
+your power supply&quot;.</li>
+<li><strong>Where none of this exists.</strong> <code>vcgencmd</code> comes with Raspberry Pi OS and DietPi, in the
+<code>raspi-utils-core</code> package. Debian's own packages have neither it nor the kernel's driver, which
+Debian 13 leaves out of its arm64 kernel: there, what is left is the red power LED of a Pi 1 to 4,
+&quot;off or flickering when there is undervoltage&quot;, and a multimeter (below). The Zero range has no
+detection circuit at all.</li>
+</ul>
+<h2 id="what-it-does">What it does</h2>
+<p>In Raspberry Pi's documentation: &quot;If the voltage drops below 4.63 V (±5%), the Arm cores and the GPU
+are throttled back, and a message indicating the low voltage state is added to the kernel log.&quot;
+To watch it happen:</p>
+<pre><code class="language-bash"><span class="hl-cmd">watch</span> <span class="hl-opt">-n</span> 1 <span class="hl-string">'vcgencmd measure_clock arm; vcgencmd get_throttled'</span>
+</code></pre>
+<p>What the Pi above did, with three of its four cores kept busy:</p>
+<ul>
+<li><strong>The processor ran at a third of its speed.</strong> <code>measure_clock arm</code> read <code>frequency(48)=600117184</code>,
+600 MHz, within a tenth of a second of the load starting, while Linux's own figure,
+<code>/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code>, still read <code>1800000</code>. The documentation
+explains it: that figure &quot;is the kernel requested frequency&quot;, and <code>measure_clock</code> gives the actual
+one. Tools that show Linux's figure do not see the slowdown.</li>
+<li><strong>It came back at once.</strong> 1.8 GHz again within 0.2 s of the load stopping; the kernel wrote
+<code>Voltage normalised</code> about four seconds later.</li>
+<li><strong>Playing a file kept up.</strong> One core decoded a 24-bit, 192 kHz FLAC file of noise, the hardest
+kind for FLAC, 64 times faster than it plays at 1.8 GHz, and still 25 times faster at 600 MHz with
+the other cores busy. Work that needs far more of the processor, heavy resampling or HQPlayer's
+filters, gets a third of it while a drop lasts.</li>
+<li><strong>Storage and USB devices share the low voltage.</strong> Raspberry Pi's documentation: &quot;Low quality power
+supplies can corrupt storage or cause unpredictable behaviour&quot;, and &quot;often problems with USB
+devices are caused by power issues&quot;. One of its engineers adds that below 4.75 V, the edge of the
+USB specification, &quot;USB devices are likely to malfunction&quot;.</li>
+</ul>
+<p>How often, on that Pi, over six days of log: 404 drops, 68 a day, from 4 seconds to over 5 minutes
+(half of them 6 seconds or less, nine over a minute). They followed activity: 16 between midnight and
+7 a.m., and nearly one login in two was followed by one within ten seconds (162 of 347).</p>
+<h2 id="the-supply-and-what-it-feeds">The supply, and what it feeds</h2>
+<p>Raspberry Pi's requirements:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Supply</th>
+<th>Shared by the USB ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pi 3 B+</td>
+<td>5.1 V, 2.5 A, micro USB</td>
+<td>1.2 A</td>
+</tr>
+<tr>
+<td>Pi 4, Pi 400</td>
+<td>5.1 V, 3 A, USB-C</td>
+<td>1.2 A</td>
+</tr>
+<tr>
+<td>Pi 5</td>
+<td>5.1 V, 5 A, USB-C</td>
+<td>1.6 A, or 600 mA from a 3 A supply</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>The cable counts.</strong> The documentation's figures are &quot;measured at the plug, not the supply&quot;:
+&quot;Allow for voltage loss in the cable&quot;, it says, and it names wires &quot;that are too thin&quot; among the
+causes. Raspberry Pi's own supplies come with 1.2 to 1.5 m of
+17 or 18 AWG cable. It adds that &quot;the voltage from some USB chargers/power supplies can fall as low
+as 4.2 V&quot;, where 4.8 V is the floor &quot;for reliable performance&quot;.</li>
+<li><strong>Count what the Pi feeds.</strong> A DAC, a disk or a hub powered through its USB cable draws on the
+column above, from the same supply. <code>lsusb -v</code> shows what each device declares: the DAC of my x86
+test box reads <code>(Bus Powered)</code> and <code>MaxPower 500mA</code>, so its USB side may take up to 500 mA from the
+port. To rule power out, Raspberry Pi's documentation advises connecting USB devices &quot;using a
+powered hub&quot;.</li>
+<li><strong>A Pi 5 needs 5 A to feed its USB ports fully.</strong> Without a supply that offers 5 A, its desktop
+warns &quot;This power supply is not capable of supplying 5A&quot;, over &quot;Power to peripherals will be
+restricted&quot;.
+<code>usb_max_current_enable=1</code> in <code>config.txt</code> lifts the limit, under the documentation's warning that
+it &quot;can cause system instability, crashes, or data loss&quot;: for a USB-powered DAC, the 5 A supply is
+the better fix.</li>
+<li><strong>Reading the voltage.</strong> A Pi 5 reads its own: <code>vcgencmd pmic_read_adc EXT5V_V</code> answers, in the
+documentation's example, <code>EXT5V_V volt(24)=5.06520000V</code>. On older models, <code>vcgencmd measure_volts</code>
+gives the processor's voltage, not the supply's, and the documentation sends you to a multimeter
+between the 5 V and ground pins. A multimeter shows the average: &quot;it won't pick up momentary
+dropouts&quot;, in the words of the same engineer, and the Pi's own detection does.</li>
+</ul>
+<h2 id="settings-that-hide-it">Settings that hide it</h2>
+<ul>
+<li><strong><code>avoid_warnings=2</code></strong> &quot;allows turbo mode even when low-voltage is present&quot;. Raspberry Pi files it
+among the <code>config.txt</code> options that &quot;don't work with Raspberry Pi OS Bookworm and later&quot;, and it
+never mended the supply.</li>
+<li><strong>DietPi's <code>cpu</code> command</strong> prints a &quot;Throttle up&quot; line: that is the frequency governor's threshold,
+not the slowdown above.</li>
+</ul>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>On a Raspberry Pi, its Performance tab marks every core THROTTLED when the supply could not keep up,
+and, with notifications on, the box sends &quot;Power Supply Too Weak&quot; as the voltage drops, at most once a
+day.</p>
+<p>The details are in the manual:
+<a href="../manual/07-administration#performance-tuning-pro">Administration → Performance tuning</a> and
+<a href="../manual/07-administration#push-notifications">Push notifications</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Raspberry Pi's documentation, read on 2026-10-26 from <a href="https://github.com/raspberrypi/documentation">its repository</a>, which mirrors the website: <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/power-supplies.adoc">power supplies</a> (the 4.63 V threshold, the requirements, the causes and consequences), <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/getting-started/setting-up.adoc">setting up</a> (voltage measured at the plug), <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/os/graphics-utilities.adoc">vcgencmd</a> (<code>get_throttled</code>, <code>measure_clock</code>, <code>measure_volts</code>, <code>pmic_read_adc</code>), <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/config_txt/overclocking.adoc">overclocking</a> (throttling, 4.8 V, the requested frequency), <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/usb-bus-on-raspberry-pi.adoc">USB</a> (current per port), <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/configuration/performance.adoc">performance</a> (<code>usb_max_current_enable</code>), <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/configuration/led_blink_warnings.adoc">LED warnings</a>, <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/legacy_config_txt/misc.adoc">legacy options</a> (<code>avoid_warnings</code>); the product briefs of the <a href="https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf">27 W</a> and <a href="https://datasheets.raspberrypi.com/power-supply/15w-usb-c-power-supply-product-brief.pdf">15 W</a> supplies (cables).</li>
+<li>Raspberry Pi engineers on GitHub: Phil Elwell on <a href="https://github.com/raspberrypi/linux/issues/2459#issuecomment-375332847"><code>0x50000</code></a> (2018); Dave Stevenson on <a href="https://github.com/raspberrypi/linux/issues/5584">brief drops, multimeters and USB</a> (August 2023).</li>
+<li>The desktop's messages: <a href="https://github.com/raspberrypi-ui/pplug-power/blob/master/src/power.c">pplug-power</a>, Raspberry Pi OS's power plugin.</li>
+<li>Linux 6.12: the messages and the two-second polling in <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/hwmon/raspberrypi-hwmon.c?h=v6.12">drivers/hwmon/raspberrypi-hwmon.c</a> and <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/hwmon/raspberrypi-hwmon.rst?h=v6.12">its documentation</a>. Debian 13: <code>CONFIG_SENSORS_RASPBERRYPI_HWMON</code> not set in its arm64 kernel 6.12.113, and no <code>vcgencmd</code> in <a href="https://packages.debian.org/search?searchon=contents&amp;keywords=vcgencmd&amp;mode=filename&amp;suite=trixie&amp;arch=any">its packages</a>. DietPi: <a href="https://github.com/MichaIng/DietPi/blob/master/dietpi/dietpi-cpuinfo">dietpi-cpuinfo</a>.</li>
+<li>Measurements, 2026-10-26: a Raspberry Pi 4 Model B Rev 1.5, Raspberry Pi OS (image of 2026-04-21) on Debian 13, Linux 6.18.50, firmware of 2026-09-14, nothing on its USB ports; its kernel log from 2026-10-20 to 26; the load test with busy loops and ffmpeg 7.1. The USB DAC's declaration read with <code>lsusb</code> (usbutils 018) on the x86 test box, Debian 13. Nothing was measured on a Pi 5.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

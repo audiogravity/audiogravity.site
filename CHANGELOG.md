@@ -17,6 +17,7 @@ and this landing) are documented here. Format based on
 - **[ops] nginx — the orange ghost's routes are public, with their own request budget**: 30 a minute per address and a burst of 10, turned away before they reach the licence server's single worker.
 
 ### Fixed
+- **[site] The social preview and the README's image show the landing as it is today.** The card networks and messengers show for audiogravity.app, and the image heading the site's README, still showed the public beta: its ribbon, an older capture of the app, the previous carousel controls — the README's even the opening line the landing dropped. Both are taken anew from the page by `gen-og-image.js`: the release candidate's ribbon, the HQPlayer screen the carousel opens on, with its annotations.
 - **[site] Halloween — the spider beside the phone hangs from its thread in Safari.** Safari drew the spider and not its thread, a pseudo-element sized with container units; each thread is now drawn in its spider's own box, its length in pixels.
 - **[lic] A licence key no box holds is no longer written in full in the server's log.** Created by the admin or by a PayPal payment, deactivated or restored, such a key is a bearer secret — the first box to send it keeps it; those lines now write only its first group (`AG-XXXX…`), and so does uvicorn's access log, which wrote it in the address of the admin's routes on an order.
 - **[ops] nginx — the licence server's access log redacts licence keys**, in the path as in the query (`AG-XXXX-[key_redacted]`), as it already dropped credentials.

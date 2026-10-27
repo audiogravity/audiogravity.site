@@ -23,6 +23,13 @@ view's sound quality and listening hours use the four colours of the latency tes
 DSD in grey, Hi-Res in black, CD in amber and MP3/AAC in red, and the hours from grey for the
 quietest to red for the busiest. Slate and Gravity look as before.
 
+### Interface
+
+**Dates in English, whatever your phone's language.** Days and months came in your phone's
+language — *lun.*, *28 sept.* on a phone set to French — beside the app's English words. They
+are written in British English now, the same way everywhere (*Mon 12 Oct*, *27 Oct, 17:45*),
+while times keep your phone's clock. A date from another year shows its year.
+
 ---
 
 ## 1.0.0-rc.2 — 2026-10-27

@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.0-rc.2 — 2026-10-27
+
 ### Player
 
 **The fullscreen player stays put when you swap a station's covers.** Tapping the small cover
@@ -25,6 +31,15 @@ quietest to red for the busiest. Slate and Gravity look as before.
 
 ### Interface
 
+**Messages you can close, that stay until they are read.** The messages that say how an action
+went have an × now. An error or a warning stays until you close it; a success goes away after
+a few seconds, unless your pointer or your finger rests on it. Three show at most, never the same
+one twice, and an action that takes a while turns its "in progress" message into its result
+instead of stacking a second one. They no longer cover the top bar of the app installed on an
+iPhone, the tabs, or the offline banner's RETRY, and on a phone they are centred. Their words
+were reviewed too: each title says the outcome, and a favourite that cannot be saved says why,
+where a blue "ERROR" said nothing.
+
 **Halloween, every 31 October.** On the 31st, by your device's clock, the app dresses up for the
 day: spiders let themselves down on their threads in the margins, a bat now and then crosses the
 title bar, a small ghost haunts the empty pages, and the fullscreen player's cover glows like a
@@ -38,21 +53,6 @@ motion. Every other day, nothing changes.
 language — *lun.*, *28 sept.* on a phone set to French — beside the app's English words. They
 are written in British English now, the same way everywhere (*Mon 12 Oct*, *27 Oct, 17:45*),
 while times keep your phone's clock. A date from another year shows its year.
-
----
-
-## 1.0.0-rc.2 — 2026-10-27
-
-### Interface
-
-**Messages you can close, that stay until they are read.** The messages that say how an action
-went have an × now. An error or a warning stays until you close it; a success goes away after
-a few seconds, unless your pointer or your finger rests on it. Three show at most, never the same
-one twice, and an action that takes a while turns its "in progress" message into its result
-instead of stacking a second one. They no longer cover the top bar of the app installed on an
-iPhone, the tabs, or the offline banner's RETRY, and on a phone they are centred. Their words
-were reviewed too: each title says the outcome, and a favourite that cannot be saved says why,
-where a blue "ERROR" said nothing.
 
 ### Performance
 

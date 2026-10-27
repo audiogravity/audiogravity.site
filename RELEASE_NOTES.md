@@ -25,6 +25,15 @@ quietest to red for the busiest. Slate and Gravity look as before.
 
 ### Interface
 
+**Halloween, every 31 October.** On the 31st, by your device's clock, the app dresses up for the
+day: spiders let themselves down on their threads in the margins, a bat now and then crosses the
+title bar, a small ghost haunts the empty pages, and the fullscreen player's cover glows like a
+lantern. The installed app opens with an orange wave, a spider above its icon and a bat behind its
+name — *Your audio chain, frightfully controlled* — and the sign-in page has its spiders and its
+bat too. In the radio's search, a *🎃 Halloween* button finds the stations that play for the night.
+Nothing covers a button, nothing makes a sound, and nothing moves if your device asks for less
+motion. Every other day, nothing changes.
+
 **Dates in English, whatever your phone's language.** Days and months came in your phone's
 language — *lun.*, *28 sept.* on a phone set to French — beside the app's English words. They
 are written in British English now, the same way everywhere (*Mon 12 Oct*, *27 Oct, 17:45*),

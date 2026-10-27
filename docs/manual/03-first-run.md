@@ -215,6 +215,12 @@ owning it; only HQPlayer Embedded's, the NAA's and Roon's files come with Pro.
 The sticky **Now Playing bar** sits above the footer whatever the tab, and the **gear** in the
 top bar opens [Settings](07-administration.md#the-settings-panel).
 
+**Messages** say how an action went — saved, added, refused. They appear at the top right on
+a computer, just under the top bar on a phone, three at most. A success goes away on its own
+after a few seconds, unless your pointer or your finger rests on it; a warning or an error
+stays until you close it with its **×**. An action that takes a while first says it is under
+way, and that same message then turns into the outcome.
+
 ## 7. Trust the box's certificate (once per device)
 
 HTTPS is the recommended mode, and the one the installer offers first: push

@@ -25,6 +25,7 @@ on:
       - 'scripts/test_halloween.py'
       - 'scripts/test_hero_carousel.py'
       - 'scripts/test_landing_motion.py'
+      - 'scripts/test_landing_grids.py'
       - 'robots.txt'
       - 'sitemap.xml'
       - 'docs/manual/*.md'
@@ -53,4 +54,4 @@ jobs:
       - run: pip install --quiet markdown-it-py==3.0.0 pytest==8.3.4
 
       - name: Test the landing's guards
-        run: python3 -m pytest scripts/test_landing_styles.py scripts/test_landing_content.py scripts/test_search_engines.py scripts/test_asset_versions.py scripts/test_halloween.py scripts/test_hero_carousel.py scripts/test_landing_motion.py -q
+        run: python3 -m pytest scripts/test_landing_styles.py scripts/test_landing_content.py scripts/test_search_engines.py scripts/test_asset_versions.py scripts/test_halloween.py scripts/test_hero_carousel.py scripts/test_landing_motion.py scripts/test_landing_grids.py -q

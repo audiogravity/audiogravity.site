@@ -209,6 +209,7 @@
     :root:not([data-theme="light"]) .pricing-plan.featured .pp-cta { background: #fff; color: #000; border-color: #fff }
     :root:not([data-theme="light"]) .pricing-plan.featured .pp-cta:hover { background: transparent; color: #fff }
     :root:not([data-theme="light"]) .rt-list .tag { color: var(--text3) }
+    :root:not([data-theme="light"]) .pwa-visual { --pwa-grid: rgba(255, 255, 255, .05) }
 }
 
 :root[data-theme="dark"] {
@@ -249,6 +250,7 @@
 [data-theme="dark"] .pricing-plan.featured .pp-cta { background: #fff; color: #000; border-color: #fff }
 [data-theme="dark"] .pricing-plan.featured .pp-cta:hover { background: transparent; color: #fff }
 [data-theme="dark"] .rt-list .tag { color: var(--text3) }
+[data-theme="dark"] .pwa-visual { --pwa-grid: rgba(255, 255, 255, .05) }
 
 html {
     scroll-behavior: smooth
@@ -2074,6 +2076,10 @@ nav {
 }
 
 .pwa-visual {
+    /* Its grid's lines: as far from the ground as the hero's are from theirs, in each theme —
+       a lightness gap (ΔL*) of 9 on this black, about 6 on the dark theme's #1a1a1a (the hero's:
+       9.1 and 5.7, Chromium, 2026-10-27). White at 4% drew 2.7 here: no grid to be seen. */
+    --pwa-grid: rgba(255, 255, 255, .1);
     background: var(--inv);
     padding: 40px;
     display: flex;
@@ -2096,7 +2102,7 @@ nav {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+    background-image: linear-gradient(var(--pwa-grid) 1px, transparent 1px), linear-gradient(90deg, var(--pwa-grid) 1px, transparent 1px);
     background-size: 24px 24px
 }
 

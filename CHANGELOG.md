@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui][manual] In Minimal, the Stats view's sound quality and listening hours take the latency histogram's colours.** The latency test's histogram draws its bands in grey, ink, amber and red; the Stats view drew every chart in ink and greys. In the Minimal theme, the sound-quality bar and its legend now show DSD in the histogram's grey, Hi-Res in ink, CD in amber and MP3/AAC in red, and the week's hours run from grey, the quietest, to red, the busiest — each drawn the histogram's way, the colour slightly see-through inside and full at the edge. Slate and Gravity are unchanged (compared pixel for pixel in Chromium, light and dark). The manual describes the hours by their legend, *Less* to *More*, where it said the darker the square, the more played, and its Stats figure is retaken.
+
 ### Fixed
 - **[ui] The fullscreen player stays in place when a station's inset cover is tapped.** Tapping the small cover in the corner of a station's artwork — the station's logo or the track's cover, to swap the two — threw the whole player off the screen and slid it back up, on an iPhone as in Chromium on a touch screen; a new track's cover did the same after a touch. Each new background tint rewrote the player's whole style and dropped what the touch had set, so its opening slide-in played again. The tint is now set on its own, and the slide-in is taken off once it has played: with a mouse, *Close* now slides the player down, where it stayed for a third of a second, then vanished. A drag the system interrupts — a call, Control Center — now puts the player back in place; it stayed where the finger had left it.
 

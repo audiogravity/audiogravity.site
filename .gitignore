@@ -7,3 +7,6 @@ CLAUDE.md
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# ── The local server's output, from ./dev.sh start ──────────────────────────
+dev.log

@@ -7,6 +7,17 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Interface
+
+**Messages you can close, that stay until they are read.** The messages that say how an action
+went have an × now. An error or a warning stays until you close it; a success goes away after
+a few seconds, unless your pointer or your finger rests on it. Three show at most, never the same
+one twice, and an action that takes a while turns its "in progress" message into its result
+instead of stacking a second one. They no longer cover the top bar of the app installed on an
+iPhone, the tabs, or the offline banner's RETRY, and on a phone they are centred. Their words
+were reviewed too: each title says the outcome, and a favourite that cannot be saved says why,
+where a blue "ERROR" said nothing.
+
 ### Performance
 
 **A Raspberry Pi short of power reads *Slowed down*.** When a Pi's power supply falls short,

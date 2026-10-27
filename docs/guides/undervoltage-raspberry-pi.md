@@ -8,8 +8,9 @@ a DAC among them, share the low voltage. `vcgencmd get_throttled` tells whether 
 cure is the supply and its cable, not a setting.
 
 Checked on 2026-10-26 on a Raspberry Pi 4 Model B under Raspberry Pi OS (Debian 13, Linux 6.18)
-whose supply falls short: six days of its log, and a two-minute load test. The rest comes from
-Raspberry Pi's documentation, its engineers and the kernel's sources.
+whose supply falls short — a third-party USB-C supply rated 5 V and 3 A, nothing plugged into its
+USB ports: six days of its log, and a two-minute load test. The rest comes from Raspberry Pi's
+documentation, its engineers and the kernel's sources.
 
 ## Has it happened on yours?
 
@@ -100,7 +101,8 @@ Raspberry Pi's requirements:
   "Allow for voltage loss in the cable", it says, and it names wires "that are too thin" among the
   causes. Raspberry Pi's own supplies come with 1.2 to 1.5 m of
   17 or 18 AWG cable. It adds that "the voltage from some USB chargers/power supplies can fall as low
-  as 4.2 V", where 4.8 V is the floor "for reliable performance".
+  as 4.2 V", where 4.8 V is the floor "for reliable performance". The Pi 4 measured above has a
+  third-party supply rated 5 V and 3 A, where the table asks for 5.1 V, and nothing on its USB ports.
 - **Count what the Pi feeds.** A DAC, a disk or a hub powered through its USB cable draws on the
   column above, from the same supply. `lsusb -v` shows what each device declares: the DAC of my x86
   test box reads `(Bus Powered)` and `MaxPower 500mA`, so its USB side may take up to 500 mA from the

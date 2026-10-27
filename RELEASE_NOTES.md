@@ -24,6 +24,13 @@ the theme's network colour. In Minimal, the latency histogram keeps colour for t
 with a port, the test stopped at once until now. An entry that names no server is refused
 before the test starts.
 
+### Pipeline
+
+**The latencies on the links read.** The latency written on a link of the Pipeline, and its buffer fill, now
+take colours made for text, legible in every theme. In Minimal they stay grey and black while all is well,
+orange and red when it matters, as the latency test's histogram. The legend gives each band in its colour
+instead of naming colours.
+
 ### Radio
 
 **Lossless only.** The radio search's *Hi-Res only* box becomes *Lossless only*, and means it.

@@ -371,8 +371,9 @@ The figures come with **Pro**; on Starter, the tab shows them behind a padlock.
 3. **Listening time** has one bar per day — per month for 12 months and All. Tap a bar
    to read its time above the chart.
 4. **When you listen** maps your week: a row per day, Monday to Sunday, and a square
-   per hour. The darker a square, the more the box played at that hour, on average per
-   week over the period. Tap a square to read its time above the grid.
+   per hour. A square's colour says how much the box played at that hour, on average per
+   week over the period, from **Less** to **More** as the legend under the grid shows.
+   Tap a square to read its time above the grid.
 5. **By source**, **By output**, **Sound quality** and **Genres** show where that time
    went. Genres follow one list whatever the service: an album Qobuz files under
    *Soul/Funk/R&B* and a track Tidal files under *R&B/Soul* both count as **Soul & R&B**,

@@ -16,6 +16,13 @@ touched the screen. It now stays in place. With a mouse, *Close* slides the play
 of making it vanish, and a swipe that iOS interrupts — a call, Control Center — puts the player
 back in place.
 
+### Library
+
+**Stats in the latency histogram's colours, in Minimal.** In the Minimal theme, the Stats
+view's sound quality and listening hours use the four colours of the latency test's histogram:
+DSD in grey, Hi-Res in black, CD in amber and MP3/AAC in red, and the hours from grey for the
+quietest to red for the busiest. Slate and Gravity look as before.
+
 ---
 
 ## 1.0.0-rc.2 — 2026-10-27

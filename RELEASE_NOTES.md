@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Player
+
+**The fullscreen player stays put when you swap a station's covers.** Tapping the small cover
+in the corner of a station's artwork, to swap the station's logo and the track's cover, made the
+whole player drop off the screen and slide back up; a new track could do the same once you had
+touched the screen. It now stays in place. With a mouse, *Close* slides the player down instead
+of making it vanish, and a swipe that iOS interrupts — a call, Control Center — puts the player
+back in place.
 
 ---
 

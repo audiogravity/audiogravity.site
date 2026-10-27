@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] The fullscreen player stays in place when a station's inset cover is tapped.** Tapping the small cover in the corner of a station's artwork — the station's logo or the track's cover, to swap the two — threw the whole player off the screen and slid it back up, on an iPhone as in Chromium on a touch screen; a new track's cover did the same after a touch. Each new background tint rewrote the player's whole style and dropped what the touch had set, so its opening slide-in played again. The tint is now set on its own, and the slide-in is taken off once it has played: with a mouse, *Close* now slides the player down, where it stayed for a third of a second, then vanished. A drag the system interrupts — a call, Control Center — now puts the player back in place; it stayed where the finger had left it.
+
 ## [1.0.0-rc.2] - 2026-10-27
 
 ### Added

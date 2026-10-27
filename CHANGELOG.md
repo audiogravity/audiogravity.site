@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [1.0.0-rc.2] - 2026-10-27
+
 ### Added
 - **[site] `dev.sh` takes `start`, `stop`, `restart` and `status`.** The landing's local server only ran in the foreground, whatever it was asked: `./dev.sh restart` started a second server on the port the first one held, and stopped on Python's "Address already in use". `start` serves in the background, its output in `dev.log`; `stop` finds the server by its port, however it was started, and ends this directory's only; `./dev.sh` alone serves in the foreground as before, and says so when a server already runs. Called by a relative path from another directory, it started and served nothing; it serves the site now.
 - **[site] Halloween — ghosts, and the strip's *Danse macabre* to hear.** On 31 October, ghosts in the page's ink rise through the margins beside each section's text, below its spider, and from behind the pumpkins on the footer's edge and at the foot of the phone — none on a phone, whose margins are too narrow, nor for a visitor whose system asks for less motion. A round button in the strip that shows a track playing plays a 30-second excerpt of the recording, fetched at the first press only; while it plays, the strip shows what is heard — AAC, 44.1 kHz and the excerpt's own time — and the box's again at the pause. A screen reader reaches and names the button, and putting it in moves nothing on the page.

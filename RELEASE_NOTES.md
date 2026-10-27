@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.0-rc.2 — 2026-10-27
+
 ### Interface
 
 **Messages you can close, that stay until they are read.** The messages that say how an action

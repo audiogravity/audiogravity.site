@@ -82,7 +82,7 @@
         <main class="man-main">
             <article class="man-md">
 <h1>Real-time priority and reserved CPU cores for audio on Linux</h1>
-<p class="man-guide-meta">Guide 15 · 5 min read</p>
+<p class="man-guide-meta">Guide 15 · 6 min read</p>
 <p><strong>Short answer:</strong> three tools, often mixed up. <em>Real-time priority</em> lets the player's threads go
 first. <em>Pinning</em> keeps the player on chosen cores. <em>Reserving</em> keeps everything else off those
 cores; pinning alone does not do that. What they buy is shorter, rarer delays when the player has
@@ -90,13 +90,17 @@ to wake up, and they matter most when the box is busy. MPD's own manual is plain
 real-time scheduling does not improve audio quality, it reduces the risk of skipping under heavy
 load.</p>
 <p>Checked on 2026-10-22 on an x86 box under Debian 13 and on a Raspberry Pi 4 under Raspberry Pi
-OS (kernel 6.18); the latency figures were measured on 2026-10-17, on the x86 box.</p>
+OS (kernel 6.18); the latency figures were measured on 2026-10-17, on the x86 box, and the dropouts
+of an MPD set above its own output thread on 2026-10-28, on the same box.</p>
 <h2 id="the-three-tools">The three tools</h2>
 <ul>
 <li><strong>Real-time priority.</strong> A thread with the <code>SCHED_FIFO</code> policy takes the processor from any
 ordinary thread as soon as it is ready, at a priority from 1 to 99. With systemd:
 <code>CPUSchedulingPolicy=fifo</code> and <code>CPUSchedulingPriority=</code>. MPD already asks for it for its output
-thread, at priority 40, and Debian's MPD service grants it (<code>LimitRTPRIO=40</code>).</li>
+thread, at priority 40, and Debian's MPD service grants it (<code>LimitRTPRIO=40</code>). So do <strong>not</strong>
+give MPD's whole service a priority of 40 or more: every other thread of MPD — the one that
+reads cover art, the one that scans the library — then runs ahead of the output thread.
+Raise <code>LimitRTPRIO=</code> if you like, and leave the policy to MPD.</li>
 <li><strong>Pinning.</strong> <code>CPUAffinity=</code> in a service's systemd settings keeps it on the cores you list.
 Other programs can still run there.</li>
 <li><strong>Reserving.</strong> Keeping everything else off a core takes one of two things. The kernel parameter
@@ -182,6 +186,13 @@ priority 99, waking every 100 µs; the figure is the worst delay seen (2026-10-1
 half a second with its default settings (its own log, MPD 0.24.5). A delay of a few
 milliseconds leaves it far from empty. These figures matter when buffers are short, or when the box is busy with something
 heavy.</li>
+<li><strong>A priority set the wrong way round costs far more.</strong> On the same box, MPD pinned to a
+reserved core, its whole service at <code>rr</code> 45 — above its own <code>rtio</code> and <code>output:</code> threads — and
+its buffer shortened by hand to 50 ms (<code>buffer_time &quot;50000&quot;</code> in <code>/etc/mpd.conf</code>): while MPD read
+40 album covers during DSD64 playback, those two threads went 47 ms without the processor, long
+enough to empty that buffer, and the DAC dropped out 16 times in 10.5 seconds. With them above
+the rest, the same load, none (2026-10-28). MPD's default half second would ride out waits that
+long; I have not measured it.</li>
 </ul>
 <h2 id="measuring-your-own-box">Measuring your own box</h2>
 <p><code>cyclictest</code> comes in the <code>rt-tests</code> package:</p>
@@ -204,7 +215,8 @@ for the Pi 4. I have not measured them.</p>
 <h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
 <p>Its <strong>Systemd tuning</strong> page (Pro) sets each audio service's cores, real-time policy and
 priority, and memory lock, in drop-in files as above; its <em>Audio Optimized</em> preset fills in
-<code>SCHED_FIFO</code> at 80. Its <strong>Performance</strong> page (Pro) shows what runs in real time and runs
+<code>SCHED_FIFO</code> at 80, except on MPD, where it leaves the policy to MPD. Its <strong>Performance</strong> page
+(Pro) shows what runs in real time — MPD by the threads it makes real time itself — and runs
 <code>cyclictest</code> with cyclictest's default, deep sleep held off. It pins services to cores; it does
 not reserve cores.</p>
 <p>The details are in the manual:

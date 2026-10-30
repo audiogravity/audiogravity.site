@@ -1058,7 +1058,7 @@
                     <ul class="rt-list">
                         <li><span class="tag">Scheduling</span><span>Audio threads run ahead of everything else — strict or round-robin. <em>(SCHED_FIFO / SCHED_RR)</em></span>
                         </li>
-                        <li><span class="tag">Priority</span><span>Who gets the CPU first: your player, then AirPlay, then the rest. <em>(1 → 99 — MPD at 80, AirPlay at 60)</em></span></li>
+                        <li><span class="tag">Priority</span><span>Who gets the CPU first, service by service — your music ahead of the rest. <em>(1 → 99)</em></span></li>
                         <li><span class="tag">Dedicated cores</span><span>Each service runs on the CPU cores you choose for it. <em>(affinity)</em></span></li>
                         <li><span class="tag">Memory</span><span>Audio stays in RAM — never pushed to disk mid-track. <em>(MEMLOCK)</em></span></li>
                         <li><span class="tag">Internal threads</span><span>A ceiling so a single service cannot starve the others. <em>(RTPRIO)</em></span></li>
@@ -1067,12 +1067,10 @@
                 </div>
                 <div class="rt-col" style="padding:0">
                     <div class="rt-config">
-                        <div class="cmt"># /etc/systemd/system/mpd.service.d/audio.conf</div>
+                        <div class="cmt"># /etc/systemd/system/mpd.service.d/override.conf</div>
                         <div class="cmt"># written by Audiogravi<sup>ty</sup> · upgrade-safe drop-in</div>
                         <div>&nbsp;</div>
                         <div>[Service]</div>
-                        <div><span class="k">CPUSchedulingPolicy</span>=<span class="v">fifo</span></div>
-                        <div><span class="k">CPUSchedulingPriority</span>=<span class="v">80</span></div>
                         <div><span class="k">CPUAffinity</span>=<span class="v">2 3</span></div>
                         <div><span class="k">LimitMEMLOCK</span>=<span class="v">infinity</span></div>
                         <div><span class="k">LimitRTPRIO</span>=<span class="v">95</span></div>

@@ -511,7 +511,8 @@ throttling causes glitches. Improve cooling or ease the CPU governor; on a Raspb
 Pi, a badge on every core points at the power supply: use one that can deliver the
 current the board needs.</li>
 <li>In the <strong>RT process monitor</strong>, audio processes should show <strong>SCHED_FIFO / SCHED_RR</strong>
-(green), not NON-RT (red). Apply the <em>Audio Optimized</em> preset on the Systemd tab.</li>
+(green), not <strong>NON-RT</strong> (red) or <strong>OUTRANKED</strong> (orange). On the Systemd tab, open the
+program with <em>Edit Properties</em>, click <em>Audio Optimized</em>, then <em>Save Changes</em>.</li>
 <li>Run the <a href="07-administration#latency-test">Latency test</a> — a high max latency points
 at scheduling contention.</li>
 </ul>

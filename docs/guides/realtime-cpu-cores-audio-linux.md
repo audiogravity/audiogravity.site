@@ -8,14 +8,18 @@ real-time scheduling does not improve audio quality, it reduces the risk of skip
 load.
 
 Checked on 2026-10-22 on an x86 box under Debian 13 and on a Raspberry Pi 4 under Raspberry Pi
-OS (kernel 6.18); the latency figures were measured on 2026-10-17, on the x86 box.
+OS (kernel 6.18); the latency figures were measured on 2026-10-17, on the x86 box, and the dropouts
+of an MPD set above its own output thread on 2026-10-28, on the same box.
 
 ## The three tools
 
 - **Real-time priority.** A thread with the `SCHED_FIFO` policy takes the processor from any
   ordinary thread as soon as it is ready, at a priority from 1 to 99. With systemd:
   `CPUSchedulingPolicy=fifo` and `CPUSchedulingPriority=`. MPD already asks for it for its output
-  thread, at priority 40, and Debian's MPD service grants it (`LimitRTPRIO=40`).
+  thread, at priority 40, and Debian's MPD service grants it (`LimitRTPRIO=40`). So do **not**
+  give MPD's whole service a priority of 40 or more: every other thread of MPD — the one that
+  reads cover art, the one that scans the library — then runs ahead of the output thread.
+  Raise `LimitRTPRIO=` if you like, and leave the policy to MPD.
 - **Pinning.** `CPUAffinity=` in a service's systemd settings keeps it on the cores you list.
   Other programs can still run there.
 - **Reserving.** Keeping everything else off a core takes one of two things. The kernel parameter
@@ -105,6 +109,13 @@ priority 99, waking every 100 µs; the figure is the worst delay seen (2026-10-1
   half a second with its default settings (its own log, MPD 0.24.5). A delay of a few
   milliseconds leaves it far from empty. These figures matter when buffers are short, or when the box is busy with something
   heavy.
+- **A priority set the wrong way round costs far more.** On the same box, MPD pinned to a
+  reserved core, its whole service at `rr` 45 — above its own `rtio` and `output:` threads — and
+  its buffer shortened by hand to 50 ms (`buffer_time "50000"` in `/etc/mpd.conf`): while MPD read
+  40 album covers during DSD64 playback, those two threads went 47 ms without the processor, long
+  enough to empty that buffer, and the DAC dropped out 16 times in 10.5 seconds. With them above
+  the rest, the same load, none (2026-10-28). MPD's default half second would ride out waits that
+  long; I have not measured it.
 
 ## Measuring your own box
 
@@ -133,7 +144,8 @@ for the Pi 4. I have not measured them.
 
 Its **Systemd tuning** page (Pro) sets each audio service's cores, real-time policy and
 priority, and memory lock, in drop-in files as above; its *Audio Optimized* preset fills in
-`SCHED_FIFO` at 80. Its **Performance** page (Pro) shows what runs in real time and runs
+`SCHED_FIFO` at 80, except on MPD, where it leaves the policy to MPD. Its **Performance** page
+(Pro) shows what runs in real time — MPD by the threads it makes real time itself — and runs
 `cyclictest` with cyclictest's default, deep sleep held off. It pins services to cores; it does
 not reserve cores.
 

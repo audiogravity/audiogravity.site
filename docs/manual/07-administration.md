@@ -461,7 +461,11 @@ written next to *Load*.
 - **RT process monitor** — shows whether the audio programs run in real time: MPD,
   AirPlay, and Roon Bridge with its RAAT server. A green badge (SCHED_FIFO / SCHED_RR)
   means real time; a red **NON-RT** badge means the program can be held up while the box
-  is busy — give it a real-time policy in [Systemd tuning](#systemd-tuning-pro).
+  is busy. MPD is read on its **sound threads**, which it makes real time itself; an
+  orange **OUTRANKED** badge means another part of MPD runs ahead of its sound, which can
+  then drop out. For either badge, open the program in
+  [Systemd tuning](#systemd-tuning-pro) with *Edit Properties*, click *Audio Optimized*,
+  then *Save Changes*.
 
 ### Latency test
 
@@ -523,8 +527,12 @@ Low-level, per-service OS tuning using systemd **drop-in overrides** — the nat
 - **RT scheduling** — FIFO/RR policy and priority (1–99) for guaranteed CPU time.
 - **CPU weight / I/O priority / OOM score** — bias the scheduler, disk access and the
   out-of-memory killer in favour of audio.
-- **RT preset** — *Audio Optimized* pre-fills a battle-tested config (SCHED_FIFO 80,
-  LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).
+- **RT preset** — *Audio Optimized* pre-fills SCHED_FIFO 80, Nice −10, LimitRTPRIO 99,
+  MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500 and CPUWeight 1000. On MPD it
+  leaves the policy and the priority at *Default*, since MPD makes its own sound threads
+  real time; if MPD is given a real-time priority of 40 or more, the editor warns that its
+  sound can drop out. Like every change in the editor, the preset applies once you click
+  *Save Changes*.
 - **Safety** — a diff preview before applying; *Restore Backup* puts the previous
   settings back, and *Remove Override* returns the service to its original settings. A
   running service is restarted on them at once; if it does not start with them, it gets

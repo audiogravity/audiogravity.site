@@ -16,6 +16,12 @@ albums appear. Your music keeps playing meanwhile. If the NAS is off or unreacha
 leaves your library as it is and tells you, rather than emptying it. Streaming sources refresh
 as before.
 
+**Covers appear sooner, and weigh less on the player.** The player handed a cover over in small
+pieces, reading its file again for each one — half a second for a large cover stored inside a
+music file. It now hands it over in one or a few large pieces: about a hundredth of a second, and
+the player's processor stays with the music while you browse. Covers saved beside your music, as
+a cover.jpg, come faster too.
+
 ### Performance
 
 **Your music first, for real.** MPD gives the threads that play your music real-time priority on

@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[core][ui][manual] The library's Refresh reads the music folder again, so music copied into it appears.** Both Refresh controls of the local library — at the right end of the Library's bar and beside the *Albums* title — only rebuilt the list from what the player had already indexed: an album copied onto the NAS never showed, whatever was pressed. A Refresh now has MPD read the music folder first, then reloads the list: the icon turns and the title's link reads *Refreshing…* meanwhile, the albums already listed staying on screen — 9 to 26 s on the lab's 6,474 tracks on a NAS, music playing in DSD64 without a dropout. A Refresh always ends with a scan that began after it was pressed; presses that come together share one, and no more than one waits behind a scan already running. When the music folder reads as empty or does not answer while the library holds music — a NAS that is off, a share not mounted —, no scan is asked for: it would empty the library and give every album a new date in *Recent* (measured); the library is left as it is and a message says so. Moving to another source during a Refresh frees it at once. The API gains `POST` and `GET /library/rescan`; `refresh=true` on `/library/albums` keeps rebuilding the list from the player's database only. The manual says what to do when music is added, and what the message means.
+
 ## [1.0.0-rc.2] - 2026-10-27
 
 ### Added

@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Library
+
+**Refresh finds the music you just added.** Copy albums onto your NAS, press **Refresh** in
+the Library — at the end of the bar or beside the *Albums* title — and the box reads your
+music folder again: the icon turns, what is already listed stays on screen, then the new
+albums appear. Your music keeps playing meanwhile. If the NAS is off or unreachable, the box
+leaves your library as it is and tells you, rather than emptying it. Streaming sources refresh
+as before.
 
 ---
 

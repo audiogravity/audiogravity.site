@@ -98,6 +98,12 @@ something needs attention — even with the app closed:
 A new version, a package update and a disk that stays full are each reported once — not
 again when the box restarts.
 
+On an **iPhone or iPad**, the icon of the app on the Home Screen shows **how many
+notifications arrived** since you last opened the app on that device; opening the app clears
+it. A notification that arrives while the app is on screen is not counted, and each device
+keeps its own number. To do without it, turn **Badges** off in **Settings → Notifications →
+Audiogravi<sup>ty</sup>**.
+
 Turning **Notifications** on sends this device a **test notification**: when it shows, this
 device receives the box's notifications. If they cannot be turned on, a message says why
 and the switch goes back off:

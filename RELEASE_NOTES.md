@@ -33,6 +33,14 @@ warns if anything outranks its sound. The editor also opens on the service's own
 longer on a value typed and then cancelled. **If you applied *Audio Optimized* to MPD: in Systemd
 tuning, open MPD, click *Audio Optimized* again, then *Save Changes*.**
 
+### Notifications
+
+**A number on the app's icon.** On an iPhone or iPad, the icon of the app on your Home Screen
+now shows how many notifications the box has sent since you last opened the app — opening it
+clears the number. A notification that arrives while the app is open does not count, and each
+device keeps its own number. Rather do without? Turn **Badges** off for Audiogravi<sup>ty</sup>
+in your device's notification settings.
+
 ---
 
 ## 1.0.0-rc.2 — 2026-10-27

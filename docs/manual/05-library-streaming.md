@@ -34,6 +34,18 @@ source — album view with infinite scroll, full-text search, queue management. 
 also **cast local files to a network renderer**, just like a streaming service (see
 [6. Outputs & engines](06-outputs-engines.md)).
 
+### When you add music
+
+Copy the new albums into your music folder, then, in the Library:
+
+1. Press **Refresh** — at the right end of the bar, or beside the **Albums** title.
+2. The icon turns while the box reads your music folder again; the albums already listed
+   stay on screen. A large library takes longer.
+3. The list comes back with the new albums.
+
+If the box cannot reach your music — the NAS is switched off or off the network — it
+leaves your library as it is and says so: switch the NAS on, then press **Refresh** again.
+
 ## UPnP / DLNA media servers
 
 Media servers come with **Pro**.

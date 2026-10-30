@@ -275,6 +275,20 @@ Control the box from the Audiogravi<sup>ty</sup> interface, or cast to it as a U
 renderer, which stays open on the network. If a third-party MPD app is part of how you
 listen, tell us through [Getting help](#getting-help).
 
+## New music doesn't appear in the library
+
+The box reads your music folder when you ask it to: after copying albums into it, press
+**Refresh** in the Library (see
+[5. Library & streaming → When you add music](05-library-streaming.md#when-you-add-music)).
+The new albums appear once the icon stops turning.
+
+- **"Library not refreshed — The music folder is empty or out of reach"**: the box cannot
+  see your music — the NAS is switched off, asleep or off the network. Your library is left
+  as it is. Switch the NAS on, check it is reachable, then press **Refresh** again.
+- **Still missing after a Refresh**: check the albums were copied into the folder your
+  library uses — the one picked as **Music library** in the **Config** tab (see
+  [3. First run → Change output or library later](03-first-run.md#5-change-output-or-library-later-guided-mode)).
+
 ## Streaming fails or a track won't play
 
 - **Streaming tracks no longer play, while the music on the box does.** The box is on
@@ -398,11 +412,12 @@ tap, and repeating it will not help until the cause is fixed.
   above.
 - **Adding to the queue, or removing from it, reports an error.** The message carries the
   player's own reason. The usual ones: the track or album has left the library index since
-  the page was drawn (**re-scan the library**), a radio station whose address the player
+  the page was drawn (press **Refresh** in the Library), a radio station whose address the player
   rejects, or a queue row already removed from another device — reopen the queue to see
   its real content.
 - **Queueing an album added only some of its tracks.** The count you are shown is what
-  actually went in. Queue the rest again, and if it repeats, re-scan the library.
+  actually went in. Queue the rest again, and if it repeats, press **Refresh** in the
+  Library.
 
 ## The progress bar won't move
 

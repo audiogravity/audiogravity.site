@@ -483,7 +483,8 @@ These checks use the Performance and Systemd tabs, which come with Pro — the t
   Pi, a badge on every core points at the power supply: use one that can deliver the
   current the board needs.
 - In the **RT process monitor**, audio processes should show **SCHED_FIFO / SCHED_RR**
-  (green), not NON-RT (red). Apply the *Audio Optimized* preset on the Systemd tab.
+  (green), not **NON-RT** (red) or **OUTRANKED** (orange). On the Systemd tab, open the
+  program with *Edit Properties*, click *Audio Optimized*, then *Save Changes*.
 - Run the [Latency test](07-administration.md#latency-test) — a high max latency points
   at scheduling contention.
 

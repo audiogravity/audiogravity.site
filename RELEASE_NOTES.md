@@ -16,6 +16,17 @@ albums appear. Your music keeps playing meanwhile. If the NAS is off or unreacha
 leaves your library as it is and tells you, rather than emptying it. Streaming sources refresh
 as before.
 
+### Performance
+
+**Your music first, for real.** MPD gives the threads that play your music real-time priority on
+its own. The *Audio Optimized* preset used to put all of MPD above them: reading album covers
+while music played could then hold the sound back — long enough to make it drop out on a box
+whose MPD buffer had been shortened by hand. On MPD the preset now leaves that to MPD, the editor
+warns if MPD is set above its own sound, and the real-time monitor shows MPD as real time — and
+warns if anything outranks its sound. The editor also opens on the service's own settings, no
+longer on a value typed and then cancelled. **If you applied *Audio Optimized* to MPD: in Systemd
+tuning, open MPD, click *Audio Optimized* again, then *Save Changes*.**
+
 ---
 
 ## 1.0.0-rc.2 — 2026-10-27

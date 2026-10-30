@@ -491,7 +491,11 @@ that. An Intel processor's figure is the speed it measured, and stays.</li>
 <li><strong>RT process monitor</strong> — shows whether the audio programs run in real time: MPD,
 AirPlay, and Roon Bridge with its RAAT server. A green badge (SCHED_FIFO / SCHED_RR)
 means real time; a red <strong>NON-RT</strong> badge means the program can be held up while the box
-is busy — give it a real-time policy in <a href="#systemd-tuning-pro">Systemd tuning</a>.</li>
+is busy. MPD is read on its <strong>sound threads</strong>, which it makes real time itself; an
+orange <strong>OUTRANKED</strong> badge means another part of MPD runs ahead of its sound, which can
+then drop out. For either badge, open the program in
+<a href="#systemd-tuning-pro">Systemd tuning</a> with <em>Edit Properties</em>, click <em>Audio Optimized</em>,
+then <em>Save Changes</em>.</li>
 </ul>
 <h3 id="latency-test">Latency test</h3>
 <p>Measures how quickly the box answers a timer: the worst delay it finds is what an audio
@@ -545,8 +549,12 @@ network together; <strong>Clear</strong> empties both.</p>
 <li><strong>RT scheduling</strong> — FIFO/RR policy and priority (1–99) for guaranteed CPU time.</li>
 <li><strong>CPU weight / I/O priority / OOM score</strong> — bias the scheduler, disk access and the
 out-of-memory killer in favour of audio.</li>
-<li><strong>RT preset</strong> — <em>Audio Optimized</em> pre-fills a battle-tested config (SCHED_FIFO 80,
-LimitRTPRIO 99, MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500, CPUWeight 1000).</li>
+<li><strong>RT preset</strong> — <em>Audio Optimized</em> pre-fills SCHED_FIFO 80, Nice −10, LimitRTPRIO 99,
+MEMLOCK infinity, I/O realtime, OOMScoreAdjust −500 and CPUWeight 1000. On MPD it
+leaves the policy and the priority at <em>Default</em>, since MPD makes its own sound threads
+real time; if MPD is given a real-time priority of 40 or more, the editor warns that its
+sound can drop out. Like every change in the editor, the preset applies once you click
+<em>Save Changes</em>.</li>
 <li><strong>Safety</strong> — a diff preview before applying; <em>Restore Backup</em> puts the previous
 settings back, and <em>Remove Override</em> returns the service to its original settings. A
 running service is restarted on them at once; if it does not start with them, it gets

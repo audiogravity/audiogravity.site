@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>A streamer into an amplifier with DIN inputs: the cable, the level, the volume — Audiogravity</title>
+    <meta name="description" content="How to connect a DAC or streamer to an older amplifier&#x27;s 5-pin DIN inputs: which pin carries what, the cable, the level and the volume.">
+    <link rel="canonical" href="https://audiogravity.app/docs/guides/streamer-din-amplifier-inputs">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
+    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Guides</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All guides</span><span class="man-menu-count">18</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="lossless-internet-radio"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item active" href="streamer-din-amplifier-inputs" aria-current="page"><span class="man-nav-n">15</span><span>A streamer into an amplifier with DIN inputs: the cable, the level, the volume</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">16</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span class="man-nav-n">17</span><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">18</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Guides">
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="lossless-internet-radio"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item active" href="streamer-din-amplifier-inputs" aria-current="page"><span class="man-nav-n">15</span><span>A streamer into an amplifier with DIN inputs: the cable, the level, the volume</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">16</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
+            <a class="man-nav-item" href="device-or-resource-busy-dac"><span class="man-nav-n">17</span><span>“Device or resource busy”: two players, one DAC</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">18</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>A streamer into an amplifier with DIN inputs: the cable, the level, the volume</h1>
+<p class="man-guide-meta">Guide 15 · 5 min read</p>
+<p><strong>Short answer:</strong> many European amplifiers of the 1970s and 1980s, and Naim's up to its latest
+integrated amplifiers, take their sources on round 5-pin DIN sockets rather than RCA. A DAC
+connects to them with a cable that has RCA plugs at one end and a DIN plug wired for that
+amplifier at the other. Which pin carries what is not the same everywhere, so read the
+amplifier's manual first. These inputs often expect far less than a DAC sends: the volume knob
+then does its work in the first part of its travel, which is expected, not a fault.</p>
+<p>Checked on 2026-10-31 against Naim's manuals for the NAIT 2, its integrated amplifiers of 2019
+and the NAIT 50, a DAC board's datasheet and the Linux driver of its chip, with <code>speaker-test</code>
+from alsa-utils 1.2.14 on Debian 13.</p>
+<h2 id="which-pin-carries-what">Which pin carries what</h2>
+<p>A 5-pin DIN socket has its five contacts on a half circle. In the scheme most often given for an
+amplifier's socket, the amplifier receives the left and right channels on pins 3 and 5, sends a
+signal out, to a tape recorder, on pins 1 and 4, and has its ground on pin 2. Makers departed from
+it:</p>
+<ul>
+<li>some took a source's signal on pins 1 and 4;</li>
+<li>some fed power on pins 3 and 5, to an external phono stage or to a tuner;</li>
+<li>Philips and Uher tape recorders used every pin as an input while recording.</li>
+</ul>
+<p>So a cable that plays on one amplifier may give a single channel, or nothing, on another. And a
+socket that carries power must not see its pins joined by a cable wired for something else: on
+Naim's SUPERNAIT 3 and NAIT XS 3, the <strong>aux 2</strong> socket &quot;also carries a power supply output
+intended to power a Naim StageLine or SuperLine phono preamplifier&quot;.</p>
+<p>What to do:</p>
+<ol>
+<li><strong>Read the amplifier's manual.</strong> Naim's draw the sockets with what each contact carries: <code>ch1</code>
+for the left channel, <code>ch2</code> for the right, <code>-ve</code> for the ground, <code>nc</code> for nothing.</li>
+<li><strong>Get a cable made for that make</strong>, RCA at the DAC's end and DIN at the amplifier's. TNT-Audio
+advises such a cable over an RCA-to-DIN adapter.</li>
+<li><strong>Or check the cable you have</strong>, the amplifier off and the cable out: with a multimeter set to
+continuity, each RCA plug's centre pin must beep with the contact the manual gives for its
+channel, and each plug's outer ring with the ground.</li>
+</ol>
+<h2 id="how-much-a-dac-sends-and-what-the-input-expects">How much a DAC sends, and what the input expects</h2>
+<p>A line input's <strong>sensitivity</strong> is the level that drives the amplifier to full power with its
+volume turned all the way up. A DAC's datasheet gives its own output at full scale. Two figures
+from the makers:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Naim NAIT 2, line inputs (Tuner, Aux, Tape)</td>
+<td>75 mV</td>
+</tr>
+<tr>
+<td>Naim NAIT 50, line inputs, level at clipping</td>
+<td>88 mV</td>
+</tr>
+<tr>
+<td>HiFiBerry DAC+ Pro, a DAC board for the Raspberry Pi, maximum output</td>
+<td>2.1 V</td>
+</tr>
+</tbody>
+</table></div>
+<p>The DAC board sends 28 times the NAIT 2's 75 mV, about 29 dB more. The amplifier reaches full power
+with its knob far from the top, and the part of its travel you use is short. That is expected, not
+a fault.</p>
+<p><strong>Never connect a DAC to a phono input</strong>, DIN or RCA. A phono stage is made for a cartridge: 2.5 mV
+on the NAIT 2, 840 times less than the board above.</p>
+<h2 id="where-to-set-the-volume">Where to set the volume</h2>
+<ul>
+<li><strong>On the amplifier, with the streamer at 100 %.</strong> Your music reaches the DAC untouched, and the
+amplifier's knob sets the level (see
+<a href="check-bit-perfect-playback-linux">How to check bit-perfect playback</a>).</li>
+<li><strong>On the DAC's own analogue control, if it has one.</strong> Boards built on Texas Instruments' PCM512x
+chips have a control the Linux driver names <code>Analogue Playback Volume</code>, with two steps: 0 and
+−6 dB. It lowers the output without changing a sample. The HiFiBerry DAC+ is one: its Linux
+overlay declares a PCM5122.</li>
+<li><strong>In the player.</strong> A software volume below 100 % recalculates every sample (see
+<a href="software-hardware-volume-linux">Software or hardware volume on a Linux streamer</a>).</li>
+</ul>
+<h2 id="check-both-channels">Check both channels</h2>
+<p>Do this once the cable is in, before any music. Turn the amplifier's volume right down first: the
+test is at a fixed level, and these inputs are sensitive. Stop the player that holds the DAC, MPD
+for instance (see <a href="device-or-resource-busy-dac">“Device or resource busy”</a>), then, with your DAC's
+card number from <code>aplay -l</code> in place of <code>0</code>:</p>
+<pre><code class="language-bash"><span class="hl-cmd">speaker-test</span> <span class="hl-opt">-D</span> plughw:0,0 <span class="hl-opt">-c</span> 2 <span class="hl-opt">-t</span> wav <span class="hl-opt">-l</span> 1
+</code></pre>
+<p>A voice says &quot;Front left&quot;, then &quot;Front right&quot;, and the terminal shows which it is playing:</p>
+<pre data-copy="no"><code class="language-text"> 0 - Front Left
+ 1 - Front Right
+</code></pre>
+<p>Raise the volume slowly. Each voice must come from its own speaker. The two swapped: the cable's
+channels are crossed. One of them silent: the cable does not reach the right contacts.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Its guided setup gives MPD a software volume: leave the player's slider at 100 and set the level
+with the amplifier's knob. The details are in the manual: <a href="../manual/04-listening">Listening</a>.</p>
+<p>The NAIT 2, one of these amplifiers, has its own story in the blog:
+<a href="../blog/naim-audio-nait-2">The Naim NAIT 2</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>The usual use of a 5-pin DIN socket on an amplifier, and the makers who departed from it: <a href="https://en.wikipedia.org/wiki/DIN_connector">DIN connector</a>, Wikipedia, section &quot;Analog audio&quot;, read on 2026-10-31. Its table cites a Soviet handbook of 1983; the section itself is marked as lacking references.</li>
+<li>Naim: the NAIT 2's owner's manual, inputs and sensitivities on pages 8–9; <a href="https://dam.focal-naim.com/m/6d2ba0ea6c735cd8/original/Integrated-Amps-English-Issue-3B_0-pdf.pdf">Integrated amplifiers manual, issue 3B</a>, for the SUPERNAIT 3, NAIT XS 3 and NAIT 5si: socket drawings and the aux 2 power supply on pages E3 and E5; <a href="https://dam.focal-naim.com/m/600f931144c0c6c7/original/User_Guide_Nait_50_web-pdf.pdf">NAIT 50 user guide</a>, DIN inputs of 47 kΩ and 88 mV on its specifications page.</li>
+<li>HiFiBerry DAC+ Pro: <a href="https://www.hifiberry.com/docs/data-sheets/datasheet-dac-pro/">&quot;Maximum output voltage 2.1Vrms&quot;</a>, read on 2026-10-31; its chip, declared in the Raspberry Pi kernel's <a href="https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/hifiberry-dacplus-overlay.dts">hifiberry-dacplus overlay</a>.</li>
+<li>The PCM512x analogue control: Linux 6.12, <a href="https://github.com/torvalds/linux/blob/v6.12/sound/soc/codecs/pcm512x.c">pcm512x.c</a>, <code>Analogue Playback Volume</code> with a range of −6 to 0 dB in one step.</li>
+<li>TNT-Audio, March 2003: Lucio Cadeddu, <a href="https://www.tnt-audio.com/ampli/nait_e.html">&quot;Naim Nait 1 – A living legend&quot;</a>, on RCA-to-DIN cables and adapters.</li>
+<li><code>speaker-test</code>: <a href="https://manpages.debian.org/trixie/alsa-utils/speaker-test.1.en.html">speaker-test(1)</a>, Debian 13; its output above was taken on 2026-10-31 by playing to ALSA's null device, with no sound card opened.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

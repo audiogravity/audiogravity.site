@@ -41,6 +41,13 @@ clears the number. A notification that arrives while the app is open does not co
 device keeps its own number. Rather do without? Turn **Badges** off for Audiogravi<sup>ty</sup>
 in your device's notification settings.
 
+### On audiogravity.app
+
+**A blog.** Beside the manual and the guides, the site has a *Blog* tab: dated articles on hi-fi
+equipment, and on using it with a streamer today. The first two are about Naim — the NAIT 2 and
+the amplifiers that followed it, and how to tell the year a Naim was made from its serial number —,
+with a new guide that goes with them: connecting a streamer to an amplifier's round DIN sockets.
+
 ---
 
 ## 1.0.0-rc.2 — 2026-10-27

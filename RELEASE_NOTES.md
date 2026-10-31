@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### On audiogravity.app
+
+**A place to talk with other owners.** The site now has a community, on GitHub Discussions: ask
+a question and mark the reply that solves it, suggest what Audiogravi<sup>ty</sup> should do
+next, show your system, and follow the announcement of each release. The landing links it as
+*Community*, at the bottom of the page, and its roadmap now asks you to say which direction
+matters most to you in the community's *Ideas*; in the manual, *Getting help* sends questions
+there. Bug reports still go to the issues.
 
 ---
 

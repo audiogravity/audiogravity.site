@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[site][manual] A community for owners, on GitHub Discussions.** The landing's footer links it as *Community*, beside *Issues*; the roadmap's invitation to say which direction matters most now leads to the community's *Ideas*, instead of the issues; the manual's *Getting help* sends questions, ideas and setups there, and keeps bug reports for the issues. A pinned welcome says where each kind of post goes.
+
 ### Changed
 - **[site] The blog post on the Quad 33 and 303 shows the inside of the new 33, and takes the new pair's size and power from Quad's manuals.** Quad's picture of the 2024 33 with its cover off, its toroidal transformer in view, and links to Quad's user manuals for the 2024 33 and 303. By those manuals, the new 33 is within 2 mm of the original in every dimension and the new 303 is 1.7 cm taller — the post said, after Hi-Fi News, 15 mm deeper and 11 mm taller —, and the 303 gives 49.5 W into 8 ohms, not 50, and 170 W bridged into 4 ohms.
 

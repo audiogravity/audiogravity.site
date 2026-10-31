@@ -738,7 +738,9 @@ button: a licence reset is available on request.
 
 ## Getting help
 
-- **Bug reports & questions** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues).
+- **Questions, ideas, your setup** — ask the other owners in the
+  [community discussions](https://github.com/audiogravity/audiogravity.site/discussions).
+- **Bug reports** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues).
 - **Logs** — the System event log (in-app) and `journalctl -u ag-core-server` /
   `journalctl -u <service>` from the Terminal.
 - More answers on the [website FAQ](https://audiogravity.app/#faq).

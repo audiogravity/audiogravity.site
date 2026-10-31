@@ -91,10 +91,13 @@ is number 71423: between 069925 and 076367, it was made in 1991. Its story is in
 
 ## Naim, before the numbers
 
+<img src="images/julian-vereker-workshop.jpg" alt="Julian Vereker, bearded and in glasses, standing in a workshop in front of shelves of measuring instruments, in black and white" width="870" height="487">
+
 The sequence starts in 1982, but Naim is older. Julian Vereker (1945–2000), a self-taught
-designer, set up Naim Audio Visual in 1969 and sold the first Naim amplifier, a power amplifier,
-in December 1971. Naim counts 1973 as the year it was founded: its NAIT 50 of 2023 was made in
-1,973 units for that reason. Vereker was appointed MBE in 1995, for services to British export.
+designer, started designing amplifiers in 1969 and sold the first Naim amplifier, a power
+amplifier, in December 1971. Naim Audio was incorporated in 1973, with Vereker and his co-founder
+Shirley Clarke as its directors: its NAIT 50 of 2023 was made in 1,973 units for that year.
+Vereker was appointed MBE in 1995, for services to British export.
 
 ## Sources
 
@@ -102,4 +105,5 @@ in December 1971. Naim counts 1973 as the year it was founded: its NAIT 50 of 20
 - Naim, [Integrated amplifiers manual, issue 3B](https://dam.focal-naim.com/m/6d2ba0ea6c735cd8/original/Integrated-Amps-English-Issue-3B_0-pdf.pdf), page E2: the serial number "found on its rear panel".
 - Naim community: ["Naim serial numbers per year"](https://community.naimaudio.com/t/naim-serial-numbers-per-year/29240), 2023, a moderator's answer on the 2020 and 2021 overlap; ["Serial Numbers"](https://community.naimaudio.com/t/serial-numbers/38889), 2025, on the table taken down and on asking Naim's support.
 - The NAIT 2's years: Hi-Fi World, October 2007, "NAITology". The unit numbered 71423: its owner, in the readers' comments of hi-fi AF's servicing guide.
-- Julian Vereker: [Wikipedia](https://en.wikipedia.org/wiki/Julian_Vereker), read on 2026-10-31. The 1,973 NAIT 50s and Naim's founding year: What Hi-Fi?, [18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one).
+- Naim's beginnings: Naim, [Our history](https://www.naimaudio.com/our-history), read on 2026-10-31, for 1969 and the incorporation of 1973 with its two directors; [Wikipedia](https://en.wikipedia.org/wiki/Julian_Vereker), read the same day, for the first amplifier sold in December 1971 and the MBE. The 1,973 NAIT 50s and Naim's founding year: What Hi-Fi?, [18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one).
+- The photograph of Julian Vereker: an archive photograph, its photographer not known.

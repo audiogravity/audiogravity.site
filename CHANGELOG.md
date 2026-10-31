@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[site] The blog post on the Quad 33 and 303 shows the inside of the new 33, and takes the new pair's size and power from Quad's manuals.** Quad's picture of the 2024 33 with its cover off, its toroidal transformer in view, and links to Quad's user manuals for the 2024 33 and 303. By those manuals, the new 33 is within 2 mm of the original in every dimension and the new 303 is 1.7 cm taller — the post said, after Hi-Fi News, 15 mm deeper and 11 mm taller —, and the 303 gives 49.5 W into 8 ohms, not 50, and 170 W bridged into 4 ohms.
+
 ## [1.0.0-rc.3] - 2026-10-31
 
 ### Added

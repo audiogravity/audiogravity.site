@@ -570,19 +570,19 @@ nav {
     border-color: var(--text)
 }
 
-/* Below 1160px the GitHub button is gone and the toggle ends the bar, under the stage ribbon
+/* Below 1240px the GitHub button is gone and the toggle ends the bar, under the stage ribbon
    fixed to that corner. It moves clear of it: measured against the ribbon's own band, for
    the "Release candidate" ribbon (2026-10-24), 66px while the bar is one row, 110px where
    the bar takes two rows and the toggle sits higher in the ribbon's path; under a phone's
    smaller ribbon, 60px (2026-10-03, where the phone's sits again). 4px more is kept here.
    The thresholds are the bar's own, below: they move together. */
-@media(max-width:1160px) {
+@media(max-width:1240px) {
     .theme-toggle {
         margin-right: 70px
     }
 }
 
-@media(max-width:950px) {
+@media(max-width:1030px) {
     .theme-toggle {
         margin-right: 114px
     }
@@ -612,16 +612,17 @@ nav {
    The room is taken back from the two places that can spare it — the GitHub button, whose link
    also lives in the footer, and the spacing between links.
 
-   Where both thresholds sit is measured, not chosen: with nine links (Guides added), two
-   labels broke onto a second line from 1101 to 1118px and from 851 to 934px (Chromium,
-   2026-10-17, every width scanned). Each threshold clears its band by 12 to 16px, for fonts
-   that render a little wider elsewhere. A link added to the bar means scanning again.
+   Where both thresholds sit is measured, not chosen: with ten links (Blog added), labels broke
+   onto a second line from 951 to 1014px and from 1161 to 1226px under the thresholds before
+   (Chromium, 2026-10-31, every width from 320 to 1500px) — and already with nine, from 951 to
+   970px and 1161 to 1174px. Each threshold clears its band by 14 to 16px, for fonts that render
+   a little wider elsewhere. A link added to the bar means scanning again.
 
-   The GitHub button goes a little earlier, from 1160px, for the stage ribbon: up to 1430px
-   it sits in the ribbon's path, so it stands 56px further in (below), and under 1150px the
-   bar has no slack left to give it (Chromium, 2026-10-25, every width from 1100 to 1460px:
-   the toggle ends 4.4px clear of the ribbon at the worst, the button 5.1px). */
-@media(max-width:1160px) {
+   The GitHub button goes first, from 1240px. Up to 1430px it sits in the stage ribbon's path,
+   so it stands 56px further in, and 70px up to 1300px: at 56 a corner of it was under the
+   ribbon from 1161 to 1300px, and 74 broke labels again (Chromium, 2026-10-31, every width:
+   the toggle ends 4.3px clear of the ribbon at the worst, the button 3.0px). */
+@media(max-width:1240px) {
     .nav-gh {
         display: none
     }
@@ -630,6 +631,12 @@ nav {
 @media(max-width:1430px) {
     .nav-gh {
         margin-right: 56px
+    }
+}
+
+@media(max-width:1300px) {
+    .nav-gh {
+        margin-right: 70px
     }
 }
 
@@ -645,13 +652,12 @@ nav {
    server's header uses — a bar that has run out of room should still be reachable.
 
    The threshold is where the single row stops being clean, not where a phone stops: measured,
-   two of the labels break onto a second line inside the bar below 935px (see above), which
-   covers what a landscape phone gets. Picking 680 covered portrait and left landscape looking
-   broken.
+   labels break onto a second line inside the bar up to 1014px (see above), which covers what a
+   landscape phone gets. Picking 680 covered portrait and left landscape looking broken.
 
    `min-width: 0` is what actually lets the row scroll: a flex item refuses to shrink below its
    content without it, and would push the theme toggle off the bar instead. */
-@media(max-width:950px) {
+@media(max-width:1030px) {
     .nav-inner {
         flex-wrap: wrap;
         row-gap: 4px;

@@ -3,6 +3,7 @@
 Stories about hi-fi equipment, and what it takes to use it with a streamer today, checked and
 dated like the guides.
 
+- [The Quad 33 and 303: Quad's first transistor amplifiers, and their return in 2024](quad-33-303.md) — 2026-10-31 — Quad's transistor pair of 1967: its DIN inputs and figures, the input a DAC should use, and what the versions of 2024 changed.
 - [The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version](bbc-ls3-5a.md) — 2026-10-31 — The BBC's small monitor of 1974, its 11-ohm revision of 1987, and what a Rogers pair asks of a NAIT 2 and a streamer.
 - [The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume](heed-abacus.md) — 2026-10-31 — Heed's DAC of 2017: what it takes, what Linux sees of it, and why its DSD stops when its USB volume drops below 0 dB.
 - [How old is your Naim? Serial numbers and years, 1982 to 2022](naim-serial-numbers.md) — 2026-10-31 — The year each Naim serial number was made, from Naim's own table to 2022: its overlaps explained, and how to date anything newer.

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Quad 33 and 303: Quad&#x27;s first transistor amplifiers, and their return in 2024 — Audiogravity</title>
+    <meta name="description" content="Quad&#x27;s transistor pair of 1967: its DIN inputs and figures, the input a DAC should use, and what the versions of 2024 changed.">
+    <link rel="canonical" href="https://audiogravity.app/docs/blog/quad-33-303">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
+    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Blog</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All posts</span><span class="man-menu-count">5</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Blog posts">
+            <a class="man-nav-item active" href="quad-33-303" aria-current="page"><span>The Quad 33 and 303: Quad's first transistor amplifiers, and their return in 2024</span></a>
+            <a class="man-nav-item" href="bbc-ls3-5a"><span>The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a>
+            <a class="man-nav-item" href="heed-abacus"><span>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</span></a>
+            <a class="man-nav-item" href="naim-serial-numbers"><span>How old is your Naim? Serial numbers and years, 1982 to 2022</span></a>
+            <a class="man-nav-item" href="naim-audio-nait-2"><span>The Naim NAIT 2: its figures, its sound, and the NAITs that followed</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Blog posts">
+            <a class="man-nav-item active" href="quad-33-303" aria-current="page"><span>The Quad 33 and 303: Quad's first transistor amplifiers, and their return in 2024</span></a>
+            <a class="man-nav-item" href="bbc-ls3-5a"><span>The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a>
+            <a class="man-nav-item" href="heed-abacus"><span>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</span></a>
+            <a class="man-nav-item" href="naim-serial-numbers"><span>How old is your Naim? Serial numbers and years, 1982 to 2022</span></a>
+            <a class="man-nav-item" href="naim-audio-nait-2"><span>The Naim NAIT 2: its figures, its sound, and the NAITs that followed</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>The Quad 33 and 303: Quad's first transistor amplifiers, and their return in 2024</h1>
+<p class="man-post-meta"><time datetime="2026-10-31">31 October 2026</time> · 8 min read</p>
+<p>In 1967, Quad, the firm Peter Walker had founded in 1936, went from valves to transistors with a
+pair: the 33 control unit, a pre-amplifier, and the 303 power amplifier. By Hi-Fi News' count,
+120,000 33s were sold up to 1982, and 94,000 303s up to 1985. In 2024, Quad brought both names
+back. Here is the pair as its manuals describe it, how a streamer can feed it through its DIN
+sockets, and what the new versions changed.</p>
+<p>Checked on 2026-10-31 against Quad's instruction books for the 33 and the 303, the 33's circuit
+diagram, a history of the firm Quad wrote in 1982, and the reviews of 2025 in Hi-Fi News and
+Stereophile, with Hi-Fi News' measurements of the originals.</p>
+<h2 id="from-valves-to-transistors">From valves to transistors</h2>
+<p>Quad is the brand of the Acoustical Manufacturing Company, which Peter Walker started in London in
+1936 and moved to Huntingdon in 1941, after it was bombed out. The name came in 1951, with an
+amplifier: QUAD, for <em>Quality Unit Amplifier Domestic</em>. Then came the Quad II valve amplifier, in
+1953, and in 1957 the electrostatic loudspeaker known today as the ESL-57.</p>
+<p>The 33 and the 303 followed in 1967, in Quad's words of 1982 its &quot;first all-transistorised&quot; units.
+The 303's output stage, which Quad called the <em>Triples</em>, was its own design. It used only NPN power
+transistors, and Quad wrote that it overcame the problems of thermal tracking in class B
+amplifiers: keeping the output transistors' idle current steady as they warm up. In 1969, the 33,
+the 303 and the FM3 tuner won a design award from the Council of Industrial Design, the later
+Design Council. A 33 and a 303 together cost £98 in 1967.</p>
+<h2 id="the-33-control-unit">The 33 control unit</h2>
+<p>The 33 takes four sources, all on DIN sockets: a record player, two tuners, the second of which can
+be any other source at radio level, and a tape recorder. Two boards plug into its back and match
+its inputs to the equipment behind them:</p>
+<ul>
+<li><strong>The Disc Adaptor board</strong>, inserted by one of its four edges, sets the record-player input for a
+low-output or a high-output magnetic cartridge, a ceramic one, or a spare position for special
+needs.</li>
+<li><strong>The Tape Adaptor board</strong> offers three levels for recording and three for replay, on each
+channel, set by small screws moved on its underside.</li>
+</ul>
+<p>On the front: the volume knob, which also switches it on, a balance control, bass and treble, and
+a filter, a slope knob with buttons at 5, 7 and 10 kHz, against record surface noise. A Cancel
+button takes the bass, treble and filter out of the circuit, as a reference. At the back, two mains
+outlets, switched with the 33, feed the power amplifier and the FM tuner: the 33's volume knob
+turns the whole system on.</p>
+<p>From Quad's manual:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Quad 33</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disc</td>
+<td>2 or 5.6 mV magnetic, 100 mV ceramic</td>
+</tr>
+<tr>
+<td>Radio 1 and 2</td>
+<td>100 mV, 2 V at most; 100 kΩ</td>
+</tr>
+<tr>
+<td>Tape replay</td>
+<td>100 mV, 400 mV or 1 V, set on its board</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>0.5 V, on a 4-pin DIN socket</td>
+</tr>
+<tr>
+<td>Size, weight</td>
+<td>26 × 9.2 × 16.5 cm, 3 kg</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each input's level is what drives the 33 to its rated output, 0.5 V; its maximum is what it takes
+before it overloads.</p>
+<h2 id="the-303-power-amplifier">The 303 power amplifier</h2>
+<p>The 303 has no controls at all, not even a mains switch: it runs from the 33's switched outlet, and
+Quad suggests it can sit out of sight, inside a cabinet. In its narrow, upright case, it may have
+been one of the first &quot;vertical&quot; amplifiers, Stereophile thinks.</p>
+<p>From Quad's manual:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Quad 303</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input</td>
+<td>4-pin DIN: 0.5 V, 22 kΩ</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>45 W into 8 Ω, 28 W into 16 Ω</td>
+</tr>
+<tr>
+<td>Loudspeakers</td>
+<td>4 to 25 Ω</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>0.3 Ω, through a 2,000 µF capacitor</td>
+</tr>
+<tr>
+<td>Size, weight</td>
+<td>12 × 15.9 × 32.4 cm, 8.2 kg</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Its input</strong> takes the left channel on pin 1 and the right on pin 3, with ground on pin 2: not
+the scheme of the 33's inputs, below. Quad supplied a 4-pin DIN plug and a mains connector for
+use without its control unit.</li>
+<li><strong>Its output stage</strong> runs from a single 67 V supply rail, and reaches the speakers through that
+capacitor, as Stereophile describes it.</li>
+<li><strong>With an ESL</strong>: the manual asks for a small modification to Quad's electrostatic loudspeakers
+older than serial number 16800, of March 1966.</li>
+</ul>
+<h2 id="what-hi-fi-news-measured">What Hi-Fi News measured</h2>
+<p>Hi-Fi News reviewed the pair in April 1968, and tested &quot;mint&quot; originals again in July 2011. Its
+figures:</p>
+<ul>
+<li><strong>The 33</strong> gave 13.6 dB of gain and at most 1.6 V, with distortion between 0.014 and 0.075 % from
+20 Hz to 20 kHz. Its treble fell gently, by 0.4 dB at 20 kHz, and a steep filter cut the lowest
+frequencies: 3 dB down at 20 Hz, 18 dB at 10 Hz.</li>
+<li><strong>The 303</strong> gave 50 W per channel into 8 ohms, more than Quad's 45, with distortion near 0.02 %
+through the upper bass and midrange. Its treble fell as the load dropped, from 0.55 dB down at 20 kHz
+into 8 ohms to 1.8 dB into 2 ohms, and in short bursts it gave only 10 W into 1 ohm: low
+impedances are not its ground.</li>
+</ul>
+<p>Ken Kessler, reviewing the 2024 pair for Hi-Fi News, played it against an original one. The
+original &quot;still sounds wonderfully warmer&quot;, he wrote, but &quot;lacks the ultimate precision, bass
+control and extension at the frequency extremes&quot;. In his view, it was voiced first and foremost for
+the Quad 57 ESL.</p>
+<h2 id="a-streamer-into-a-33">A streamer into a 33</h2>
+<p>The 33 has no digital input, and only DIN sockets: a streamer reaches it through a DAC, with a
+cable that has RCA plugs at the DAC's end and a 5-pin DIN plug at the 33's.</p>
+<ul>
+<li><strong>Tape Replay, not Radio.</strong> A DAC gives about 2 V at full scale, 2.1 V for the
+<a href="heed-abacus">Heed Abacus</a>. The Radio inputs expect 100 mV and take 2 V at most, so every
+full-scale peak would reach their limit. Tape Replay, set to the highest of its three levels, H,
+expects 1 V and takes up to 10 V.</li>
+<li><strong>The board.</strong> With the 33 off, pull out the Tape Adaptor board, at the back, and move its replay
+screws, one for each channel, to the H position. The manual shows where they go.</li>
+<li><strong>The pins.</strong> Quad's circuit diagram gives all the 33's inputs the same pins: left on 3, right
+on 5, ground on 2, the usual scheme for an amplifier's socket. Tape Replay's pins 3 and 5 are
+wired to the same pins of Tape Record: unplug any tape recorder from that socket, or the two
+sources share the input.</li>
+<li><strong>The level.</strong> At H, a DAC's 2 V gives the 33 1 V with its volume at the top, twice what the 303
+needs for full power: the knob keeps a useful travel, and full power comes before its end.</li>
+<li><strong>The streamer's volume</strong> stays at 100 %, the level being set on the 33: the music then reaches
+the DAC as it is in the file.</li>
+<li><strong>Not the Disc input</strong>: it is made for a cartridge's few millivolts.</li>
+<li><strong>A 303 alone</strong> has no volume control: a DAC at full scale would send it four times the 0.5 V
+that drives it to full power. It needs a pre-amplifier.</li>
+</ul>
+<p>Which pins carry what, where to set the volume and how to check both channels:
+<a href="../guides/streamer-din-amplifier-inputs">A streamer into an amplifier with DIN inputs</a>.</p>
+<h2 id="the-33-and-303-of-2024">The 33 and 303 of 2024</h2>
+<p>In 2024, Quad, now part of the IAG group, brought both names back. Engineers led by Peter Comeau,
+IAG's head of engineering, designed new circuits for cases close to the originals: Hi-Fi News
+found the new 33 15 mm deeper, and the new 303 11 mm taller.</p>
+<img loading="lazy" src="images/quad-33-303-2024.webp" alt="A silver Quad 33 of 2024 beside a 303 power amplifier with black vertical fins, on a black, reflective surface. The 33's orange display shows its bass, tilt and balance settings, above orange-lit buttons for its inputs and standby" width="1286" height="920">
+<p><em>The 33 and the 303 of 2024. Image: Quad, from its
+<a href="https://quad-hifi.co.uk/products/quad-33">QUAD 33 page</a>.</em></p>
+<ul>
+<li><strong>The 33</strong> has no DIN sockets any more: three RCA line inputs and one XLR, a phono stage for
+moving-magnet and moving-coil cartridges, a headphone socket, a remote control, a motorised
+volume control and a display. Among its tone controls is a tilt, which tips the response about
+700 Hz, as Stereophile describes it. The original had none: its manual lists bass, treble and the
+filter.</li>
+<li><strong>The 303</strong> takes RCA or XLR, and gives 50 W into 8 ohms and 70 W into 4. Bridged, one 303
+drives one speaker with 140 W into 8 ohms. Its output stage is now fully complementary, on two supply rails, with no
+output capacitor.</li>
+<li><strong>The price</strong>: £1,199 each in the UK, by Hi-Fi News, and $1,599 each in the US, by Stereophile,
+which gives China as the place they are made.</li>
+<li><strong>The sound</strong>: Kessler heard more precision and bass control than from the originals, and wrote
+that he was buying a set. Martin Colloms, in
+Stereophile, found the 33's line stage &quot;neutral and detailed&quot;, and wrote that &quot;the 303 comes to
+life in bridged configuration&quot;.</li>
+</ul>
+<p>A DAC connects to the new 33 with ordinary RCA or XLR cables.</p>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>Its guided setup gives MPD a software volume: with a 33 in the chain, leave the player's slider at
+100 and set the level with the 33's knob. The details are in the manual:
+<a href="../manual/04-listening">Listening</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Quad, <em>33 Control Unit Instruction Book</em>, the edition marked 3K1078/3, and its Tape page in the edition marked 3/5/178; Quad 33 circuit diagram, for units above serial number 11500; Quad, <em>303 Power Amplifier</em> instruction book, ref. OI034EH: scans kept by the UK Hi-Fi History Society, <a href="https://ukhhsoc.torrens.org/makers/QUAD/Manuals_and_Diagrams/Amplifiers_33and303/index.html">Quad 33 and 303 manuals and diagrams</a>, read on 2026-10-31.</li>
+<li>The Acoustical Manufacturing Co. Ltd, <a href="https://dadaelectronics.com.au/doc/Audio/Quad/Production/QuadHistory1982.pdf">history of the company</a>, May 1982, and Quad, <a href="https://www.gerritspeek.nl/audio/quad/docu/quad_first-50-years.pdf"><em>The First Fifty Years</em></a>, for the 1969 design award; both cited by Quad's own <a href="https://quad-hifi.co.uk/pages/our-story">Our story</a>, read on 2026-10-31.</li>
+<li>Hi-Fi News, January 2025: Ken Kessler and Paul Miller, <a href="https://www.hifinews.com/content/quad-33303-prepower-amplifier">&quot;Quad 33/303 Pre/power amplifier&quot;</a>, for the sales, the 1967 price, the 2024 versions and the sound, and its sidebar <a href="https://www.hifinews.com/content/quad-33303-prepower-amplifier-originals">&quot;The originals&quot;</a>, for the measurements of April 1968 and July 2011.</li>
+<li>Stereophile, Martin Colloms, <a href="https://www.stereophile.com/content/quad-33-preamplifier-quad-303-power-amplifier">&quot;Quad 33 preamplifier &amp; Quad 303 power amplifier&quot;</a>, 2025-06-27, its <a href="https://www.stereophile.com/content/quad-33-preamplifier-quad-303-power-amplifier-page-2">page 2</a> and its <a href="https://www.stereophile.com/content/quad-33-preamplifier-quad-303-power-amplifier-specifications">specifications</a>: the original 303's output stage, the 2024 versions and their prices.</li>
+<li>The image of the 2024 33 and 303: Quad, on its pages for the <a href="https://quad-hifi.co.uk/products/quad-33">QUAD 33</a> and the <a href="https://quad-hifi.co.uk/products/quad-303">QUAD 303</a>, read on 2026-10-31.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

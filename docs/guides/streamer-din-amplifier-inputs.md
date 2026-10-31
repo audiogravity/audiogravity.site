@@ -94,8 +94,9 @@ channels are crossed. One of them silent: the cable does not reach the right con
 Its guided setup gives MPD a software volume: leave the player's slider at 100 and set the level
 with the amplifier's knob. The details are in the manual: [Listening](../manual/04-listening).
 
-The NAIT 2, one of these amplifiers, has its own story in the blog:
-[The Naim NAIT 2](../blog/naim-audio-nait-2).
+Two of these amplifiers have their own story in the blog:
+[The Naim NAIT 2](../blog/naim-audio-nait-2), and the Quad 33 pre-amplifier, in
+[The Quad 33 and 303](../blog/quad-33-303).
 
 ## Sources
 

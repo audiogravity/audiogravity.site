@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.0-rc.3 — 2026-10-31
+
 ### Library
 
 **Refresh finds the music you just added.** Copy albums onto your NAS, press **Refresh** in

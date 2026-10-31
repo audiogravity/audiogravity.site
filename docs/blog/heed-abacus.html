@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume — Audiogravity</title>
+    <meta name="description" content="Heed&#x27;s DAC of 2017: what it takes, what Linux sees of it, and why its DSD stops when its USB volume drops below 0 dB.">
+    <link rel="canonical" href="https://audiogravity.app/docs/blog/heed-abacus">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
+    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
+        <a class="man-crumb" href="./">Blog</a>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All posts</span><span class="man-menu-count">4</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Blog posts">
+            <a class="man-nav-item" href="bbc-ls3-5a"><span>The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a>
+            <a class="man-nav-item active" href="heed-abacus" aria-current="page"><span>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</span></a>
+            <a class="man-nav-item" href="naim-serial-numbers"><span>How old is your Naim? Serial numbers and years, 1982 to 2022</span></a>
+            <a class="man-nav-item" href="naim-audio-nait-2"><span>The Naim NAIT 2: its figures, its sound, and the NAITs that followed</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Blog posts">
+            <a class="man-nav-item" href="bbc-ls3-5a"><span>The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a>
+            <a class="man-nav-item active" href="heed-abacus" aria-current="page"><span>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</span></a>
+            <a class="man-nav-item" href="naim-serial-numbers"><span>How old is your Naim? Serial numbers and years, 1982 to 2022</span></a>
+            <a class="man-nav-item" href="naim-audio-nait-2"><span>The Naim NAIT 2: its figures, its sound, and the NAITs that followed</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</h1>
+<p class="man-post-meta"><time datetime="2026-10-31">31 October 2026</time> · 7 min read</p>
+<p>The Abacus is a DAC by Heed Audio of Budapest, whose manual is dated May 2017: five digital inputs
+and a slot for a card, PCM up to 384 kHz and DSD128 over USB, a fixed output of 2.1 V. On a Linux
+streamer it is a
+USB DAC like any other, with one trap: its USB volume. Lowered below 0 dB, it stops DSD, whether
+sent as DoP or native. Here is what it is, what Linux sees of it, and how to keep its DSD playing.</p>
+<p>Checked on 2026-10-31 against Heed's owner's manual (version 1.0, May 2017), and on the unit
+connected to my test box, an x86 PC under Debian 13 (Linux 6.12, alsa-utils 1.2.14, MPD 0.24.5).
+The DSD trials date from 2026-10-18.</p>
+<h2 id="heed-and-the-abacus">Heed, and the Abacus</h2>
+<p>Heed Audio was born in Hungary in the early 1990s, with the first amplifier of its own design, the
+Obelisk One; it celebrated its thirtieth anniversary in 2022. The Abacus came after the Thesis
+range, with the Elixir integrated amplifier, and opened what Heed calls a new era for it.</p>
+<p>From Heed's manual:</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Heed Abacus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inputs</td>
+<td>Coaxial on RCA and BNC, two optical, USB, a card slot</td>
+</tr>
+<tr>
+<td>Over S/PDIF</td>
+<td>PCM from 32 to 192 kHz, 24 bits</td>
+</tr>
+<tr>
+<td>Over USB</td>
+<td>PCM up to 384 kHz, 32 bits; DSD64 and DSD128, native</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>RCA, 2.1 V, no volume control</td>
+</tr>
+<tr>
+<td>Settings</td>
+<td>Four PCM filters; DSD direct, or through the converter</td>
+</tr>
+<tr>
+<td>Size, weight</td>
+<td>22 × 8.7 × 32.5 cm, 4.5 kg, 50 VA at most</td>
+</tr>
+</tbody>
+</table></div>
+<p>With no volume control, its output goes to a pre-amplifier or an integrated amplifier, never
+straight to a power amplifier. Its four filters are linear or minimum phase, with a fast or a slow
+roll-off; DSD can go through the converter, or straight to its DAC stages.</p>
+<h2 id="the-streamer-card-and-the-abacus-s">The streamer card, and the Abacus S</h2>
+<img loading="lazy" src="images/heed-abacus-s-front.webp" alt="An Abacus S on a shelf of records: a black half-width case, six numbered input buttons, the Heed Abacus S logo and a round display reading COAX 1, 44.1 kHz" width="1520" height="978">
+<p><em>An Abacus S among records. Photo: as published by
+<a href="https://www.audioconnect.com/products/heed-abacus">Audio Connection</a>.</em></p>
+<p>The sixth input is a slot for an expansion card, fitted by a Heed dealer only. In 2019, Heed told
+a reviewer that no card existed yet, but that it was working on a plug-in streamer that would make
+the Abacus a streamer and DAC in one. That card is the <strong>STR</strong>: a network card, with an Ethernet
+adaptor in the box and a Wi-Fi one as an option, both plugged into a USB socket on the card's
+input. Heed sells the Abacus with that card as the <strong>Abacus S</strong>: Qobuz, Tidal Connect and Spotify
+Connect, a UPnP renderer, and Roon Ready. In The Ear's review of 2025, the Abacus S cost £2,100,
+and the Abacus without the card £1,650.</p>
+<img loading="lazy" src="images/heed-abacus-s-back.webp" alt="The back of an Abacus S: the line outputs, digital inputs 1 to 5 — RCA, BNC, two optical, asynchronous USB — and input 6, AUX CARD, marked for a USB-to-Wi-Fi or Ethernet dongle, with WIFI and RESET buttons beside a USB socket" width="1200" height="490">
+<p><em>The back of an Abacus S. Photo: as published by
+<a href="https://www.futureshop.co.uk/heed-audio-abacus-s-dac">Future Shop</a>.</em></p>
+<p>On its back, the card's input is number 6, <em>AUX CARD</em>, marked &quot;for USB-to-WiFi or Ethernet
+dongle&quot;, with a <em>WIFI</em> and a <em>RESET</em> button beside the USB socket. The Abacus S's manual adds two
+things worth knowing:</p>
+<ul>
+<li><strong>Formats.</strong> Through the card, PCM up to 384 kHz in 32 bits, and DSD up to DSD256, native.
+Through the S's own USB input, PCM up to 384 kHz and DSD64 and DSD128 as DoP, where the original
+Abacus took them native.</li>
+<li><strong>A volume.</strong> With the card, a player app can set a volume for the whole DAC: it is kept, and
+applies to every input. Without the network, the menu's <em>VOLUME</em>, <em>to max</em>, gives back the full
+level. Whether it stops DSD from the USB input, as the USB volume does below, was not tried.</li>
+</ul>
+<p>Whether a first Abacus, such as the one here, takes the STR card is not said in what I found: a
+Heed dealer, who fits it anyway, can tell.</p>
+<img loading="lazy" src="images/heed-abacus-s-inside.webp" alt="Inside an Abacus S: a green digital board marked Digital Audio Core Board V1.1 on the left, the Abacus Analogue Board V1.1 on the right, a toroidal transformer below it, and the mains inlet at the bottom left" width="1100" height="824">
+<p><em>Inside an Abacus S. Photo: <a href="https://hxosplus.gr/reviews/digital/heed-audio-abacus-s-review-test/">hxosplus</a>,
+from its review of October 2023.</em></p>
+<p>Inside, the digital board, marked <em>Digital Audio Core Board</em>, and the analogue board sit side by
+side, with a toroidal transformer for the power supply.</p>
+<h2 id="what-linux-sees">What Linux sees</h2>
+<p>The Abacus needs no driver on Linux: its USB receiver, an XMOS chip, presents itself as
+<code>20b1:30ab XMOS Ltd Heed Abacus</code> and Linux's standard USB audio driver takes it. What it accepts,
+with the Abacus's card number from <code>cat /proc/asound/cards</code> in place of <code>0</code>:</p>
+<pre><code class="language-bash"><span class="hl-cmd">cat</span> /proc/asound/card0/stream0
+</code></pre>
+<p>Among the lines it prints:</p>
+<pre data-copy="no"><code class="language-text">  Interface 1
+    Altset 1
+    Format: S32_LE
+    Rates: 44100, 48000, 88200, 96000, 176400, 192000, 352800, 384000
+  Interface 1
+    Altset 2
+    Format: SPECIAL DSD_U32_BE
+    Rates: 44100, 48000, 88200, 96000, 176400, 192000, 352800, 384000
+</code></pre>
+<p>The first is PCM in 32-bit words up to 384 kHz, as the manual says. The second is native DSD, 32
+bits at a time: at 352,800 frames a second, that is DSD256. Linux reads more here than Heed
+promises, DSD64 and DSD128; DSD256 was not tried. How to read such a list:
+<a href="../guides/usb-dac-formats-linux">What your USB DAC accepts on Linux</a>.</p>
+<h2 id="its-usb-volume">Its USB volume</h2>
+<p>The manual says the Abacus's output has no volume control, and its front panel has no knob. Its
+USB receiver offers the computer one all the same: two controls named <code>Heed Abacus </code>, one for the
+left and right channels and one more marked <em>Mono</em>, each from −127 to 0 dB in steps of 1 dB. The
+name ends with a space, which must be typed between the quotes:</p>
+<pre><code class="language-bash"><span class="hl-cmd">amixer</span> <span class="hl-opt">-c</span> 0 sget <span class="hl-string">'Heed Abacus '</span>,0
+</code></pre>
+<pre data-copy="no"><code class="language-text">  Limits: Playback 0 - 127
+  Front Left: Playback 127 [100%] [0.00dB] [on]
+  Front Right: Playback 127 [100%] [0.00dB] [on]
+</code></pre>
+<p>Reading or setting it takes a member of the <code>audio</code> group, or <code>sudo</code>; otherwise <code>amixer</code> answers
+<code>Invalid card number '0'.</code> Without the final space, it answers
+<code>amixer: Unable to find simple control 'Heed Abacus',0</code>.</p>
+<h2 id="below-0-db-dsd-stops">Below 0 dB, DSD stops</h2>
+<p>On 2026-10-18, I lowered that volume to −10 dB and listened, through MPD 0.24.5, to a DSD128
+album:</p>
+<ul>
+<li><strong>PCM</strong> played quieter, and clean: the control works.</li>
+<li><strong>DSD as DoP</strong> played nothing, and the Abacus's display read 352.8 kHz, the rate of the PCM that
+carries DoP: it no longer saw DSD in it.</li>
+<li><strong>Native DSD</strong> showed DSD128 on the display, and played with noise.</li>
+</ul>
+<p>At 0 dB, both play normally. One of Roon's founders explained the likely cause in 2015, about USB
+DACs in general: &quot;Some devices implement volume controls in a suboptimal way–often as a digital
+volume stage prior to the DAC.&quot; Such a stage recalculates every sample. PCM survives that, only no
+longer bit-perfect; DSD does not. DoP loses the markers that tell the DAC it is DSD, and native DSD
+turns to noise.</p>
+<p>MPD's own volume does not do this: set to 30, then 5, during a DoP track with the Abacus at 0 dB,
+it changed neither the level nor the sound. MPD's software volume leaves DSD alone (see
+<a href="../guides/dsd-native-dop-linux">DSD on a Linux streamer</a>).</p>
+<h2 id="keeping-its-dsd-playing">Keeping its DSD playing</h2>
+<ul>
+<li><strong>Leave the USB volume at 0 dB</strong>, and set the level on the amplifier. With PCM, below 0 dB, it
+plays, but no longer as the file is.</li>
+<li><strong>Check it before a DSD track</strong> with the <code>sget</code> above: <code>[100%] [0.00dB]</code> on both channels.</li>
+<li><strong>Put it back</strong> if something lowered it, a desktop's sound settings or a player that took the
+control as its volume:</li>
+</ul>
+<pre><code class="language-bash"><span class="hl-cmd">amixer</span> <span class="hl-opt">-c</span> 0 sset <span class="hl-string">'Heed Abacus '</span>,0 100%
+<span class="hl-cmd">amixer</span> <span class="hl-opt">-c</span> 0 sset <span class="hl-string">'Heed Abacus '</span>,1 100%
+</code></pre>
+<ul>
+<li><strong>In MPD</strong>, do not make that control its volume: no <code>mixer_control &quot;Heed Abacus &quot;</code> in an output
+with <code>mixer_type &quot;hardware&quot;</code>. A software volume, or none, leaves the Abacus at 0 dB (see
+<a href="../guides/software-hardware-volume-linux">Software or hardware volume on a Linux streamer</a>).</li>
+</ul>
+<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>
+<p>While a DSD track plays, Audiogravi<sup>ty</sup> brings the DAC's own volume to its maximum, and
+puts it back when the DSD ends; the player's volume shows a padlock meanwhile. <strong>Full DAC volume
+during DSD</strong>, in MPD's <strong>Guided</strong> view, turns that off, for a DAC that lowers DSD properly: not for
+the Abacus. The details are in the manual:
+<a href="../manual/06-outputs-engines#dsd-as-dsd-as-dop-or-converted-to-pcm">Outputs &amp; engines → DSD</a>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Heed Audio, <em>Abacus owner's manual</em>, version 1.0, May 2017: <a href="https://web.archive.org/web/20190914071602/http://heedaudio.com/downloads/Heed_Abacus_manual_1.0_EN.pdf">Internet Archive copy of 2019-09-14</a>. Heed's history: <a href="https://heedaudio.com/about/">About</a>, read on 2026-10-31.</li>
+<li>Heed Audio, <em>Abacus S owner's manual</em>: <a href="https://web.archive.org/web/20250504031552/https://heedaudio.com/downloads/Heed_Abacus_S_manual_EN.pdf">Internet Archive copy of 2025-05-04</a>, for the STR card, its formats and its volume.</li>
+<li>The photographs of the Abacus S: the front as published by <a href="https://www.audioconnect.com/products/heed-abacus">Audio Connection</a> and the back by <a href="https://www.futureshop.co.uk/heed-audio-abacus-s-dac">Future Shop</a>, both read on 2026-10-31; the inside from hxosplus, <a href="https://hxosplus.gr/reviews/digital/heed-audio-abacus-s-review-test/">&quot;Heed Audio Abacus S Review&quot;</a>, 2023-10-05.</li>
+<li>The streamer card in the works: The Audiophile Man, <a href="https://theaudiophileman.com/abacus-dac-review-heed/">&quot;Abacus DAC From Heed: The Digital Gentleman&quot;</a>, 2019-03-21. The Abacus S, its services and its prices: The Ear, <a href="https://the-ear.net/review-hardware/heed-abacus-s-the-parts-that-matter/">&quot;Heed Abacus S Takes Its Own Route To The Musical Parts That Matter&quot;</a>, 2025-09-22.</li>
+<li>The unit on my test box, read on 2026-10-31: <code>/proc/asound/card0/stream0</code>, <code>lsusb</code>, and <code>amixer</code> from alsa-utils 1.2.14, under Linux 6.12.</li>
+<li>The DSD trials: listened to on 2026-10-18 on the same box, MPD 0.24.5 playing to the Abacus directly (<code>hw:0,0</code>).</li>
+<li>Roon on USB volume: <a href="https://community.roonlabs.com/t/force-max-volume-disable-volume-control/3489">Force Max Volume / Disable Volume Control</a>, Roon's forum, 2015-09-08, the answer of a founder of Roon Labs.</li>
+</ul>
+
+            </article>
+            <footer class="man-foot">
+                <a href="../../index.html">← Back to audiogravity.app</a>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

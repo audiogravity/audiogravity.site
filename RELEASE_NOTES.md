@@ -44,9 +44,11 @@ in your device's notification settings.
 ### On audiogravity.app
 
 **A blog.** Beside the manual and the guides, the site has a *Blog* tab: dated articles on hi-fi
-equipment, and on using it with a streamer today. The first two are about Naim — the NAIT 2 and
-the amplifiers that followed it, and how to tell the year a Naim was made from its serial number —,
-with a new guide that goes with them: connecting a streamer to an amplifier's round DIN sockets.
+equipment, and on using it with a streamer today. The first ones tell the story of Naim's NAIT 2
+and the amplifiers that followed it, how to tell the year a Naim was made from its serial number,
+the Heed Abacus DAC — and why its DSD stops when its USB volume is lowered —, and the BBC's
+LS3/5A loudspeaker; a new guide goes with them: connecting a streamer to an amplifier's round DIN
+sockets.
 
 ---
 

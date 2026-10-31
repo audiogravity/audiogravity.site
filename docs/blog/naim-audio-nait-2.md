@@ -36,13 +36,17 @@ From Naim's manual, unless another source is named:
 
 | | NAIT 2 |
 |---|---|
-| Phono | Moving-magnet cartridges, on RCA sockets: 2.5 mV, 47 kΩ |
-| Tuner, Aux, Tape | 5-pin DIN sockets: 75 mV, 47 kΩ. The Tape socket carries the signal both ways, to record and to play back |
+| Phono | Moving magnet, RCA sockets: 2.5 mV, 47 kΩ |
+| Tuner, Aux, Tape | 5-pin DIN sockets: 75 mV, 47 kΩ |
 | Tape output | 75 mV, 1 kΩ |
 | Loudspeakers | 4 mm banana sockets, one pair per channel |
-| Mains | Built for one of 100, 110, 120, 200, 220 or 240 V, at 50 or 60 Hz |
-| Power, Naim's figures | 13 W per channel into 8 Ω and 19.5 W into 4 Ω, published by Hi-Fi World in 2007 |
-| Power, measured | Clipping at 21 W into 8 Ω and 33.5 W into 4 Ω, at 1 kHz (Stereophile, 1989) |
+| Mains | 100, 110, 120, 200, 220 or 240 V, 50 or 60 Hz |
+| Power, Naim's figures | 13 W into 8 Ω, 19.5 W into 4 Ω |
+| Clipping, measured | 21 W into 8 Ω, 33.5 W into 4 Ω |
+
+The Tape socket carries the signal both ways, to record and to play back. Each unit was built for
+one of the mains voltages listed. Naim's power figures, per channel, were published by Hi-Fi World
+in 2007; Stereophile measured where it clips, at 1 kHz, in 1989.
 
 The manual itself gives no power figure. It says instead that the low continuous power is
 "balanced by a very large peak current capacity". So there is no restriction on the type of
@@ -78,7 +82,8 @@ review. That review is about the **first** NAIT, not the NAIT 2.
 ## Loudspeakers and cables
 
 - **Loudspeakers:** the NAIT 2 does best with speakers that are easy to drive. Both Stereophile
-  reviewers found it short of power at high levels.
+  reviewers found it short of power at high levels. A pair of BBC LS3/5A, small but not sensitive,
+  is an example: [The BBC LS3/5A](bbc-ls3-5a).
 - **Speaker cable:** Naim's manual recommends its own speaker cable, at least 3.5 m long, with both
   lengths equal. Its 4 mm plugs come with the amplifier. It warns that the wrong cable will degrade
   the sound, and that some types may damage the amplifier.
@@ -153,16 +158,16 @@ The same models, with what came next:
 | NAIT 3 | 1993 | Replaced by the NAIT 5 in 2000 |
 | NAIT 3R, with remote | 1995 | Replaced by the NAIT 5 in 2000 |
 | NAIT 5 | 2000 | Replaced by the NAIT 5i in 2003 |
-| NAIT 5i | 2003 | Revised in 2007, its "i" now in italics |
+| NAIT 5i | 2003 | Revised in 2007, an italic "i" |
 | NAIT 5*i* | 2007 | Replaced by the NAIT 5si in 2013 |
 | SUPERNAIT | 2007 | Replaced by the SUPERNAIT 2 in 2013 |
 | NAIT XS | 2008 | Replaced by the NAIT XS 2 in 2013 |
-| NAIT 5si | 2013 | Listed by Naim as no longer available on 2026-10-31 |
+| NAIT 5si | 2013 | No longer available |
 | SUPERNAIT 2 | 2013 | Replaced by the SUPERNAIT 3 in 2019 |
 | NAIT XS 2 | 2013 | Replaced by the NAIT XS 3 in 2019 |
-| SUPERNAIT 3 | 2019 | Listed by Naim as no longer available on 2026-10-31 |
-| NAIT XS 3 | 2019 | Listed by Naim as no longer available on 2026-10-31 |
-| NAIT 50 | 2023 | Limited to 1,973 units; listed by Naim as no longer available on 2026-10-31 |
+| SUPERNAIT 3 | 2019 | No longer available |
+| NAIT XS 3 | 2019 | No longer available |
+| NAIT 50 | 2023 | 1,973 units; no longer available |
 
 ## The NAIT 50, the small NAIT's return
 

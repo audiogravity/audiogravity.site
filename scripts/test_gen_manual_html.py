@@ -354,7 +354,7 @@ class TestSitemap:
         slash — sends search engines to an address the page itself disowns."""
         import gen_manual_html as g
         canonicals = {re.search(r'<link rel="canonical" href="([^"]+)">', text).group(1)
-                      for text in (g.build() | g.build_guides()).values()}
+                      for text in (g.build() | g.build_guides() | g.build_blog()).values()}
         listed = set(re.findall(r"<loc>([^<]+)</loc>", g.outputs()[g.SITEMAP]))
         assert listed == canonicals | {g.SITE_URL}
 
@@ -368,11 +368,23 @@ class TestSitemap:
         import gen_manual_html as g
         assert "docs/guides" not in g.sitemap(TOC, [])
 
+    def test_lists_the_blog_after_the_guides(self):
+        import gen_manual_html as g
+        locs = re.findall(r"<loc>([^<]+)</loc>", g.sitemap(TOC, ["hqplayer-on-a-pi"], ["naim-nait-2"]))
+        assert locs[-4:] == ["https://audiogravity.app/docs/guides/",
+                             "https://audiogravity.app/docs/guides/hqplayer-on-a-pi",
+                             "https://audiogravity.app/docs/blog/",
+                             "https://audiogravity.app/docs/blog/naim-nait-2"]
+
+    def test_lists_no_blog_page_while_there_is_no_post(self):
+        import gen_manual_html as g
+        assert "docs/blog" not in g.sitemap(TOC, ["hqplayer-on-a-pi"], [])
+
     def test_a_run_writes_the_pages_and_the_sitemap_at_the_root(self):
         import gen_manual_html as g
         files = g.outputs()
         assert g.SITEMAP == REPO_DIR / "sitemap.xml"
-        assert set(files) == set(g.build()) | set(g.build_guides()) | {g.SITEMAP}
+        assert set(files) == set(g.build()) | set(g.build_guides()) | set(g.build_blog()) | {g.SITEMAP}
 
     def test_the_committed_sitemap_is_current(self):
         """What --check holds a release to, and what the Manual workflow keeps true on a push."""
@@ -468,6 +480,52 @@ class TestGuides:
             g.build_guides()
 
 
+def links_that_land(pages: dict[Path, str], folder: Path, own: set[str]) -> int:
+    """Check that every relative link and image of a section's pages reaches something.
+
+    A page links into the manual by chapter and heading, to the guides and the posts, to files
+    of the site such as a kept copy, and to its own figures; a heading reworded, a page renamed
+    or a figure moved breaks it without a sound.
+
+    Args:
+        pages: The section's rendered pages, by path.
+        folder: The section's folder, where its own figures sit under ``images/``.
+        own: Ids of the section's pages, which it links to by bare id.
+
+    Returns:
+        How many links and images were checked, so a caller can tell the page was read at all.
+    """
+    import gen_manual_html as g
+    chapters = {cid for cid, _ in parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8"))}
+    sections = {"../guides/": {gid for gid, _, _ in g.read_guides()},
+                "../blog/": {pid for pid, _, _, _ in g.read_posts()}}
+    checked = 0
+    for path, text in pages.items():
+        for target in re.findall(r'\s(?:href|src)="(?!https?:|mailto:|#)([^"]+)"', text):
+            target = target.split("?v=")[0]
+            where, _, anchor = target.partition("#")
+            other = next((s for s in sections if where.startswith(s)), None)
+            if where.startswith("../manual/"):
+                chapter = where[len("../manual/"):]
+                if chapter.startswith("images/"):
+                    assert (MANUAL_DIR / chapter).is_file(), f"{path.name}: {target}"
+                else:
+                    assert chapter in chapters | {""}, f"{path.name}: {target}"
+                    if anchor:
+                        assert anchor in heading_ids((MANUAL_DIR / f"{chapter}.md").read_text(encoding="utf-8")), f"{path.name}: {target}"
+            elif other:
+                assert where[len(other):] in sections[other] | {""}, f"{path.name}: {target}"
+            elif where.startswith("../../"):
+                assert (REPO_DIR / where[len("../../"):]).is_file(), f"{path.name}: {target}"
+            elif where.startswith("images/"):
+                assert (folder / where).is_file(), f"{path.name}: {target}"
+            else:
+                # "./" is the section's front page, which the crumb in the top bar leads to.
+                assert where in own | {"", "./"}, f"{path.name}: {target}"
+            checked += 1
+    return checked
+
+
 class TestPublishedGuides:
     """The guides as they are in docs/guides."""
 
@@ -495,28 +553,8 @@ class TestPublishedGuides:
         """A guide links into the manual by chapter and heading, and borrows its figures: a
         heading reworded or a figure renamed there breaks the guide without a sound."""
         import gen_manual_html as g
-        chapters = {cid for cid, _ in parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8"))}
-        guides = {gid for gid, _, _ in self._guides()}
-        checked = 0
-        for path, text in g.build_guides().items():
-            for target in re.findall(r'\s(?:href|src)="(?!https?:|mailto:|#)([^"]+)"', text):
-                target = target.split("?v=")[0]
-                where, _, anchor = target.partition("#")
-                if where.startswith("../manual/"):
-                    chapter = where[len("../manual/"):]
-                    if chapter.startswith("images/"):
-                        assert (MANUAL_DIR / chapter).is_file(), f"{path.name}: {target}"
-                    else:
-                        assert chapter in chapters | {""}, f"{path.name}: {target}"
-                        if anchor:
-                            assert anchor in heading_ids((MANUAL_DIR / f"{chapter}.md").read_text(encoding="utf-8")), f"{path.name}: {target}"
-                elif where.startswith("../../"):
-                    assert (REPO_DIR / where[len("../../"):]).is_file(), f"{path.name}: {target}"
-                else:
-                    # "./" is the guides' contents, which the crumb in the top bar leads to.
-                    assert where in guides | {"", "./"}, f"{path.name}: {target}"
-                checked += 1
-        assert checked > 20
+        assert links_that_land(g.build_guides(), g.GUIDES_DIR,
+                               {gid for gid, _, _ in self._guides()}) > 20
 
     def test_every_guide_says_its_number_and_reading_time(self):
         """Under its title, and again in the list of guides."""
@@ -526,6 +564,125 @@ class TestPublishedGuides:
             assert re.search(rf'<p class="man-guide-meta">Guide {rank} · \d+ min read</p>',
                              pages[g.GUIDES_DIR / f"{gid}.html"]), gid
         assert pages[g.GUIDES_DIR / "index.html"].count('class="man-guide-time"') == len(self._guides())
+
+
+class TestBlog:
+    """The blog shares the guides' shell and build; a post is dated where a guide is numbered."""
+
+    README = (
+        "# Blog\n\nStories about hi-fi equipment.\n\n"
+        "- [The Naim NAIT 2](naim-nait-2.md) — 2026-10-31 — Naim's small amplifier, by Audiogravi<sup>ty</sup>.\n"
+        "- [An older post](older-post.md) — 2026-09-01 — Before it.\n"
+        "- [Not a post](elsewhere.md) — no date — so it is not read\n"
+    )
+
+    def test_reads_each_post_with_its_date_and_summary_in_order(self):
+        import gen_manual_html as g
+        assert g.parse_posts(self.README) == [
+            ("naim-nait-2", "The Naim NAIT 2", "Naim's small amplifier, by Audiogravi<sup>ty</sup>.", "2026-10-31"),
+            ("older-post", "An older post", "Before it.", "2026-09-01"),
+        ]
+
+    def _page(self):
+        import gen_manual_html as g
+        toc = [("naim-nait-2", "The Naim NAIT 2"), ("older-post", "An older post")]
+        return g.page("The Naim NAIT 2", "<p>x</p>", toc, "naim-nait-2", "naim-nait-2",
+                      g.BLOG, g.plain_text("Naim's small amplifier, by Audiogravi<sup>ty</sup>."))
+
+    def test_a_post_page_names_its_address_and_its_title(self):
+        out = self._page()
+        assert '<link rel="canonical" href="https://audiogravity.app/docs/blog/naim-nait-2">' in out
+        assert "<title>The Naim NAIT 2 — Audiogravity</title>" in out
+        assert '<meta name="description" content="Naim&#x27;s small amplifier, by Audiogravity.">' in out
+
+    def test_it_is_filed_under_the_blog_without_numbers(self):
+        """A post's place in the list moves with each new one: it is dated, not numbered."""
+        out = self._page()
+        assert '<a class="man-crumb" href="./">Blog</a>' in out
+        assert '<nav class="man-nav" aria-label="Blog posts">' in out
+        assert '<summary><span>All posts</span><span class="man-menu-count">2</span>' in out
+        assert 'href="naim-nait-2" aria-current="page"><span>The Naim NAIT 2</span></a>' in out
+        assert "man-nav-n" not in out
+
+    def test_it_carries_no_trademark_notice(self):
+        assert "man-notice" not in self._page()
+
+    def test_a_post_says_its_date_and_reading_time_under_its_title(self):
+        import gen_manual_html as g
+        assert g.stamp_post_meta("<h1>NAIT 2</h1>\n<p>Body</p>", "2026-10-31", 6) == (
+            '<h1>NAIT 2</h1>\n<p class="man-post-meta"><time datetime="2026-10-31">31 October 2026'
+            '</time> · 6 min read</p>\n<p>Body</p>')
+
+    def test_no_blog_folder_means_no_blog_pages(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        monkeypatch.setattr(g, "BLOG_DIR", tmp_path / "blog")
+        assert g.build_blog() == {}
+        assert g.read_posts() == []
+
+    def test_a_post_listed_but_missing_stops_the_run(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text(self.README)
+        monkeypatch.setattr(g, "BLOG_DIR", tmp_path)
+        with pytest.raises(SystemExit):
+            g.build_blog()
+
+    def test_a_date_that_is_no_date_stops_the_run(self, tmp_path, monkeypatch):
+        """Read as written, 2026-02-30 would be published; better a stop than a page that lies."""
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("# Blog\n\nx\n\n- [A post](a-post.md) — 2026-02-30 — Its summary.\n")
+        (tmp_path / "a-post.md").write_text("# A post\n")
+        monkeypatch.setattr(g, "BLOG_DIR", tmp_path)
+        with pytest.raises(SystemExit, match="2026-02-30"):
+            g.build_blog()
+
+    def test_a_readme_listing_nothing_stops_the_run(self, tmp_path, monkeypatch):
+        """A post without its date does not match: better a stop than no page."""
+        import gen_manual_html as g
+        (tmp_path / "README.md").write_text("# Blog\n\n- [A post](a-post.md) — Its summary.\n")
+        monkeypatch.setattr(g, "BLOG_DIR", tmp_path)
+        with pytest.raises(SystemExit):
+            g.build_blog()
+
+
+class TestPublishedBlog:
+    """The blog as it is in docs/blog."""
+
+    @staticmethod
+    def _posts():
+        import gen_manual_html as g
+        return g.read_posts()
+
+    def test_every_post_written_is_listed(self):
+        """A post missing from the README gets no page, and nothing would say so."""
+        import gen_manual_html as g
+        listed = {pid for pid, _, _, _ in self._posts()}
+        written = {p.stem for p in g.BLOG_DIR.glob("*.md")} - {"README"}
+        assert written and written == listed
+
+    def test_the_list_is_newest_first(self):
+        dates = [date for _, _, _, date in self._posts()]
+        assert dates == sorted(dates, reverse=True)
+
+    def test_every_snippet_fits_a_search_result(self):
+        import gen_manual_html as g
+        snippets = [re.search(r'<meta name="description" content="([^"]*)">', text).group(1)
+                    for text in g.build_blog().values()]
+        assert len(snippets) == len(self._posts()) + 1
+        for s in snippets:
+            assert 70 <= len(html.unescape(s)) <= 155, s
+
+    def test_every_link_and_image_of_a_post_lands(self):
+        import gen_manual_html as g
+        assert links_that_land(g.build_blog(), g.BLOG_DIR, {pid for pid, _, _, _ in self._posts()}) > 10
+
+    def test_every_post_says_its_date_and_reading_time(self):
+        """Under its title, and its reading time again in the blog's list."""
+        import gen_manual_html as g
+        pages = g.build_blog()
+        for pid, _, _, date in self._posts():
+            assert re.search(rf'<p class="man-post-meta"><time datetime="{date}">[^<]+</time> · \d+ min read</p>',
+                             pages[g.BLOG_DIR / f"{pid}.html"]), pid
+        assert pages[g.BLOG_DIR / "index.html"].count('class="man-guide-time"') == len(self._posts())
 
 
 class TestReadingTime:
@@ -767,7 +924,7 @@ class TestThemeToggle:
         assert "localStorage.getItem('ag-theme')" in (REPO_DIR / "index.html").read_text(encoding="utf-8")
 
     def test_it_keeps_the_bar_edge_the_landing_leaves_for_its_ribbon(self):
-        """style.css moves the landing's toggle 64 to 114px off the corner below 1160px, clear
+        """style.css moves the landing's toggle 64 to 114px off the corner below 1240px, clear
         of the stage ribbon; the manual has none, so its bar puts the toggle back."""
         css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
         rule = re.search(r"\.man-top \.theme-toggle \{([^}]*)\}", css)
@@ -794,7 +951,8 @@ class TestAssetStamps:
         from asset_versions import out_of_date
         built = build()
         assert len(built) > 10
-        for directory, pages in ((MANUAL_DIR, built), (g.GUIDES_DIR, g.build_guides())):
+        for directory, pages in ((MANUAL_DIR, built), (g.GUIDES_DIR, g.build_guides()),
+                                 (g.BLOG_DIR, g.build_blog())):
             for path, text in pages.items():
                 assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == 5, path.name
                 assert out_of_date(text, directory) == [], path.name

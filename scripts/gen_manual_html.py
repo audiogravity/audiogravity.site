@@ -23,7 +23,8 @@ which lists the landing and these pages (see ``SITEMAP``).
 
 The guides in ``docs/guides`` are rendered the same way, on the same page shell: answers to
 questions asked on audiophile forums, listed in their own README the way the manual's chapters
-are in its Contents (see ``GUIDES``).
+are in its Contents (see ``GUIDES``). So is the blog in ``docs/blog``: dated articles that are
+not answers to a question — a piece of equipment's story, say — listed newest first (``BLOG``).
 
 The chapter list comes from the manual's own README "Contents" list, the same single source of
 truth ``ag-manual-modal.js`` parses in the interface. Add a chapter there and it appears here.
@@ -44,10 +45,12 @@ source.
 from __future__ import annotations
 
 import argparse
+import datetime
 import html
 import math
 import re
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -61,6 +64,7 @@ except ImportError:  # pragma: no cover - environment guard
 REPO_DIR = Path(__file__).resolve().parent.parent
 MANUAL_DIR = REPO_DIR / "docs" / "manual"
 GUIDES_DIR = REPO_DIR / "docs" / "guides"
+BLOG_DIR = REPO_DIR / "docs" / "blog"
 
 #: The site's address, as the canonical links and the sitemap name it.
 SITE_URL = "https://audiogravity.app/"
@@ -68,7 +72,7 @@ SITE_URL = "https://audiogravity.app/"
 
 @dataclass(frozen=True)
 class Section:
-    """One set of pages rendered on the shared shell: the manual, or the guides.
+    """One set of pages rendered on the shared shell: the manual, the guides or the blog.
 
     Attributes:
         path: Where its pages are served under the site root, with a trailing slash.
@@ -100,6 +104,10 @@ MANUAL = Section("docs/manual/", "User manual", "Audiogravity manual", "Manual c
 #: A guide's tab reads "<its question> — Audiogravity": the question is what was searched for.
 GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", True, "All guides",
                  notice=False)
+#: A post is dated rather than numbered: its place in the list changes with every new one. Its
+#: tab reads "<its title> — Audiogravity", as a guide's does; the front page's, "Blog — Audiogravity".
+BLOG = Section("docs/blog/", "Blog", "Audiogravity", "Blog posts", False, "All posts",
+               notice=False)
 
 #: The chevron of the phone's menu (Lucide: chevron-down); the stylesheet turns it when open.
 CHEVRON = ('<svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">'
@@ -187,6 +195,27 @@ def parse_guides(readme: str) -> list[tuple[str, str, str]]:
     """
     return [(m.group("id"), m.group("label"), m.group("summary"))
             for m in map(GUIDE_LINE.match, readme.split("\n")) if m]
+
+
+#: Matches a post in the blog's README, newest first, its date between its title and summary:
+#: ``- [The Naim NAIT 2](naim-audio-nait-2.md) — 2026-10-31 — what it is about``.
+POST_LINE = re.compile(
+    r"^\s*(?:[-*]|\d+\.)\s*\[(?P<label>.+?)\]\((?P<id>[a-z0-9-]+)\.md\)"
+    r"\s*—\s*(?P<date>\d{4}-\d{2}-\d{2})\s*—\s*(?P<summary>\S.*?)\s*$")
+
+
+def parse_posts(readme: str) -> list[tuple[str, str, str, str]]:
+    """Extract the ordered post list from the blog's README.
+
+    Args:
+        readme: Contents of ``docs/blog/README.md``.
+
+    Returns:
+        ``(post_id, label, summary, date)`` in document order, the date as written
+        (YYYY-MM-DD). The summary is the page's description for search engines, as a guide's is.
+    """
+    return [(m.group("id"), m.group("label"), m.group("summary"), m.group("date"))
+            for m in map(POST_LINE.match, readme.split("\n")) if m]
 
 
 def plain_text(fragment: str) -> str:
@@ -383,6 +412,27 @@ def stamp_guide_meta(rendered: str, rank: int, minutes: int) -> str:
         The body with the line under its title.
     """
     return under_title(rendered, f'<p class="man-guide-meta">Guide {rank} · {minutes} min read</p>')
+
+
+def stamp_post_meta(rendered: str, date: str, minutes: int) -> str:
+    """Say under a post's title when it was published, and how long it takes to read.
+
+    Args:
+        rendered: The post's body.
+        date: Its date, YYYY-MM-DD, as the blog's README gives it.
+        minutes: Its reading time, from reading_minutes().
+
+    Returns:
+        The body with the line under its title; the date is written out in full ("31 October
+        2026") and kept machine-readable in its ``<time>``.
+
+    Raises:
+        ValueError: The date is not a calendar date.
+    """
+    day = datetime.date.fromisoformat(date)
+    written = f"{day.day} {day.strftime('%B %Y')}"
+    return under_title(rendered, f'<p class="man-post-meta"><time datetime="{date}">{written}</time>'
+                                 f' · {minutes} min read</p>')
 
 
 #: A guide's entry in the rendered contents list: the item, opened by the link to its page.
@@ -761,8 +811,9 @@ def page_url(canonical: str, section: Section = MANUAL) -> str:
     return f"{SITE_URL}{section.path}{canonical}"
 
 
-def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None) -> str:
-    """The site's sitemap: the landing, the manual's contents then its chapters, then the guides.
+def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None,
+            posts: list[str] | None = None) -> str:
+    """The site's sitemap: the landing, the manual's contents then its chapters, the guides, the blog.
 
     Addresses only. Google ignores ``changefreq`` and ``priority``, and uses ``lastmod`` only
     where it proves accurate — which it could not be here, since every release rewrites each
@@ -772,6 +823,7 @@ def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None) -> str:
         toc: Chapter list, as parse_toc() reads it.
         guides: Guide ids, as parse_guides() reads them; the guides' contents page is listed
             only when there is at least one.
+        posts: Post ids, as parse_posts() reads them; the blog's front page likewise.
 
     Returns:
         A sitemap document.
@@ -779,6 +831,8 @@ def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None) -> str:
     urls = [SITE_URL, page_url("")] + [page_url(cid) for cid, _ in toc]
     if guides:
         urls += [page_url("", GUIDES)] + [page_url(gid, GUIDES) for gid in guides]
+    if posts:
+        urls += [page_url("", BLOG)] + [page_url(pid, BLOG) for pid in posts]
     entries = "\n".join(f"  <url><loc>{html.escape(u)}</loc></url>" for u in urls)
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -1000,6 +1054,49 @@ def read_guides() -> list[tuple[str, str, str]]:
     return parse_guides(readme.read_text(encoding="utf-8")) if readme.exists() else []
 
 
+def build_listed(section: Section, folder: Path, entries: list[tuple[str, str, str]],
+                 meta: Callable[[str, str, int, int], str]) -> dict[Path, str]:
+    """Render the pages a README lists, and that README as their front page.
+
+    The guides and the blog are built this way; they differ only in the line under a page's
+    title (a guide's number, a post's date) and in where they live.
+
+    Args:
+        section: The section the pages belong to.
+        folder: Where their Markdown is, and where the pages are written.
+        entries: ``(page_id, label, summary)`` in the README's order.
+        meta: The page's body with its line under the title, from the body, the page's id,
+            its rank in the list and its reading time.
+
+    Returns:
+        Mapping of output path to file contents.
+    """
+    md = markdown()
+    known = {pid for pid, _, _ in entries} | {"README"}
+    toc = [(pid, label) for pid, label, _ in entries]
+
+    out: dict[Path, str] = {}
+    minutes: dict[str, int] = {}
+    for rank, (pid, label, summary) in enumerate(entries, 1):
+        src = folder / f"{pid}.md"
+        if not src.exists():
+            sys.exit(f"{src} is listed in {folder / 'README.md'} but does not exist")
+        body = render_body(md, src.read_text(encoding="utf-8"), known)
+        minutes[pid] = reading_minutes(body)
+        out[folder / f"{pid}.html"] = page(
+            label, meta(body, pid, rank, minutes[pid]), toc, pid, pid, section, plain_text(summary))
+
+    # The README is the section's front page; its first paragraph says what the pages are, and
+    # is what a search result shows of that page.
+    body = stamp_reading_times(
+        render_body(md, (folder / "README.md").read_text(encoding="utf-8"), known), minutes)
+    intro = re.search(r"<p>(.*?)</p>", body, re.S)
+    out[folder / "index.html"] = page(
+        section.crumb, body, toc, "", "", section,
+        " ".join(plain_text(intro.group(1)).split()) if intro else None)
+    return {path: stamp_assets(text, folder) for path, text in out.items()}
+
+
 def build_guides() -> dict[Path, str]:
     """Render every guide, and their contents page, on the manual's shell.
 
@@ -1012,32 +1109,40 @@ def build_guides() -> dict[Path, str]:
     if not guides:
         sys.exit("no guides found in docs/guides/README.md — is each one a "
                  "'1. [Title](id.md) — summary' line?")
+    return build_listed(GUIDES, GUIDES_DIR, guides,
+                        lambda body, _pid, rank, minutes: stamp_guide_meta(body, rank, minutes))
 
-    md = markdown()
-    known = {gid for gid, _, _ in guides} | {"README"}
-    toc = [(gid, label) for gid, label, _ in guides]
 
-    out: dict[Path, str] = {}
-    minutes: dict[str, int] = {}
-    for rank, (gid, label, summary) in enumerate(guides, 1):
-        src = GUIDES_DIR / f"{gid}.md"
-        if not src.exists():
-            sys.exit(f"{src} is listed in the guides' README but does not exist")
-        body = render_body(md, src.read_text(encoding="utf-8"), known)
-        minutes[gid] = reading_minutes(body)
-        out[GUIDES_DIR / f"{gid}.html"] = page(
-            label, stamp_guide_meta(body, rank, minutes[gid]), toc, gid, gid,
-            GUIDES, plain_text(summary))
+def read_posts() -> list[tuple[str, str, str, str]]:
+    """The blog's README list, or nothing while there is no blog folder.
 
-    # The README is the guides' front page; its first paragraph says what they are, and is
-    # what a search result shows of that page.
-    body = stamp_reading_times(
-        render_body(md, (GUIDES_DIR / "README.md").read_text(encoding="utf-8"), known), minutes)
-    intro = re.search(r"<p>(.*?)</p>", body, re.S)
-    out[GUIDES_DIR / "index.html"] = page(
-        "Guides", body, toc, "", "", GUIDES,
-        " ".join(plain_text(intro.group(1)).split()) if intro else None)
-    return {path: stamp_assets(text, GUIDES_DIR) for path, text in out.items()}
+    Returns:
+        ``(post_id, label, summary, date)``, as parse_posts() reads them.
+    """
+    readme = BLOG_DIR / "README.md"
+    return parse_posts(readme.read_text(encoding="utf-8")) if readme.exists() else []
+
+
+def build_blog() -> dict[Path, str]:
+    """Render every post, and the blog's front page, on the manual's shell.
+
+    Returns:
+        Mapping of output path to file contents; empty while there is no blog folder.
+    """
+    if not (BLOG_DIR / "README.md").exists():
+        return {}
+    posts = read_posts()
+    if not posts:
+        sys.exit("no posts found in docs/blog/README.md — is each one a "
+                 "'- [Title](id.md) — YYYY-MM-DD — summary' line?")
+    dates = {pid: date for pid, _, _, date in posts}
+    for pid, date in dates.items():
+        try:
+            datetime.date.fromisoformat(date)
+        except ValueError:
+            sys.exit(f"docs/blog/README.md: {pid} is dated {date}, which is not a calendar date")
+    return build_listed(BLOG, BLOG_DIR, [(pid, label, summary) for pid, label, summary, _ in posts],
+                        lambda body, pid, _rank, minutes: stamp_post_meta(body, dates[pid], minutes))
 
 
 #: Where the trademark notice may appear in the Markdown: README.md only. It used to close all
@@ -1081,14 +1186,15 @@ def check_notice() -> list[str]:
 
 
 def outputs() -> dict[Path, str]:
-    """Everything a run writes: the manual's pages, the guides, and the sitemap that lists them.
+    """Everything a run writes: the manual's pages, the guides, the blog, and the sitemap.
 
     Returns:
         Mapping of output path to file contents.
     """
-    files = build() | build_guides()
+    files = build() | build_guides() | build_blog()
     files[SITEMAP] = sitemap(parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8")),
-                             [gid for gid, _, _ in read_guides()])
+                             [gid for gid, _, _ in read_guides()],
+                             [pid for pid, _, _, _ in read_posts()])
     return files
 
 
@@ -1118,12 +1224,12 @@ def main() -> int:
                 print(f"stale: {p.relative_to(REPO_DIR)}")
             print(f"\n{len(stale)} file(s) out of date — run scripts/gen_manual_html.py")
             return 1
-        print(f"{len(files) - 1} page(s) of the manual and the guides, and the sitemap, up to date")
+        print(f"{len(files) - 1} page(s) of the manual, the guides and the blog, and the sitemap, up to date")
         return 0
 
     for p, content in files.items():
         p.write_text(content, encoding="utf-8")
-    print(f"wrote {len(files) - 1} page(s) to {MANUAL_DIR} and {GUIDES_DIR}, and {SITEMAP.name}")
+    print(f"wrote {len(files) - 1} page(s) to {MANUAL_DIR}, {GUIDES_DIR} and {BLOG_DIR}, and {SITEMAP.name}")
     return 0
 
 

@@ -101,6 +101,13 @@ def test_the_bar_offers_the_guides_beside_the_manual():
     assert re.search(r'<a href="docs/manual/">Manual</a>\s*<a href="docs/guides/">Guides</a>', bar)
 
 
+def test_the_bar_offers_the_blog_after_the_guides():
+    """The blog took the last tab (2026-10-31), and its front page is one the generator writes."""
+    bar = re.search(r'<div class="nav-links">(.*?)</div>', PAGES["index.html"], re.S).group(1)
+    assert re.search(r'<a href="docs/guides/">Guides</a>\s*<a href="docs/blog/">Blog</a>\s*$', bar)
+    assert (ROOT / "docs" / "blog" / "README.md").is_file()
+
+
 def test_the_pages_were_found_to_point_somewhere():
     """The collections above are empty if the markup changes shape; that must not pass."""
     assert len([f for f in LOCAL_FILES if f[0] == "index.html"]) > 10

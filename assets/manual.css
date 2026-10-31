@@ -208,10 +208,11 @@ footer.man-foot,
 }
 
 /* Facts about a page, set apart from its text: which release the manual describes, which guide
-   this is and how long it takes to read, and each guide's time in their list. */
+   this is and how long it takes to read, each guide's time in their list, and a post's date. */
 .man-md .man-version,
 .man-md .man-guide-meta,
-.man-md .man-guide-time {
+.man-md .man-guide-time,
+.man-md .man-post-meta {
     font-family: var(--mono);
     font-size: 12px;
     letter-spacing: .06em;
@@ -476,6 +477,79 @@ footer.man-foot,
     background: var(--bg2);
     color: var(--text);
     white-space: nowrap
+}
+
+/* A timeline: the years down the left, a line with a dot per year, then what came out that
+   year. Drawn in CSS on an ordered list, so it still reads as a list without its styles and
+   asks for no script — the site loads none from elsewhere — and it fits a phone, which a chart
+   laid out sideways does not. A filled dot marks the page's own subject (`is-subject`). The
+   line and the dots take --text3: a graphic needs 3:1 on its ground, and --border2 drew at
+   2.8:1 on white. Offsets follow the reading text's first line: 16px at 1.7, centre at .85em. */
+.man-md .man-timeline {
+    margin: 18px 0;
+    padding: 0;
+    list-style: none
+}
+
+.man-md .man-timeline > li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3em 1fr;
+    column-gap: 30px;
+    margin: 0;
+    padding-bottom: 12px
+}
+
+/* The line, one segment per year, from the first dot down to the last and no further. */
+.man-md .man-timeline > li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(3em + 14px);
+    width: 2px;
+    background: var(--text3)
+}
+
+.man-md .man-timeline > li:first-child::before {
+    top: .85em
+}
+
+.man-md .man-timeline > li:last-child::before {
+    bottom: auto;
+    height: .85em
+}
+
+.man-md .man-timeline > li::after {
+    content: "";
+    position: absolute;
+    top: calc(.85em - 6px);
+    left: calc(3em + 9px);
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border: 2px solid var(--text3);
+    border-radius: 50%;
+    background: var(--bg)
+}
+
+.man-md .man-timeline > li.is-subject::after {
+    border-color: var(--text);
+    background: var(--text)
+}
+
+.man-md .man-timeline time {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text)
+}
+
+.man-md .man-timeline p {
+    margin: 0
+}
+
+.man-md .man-timeline-then {
+    color: var(--text3)
 }
 
 /* Padding is fully restated, not just the top: `footer` sets 64px/48px/40px by element, and a

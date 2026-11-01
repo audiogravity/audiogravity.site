@@ -171,6 +171,11 @@ The same models, with what came next:
 
 ## The NAIT 50, the small NAIT's return
 
+<img src="images/naim-nait-50-high-end-munich.webp" alt="The front of a NAIT 50 on a white stand: a black panel in a brushed aluminium frame, a large volume knob, a headphone socket, four push buttons marked phono, stream, aux and mains, and a small blue power light. Behind it hangs a large black and white photo of the first NAIT's front panel" width="1200" height="675">
+
+*The NAIT 50 at the High End show in Munich, in May 2023. Photo: What Hi-Fi?, from its
+[news of 18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one).*
+
 For its fiftieth anniversary in 2023, Naim brought back the first NAIT's looks: the NAIT 50 has the
 same small chrome-bumper case, 207 mm wide, 87 mm high and 321 mm deep. Naim made 1,973 of them,
 after the year it was founded.
@@ -189,5 +194,6 @@ output on a 6.35 mm jack.
 - TNT-Audio, March 2003: Lucio Cadeddu, ["Naim Nait 1 – A living legend"](https://www.tnt-audio.com/ampli/nait_e.html), about the first NAIT.
 - The models and their dates: [Naim NAIT](https://en.wikipedia.org/wiki/Naim_NAIT), Wikipedia, read on 2026-10-31, up to 2013; What Hi-Fi?, [8 July 2019](https://www.whathifi.com/news/naim-audio-launches-new-nait-and-supernait-integrated-amplifiers) for the NAIT XS 3 and SUPERNAIT 3, and [18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one) for the NAIT 50's launch.
 - The NAIT 50: [Naim's product page](https://www.naimaudio.com/products/nait-50), read on 2026-10-31: inputs, clipping levels, power, size, the 1,973 units, and "no longer available".
+- The NAIT 50's photograph: What Hi-Fi?, from its [news of 18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one), taken at the High End show in Munich.
 - What Naim still sells: its [catalogue of separates](https://www.naimaudio.com/catalog/separates), read on 2026-10-31, with no integrated amplifier category, and its "Discontinued products" list, which holds the NAIT 5si, NAIT XS 3, SUPERNAIT 3 and NAIT 50; their own pages, [NAIT 5si](https://www.naimaudio.com/products/nait-5si), [NAIT XS 3](https://www.naimaudio.com/products/nait-xs3) and [SUPERNAIT 3](https://www.naimaudio.com/products/supernait-3), say "This product is no longer available".
 - The CD version and replacing the capacitors: "Nobeone's Guide to Servicing a Naim Nait 2", hi-fi AF, 2020. [Copy kept on this site](../../docs/archive/hifiaf-nait2-recap-guide/index.html), with the readers' comments and the parts list, made on 2026-10-31 from the [Internet Archive's copy of 2026-06-09](https://web.archive.org/web/20260609001657/https://www.hifiaf.com/nait2-recap-guide/); hifiaf.com's domain pointed to no server that day. The parts list is a [shared Google Doc](https://docs.google.com/document/d/e/2PACX-1vTJ5mSLcx6uOe5Hf8Sb4L8_Ve5E5yYiQVvrwSFcujpuQA768BAOAgs_10uX2UvmKVzv1IJkw8bnnxfs/pub), still online on 2026-10-31.

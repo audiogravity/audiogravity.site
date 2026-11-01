@@ -10,11 +10,15 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[site] Finding your way in the guides, the blog and the manual.** The top bar links the guides and the blog to each other, the section being read underlined; the manual's names the manual alone, and a guide that has something to say about Audiogravi<sup>ty</sup> links to the chapter that says it, in its text. Below 360 px wide, the bar keeps the logo without the name. A page's parts are listed under its own entry in the sidebar, the part being read marked as the page scrolls and kept in view — a chapter runs to 33 parts, a post to 13 screens on a phone —; on a phone they are in an *On this page* menu under the title. Each page ends on the page before it and the page after it in its list — on the blog, the newer and the older post —, and on a link back to the list. The guides are filed under four themes, in their list and in the sidebar, each title on a line of its own with what it answers under it; the "Guide N" under their titles is gone. The blog's front page shows its posts as cards, each with its photograph, its date written out and its reading time. Each guide's short answer sits in a box at the top, and the line saying what a guide or a post was checked or measured against, and when, moves under its title, after a check mark.
 - **[site][manual] A community for owners, on GitHub Discussions.** The landing's footer links it as *Community*, beside *Issues*; the roadmap's invitation to say which direction matters most now leads to the community's *Ideas*, instead of the issues; the manual's *Getting help* sends questions, ideas and setups there, and keeps bug reports for the issues. A pinned welcome says where each kind of post goes.
 
 ### Changed
 - **[site] The blog post on the Quad 33 and 303 shows the inside of the new 33, and takes the new pair's size and power from Quad's manuals.** Quad's picture of the 2024 33 with its cover off, its toroidal transformer in view, and links to Quad's user manuals for the 2024 33 and 303. By those manuals, the new 33 is within 2 mm of the original in every dimension and the new 303 is 1.7 cm taller — the post said, after Hi-Fi News, 15 mm deeper and 11 mm taller —, and the 303 gives 49.5 W into 8 ohms, not 50, and 170 W bridged into 4 ohms.
 - **[site] The blog post on the Naim NAIT 2 shows the NAIT 50.** What Hi-Fi?'s photograph of it at the High End show in Munich, in May 2023, at the head of its section, credited to What Hi-Fi? and linked to its news of the launch.
+
+### Fixed
+- **[site] `dev.sh` serves a page asked for without its `.html`, as GitHub Pages does.** The generated manual, guides and blog link to each other that way, and every such link answered 404 on the local server: the sidebar and the links between pages could not be tried before publishing. `/page` is served from `page.html` when only the latter exists, its query string kept.
 
 ## [1.0.0-rc.3] - 2026-10-31
 

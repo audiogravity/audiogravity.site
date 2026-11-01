@@ -86,19 +86,48 @@ footer.man-foot,
     vertical-align: super
 }
 
-/* A link to the section's contents: the way back to the list of guides, which no guide page
-   offered before. It keeps the label's look, and says it is a link on hover. */
-.man-crumb {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    color: var(--text4);
-    text-decoration: none
+/* The links to the site's three sections — the manual, the guides, the blog —, the one being
+   read underlined in the sidebar's green. The bar held the section's own name alone, in 10px
+   capitals: a reader who came in on a guide reached the blog only through the landing. Named as
+   the landing's bar names them.
+
+   A <nav>, so the landing's costume for bare `nav` (style.css: a sticky 60px band with its own
+   ground, border and padding, and at most 1030px a padding below) is taken off here, property
+   by property, as it is for the sidebar above. */
+nav.man-sections {
+    position: static;
+    z-index: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin-left: 8px;
+    background: none;
+    backdrop-filter: none;
+    border-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px
 }
 
-.man-crumb:hover {
+.man-sections a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text3);
+    text-decoration: none;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+    white-space: nowrap;
+    transition: color var(--ease)
+}
+
+.man-sections a:hover {
     color: var(--text)
+}
+
+.man-sections a[aria-current] {
+    color: var(--text);
+    text-decoration-line: underline;
+    text-decoration-color: var(--ok-line) /* a mark: 3:1 floor, as the sidebar's */
 }
 
 /* The landing's light / dark toggle (style.css, assets/theme-toggle.js), at the end of the
@@ -109,8 +138,25 @@ footer.man-foot,
     margin-right: 0
 }
 
-/* With the toggle in the bar, "User manual" broke onto two lines below 327px (measured in
-   Chromium on 2026-10-15); a narrower gap keeps it on one at 320px. */
+/* The bar of a guide or a post needs 344px for the logo, the wordmark, its two sections and the
+   toggle at their gaps; the manual's, with its one, 296px (Chromium, 2026-11-01). Below that the
+   toggle was pushed off the screen and the page scrolled sideways. On the narrowest phones the
+   wordmark goes and the logo stays, the way home and its name for assistive technology
+   unchanged; 239px then suffice. 359 leaves the measured 344 a margin for a font that renders a
+   little wider, and keeps the wordmark from 360px, the narrowest common phone. */
+@media(max-width:359px) {
+    .man-home-word {
+        display: none
+    }
+
+    .man-home-icon {
+        margin-right: 0
+    }
+}
+
+/* A narrower gap still at the narrowest phones, so the three sections keep clear of the logo
+   and the toggle at 320px. It kept "User manual" on one line there when the bar named only the
+   section being read (measured in Chromium on 2026-10-15). */
 @media(max-width:340px) {
     .man-top {
         gap: 12px
@@ -186,6 +232,67 @@ footer.man-foot,
     color: var(--text4)
 }
 
+/* A theme of the guides' list (gen_manual_html.parse_guide_groups), over the guides it holds,
+   in the sidebar and in the phone's menu. Set as the page meta lines are: a label, not a title
+   to click. */
+.man-nav-group {
+    margin: 20px 0 4px;
+    padding: 0 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text4)
+}
+
+/* The sidebar has no padding at its top (nav.man-nav above takes the landing's off): a label
+   there sat against the bar. */
+.man-nav-group:first-child {
+    margin-top: 16px
+}
+
+/* The outline of the page being read: its parts, under its own entry in the sidebar, on a rule
+   that the part being read marks in the sidebar's green (manual-outline.js). Set in from the
+   entry's text, so it reads as the entry's own.
+
+   `contain: inline-size` keeps it out of the sidebar's width, which follows its longest title
+   (.man-shell): the manual's chapters, short, give 240px, and a long part's name widened the
+   column page by page, the text beside it shifting from one chapter to the next. It wraps in
+   the width the titles give instead. */
+.man-outline {
+    margin: 2px 0 10px 22px;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid var(--border);
+    contain: inline-size
+}
+
+.man-outline li {
+    margin: 0
+}
+
+.man-outline a {
+    display: block;
+    margin-left: -1px;
+    padding: 4px 16px 4px 12px;
+    border-left: 2px solid transparent;
+    font-size: 13px;
+    line-height: 1.4;
+    text-wrap: pretty;
+    color: var(--text3);
+    text-decoration: none;
+    transition: color var(--ease), border-color var(--ease)
+}
+
+.man-outline a:hover {
+    color: var(--text)
+}
+
+.man-outline a.is-current {
+    border-left-color: var(--ok-line);
+    color: var(--text)
+}
+
 .man-main {
     min-width: 0;
     padding: 40px max(24px, env(safe-area-inset-left)) 80px max(24px, env(safe-area-inset-right))
@@ -207,8 +314,8 @@ footer.man-foot,
     color: var(--text)
 }
 
-/* Facts about a page, set apart from its text: which release the manual describes, which guide
-   this is and how long it takes to read, each guide's time in their list, and a post's date. */
+/* Facts about a page, set apart from its text: which release the manual describes, how long a
+   guide takes to read, each guide's time in their list, and a post's date. */
 .man-md .man-version,
 .man-md .man-guide-meta,
 .man-md .man-guide-time,
@@ -229,6 +336,44 @@ footer.man-foot,
 
 .man-md .man-guide-time {
     white-space: nowrap
+}
+
+/* What a guide or a post was checked against, and when (gen_manual_html.lift_checked): under
+   its title, beside its date, smaller and quieter than the text, after a check mark in the
+   sidebar's green. It read as the text's second paragraph. Prose, so the text's own face. */
+.man-md .man-checked {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0 0 24px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text3)
+}
+
+.man-md .man-guide-meta + .man-checked {
+    margin-top: -14px
+}
+
+.man-checked-icon {
+    flex: none;
+    margin-top: 4px;
+    fill: none;
+    stroke: var(--ok-line); /* a mark: 3:1 floor */
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+/* A guide's short answer, the paragraph it opens on (gen_manual_html.box_short_answer), in a box
+   with the sidebar's green edge: the answer to the question the reader came with. */
+.man-md .man-short {
+    margin: 0 0 28px;
+    padding: 16px 20px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--ok-line);
+    border-radius: 6px
 }
 
 /* A link to a section lands the heading at the very top of the viewport, which is exactly
@@ -552,6 +697,200 @@ footer.man-foot,
     color: var(--text3)
 }
 
+/* The guides' list (gen_manual_html.stamp_entries): each title on a line of its own, what it
+   answers under it in the quieter grey, its reading time at the end. It read as one run of text
+   per guide, eighteen times over. No bullets: the titles align with the text above. */
+.man-md .man-entries {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.man-md .man-entry {
+    margin: 0 0 20px
+}
+
+.man-md .man-entry-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.45
+}
+
+.man-md .man-entry-summary {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text3)
+}
+
+/* The blog's front page (gen_manual_html.post_cards): one card per post, its figure on top, two
+   to a row where the column allows. The whole card leads to the post through its title's link,
+   stretched over it, so a screen reader hears the title alone. */
+.man-md .man-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 24px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none
+}
+
+.man-md .man-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color var(--ease)
+}
+
+/* Hover only where there is a pointer that hovers: a phone keeps the look of a hover on the last
+   card touched, which the back button brings back to the list. */
+@media(hover:hover) {
+    .man-md .man-card:hover {
+        border-color: var(--text3)
+    }
+
+    .man-md .man-card:hover .man-card-title a {
+        text-decoration: underline
+    }
+
+    .man-pager a:hover {
+        border-color: var(--text3)
+    }
+}
+
+.man-md .man-card:focus-within {
+    outline: 2px solid var(--text);
+    outline-offset: 2px
+}
+
+/* Every figure is cut to the same shape, so the titles start level across a row. */
+.man-md .man-card-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0
+}
+
+.man-md .man-card-text {
+    padding: 16px 18px 18px
+}
+
+.man-md .man-card-title {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -.01em
+}
+
+.man-md .man-card-title a {
+    color: var(--text)
+}
+
+.man-md .man-card-title a:focus-visible {
+    outline: none
+}
+
+.man-md .man-card-title a::after {
+    content: "";
+    position: absolute;
+    inset: 0
+}
+
+.man-md .man-card-meta {
+    margin: 8px 0 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .06em;
+    color: var(--text4)
+}
+
+.man-md .man-card-summary {
+    margin: 8px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text3)
+}
+
+/* The way on at the foot of a page: the page before it and the page after it in the list,
+   side by side, the next one on the right even when it is alone. A <nav>: the landing's
+   costume for it is taken off, as for the bar's. */
+nav.man-pager {
+    position: static;
+    z-index: auto;
+    width: auto;
+    height: auto;
+    max-width: 760px;
+    margin-top: 56px;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    border-bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: stretch
+}
+
+.man-pager a {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color var(--ease)
+}
+
+.man-pager-next {
+    grid-column: 2;
+    text-align: right
+}
+
+.man-pager-dir {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text4)
+}
+
+.man-pager-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-wrap: pretty;
+    color: var(--text)
+}
+
+.man-pager + .man-foot {
+    margin-top: 32px
+}
+
+/* A phone has no room for two titles side by side: they stack, the next one under. */
+@media(max-width:600px) {
+    nav.man-pager {
+        grid-template-columns: 1fr
+    }
+
+    .man-pager-next {
+        grid-column: auto
+    }
+}
+
 /* Padding is fully restated, not just the top: `footer` sets 64px/48px/40px by element, and a
    class only wins on the properties it names. Stating one side left the other three inherited
    from the landing's own footer. */
@@ -562,6 +901,13 @@ footer.man-foot,
     border-top: 1px solid var(--border);
     font-family: var(--mono);
     font-size: 12px
+}
+
+/* The way back to the section's list, then home. */
+.man-foot-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px
 }
 
 .man-foot a {
@@ -586,7 +932,8 @@ footer.man-foot,
    gen_manual_html.py writes it beside the sidebar). Closed, it takes one line, and the page
    starts on the first screen; open, every title shows whole, the page being read marked as in
    the sidebar. It replaces a strip scrolled sideways, which the guides' titles made unusable. */
-.man-menu {
+.man-menu,
+.man-outline-menu {
     display: none
 }
 
@@ -637,7 +984,8 @@ footer.man-foot,
         transition: transform var(--ease)
     }
 
-    .man-menu[open] .man-menu-chev {
+    .man-menu[open] .man-menu-chev,
+    .man-outline-menu[open] .man-menu-chev {
         transform: rotate(180deg)
     }
 
@@ -651,6 +999,56 @@ footer.man-foot,
 
     .man-menu .man-nav-item {
         padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left))
+    }
+
+    .man-menu .man-nav-group {
+        margin-top: 14px;
+        padding: 0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left))
+    }
+
+    /* The page's outline on a phone: a menu under its title, built like the page list above
+       it, closed until asked for. The sidebar, which holds it on a wider screen, is hidden. */
+    .man-md .man-outline-menu {
+        display: block;
+        margin: 0 0 24px;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border)
+    }
+
+    .man-outline-menu > summary {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        list-style: none;
+        font-size: 14px;
+        color: var(--text2);
+        cursor: pointer
+    }
+
+    .man-outline-menu > summary::-webkit-details-marker {
+        display: none
+    }
+
+    /* Restated against the text's own lists (`.man-md ul`, `.man-md li`), which outweigh the
+       outline's base rules inside the article. */
+    .man-md .man-outline-menu .man-outline {
+        margin: 0 0 12px;
+        padding: 0
+    }
+
+    .man-md .man-outline-menu .man-outline li {
+        margin: 0
+    }
+
+    .man-md .man-outline-menu .man-outline a {
+        padding: 9px 12px;
+        font-size: 15px;
+        color: var(--text2)
+    }
+
+    .man-md .man-outline-menu .man-outline a.is-current {
+        color: var(--text)
     }
 
     .man-main {

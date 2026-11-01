@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/blog/naim-audio-nait-2">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">Blog</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../guides/">Guides</a><a href="../blog/" aria-current="true">Blog</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -53,18 +54,43 @@
             <a class="man-nav-item" href="heed-abacus"><span>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</span></a>
             <a class="man-nav-item" href="naim-serial-numbers"><span>How old is your Naim? Serial numbers and years, 1982 to 2022</span></a>
             <a class="man-nav-item active" href="naim-audio-nait-2" aria-current="page"><span>The Naim NAIT 2: its figures, its sound, and the NAITs that followed</span></a>
+            <ul class="man-outline">
+                <li><a href="#what-it-is">What it is</a></li>
+                <li><a href="#inputs-outputs-and-figures">Inputs, outputs and figures</a></li>
+                <li><a href="#how-it-sounds-according-to-those-who-listened">How it sounds, according to those who listened</a></li>
+                <li><a href="#loudspeakers-and-cables">Loudspeakers and cables</a></li>
+                <li><a href="#connecting-a-streamer">Connecting a streamer</a></li>
+                <li><a href="#buying-one-second-hand">Buying one second-hand</a></li>
+                <li><a href="#the-nait-family">The NAIT family</a></li>
+                <li><a href="#the-nait-50-the-small-naits-return">The NAIT 50, the small NAIT's return</a></li>
+                <li><a href="#sources">Sources</a></li>
+            </ul>
         </nav>
 
         <main class="man-main">
             <article class="man-md">
 <h1>The Naim NAIT 2: its figures, its sound, and the NAITs that followed</h1>
 <p class="man-post-meta"><time datetime="2026-10-31">31 October 2026</time> · 9 min read</p>
+<p class="man-checked"><svg class="man-checked-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Checked on 2026-10-31 against Naim's owner's manual for the NAIT 2, Stereophile's 1989 review and
+bench measurements, and Hi-Fi World's 2007 comparison of four NAITs.</span></p>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">9</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#what-it-is">What it is</a></li>
+    <li><a href="#inputs-outputs-and-figures">Inputs, outputs and figures</a></li>
+    <li><a href="#how-it-sounds-according-to-those-who-listened">How it sounds, according to those who listened</a></li>
+    <li><a href="#loudspeakers-and-cables">Loudspeakers and cables</a></li>
+    <li><a href="#connecting-a-streamer">Connecting a streamer</a></li>
+    <li><a href="#buying-one-second-hand">Buying one second-hand</a></li>
+    <li><a href="#the-nait-family">The NAIT family</a></li>
+    <li><a href="#the-nait-50-the-small-naits-return">The NAIT 50, the small NAIT's return</a></li>
+    <li><a href="#sources">Sources</a></li>
+</ul>
+</details>
 <p>The NAIT 2 is the small integrated amplifier Naim Audio made from 1988 to 1993. Most units have
 four inputs: a moving-magnet phono stage and three line inputs on 5-pin DIN sockets. Its power is
 modest: Naim gives 13 W per channel into 8 ohms. Reviewers praised its sound, and advised small,
 easy-to-drive speakers in a small room.</p>
-<p>Checked on 2026-10-31 against Naim's owner's manual for the NAIT 2, Stereophile's 1989 review and
-bench measurements, and Hi-Fi World's 2007 comparison of four NAITs.</p>
 <img loading="lazy" src="images/naim-nait-2-chrome-bumper.jpg" alt="The front of a chrome-bumper NAIT 2: the Naim Audio logo lit in green, the balance, monitor and power knobs, and the input selector marked phono, tuner, aux and tape" width="870" height="606">
 <h2 id="what-it-is">What it is</h2>
 <p>NAIT stands for <strong>N</strong>aim <strong>A</strong>udio <strong>I</strong>n<strong>T</strong>egrated amplifier, as Naim's own glossary spells it.
@@ -333,8 +359,9 @@ output on a 6.35 mm jack.</p>
 </ul>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="naim-serial-numbers" rel="prev"><span class="man-pager-dir">← Newer post</span><span class="man-pager-title">How old is your Naim? Serial numbers and years, 1982 to 2022</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All posts</a><a href="../../index.html">← Back to audiogravity.app</a></p>
             </footer>
         </main>
     </div>

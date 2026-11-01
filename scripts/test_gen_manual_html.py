@@ -244,7 +244,10 @@ class TestPage:
         assert out.count('aria-current="page"') == 2
 
     def test_contents_page_marks_no_chapter_active(self):
-        assert 'aria-current' not in page("Contents", "", TOC, "", "")
+        """Its lists mark no chapter; the top bar marks the manual, as the page it is."""
+        out = page("Contents", "", TOC, "", "")
+        assert all("aria-current" not in found for found in _lists(out))
+        assert '<a href="../manual/" aria-current="page">Manual</a>' in out
 
     def test_lists_every_chapter_in_the_sidebar_and_in_the_phone_menu(self):
         out = page("Contents", "", TOC, "", "")
@@ -262,10 +265,77 @@ class TestPage:
         out = page("About Audiogravi<sup>ty</sup>", "", TOC, "", "")
         assert "<title>About Audiogravity — Audiogravity manual</title>" in out
 
-    def test_the_crumb_leads_to_the_contents(self):
-        """No page of a section linked back to its list: the crumb in the top bar does."""
+class TestSectionLinks:
+    """The top bar links to the sections of the page's family (2026-11-01). It named only the
+    section being read, in 10px capitals: a reader who came in on a guide reached the blog through
+    the landing. The guides and the blog link to each other; the manual stands alone."""
+
+    @staticmethod
+    def _bar(out):
+        return re.search(r'<header class="man-top">(.*?)</header>', out, re.S).group(1)
+
+    @staticmethod
+    def _sections(out):
+        return re.findall(r'<a href="\.\./(\w+)/"[^>]*>(\w+)</a>', TestSectionLinks._bar(out))
+
+    def test_a_guide_or_a_post_links_the_guides_and_the_blog(self):
+        import gen_manual_html as g
+        for section in (g.GUIDES, g.BLOG):
+            out = g.page("x", "", [("a", "A")], "a", "a", section)
+            assert self._sections(out) == [("guides", "Guides"), ("blog", "Blog")], section.crumb
+
+    def test_the_manual_names_the_manual_alone(self):
+        """The product's documentation, read by its owners: a guide that has something to say
+        about Audiogravity links to the chapter that says it, in its own text."""
         out = page("Listening", "", TOC, "04-listening", "04-listening")
-        assert '<a class="man-crumb" href="./">User manual</a>' in out
+        assert self._sections(out) == [("manual", "Manual")]
+
+    def test_marks_the_section_being_read(self):
+        import gen_manual_html as g
+        bar = self._bar(g.page("x", "", [("a", "A")], "a", "a", g.GUIDES))
+        assert '<a href="../guides/" aria-current="true">Guides</a>' in bar
+        assert bar.count("aria-current") == 1
+
+    def test_on_its_front_page_the_section_is_the_page(self):
+        import gen_manual_html as g
+        bar = self._bar(g.page("Blog", "", [("a", "A")], "", "", g.BLOG))
+        assert '<a href="../blog/" aria-current="page">Blog</a>' in bar
+
+    def test_a_section_without_pages_gets_no_link(self, tmp_path, monkeypatch):
+        import gen_manual_html as g
+        monkeypatch.setattr(g, "BLOG_DIR", tmp_path / "blog")
+        assert g.present_sections() == (g.MANUAL, g.GUIDES)
+        out = g.page("x", "", [("a", "A")], "a", "a", g.GUIDES, sections=g.present_sections())
+        assert self._sections(out) == [("guides", "Guides")]
+
+    def test_every_page_built_links_the_sections_of_its_family(self):
+        import gen_manual_html as g
+        for pages, count in ((build(), 1), (g.build_guides() | g.build_blog(), 2)):
+            for path, text in pages.items():
+                assert self._bar(text).count('<a href="../') == count, path.name
+
+    def test_the_wordmark_gives_way_on_the_narrowest_phones_and_the_link_keeps_its_name(self):
+        """A guide's bar needs 344px with it (Chromium, 2026-11-01): below 360 the logo stays
+        alone, and the link is still named for assistive technology."""
+        out = page("Listening", "", TOC, "04-listening", "04-listening")
+        assert '<span class="man-home-word">Audiogravi<sup>ty</sup></span></a>' in out
+        assert 'aria-label="Audiogravity home"' in out
+        css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
+        rule = re.search(r"@media\(max-width:359px\)\s*\{\s*\.man-home-word\s*\{([^}]*)\}", css)
+        assert rule and re.search(r"display:\s*none", rule.group(1))
+
+
+class TestFrontPages:
+    """The front page of the guides and of the blog keeps the sidebar and the phone's menu,
+    though they repeat its list. Left out on 2026-11-01, they were put back the same day: the
+    list page then had another frame than the pages it leads to, and the text jumped 134px to
+    the right at the click on a guide (Chromium, 1440px)."""
+
+    def test_the_guides_and_the_blog_keep_their_frame_on_their_front_page(self):
+        import gen_manual_html as g
+        for folder, pages in ((g.GUIDES_DIR, g.build_guides()), (g.BLOG_DIR, g.build_blog())):
+            front = pages[folder / "index.html"]
+            assert len(_lists(front)) == 2 and '<details class="man-menu">' in front, folder.name
 
 
 def _lists(out):
@@ -426,18 +496,18 @@ class TestGuides:
         assert '<meta name="description" content="How to run it, by Audiogravity.">' in self._page()
 
     def test_reads_a_numbered_list_as_it_reads_bullets(self):
-        """The README numbers its guides, like the manual's contents."""
+        """The README lists its guides as bullets under their themes; a numbered line, as it
+        wrote them until 2026-11-01, reads the same."""
         import gen_manual_html as g
         assert g.parse_guides(self.README.replace("- [", "1. [")) == g.parse_guides(self.README)
 
-    def test_it_is_filed_under_guides_numbered_by_rank(self):
-        """A guide's address carries no number: the sidebar counts its place in the list."""
+    def test_it_is_filed_under_guides_without_numbers(self):
+        """Filed by theme, a guide's rank would only say where it happens to sit (2026-11-01)."""
         out = self._page()
-        assert '<a class="man-crumb" href="./">Guides</a>' in out
+        assert '<a href="../guides/" aria-current="true">Guides</a>' in out
         assert '<nav class="man-nav" aria-label="Guides">' in out
-        assert ('href="hqplayer-on-a-pi" aria-current="page"><span class="man-nav-n">01</span>'
-                '<span>HQPlayer on a Pi</span></a>') in out
-        assert '<span class="man-nav-n">02</span><span>NAA on a Pi</span></a>' in out
+        assert 'href="hqplayer-on-a-pi" aria-current="page"><span>HQPlayer on a Pi</span></a>' in out
+        assert "man-nav-n" not in out
 
     def test_a_label_with_markup_stays_one_piece_in_the_sidebar(self):
         """The sidebar item is a flex row: unwrapped, "Audiogravi<sup>ty</sup>, Volumio or moOde"
@@ -455,7 +525,7 @@ class TestGuides:
 
     def test_the_manual_keeps_its_own_labels(self):
         out = page("Listening", "", TOC, "04-listening", "04-listening")
-        assert '<a class="man-crumb" href="./">User manual</a>' in out
+        assert '<a href="../manual/" aria-current="true">Manual</a>' in out
         assert '<span class="man-nav-n">04</span>' in out
         assert "<title>Listening — Audiogravity manual</title>" in out
 
@@ -520,7 +590,7 @@ def links_that_land(pages: dict[Path, str], folder: Path, own: set[str]) -> int:
             elif where.startswith("images/"):
                 assert (folder / where).is_file(), f"{path.name}: {target}"
             else:
-                # "./" is the section's front page, which the crumb in the top bar leads to.
+                # "./" is the section's front page, which the foot of each page leads back to.
                 assert where in own | {"", "./"}, f"{path.name}: {target}"
             checked += 1
     return checked
@@ -556,14 +626,28 @@ class TestPublishedGuides:
         assert links_that_land(g.build_guides(), g.GUIDES_DIR,
                                {gid for gid, _, _ in self._guides()}) > 20
 
-    def test_every_guide_says_its_number_and_reading_time(self):
+    def test_every_guide_says_its_reading_time(self):
         """Under its title, and again in the list of guides."""
         import gen_manual_html as g
         pages = g.build_guides()
-        for rank, (gid, _, _) in enumerate(self._guides(), 1):
-            assert re.search(rf'<p class="man-guide-meta">Guide {rank} · \d+ min read</p>',
+        for gid, _, _ in self._guides():
+            assert re.search(r'<p class="man-guide-meta">\d+ min read</p>',
                              pages[g.GUIDES_DIR / f"{gid}.html"]), gid
         assert pages[g.GUIDES_DIR / "index.html"].count('class="man-guide-time"') == len(self._guides())
+
+    def test_every_guide_is_filed_under_a_theme(self):
+        """A guide above the first theme would sit under none; a theme alone says little."""
+        import gen_manual_html as g
+        themes = g.parse_guide_groups((g.GUIDES_DIR / "README.md").read_text(encoding="utf-8"))
+        assert self._guides()[0][0] in themes
+        assert len(themes) >= 2
+
+    def test_the_list_gives_each_guide_an_entry_under_its_theme(self):
+        import gen_manual_html as g
+        front = g.build_guides()[g.GUIDES_DIR / "index.html"]
+        themes = g.parse_guide_groups((g.GUIDES_DIR / "README.md").read_text(encoding="utf-8"))
+        assert front.count('<li class="man-entry">') == len(self._guides())
+        assert front.count('<ul class="man-entries">') == len(themes)
 
 
 class TestBlog:
@@ -598,7 +682,7 @@ class TestBlog:
     def test_it_is_filed_under_the_blog_without_numbers(self):
         """A post's place in the list moves with each new one: it is dated, not numbered."""
         out = self._page()
-        assert '<a class="man-crumb" href="./">Blog</a>' in out
+        assert '<a href="../blog/" aria-current="true">Blog</a>' in out
         assert '<nav class="man-nav" aria-label="Blog posts">' in out
         assert '<summary><span>All posts</span><span class="man-menu-count">2</span>' in out
         assert 'href="naim-nait-2" aria-current="page"><span>The Naim NAIT 2</span></a>' in out
@@ -676,13 +760,323 @@ class TestPublishedBlog:
         assert links_that_land(g.build_blog(), g.BLOG_DIR, {pid for pid, _, _, _ in self._posts()}) > 10
 
     def test_every_post_says_its_date_and_reading_time(self):
-        """Under its title, and its reading time again in the blog's list."""
+        """Under its title, and again on its card on the blog's front page."""
         import gen_manual_html as g
         pages = g.build_blog()
+        front = pages[g.BLOG_DIR / "index.html"]
+        assert front.count('<li class="man-card">') == len(self._posts())
         for pid, _, _, date in self._posts():
             assert re.search(rf'<p class="man-post-meta"><time datetime="{date}">[^<]+</time> · \d+ min read</p>',
                              pages[g.BLOG_DIR / f"{pid}.html"]), pid
-        assert pages[g.BLOG_DIR / "index.html"].count('class="man-guide-time"') == len(self._posts())
+            assert re.search(rf'<a href="{pid}">[^<]*(?:<[^>]+>[^<]*)*</a></h2><p class="man-card-meta">'
+                             rf'<time datetime="{date}">[^<]+</time> · \d+ min read</p>', front), pid
+
+    def test_every_post_has_a_figure_for_its_card(self):
+        """A post without one would get a card without one: allowed, but none has yet."""
+        import gen_manual_html as g
+        front = g.build_blog()[g.BLOG_DIR / "index.html"]
+        assert front.count('<img class="man-card-img"') == len(self._posts())
+
+
+class TestGuideGroups:
+    """The guides are filed under themes, the README's second-level headings (2026-11-01): a flat
+    list of eighteen, numbered 1 to 18, said nothing of what each was about."""
+
+    README = (
+        "# Guides\n\nAnswers.\n\n"
+        "## The DAC\n\n"
+        "- [DAC HAT](dac-hat.md) — Why it is not seen.\n"
+        "- [USB DAC](usb-dac.md) — What it takes.\n\n"
+        "## Nothing under it\n\n"
+        "### Not a theme\n\n"
+        "## The network\n\n"
+        "- [NAS](nas.md) — Mount it.\n"
+    )
+
+    def test_each_theme_opens_on_its_first_guide(self):
+        import gen_manual_html as g
+        assert g.parse_guide_groups(self.README) == {"dac-hat": "The DAC", "nas": "The network"}
+
+    def test_the_guides_keep_their_order(self):
+        import gen_manual_html as g
+        assert [gid for gid, _, _ in g.parse_guides(self.README)] == ["dac-hat", "usb-dac", "nas"]
+
+    def test_a_readme_without_themes_has_none(self):
+        import gen_manual_html as g
+        assert g.parse_guide_groups("# Guides\n\n- [NAS](nas.md) — Mount it.\n") == {}
+
+    def test_the_sidebar_and_the_menu_name_each_theme_above_its_guides(self):
+        import gen_manual_html as g
+        toc = [("dac-hat", "DAC HAT"), ("usb-dac", "USB DAC"), ("nas", "NAS")]
+        out = g.page("NAS", "", toc, "nas", "nas", g.GUIDES,
+                     groups={"dac-hat": "The DAC", "nas": "The network"})
+        for found in _lists(out):
+            assert re.findall(r'<p class="man-nav-group">([^<]+)</p>', found) == ["The DAC", "The network"]
+            assert found.index('href="usb-dac"') < found.index("The network") < found.index('href="nas"')
+
+
+class TestOutline:
+    """A page's parts: under its entry in the sidebar and, on a phone, in a menu under its title
+    (2026-11-01). A post ran to 13 screens on a phone and a chapter to 33 parts, with nothing to
+    show them or reach one but scrolling."""
+
+    BODY = ('<h1>NAIT 2</h1>\n<p class="man-post-meta">31 October 2026 · 9 min read</p>\n<p>Intro</p>\n'
+            '<h2 id="what-it-is">What it is</h2>\n<p>x</p>\n'
+            '<h2 id="with-audiogravity">With Audiogravi<sup>ty</sup></h2>\n<p>y</p>\n'
+            '<h2 id="sources">See <a href="https://example.org">the sources</a></h2>\n')
+
+    def _page(self, body=None, active="b"):
+        import gen_manual_html as g
+        return g.page("NAIT 2", self.BODY if body is None else body, [("a", "A"), ("b", "B")],
+                      active, active, g.BLOG)
+
+    def test_reads_the_parts_by_their_headings(self):
+        """A heading's markup is kept, but not a link: the part's own entry is one."""
+        import gen_manual_html as g
+        assert g.outline(self.BODY) == [("what-it-is", "What it is"),
+                                        ("with-audiogravity", "With Audiogravi<sup>ty</sup>"),
+                                        ("sources", "See the sources")]
+
+    def test_the_sidebar_lists_them_under_the_page_entry_and_the_menu_does_not(self):
+        menu, sidebar = _lists(self._page())
+        assert (sidebar.index('href="b" aria-current="page"')
+                < sidebar.index('<ul class="man-outline">')
+                < sidebar.index('<li><a href="#what-it-is">What it is</a></li>'))
+        assert "man-outline" not in menu
+
+    def test_a_phone_gets_them_in_a_menu_under_the_title_and_its_line(self):
+        out = self._page()
+        article = out[out.index('<article class="man-md">'):out.index("</article>")]
+        assert (article.index('class="man-post-meta"') < article.index('<details class="man-outline-menu">')
+                < article.index("<p>Intro</p>"))
+        assert '<summary><span>On this page</span><span class="man-menu-count">3</span>' in article
+
+    def test_a_chapter_without_a_line_under_its_title_gets_it_right_after(self):
+        body = '<h1>Listening</h1>\n<p>Intro</p>\n<h2 id="a">A</h2>\n<h2 id="b">B</h2>\n'
+        out = page("Listening", body, TOC, "04-listening", "04-listening")
+        assert '<h1>Listening</h1>\n<details class="man-outline-menu">' in out
+
+    def test_a_page_of_one_part_has_none(self):
+        assert "man-outline" not in self._page('<h1>T</h1>\n<h2 id="only">Only</h2>\n<p>x</p>\n')
+
+    def test_a_front_page_has_none(self):
+        assert "man-outline" not in self._page(active="")
+
+    def test_every_page_loads_the_script_that_marks_the_part_being_read(self):
+        assert '<script src="../../assets/manual-outline.js" defer></script>' in self._page()
+        js = (REPO_DIR / "assets" / "manual-outline.js").read_text(encoding="utf-8")
+        assert "'.man-outline a[href^=\"#\"]'" in js
+        assert "is-current" in js and "aria-current" in js
+
+    def test_every_part_listed_lands_on_its_heading(self):
+        import gen_manual_html as g
+        checked = 0
+        for path, text in (build() | g.build_guides() | g.build_blog()).items():
+            ids = set(re.findall(r'<h2 id="([^"]+)"', text))
+            for target in re.findall(r'<li><a href="#([^"]+)">', text):
+                assert target in ids, f"{path.name}: #{target}"
+                checked += 1
+        assert checked > 100
+
+    def test_the_sidebar_keeps_its_width_whatever_the_parts(self):
+        """A long part's name widened the manual's sidebar page by page, the text beside it
+        shifting from one chapter to the next (Chromium, 2026-11-01)."""
+        css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
+        rule = re.search(r"\n\.man-outline \{([^}]*)\}", css)
+        assert rule and re.search(r"contain:\s*inline-size", rule.group(1))
+
+
+class TestCheckedAndShortAnswer:
+    """What sets a guide apart, set apart (2026-11-01): its short answer in a box, and what it was
+    checked against under its title, beside its date. Both read as ordinary paragraphs."""
+
+    BODY = ('<h1>DSD</h1>\n<p><strong>Short answer:</strong> three ways.</p>\n'
+            '<p>Checked on 2026-10-17 against the\nkernel.</p>\n<p>Text.</p>\n'
+            '<h2 id="more">More</h2>\n<p>Checked on 2026-10-18 again, in the text.</p>\n'
+            '<p><strong>Short answer:</strong> not this one.</p>\n')
+
+    def test_the_short_answer_gets_its_box(self):
+        import gen_manual_html as g
+        out = g.box_short_answer(self.BODY)
+        assert '<p class="man-short"><strong>Short answer:</strong> three ways.</p>' in out
+        assert out.count('class="man-short"') == 1
+
+    def test_the_checked_line_moves_under_the_title_with_its_mark(self):
+        import gen_manual_html as g
+        out = g.lift_checked(self.BODY)
+        assert out.startswith('<h1>DSD</h1>\n<p class="man-checked"><svg class="man-checked-icon"')
+        assert ('<span>Checked on 2026-10-17 against the\nkernel.</span></p>\n'
+                '<p><strong>Short answer:</strong>') in out
+        assert "<p>Checked on 2026-10-17" not in out
+        assert "<p>Checked on 2026-10-18 again, in the text.</p>" in out
+
+    def test_a_page_without_them_is_left_as_it_is(self):
+        import gen_manual_html as g
+        body = "<h1>T</h1>\n<p>Text.</p>\n"
+        assert g.lift_checked(body) == body and g.box_short_answer(body) == body
+
+    def test_a_measured_page_says_it_under_its_title_too(self):
+        """"Measured on" where the page's figures were measured (the volume guide, 2026-11-01)."""
+        import gen_manual_html as g
+        out = g.lift_checked("<h1>Volume</h1>\n<p>Short.</p>\n<p>Measured on 2026-10-22 on Debian 13.</p>\n")
+        assert out.startswith('<h1>Volume</h1>\n<p class="man-checked">')
+        assert "<span>Measured on 2026-10-22 on Debian 13.</span>" in out
+
+    def test_a_disclosure_that_dates_its_sources_stays_in_the_text(self):
+        """The comparison opens on its author's interest: set small and grey, it would fade."""
+        import gen_manual_html as g
+        page_ = g.build_guides()[g.GUIDES_DIR / "audiogravity-volumio-moode.html"]
+        assert 'class="man-checked"' not in page_
+        assert re.search(r"<p>I make Audiogravi<sup>ty</sup>: read this page with that in mind\.", page_)
+
+    def test_it_comes_after_the_date_and_before_the_phone_outline(self):
+        import gen_manual_html as g
+        body = g.stamp_post_meta(g.lift_checked(self.BODY), "2026-10-31", 3)
+        out = g.page("DSD", body + '<h2 id="end">End</h2>\n', [("a", "A"), ("b", "B")], "b", "b", g.BLOG)
+        article = out[out.index('<article class="man-md">'):]
+        assert (article.index('class="man-post-meta"') < article.index('class="man-checked"')
+                < article.index('<details class="man-outline-menu">') < article.index("Short answer"))
+
+    def test_every_guide_has_its_short_answer_boxed(self):
+        import gen_manual_html as g
+        pages = g.build_guides()
+        for gid, _, _ in g.read_guides():
+            assert '<p class="man-short"><strong>Short answer:</strong>' in pages[g.GUIDES_DIR / f"{gid}.html"], gid
+
+    def test_every_page_saying_what_it_was_checked_against_says_it_under_its_date(self):
+        import gen_manual_html as g
+        lifted = 0
+        for path, text in (g.build_guides() | g.build_blog()).items():
+            if 'class="man-checked"' in text:
+                assert re.search(r'</h1>\n<p class="man-(?:guide|post)-meta">.*?</p>\n<p class="man-checked">',
+                                 text, re.S), path.name
+                lifted += 1
+        assert lifted >= 22
+
+    def test_the_phone_outline_follows_the_lines_under_the_title_in_any_order(self):
+        """Its place was found by a pattern that took them in one order only."""
+        import gen_manual_html as g
+        body = ('<h1>T</h1>\n<p class="man-checked">✓ Checked on 2026-11-01.</p>\n'
+                '<p class="man-post-meta">1 November 2026 · 2 min read</p>\n<p>Intro.</p>\n'
+                '<h2 id="a">A</h2>\n<h2 id="b">B</h2>\n')
+        out = g.page("T", body, [("a", "A"), ("b", "B")], "b", "b", g.BLOG)
+        assert ('2 min read</p>\n<details class="man-outline-menu">') in out
+
+
+class TestPager:
+    """The way on at the foot of a page (2026-11-01): every page ended on the way home alone."""
+
+    TOC3 = [("a", "First"), ("b", "Second"), ("c", "Third")]
+
+    def _pager(self, active, section=None):
+        import gen_manual_html as g
+        out = g.page("x", "", self.TOC3, active, active, section or g.GUIDES)
+        m = re.search(r'<nav class="man-pager"[^>]*>(.*?)</nav>', out, re.S)
+        return m.group(1) if m else None
+
+    def test_a_page_leads_to_the_one_before_it_and_the_one_after(self):
+        found = self._pager("b")
+        assert ('<a class="man-pager-prev" href="a" rel="prev"><span class="man-pager-dir">← Previous guide'
+                '</span><span class="man-pager-title">First</span></a>') in found
+        assert ('<a class="man-pager-next" href="c" rel="next"><span class="man-pager-dir">Next guide →'
+                '</span><span class="man-pager-title">Third</span></a>') in found
+
+    def test_the_ends_of_the_list_lead_one_way(self):
+        assert "man-pager-prev" not in self._pager("a") and "man-pager-next" in self._pager("a")
+        assert "man-pager-next" not in self._pager("c") and "man-pager-prev" in self._pager("c")
+
+    def test_the_blog_says_newer_and_older(self):
+        """Its list runs newest first: the post before one in it is a newer one."""
+        import gen_manual_html as g
+        found = self._pager("b", g.BLOG)
+        assert "← Newer post" in found and "Older post →" in found
+
+    def test_the_manual_says_chapter(self):
+        out = page("Quick start", "", TOC, "00-quick-start", "00-quick-start")
+        assert ('<span class="man-pager-dir">Next chapter →</span>'
+                '<span class="man-pager-title">Listening</span>') in out
+
+    def test_a_front_page_has_none(self):
+        assert self._pager("") is None
+
+    def test_it_sits_between_the_text_and_the_footer(self):
+        import gen_manual_html as g
+        out = g.page("x", "<p>Body</p>", self.TOC3, "b", "b", g.GUIDES)
+        assert out.index("</article>") < out.index('<nav class="man-pager"') < out.index('<footer class="man-foot">')
+
+    def test_the_footer_leads_back_to_the_list_from_a_page_of_it(self):
+        import gen_manual_html as g
+        out = g.page("x", "", self.TOC3, "b", "b", g.GUIDES)
+        assert '<p class="man-foot-links"><a href="./">All guides</a><a href="../../index.html">' in out
+        assert 'href="./">All guides</a>' not in g.page("Guides", "", self.TOC3, "", "", g.GUIDES)
+
+
+class TestBlogCards:
+    """The blog's front page lists its posts as cards (2026-11-01): it was the README's bullets,
+    the date "2026-10-31" between two dashes in the text, though every post has a figure."""
+
+    POSTS = [("nait-2", "The Naim NAIT 2", "Naim's small amplifier, by Audiogravi<sup>ty</sup>.", "2026-10-31"),
+             ("no-figure", "A post without a figure", "Words only.", "2026-09-01")]
+    BODIES = {"nait-2": ('<h1>NAIT 2</h1>\n<p>x</p>\n<img loading="lazy" src="images/nait-2.jpg" '
+                         'alt="The front of a NAIT 2" width="870" height="606">\n'
+                         '<img src="images/second.webp" alt="">'),
+              "no-figure": "<h1>Words</h1>\n<p>x</p>"}
+
+    def _cards(self):
+        import gen_manual_html as g
+        return g.post_cards(self.POSTS, {"nait-2": 9, "no-figure": 2}, self.BODIES)
+
+    def test_one_card_per_post_in_the_readme_order(self):
+        assert re.findall(r'<h2 class="man-card-title"><a href="([^"]+)">', self._cards()) == ["nait-2", "no-figure"]
+
+    def test_a_card_shows_the_first_figure_without_repeating_its_description(self):
+        """The title beside it says what the post is; the description would be read twice."""
+        cards = self._cards()
+        assert '<img class="man-card-img" src="images/nait-2.jpg" alt="" width="870" height="606">' in cards
+        assert "second.webp" not in cards
+
+    def test_the_first_row_loads_at_once_and_the_others_when_near(self):
+        """Deferred, the first figure — the first thing seen — was fetched last."""
+        import gen_manual_html as g
+        posts = [(f"p{i}", f"P{i}", "S.", "2026-10-31") for i in range(4)]
+        bodies = {pid: f'<img src="images/{pid}.webp" alt="x">' for pid, _, _, _ in posts}
+        cards = g.post_cards(posts, {pid: 1 for pid, _, _, _ in posts}, bodies)
+        figures = re.findall(r'<img class="man-card-img"[^>]*>', cards)
+        assert g.EAGER_CARDS == 2
+        assert ["loading" in f for f in figures] == [False, False, True, True]
+
+    def test_a_link_written_in_a_card_is_kept_as_text(self):
+        """The card's own link lies over the whole card: one under it could not be followed."""
+        import gen_manual_html as g
+        posts = [("a", "A [linked](b.md) title", "See [the other post](b.md).", "2026-10-31")]
+        cards = g.post_cards(posts, {"a": 1}, {"a": "<p>x</p>"})
+        assert '<a href="a">A linked title</a></h2>' in cards
+        assert '<p class="man-card-summary">See the other post.</p>' in cards
+
+    def test_a_card_gives_the_date_in_full_and_the_reading_time(self):
+        assert ('<p class="man-card-meta"><time datetime="2026-10-31">31 October 2026</time>'
+                ' · 9 min read</p>') in self._cards()
+
+    def test_a_card_keeps_the_markup_of_its_summary(self):
+        assert "<p class=\"man-card-summary\">Naim's small amplifier, by Audiogravi<sup>ty</sup>.</p>" in self._cards()
+
+    def test_a_post_without_a_figure_gets_a_card_without_one(self):
+        card = self._cards().split('<li class="man-card">')[2]
+        assert "<img" not in card and 'href="no-figure"' in card
+
+    def test_the_cards_take_the_place_of_the_readme_list(self):
+        import gen_manual_html as g
+        body = ('<h1>Blog</h1>\n<p>Stories.</p>\n<ul>\n<li><a href="nait-2">The Naim NAIT 2</a> — 2026-10-31 — x</li>\n'
+                '</ul>\n<p>After.</p>')
+        assert g.replace_page_list(body, {"nait-2"}, "<CARDS>") == (
+            '<h1>Blog</h1>\n<p>Stories.</p>\n<CARDS>\n<p>After.</p>')
+
+    def test_the_first_figure_of_a_page(self):
+        import gen_manual_html as g
+        assert g.first_image('<p>x</p><img src="a.webp" alt="A" width="3" height="2">') == {
+            "src": "a.webp", "alt": "A", "width": "3", "height": "2"}
+        assert g.first_image("<p>No figure.</p>") is None
+        assert g.first_image('<img alt="no source">') is None
 
 
 class TestReadingTime:
@@ -711,21 +1105,41 @@ class TestReadingTime:
         import gen_manual_html as g
         assert g.reading_minutes("") == 1
 
-    def test_a_guide_says_it_under_its_title_with_its_number(self):
+    def test_a_guide_says_it_under_its_title(self):
         import gen_manual_html as g
-        assert g.stamp_guide_meta("<h1>DSD</h1>\n<p>Body</p>", 10, 5) == (
-            '<h1>DSD</h1>\n<p class="man-guide-meta">Guide 10 · 5 min read</p>\n<p>Body</p>')
+        assert g.stamp_guide_meta("<h1>DSD</h1>\n<p>Body</p>", 5) == (
+            '<h1>DSD</h1>\n<p class="man-guide-meta">5 min read</p>\n<p>Body</p>')
 
-    def test_the_list_ends_each_guide_with_its_time(self):
+    def test_the_list_gives_each_guide_a_line_and_its_summary_under_it(self):
+        """It read as one run of text per guide: title, summary and time (2026-11-01)."""
         import gen_manual_html as g
-        body = ('<ol>\n<li><a href="dsd">DSD</a> — Three ways.</li>\n'
-                '<li><a href="naa">NAA</a> — The other end.</li>\n'
-                '<li><a href="https://example.org">Elsewhere</a></li>\n</ol>')
-        out = g.stamp_reading_times(body, {"dsd": 5, "naa": 3})
-        assert ('<li><a href="dsd">DSD</a> — Three ways. '
-                '<span class="man-guide-time">5 min read</span></li>') in out
-        assert '— The other end. <span class="man-guide-time">3 min read</span></li>' in out
-        assert '<li><a href="https://example.org">Elsewhere</a></li>' in out
+        body = ('<h2 id="dac">DAC</h2>\n<ul>\n<li><a href="dsd">DSD</a> — Three ways.</li>\n'
+                '<li><a href="naa">NAA</a> — The other end.</li>\n</ul>\n'
+                '<ul>\n<li><a href="https://example.org">Elsewhere</a></li>\n</ul>')
+        out = g.stamp_entries(body, {"dsd": 5, "naa": 3})
+        assert ('<ul class="man-entries">\n<li class="man-entry"><a class="man-entry-title" href="dsd">DSD</a>'
+                '<span class="man-entry-summary">Three ways. <span class="man-guide-time">5 min read</span>'
+                '</span></li>') in out
+        assert ('<span class="man-entry-summary">The other end. <span class="man-guide-time">3 min read'
+                '</span></span></li>\n</ul>') in out
+        assert '<ul>\n<li><a href="https://example.org">Elsewhere</a></li>\n</ul>' in out
+
+    def test_a_loose_list_is_laid_out_the_same(self):
+        """A blank line between two guides wraps each entry in a paragraph: a theme kept its
+        bullets and lost its reading times over it (seen by provoking it, 2026-11-01)."""
+        import gen_manual_html as g
+        md, known, minutes = g.markdown(), {"dsd", "naa"}, {"dsd": 5, "naa": 3}
+        tight = g.stamp_entries(g.render_body(md, "- [DSD](dsd.md) — Three ways.\n"
+                                                  "- [NAA](naa.md) — The other end.\n", known), minutes)
+        loose = g.stamp_entries(g.render_body(md, "- [DSD](dsd.md) — Three ways.\n\n"
+                                                  "- [NAA](naa.md) — The other end.\n", known), minutes)
+        assert "<p>" in md.render("- a\n\n- b\n")       # the form this is about
+        assert loose == tight and loose.count('<li class="man-entry">') == 2
+
+    def test_a_list_holding_anything_but_guides_is_left_as_it_is(self):
+        import gen_manual_html as g
+        body = '<ul>\n<li><a href="dsd">DSD</a> — Three ways.</li>\n<li><a href="x">X</a> — Not a guide.</li>\n</ul>'
+        assert g.stamp_entries(body, {"dsd": 5}) == body
 
 
 class TestHeadingIds:
@@ -954,7 +1368,7 @@ class TestAssetStamps:
         for directory, pages in ((MANUAL_DIR, built), (g.GUIDES_DIR, g.build_guides()),
                                  (g.BLOG_DIR, g.build_blog())):
             for path, text in pages.items():
-                assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == 5, path.name
+                assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == 6, path.name
                 assert out_of_date(text, directory) == [], path.name
 
 

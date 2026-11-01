@@ -63,12 +63,18 @@ refuse_busy() {
 serve() {
     in_use && refuse_busy
     echo "Landing page: $URL"
+    # A page asked for without its .html is served as GitHub Pages serves it: the generated
+    # manual, guides and blog link to each other that way, and every such link answered 404 here.
     exec python3 -c "
-import http.server, os
+import http.server, os, urllib.parse
 os.chdir('$SITE_DIR')
 class H(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/': self.path = '/index.html'
+        path, mark, query = self.path.partition('?')
+        local = urllib.parse.unquote(path).lstrip('/')
+        if local and not os.path.exists(local) and os.path.isfile(local + '.html'):
+            self.path = path + '.html' + mark + query
         return super().do_GET()
     def log_message(self, *a): pass
 http.server.ThreadingHTTPServer(('', $PORT), H).serve_forever()

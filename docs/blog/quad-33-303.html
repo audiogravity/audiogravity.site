@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/blog/quad-33-303">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">Blog</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../guides/">Guides</a><a href="../blog/" aria-current="true">Blog</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -49,6 +50,16 @@
     <div class="man-shell">
         <nav class="man-nav" aria-label="Blog posts">
             <a class="man-nav-item active" href="quad-33-303" aria-current="page"><span>The Quad 33 and 303: Quad's first transistor amplifiers, and their return in 2024</span></a>
+            <ul class="man-outline">
+                <li><a href="#from-valves-to-transistors">From valves to transistors</a></li>
+                <li><a href="#the-33-control-unit">The 33 control unit</a></li>
+                <li><a href="#the-303-power-amplifier">The 303 power amplifier</a></li>
+                <li><a href="#what-hi-fi-news-measured">What Hi-Fi News measured</a></li>
+                <li><a href="#a-streamer-into-a-33">A streamer into a 33</a></li>
+                <li><a href="#the-33-and-303-of-2024">The 33 and 303 of 2024</a></li>
+                <li><a href="#with-audiogravity">With Audiogravi<sup>ty</sup></a></li>
+                <li><a href="#sources">Sources</a></li>
+            </ul>
             <a class="man-nav-item" href="bbc-ls3-5a"><span>The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a>
             <a class="man-nav-item" href="heed-abacus"><span>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</span></a>
             <a class="man-nav-item" href="naim-serial-numbers"><span>How old is your Naim? Serial numbers and years, 1982 to 2022</span></a>
@@ -59,14 +70,27 @@
             <article class="man-md">
 <h1>The Quad 33 and 303: Quad's first transistor amplifiers, and their return in 2024</h1>
 <p class="man-post-meta"><time datetime="2026-10-31">31 October 2026</time> · 8 min read</p>
+<p class="man-checked"><svg class="man-checked-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Checked on 2026-10-31 against Quad's instruction books for the 33 and the 303, old and new, the 33's circuit
+diagram, a history of the firm Quad wrote in 1982, and the reviews of 2025 in Hi-Fi News and
+Stereophile, with Hi-Fi News' measurements of the originals.</span></p>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">8</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#from-valves-to-transistors">From valves to transistors</a></li>
+    <li><a href="#the-33-control-unit">The 33 control unit</a></li>
+    <li><a href="#the-303-power-amplifier">The 303 power amplifier</a></li>
+    <li><a href="#what-hi-fi-news-measured">What Hi-Fi News measured</a></li>
+    <li><a href="#a-streamer-into-a-33">A streamer into a 33</a></li>
+    <li><a href="#the-33-and-303-of-2024">The 33 and 303 of 2024</a></li>
+    <li><a href="#with-audiogravity">With Audiogravi<sup>ty</sup></a></li>
+    <li><a href="#sources">Sources</a></li>
+</ul>
+</details>
 <p>In 1967, Quad, the firm Peter Walker had founded in 1936, went from valves to transistors with a
 pair: the 33 control unit, a pre-amplifier, and the 303 power amplifier. By Hi-Fi News' count,
 120,000 33s were sold up to 1982, and 94,000 303s up to 1985. In 2024, Quad brought both names
 back. Here is the pair as its manuals describe it, how a streamer can feed it through its DIN
 sockets, and what the new versions changed.</p>
-<p>Checked on 2026-10-31 against Quad's instruction books for the 33 and the 303, old and new, the 33's circuit
-diagram, a history of the firm Quad wrote in 1982, and the reviews of 2025 in Hi-Fi News and
-Stereophile, with Hi-Fi News' measurements of the originals.</p>
 <h2 id="from-valves-to-transistors">From valves to transistors</h2>
 <p>Quad is the brand of the Acoustical Manufacturing Company, which Peter Walker started in London in
 1936 and moved to Huntingdon in 1941, after it was bombed out. The name came in 1951, with an
@@ -259,8 +283,9 @@ specifications of QUAD&quot;. Image: Quad, from its <a href="https://quad-hifi.c
 </ul>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-next" href="bbc-ls3-5a" rel="next"><span class="man-pager-dir">Older post →</span><span class="man-pager-title">The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All posts</a><a href="../../index.html">← Back to audiogravity.app</a></p>
             </footer>
         </main>
     </div>

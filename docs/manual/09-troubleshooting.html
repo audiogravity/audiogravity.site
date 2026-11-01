@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/manual/09-troubleshooting">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">User manual</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../manual/" aria-current="true">Manual</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -65,6 +66,41 @@
             <a class="man-nav-item" href="07-administration"><span class="man-nav-n">07</span><span>Administration</span></a>
             <a class="man-nav-item" href="08-updating"><span class="man-nav-n">08</span><span>Updating</span></a>
             <a class="man-nav-item active" href="09-troubleshooting" aria-current="page"><span class="man-nav-n">09</span><span>Troubleshooting</span></a>
+            <ul class="man-outline">
+                <li><a href="#no-sound--wrong-output">No sound / wrong output</a></li>
+                <li><a href="#my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</a></li>
+                <li><a href="#the-signal-path-is-empty">The signal path is empty</a></li>
+                <li><a href="#a-service-wont-start">A service won't start</a></li>
+                <li><a href="#disk-or-network-stays-empty-for-a-service">Disk or network stays empty for a service</a></li>
+                <li><a href="#memory-shows-a-dash-for-every-service">Memory shows a dash for every service</a></li>
+                <li><a href="#an-mpd-app-on-my-phone-or-computer-cant-reach-the-box">An MPD app on my phone or computer can't reach the box</a></li>
+                <li><a href="#new-music-doesnt-appear-in-the-library">New music doesn't appear in the library</a></li>
+                <li><a href="#streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</a></li>
+                <li><a href="#after-an-update-the-app-shows-an-old-version-and-says-the-core-is-offline">After an update, the app shows an old version and says the core is offline</a></li>
+                <li><a href="#a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</a></li>
+                <li><a href="#the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</a></li>
+                <li><a href="#a-control-snaps-back-or-an-action-says-it-failed">A control snaps back, or an action says it failed</a></li>
+                <li><a href="#the-progress-bar-wont-move">The progress bar won't move</a></li>
+                <li><a href="#a-listen-is-missing-from-stats">A listen is missing from Stats</a></li>
+                <li><a href="#casting-to-a-renderer-stalls">Casting to a renderer stalls</a></li>
+                <li><a href="#a-upnp-renderer-or-media-server-isnt-discovered">A UPnP renderer or media server isn't discovered</a></li>
+                <li><a href="#the-box-doesnt-appear-as-an-airplay-speaker">The box doesn't appear as an AirPlay speaker</a></li>
+                <li><a href="#audio-glitches--dropouts">Audio glitches / dropouts</a></li>
+                <li><a href="#manual-nas-mount-terminal">Manual NAS mount (terminal)</a></li>
+                <li><a href="#locked-out--no-admin-can-log-in">Locked out — no admin can log in</a></li>
+                <li><a href="#hqplayer-embedded-stops-after-half-an-hour">HQPlayer Embedded stops after half an hour</a></li>
+                <li><a href="#locked-out-of-hqplayer-embeddeds-web-page">Locked out of HQPlayer Embedded's web page</a></li>
+                <li><a href="#hqplayer-embedded-the-dac-hisses-instead-of-playing">HQPlayer Embedded: the DAC hisses instead of playing</a></li>
+                <li><a href="#passkeys-or-push-notifications-unavailable">Passkeys or push notifications unavailable</a></li>
+                <li><a href="#notifications-never-reach-an-iphone-ipad-or-mac">Notifications never reach an iPhone, iPad or Mac</a></li>
+                <li><a href="#version-mismatch-banner">Version-mismatch banner</a></li>
+                <li><a href="#audio-software-the-systems-package-manager-was-interrupted">Audio Software: &quot;the system's package manager was interrupted&quot;</a></li>
+                <li><a href="#update-failed-to-start--an-update-is-already-in-progress">&quot;Update failed to start — An update is already in progress&quot;</a></li>
+                <li><a href="#changing-the-profiles-between-two-versions">Changing the profiles between two versions</a></li>
+                <li><a href="#license-ended-on--in-the-licence-panel">&quot;License ended on …&quot; in the licence panel</a></li>
+                <li><a href="#licence-not-recognised-after-a-reinstall-or-a-new-machine">Licence not recognised after a reinstall or a new machine</a></li>
+                <li><a href="#getting-help">Getting help</a></li>
+            </ul>
             <a class="man-nav-item" href="10-glossary"><span class="man-nav-n">10</span><span>Glossary</span></a>
             <a class="man-nav-item" href="11-faq"><span class="man-nav-n">11</span><span>FAQ</span></a>
         </nav>
@@ -72,6 +108,44 @@
         <main class="man-main">
             <article class="man-md">
 <h1>9. Troubleshooting</h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">33</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#no-sound--wrong-output">No sound / wrong output</a></li>
+    <li><a href="#my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</a></li>
+    <li><a href="#the-signal-path-is-empty">The signal path is empty</a></li>
+    <li><a href="#a-service-wont-start">A service won't start</a></li>
+    <li><a href="#disk-or-network-stays-empty-for-a-service">Disk or network stays empty for a service</a></li>
+    <li><a href="#memory-shows-a-dash-for-every-service">Memory shows a dash for every service</a></li>
+    <li><a href="#an-mpd-app-on-my-phone-or-computer-cant-reach-the-box">An MPD app on my phone or computer can't reach the box</a></li>
+    <li><a href="#new-music-doesnt-appear-in-the-library">New music doesn't appear in the library</a></li>
+    <li><a href="#streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</a></li>
+    <li><a href="#after-an-update-the-app-shows-an-old-version-and-says-the-core-is-offline">After an update, the app shows an old version and says the core is offline</a></li>
+    <li><a href="#a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</a></li>
+    <li><a href="#the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</a></li>
+    <li><a href="#a-control-snaps-back-or-an-action-says-it-failed">A control snaps back, or an action says it failed</a></li>
+    <li><a href="#the-progress-bar-wont-move">The progress bar won't move</a></li>
+    <li><a href="#a-listen-is-missing-from-stats">A listen is missing from Stats</a></li>
+    <li><a href="#casting-to-a-renderer-stalls">Casting to a renderer stalls</a></li>
+    <li><a href="#a-upnp-renderer-or-media-server-isnt-discovered">A UPnP renderer or media server isn't discovered</a></li>
+    <li><a href="#the-box-doesnt-appear-as-an-airplay-speaker">The box doesn't appear as an AirPlay speaker</a></li>
+    <li><a href="#audio-glitches--dropouts">Audio glitches / dropouts</a></li>
+    <li><a href="#manual-nas-mount-terminal">Manual NAS mount (terminal)</a></li>
+    <li><a href="#locked-out--no-admin-can-log-in">Locked out — no admin can log in</a></li>
+    <li><a href="#hqplayer-embedded-stops-after-half-an-hour">HQPlayer Embedded stops after half an hour</a></li>
+    <li><a href="#locked-out-of-hqplayer-embeddeds-web-page">Locked out of HQPlayer Embedded's web page</a></li>
+    <li><a href="#hqplayer-embedded-the-dac-hisses-instead-of-playing">HQPlayer Embedded: the DAC hisses instead of playing</a></li>
+    <li><a href="#passkeys-or-push-notifications-unavailable">Passkeys or push notifications unavailable</a></li>
+    <li><a href="#notifications-never-reach-an-iphone-ipad-or-mac">Notifications never reach an iPhone, iPad or Mac</a></li>
+    <li><a href="#version-mismatch-banner">Version-mismatch banner</a></li>
+    <li><a href="#audio-software-the-systems-package-manager-was-interrupted">Audio Software: &quot;the system's package manager was interrupted&quot;</a></li>
+    <li><a href="#update-failed-to-start--an-update-is-already-in-progress">&quot;Update failed to start — An update is already in progress&quot;</a></li>
+    <li><a href="#changing-the-profiles-between-two-versions">Changing the profiles between two versions</a></li>
+    <li><a href="#license-ended-on--in-the-licence-panel">&quot;License ended on …&quot; in the licence panel</a></li>
+    <li><a href="#licence-not-recognised-after-a-reinstall-or-a-new-machine">Licence not recognised after a reinstall or a new machine</a></li>
+    <li><a href="#getting-help">Getting help</a></li>
+</ul>
+</details>
 <p>Most issues come down to a service that isn't running, an output that points at the
 wrong device, or a network hop that's flaky. Audiogravi<sup>ty</sup> surfaces all three in the
 interface.</p>
@@ -720,8 +794,9 @@ button: a licence reset is available on request.</p>
 </ul>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="08-updating" rel="prev"><span class="man-pager-dir">← Previous chapter</span><span class="man-pager-title">Updating</span></a><a class="man-pager-next" href="10-glossary" rel="next"><span class="man-pager-dir">Next chapter →</span><span class="man-pager-title">Glossary</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All chapters</a><a href="../../index.html">← Back to audiogravity.app</a></p>
                 <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
             </footer>
         </main>

@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/guides/device-or-resource-busy-dac">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">Guides</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../guides/" aria-current="true">Guides</a><a href="../blog/">Blog</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -38,59 +39,86 @@
     <details class="man-menu">
         <summary><span>All guides</span><span class="man-menu-count">18</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <nav class="man-nav" aria-label="Guides">
-            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
-            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
-            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
-            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
-            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
-            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
-            <a class="man-nav-item" href="lossless-internet-radio"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
-            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
-            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
-            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
-            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
-            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
-            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
-            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
-            <a class="man-nav-item" href="streamer-din-amplifier-inputs"><span class="man-nav-n">15</span><span>A streamer into an amplifier with DIN inputs: the cable, the level, the volume</span></a>
-            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">16</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
-            <a class="man-nav-item active" href="device-or-resource-busy-dac" aria-current="page"><span class="man-nav-n">17</span><span>“Device or resource busy”: two players, one DAC</span></a>
-            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">18</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+            <p class="man-nav-group">Getting the DAC to work</p>
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="streamer-din-amplifier-inputs"><span>A streamer into an amplifier with DIN inputs: the cable, the level, the volume</span></a>
+            <a class="man-nav-item active" href="device-or-resource-busy-dac" aria-current="page"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <p class="man-nav-group">Your music and the network</p>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="lossless-internet-radio"><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <p class="man-nav-group">Streaming services and players</p>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+            <p class="man-nav-group">Signal and volume</p>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
         </nav>
     </details>
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="Guides">
-            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span class="man-nav-n">01</span><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
-            <a class="man-nav-item" href="usb-dac-formats-linux"><span class="man-nav-n">02</span><span>What your USB DAC accepts on Linux, and how to read it</span></a>
-            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span class="man-nav-n">03</span><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
-            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span class="man-nav-n">04</span><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
-            <a class="man-nav-item" href="network-music-streamer"><span class="man-nav-n">05</span><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
-            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span class="man-nav-n">06</span><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
-            <a class="man-nav-item" href="lossless-internet-radio"><span class="man-nav-n">07</span><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
-            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span class="man-nav-n">08</span><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
-            <a class="man-nav-item" href="roon-raspberry-pi"><span class="man-nav-n">09</span><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
-            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span class="man-nav-n">10</span><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
-            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span class="man-nav-n">11</span><span>HQPlayer NAA on a Raspberry Pi</span></a>
-            <a class="man-nav-item" href="dsd-native-dop-linux"><span class="man-nav-n">12</span><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
-            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span class="man-nav-n">13</span><span>How to check bit-perfect playback on a Linux streamer</span></a>
-            <a class="man-nav-item" href="software-hardware-volume-linux"><span class="man-nav-n">14</span><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
-            <a class="man-nav-item" href="streamer-din-amplifier-inputs"><span class="man-nav-n">15</span><span>A streamer into an amplifier with DIN inputs: the cable, the level, the volume</span></a>
-            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span class="man-nav-n">16</span><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
-            <a class="man-nav-item active" href="device-or-resource-busy-dac" aria-current="page"><span class="man-nav-n">17</span><span>“Device or resource busy”: two players, one DAC</span></a>
-            <a class="man-nav-item" href="audiogravity-volumio-moode"><span class="man-nav-n">18</span><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+            <p class="man-nav-group">Getting the DAC to work</p>
+            <a class="man-nav-item" href="dac-hat-raspberry-pi"><span>A DAC HAT on a Raspberry Pi: why it is not detected, and the line that fixes it</span></a>
+            <a class="man-nav-item" href="usb-dac-formats-linux"><span>What your USB DAC accepts on Linux, and how to read it</span></a>
+            <a class="man-nav-item" href="undervoltage-raspberry-pi"><span>“Undervoltage detected!” on a Raspberry Pi: what it does to a streamer, and how to check the supply</span></a>
+            <a class="man-nav-item" href="streamer-din-amplifier-inputs"><span>A streamer into an amplifier with DIN inputs: the cable, the level, the volume</span></a>
+            <a class="man-nav-item active" href="device-or-resource-busy-dac" aria-current="page"><span>“Device or resource busy”: two players, one DAC</span></a>
+            <ul class="man-outline">
+                <li><a href="#what-it-looks-like">What it looks like</a></li>
+                <li><a href="#find-who-holds-the-dac">Find who holds the DAC</a></li>
+                <li><a href="#when-each-player-lets-go">When each player lets go</a></li>
+                <li><a href="#the-fixes">The fixes</a></li>
+                <li><a href="#with-audiogravity">With Audiogravi<sup>ty</sup></a></li>
+                <li><a href="#sources">Sources</a></li>
+            </ul>
+            <p class="man-nav-group">Your music and the network</p>
+            <a class="man-nav-item" href="nas-music-library-raspberry-pi"><span>Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a>
+            <a class="man-nav-item" href="network-music-streamer"><span>Your streamer on the network: how much bandwidth music takes, Wi-Fi or cable, and VLANs</span></a>
+            <a class="man-nav-item" href="lossless-internet-radio"><span>Lossless internet radio: which stations stream FLAC, and how to check what a station sends</span></a>
+            <a class="man-nav-item" href="airplay-raspberry-pi-quality"><span>AirPlay to a Raspberry Pi: what quality actually arrives</span></a>
+            <p class="man-nav-group">Streaming services and players</p>
+            <a class="man-nav-item" href="qobuz-tidal-highresaudio-raspberry-pi"><span>Qobuz, Tidal and HIGHRESAUDIO on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="roon-raspberry-pi"><span>Roon on a Raspberry Pi: Roon Bridge, and Roon through HQPlayer</span></a>
+            <a class="man-nav-item" href="hqplayer-embedded-raspberry-pi-5"><span>HQPlayer Embedded on a Raspberry Pi 5</span></a>
+            <a class="man-nav-item" href="hqplayer-naa-raspberry-pi"><span>HQPlayer NAA on a Raspberry Pi</span></a>
+            <a class="man-nav-item" href="audiogravity-volumio-moode"><span>Audiogravi<sup>ty</sup>, Volumio or moOde: which to choose?</span></a>
+            <p class="man-nav-group">Signal and volume</p>
+            <a class="man-nav-item" href="dsd-native-dop-linux"><span>DSD on a Linux streamer: native, DoP, or converted to PCM</span></a>
+            <a class="man-nav-item" href="check-bit-perfect-playback-linux"><span>How to check bit-perfect playback on a Linux streamer</span></a>
+            <a class="man-nav-item" href="software-hardware-volume-linux"><span>Software or hardware volume on a Linux streamer: what each does to your music</span></a>
+            <a class="man-nav-item" href="realtime-cpu-cores-audio-linux"><span>Real-time priority and reserved CPU cores for audio on Linux</span></a>
         </nav>
 
         <main class="man-main">
             <article class="man-md">
 <h1>“Device or resource busy”: two players, one DAC</h1>
-<p class="man-guide-meta">Guide 17 · 3 min read</p>
-<p><strong>Short answer:</strong> a player that opens a DAC directly has it to itself until it lets go. Any other
+<p class="man-guide-meta">3 min read</p>
+<p class="man-checked"><svg class="man-checked-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Checked on 2026-10-22 on an x86 box under Debian 13, with MPD 0.24.5 and ALSA 1.2.14; the
+measurements are dated where they appear.</span></p>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">6</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#what-it-looks-like">What it looks like</a></li>
+    <li><a href="#find-who-holds-the-dac">Find who holds the DAC</a></li>
+    <li><a href="#when-each-player-lets-go">When each player lets go</a></li>
+    <li><a href="#the-fixes">The fixes</a></li>
+    <li><a href="#with-audiogravity">With Audiogravi<sup>ty</sup></a></li>
+    <li><a href="#sources">Sources</a></li>
+</ul>
+</details>
+<p class="man-short"><strong>Short answer:</strong> a player that opens a DAC directly has it to itself until it lets go. Any other
 player that tries in the meantime gets &quot;Device or resource busy&quot; and plays nothing. That
 exclusivity is what lets a player send your music untouched, so the fix is not to share the DAC:
 it is to find which program holds it, and to have your players take turns.</p>
-<p>Checked on 2026-10-22 on an x86 box under Debian 13, with MPD 0.24.5 and ALSA 1.2.14; the
-measurements are dated where they appear.</p>
 <h2 id="what-it-looks-like">What it looks like</h2>
 <p>The words vary with the program; the cause does not. Two of them:</p>
 <pre data-copy="no"><code class="language-text">aplay: main:850: audio open error: Device or resource busy
@@ -152,8 +180,9 @@ and <a href="../manual/07-administration#audio-configuration-services--profiles"
 </ul>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="streamer-din-amplifier-inputs" rel="prev"><span class="man-pager-dir">← Previous guide</span><span class="man-pager-title">A streamer into an amplifier with DIN inputs: the cable, the level, the volume</span></a><a class="man-pager-next" href="nas-music-library-raspberry-pi" rel="next"><span class="man-pager-dir">Next guide →</span><span class="man-pager-title">Your NAS music on a Raspberry Pi streamer: mount the share, or use a UPnP server</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All guides</a><a href="../../index.html">← Back to audiogravity.app</a></p>
             </footer>
         </main>
     </div>

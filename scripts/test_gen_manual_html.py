@@ -165,16 +165,19 @@ class TestWrapTables:
 
 
 class TestLazyLoadImages:
-    def test_adds_the_attribute(self):
-        assert lazy_load_images('<img src="a.webp">') == '<img loading="lazy" src="a.webp">'
+    def test_defers_every_image_but_the_first(self):
+        """The first is often the largest thing on screen at the opening, which search engines
+        time; deferred, it was fetched after the layout (2026-11-01)."""
+        html = '<img src="a.webp"><p>x</p><img src="b.webp"><img src="c.webp">'
+        assert lazy_load_images(html) == (
+            '<img src="a.webp"><p>x</p><img loading="lazy" src="b.webp"><img loading="lazy" src="c.webp">')
 
     def test_does_not_add_it_twice(self):
-        html = '<img loading="eager" src="a.webp">'
+        html = '<img src="a.webp"><img loading="eager" src="b.webp">'
         assert lazy_load_images(html) == html
 
-    def test_handles_every_image_on_a_page(self):
-        html = '<img src="a.webp"><p>x</p><img src="b.webp">'
-        assert lazy_load_images(html).count('loading="lazy"') == 2
+    def test_a_page_of_one_image_loads_it_at_once(self):
+        assert lazy_load_images('<p>x</p><img src="a.webp">') == '<p>x</p><img src="a.webp">'
 
 
 class TestStampVersion:
@@ -961,6 +964,156 @@ class TestCheckedAndShortAnswer:
                 '<h2 id="a">A</h2>\n<h2 id="b">B</h2>\n')
         out = g.page("T", body, [("a", "A"), ("b", "B")], "b", "b", g.BLOG)
         assert ('2 min read</p>\n<details class="man-outline-menu">') in out
+
+
+def _ld(out: str) -> dict:
+    """The structured data a page carries, parsed."""
+    import json
+    return json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', out, re.S).group(1))
+
+
+def _og(out: str) -> dict:
+    """The Open Graph tags of a page, by name."""
+    return {k: html.unescape(v) for k, v in re.findall(r'<meta property="((?:og|article):[a-z:_]+)" content="([^"]*)"', out)}
+
+
+class TestSharing:
+    """What a guide or a post tells link previews and search engines (2026-11-01): a guide pasted
+    into a forum showed no picture, and nothing told a search engine what the page was, when it
+    was published or checked, or where it sat in the site — the landing said all that of itself."""
+
+    @staticmethod
+    def _built(section_dir_name: str, page_id: str) -> str:
+        import gen_manual_html as g
+        folder, build_fn = {"guides": (g.GUIDES_DIR, g.build_guides), "blog": (g.BLOG_DIR, g.build_blog)}[section_dir_name]
+        return build_fn()[folder / f"{page_id}.html"]
+
+    def test_a_post_is_previewed_with_its_first_figure_and_its_dates(self):
+        og = _og(self._built("blog", "naim-audio-nait-2"))
+        assert og["og:type"] == "article" and og["og:site_name"] == "Audiogravity"
+        assert og["og:title"] == "The Naim NAIT 2: its figures, its sound, and the NAITs that followed"
+        assert og["og:url"] == "https://audiogravity.app/docs/blog/naim-audio-nait-2"
+        assert og["og:image"] == "https://audiogravity.app/docs/blog/images/naim-nait-2-chrome-bumper.jpg"
+        assert (og["og:image:width"], og["og:image:height"]) == ("870", "606")
+        assert og["og:image:alt"].startswith("The front of a chrome-bumper NAIT 2")
+        assert og["article:published_time"] == "2026-10-31"
+        assert '<meta name="twitter:card" content="summary_large_image">' in self._built("blog", "naim-audio-nait-2")
+
+    def test_a_post_is_described_as_a_dated_blog_posting_on_its_path(self):
+        page_, crumbs = _ld(self._built("blog", "naim-audio-nait-2"))["@graph"]
+        assert page_["@type"] == "BlogPosting"
+        assert page_["datePublished"] == "2026-10-31" and page_["dateModified"] >= "2026-10-31"
+        assert page_["image"].endswith("/docs/blog/images/naim-nait-2-chrome-bumper.jpg")
+        assert page_["publisher"]["name"] == page_["author"]["name"] == "Audiogravity"
+        assert [(c["position"], c["name"], c.get("item")) for c in crumbs["itemListElement"]] == [
+            (1, "Audiogravity", "https://audiogravity.app/"),
+            (2, "Blog", "https://audiogravity.app/docs/blog/"),
+            (3, page_["headline"], None)]
+
+    def test_a_guide_is_previewed_with_the_site_mark_and_dated_by_its_check(self):
+        """No guide has a figure. Not the landing's preview — its price and "Install now" would
+        make a guide shared on a forum read as an advertisement."""
+        out = self._built("guides", "realtime-cpu-cores-audio-linux")
+        og = _og(out)
+        assert og["og:image"] == "https://audiogravity.app/assets/icons/pwa-512.png"
+        assert "ag-image_black-og" not in out
+        assert '<meta name="twitter:card" content="summary">' in out
+        # "Checked on 2026-10-22 …, measured on 2026-10-17 …, and the dropouts … on 2026-10-28"
+        assert og["article:modified_time"] == "2026-10-28" and "article:published_time" not in og
+        page_, _ = _ld(out)["@graph"]
+        assert page_["@type"] == "Article" and page_["dateModified"] == "2026-10-28"
+        assert "datePublished" not in page_ and "image" not in page_
+
+    def test_a_front_page_is_a_collection_one_step_from_home(self):
+        import gen_manual_html as g
+        out = g.build_guides()[g.GUIDES_DIR / "index.html"]
+        assert _og(out)["og:type"] == "website"
+        page_, crumbs = _ld(out)["@graph"]
+        assert page_["@type"] == "CollectionPage" and page_["url"] == "https://audiogravity.app/docs/guides/"
+        assert [(c["name"], c.get("item")) for c in crumbs["itemListElement"]] == [
+            ("Audiogravity", "https://audiogravity.app/"), ("Guides", None)]
+
+    def test_a_chapter_is_an_article_of_the_manual_previewed_with_the_mark(self):
+        """Asked for after the guides and the blog (2026-11-01). The manual's figures are mostly
+        a phone's screenshots, standing tall: a wide preview would cut them to a strip."""
+        out = next(text for path, text in build().items() if path.name == "03-first-run.html")
+        assert _og(out)["og:image"] == "https://audiogravity.app/assets/icons/pwa-512.png"
+        assert '<meta name="twitter:card" content="summary">' in out
+        page_, crumbs = _ld(out)["@graph"]
+        assert page_["@type"] == "Article" and page_["headline"] == "First run"
+        assert "datePublished" not in page_ and "dateModified" not in page_
+        assert [(c["name"], c.get("item")) for c in crumbs["itemListElement"]] == [
+            ("Audiogravity", "https://audiogravity.app/"), ("Manual", "https://audiogravity.app/docs/manual/"),
+            ("First run", None)]
+
+    def test_a_chapter_is_described_in_the_words_of_the_contents(self):
+        """It said its name alone — "Audiogravity user manual — Listening." —, under that name."""
+        out = next(text for path, text in build().items() if path.name == "04-listening.html")
+        said = "Listening — sources, transport, the Now Playing screen. From the Audiogravity user manual."
+        assert f'<meta name="description" content="{said}">' in out
+        assert _og(out)["og:description"] == said == _ld(out)["@graph"][0]["description"]
+
+    def test_every_chapter_snippet_fits_a_search_result(self):
+        for path, text in build().items():
+            if path.name != "index.html":
+                said = html.unescape(re.search(r'<meta name="description" content="([^"]*)">', text).group(1))
+                assert 70 <= len(said) <= 155, (path.name, said)
+
+    def test_the_contents_page_is_the_manual_collection(self):
+        out = next(text for path, text in build().items() if path.name == "index.html")
+        page_, crumbs = _ld(out)["@graph"]
+        assert page_["@type"] == "CollectionPage" and page_["url"] == "https://audiogravity.app/docs/manual/"
+        assert [c["name"] for c in crumbs["itemListElement"]] == ["Audiogravity", "Manual"]
+
+    def test_the_contents_says_what_each_chapter_holds(self):
+        import gen_manual_html as g
+        readme = ("0. [Quick start](00-quick-start.md) — from zero to music\n"
+                  "1. [Introduction](01-introduction.md) — what Audiogravi<sup>ty</sup> is\n"
+                  "2. [Bare](02-bare.md)\n")
+        assert g.parse_toc_summaries(readme) == {"00-quick-start": "from zero to music",
+                                                 "01-introduction": "what Audiogravi<sup>ty</sup> is"}
+        assert g.chapter_description("Introduction", "what Audiogravi<sup>ty</sup> is") == (
+            "Introduction — what Audiogravity is. From the Audiogravity user manual.")
+        assert g.chapter_description("Bare", None) == "Audiogravity user manual — Bare."
+
+    def test_a_figure_is_shown_only_when_it_lies_wide(self):
+        import gen_manual_html as g
+        assert g.wide({"width": "1200", "height": "675"}) and g.wide({"width": "600", "height": "600"})
+        assert not g.wide({"width": "360"}) and not g.wide({"width": "400", "height": "800"})
+        assert not g.wide({"width": "100%", "height": "50"})
+
+    def test_a_title_cannot_end_the_script_early(self):
+        import gen_manual_html as g
+        out = g.share_head(g.BLOG, "A </script> title", "Its text.", "https://audiogravity.app/docs/blog/x")
+        assert "</script>" not in out.split('<script type="application/ld+json">')[1][:-len("</script>")]
+        assert _ld(out)["@graph"][0]["headline"] == "A </script> title"
+
+    def test_the_day_of_the_check_is_the_latest_the_line_names(self):
+        import gen_manual_html as g
+        line = '<p class="man-checked"><span>Checked on 2026-10-22, measured on 2026-10-28 and 2026-02-30.</span></p>'
+        assert g.checked_on(f"<h1>T</h1>\n{line}\n") == "2026-10-28"
+        assert g.checked_on("<h1>T</h1>\n<p>Checked on 2026-10-22 in the text.</p>") is None
+
+    def test_a_file_named_by_a_page_gets_its_address_on_the_site(self):
+        import gen_manual_html as g
+        assert g.absolute_url("images/a.webp", g.BLOG) == "https://audiogravity.app/docs/blog/images/a.webp"
+        assert g.absolute_url("../manual/images/b.png", g.GUIDES) == "https://audiogravity.app/docs/manual/images/b.png"
+
+    def test_every_address_given_is_a_page_or_a_file_of_the_site(self):
+        """A preview or a search engine sent to a missing file shows nothing, and says nothing."""
+        import gen_manual_html as g
+        checked = 0
+        for path, text in (build() | g.build_guides() | g.build_blog()).items():
+            urls = set(re.findall(r'"(https://audiogravity\.app/[^"]*)"', re.search(
+                r'<script type="application/ld\+json">(.*?)</script>', text, re.S).group(1)))
+            urls |= {v for k, v in _og(text).items() if k in ("og:url", "og:image")}
+            for url in urls:
+                local = url[len(g.SITE_URL):]
+                local += "index.html" if local == "" or local.endswith("/") else (
+                    ".html" if "." not in local.rsplit("/", 1)[-1] else "")
+                assert (REPO_DIR / local).is_file(), f"{path.name}: {url}"
+                checked += 1
+        assert checked > 90
 
 
 class TestPager:

@@ -47,9 +47,11 @@ from __future__ import annotations
 import argparse
 import datetime
 import html
+import json
 import math
 import re
 import sys
+import urllib.parse
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -97,6 +99,8 @@ class Section:
             the guides and the blog, public writing for whoever asks, link to each other. A
             guide that has something to say about Audiogravity links to the chapter that says
             it, in its own words; the landing's bar links to all three.
+        article: The schema.org type its pages are described as to search engines
+            (share_head()); empty for a section whose pages carry no such description.
     """
 
     path: str
@@ -109,6 +113,7 @@ class Section:
     prev_label: str = "Previous"
     next_label: str = "Next"
     family: str = "manual"
+    article: str = ""
 
     @property
     def folder(self) -> str:
@@ -118,17 +123,17 @@ class Section:
 
 MANUAL = Section("docs/manual/", "Manual", "Audiogravity manual", "Manual chapters", True,
                  "All chapters", notice=True, prev_label="Previous chapter",
-                 next_label="Next chapter")
+                 next_label="Next chapter", article="Article")
 #: A guide's tab reads "<its question> — Audiogravity": the question is what was searched for.
 GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", False, "All guides",
                  notice=False, prev_label="Previous guide", next_label="Next guide",
-                 family="articles")
+                 family="articles", article="Article")
 #: A post is dated rather than numbered: its place in the list changes with every new one. Its
 #: tab reads "<its title> — Audiogravity", as a guide's does; the front page's, "Blog — Audiogravity".
 #: The list runs newest first, so the page before a post in it is a newer one.
 BLOG = Section("docs/blog/", "Blog", "Audiogravity", "Blog posts", False, "All posts",
                notice=False, prev_label="Newer post", next_label="Older post",
-               family="articles")
+               family="articles", article="BlogPosting")
 
 #: The site's sections, in the order its top bars link to them.
 SECTIONS = (MANUAL, GUIDES, BLOG)
@@ -198,6 +203,44 @@ def parse_toc(readme: str) -> list[tuple[str, str]]:
         if m:
             out.append((m.group("id"), m.group("label")))
     return out
+
+
+#: A Contents entry with what the README says of the chapter after its link:
+#: ``4. [Listening](04-listening.md) — sources, transport, the Now Playing screen``.
+TOC_SUMMARY = re.compile(
+    r"^\s*\d+\.\s*\[.+?\]\((?P<id>\d{2}-[a-z0-9-]+)\.md\)\s*—\s*(?P<summary>\S.*?)\s*$")
+
+
+def parse_toc_summaries(readme: str) -> dict[str, str]:
+    """What the manual's Contents says of each chapter, after its link.
+
+    Args:
+        readme: Contents of ``docs/manual/README.md``.
+
+    Returns:
+        Each chapter's summary as authored, by id; a chapter listed without one is absent.
+    """
+    return {m.group("id"): m.group("summary")
+            for m in map(TOC_SUMMARY.match, readme.split("\n")) if m}
+
+
+def chapter_description(label: str, summary: str | None) -> str:
+    """What a search result and a link preview say of a chapter of the manual.
+
+    It said the chapter's name alone, "Audiogravity user manual — Listening.", which a preview
+    showed under the same name. The Contents' own words for the chapter say what is in it.
+
+    Args:
+        label: The chapter's name, as the Contents writes it.
+        summary: What the Contents says of it, or None.
+
+    Returns:
+        Plain text: "Listening — sources, transport, the Now Playing screen. From the
+        Audiogravity user manual."
+    """
+    if not summary:
+        return f"Audiogravity user manual — {plain_text(label)}."
+    return f"{plain_text(label)} — {plain_text(summary)}. From the Audiogravity user manual."
 
 
 #: Matches a guide in the guides' README, one line each, a bullet under its theme's heading (a
@@ -704,19 +747,36 @@ def replace_page_list(rendered: str, ids: set[str], replacement: str) -> str:
 
 
 def lazy_load_images(rendered: str) -> str:
-    """Defer images that are not on screen yet.
+    """Defer the images that are not on screen yet: every one but the first.
 
     An illustrated chapter carries up to six screenshots; without this the browser fetches all
     of them before the reader has scrolled past the first. The interface's reader already does
     this — the same content should not behave differently depending on where it is read.
 
+    The first is left to load at once. It is often the largest thing on screen when the page
+    opens — a post's photograph under its title —, which search engines time (Largest Contentful
+    Paint); deferred, it was fetched only once the layout was done.
+
     Args:
         rendered: HTML from markdown-it.
 
     Returns:
-        The same HTML with ``loading="lazy"`` on every image that lacks it.
+        The same HTML with ``loading="lazy"`` on every image after the first that lacks it.
     """
-    return re.sub(r"<img (?![^>]*\bloading=)", '<img loading="lazy" ', rendered)
+    seen = 0
+
+    def defer(m: re.Match[str]) -> str:
+        nonlocal seen
+        seen += 1
+        if seen == 1 or IMG_WITH_LOADING.match(rendered, m.start()):
+            return m.group(0)
+        return '<img loading="lazy" '
+
+    return re.sub(r"<img ", defer, rendered)
+
+
+#: An image tag that already says how it loads.
+IMG_WITH_LOADING = re.compile(r"<img [^>]*\bloading=")
 
 
 def wrap_tables(rendered: str) -> str:
@@ -1264,6 +1324,150 @@ def pager(toc: list[tuple[str, str]], active: str, section: Section) -> str:
             + "".join(links) + "</nav>")
 
 
+#: What a page without a figure of its own is shown with when it is shared: the site's mark, the
+#: app's icon, with its size and what it shows. Not the landing's own preview, a picture of its
+#: first screen with the price and "Install now" on it: a guide shared on a forum would have read
+#: as an advertisement, which the guides are written not to be.
+SITE_MARK = ("assets/icons/pwa-512.png", "512", "512", "The Audiogravity logo")
+
+#: Who writes the guides and the posts, as their structured data names it.
+PUBLISHER = {"@type": "Organization", "name": "Audiogravity", "url": SITE_URL,
+             "logo": {"@type": "ImageObject", "url": f"{SITE_URL}{SITE_MARK[0]}"}}
+
+#: A date as the pages write it.
+ISO_DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
+
+
+def checked_on(rendered: str) -> str | None:
+    """The latest day a page says it was checked or measured on, in the line under its title.
+
+    Args:
+        rendered: The page's body, after lift_checked().
+
+    Returns:
+        The latest calendar date of that line, YYYY-MM-DD ("Checked on 2026-10-22 …, measured
+        on 2026-10-28" gives the 28th); None when the page has no such line, or it names none.
+    """
+    m = re.search(r'<p class="man-checked">(.*?)</p>', rendered, re.S)
+    dates = []
+    for found in ISO_DATE.findall(m.group(1)) if m else []:
+        try:
+            datetime.date.fromisoformat(found)
+        except ValueError:
+            continue
+        dates.append(found)
+    return max(dates) if dates else None
+
+
+def wide(figure: dict[str, str]) -> bool:
+    """Whether a figure lies wide, by the size its page gives it.
+
+    Args:
+        figure: Its attributes, as first_image() reads them.
+
+    Returns:
+        True when its width and its height are both given, as whole numbers, and the width is
+        the larger; False for a figure standing tall, or of unknown size.
+    """
+    width, height = figure.get("width", ""), figure.get("height", "")
+    return width.isdigit() and height.isdigit() and int(width) >= int(height)
+
+
+def absolute_url(src: str, section: Section) -> str:
+    """The address of a file a page of a section names by a relative one.
+
+    Args:
+        src: The address as the page writes it: ``images/nait-2.webp``.
+        section: The section of the page.
+
+    Returns:
+        Its absolute address, as a link preview or a search engine needs it.
+    """
+    return urllib.parse.urljoin(f"{SITE_URL}{section.path}", src)
+
+
+def share_head(section: Section, title: str, description: str, url: str,
+               figure: dict[str, str] | None = None, published: str | None = None,
+               modified: str | None = None, front: bool = False) -> str:
+    """What a page of the guides or of the blog tells link previews and search engines.
+
+    A guide pasted into a forum or a message showed no picture, and nothing told a search engine
+    what the page was, when it was published or checked, or where it sits in the site — the
+    landing said all that of itself, the guides and the posts nothing (2026-11-01).
+
+    Two parts. The Open Graph tags, read by forums, messengers and social networks to draw a
+    link's preview: a post shows its first figure, wide; a guide, which has none, the site's mark,
+    small (SITE_MARK). A figure is shown only when the page gives its size and it lies wide: the
+    manual's are mostly a phone's screenshots, standing tall, which a wide preview would cut to a
+    strip; such a page takes the mark. And the page described in JSON-LD (schema.org): an
+    article — a post dated, both with the day they were last checked —, then its path from the
+    site's home, which a result can show in place of the address.
+
+    Args:
+        section: The section of the page.
+        title: The page's title, plain text.
+        description: What a search result says of it, plain text.
+        url: Its canonical address.
+        figure: The attributes of its first figure, as first_image() reads them.
+        published: The day it was published, YYYY-MM-DD: a post's.
+        modified: The latest day it was published or checked on, YYYY-MM-DD.
+        front: Whether it is the section's front page, the list of its pages.
+
+    Returns:
+        The lines to add to the page's head, each on a line of its own.
+    """
+    if figure and not wide(figure):
+        figure = None
+    if figure:
+        image = absolute_url(figure["src"], section)
+        width, height = figure.get("width"), figure.get("height")
+        alt = html.unescape(figure.get("alt", ""))
+        card = "summary_large_image"
+    else:
+        image = SITE_URL + SITE_MARK[0]
+        _, width, height, alt = SITE_MARK
+        card = "summary"
+    tags = [("og:type", "website" if front else "article"), ("og:site_name", "Audiogravity"),
+            ("og:title", title), ("og:description", description), ("og:url", url), ("og:image", image)]
+    if width and height:
+        tags += [("og:image:width", width), ("og:image:height", height)]
+    if alt:
+        tags.append(("og:image:alt", alt))
+    if published:
+        tags.append(("article:published_time", published))
+    if modified:
+        tags.append(("article:modified_time", modified))
+    lines = [f'<meta property="{name}" content="{html.escape(value)}">' for name, value in tags]
+    # X (Twitter) reads a card's title, text and image from the Open Graph tags; only the card's
+    # type is its own.
+    lines.append(f'<meta name="twitter:card" content="{card}">')
+
+    trail = [{"@type": "ListItem", "position": 1, "name": "Audiogravity", "item": SITE_URL},
+             {"@type": "ListItem", "position": 2, "name": section.crumb}]
+    if front:
+        node = {"@type": "CollectionPage", "name": title, "description": description, "url": url,
+                "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "Audiogravity", "url": SITE_URL}}
+    else:
+        trail[1]["item"] = page_url("", section)
+        trail.append({"@type": "ListItem", "position": 3, "name": title})
+        node = {"@type": section.article, "headline": title, "description": description, "url": url,
+                "mainEntityOfPage": url, "inLanguage": "en",
+                "author": {"@type": "Organization", "name": "Audiogravity", "url": SITE_URL},
+                "publisher": PUBLISHER}
+        if figure:
+            node["image"] = image
+        if published:
+            node["datePublished"] = published
+        if modified:
+            node["dateModified"] = modified
+    data = {"@context": "https://schema.org",
+            "@graph": [node, {"@type": "BreadcrumbList", "itemListElement": trail}]}
+    # "</" would end the script element wherever a title held it.
+    lines.append('<script type="application/ld+json">'
+                 + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + "</script>")
+    return "".join(f"\n    {line}" for line in lines)
+
+
 def page_number(page_id: str) -> int:
     """The number a chapter is shown with in the sidebar, the only numbered list (Section.numbered).
 
@@ -1278,7 +1482,8 @@ def page_number(page_id: str) -> int:
 
 def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonical: str,
          section: Section = MANUAL, description: str | None = None,
-         groups: dict[str, str] | None = None, sections: tuple[Section, ...] = SECTIONS) -> str:
+         groups: dict[str, str] | None = None, sections: tuple[Section, ...] = SECTIONS,
+         head: str = "") -> str:
     """Assemble one page of the manual, of the guides or of the blog.
 
     Args:
@@ -1304,6 +1509,8 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         groups: Theme titles the page list is filed under, by the id of the first page under
             each; none for the manual and the blog.
         sections: The sections the top bar links to (present_sections()).
+        head: Lines for the head after the canonical link: a guide's or a post's link preview
+            and structured data (share_head()).
 
     Returns:
         A complete HTML document.
@@ -1335,7 +1542,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{html.escape(plain)} — {section.name}</title>
     <meta name="description" content="{html.escape(description)}">
-    <link rel="canonical" href="{page_url(canonical, section)}">
+    <link rel="canonical" href="{page_url(canonical, section)}">{head}
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css">
     <link rel="stylesheet" href="../../assets/manual.css">
@@ -1452,20 +1659,26 @@ def build() -> dict[Path, str]:
         return render_body(md, source, known)
 
     sections = present_sections()
+    summaries = parse_toc_summaries(readme)
     out: dict[Path, str] = {}
     for cid, label in toc:
         src = MANUAL_DIR / f"{cid}.md"
         if not src.exists():
             sys.exit(f"{src} is listed in the Contents but does not exist")
+        body = render(src.read_text(encoding="utf-8"))
+        description = chapter_description(label, summaries.get(cid))
         # Canonical without the suffix: that is the address Pages actually serves.
         out[MANUAL_DIR / f"{cid}.html"] = page(
-            label, render(src.read_text(encoding="utf-8")), toc, cid, cid, sections=sections)
+            label, body, toc, cid, cid, MANUAL, description, sections=sections,
+            head=share_head(MANUAL, plain_text(label), description, page_url(cid), first_image(body)))
 
     # The README becomes the manual's front page, on the same shell as the chapters. Its
     # canonical address is the directory: that is what a visitor reaches, and what the landing
     # and the chapters link to.
+    description = "Audiogravity user manual — Contents."
     out[MANUAL_DIR / "index.html"] = page(
-        "Contents", stamp_version(render(readme), read_version()), toc, "", "", sections=sections)
+        "Contents", stamp_version(render(readme), read_version()), toc, "", "", MANUAL, description,
+        sections=sections, head=share_head(MANUAL, "Contents", description, page_url(""), front=True))
     # Each stylesheet and script is asked for with a stamp of its content, so a page never
     # meets a file a browser kept from before an update (scripts/asset_versions.py).
     return {path: stamp_assets(text, MANUAL_DIR) for path, text in out.items()}
@@ -1484,7 +1697,8 @@ def read_guides() -> list[tuple[str, str, str]]:
 def build_listed(section: Section, folder: Path, entries: list[tuple[str, str, str]],
                  meta: Callable[[str, str, int], str],
                  front: Callable[[str, dict[str, int], dict[str, str]], str],
-                 groups: dict[str, str] | None = None) -> dict[Path, str]:
+                 groups: dict[str, str] | None = None,
+                 published: dict[str, str] | None = None) -> dict[Path, str]:
     """Render the pages a README lists, and that README as their front page.
 
     The guides and the blog are built this way; they differ in the line under a page's title
@@ -1500,6 +1714,9 @@ def build_listed(section: Section, folder: Path, entries: list[tuple[str, str, s
         front: The front page's body, from the README's rendering, the pages' reading times
             and their rendered bodies, by id.
         groups: Theme titles, by the id of the first page under each.
+        published: The day each page was published, YYYY-MM-DD, by id: the posts'. Each page,
+            and the front page, also says what it is to link previews and search engines
+            (share_head()), when its section names a type for it (Section.article).
 
     Returns:
         Mapping of output path to file contents.
@@ -1519,18 +1736,27 @@ def build_listed(section: Section, folder: Path, entries: list[tuple[str, str, s
         body = bodies[pid] = lift_checked(box_short_answer(
             render_body(md, src.read_text(encoding="utf-8"), known)))
         minutes[pid] = reading_minutes(body)
+        description = plain_text(summary)
+        head = ""
+        if section.article:
+            day = (published or {}).get(pid)
+            head = share_head(section, plain_text(label), description, page_url(pid, section),
+                              first_image(body), day,
+                              max(filter(None, (day, checked_on(body))), default=None))
         out[folder / f"{pid}.html"] = page(
-            label, meta(body, pid, minutes[pid]), toc, pid, pid, section, plain_text(summary),
-            groups, sections)
+            label, meta(body, pid, minutes[pid]), toc, pid, pid, section, description,
+            groups, sections, head)
 
     # The README is the section's front page; its first paragraph says what the pages are, and
     # is what a search result shows of that page.
     body = front(render_body(md, (folder / "README.md").read_text(encoding="utf-8"), known),
                  minutes, bodies)
     intro = re.search(r"<p>(.*?)</p>", body, re.S)
+    description = " ".join(plain_text(intro.group(1)).split()) if intro else None
+    head = (share_head(section, section.crumb, description or section.crumb, page_url("", section),
+                       front=True) if section.article else "")
     out[folder / "index.html"] = page(
-        section.crumb, body, toc, "", "", section,
-        " ".join(plain_text(intro.group(1)).split()) if intro else None, groups, sections)
+        section.crumb, body, toc, "", "", section, description, groups, sections, head)
     return {path: stamp_assets(text, folder) for path, text in out.items()}
 
 
@@ -1584,7 +1810,8 @@ def build_blog() -> dict[Path, str]:
     return build_listed(BLOG, BLOG_DIR, [(pid, label, summary) for pid, label, summary, _ in posts],
                         lambda body, pid, minutes: stamp_post_meta(body, dates[pid], minutes),
                         lambda body, minutes, bodies: replace_page_list(
-                            body, set(dates), post_cards(posts, minutes, bodies)))
+                            body, set(dates), post_cards(posts, minutes, bodies)),
+                        published=dates)
 
 
 #: Where the trademark notice may appear in the Markdown: README.md only. It used to close all

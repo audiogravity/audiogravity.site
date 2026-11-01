@@ -24,6 +24,10 @@ one you are reading marked as you scroll — under the title, on a phone —, an
 with the previous and the next one. The blog's front page shows each post as a card with its
 photograph, and the top bar takes you from the guides to the blog and back.
 
+**Better shared, easier to find.** A guide, a post or a chapter of the manual pasted into a forum
+or a message now shows a proper preview — a post with its photograph —, and search engines are
+told what each page is, when it was last checked and where it sits in the site.
+
 ---
 
 ## 1.0.0-rc.3 — 2026-10-31

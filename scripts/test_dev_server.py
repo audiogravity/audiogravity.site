@@ -12,6 +12,7 @@ import os
 import shutil
 import socket
 import subprocess
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -64,6 +65,19 @@ def test_start_serves_the_landing_in_the_background(port):
     assert page(port) == 200
     assert page(port, "/docs/manual/03-first-run.html") == 200
     assert dev(port, "status").stdout.startswith("Running:")
+
+
+def test_a_page_asked_for_without_its_suffix_is_served(port):
+    """GitHub Pages serves page.html at /page, and the generated pages link to each other that
+    way: here every such link answered 404, so the sidebar, the cards and the page-to-page links
+    could not be tried before publishing."""
+    assert dev(port, "start").returncode == 0
+    assert page(port, "/docs/manual/03-first-run") == 200
+    assert page(port, "/docs/manual/03-first-run?x=1") == 200
+    assert page(port, "/docs/manual/") == 200
+    with pytest.raises(urllib.error.HTTPError) as missing:
+        page(port, "/docs/manual/no-such-chapter")
+    assert missing.value.code == 404
 
 
 def test_start_twice_keeps_the_one_server():

@@ -759,8 +759,25 @@ nav.man-sections {
         text-decoration: underline
     }
 
+    /* The figure moves a little under the pointer, growing inside its frame. */
+    .man-md .man-card:hover .man-card-img {
+        transform: scale(1.04)
+    }
+
     .man-pager a:hover {
         border-color: var(--text3)
+    }
+}
+
+/* No movement for whoever asked for less of it: the card still answers the pointer with its
+   edge and its title. */
+@media(prefers-reduced-motion:reduce) {
+    .man-md .man-card-img {
+        transition: none
+    }
+
+    .man-md .man-card:hover .man-card-img {
+        transform: none
     }
 }
 
@@ -769,7 +786,14 @@ nav.man-sections {
     outline-offset: 2px
 }
 
-/* Every figure is cut to the same shape, so the titles start level across a row. */
+/* Every figure is cut to the same shape, so the titles start level across a row. It sits in a
+   frame of its own: grown under the pointer, a figure the card alone clipped spilled over the
+   edge between the figure and the text. */
+.man-md .man-card-figure {
+    overflow: hidden;
+    border-bottom: 1px solid var(--border)
+}
+
 .man-md .man-card-img {
     display: block;
     width: 100%;
@@ -777,8 +801,8 @@ nav.man-sections {
     aspect-ratio: 3 / 2;
     object-fit: cover;
     border: 0;
-    border-bottom: 1px solid var(--border);
-    border-radius: 0
+    border-radius: 0;
+    transition: transform .45s ease
 }
 
 .man-md .man-card-text {

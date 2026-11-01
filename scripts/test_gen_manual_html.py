@@ -1060,6 +1060,20 @@ class TestBlogCards:
     def test_a_card_keeps_the_markup_of_its_summary(self):
         assert "<p class=\"man-card-summary\">Naim's small amplifier, by Audiogravi<sup>ty</sup>.</p>" in self._cards()
 
+    def test_the_figure_grows_a_little_in_its_own_frame_under_the_pointer_only(self):
+        """Asked for on 2026-11-01. Clipped by the card alone, the grown figure spilled over the
+        edge between it and the text; a phone has no pointer that hovers, and whoever asked for
+        less motion gets none."""
+        assert '<div class="man-card-figure"><img class="man-card-img"' in self._cards()
+        css = (REPO_DIR / "assets" / "manual.css").read_text(encoding="utf-8")
+        frame = re.search(r"\.man-md \.man-card-figure \{([^}]*)\}", css)
+        assert frame and re.search(r"overflow:\s*hidden", frame.group(1))
+        hover = css[css.index("@media(hover:hover)"):]
+        assert re.search(r"\.man-card:hover \.man-card-img \{\s*transform:\s*scale\(1\.0\d\)", hover)
+        still = css[css.index("@media(prefers-reduced-motion:reduce) {\n    .man-md .man-card-img"):]
+        assert re.search(r"\.man-card:hover \.man-card-img \{\s*transform:\s*none", still)
+        assert css.index("@media(hover:hover)") < css.index("@media(prefers-reduced-motion:reduce) {\n    .man-md")
+
     def test_a_post_without_a_figure_gets_a_card_without_one(self):
         card = self._cards().split('<li class="man-card">')[2]
         assert "<img" not in card and 'href="no-figure"' in card

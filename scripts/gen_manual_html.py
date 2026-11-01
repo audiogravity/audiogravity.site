@@ -651,9 +651,11 @@ def post_cards(posts: list[tuple[str, str, str, str]], minutes: dict[str, int],
     The list was the README's bullets, the date written "2026-10-31" between two dashes inside
     the text; every post has a figure of its own, which is what tells them apart at a glance.
     The card's figure is decorative — its title says what the post is — so it carries no
-    alternative text of its own. The whole card leads to the post, through its title's link
-    (manual.css stretches it), so a screen reader hears the title alone; a link written in the
-    title or the summary is kept as text, since the card's own link lies over it.
+    alternative text of its own. It sits in a frame of its own, which clips it when it grows a
+    little under the pointer (manual.css: .man-card-figure). The whole card leads to the post,
+    through its title's link (manual.css stretches it), so a screen reader hears the title
+    alone; a link written in the title or the summary is kept as text, since the card's own link
+    lies over it.
 
     Args:
         posts: ``(post_id, label, summary, date)`` in the README's order, newest first.
@@ -671,7 +673,8 @@ def post_cards(posts: list[tuple[str, str, str, str]], minutes: dict[str, int],
         if img:
             size = "".join(f' {k}="{img[k]}"' for k in ("width", "height") if k in img)
             lazy = ' loading="lazy"' if rank >= EAGER_CARDS else ""
-            figure = f'<img class="man-card-img" src="{img["src"]}" alt=""{size}{lazy}>'
+            figure = (f'<div class="man-card-figure"><img class="man-card-img" src="{img["src"]}" '
+                      f'alt=""{size}{lazy}></div>')
         cards.append(
             f'<li class="man-card">{figure}<div class="man-card-text">'
             f'<h2 class="man-card-title"><a href="{pid}">{unlink(md.renderInline(label))}</a></h2>'

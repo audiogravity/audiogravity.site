@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/manual/11-faq">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">User manual</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../manual/" aria-current="true">Manual</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -67,11 +68,40 @@
             <a class="man-nav-item" href="09-troubleshooting"><span class="man-nav-n">09</span><span>Troubleshooting</span></a>
             <a class="man-nav-item" href="10-glossary"><span class="man-nav-n">10</span><span>Glossary</span></a>
             <a class="man-nav-item active" href="11-faq" aria-current="page"><span class="man-nav-n">11</span><span>FAQ</span></a>
+            <ul class="man-outline">
+                <li><a href="#what-does-release-candidate-mean">What does “Release candidate” mean?</a></li>
+                <li><a href="#what-happens-after-the-30-day-trial">What happens after the 30-day trial?</a></li>
+                <li><a href="#does-it-work-without-roon">Does it work without Roon?</a></li>
+                <li><a href="#do-i-need-a-qobuz-tidal-or-highresaudio-subscription">Do I need a Qobuz, Tidal or HIGHRESAUDIO subscription?</a></li>
+                <li><a href="#does-it-work-without-an-internet-connection">Does it work without an internet connection?</a></li>
+                <li><a href="#can-i-use-one-licence-on-multiple-machines">Can I use one licence on multiple machines?</a></li>
+                <li><a href="#are-updates-included">Are updates included?</a></li>
+                <li><a href="#how-do-i-install-audiogravity-on-my-phone">How do I install Audiogravi<sup>ty</sup> on my phone?</a></li>
+                <li><a href="#how-do-i-connect-qobuz-tidal-or-highresaudio">How do I connect Qobuz, Tidal or HIGHRESAUDIO?</a></li>
+                <li><a href="#where-is-the-documentation">Where is the documentation?</a></li>
+                <li><a href="#how-do-i-update-audiogravity">How do I update Audiogravi<sup>ty</sup>?</a></li>
+            </ul>
         </nav>
 
         <main class="man-main">
             <article class="man-md">
 <h1>11. FAQ</h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">11</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#what-does-release-candidate-mean">What does “Release candidate” mean?</a></li>
+    <li><a href="#what-happens-after-the-30-day-trial">What happens after the 30-day trial?</a></li>
+    <li><a href="#does-it-work-without-roon">Does it work without Roon?</a></li>
+    <li><a href="#do-i-need-a-qobuz-tidal-or-highresaudio-subscription">Do I need a Qobuz, Tidal or HIGHRESAUDIO subscription?</a></li>
+    <li><a href="#does-it-work-without-an-internet-connection">Does it work without an internet connection?</a></li>
+    <li><a href="#can-i-use-one-licence-on-multiple-machines">Can I use one licence on multiple machines?</a></li>
+    <li><a href="#are-updates-included">Are updates included?</a></li>
+    <li><a href="#how-do-i-install-audiogravity-on-my-phone">How do I install Audiogravi<sup>ty</sup> on my phone?</a></li>
+    <li><a href="#how-do-i-connect-qobuz-tidal-or-highresaudio">How do I connect Qobuz, Tidal or HIGHRESAUDIO?</a></li>
+    <li><a href="#where-is-the-documentation">Where is the documentation?</a></li>
+    <li><a href="#how-do-i-update-audiogravity">How do I update Audiogravi<sup>ty</sup>?</a></li>
+</ul>
+</details>
 <p>Quick answers to the questions we hear most. Each one links to the chapter that
 covers the full story.</p>
 <!-- This file is the single source of truth for the FAQ: the landing page's FAQ
@@ -155,8 +185,9 @@ wrong it <strong>automatically rolls back</strong> to the previous version. No t
 re-running the installer. See <a href="08-updating">8. Updating</a>.</p>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="10-glossary" rel="prev"><span class="man-pager-dir">← Previous chapter</span><span class="man-pager-title">Glossary</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All chapters</a><a href="../../index.html">← Back to audiogravity.app</a></p>
                 <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
             </footer>
         </main>

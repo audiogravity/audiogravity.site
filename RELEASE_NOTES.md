@@ -16,6 +16,14 @@ next, show your system, and follow the announcement of each release. The landing
 matters most to you in the community's *Ideas*; in the manual, *Getting help* sends questions
 there. Bug reports still go to the issues.
 
+**Easier to find your way in the guides, the blog and the manual.** The guides are filed under
+four themes — getting the DAC to work, your music and the network, streaming services and
+players, signal and volume — and each one opens on its short answer, in a box, with what it was
+checked against and when just under its title. A long page lists its parts beside the text, the
+one you are reading marked as you scroll — under the title, on a phone —, and every page ends
+with the previous and the next one. The blog's front page shows each post as a card with its
+photograph, and the top bar takes you from the guides to the blog and back.
+
 ---
 
 ## 1.0.0-rc.3 — 2026-10-31

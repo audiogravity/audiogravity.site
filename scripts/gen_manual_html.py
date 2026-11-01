@@ -76,18 +76,27 @@ class Section:
 
     Attributes:
         path: Where its pages are served under the site root, with a trailing slash.
-        crumb: What the top bar calls it.
+        crumb: What the top bar calls it, among the links to the sections of its family (see
+            ``family``), and what the front page of the guides and of the blog is titled. The
+            landing's bar names them the same way.
         name: What a browser tab calls it, after the page's own title.
         nav_label: The sidebar's name, for assistive technology.
-        numbered: Whether the sidebar shows each page's number: a chapter's is taken from its
-            id, a guide's is its rank in the list (page_number()). A guide's address carries no
-            number, so a reordering renumbers the list without breaking a link.
+        numbered: Whether the sidebar shows each page's number, taken from a chapter's id
+            (page_number()). The guides are grouped by theme instead (parse_guide_groups()),
+            where a rank would only say where a guide happens to sit in the list.
         menu: What the page list is called on a phone, where it is a menu closed until asked
-            for.
+            for; the foot of each page links back to that list under the same words.
         notice: Whether its pages carry the trademark notice in their footer. It speaks for the
             product — Audiogravity interoperating with these brands' software as a client —,
             which a chapter documents and a guide does not: a guide answers a question for
             whoever asks it.
+        prev_label: What the foot of a page calls the page before it in the list.
+        next_label: What the foot of a page calls the page after it in the list.
+        family: Which sections the top bar of its pages links to: those of the same family.
+            The manual stands alone — the product's documentation, read by its owners —, while
+            the guides and the blog, public writing for whoever asks, link to each other. A
+            guide that has something to say about Audiogravity links to the chapter that says
+            it, in its own words; the landing's bar links to all three.
     """
 
     path: str
@@ -97,17 +106,32 @@ class Section:
     numbered: bool
     menu: str
     notice: bool
+    prev_label: str = "Previous"
+    next_label: str = "Next"
+    family: str = "manual"
+
+    @property
+    def folder(self) -> str:
+        """The section's folder name, which the other sections' pages link to it by."""
+        return self.path.rstrip("/").rsplit("/", 1)[-1]
 
 
-MANUAL = Section("docs/manual/", "User manual", "Audiogravity manual", "Manual chapters", True,
-                 "All chapters", notice=True)
+MANUAL = Section("docs/manual/", "Manual", "Audiogravity manual", "Manual chapters", True,
+                 "All chapters", notice=True, prev_label="Previous chapter",
+                 next_label="Next chapter")
 #: A guide's tab reads "<its question> — Audiogravity": the question is what was searched for.
-GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", True, "All guides",
-                 notice=False)
+GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", False, "All guides",
+                 notice=False, prev_label="Previous guide", next_label="Next guide",
+                 family="articles")
 #: A post is dated rather than numbered: its place in the list changes with every new one. Its
 #: tab reads "<its title> — Audiogravity", as a guide's does; the front page's, "Blog — Audiogravity".
+#: The list runs newest first, so the page before a post in it is a newer one.
 BLOG = Section("docs/blog/", "Blog", "Audiogravity", "Blog posts", False, "All posts",
-               notice=False)
+               notice=False, prev_label="Newer post", next_label="Older post",
+               family="articles")
+
+#: The site's sections, in the order its top bars link to them.
+SECTIONS = (MANUAL, GUIDES, BLOG)
 
 #: The chevron of the phone's menu (Lucide: chevron-down); the stylesheet turns it when open.
 CHEVRON = ('<svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">'
@@ -176,9 +200,9 @@ def parse_toc(readme: str) -> list[tuple[str, str]]:
     return out
 
 
-#: Matches a guide in the guides' README, one line each, numbered like the manual's contents (a
-#: bullet is read too):
-#: ``1. [HQPlayer Embedded on a Raspberry Pi 5](hqplayer-embedded-raspberry-pi-5.md) — what it answers``.
+#: Matches a guide in the guides' README, one line each, a bullet under its theme's heading (a
+#: numbered line is read too):
+#: ``- [HQPlayer Embedded on a Raspberry Pi 5](hqplayer-embedded-raspberry-pi-5.md) — what it answers``.
 GUIDE_LINE = re.compile(
     r"^\s*(?:[-*]|\d+\.)\s*\[(?P<label>.+?)\]\((?P<id>[a-z0-9-]+)\.md\)\s*—\s*(?P<summary>\S.*?)\s*$")
 
@@ -195,6 +219,40 @@ def parse_guides(readme: str) -> list[tuple[str, str, str]]:
     """
     return [(m.group("id"), m.group("label"), m.group("summary"))
             for m in map(GUIDE_LINE.match, readme.split("\n")) if m]
+
+
+#: A theme of the guides' README: a second-level heading over the guides it holds. Exactly two
+#: hashes — a deeper heading is not a theme.
+GROUP_LINE = re.compile(r"^##[ \t]+(?P<title>\S.*?)[ \t]*$")
+
+
+def parse_guide_groups(readme: str) -> dict[str, str]:
+    """Read the themes the guides' README files its guides under.
+
+    The README lists its guides under second-level headings, one per theme. The guides' own
+    order is still parse_guides()'s; this says where each theme starts in it, which is all the
+    sidebar needs to label it.
+
+    Args:
+        readme: Contents of ``docs/guides/README.md``.
+
+    Returns:
+        Each theme's title, by the id of the first guide under it, as authored — the sidebar
+        places it into HTML as it does a guide's label. A heading with no guide under it before
+        the next one opens nothing; a README without headings gives no themes.
+    """
+    starts: dict[str, str] = {}
+    title = None
+    for line in readme.split("\n"):
+        heading = GROUP_LINE.match(line)
+        if heading:
+            title = heading.group("title")
+            continue
+        guide = GUIDE_LINE.match(line)
+        if guide and title is not None:
+            starts[guide.group("id")] = title
+            title = None
+    return starts
 
 
 #: Matches a post in the blog's README, newest first, its date between its title and summary:
@@ -228,6 +286,19 @@ def plain_text(fragment: str) -> str:
         The text a reader sees, ready to be escaped into an attribute.
     """
     return html.unescape(re.sub(r"<[^>]+>", "", fragment))
+
+
+def unlink(fragment: str) -> str:
+    """An HTML fragment with its links unwrapped, their text kept, for a place inside a link.
+
+    Args:
+        fragment: Inline HTML: a heading the outline lists, a card's title or summary.
+
+    Returns:
+        The fragment without its ``<a>`` tags; every other tag — the brand's ``<sup>``, a
+        ``<code>`` — kept.
+    """
+    return re.sub(r"</?a\b[^>]*>", "", fragment)
 
 
 def slugify(text: str) -> str:
@@ -400,18 +471,91 @@ def reading_minutes(rendered: str) -> int:
     return max(1, math.ceil(len(re.findall(r"\w+(?:['’-]\w+)*", text)) / READING_WPM))
 
 
-def stamp_guide_meta(rendered: str, rank: int, minutes: int) -> str:
-    """Say under a guide's title which one it is in the list, and how long it takes to read.
+def stamp_guide_meta(rendered: str, minutes: int) -> str:
+    """Say under a guide's title how long it takes to read.
+
+    It also said which guide it was in the list ("Guide 4"), until the guides were grouped by
+    theme: a rank then says only where the guide happens to sit.
 
     Args:
         rendered: The guide's body.
-        rank: Its number, as the sidebar shows it.
         minutes: Its reading time, from reading_minutes().
 
     Returns:
         The body with the line under its title.
     """
-    return under_title(rendered, f'<p class="man-guide-meta">Guide {rank} · {minutes} min read</p>')
+    return under_title(rendered, f'<p class="man-guide-meta">{minutes} min read</p>')
+
+
+#: The check mark of the line that says what a page was checked against (Lucide: check).
+CHECK = ('<svg class="man-checked-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">'
+         '<path d="M20 6 9 17l-5-5"/></svg>')
+
+#: That line as a page writes it, a paragraph of its own: "Checked on 2026-10-17 against …", or
+#: "Measured on …" where the page's figures were measured rather than read.
+CHECKED_LINE = re.compile(r"<p>(?P<text>(?:Checked|Measured) on .*?)</p>\n?", re.S)
+
+
+def lift_checked(rendered: str) -> str:
+    """Set the line saying what a page was checked against, and when, under its title.
+
+    The guides and the posts say it near the top, in a paragraph of its own (21 of 23 with
+    "Checked on", one with "Measured on", on 2026-11-01): it is what tells them apart from what
+    is said on forums, and it read as the text's second paragraph. It moves under the title,
+    beside the page's date and reading time, small, after a check mark (manual.css:
+    .man-checked). The comparison of Audiogravity with Volumio and moOde dates its sources inside
+    the warning it opens on — its author makes one of the three —, which stays in the text.
+
+    Args:
+        rendered: A page's body.
+
+    Returns:
+        The body with the first such line before the first part moved under the title; a line
+        further down is part of the text, and stays. A page without one is left as it is.
+    """
+    head, sep, rest = rendered.partition("<h2")
+    m = CHECKED_LINE.search(head)
+    if not m:
+        return rendered
+    line = f'<p class="man-checked">{CHECK}<span>{m.group("text")}</span></p>'
+    return under_title(head[:m.start()] + head[m.end():], line) + sep + rest
+
+
+#: The paragraph a guide opens on: "**Short answer:** …", as Markdown renders it.
+SHORT_ANSWER = "<p><strong>Short answer:</strong>"
+
+
+def box_short_answer(rendered: str) -> str:
+    """Set a guide's short answer in a box at the top of its text.
+
+    Each guide opens on the answer to its question, in a paragraph that read like any other.
+
+    Args:
+        rendered: A page's body.
+
+    Returns:
+        The body, its short answer before the first part carrying the box's class
+        (manual.css: .man-short); a page without one is left as it is.
+    """
+    head, sep, rest = rendered.partition("<h2")
+    boxed = SHORT_ANSWER.replace("<p>", '<p class="man-short">', 1)
+    return head.replace(SHORT_ANSWER, boxed, 1) + sep + rest
+
+
+def long_date(date: str) -> str:
+    """A date as a reader reads it.
+
+    Args:
+        date: YYYY-MM-DD, as the blog's README gives it.
+
+    Returns:
+        The date written out in full, "31 October 2026".
+
+    Raises:
+        ValueError: The date is not a calendar date.
+    """
+    day = datetime.date.fromisoformat(date)
+    return f"{day.day} {day.strftime('%B %Y')}"
 
 
 def stamp_post_meta(rendered: str, date: str, minutes: int) -> str:
@@ -429,33 +573,131 @@ def stamp_post_meta(rendered: str, date: str, minutes: int) -> str:
     Raises:
         ValueError: The date is not a calendar date.
     """
-    day = datetime.date.fromisoformat(date)
-    written = f"{day.day} {day.strftime('%B %Y')}"
-    return under_title(rendered, f'<p class="man-post-meta"><time datetime="{date}">{written}</time>'
-                                 f' · {minutes} min read</p>')
+    return under_title(rendered, f'<p class="man-post-meta"><time datetime="{date}">{long_date(date)}'
+                                 f'</time> · {minutes} min read</p>')
 
 
-#: A guide's entry in the rendered contents list: the item, opened by the link to its page.
-GUIDE_ITEM = re.compile(r'(?P<item><li><a href="(?P<id>[a-z0-9-]+)">.*?)</li>', re.S)
+#: A guide's entry in the rendered contents list: the link to its page, then " — " and what the
+#: README says of it. A blank line between two guides makes the list "loose", and Markdown then
+#: wraps each entry of it in a paragraph: that form is read too, or a stray blank line would cost
+#: a whole theme its layout.
+GUIDE_ITEM = re.compile(
+    r'<li>\n?(?:<p>)?<a href="(?P<id>[a-z0-9-]+)">(?P<label>.*?)</a>\s*—\s*(?P<summary>.*?)'
+    r'(?:</p>\n?)?</li>', re.S)
+
+#: A list in a rendered page, with its items.
+LIST_BLOCK = re.compile(r"<(?P<tag>ul|ol)>\n(?P<items>.*?)</(?P=tag)>", re.S)
 
 
-def stamp_reading_times(rendered: str, minutes: dict[str, int]) -> str:
-    """End each guide's entry in the contents list with its reading time.
+def stamp_entries(rendered: str, minutes: dict[str, int]) -> str:
+    """Lay out the guides' list: each title on a line of its own, what it answers under it.
+
+    The README writes each guide as one line, "title — summary", and it rendered as one run of
+    text: a green title, the summary straight after it, the reading time at the end, eighteen
+    times over. Each entry now opens on its title, with the summary and the reading time under
+    it, and the list loses its bullets (manual.css: .man-entries).
 
     Args:
         rendered: The contents page body.
         minutes: Each guide's reading time, by id.
 
     Returns:
-        The body, every entry that opens on a link to a guide carrying its time.
+        The body. A list whose every item links to a guide is laid out so; any other list, or an
+        item linking elsewhere, is left as it was.
     """
-    def stamp(m: re.Match[str]) -> str:
-        time = minutes.get(m.group("id"))
-        if time is None:
-            return m.group(0)
-        return f'{m.group("item")} <span class="man-guide-time">{time} min read</span></li>'
+    def entry(m: re.Match[str]) -> str:
+        time = minutes[m.group("id")]
+        return (f'<li class="man-entry"><a class="man-entry-title" href="{m.group("id")}">'
+                f'{m.group("label")}</a><span class="man-entry-summary">{m.group("summary")} '
+                f'<span class="man-guide-time">{time} min read</span></span></li>')
 
-    return GUIDE_ITEM.sub(stamp, rendered)
+    def one_list(block: re.Match[str]) -> str:
+        items = re.findall(r"<li>.*?</li>", block.group("items"), re.S)
+        found = [GUIDE_ITEM.fullmatch(item) for item in items]
+        if not items or not all(f and f.group("id") in minutes for f in found):
+            return block.group(0)
+        return ('<ul class="man-entries">\n' + "\n".join(entry(f) for f in found) + "\n</ul>")
+
+    return LIST_BLOCK.sub(one_list, rendered)
+
+
+def first_image(rendered: str) -> dict[str, str] | None:
+    """The first figure of a page, which its card on the blog's front page shows.
+
+    Args:
+        rendered: The page's body HTML.
+
+    Returns:
+        The attributes of its first ``<img>``, by name; None when it has none, or one without
+        a source.
+    """
+    m = re.search(r"<img\b[^>]*>", rendered)
+    if not m:
+        return None
+    attrs = dict(re.findall(r'([a-z-]+)="([^"]*)"', m.group(0)))
+    return attrs if attrs.get("src") else None
+
+
+#: Cards whose figure loads at once: the first row on a wide screen. The others wait until they
+#: near the screen. Deferred, the first figure — the first thing seen — was fetched last, after
+#: the layout; the landing's carousel loads its first slide at once for the same reason.
+EAGER_CARDS = 2
+
+
+def post_cards(posts: list[tuple[str, str, str, str]], minutes: dict[str, int],
+               bodies: dict[str, str]) -> str:
+    """The blog's front page list, one card per post: its first figure, title, date and summary.
+
+    The list was the README's bullets, the date written "2026-10-31" between two dashes inside
+    the text; every post has a figure of its own, which is what tells them apart at a glance.
+    The card's figure is decorative — its title says what the post is — so it carries no
+    alternative text of its own. The whole card leads to the post, through its title's link
+    (manual.css stretches it), so a screen reader hears the title alone; a link written in the
+    title or the summary is kept as text, since the card's own link lies over it.
+
+    Args:
+        posts: ``(post_id, label, summary, date)`` in the README's order, newest first.
+        minutes: Each post's reading time, by id.
+        bodies: Each post's rendered body, by id, its first figure taken from it.
+
+    Returns:
+        The list's HTML. A post without a figure gets a card without one.
+    """
+    md = markdown()
+    cards = []
+    for rank, (pid, label, summary, date) in enumerate(posts):
+        img = first_image(bodies[pid])
+        figure = ""
+        if img:
+            size = "".join(f' {k}="{img[k]}"' for k in ("width", "height") if k in img)
+            lazy = ' loading="lazy"' if rank >= EAGER_CARDS else ""
+            figure = f'<img class="man-card-img" src="{img["src"]}" alt=""{size}{lazy}>'
+        cards.append(
+            f'<li class="man-card">{figure}<div class="man-card-text">'
+            f'<h2 class="man-card-title"><a href="{pid}">{unlink(md.renderInline(label))}</a></h2>'
+            f'<p class="man-card-meta"><time datetime="{date}">{long_date(date)}</time>'
+            f' · {minutes[pid]} min read</p>'
+            f'<p class="man-card-summary">{unlink(md.renderInline(summary))}</p></div></li>')
+    return '<ul class="man-cards">\n' + "\n".join(cards) + "\n</ul>"
+
+
+def replace_page_list(rendered: str, ids: set[str], replacement: str) -> str:
+    """Put ``replacement`` where a README's rendering lists its pages.
+
+    Args:
+        rendered: The front page body, as the README renders.
+        ids: The section's page ids.
+        replacement: What stands in for the list.
+
+    Returns:
+        The body with its first list linking to one of ``ids`` replaced; the replacement is
+        added at the end when no list does.
+    """
+    for block in LIST_BLOCK.finditer(rendered):
+        links = set(re.findall(r'<a href="([a-z0-9-]+)">', block.group("items")))
+        if links & ids:
+            return rendered[:block.start()] + replacement + rendered[block.end():]
+    return rendered + replacement
 
 
 def lazy_load_images(rendered: str) -> str:
@@ -840,22 +1082,201 @@ def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None,
             "</urlset>\n")
 
 
-def page_number(page_id: str, rank: int) -> int:
-    """The number a page is shown with in the sidebar.
-
-    Args:
-        page_id: The page's id: a chapter's starts with its number, a guide's carries none.
-        rank: Its place in the list, counted from 1.
+def present_sections() -> tuple[Section, ...]:
+    """The sections that have pages: the manual, and the guides and the blog once they exist.
 
     Returns:
-        The chapter's own number, or the guide's rank.
+        The sections a top bar links to, in SECTIONS' order; a section without a README lists
+        no page, and a link to it would land nowhere.
     """
-    return int(page_id[:2]) if page_id[:2].isdigit() else rank
+    folders = {MANUAL: MANUAL_DIR, GUIDES: GUIDES_DIR, BLOG: BLOG_DIR}
+    return tuple(s for s in SECTIONS if (folders[s] / "README.md").exists())
+
+
+def section_links(current: Section, front: bool, sections: tuple[Section, ...] = SECTIONS) -> str:
+    """The top bar's links to the sections of the page's family, the one being read marked.
+
+    A reader who came in on a guide reached the blog only by going back to the landing: the bar
+    had the way home and the section's own name, nothing else. It links the guides and the blog
+    to each other; the manual's bar names the manual alone (Section.family).
+
+    Args:
+        current: The section of the page.
+        front: Whether the page is the section's front page, which its link then leads to.
+        sections: The sections that have pages, of every family.
+
+    Returns:
+        The bar's ``<nav>``. The current section's link says so to assistive technology: as
+        the page itself on its front page, as the current one of its family elsewhere.
+    """
+    links = "".join(
+        f'<a href="../{s.folder}/"'
+        + ((' aria-current="page"' if front else ' aria-current="true"') if s == current else "")
+        + f">{s.crumb}</a>"
+        for s in sections if s.family == current.family)
+    return f'<nav class="man-sections" aria-label="Sections">{links}</nav>'
+
+
+#: A part of a page, as stamp_heading_ids() leaves it: an h2 and its anchor.
+PART_HEADING = re.compile(r'<h2 id="(?P<id>[^"]+)">(?P<label>.*?)</h2>', re.S)
+
+#: Fewest parts worth an outline: a page of one part is that part.
+OUTLINE_MIN = 2
+
+
+def outline(rendered: str) -> list[tuple[str, str]]:
+    """The parts of a page, by its second-level headings.
+
+    A post ran to 13 screens on a phone and a chapter to 33 parts, with nothing to show them
+    or reach one but scrolling (Chromium, 2026-11-01).
+
+    Args:
+        rendered: The page's body, its headings carrying their ids.
+
+    Returns:
+        ``(anchor, label)`` in page order. A label keeps its inline markup — the brand's
+        ``<sup>``, a ``<code>`` — but not a link: it is placed inside one.
+    """
+    return [(m.group("id"), unlink(m.group("label")).strip()) for m in PART_HEADING.finditer(rendered)]
+
+
+def outline_list(parts: list[tuple[str, str]], indent: str) -> str:
+    """The outline as a list of links to the parts.
+
+    Args:
+        parts: ``(anchor, label)``, from outline().
+        indent: Leading whitespace of each line, so the source reads as nested.
+
+    Returns:
+        The list's HTML; manual-outline.js marks the part being read in it.
+    """
+    items = "\n".join(f'{indent}    <li><a href="#{pid}">{label}</a></li>' for pid, label in parts)
+    return f'{indent}<ul class="man-outline">\n{items}\n{indent}</ul>'
+
+
+#: A page's title and the lines a generator puts under it, in whatever order they were put there:
+#: the manual's release, a guide's or a post's facts (under_title()), what the page was checked
+#: against (lift_checked()).
+TITLE_BLOCK = re.compile(r'</h1>\n(?:<p class="man-(?:version|guide-meta|post-meta|checked)">.*?</p>\n)*',
+                         re.S)
+
+
+def under_title_block(rendered: str, block: str) -> str:
+    """Place a block after a page's title and the line under it, or at the top without a title.
+
+    Args:
+        rendered: A page body.
+        block: The HTML to place.
+
+    Returns:
+        The body with the block inserted.
+    """
+    m = TITLE_BLOCK.search(rendered)
+    if not m:
+        return block + "\n" + rendered
+    return rendered[:m.end()] + block + "\n" + rendered[m.end():]
+
+
+def phone_outline(parts: list[tuple[str, str]]) -> str:
+    """The outline as a phone shows it: a menu under the title, closed until asked for.
+
+    On a wide screen the sidebar holds the outline under the page's own entry, and this menu
+    is hidden (manual.css); on a phone the sidebar is hidden.
+
+    Args:
+        parts: ``(anchor, label)``, from outline().
+
+    Returns:
+        The menu's HTML, built like the phone's page list above it.
+    """
+    return ('<details class="man-outline-menu">\n'
+            f'<summary><span>On this page</span><span class="man-menu-count">{len(parts)}</span>'
+            f'{CHEVRON}</summary>\n{outline_list(parts, "")}\n</details>')
+
+
+def nav_items(toc: list[tuple[str, str]], active: str, section: Section,
+              groups: dict[str, str] | None = None,
+              parts: list[tuple[str, str]] | None = None) -> str:
+    """The links of a page list: the sidebar's, or the phone's menu's.
+
+    Args:
+        toc: The section's pages, ``(page_id, label)`` in order.
+        active: Id of the page being rendered, highlighted; empty on a front page.
+        section: The section the pages belong to.
+        groups: Theme titles, by the id of the first page under each (parse_guide_groups()).
+        parts: The outline of the page being rendered, set under its entry: the sidebar's
+            list carries it, the phone's menu does not — the phone has its own, under the title.
+
+    Returns:
+        The list's HTML, one line per link.
+    """
+    # The label is wrapped: the item is a flex row, and a label carrying markup — the brand's
+    # <sup> — would otherwise split into one flex item per text run, laid out side by side
+    # like columns (seen on "Audiogravity, Volumio or moOde", 2026-10-17).
+    lines = []
+    for cid, label in toc:
+        if groups and cid in groups:
+            lines.append(f'            <p class="man-nav-group">{groups[cid]}</p>')
+        lines.append('            <a class="man-nav-item{cls}" href="{cid}"{cur}>{n}<span>{label}</span></a>'.format(
+            cls=" active" if cid == active else "",
+            # Assistive technology reads aria-current; the class only paints a border.
+            cur=' aria-current="page"' if cid == active else "",
+            cid=cid,
+            n=f'<span class="man-nav-n">{page_number(cid):02d}</span>' if section.numbered else "",
+            label=label,
+        ))
+        if parts and cid == active:
+            lines.append(outline_list(parts, "            "))
+    return "\n".join(lines)
+
+
+def pager(toc: list[tuple[str, str]], active: str, section: Section) -> str:
+    """The way on at the foot of a page: the page before it and the page after it in the list.
+
+    Every page ended on "Back to audiogravity.app" alone: the next guide, the next chapter, an
+    older post, were reachable only from the list.
+
+    Args:
+        toc: The section's pages, ``(page_id, label)`` in order.
+        active: Id of the page being rendered; empty on a front page, which gets none.
+        section: The section, which names the two directions.
+
+    Returns:
+        The ``<nav>``'s HTML; empty on a front page, or for a page alone in its list.
+    """
+    ids = [cid for cid, _ in toc]
+    if active not in ids or len(ids) < 2:
+        return ""
+    i = ids.index(active)
+    links = []
+    if i > 0:
+        cid, label = toc[i - 1]
+        links.append(f'<a class="man-pager-prev" href="{cid}" rel="prev"><span class="man-pager-dir">'
+                     f'← {section.prev_label}</span><span class="man-pager-title">{label}</span></a>')
+    if i < len(ids) - 1:
+        cid, label = toc[i + 1]
+        links.append(f'<a class="man-pager-next" href="{cid}" rel="next"><span class="man-pager-dir">'
+                     f'{section.next_label} →</span><span class="man-pager-title">{label}</span></a>')
+    return ('\n            <nav class="man-pager" aria-label="Previous and next">'
+            + "".join(links) + "</nav>")
+
+
+def page_number(page_id: str) -> int:
+    """The number a chapter is shown with in the sidebar, the only numbered list (Section.numbered).
+
+    Args:
+        page_id: The chapter's id, which starts with its number (TOC_LINE): ``04-listening``.
+
+    Returns:
+        The chapter's own number.
+    """
+    return int(page_id[:2])
 
 
 def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonical: str,
-         section: Section = MANUAL, description: str | None = None) -> str:
-    """Assemble one page of the manual or of the guides.
+         section: Section = MANUAL, description: str | None = None,
+         groups: dict[str, str] | None = None, sections: tuple[Section, ...] = SECTIONS) -> str:
+    """Assemble one page of the manual, of the guides or of the blog.
 
     Args:
         title: Page label, may carry inline markup; stripped for ``<title>``.
@@ -877,24 +1298,23 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         section: Which set of pages this one belongs to.
         description: What a search result says of the page, as plain text. A guide gives its
             own; a manual page falls back on its title.
+        groups: Theme titles the page list is filed under, by the id of the first page under
+            each; none for the manual and the blog.
+        sections: The sections the top bar links to (present_sections()).
 
     Returns:
         A complete HTML document.
     """
-    # The label is wrapped: the item is a flex row, and a label carrying markup — the brand's
-    # <sup> — would otherwise split into one flex item per text run, laid out side by side
-    # like columns (seen on "Audiogravity, Volumio or moOde", 2026-10-17).
-    links = "\n".join(
-        '            <a class="man-nav-item{cls}" href="{cid}"{cur}>{n}<span>{label}</span></a>'.format(
-            cls=" active" if cid == active else "",
-            # Assistive technology reads aria-current; the class only paints a border.
-            cur=' aria-current="page"' if cid == active else "",
-            cid=cid,
-            n=f'<span class="man-nav-n">{page_number(cid, rank):02d}</span>' if section.numbered else "",
-            label=label,
-        )
-        for rank, (cid, label) in enumerate(toc, 1)
-    )
+    # A page of the list gets its outline — in the sidebar under its own entry, and on a phone
+    # in a menu under its title — and the way on to its neighbours at its foot. A front page is
+    # the list itself, and gets neither.
+    parts = outline(body) if active else []
+    if len(parts) < OUTLINE_MIN:
+        parts = []
+    if parts:
+        body = under_title_block(body, phone_outline(parts))
+    links = nav_items(toc, active, section, groups)
+    sidebar = nav_items(toc, active, section, groups, parts)
     plain = re.sub(r"<[^>]+>", "", title)
     if description is None:
         description = f"Audiogravity user manual — {plain}."
@@ -902,6 +1322,8 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     # since README.md — its body — already ends with it. Nor does a guide (Section.notice).
     notice = (f'\n                <p class="man-notice">{footer_notice()}</p>'
               if active and section.notice else "")
+    # The way back to the list, which a page of it now names at its foot as the phone's menu does.
+    to_list = f'<a href="./">{section.menu}</a>' if active else ""
     return f"""<!doctype html>
 <html lang="en">
 
@@ -925,6 +1347,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
         }})();
     </script>
     <script src="../../assets/manual-copy.js" defer></script>
+    <script src="../../assets/manual-outline.js" defer></script>
     <script src="../../assets/to-top.js" defer></script>
     <script src="../../assets/theme-toggle.js" defer></script>
 </head>
@@ -933,8 +1356,8 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">{BRAND}</a>
-        <a class="man-crumb" href="./">{section.crumb}</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">{BRAND}</span></a>
+        {section_links(section, not active, sections)}
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -948,15 +1371,15 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
 
     <div class="man-shell">
         <nav class="man-nav" aria-label="{section.nav_label}">
-{links}
+{sidebar}
         </nav>
 
         <main class="man-main">
             <article class="man-md">
 {body}
-            </article>
+            </article>{pager(toc, active, section)}
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>{notice}
+                <p class="man-foot-links">{to_list}<a href="../../index.html">← Back to audiogravity.app</a></p>{notice}
             </footer>
         </main>
     </div>
@@ -1025,6 +1448,7 @@ def build() -> dict[Path, str]:
         """Run one Markdown source through every post-processing pass, in order."""
         return render_body(md, source, known)
 
+    sections = present_sections()
     out: dict[Path, str] = {}
     for cid, label in toc:
         src = MANUAL_DIR / f"{cid}.md"
@@ -1032,13 +1456,13 @@ def build() -> dict[Path, str]:
             sys.exit(f"{src} is listed in the Contents but does not exist")
         # Canonical without the suffix: that is the address Pages actually serves.
         out[MANUAL_DIR / f"{cid}.html"] = page(
-            label, render(src.read_text(encoding="utf-8")), toc, cid, cid)
+            label, render(src.read_text(encoding="utf-8")), toc, cid, cid, sections=sections)
 
     # The README becomes the manual's front page, on the same shell as the chapters. Its
     # canonical address is the directory: that is what a visitor reaches, and what the landing
     # and the chapters link to.
     out[MANUAL_DIR / "index.html"] = page(
-        "Contents", stamp_version(render(readme), read_version()), toc, "", "")
+        "Contents", stamp_version(render(readme), read_version()), toc, "", "", sections=sections)
     # Each stylesheet and script is asked for with a stamp of its content, so a page never
     # meets a file a browser kept from before an update (scripts/asset_versions.py).
     return {path: stamp_assets(text, MANUAL_DIR) for path, text in out.items()}
@@ -1055,18 +1479,24 @@ def read_guides() -> list[tuple[str, str, str]]:
 
 
 def build_listed(section: Section, folder: Path, entries: list[tuple[str, str, str]],
-                 meta: Callable[[str, str, int, int], str]) -> dict[Path, str]:
+                 meta: Callable[[str, str, int], str],
+                 front: Callable[[str, dict[str, int], dict[str, str]], str],
+                 groups: dict[str, str] | None = None) -> dict[Path, str]:
     """Render the pages a README lists, and that README as their front page.
 
-    The guides and the blog are built this way; they differ only in the line under a page's
-    title (a guide's number, a post's date) and in where they live.
+    The guides and the blog are built this way; they differ in the line under a page's title
+    (a guide's reading time, a post's date), in how their front page lays out the list, in the
+    themes the guides are filed under, and in where they live.
 
     Args:
         section: The section the pages belong to.
         folder: Where their Markdown is, and where the pages are written.
         entries: ``(page_id, label, summary)`` in the README's order.
-        meta: The page's body with its line under the title, from the body, the page's id,
-            its rank in the list and its reading time.
+        meta: The page's body with its line under the title, from the body, the page's id and
+            its reading time.
+        front: The front page's body, from the README's rendering, the pages' reading times
+            and their rendered bodies, by id.
+        groups: Theme titles, by the id of the first page under each.
 
     Returns:
         Mapping of output path to file contents.
@@ -1074,26 +1504,30 @@ def build_listed(section: Section, folder: Path, entries: list[tuple[str, str, s
     md = markdown()
     known = {pid for pid, _, _ in entries} | {"README"}
     toc = [(pid, label) for pid, label, _ in entries]
+    sections = present_sections()
 
     out: dict[Path, str] = {}
     minutes: dict[str, int] = {}
-    for rank, (pid, label, summary) in enumerate(entries, 1):
+    bodies: dict[str, str] = {}
+    for pid, label, summary in entries:
         src = folder / f"{pid}.md"
         if not src.exists():
             sys.exit(f"{src} is listed in {folder / 'README.md'} but does not exist")
-        body = render_body(md, src.read_text(encoding="utf-8"), known)
+        body = bodies[pid] = lift_checked(box_short_answer(
+            render_body(md, src.read_text(encoding="utf-8"), known)))
         minutes[pid] = reading_minutes(body)
         out[folder / f"{pid}.html"] = page(
-            label, meta(body, pid, rank, minutes[pid]), toc, pid, pid, section, plain_text(summary))
+            label, meta(body, pid, minutes[pid]), toc, pid, pid, section, plain_text(summary),
+            groups, sections)
 
     # The README is the section's front page; its first paragraph says what the pages are, and
     # is what a search result shows of that page.
-    body = stamp_reading_times(
-        render_body(md, (folder / "README.md").read_text(encoding="utf-8"), known), minutes)
+    body = front(render_body(md, (folder / "README.md").read_text(encoding="utf-8"), known),
+                 minutes, bodies)
     intro = re.search(r"<p>(.*?)</p>", body, re.S)
     out[folder / "index.html"] = page(
         section.crumb, body, toc, "", "", section,
-        " ".join(plain_text(intro.group(1)).split()) if intro else None)
+        " ".join(plain_text(intro.group(1)).split()) if intro else None, groups, sections)
     return {path: stamp_assets(text, folder) for path, text in out.items()}
 
 
@@ -1103,14 +1537,17 @@ def build_guides() -> dict[Path, str]:
     Returns:
         Mapping of output path to file contents; empty while there is no guides folder.
     """
-    if not (GUIDES_DIR / "README.md").exists():
+    readme = GUIDES_DIR / "README.md"
+    if not readme.exists():
         return {}
     guides = read_guides()
     if not guides:
         sys.exit("no guides found in docs/guides/README.md — is each one a "
-                 "'1. [Title](id.md) — summary' line?")
+                 "'- [Title](id.md) — summary' line?")
     return build_listed(GUIDES, GUIDES_DIR, guides,
-                        lambda body, _pid, rank, minutes: stamp_guide_meta(body, rank, minutes))
+                        lambda body, _pid, minutes: stamp_guide_meta(body, minutes),
+                        lambda body, minutes, _bodies: stamp_entries(body, minutes),
+                        parse_guide_groups(readme.read_text(encoding="utf-8")))
 
 
 def read_posts() -> list[tuple[str, str, str, str]]:
@@ -1142,7 +1579,9 @@ def build_blog() -> dict[Path, str]:
         except ValueError:
             sys.exit(f"docs/blog/README.md: {pid} is dated {date}, which is not a calendar date")
     return build_listed(BLOG, BLOG_DIR, [(pid, label, summary) for pid, label, summary, _ in posts],
-                        lambda body, pid, _rank, minutes: stamp_post_meta(body, dates[pid], minutes))
+                        lambda body, pid, minutes: stamp_post_meta(body, dates[pid], minutes),
+                        lambda body, minutes, bodies: replace_page_list(
+                            body, set(dates), post_cards(posts, minutes, bodies)))
 
 
 #: Where the trademark notice may appear in the Markdown: README.md only. It used to close all

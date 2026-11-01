@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/manual/10-glossary">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">User manual</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../manual/" aria-current="true">Manual</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -152,8 +153,9 @@ downloaded, and they remain yours whether or not a subscription is running. In
 Audiogravi<sup>ty</sup> the Vault is a shelf of its own on the HIGHRESAUDIO source.</p>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="09-troubleshooting" rel="prev"><span class="man-pager-dir">← Previous chapter</span><span class="man-pager-title">Troubleshooting</span></a><a class="man-pager-next" href="11-faq" rel="next"><span class="man-pager-dir">Next chapter →</span><span class="man-pager-title">FAQ</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All chapters</a><a href="../../index.html">← Back to audiogravity.app</a></p>
                 <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
             </footer>
         </main>

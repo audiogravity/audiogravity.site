@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/manual/02-installation">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">User manual</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../manual/" aria-current="true">Manual</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -58,6 +59,16 @@
             <a class="man-nav-item" href="00-quick-start"><span class="man-nav-n">00</span><span>Quick start</span></a>
             <a class="man-nav-item" href="01-introduction"><span class="man-nav-n">01</span><span>Introduction</span></a>
             <a class="man-nav-item active" href="02-installation" aria-current="page"><span class="man-nav-n">02</span><span>Installation</span></a>
+            <ul class="man-outline">
+                <li><a href="#before-you-start">Before you start</a></li>
+                <li><a href="#recommended--all-in-one-one-box">Recommended — all-in-one (one box)</a></li>
+                <li><a href="#advanced--core-and-ui-separately">Advanced — core and ui separately</a></li>
+                <li><a href="#optional-flags-core-installer">Optional flags (core installer)</a></li>
+                <li><a href="#optional-flags-ui-installer">Optional flags (ui installer)</a></li>
+                <li><a href="#a-real-domain--optional">A real domain — optional</a></li>
+                <li><a href="#first-contact">First contact</a></li>
+                <li><a href="#uninstalling">Uninstalling</a></li>
+            </ul>
             <a class="man-nav-item" href="03-first-run"><span class="man-nav-n">03</span><span>First run</span></a>
             <a class="man-nav-item" href="04-listening"><span class="man-nav-n">04</span><span>Listening</span></a>
             <a class="man-nav-item" href="05-library-streaming"><span class="man-nav-n">05</span><span>Library & streaming</span></a>
@@ -72,6 +83,19 @@
         <main class="man-main">
             <article class="man-md">
 <h1>2. Installation</h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">8</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#before-you-start">Before you start</a></li>
+    <li><a href="#recommended--all-in-one-one-box">Recommended — all-in-one (one box)</a></li>
+    <li><a href="#advanced--core-and-ui-separately">Advanced — core and ui separately</a></li>
+    <li><a href="#optional-flags-core-installer">Optional flags (core installer)</a></li>
+    <li><a href="#optional-flags-ui-installer">Optional flags (ui installer)</a></li>
+    <li><a href="#a-real-domain--optional">A real domain — optional</a></li>
+    <li><a href="#first-contact">First contact</a></li>
+    <li><a href="#uninstalling">Uninstalling</a></li>
+</ul>
+</details>
 <p>Audiogravi<sup>ty</sup> installs in a single command. The installer detects your architecture,
 generates security keys, configures the systemd service and starts everything —
 usually <strong>under five minutes</strong> from <code>curl</code> to the interface. No compilation, no
@@ -282,8 +306,9 @@ their own configuration files. They are ordinary system packages that keep worki
 Audiogravi<sup>ty</sup>; remove them with your package manager if you want them gone.</p>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="01-introduction" rel="prev"><span class="man-pager-dir">← Previous chapter</span><span class="man-pager-title">Introduction</span></a><a class="man-pager-next" href="03-first-run" rel="next"><span class="man-pager-dir">Next chapter →</span><span class="man-pager-title">First run</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All chapters</a><a href="../../index.html">← Back to audiogravity.app</a></p>
                 <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
             </footer>
         </main>

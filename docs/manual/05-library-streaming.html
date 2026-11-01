@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/manual/05-library-streaming">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">User manual</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../manual/" aria-current="true">Manual</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -61,6 +62,15 @@
             <a class="man-nav-item" href="03-first-run"><span class="man-nav-n">03</span><span>First run</span></a>
             <a class="man-nav-item" href="04-listening"><span class="man-nav-n">04</span><span>Listening</span></a>
             <a class="man-nav-item active" href="05-library-streaming" aria-current="page"><span class="man-nav-n">05</span><span>Library & streaming</span></a>
+            <ul class="man-outline">
+                <li><a href="#how-the-library-tab-is-organised">How the Library tab is organised</a></li>
+                <li><a href="#your-local-library">Your local library</a></li>
+                <li><a href="#upnp--dlna-media-servers">UPnP / DLNA media servers</a></li>
+                <li><a href="#roon">Roon</a></li>
+                <li><a href="#streaming-services">Streaming services</a></li>
+                <li><a href="#internet-radio">Internet radio</a></li>
+                <li><a href="#listening-history">Listening history</a></li>
+            </ul>
             <a class="man-nav-item" href="06-outputs-engines"><span class="man-nav-n">06</span><span>Outputs & engines</span></a>
             <a class="man-nav-item" href="07-administration"><span class="man-nav-n">07</span><span>Administration</span></a>
             <a class="man-nav-item" href="08-updating"><span class="man-nav-n">08</span><span>Updating</span></a>
@@ -72,6 +82,18 @@
         <main class="man-main">
             <article class="man-md">
 <h1>5. Library &amp; streaming</h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">7</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#how-the-library-tab-is-organised">How the Library tab is organised</a></li>
+    <li><a href="#your-local-library">Your local library</a></li>
+    <li><a href="#upnp--dlna-media-servers">UPnP / DLNA media servers</a></li>
+    <li><a href="#roon">Roon</a></li>
+    <li><a href="#streaming-services">Streaming services</a></li>
+    <li><a href="#internet-radio">Internet radio</a></li>
+    <li><a href="#listening-history">Listening history</a></li>
+</ul>
+</details>
 <p>Browse everything from one interface: your local files, your UPnP/DLNA media servers,
 and the streaming services — Qobuz, Tidal and HIGHRESAUDIO — side by side. Search
 results are directly playable, with titles and cover art. Pick a track, pick an
@@ -445,8 +467,9 @@ undone.</li>
 anywhere.</p>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="04-listening" rel="prev"><span class="man-pager-dir">← Previous chapter</span><span class="man-pager-title">Listening</span></a><a class="man-pager-next" href="06-outputs-engines" rel="next"><span class="man-pager-dir">Next chapter →</span><span class="man-pager-title">Outputs & engines</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All chapters</a><a href="../../index.html">← Back to audiogravity.app</a></p>
                 <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
             </footer>
         </main>

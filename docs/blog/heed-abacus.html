@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/blog/heed-abacus">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">Blog</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../guides/">Guides</a><a href="../blog/" aria-current="true">Blog</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -51,6 +52,16 @@
             <a class="man-nav-item" href="quad-33-303"><span>The Quad 33 and 303: Quad's first transistor amplifiers, and their return in 2024</span></a>
             <a class="man-nav-item" href="bbc-ls3-5a"><span>The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a>
             <a class="man-nav-item active" href="heed-abacus" aria-current="page"><span>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</span></a>
+            <ul class="man-outline">
+                <li><a href="#heed-and-the-abacus">Heed, and the Abacus</a></li>
+                <li><a href="#the-streamer-card-and-the-abacus-s">The streamer card, and the Abacus S</a></li>
+                <li><a href="#what-linux-sees">What Linux sees</a></li>
+                <li><a href="#its-usb-volume">Its USB volume</a></li>
+                <li><a href="#below-0-db-dsd-stops">Below 0 dB, DSD stops</a></li>
+                <li><a href="#keeping-its-dsd-playing">Keeping its DSD playing</a></li>
+                <li><a href="#with-audiogravity">With Audiogravi<sup>ty</sup></a></li>
+                <li><a href="#sources">Sources</a></li>
+            </ul>
             <a class="man-nav-item" href="naim-serial-numbers"><span>How old is your Naim? Serial numbers and years, 1982 to 2022</span></a>
             <a class="man-nav-item" href="naim-audio-nait-2"><span>The Naim NAIT 2: its figures, its sound, and the NAITs that followed</span></a>
         </nav>
@@ -59,14 +70,27 @@
             <article class="man-md">
 <h1>The Heed Abacus: a Hungarian DAC, and the DSD it plays only at full volume</h1>
 <p class="man-post-meta"><time datetime="2026-10-31">31 October 2026</time> · 7 min read</p>
+<p class="man-checked"><svg class="man-checked-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Checked on 2026-10-31 against Heed's owner's manual (version 1.0, May 2017), and on the unit
+connected to my test box, an x86 PC under Debian 13 (Linux 6.12, alsa-utils 1.2.14, MPD 0.24.5).
+The DSD trials date from 2026-10-18.</span></p>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">8</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#heed-and-the-abacus">Heed, and the Abacus</a></li>
+    <li><a href="#the-streamer-card-and-the-abacus-s">The streamer card, and the Abacus S</a></li>
+    <li><a href="#what-linux-sees">What Linux sees</a></li>
+    <li><a href="#its-usb-volume">Its USB volume</a></li>
+    <li><a href="#below-0-db-dsd-stops">Below 0 dB, DSD stops</a></li>
+    <li><a href="#keeping-its-dsd-playing">Keeping its DSD playing</a></li>
+    <li><a href="#with-audiogravity">With Audiogravi<sup>ty</sup></a></li>
+    <li><a href="#sources">Sources</a></li>
+</ul>
+</details>
 <p>The Abacus is a DAC by Heed Audio of Budapest, whose manual is dated May 2017: five digital inputs
 and a slot for a card, PCM up to 384 kHz and DSD128 over USB, a fixed output of 2.1 V. On a Linux
 streamer it is a
 USB DAC like any other, with one trap: its USB volume. Lowered below 0 dB, it stops DSD, whether
 sent as DoP or native. Here is what it is, what Linux sees of it, and how to keep its DSD playing.</p>
-<p>Checked on 2026-10-31 against Heed's owner's manual (version 1.0, May 2017), and on the unit
-connected to my test box, an x86 PC under Debian 13 (Linux 6.12, alsa-utils 1.2.14, MPD 0.24.5).
-The DSD trials date from 2026-10-18.</p>
 <h2 id="heed-and-the-abacus">Heed, and the Abacus</h2>
 <p>Heed Audio was born in Hungary in the early 1990s, with the first amplifier of its own design, the
 Obelisk One; it celebrated its thirtieth anniversary in 2022. The Abacus came after the Thesis
@@ -226,8 +250,9 @@ the Abacus. The details are in the manual:
 </ul>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="bbc-ls3-5a" rel="prev"><span class="man-pager-dir">← Newer post</span><span class="man-pager-title">The BBC LS3/5A: a monitor made for outside-broadcast vans, and its 11-ohm Rogers version</span></a><a class="man-pager-next" href="naim-serial-numbers" rel="next"><span class="man-pager-dir">Older post →</span><span class="man-pager-title">How old is your Naim? Serial numbers and years, 1982 to 2022</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All posts</a><a href="../../index.html">← Back to audiogravity.app</a></p>
             </footer>
         </main>
     </div>

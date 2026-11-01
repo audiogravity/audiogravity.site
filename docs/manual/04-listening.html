@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://audiogravity.app/docs/manual/04-listening">
     <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
     <link rel="stylesheet" href="../../assets/style.css?v=8b7552781b">
-    <link rel="stylesheet" href="../../assets/manual.css?v=11e8557b55">
+    <link rel="stylesheet" href="../../assets/manual.css?v=ffc77c5308">
     <script>
         /* Applied before first paint: reading the stored theme after the stylesheet has painted
            shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
@@ -21,6 +21,7 @@
         })();
     </script>
     <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
     <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
     <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
 </head>
@@ -29,8 +30,8 @@
     <header class="man-top">
         <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
             <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
-                 width="28" height="28" decoding="async">Audiogravi<sup>ty</sup></a>
-        <a class="man-crumb" href="./">User manual</a>
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../manual/" aria-current="true">Manual</a></nav>
         <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
                 aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
     </header>
@@ -60,6 +61,17 @@
             <a class="man-nav-item" href="02-installation"><span class="man-nav-n">02</span><span>Installation</span></a>
             <a class="man-nav-item" href="03-first-run"><span class="man-nav-n">03</span><span>First run</span></a>
             <a class="man-nav-item active" href="04-listening" aria-current="page"><span class="man-nav-n">04</span><span>Listening</span></a>
+            <ul class="man-outline">
+                <li><a href="#the-now-playing-bar">The Now Playing bar</a></li>
+                <li><a href="#the-fullscreen-player">The fullscreen player</a></li>
+                <li><a href="#the-queue">The Queue</a></li>
+                <li><a href="#the-live-hi-fi-readout">The live hi-fi readout</a></li>
+                <li><a href="#the-stream-origin-badge">The stream-origin badge</a></li>
+                <li><a href="#profiles--switch-whole-chains-in-one-tap">Profiles — switch whole chains in one tap</a></li>
+                <li><a href="#sleep-timer">Sleep timer</a></li>
+                <li><a href="#portrait-lock">Portrait lock</a></li>
+                <li><a href="#where-the-audio-goes">Where the audio goes</a></li>
+            </ul>
             <a class="man-nav-item" href="05-library-streaming"><span class="man-nav-n">05</span><span>Library & streaming</span></a>
             <a class="man-nav-item" href="06-outputs-engines"><span class="man-nav-n">06</span><span>Outputs & engines</span></a>
             <a class="man-nav-item" href="07-administration"><span class="man-nav-n">07</span><span>Administration</span></a>
@@ -72,6 +84,20 @@
         <main class="man-main">
             <article class="man-md">
 <h1>4. Listening</h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">9</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#the-now-playing-bar">The Now Playing bar</a></li>
+    <li><a href="#the-fullscreen-player">The fullscreen player</a></li>
+    <li><a href="#the-queue">The Queue</a></li>
+    <li><a href="#the-live-hi-fi-readout">The live hi-fi readout</a></li>
+    <li><a href="#the-stream-origin-badge">The stream-origin badge</a></li>
+    <li><a href="#profiles--switch-whole-chains-in-one-tap">Profiles — switch whole chains in one tap</a></li>
+    <li><a href="#sleep-timer">Sleep timer</a></li>
+    <li><a href="#portrait-lock">Portrait lock</a></li>
+    <li><a href="#where-the-audio-goes">Where the audio goes</a></li>
+</ul>
+</details>
 <p>Once your box is set up, playing music is the same whatever the source — local files,
 Qobuz, Tidal, HIGHRESAUDIO, internet radio or a UPnP server all flow through one set
 of controls.</p>
@@ -233,8 +259,9 @@ streaming services and browsing your library is in
 <strong><a href="05-library-streaming">5. Library &amp; streaming</a></strong>.</p>
 
             </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="03-first-run" rel="prev"><span class="man-pager-dir">← Previous chapter</span><span class="man-pager-title">First run</span></a><a class="man-pager-next" href="05-library-streaming" rel="next"><span class="man-pager-dir">Next chapter →</span><span class="man-pager-title">Library & streaming</span></a></nav>
             <footer class="man-foot">
-                <a href="../../index.html">← Back to audiogravity.app</a>
+                <p class="man-foot-links"><a href="./">All chapters</a><a href="../../index.html">← Back to audiogravity.app</a></p>
                 <p class="man-notice">Roon, HQPlayer, AirPlay, Qobuz, Tidal and HIGHRESAUDIO, and their respective logos, are trademarks of their respective owners. Audiogravi<sup>ty</sup> is not affiliated with, endorsed by, or sponsored by any of them: it interoperates with their software as a client, and each remains the property of its owner.</p>
             </footer>
         </main>

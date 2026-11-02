@@ -35,6 +35,11 @@ Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 - **Album details** — Album, Artist, Format, Genre, Year, Position, Source and the
   full **Tracklist**.
 - A **Queue** view for what's coming up (see below).
+- Under the cover, a **Cover | VU meter** switch puts a pair of VU meters in the
+  cover's place — see [The level meter](#the-level-meter).
+- **On a phone held on its side** — with Portrait Lock off, see
+  [Portrait lock](#portrait-lock) — the whole player fits on one screen, with nothing
+  to scroll.
 - On a Qobuz or HIGHRESAUDIO track, an **Add to playlist** button beside the title puts
   the track into one of your playlists on that service — see
   [5. Library & streaming](05-library-streaming.md#adding-to-your-playlists).
@@ -54,7 +59,34 @@ Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 > first is still being applied. See
 > [9. Troubleshooting](09-troubleshooting.md).
 
-<img src="images/ios-fullscreen.webp" alt="The fullscreen player: cover art, signal path, the track with its add-to-playlist button, hi-fi format strip, transport, next track and output bar" width="360">
+<img src="images/ios-fullscreen.webp" alt="The fullscreen player: cover art, the Cover | VU meter switch, signal path, the track with its add-to-playlist button, hi-fi format strip, transport, next track and output bar" width="360">
+
+## The level meter
+
+*Pro.* While the box plays with its own player — your library, Qobuz, Tidal,
+HIGHRESAUDIO or a radio station — the fullscreen player can show a pair of
+**VU meters** in the cover's place: one needle per channel, moving with the music as
+you hear it.
+
+- Choose **VU meter** in the switch under the cover; **Cover** brings the artwork back.
+  Each phone, tablet or computer keeps its own choice.
+- The **gauge** button beside the switch opens the **showcase**: the meters and the
+  track over the whole screen, for a tablet set beside your hi-fi. The screen stays
+  awake while it is open, on browsers that allow it. Held on its side, a tablet or a
+  phone shows the meters side by side; upright, one above the other. **Exit** brings
+  the player back.
+- **Reading the meters.** The needles swing like those of a studio VU meter. **0** is
+  the reference level; the heavy band from 0 to +3, the loudest passages. The **PEAK**
+  lamp lights when the music goes past the end of the scale — even for an instant
+  too short for the needle to show.
+- Music sent to the box from another app — AirPlay, Roon, HQPlayer, or casting to the
+  box as a network speaker — keeps the cover: the meters follow the box's own player
+  only.
+- Without Pro, the switch shows a padlock that opens the licence panel.
+
+<img src="images/ios-vu-meter.webp" alt="The fullscreen player with the two VU meters, left above right, in the cover's place, the Cover | VU meter switch and the showcase button under them" width="360">
+
+<img src="images/ios-vu-showcase.webp" alt="The showcase on a phone held on its side: the left and right VU meters side by side, the track and its format below, and the Exit button" width="560">
 
 
 ## The Queue

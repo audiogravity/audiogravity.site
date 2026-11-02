@@ -7,7 +7,14 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### On audiogravity.app
+
+**The blog, rewritten around how the equipment sounds.** The posts on the Naim NAIT 2, the BBC
+LS3/5A and the Quad 33 and 303 now open on why each became a reference, and give most of their
+room to how it sounds — as Stereophile, The Absolute Sound, Hi-Fi News and Hi-Fi World heard it,
+from its first reviews to today, where they agree and where they don't —, before its rivals, what
+to pair it with, and its history and figures. A new post on the Rega Planar 3 follows the same
+lines, down to a P3 of about 2005 playing through a NAIT 2 into a pair of LS3/5A.
 
 ---
 

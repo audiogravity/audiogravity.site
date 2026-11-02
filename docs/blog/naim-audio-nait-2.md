@@ -1,133 +1,115 @@
-# The Naim NAIT 2: its figures, its sound, and the NAITs that followed
+# The Naim NAIT 2: the small amplifier that became a reference
 
-The NAIT 2 is the small integrated amplifier Naim Audio made from 1988 to 1993. Most units have
-four inputs: a moving-magnet phono stage and three line inputs on 5-pin DIN sockets. Its power is
-modest: Naim gives 13 W per channel into 8 ohms. Reviewers praised its sound, and advised small,
-easy-to-drive speakers in a small room.
+The NAIT 2 is the integrated amplifier Naim Audio made from 1988 to 1993: a box the size of a
+shoebox, a few watts, no remote, no headphone socket. From its first reviews to the latest, the
+specialist press has treated it, and the NAITs around it, as a reference among affordable integrated
+amplifiers. Hi-Fi World called the NAIT the "quintessentially British affordable audiophile
+amplifier"; Robert Harley, who
+first heard the NAIT 2 for Stereophile in 1989, wrote in 2018 that no other product "has brought
+more musical pleasure to more listeners for less money". In 2016, Stereophile listened to a rebuilt
+one again. Here is what they heard, where they disagree, how it compares with its rivals and its
+successors, and what to pair it with.
 
-Checked on 2026-10-31 against Naim's owner's manual for the NAIT 2, Stereophile's 1989 review and
-bench measurements, and Hi-Fi World's 2007 comparison of four NAITs.
+Checked on 2026-11-02 against the reviews of Stereophile (1989, 1990, 2016), Hi-Fi World (2007) and
+The Absolute Sound (2018), and Naim's owner's manual.
 
 <img src="images/naim-nait-2-chrome-bumper.jpg" alt="The front of a chrome-bumper NAIT 2: the Naim Audio logo lit in green, the balance, monitor and power knobs, and the input selector marked phono, tuner, aux and tape" width="870" height="606">
 
-## What it is
+## Why it became a reference
 
-NAIT stands for **N**aim **A**udio **I**n**T**egrated amplifier, as Naim's own glossary spells it.
-The first NAIT came out in 1983. Naim was then known for its separate pre-amplifiers and power
-amplifiers, and the NAIT put that sound in one small, low-powered box.
+The first NAIT came out in 1983 at £253. It "became an instant classic", Hi-Fi World wrote in 2007:
+it "sounded quite unlike any other integrated of its day", and started the trend for "super
+integrateds", between entry-level amplifiers and pre-power combinations. For Harley, the cheap
+solid-state amplifiers of the time were "hard, bright, grainy, flat"; the NAIT "gushed glorious
+music".
 
-The NAIT 2 replaced it in 1988, voiced by Naim's technical director Roy George. It kept the same
-small "half-size" case: 205 mm wide, 76 mm high and 276 mm deep. There are two looks:
+It came from a firm with firm ideas. Art Dudley, in Stereophile, sums up its views of the time:
+"Shopping for amplifiers based on output power is foolish", and soundstaging was American
+"nonsense". When Sam Tellig asked Julian Vereker, Naim's founder, why the NAIT was so low-powered,
+Vereker told him a more powerful version had been tried while he was on holiday: "It sounded awful."
 
-- **Chrome bumper**, 1988 to 1989: a black aluminium case with shiny edges, as in the photo above.
-- **Olive**, from 1989: a black case with a green front panel. Naim told Hi-Fi World that the new
-  case changed nothing in how it performs.
+The NAIT 2 replaced it in 1988. Dudley credits its redesign to James Barrington-Brown, who gave it
+Naim's own quasi-complementary output stage and the firm's first two-sided circuit board; Hi-Fi
+World says it was voiced by Roy George, Naim's technical director. The reviews "poured in", Dudley
+writes, "and not from only the UK press". For Harley, "none of the Nait's enchantment was lost in the
+translation; the Nait 2 actually improved upon its legendary predecessor."
 
-Compared with the first NAIT, it added a rotary input selector, a mute and tape-monitor switch, an
-**Aux** input and a normal balance control. The first NAIT's balance control could only lower the
-left channel.
+What the reviewers said of its standing:
 
-Stereophile looked inside in 1989: discrete transistors only, with no op-amps, on a densely packed
-double-sided board, and a heatsink bolted to the aluminium case.
+- **Stereophile, 1989:** "the most musically satisfying amplifier of the group", Harley wrote, after
+  comparing it with three rivals.
+- **Stereophile, 1990:** Tellig could not "name a better-sounding integrated amp at the price".
+- **Hi-Fi World, 2007:** any NAIT, "new or old", would still be the reviewer's "top recommended
+  integrated amplifier" between £500 and £900, and the old ones "brilliant second-hand buys".
+- **Stereophile, 2016:** Dudley put vintage Naim with the old products whose makers now do even
+  better, "and yet the old product retains its hold on buyers' imaginations".
+- **The Absolute Sound, 2018:** the NAIT "may be" Naim's "most iconic product", and the NAIT line has
+  won more of the magazine's Editors' Choice awards than any other product in its history.
 
-## Inputs, outputs and figures
+## The sound
 
-From Naim's manual, unless another source is named:
+**Timing.** Dudley found the NAIT 2's "uncanny way with musical timing" worthy of the praise Naim
+amplifiers get for it: "praise well deserved". Its momentum held even in slow music: in the Andante of Schubert's "Trout" Quintet, the
+system "didn't lose one iota of its momentum", and when the pace picked up, "my brain felt as if it
+were hot-wired to the musicians' intentions." Bass lines became legible: on Procol Harum's *Home*,
+Robin Trower's bass was "completely distinguished from the same notes played on the piano". Hi-Fi
+World, comparing four NAITs, called the first three "characterful, with a swaggering tunefulness" —
+"think of them as Keith Richards".
 
-| | NAIT 2 |
+**Voices and words.** Next to the first NAIT, Hi-Fi World heard "obviously higher resolution to the
+vocals", a fuller, deeper sound, and the timbre of instruments "brilliantly". Dudley noticed the
+words: with the NAIT 2, "the words — and their meanings — simply leaped out", disc after disc.
+
+**Tone.** Harley heard "no trace of edge or harshness": timbres "soft, warm, and liquid, very much
+like tube amplifiers", with "a slight loss of detail in the high end" that he preferred. Tellig found
+it "sweet, smooth, spacious", and said it sounded "a lot like a Krell" — "a 15Wpc Krell integrated
+amplifier... if D'Agostino dared to think small." Dudley, next to his valve amplifiers, heard
+textures "of a thicker, less stringy sort" — "little rounded nubs, not little spikes" — and a sound
+slightly brighter overall, "but not bright per se".
+
+**Bass.** Hi-Fi World found it "wonderfully tuneful", the most tuneful of the four NAITs, over
+quieter backgrounds. Dudley heard it "far tighter, with more precise attacks and cleaner decays" than
+through his own amplifier. Harley, in 1989, did not: next to its rivals it lacked "weight and
+authority", and was "slightly mushy".
+
+**Space.** Here the reviewers disagree most. Harley's first impression was of a soundstage "huge,
+open, three-dimensional, and transparent", the speakers tending "to disappear into the music"; Tellig
+found it "above all" spacious. Hi-Fi World heard "a slight lack of 'air'" next to the first NAIT.
+Dudley found its sense of scale "less than grand", and the NAIT 2 "definitely not an ideal product
+for listeners who crave being able to hear the air surrounding the players" — with an upside: "solid,
+not puffy".
+
+**Its limits.** It does not play loud. Harley found it underpowered at moderate to high levels;
+Tellig said it could not do justice to the Spica Angeli in his main listening room: "Not enough
+ooomph."
+
+They did not hear it in the same conditions. Harley and Tellig heard new units, in 1989 and 1990,
+Harley against three other amplifiers; Hi-Fi World heard a 1988 chrome-bumper unit against the other
+NAITs, from a Naim CD player into Kudos C1 standmounts; Dudley heard a 1990 NAIT 2 rebuilt with new
+transistors and capacitors, into Quad electrostatics, against his own electronics.
+
+## Against its rivals, and the NAITs that followed
+
+**In 1989**, Harley compared it with the Arcam Alpha 2, the Creek 4140 and the Audiolab 8000A. For
+soundstaging and tonal balance, the NAIT 2 was "the clear winner"; for power and bass, it lost. "It
+is the amplifier I would choose for overall musical satisfaction if price were no consideration," he
+wrote, having noted its "relatively high price", $795, and pointed readers on a budget to cheaper
+pre- and power amplifier pairs.
+
+**In 2007**, Hi-Fi World heard the NAIT, NAIT 2, NAIT 3 and NAIT 5i one after the other:
+
+| | What Hi-Fi World heard |
 |---|---|
-| Phono | Moving magnet, RCA sockets: 2.5 mV, 47 kΩ |
-| Tuner, Aux, Tape | 5-pin DIN sockets: 75 mV, 47 kΩ |
-| Tape output | 75 mV, 1 kΩ |
-| Loudspeakers | 4 mm banana sockets, one pair per channel |
-| Mains | 100, 110, 120, 200, 220 or 240 V, 50 or 60 Hz |
-| Power, Naim's figures | 13 W into 8 Ω, 19.5 W into 4 Ω |
-| Clipping, measured | 21 W into 8 Ω, 33.5 W into 4 Ω |
+| NAIT, 1983 | The best musical timing, "precision tempos" |
+| NAIT 2, 1988 | The most tuneful bass, a much quieter background than the NAIT |
+| NAIT 3, 1993 | The clearest, the most free-flowing; treble "a touch sharp" on female voices |
+| NAIT 5i, 2003 | The most refined, and more immediate: "more of a Mick Jagger" |
 
-The Tape socket carries the signal both ways, to record and to play back. Each unit was built for
-one of the mains voltages listed. Naim's power figures, per channel, were published by Hi-Fi World
-in 2007; Stereophile measured where it clips, at 1 kHz, in 1989.
+The reviewer was "torn between Naits 2 and 3", and found the test "debunked the myth about the first
+Nait being the best". For Harley, reviewing it for The Absolute Sound in 2008, the 5i was "the
+best-sounding Nait yet".
 
-The manual itself gives no power figure. It says instead that the low continuous power is
-"balanced by a very large peak current capacity". So there is no restriction on the type of
-loudspeaker, but it adds: "please don't expect the impossible". The 20 W per channel often quoted
-for the NAIT 2 is close to Naim's figure into 4 ohms, not into 8.
-
-Some NAIT 2s are **"CD versions"**: behind the RCA sockets, a line input takes the place of the
-phono stage. [hi-fi AF's servicing guide](../../docs/archive/hifiaf-nait2-recap-guide/index.html),
-written on one of them, says these were reportedly made for the Japanese market. Naim's manual
-describes only the phono version.
-
-Stereophile also measured the frequency response through the line inputs. It was down nearly 2 dB
-at 20 kHz. The phono stage rises slightly above 2 kHz. The net effect is that CDs, and a streamer,
-sound a little softer through the NAIT 2 than records do.
-
-## How it sounds, according to those who listened
-
-- **Stereophile, September 1989.** Robert Harley compared it with the Arcam Alpha 2, the Creek 4140
-  and the Audiolab 8000A. It had the best soundstage of the group, remarkable above all for its
-  depth, and a smooth, warm tone, with a slight loss of detail at the top. It did not play very
-  loud and lacked punch and control in the bass. He still called it "the most musically satisfying
-  amplifier of the group".
-- **Stereophile, April 1990.** Sam Tellig found it lacked power for the speakers in his main room.
-  On smaller ones in his living room, it was sweet, smooth and above all spacious. His advice:
-  small, reasonably efficient speakers, preferably in a small room.
-- **Hi-Fi World, October 2007.** Channa Vithana heard four NAITs one after the other. Next to the
-  first NAIT, the NAIT 2 had more detail in the voices, a fuller and deeper sound, more tuneful
-  bass and quieter backgrounds, but a little less "air".
-
-The praise of the NAIT's pace and timing most often quoted online comes from TNT-Audio's 2003
-review. That review is about the **first** NAIT, not the NAIT 2.
-
-## Loudspeakers and cables
-
-- **Loudspeakers:** the NAIT 2 does best with speakers that are easy to drive. Both Stereophile
-  reviewers found it short of power at high levels. A pair of BBC LS3/5A, small but not sensitive,
-  is an example: [The BBC LS3/5A](bbc-ls3-5a).
-- **Speaker cable:** Naim's manual recommends its own speaker cable, at least 3.5 m long, with both
-  lengths equal. Its 4 mm plugs come with the amplifier. It warns that the wrong cable will degrade
-  the sound, and that some types may damage the amplifier.
-- **Before plugging anything in:** switch the amplifier off and wait about a minute. The manual
-  also asks for the mains earth to stay connected, whatever else is in the system.
-
-## Connecting a streamer
-
-The NAIT 2 has no digital input: a streamer reaches it through a DAC, or through its own analogue
-output.
-
-- **The input:** **Aux**, the one the manual names for a compact disc player. Tuner has the same
-  sensitivity and works too. On a CD version, the RCA sockets are a line input as well, and take
-  an ordinary RCA cable. On a phono version, do not connect a DAC to them: the phono stage is made
-  for the 2.5 mV of a cartridge.
-- **The cable:** RCA plugs at the DAC's end, a 5-pin DIN plug wired for a Naim input at the NAIT's.
-- **The volume knob:** the line inputs are rated at 75 mV, far less than a DAC gives, so the knob
-  does its work in the first part of its travel. That is expected, not a fault.
-
-Which pins carry what, how much a DAC sends, where to set the volume and how to check both
-channels: [A streamer into an amplifier with DIN inputs](../guides/streamer-din-amplifier-inputs).
-
-## Buying one second-hand
-
-- **Its age.** Its serial number gives the year it was made: see
-  [How old is your Naim?](naim-serial-numbers).
-- **Mains voltage.** Each unit was built for one mains voltage. Check which one before plugging in a
-  NAIT 2 bought in another country.
-- **Pre-amplifier conversion.** Naim's dealers could convert a NAIT 2 into a pre-amplifier only, to
-  use with Naim's NAP 90 or NAP 140 power amplifiers. Stereophile reported in 1989 that Naim did not
-  recommend it with the NAP 250 and that it could not be used with the NAP 135. A converted unit no
-  longer drives speakers on its own, so ask the seller.
-- **Which version.** Ask whether its RCA sockets are the phono input or the line input of a CD
-  version.
-- **Servicing.** After more than thirty years, its capacitors may need replacing. The manual asks
-  for repairs to be done by a Naim dealer or by Naim. For owners who do it themselves, hi-fi AF
-  published [a step-by-step guide](../../docs/archive/hifiaf-nait2-recap-guide/index.html) in
-  2020, written with the help of a reader who had worked at Naim's factory. It covers both
-  versions, with the parts list and the checks to make afterwards. Its site has closed: the link
-  opens a copy kept on this site.
-
-## The NAIT family
-
-Every NAIT by the year it came out. The filled dots are the NAIT 2's two years.
+Every NAIT by the year it came out. The filled dots are the NAIT 2's two looks.
 
 <ol class="man-timeline" aria-label="The NAIT models, by year of introduction">
 <li><time datetime="1983">1983</time><div><p><strong>NAIT</strong>, the first <span class="man-timeline-then">— replaced by the NAIT 2 in 1988</span></p></div></li>
@@ -145,55 +127,107 @@ Every NAIT by the year it came out. The filled dots are the NAIT 2's two years.
 </ol>
 
 On 31 October 2026, Naim's website listed the NAIT 5si, NAIT XS 3, SUPERNAIT 3 and NAIT 50 among
-its discontinued products, and its catalogue had no integrated amplifier left. It does not say
-when each one stopped.
+its discontinued products, and its catalogue had no integrated amplifier left.
 
-The same models, with what came next:
-
-| Model | Introduced | Then |
-|---|---|---|
-| NAIT | 1983 | Replaced by the NAIT 2 in 1988 |
-| NAIT 2, chrome bumper | 1988 | New olive look in 1989 |
-| NAIT 2, olive | 1989 | Replaced by the NAIT 3 in 1993 |
-| NAIT 3 | 1993 | Replaced by the NAIT 5 in 2000 |
-| NAIT 3R, with remote | 1995 | Replaced by the NAIT 5 in 2000 |
-| NAIT 5 | 2000 | Replaced by the NAIT 5i in 2003 |
-| NAIT 5i | 2003 | Revised in 2007, an italic "i" |
-| NAIT 5*i* | 2007 | Replaced by the NAIT 5si in 2013 |
-| SUPERNAIT | 2007 | Replaced by the SUPERNAIT 2 in 2013 |
-| NAIT XS | 2008 | Replaced by the NAIT XS 2 in 2013 |
-| NAIT 5si | 2013 | No longer available |
-| SUPERNAIT 2 | 2013 | Replaced by the SUPERNAIT 3 in 2019 |
-| NAIT XS 2 | 2013 | Replaced by the NAIT XS 3 in 2019 |
-| SUPERNAIT 3 | 2019 | No longer available |
-| NAIT XS 3 | 2019 | No longer available |
-| NAIT 50 | 2023 | 1,973 units; no longer available |
-
-## The NAIT 50, the small NAIT's return
+### The NAIT 50, the small NAIT's return
 
 <img src="images/naim-nait-50-high-end-munich.webp" alt="The front of a NAIT 50 on a white stand: a black panel in a brushed aluminium frame, a large volume knob, a headphone socket, four push buttons marked phono, stream, aux and mains, and a small blue power light. Behind it hangs a large black and white photo of the first NAIT's front panel" width="1200" height="675">
 
 *The NAIT 50 at the High End show in Munich, in May 2023. Photo: What Hi-Fi?, from its
 [news of 18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one).*
 
-For its fiftieth anniversary in 2023, Naim brought back the first NAIT's looks: the NAIT 50 has the
-same small chrome-bumper case, 207 mm wide, 87 mm high and 321 mm deep. Naim made 1,973 of them,
-after the year it was founded.
+For its fiftieth anniversary in 2023, Naim brought back the first NAIT's looks in the NAIT 50: the
+same small chrome-bumper case, a moving-magnet phono stage and line inputs on 5-pin DIN sockets, 25 W
+per channel into 8 Ω and a headphone output. Naim made 1,973 of them, after the year it was founded.
 
-Its inputs follow the NAIT 2's: a moving-magnet phono stage on RCA sockets, and line inputs on 5-pin
-DIN sockets, two of them instead of three. Its line inputs are just as sensitive: Naim gives 88 mV
-as the level that drives it to clipping, so a DAC connects the same way, with the same short
-travel of the volume knob. What is new is the power, 25 W per channel into 8 Ω, and a headphone
-output on a 6.35 mm jack.
+## What to pair it with
+
+- **Speakers:** small and reasonably efficient, "preferably in a small room", was Tellig's advice.
+  The pairings the reviewers heard: Monitor Audio 7 standmounts in Tellig's living room, Kudos C1
+  standmounts at Hi-Fi World, Quad electrostatics at Dudley's — the memory of a NAIT 2 on Quad ESLs,
+  he wrote, had brought him "to the brink of buying a used Nait 2". Here, a NAIT 2 drives a pair of
+  Rogers LS3/5A: what they ask of it is in [The BBC LS3/5A](bbc-ls3-5a#valves-or-a-nait-2).
+- **A turntable:** its phono stage takes a moving-magnet cartridge, at 47 kΩ. Tellig played his
+  records through it from a Rega RB300 arm; Dudley plugged an EMT TSD 15 pickup, which he usually
+  runs through a step-up transformer, straight into it: apart from some bass weight, "it sounded
+  great".
+- **Speaker cable:** Naim's manual asks for its own cable, at least 3.5 m a side and of equal
+  lengths, and warns that some other types may damage the amplifier.
+- **Warm-up:** Dudley switched it on well before listening, knowing "the breed's tendency to sound its
+  best only when fully warmed up".
+- **A DAC:** it goes into Aux, through a cable with a 5-pin DIN plug at the NAIT's end:
+  [A streamer into an amplifier with DIN inputs](../guides/streamer-din-amplifier-inputs).
+
+## Buying and servicing one
+
+- **Which look.** Chrome bumper, from 1988 to 1989: a black aluminium case with shiny edges, as in
+  the photograph above. Olive, from 1989: a black case and a green front panel. Naim told Hi-Fi World
+  that the olive case brought "no performance improvement", contrary to the rumours.
+- **Its age.** Its serial number gives the year it was made: see
+  [How old is your Naim?](naim-serial-numbers).
+- **Mains voltage.** Each unit was built for one mains voltage; check it on a NAIT 2 bought in
+  another country.
+- **A pre-amplifier conversion.** Naim could convert a NAIT 2 into a pre-amplifier for its NAP 90 or
+  NAP 140 power amplifiers; a converted unit no longer drives speakers on its own.
+- **A CD version.** On some units, a line input takes the place of the phono stage behind the RCA
+  sockets.
+- **Servicing.** After more than thirty years, its capacitors may need replacing. In 2007, Naim
+  charged from about £145 to £250 for a full rebuild, Hi-Fi World wrote. In the United States in 2016, AV
+  Options' standard rebuild cost $1,195: 14 transistors, the four output ones among them, 32
+  capacitors, three potentiometers, six resistors, the speaker sockets and the feet. For owners who do
+  it themselves, hi-fi AF published
+  [a step-by-step guide](../../docs/archive/hifiaf-nait2-recap-guide/index.html) in 2020; its site
+  has closed, and the link opens a copy kept on this site.
+- **Prices.** In 2007, Hi-Fi World put a second-hand olive unit from £345 and a chrome-bumper one at
+  about £445.
+
+## The facts
+
+From Naim's manual, unless another source is named:
+
+| | NAIT 2 |
+|---|---|
+| Phono | Moving magnet, RCA sockets: 2.5 mV, 47 kΩ |
+| Tuner, Aux, Tape | 5-pin DIN sockets: 75 mV, 47 kΩ |
+| Loudspeakers | 4 mm banana sockets |
+| Size | 205 × 76 × 276 mm |
+| Power, Naim's figures | 13 W into 8 Ω, 19.5 W into 4 Ω |
+| Clipping, measured | 21 W into 8 Ω, 33.5 W into 4 Ω |
+| Price in the US, 1989 | $795 |
+
+Naim never printed a power figure in its manual, which speaks instead of "a very large peak current
+capacity". Its figures came out in Hi-Fi World in 2007; Stereophile measured where it clips in 1989.
+In between, the NAIT 2 was given 15 W, or 18 W: "depending on what day someone asks you", Tellig
+told Vereker. Inside, Harley found discrete transistors only, no op-amps, on a densely packed
+two-sided board.
 
 ## Sources
 
-- Naim Audio, owner's manual covering the NAIT 2, with the NAC 62 and NAC 32-5 pre-amplifiers: inputs, sensitivities, mains and case size on pages 8–9, cables and switching on pages 4–5 and 22.
-- Stereophile: Robert Harley, September 1989 (Vol.12 No.9): [review](https://www.stereophile.com/content/naim-nait-integrated-amplifier-robert-harley-1989), [part 2](https://www.stereophile.com/content/naim-nait-integrated-amplifier-rh-1989-part-2), [specifications](https://www.stereophile.com/content/naim-nait-integrated-amplifier-specifications) and [measurements](https://www.stereophile.com/content/naim-nait-integrated-amplifier-1989-measurements); Sam Tellig, April 1990 (Vol.13 No.4): [follow-up](https://www.stereophile.com/content/naim-nait-integrated-amplifier-sam-tellig-1990).
-- Hi-Fi World, October 2007: Channa Vithana, "NAITology", the NAIT, NAIT 2, NAIT 3 and NAIT 5i compared, with Naim's power figures.
-- TNT-Audio, March 2003: Lucio Cadeddu, ["Naim Nait 1 – A living legend"](https://www.tnt-audio.com/ampli/nait_e.html), about the first NAIT.
-- The models and their dates: [Naim NAIT](https://en.wikipedia.org/wiki/Naim_NAIT), Wikipedia, read on 2026-10-31, up to 2013; What Hi-Fi?, [8 July 2019](https://www.whathifi.com/news/naim-audio-launches-new-nait-and-supernait-integrated-amplifiers) for the NAIT XS 3 and SUPERNAIT 3, and [18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one) for the NAIT 50's launch.
-- The NAIT 50: [Naim's product page](https://www.naimaudio.com/products/nait-50), read on 2026-10-31: inputs, clipping levels, power, size, the 1,973 units, and "no longer available".
-- The NAIT 50's photograph: What Hi-Fi?, from its [news of 18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one), taken at the High End show in Munich.
-- What Naim still sells: its [catalogue of separates](https://www.naimaudio.com/catalog/separates), read on 2026-10-31, with no integrated amplifier category, and its "Discontinued products" list, which holds the NAIT 5si, NAIT XS 3, SUPERNAIT 3 and NAIT 50; their own pages, [NAIT 5si](https://www.naimaudio.com/products/nait-5si), [NAIT XS 3](https://www.naimaudio.com/products/nait-xs3) and [SUPERNAIT 3](https://www.naimaudio.com/products/supernait-3), say "This product is no longer available".
-- The CD version and replacing the capacitors: "Nobeone's Guide to Servicing a Naim Nait 2", hi-fi AF, 2020. [Copy kept on this site](../../docs/archive/hifiaf-nait2-recap-guide/index.html), with the readers' comments and the parts list, made on 2026-10-31 from the [Internet Archive's copy of 2026-06-09](https://web.archive.org/web/20260609001657/https://www.hifiaf.com/nait2-recap-guide/); hifiaf.com's domain pointed to no server that day. The parts list is a [shared Google Doc](https://docs.google.com/document/d/e/2PACX-1vTJ5mSLcx6uOe5Hf8Sb4L8_Ve5E5yYiQVvrwSFcujpuQA768BAOAgs_10uX2UvmKVzv1IJkw8bnnxfs/pub), still online on 2026-10-31.
+- Stereophile: Robert Harley, September 1989 (Vol.12 No.9),
+  [review](https://www.stereophile.com/content/naim-nait-integrated-amplifier-robert-harley-1989),
+  [part 2](https://www.stereophile.com/content/naim-nait-integrated-amplifier-rh-1989-part-2) and
+  [measurements](https://www.stereophile.com/content/naim-nait-integrated-amplifier-1989-measurements);
+  Sam Tellig, April 1990 (Vol.13 No.4),
+  [follow-up](https://www.stereophile.com/content/naim-nait-integrated-amplifier-sam-tellig-1990);
+  Art Dudley, ["Listening #161"](https://www.stereophile.com/content/listening-161), 2016-05-05, and
+  its [page 2](https://www.stereophile.com/content/listening-161-page-2): a rebuilt 1990 NAIT 2.
+- Hi-Fi World, October 2007: Channa Vithana, "NAITology", the NAIT, NAIT 2, NAIT 3 and NAIT 5i heard
+  one after the other, with Naim's power figures:
+  [copy kept on this site](../../docs/archive/hifi-world-2007-naitology.pdf) (PDF, 4 MB, three pages).
+- The Absolute Sound: Robert Harley,
+  ["TAS Legacy: Naim Nait Integrated Amplifier"](https://www.theabsolutesound.com/articles/tas-legacy-naim-nait-integrated-amplifier),
+  2018-01-16.
+- Naim Audio, owner's manual covering the NAIT 2, with the NAC 62 and NAC 32-5 pre-amplifiers:
+  inputs, sensitivities, mains and case size on pages 8–9, cables on pages 4–5 and 22.
+- The models and their dates: [Naim NAIT](https://en.wikipedia.org/wiki/Naim_NAIT), Wikipedia, read
+  on 2026-10-31, up to 2013; What Hi-Fi?,
+  [8 July 2019](https://www.whathifi.com/news/naim-audio-launches-new-nait-and-supernait-integrated-amplifiers)
+  and [18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one);
+  the NAIT 50 on [Naim's product page](https://www.naimaudio.com/products/nait-50); what Naim no
+  longer sells, its [catalogue](https://www.naimaudio.com/catalog/separates), read on 2026-10-31.
+- The CD version and replacing the capacitors: "Nobeone's Guide to Servicing a Naim Nait 2", hi-fi
+  AF, 2020: [copy kept on this site](../../docs/archive/hifiaf-nait2-recap-guide/index.html), made
+  on 2026-10-31 from the
+  [Internet Archive's copy of 2026-06-09](https://web.archive.org/web/20260609001657/https://www.hifiaf.com/nait2-recap-guide/).
+- The NAIT 50's photograph: What Hi-Fi?, from its
+  [news of 18 May 2023](https://www.whathifi.com/news/naim-launches-special-anniversary-edition-nait-50-amp-but-youll-have-to-move-fast-to-get-one).

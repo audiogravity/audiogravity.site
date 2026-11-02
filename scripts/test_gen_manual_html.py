@@ -991,7 +991,7 @@ class TestSharing:
     def test_a_post_is_previewed_with_its_first_figure_and_its_dates(self):
         og = _og(self._built("blog", "naim-audio-nait-2"))
         assert og["og:type"] == "article" and og["og:site_name"] == "Audiogravity"
-        assert og["og:title"] == "The Naim NAIT 2: its figures, its sound, and the NAITs that followed"
+        assert og["og:title"] == "The Naim NAIT 2: the small amplifier that became a reference"
         assert og["og:url"] == "https://audiogravity.app/docs/blog/naim-audio-nait-2"
         assert og["og:image"] == "https://audiogravity.app/docs/blog/images/naim-nait-2-chrome-bumper.jpg"
         assert (og["og:image:width"], og["og:image:height"]) == ("870", "606")

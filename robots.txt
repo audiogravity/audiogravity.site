@@ -1,6 +1,10 @@
 # Every page of this site may be crawled. The sitemap lists the ones worth indexing: the landing,
 # the manual, the guides and the blog. It is written by scripts/gen_manual_html.py, with their pages.
+# The exception: magazine scans kept under docs/archive/ as a blog post's source. A PDF cannot carry
+# the noindex tag the archived web pages do, and GitHub Pages sends no header, so crawlers are asked
+# not to read them. The most specific rule wins, so these lines override "Allow: /".
 User-agent: *
 Allow: /
+Disallow: /docs/archive/hifi-world-2007-naitology.pdf
 
 Sitemap: https://audiogravity.app/sitemap.xml

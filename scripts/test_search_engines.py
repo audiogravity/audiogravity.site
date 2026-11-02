@@ -98,6 +98,28 @@ def test_robots_txt_points_to_the_sitemap():
     assert re.findall(r"^Sitemap:\s*(\S+)\s*$", ROBOTS, re.M) == [f"{SITE_URL}{SITEMAP.name}"]
 
 
+def test_every_archived_scan_is_kept_from_crawlers():
+    """A magazine scan kept as a post's source is someone else's work: it must not be indexed.
+
+    An archived web page says so itself with a noindex tag; a PDF cannot, and GitHub Pages sends
+    no X-Robots-Tag header, so robots.txt has to name each one. A scan added without its line
+    would be read and indexed under the site's name.
+    """
+    scans = sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / "docs" / "archive").rglob("*.pdf"))
+    assert scans, "no archived scan to check: this test guards nothing"
+    disallowed = set(re.findall(r"^Disallow:\s*(\S+)\s*$", ROBOTS, re.M))
+    assert [s for s in scans if f"/{s}" not in disallowed] == []
+
+
+def test_an_archived_web_page_asks_not_to_be_indexed():
+    """The archived pages carry noindex themselves; robots.txt must not hide that tag from crawlers."""
+    disallowed = re.findall(r"^Disallow:\s*(\S+)\s*$", ROBOTS, re.M)
+    for page in (ROOT / "docs" / "archive").rglob("*.html"):
+        assert re.search(r'<meta name="robots" content="noindex">', page.read_text(encoding="utf-8")), page
+        url = "/" + page.relative_to(ROOT).as_posix()
+        assert not any(url.startswith(d) for d in disallowed), f"{url} is disallowed: its noindex goes unread"
+
+
 def test_the_sitemap_opens_on_the_landing():
     assert LOCS and LOCS[0] == SITE_URL
 

@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[site] A blog post on the Rega Planar 3.** How Rega's turntable of 1976 became the deck others at its price are measured against, and how it sounds by Stereophile's reviews of 1984, 1985, 1996, 2008 and 2017 and What Hi-Fi?'s of 2021 and 2024: its rhythm, its tone, its bass, what it gives up against far dearer decks, and the cartridge, on which Michael Fremer and John Atkinson disagree. Its five generations, from the Planar 3 to the P3, P3-24, RP3 and the Planar 3 of 2016, and the RS Edition of 2024; its rivals, the Linn LP12 first; a green P3 of about 2005 with an Elys 2, playing through a NAIT 2 into a pair of Rogers LS3/5A; setting it up from Rega's own guide. Rega's photograph heads it.
+- **[site] Hi-Fi World's "NAITology" of October 2007, kept on the site** as a source of the NAIT 2 post: the scan of its three pages, linked from the post. `robots.txt` asks search engines not to read it — a PDF cannot carry the `noindex` tag the archived web page does, and GitHub Pages sends no header —, and two tests keep every archived scan out of the crawl and every archived page readable, its `noindex` included.
+
+### Changed
+- **[site] The blog's NAIT 2, LS3/5A and Quad 33/303 posts start from how they sound, and why they became references.** Each opens on its standing, then gives most of its room to its sound as the specialist press heard it across the decades — where reviewers agree, where they disagree, and in what conditions they listened —, then its rivals and successors and what to pair it with; its history and figures come after, shorter. Read in full for them: Stereophile's reviews by J. Gordon Holt (1977), Robert Harley (1989), Sam Tellig (1990), John Atkinson (1989, 2007), Art Dudley (2016, 2019, 2020) and Herb Reichert (2021), The Absolute Sound's by Paul Seydor (2016), Robert Harley (2018) and Chris Kelly (2025), Hi-Fi World's of 2007 and Hi-Fi News' of 2025. Gone: the sections on streamers and on Audiogravi<sup>ty</sup> where the equipment has nothing to do with them, a comparison of a cartridge's output with a DAC's, and estimates the posts had made themselves, such as a listening level worked out from the BBC's figure. The titles follow: *The Naim NAIT 2: the small amplifier that became a reference*, *The BBC LS3/5A: the little monitor that became a legend*, *The Quad 33 and 303: Peter Walker's transistor classic, and its return*. The Quad post shows an original 33 and 303, Quad's photograph, and, at its head and on its card, a 33 of 2024.
+
 ## [1.0.0-rc.4] - 2026-11-02
 
 ### Added

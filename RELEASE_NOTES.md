@@ -9,13 +9,18 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ### Player
 
-**A level meter, needles and all.** In the full-screen player, the switch above the cover swaps
-it for two needle dials that follow the music. On a tablet, *Showcase mode* opens them over the
-whole screen, side by side, with what plays below — the screen stays on, for a box on a shelf.
+**A level meter, needles and all.** In the full-screen player, the switch below the cover swaps
+it for two needle dials that follow the music, drawn in your theme's own ink. On a tablet,
+*Showcase mode* opens them over the whole screen, side by side, with what plays below — the
+screen stays on, for a box on a shelf.
 The needles move with the sound you hear: the box waits until your DAC has played each moment
 before showing it, whatever the format, DSD included. They follow what the box's own player
 plays — the music on the box, the radio, Qobuz, Tidal and HIGHRESAUDIO —, not AirPlay, Roon,
 HQPlayer or a network speaker, and nothing runs for them while no screen shows them. With Pro.
+
+**The full-screen player fits a phone held sideways.** Turn your phone and everything shows at
+once, as on a tablet: the cover — or the level meter — on the left, the track, the controls and
+the output on the right, nothing to scroll. The showcase fits the screen too.
 
 ### On audiogravity.app
 

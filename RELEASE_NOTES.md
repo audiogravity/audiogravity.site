@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.0-rc.4 — 2026-11-02
+
 ### Player
 
 **A level meter, needles and all.** In the full-screen player, the switch below the cover swaps

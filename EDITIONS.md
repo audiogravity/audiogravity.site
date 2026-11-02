@@ -51,6 +51,7 @@ Everything in Starter, plus:
 - **Roon** — your Roon library, its zones and their transport controls
 - **HQPlayer** — HQPlayer as the output, and its DSP remote: filter, noise shaper, output mode and volume from the couch, with automatic network discovery; HQPlayer Embedded's and the NAA's output and settings
 - **Listening history** — what the box played: time listened per day or month, sources, outputs, sound quality, genres, and the most played artists, albums and tracks; kept on the box, recorded on every edition and switched off or cleared from any of them
+- **Level meter** — two needles that follow what the box's player plays, in step with the DAC: in the cover's place in the full-screen player, or over the whole screen on a tablet
 - **Audio Pipeline** — interactive DAG visualisation of the full signal chain from source to DAC: full-resolution badge on the link to the DAC, format per link, real-time output steering without stopping playback
 - **Systemd Configuration** — fine-tune audio service drop-ins: CPU affinity, SCHED_FIFO / RR priority, MEMLOCK and RTPRIO — eliminates scheduling jitter for bit-perfect, glitch-free playback
 - **Performance Optimization** — per-core CPU governor control, real-time thermal throttle detection, µs-scale latency benchmarks (cyclictest) and live RT process monitor
@@ -84,6 +85,7 @@ Everything in Starter, plus:
 | **Roon** | ✓ | — | ✓ |
 | **HQPlayer** | ✓ | — | ✓ |
 | **Listening history** | ✓ | — | ✓ |
+| **Level meter** | ✓ | — | ✓ |
 | **Audio Pipeline** | ✓ | — | ✓ |
 | **Audio Services Config** | ✓ | ✓ | ✓ |
 | **Guided provisioning** | ✓ | ✓ | ✓ |

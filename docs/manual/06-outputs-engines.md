@@ -453,6 +453,9 @@ The box can act as an **AirPlay receiver** (shairport-sync) — stream to it fro
 iPhone, iPad or Mac, and it plays through the same output chain, with the same
 now-playing readout.
 
+To move within a track, use the iPhone, iPad or Mac that is sending it: AirPlay does
+not let the box do it, so the progress bar follows the track but cannot be dragged.
+
 ## Seeing the whole chain
 
 The **Audio Pipeline** view (Pro) draws your entire signal chain as a live graph —

@@ -141,14 +141,13 @@ labels** and their full genre pages. A page there holds either further pages, wh
 strip drills in place the way the genres do, or sections of content, which open on a
 strip of their own.
 
-Tidal sells nothing, so there is no **Purchases** shelf as there is on Qobuz and
-HIGHRESAUDIO.
+Unlike Qobuz and HIGHRESAUDIO, Tidal has no **Purchases** shelf.
 
 ### HIGHRESAUDIO
 
 Simpler still — enter your account **email and password** directly in the card: no
-redirect, no copy-paste. Native-master FLAC up to 24-bit / 352.8 kHz. Your password is
-stored encrypted on the device.
+redirect, no copy-paste. FLAC at each album's own resolution, as HIGHRESAUDIO sends it. Your
+password is stored encrypted on the device.
 
 > **One device per HRA account.** HIGHRESAUDIO allows a single active device — connecting
 > Audiogravi<sup>ty</sup> signs you out of your other HRA players.

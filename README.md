@@ -60,7 +60,7 @@
 - Cast your local NAS / USB library to a network UPnP renderer, just like the streaming services
 - Qobuz Hi-Res streaming up to 24-bit / 192 kHz — favourites, new releases, editorial playlists
 - Tidal streaming — Hi-Res FLAC up to 24-bit / 192 kHz — Favorites, New Releases, Charts, Editorial playlists, in-track seek
-- HIGHRESAUDIO streaming — native-master FLAC up to 24-bit / 352.8 kHz — Favorites, Discover, Editor's Picks, Bestsellers, search
+- HIGHRESAUDIO streaming — FLAC at each album's own resolution — Favorites, Discover, Editor's Picks, Bestsellers, search
 - Internet radio — Radio Browser, custom stations, favourites
 - UPnP server auto-discovery & browsing
 - Listening history — time listened per day or month, sources, outputs, sound quality, genres, most played artists, albums and tracks; kept on the box

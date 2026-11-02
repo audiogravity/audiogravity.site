@@ -23,6 +23,16 @@ no problem: if another player holds your DAC, Play still tells you so. With Pro.
 once, as on a tablet: the cover — or the level meter — on the left, the track, the controls and
 the output on the right, nothing to scroll. The showcase fits the screen too.
 
+**The progress bar keeps up with the music.** After Next, the full-screen player's bar starts
+the new track at 0:00 — with Roon, AirPlay or a network speaker it carried on from where the
+previous track had stopped. Both bars, in the full-screen player and the mini-player, now follow
+a track that goes back: restarted, moved back from your phone or another app, or followed by
+another of the same name. A track played again with Previous starts from its beginning.
+
+**AirPlay: the right cover, and no seek it cannot make.** Each AirPlay track shows its own cover;
+on a change of track, the previous one could stay in its place. And the bar of an AirPlay track
+no longer offers to move within it: AirPlay cannot, and the box refused every move.
+
 ### On audiogravity.app
 
 **A place to talk with other owners.** The site now has a community, on GitHub Discussions: ask

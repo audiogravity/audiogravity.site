@@ -54,6 +54,12 @@ photograph, and the top bar takes you from the guides to the blog and back.
 or a message now shows a proper preview — a post with its photograph —, and search engines are
 told what each page is, when it was last checked and where it sits in the site.
 
+**HIGHRESAUDIO, Qobuz or Tidal?** A new blog post compares the three services
+Audiogravi<sup>ty</sup> plays: who runs them and from where, the size of their catalogues, what
+they stream and what they sell, what they cost, how you listen from your phone to your hi-fi,
+what they say they pay artists, what they do about music made by AI, and which suits what — with
+what Audiogravi<sup>ty</sup> does with each, at the end.
+
 ---
 
 ## 1.0.0-rc.3 — 2026-10-31

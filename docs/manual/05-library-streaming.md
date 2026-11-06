@@ -386,11 +386,13 @@ The figures come with **Pro**; on Starter, the tab shows them behind a padlock.
    week over the period, from **Less** to **More** as the legend under the grid shows.
    Tap a square to read its time above the grid.
 5. **By source**, **By output**, **Sound quality** and **Genres** show where that time
-   went. Genres follow one list whatever the service: an album Qobuz files under
-   *Soul/Funk/R&B* and a track Tidal files under *R&B/Soul* both count as **Soul & R&B**,
-   and your own files and radio stations are read against the same list. **Unknown**
-   gathers what names no genre: AirPlay and some streams carry none, and a radio station
-   counts there when its description names no genre of the list.
+   went. In **Sound quality**, AirPlay counts in the quality the iPhone, iPad or Mac
+   sends, and **Unknown** is the time whose format the box could not read. Genres follow
+   one list whatever the service: an album Qobuz files under *Soul/Funk/R&B* and a track
+   Tidal files under *R&B/Soul* both count as **Soul & R&B**, and your own files and radio
+   stations are read against the same list. In **Genres**, **Unknown** gathers what names
+   no genre: AirPlay and some streams carry none, and a radio station counts there when
+   its description names no genre of the list.
 6. Under **Most played**, switch between **Artists**, **Albums** and **Tracks**. Each row
    shows its cover; an artist shows the cover of the album of theirs you play most.
    **Recently played** lists your latest listens, whatever the period, a station with its

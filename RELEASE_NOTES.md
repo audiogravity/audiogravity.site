@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.0 — 2026-11-06
+
 Audiogravi<sup>ty</sup> 1.0 leaves the release candidates behind. Here is what it does, area by
 area; what changed since 1.0.0-rc.4 comes after, and the notes of every earlier version follow,
 for a box that comes from one of them.

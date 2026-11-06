@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-06
+
 ### Added
 - **[site] A blog post on the Rega Planar 3.** How Rega's turntable of 1976 became the deck others at its price are measured against, and how it sounds by Stereophile's reviews of 1984, 1985, 1996, 2008 and 2017 and What Hi-Fi?'s of 2021 and 2024: its rhythm, its tone, its bass, what it gives up against far dearer decks, and the cartridge, on which Michael Fremer and John Atkinson disagree. Its five generations, from the Planar 3 to the P3, P3-24, RP3 and the Planar 3 of 2016, and the RS Edition of 2024; its rivals, the Linn LP12 first; a green P3 of about 2005 with an Elys 2, playing through a NAIT 2 into a pair of Rogers LS3/5A; setting it up from Rega's own guide. Rega's photograph heads it.
 - **[site] Hi-Fi World's "NAITology" of October 2007, kept on the site** as a source of the NAIT 2 post: the scan of its three pages, linked from the post. `robots.txt` asks search engines not to read it — a PDF cannot carry the `noindex` tag the archived web page does, and GitHub Pages sends no header —, and two tests keep every archived scan out of the crawl and every archived page readable, its `noindex` included.

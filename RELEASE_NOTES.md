@@ -7,7 +7,53 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-### Library
+Audiogravi<sup>ty</sup> 1.0 leaves the release candidates behind. Here is what it does, area by
+area; what changed since 1.0.0-rc.4 comes after, and the notes of every earlier version follow,
+for a box that comes from one of them.
+
+### Listening
+
+**One player for everything the box plays.** The music on the box, internet radio, Qobuz, Tidal,
+HIGHRESAUDIO, your UPnP media servers, and AirPlay from an iPhone, iPad or Mac all play through
+the same controls, with their cover and the format of what plays — codec, sample rate, bit
+depth, bitrate. You queue from the library; the full-screen player has a sleep timer, fits a
+phone held sideways and, with Pro, swaps its cover for two VU meters that follow what you hear.
+Everything runs in a browser, and installs on a phone or a tablet as an app.
+
+### Your music
+
+**Your library, your services, your stations.** The box plays your music from a NAS or a USB
+drive, and its Refresh reads the albums you add. With Pro, it browses Qobuz, Tidal and
+HIGHRESAUDIO — favourites, playlists, and your Qobuz and HIGHRESAUDIO purchases —, your UPnP
+media servers, and Roon's zones. Internet radio is a search away, with a filter for the stations
+that stream lossless. With Pro too, Stats tells what the box played: how long, from where, in
+what sound quality, which genres, and your most played.
+
+### Outputs and engines
+
+**The engines you trust, installed and driven for you.** MPD plays to your DAC, DSD included —
+native or DoP —, and the box holds the DAC's own volume at maximum while DSD plays. A network
+renderer — a Marantz, a Linn, a DLNA speaker — can play in its place. With Pro, HQPlayer takes
+the music with its filters and noise shaping, as the desktop application, HQPlayer Embedded or
+the NAA. The box installs, configures and starts each engine itself: no configuration file, no
+terminal.
+
+### Setup and tuning
+
+**Set up in a few taps, tuned for listening.** A guided setup finds your DAC and your music and
+writes the configurations for you; profiles switch between your listening setups in one tap.
+With Pro, the box tunes Linux for playback — real-time priorities and CPU cores kept for the
+audio services, CPU governors —, measures its own latency, and draws your whole signal path
+live, from the source to the DAC.
+
+### Running the box
+
+**A box you run from your phone.** Accounts sign in with a password or a passkey, the box sends
+notifications to your phone, the configuration you edit is backed up first, and updates install
+from the app in one tap. It installs with one command on Debian 13 — DietPi and Raspberry Pi OS
+included —, on x86-64 or ARM.
+
+### Since 1.0.0-rc.4
 
 **Stats counts AirPlay and the radio in the right sound quality.** AirPlay showed as Hi-Res: the
 box took the 32 bits its sound card is opened at for the music's, where the classic AirPlay it

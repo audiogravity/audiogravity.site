@@ -272,7 +272,7 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 ## Roadmap
 
-Audiogravi<sup>ty</sup> is a **release candidate** for 1.0 — open to everyone, no invitation and no token. On the horizon: a ready-to-flash system image, Diretta alongside the HQPlayer NAA already supported, sending to AirPlay devices, and multiroom.
+Audiogravi<sup>ty</sup> **1.0** is out — open to everyone, no invitation and no token. On the horizon: a ready-to-flash system image, Diretta alongside the HQPlayer NAA already supported, sending to AirPlay devices, and multiroom.
 
 ## Contributing
 

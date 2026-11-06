@@ -131,8 +131,7 @@ nav.man-sections {
 }
 
 /* The landing's light / dark toggle (style.css, assets/theme-toggle.js), at the end of the
-   bar. Below 1100px the landing moves its toggle clear of the "Public beta" ribbon fixed to
-   that corner; the manual has no ribbon, so its toggle keeps the bar's own edge. */
+   bar, on its own edge. */
 .man-top .theme-toggle {
     margin-left: auto;
     margin-right: 0

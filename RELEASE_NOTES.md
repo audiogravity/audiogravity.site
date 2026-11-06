@@ -7,7 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-_Nothing yet._
+### Library
+
+**The Refresh tells you when it is done.** Once a Refresh of your library has read the music
+folder and the list is back, a message says so: *Library refreshed* — or *Library up to date*
+when the folder has not changed since it was last read, the sign to check that your new albums
+were copied where the box looks.
 
 ---
 

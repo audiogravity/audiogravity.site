@@ -41,7 +41,10 @@ Copy the new albums into your music folder, then, in the Library:
 1. Press **Refresh** — at the right end of the bar, or beside the **Albums** title.
 2. The icon turns while the box reads your music folder again; the albums already listed
    stay on screen. A large library takes longer.
-3. The list comes back with the new albums.
+3. The list comes back with the new albums, and the message **Library refreshed** says the
+   reading is over. **Library up to date** instead means the music folder has not changed
+   since it was last read: if your new albums are not in the list, check that they were
+   copied into your music folder.
 
 If the box cannot reach your music — the NAS is switched off or off the network — it
 leaves your library as it is and says so: switch the NAS on, then press **Refresh** again.

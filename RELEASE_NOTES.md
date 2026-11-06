@@ -7,6 +7,16 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### Library
+
+**Stats counts AirPlay and the radio in the right sound quality.** AirPlay showed as Hi-Res: the
+box took the 32 bits its sound card is opened at for the music's, where the classic AirPlay it
+runs only ever sends 16 bit / 44.1 kHz. AirPlay now counts in the quality the iPhone, iPad or Mac
+sends — CD quality, here. A station started straight after another track, France Inter among
+them, could count as *Unknown* for its whole listen: its format came a moment after it started,
+and reached Stats only while the app was open. Listens already recorded keep their category, and
+the manual now says what *Unknown* means under *Sound quality*.
+
 ### On audiogravity.app
 
 **The blog, rewritten around how the equipment sounds.** The posts on the Naim NAIT 2, the BBC

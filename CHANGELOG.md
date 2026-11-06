@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[core][ui][manual] The library's Refresh says when it is over, and whether the music folder had changed.** Once a Refresh of the local library has read the music folder and the list is back, a message says so: *Library refreshed*, or *Library up to date* when the music folder has not changed since it was last read. The turning icon was easy to miss on a phone, and nothing said the end. What the box compares is the player's own database stamp, before and after the reading: measured on both boxes, it moves when an album is added or removed or a file modified, and never when nothing changed. A refusal keeps its own message, a failed reading or reload shows in the list, and no message comes for a Refresh left for another source or from an artist's page that was left, nor for the streaming services, whose Refresh reloads in a second. The API's `POST` and `GET /library/rescan` gain `changed`. The manual says what each message means.
+
 ## [1.0.0] - 2026-11-06
 
 ### Added

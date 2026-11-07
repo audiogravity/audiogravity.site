@@ -14,6 +14,12 @@ folder and the list is back, a message says so: *Library refreshed* — or *Libr
 when the folder has not changed since it was last read, the sign to check that your new albums
 were copied where the box looks.
 
+### On audiogravity.app
+
+**The landing shows the app as it is today.** Six screens of its carousel are captured anew —
+the players, Stats, Tuning —, a new one shows the VU meters in place of the cover, and a new
+card shows the player on a phone held sideways, with its meters, and the showcase.
+
 ---
 
 ## 1.0.0 — 2026-11-06

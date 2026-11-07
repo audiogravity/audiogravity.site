@@ -1538,6 +1538,40 @@ nav {
     }
 }
 
+/* Captures of the app inside a card: the phone held sideways, three side by side, one under
+   the other where three would be too small to read. The mockups carry a transparent margin
+   around the device, so the shadow follows the device's outline, as the hero's does. */
+.fb-shots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px
+}
+
+.fb-shots figure {
+    margin: 0
+}
+
+.fb-shots img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 16px 32px rgba(0,0,0,.16))
+}
+
+.fb-shots figcaption {
+    margin-top: 12px;
+    font-size: var(--font-size-sm);
+    color: var(--text3);
+    text-align: center
+}
+
+@media(max-width:900px) {
+    .fb-shots {
+        grid-template-columns: 1fr
+    }
+}
+
 .fb-tier {
     position: absolute;
     top: 18px;

@@ -14,6 +14,17 @@ folder and the list is back, a message says so: *Library refreshed* — or *Libr
 when the folder has not changed since it was last read, the sign to check that your new albums
 were copied where the box looks.
 
+### Installation
+
+**The app on your phone, without guessing.** The manual's *First run* takes you through it
+device by device — iPhone or iPad, Android, Mac, Windows —, one action per step, in the words
+your phone shows, down to the *Open as Web App* switch that makes the icon an app on an iPhone.
+The installer's last screen gives the same steps.
+
+**When the page does not open.** The manual says what *refused to connect* means, and how to
+read the box's address, name and port on the box itself; and how to find the box's name again
+when the installer's last screen is gone.
+
 ### On audiogravity.app
 
 **The landing shows the app as it is today.** Six screens of its carousel are captured anew —

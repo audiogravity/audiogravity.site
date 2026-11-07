@@ -88,6 +88,7 @@
                 <li><a href="#new-music-doesnt-appear-in-the-library">New music doesn't appear in the library</a></li>
                 <li><a href="#streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</a></li>
                 <li><a href="#after-an-update-the-app-shows-an-old-version-and-says-the-core-is-offline">After an update, the app shows an old version and says the core is offline</a></li>
+                <li><a href="#the-page-does-not-open--refused-to-connect">The page does not open — &quot;refused to connect&quot;</a></li>
                 <li><a href="#a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</a></li>
                 <li><a href="#the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</a></li>
                 <li><a href="#a-control-snaps-back-or-an-action-says-it-failed">A control snaps back, or an action says it failed</a></li>
@@ -120,7 +121,7 @@
             <article class="man-md">
 <h1>9. Troubleshooting</h1>
 <details class="man-outline-menu">
-<summary><span>On this page</span><span class="man-menu-count">33</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<summary><span>On this page</span><span class="man-menu-count">34</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
 <ul class="man-outline">
     <li><a href="#no-sound--wrong-output">No sound / wrong output</a></li>
     <li><a href="#my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</a></li>
@@ -132,6 +133,7 @@
     <li><a href="#new-music-doesnt-appear-in-the-library">New music doesn't appear in the library</a></li>
     <li><a href="#streaming-fails-or-a-track-wont-play">Streaming fails or a track won't play</a></li>
     <li><a href="#after-an-update-the-app-shows-an-old-version-and-says-the-core-is-offline">After an update, the app shows an old version and says the core is offline</a></li>
+    <li><a href="#the-page-does-not-open--refused-to-connect">The page does not open — &quot;refused to connect&quot;</a></li>
     <li><a href="#a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</a></li>
     <li><a href="#the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</a></li>
     <li><a href="#a-control-snaps-back-or-an-action-says-it-failed">A control snaps back, or an action says it failed</a></li>
@@ -472,16 +474,65 @@ installed app picks up the new copy on its next start.</p>
 <p>As a last resort, clear the site's stored data for the box's address in your browser's
 settings. Nothing of yours lives there: your accounts, licence and audio configuration
 are all on the box.</p>
+<h2 id="the-page-does-not-open--refused-to-connect">The page does not open — &quot;refused to connect&quot;</h2>
+<p>The browser says <em>This site can't be reached</em> and <em>refused to connect</em> — in Safari, <em>can't
+connect to the server</em>; in Firefox, <em>Unable to connect</em>. Something answers at that address,
+but not the interface: the address now belongs to another device, the port or the
+<code>http</code>/<code>https</code> part is not the right one, or the interface is stopped.</p>
+<p>If the page waits instead, then gives up — <em>took too long to respond</em> — nothing answers at
+that address at all. Check that the box is on and connected, then find its address as below.</p>
+<p><strong>1. Ask the box.</strong> On the box itself — in a terminal, with a keyboard and a screen plugged
+in, or over SSH from a computer — type these three commands:</p>
+<pre><code class="language-bash"><span class="hl-cmd">ip</span> route get 1.1.1.1
+<span class="hl-cmd">pgrep</span> <span class="hl-opt">-a</span> avahi
+<span class="hl-cmd">pgrep</span> <span class="hl-opt">-af</span> audiogravity-ui
+</code></pre>
+<ul>
+<li>The first shows the box's <strong>address</strong> on your network: the number after <code>src</code>.</li>
+<li>The second shows its <strong>name</strong>, between square brackets: <code>[musics.local]</code>.</li>
+<li>The last shows how the interface is served: its port is the number right after
+<code>--port</code> — not the one after <code>--ca-port</code>, nor the <code>8000</code> of <code>--core</code> — and <code>--ssl</code>
+means HTTPS.</li>
+</ul>
+<p><strong>2. Open the address that matches the last line.</strong></p>
+<ul>
+<li><code>--port 443</code> and <code>--ssl</code> → <code>https://&lt;name&gt;.local</code></li>
+<li><code>--port 8080</code>, without <code>--ssl</code> → <code>http://&lt;name&gt;.local:8080</code></li>
+<li>another port — <code>--port 9000</code>, say — and <code>--ssl</code> → <code>https://&lt;name&gt;.local:9000</code>; without
+<code>--ssl</code> → <code>http://&lt;name&gt;.local:9000</code></li>
+<li>nothing → the interface is stopped: step 3</li>
+</ul>
+<p>If the name does not open, put the address after <code>src</code> in its place. In HTTPS, the
+browser may warn about the certificate first: see
+<a href="#the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate</a>.</p>
+<p><strong>3. If the interface is stopped, start it again</strong>, then reload the page:</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> restart ag-ui-server
+</code></pre>
+<p>If it still does not open, this command shows why — include what it shows when you write in
+(see <a href="#getting-help">Getting help</a>):</p>
+<pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">systemctl</span> status ag-ui-server
+</code></pre>
+<p>When the answer is that <code>ag-ui-server.service</code> is not found, the interface is not installed
+on this box: install it, see <a href="02-installation">2. Installation</a>.</p>
+<p><strong>To serve it on its usual port again</strong>, or to switch between HTTP and HTTPS, run the
+interface's installer again with <code>--https</code> (port 443) or <code>--http</code> (port 8080) — see
+<a href="02-installation#optional-flags-ui-installer">2. Installation → Optional flags (ui installer)</a>.
+A bookmark or a home-screen icon made on the old address then has to be made again: see the
+next entry.</p>
 <h2 id="a-bookmark-or-the-home-screen-icon-opens-on-nothing">A bookmark, or the home-screen icon, opens on nothing</h2>
 <p>Almost always, the router has given the box a new address, and your bookmark or icon
 still points at the old one. An installed app is the worst case: it has no address bar
 to correct and shows no error — it just opens on a blank page.</p>
 <p>Every box also answers to <strong>its own name</strong>, <code>https://&lt;name&gt;.local</code>, where <code>&lt;name&gt;</code> is
 the first part of its hostname — a box called <code>musics</code> answers to <code>musics.local</code>, and
-so does one called <code>musics.1</code>. That name follows the box when its address changes.
+so does one called <code>musics.1</code> (<a href="02-installation#find-your-boxs-name">find your box's name</a>).
+That name follows the box when its address changes.
 <strong>Add the app from the name rather than from the address</strong> and the problem does not
 come back.</p>
 <ul>
+<li><strong>The interface changed mode or port</strong> — it was installed again in HTTP rather than
+HTTPS, or the reverse, or on another port. The icon keeps opening the old address:
+remove it, then add the app again from the new one. A bookmark, the same way.</li>
 <li><strong>Two devices with the same name</strong> — when another device on the network already
 answers to that name, the box takes the next free one, <code>musics-2.local</code>, and the
 interface's installer says so in yellow. Which of the two keeps the plain name can
@@ -494,7 +545,9 @@ device asking must be on the <strong>same subnet</strong>: another VLAN needs an
 the router, and some access points filter multicast. On the same network it resolves
 with nothing to install on iOS, macOS and Windows, and on most Android versions.</li>
 <li><strong>You still need the address</strong> — your router's client list has it, and the installer
-printed it at the end of the install.</li>
+printed it at the end of the install. On the box itself, <code>ip route get 1.1.1.1</code> shows
+it, after <code>src</code> (see
+<a href="#the-page-does-not-open--refused-to-connect">The page does not open</a>).</li>
 </ul>
 <h2 id="the-browser-warns-about-the-certificate-or-the-app-wont-install">The browser warns about the certificate, or the app won't install</h2>
 <p>On a self-signed setup the box signs its own certificate, so no browser knows it
@@ -507,8 +560,15 @@ trusted. This is the one case where the step is not optional:
 <li><strong>A warning on every visit (Android, computer)</strong> — accept it to look around; to stop
 the warnings and unlock the app install, trust the box's authority once per device,
 same step.</li>
-<li><strong>Android's Chrome never offers &quot;Install app&quot;</strong> — that prompt requires a trusted
-certificate. Same fix. There is nothing wrong with the site itself.</li>
+<li><strong>iPhone or iPad: still a warning after installing the profile</strong> — installed is not
+trusted. <strong>Settings → General → About → Certificate Trust Settings</strong>, turn on
+<strong>Audiogravity Local CA</strong> — step 5 of
+<a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → 7</a>.</li>
+<li><strong>Android: no <em>Install</em> bar, and no <em>Install and create shortcut</em> in Chrome's menu</strong> —
+both need a trusted certificate. Same fix. There is nothing wrong with the site itself.</li>
+<li><strong>iPhone or iPad: the icon opens in Safari, with an address bar</strong> — it was added with
+<strong>Open as Web App</strong> off. Remove the icon and add it again, with that switch on:
+<a href="03-first-run#8-install-it-as-an-app-recommended-on-phones">3. First run → 8</a>.</li>
 <li><strong>The home-screen icon opens on an error</strong> — the app window has no way to show the
 &quot;accept the risk&quot; page a browser tab does, so an untrusted certificate simply fails
 there. Trust the authority, then reopen the app.</li>
@@ -636,6 +696,10 @@ folders should be listed. If <code>ls</code> answers <code>No such device</code>
 wrong username or password, <code>mount error(2): No such file or directory</code> for a share name the
 NAS does not know. Back in the picker, hit refresh — the share appears as a library choice.</p>
 <h2 id="locked-out--no-admin-can-log-in">Locked out — no admin can log in</h2>
+<p><strong><code>admin</code> / <code>admin123</code> refused after installing again?</strong> An install over an existing one
+keeps its accounts: sign in with the password chosen then. The installer says so at the
+end — <em>Accounts kept from the existing install</em>. The default account comes back only on a
+box that has no account.</p>
 <p>Accounts live in <code>/opt/audiogravity/core/users.json</code> on the box. If the admin
 password is lost, connect over SSH, remove that file, and re-run the installer
 (see <a href="08-updating#manual-update">8. Updating → Manual update</a>): when no user file exists, the

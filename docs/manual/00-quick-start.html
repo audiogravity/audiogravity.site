@@ -111,10 +111,15 @@ the detail.</p>
 <pre><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span>
 </code></pre>
 <p>One command on your Debian 13 (Trixie) box, DietPi or Raspberry Pi OS included — core and interface together, keys
-generated, services started. <em>(Options and separate core / interface installs:
+generated, services started. On a new install it asks two questions about the interface:
+press <strong>Enter</strong> at both. <em>(Options and separate core / interface installs:
 <a href="02-installation">2. Installation</a>.)</em></p>
 <h2 id="2-open-it-and-sign-in">2. Open it and sign in</h2>
-<p>Browse to <code>https://&lt;ip-of-your-box&gt;</code>. Your <strong>30-day trial</strong> activates by itself.
+<p>Open <code>https://&lt;name&gt;.local</code>, the address the installer prints at the end — <code>&lt;name&gt;</code> is
+your box's name (<a href="02-installation#find-your-boxs-name">lost it?</a>). <strong>On an iPhone or
+iPad, trust the box's certificate first</strong>
+(<a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → 7</a>): until
+then, Safari does not open it. Your <strong>30-day trial</strong> activates by itself.
 Sign in as <strong><code>admin</code> / <code>admin123</code></strong> — and change that password right away (<strong>Admin</strong>
 tab → your card). <em>(Details and passkeys: <a href="03-first-run">3. First run</a>.)</em></p>
 <h2 id="3-install-the-audio-engines-you-want">3. Install the audio engines you want</h2>

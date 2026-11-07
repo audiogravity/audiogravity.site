@@ -78,6 +78,7 @@
                 <li><a href="#optional-flags-ui-installer">Optional flags (ui installer)</a></li>
                 <li><a href="#a-real-domain--optional">A real domain — optional</a></li>
                 <li><a href="#first-contact">First contact</a></li>
+                <li><a href="#find-your-boxs-name">Find your box's name</a></li>
                 <li><a href="#uninstalling">Uninstalling</a></li>
             </ul>
             <a class="man-nav-item" href="03-first-run"><span class="man-nav-n">03</span><span>First run</span></a>
@@ -95,7 +96,7 @@
             <article class="man-md">
 <h1>2. Installation</h1>
 <details class="man-outline-menu">
-<summary><span>On this page</span><span class="man-menu-count">8</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<summary><span>On this page</span><span class="man-menu-count">9</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
 <ul class="man-outline">
     <li><a href="#before-you-start">Before you start</a></li>
     <li><a href="#recommended--all-in-one-one-box">Recommended — all-in-one (one box)</a></li>
@@ -104,6 +105,7 @@
     <li><a href="#optional-flags-ui-installer">Optional flags (ui installer)</a></li>
     <li><a href="#a-real-domain--optional">A real domain — optional</a></li>
     <li><a href="#first-contact">First contact</a></li>
+    <li><a href="#find-your-boxs-name">Find your box's name</a></li>
     <li><a href="#uninstalling">Uninstalling</a></li>
 </ul>
 </details>
@@ -130,10 +132,16 @@ and Raspberry Pi OS included, in their Trixie release — on <strong>x86-64</str
 This is the standard setup and the one one-click self-update fully supports.</p>
 <pre><code class="language-bash"><span class="hl-cmd">curl</span> <span class="hl-opt">-fsSL</span> https://audiogravity.app/install.sh | <span class="hl-cmd">sudo</span> <span class="hl-cmd">bash</span>
 </code></pre>
+<p>On a new install, it asks <strong>two questions about the interface</strong>: press <strong>Enter</strong> at both. The interface is
+then served over <strong>HTTPS</strong> on port <strong>443</strong> — the setup this manual describes, and the one
+notifications and passkeys need.</p>
 <p>Then open, in any browser on your network, the address the installer prints at the end —
 the box by its name (see <a href="#first-contact">First contact</a>):</p>
 <pre data-copy="no"><code class="language-text">https://&lt;name&gt;.local
 </code></pre>
+<p><strong>On an iPhone or iPad, trust the box's certificate first</strong>
+(<a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → 7</a>): until
+then, Safari does not open that address.</p>
 <h2 id="advanced--core-and-ui-separately">Advanced — core and ui separately</h2>
 <p>You can install the two parts independently — for example to run the interface on a
 different machine. Run each installer on its target host:</p>
@@ -272,10 +280,11 @@ Encrypt DNS-01 + reverse proxy&quot; applies as-is.</p>
 <h2 id="first-contact">First contact</h2>
 <p>Open the address the installer prints at the end — the one its QR code carries:
 <code>https://&lt;name&gt;.local</code>. <code>&lt;name&gt;</code> is the first part of the box's hostname
-(<code>musics</code> → <code>musics.local</code>). The box announces that name on the network, and unlike its
+(<code>musics</code> → <code>musics.local</code>); lost it? <a href="#find-your-boxs-name">Find your box's name</a>. The box announces that name on the network, and unlike its
 address the name does not change when the router hands out a new lease, so it is the one
 to bookmark and the one to add the app from. Should it not open, the box's address,
-<code>https://&lt;box-ip&gt;</code>, is printed just below it.</p>
+<code>https://&lt;box-ip&gt;</code>, is printed just below it. On an iPhone or iPad, trust the box's
+certificate first: <a href="03-first-run#7-trust-the-boxs-certificate-once-per-device">3. First run → 7</a>.</p>
 <p>When another device on your network already answers to that name, the box takes
 <code>&lt;name&gt;-2.local</code>, and the installer says so in yellow. Such a name is not one to keep:
 which of the two devices gets the <code>-2</code> can change when they restart. Give the box a
@@ -286,6 +295,24 @@ On first run, Audiogravi<sup>ty</sup> activates a
 <strong>default admin account</strong> (then change its password right away — see
 <a href="03-first-run#2-sign-in--and-secure-your-account">3. First run</a>). Continue to
 <strong><a href="03-first-run">3. First run</a></strong>.</p>
+<h2 id="find-your-boxs-name">Find your box's name</h2>
+<p>The box answers to <code>&lt;name&gt;.local</code>, where <code>&lt;name&gt;</code> is the first part of its hostname —
+<code>musics.local</code> for a box called <code>musics</code>, and for one called <code>musics.1</code> too. The installer
+prints that address at the end. If you no longer have it, any of these gives it back:</p>
+<ul>
+<li><strong>Your router's list of connected devices</strong> shows the box under its hostname, with its
+address beside it.</li>
+<li><strong>In the app</strong>, opened at the box's address from your router's list — <code>https://192.168.1.30</code>,
+say: the <strong>System</strong> tab shows the <strong>Hostname</strong>. Signed in as an administrator,
+<strong>System › Actions › Support Report</strong> gives the exact address to type, under <em>Web
+interface</em> — <code>Address https://192.168.1.30 · also https://musics.local</code>.</li>
+<li><strong>On the box itself</strong> — keyboard and screen, or SSH — <code>pgrep -a avahi</code> shows the name
+between square brackets: <code>[musics.local]</code>.</li>
+</ul>
+<p>A box nobody renamed is <code>raspberrypi.local</code> on Raspberry Pi OS — unless it was given a
+name in Raspberry Pi Imager — and <code>dietpi.local</code> on DietPi. When another device of the
+network already answers to the name, the box takes the next free one, <code>musics-2.local</code>:
+the support report and <code>pgrep -a avahi</code> show it, the hostname alone does not.</p>
 <h2 id="uninstalling">Uninstalling</h2>
 <pre><code class="language-bash"><span class="hl-cmd">sudo</span> <span class="hl-cmd">/opt/audiogravity/uninstall.sh</span>          <span class="hl-comment"># core — keeps your configuration</span>
 <span class="hl-cmd">sudo</span> <span class="hl-cmd">/var/www/audiogravity-ui/uninstall.sh</span>   <span class="hl-comment"># ui</span>

@@ -10,12 +10,17 @@ curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
 One command on your Debian 13 (Trixie) box, DietPi or Raspberry Pi OS included — core and interface together, keys
-generated, services started. *(Options and separate core / interface installs:
+generated, services started. On a new install it asks two questions about the interface:
+press **Enter** at both. *(Options and separate core / interface installs:
 [2. Installation](02-installation.md).)*
 
 ## 2. Open it and sign in
 
-Browse to `https://<ip-of-your-box>`. Your **30-day trial** activates by itself.
+Open `https://<name>.local`, the address the installer prints at the end — `<name>` is
+your box's name ([lost it?](02-installation.md#find-your-boxs-name)). **On an iPhone or
+iPad, trust the box's certificate first**
+([3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)): until
+then, Safari does not open it. Your **30-day trial** activates by itself.
 Sign in as **`admin` / `admin123`** — and change that password right away (**Admin**
 tab → your card). *(Details and passkeys: [3. First run](03-first-run.md).)*
 

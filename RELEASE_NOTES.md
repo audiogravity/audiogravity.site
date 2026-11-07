@@ -20,6 +20,10 @@ were copied where the box looks.
 the players, Stats, Tuning —, a new one shows the VU meters in place of the cover, and a new
 card shows the player on a phone held sideways, with its meters, and the showcase.
 
+**The press release, in English and in French.** Audiogravi<sup>ty</sup> 1.0's press release — the
+release, a fact sheet and nine screenshots — is on the site, presented by a blog post and linked
+from the landing's footer, *Press release EN / FR*.
+
 ---
 
 ## 1.0.0 — 2026-11-06

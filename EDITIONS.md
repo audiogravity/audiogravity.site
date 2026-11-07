@@ -23,7 +23,8 @@ system and play the music stored on it:
 - **Software** — install, update and remove audio packages, with a simulation before committing changes
 - **System** — hardware dashboard: CPU, temperature, memory, disk and network at a glance; full audio device inventory (ALSA cards, USB interfaces, subdevices)
 - **Users** — role-based access management (Admin, User, Guest) with WebAuthn / passkeys login
-- **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, a software update is available or a profile is activated
+- **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, the disk is nearly full, a Raspberry Pi's power supply is too weak, a new version of Audiogravi<sup>ty</sup> or an update of an audio package is available, or a profile is activated
+- **One-click updates** — Audiogravi<sup>ty</sup> updates itself from the Admin page, core and interface together, and goes back to the previous version on its own if anything goes wrong (administrators)
 - **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups (HQPlayer Embedded's, the NAA's and Roon's come with Pro)
 - **Guided provisioning** — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)
 - **DSD protection** — your DAC's own volume set to maximum while it receives DSD, then put back; switchable for a DAC that lowers DSD properly
@@ -31,6 +32,7 @@ system and play the music stored on it:
 - **Internet radio** — Radio Browser directory, custom stations, favourites, and a filter that keeps the stations that really stream lossless
 - **Player** — play/pause, seek, next/prev, volume, repeat/shuffle for the box's music and the radio, in the mini-player and the full-screen player, with its **sleep timer**
 - **Outputs** — the box's DAC (USB, Toslink, HDMI…), switched without touching the streamer, or a DLNA/UPnP network speaker (**UPnP Control Point**)
+- **AirPlay and casting** — the box also plays what an iPhone, iPad or Mac sends it over AirPlay, or what a UPnP/DLNA app casts to it, and shows it in Now Playing
 - **Now Playing** — current track, cover art, format and progress across all sources
 
 What Pro adds stays in view on a Starter box, behind a padlock: a tap opens the licence panel.
@@ -40,7 +42,8 @@ When the trial ends, streaming tracks still in the queue no longer play; the mus
 
 ## Pro License — one-time payment, no subscription
 
-Permanently unlocks all features. Bound to one installation on one machine.
+Permanently unlocks all features. Bound to one installation on one machine; moving to another
+machine takes a licence reset, available on request.
 Includes all updates within the purchased major version (e.g. v1.x).
 Existing holders receive a **preferential upgrade price** for new major versions.
 
@@ -51,13 +54,13 @@ Everything in Starter, plus:
 - **Roon** — your Roon library, its zones and their transport controls
 - **HQPlayer** — HQPlayer as the output, and its DSP remote: filter, noise shaper, output mode and volume from the couch, with automatic network discovery; HQPlayer Embedded's and the NAA's output and settings
 - **Listening history** — what the box played: time listened per day or month, sources, outputs, sound quality, genres, and the most played artists, albums and tracks; kept on the box, recorded on every edition and switched off or cleared from any of them
-- **Level meter** — two needles that follow what the box's player plays, in step with the DAC: in the cover's place in the full-screen player, or over the whole screen on a tablet
+- **VU meters** — two needles that follow what the box's own player plays, in step with the DAC: in the cover's place in the full-screen player, or over the whole screen in showcase mode
 - **Audio Pipeline** — interactive DAG visualisation of the full signal chain from source to DAC: full-resolution badge on the link to the DAC, format per link, real-time output steering without stopping playback
-- **Systemd Configuration** — fine-tune audio service drop-ins: CPU affinity, SCHED_FIFO / RR priority, MEMLOCK and RTPRIO — eliminates scheduling jitter for bit-perfect, glitch-free playback
-- **Performance Optimization** — per-core CPU governor control, real-time thermal throttle detection, µs-scale latency benchmarks (cyclictest) and live RT process monitor
+- **Systemd Configuration** — fine-tune audio service drop-ins: CPU affinity, SCHED_FIFO / RR priority, MEMLOCK and RTPRIO — so the audio services keep the processor when the box is busy
+- **Performance Optimization** — per-core CPU governor control, real-time thermal throttle detection, µs-scale latency benchmarks (cyclictest), network tests (ping, iPerf3) and live RT process monitor
 
 > Qobuz, Tidal and HIGHRESAUDIO require an active subscription to their respective services.
-> Platform: Debian 13 (Trixie) or later — DietPi and Raspberry Pi OS included, in their Trixie release. The core installer turns any other system down.
+> Platform: Debian 13 (Trixie) or later — DietPi and Raspberry Pi OS included, in their Trixie release — on x86-64 and Raspberry Pi (aarch64). The core installer turns any other system down.
 
 ---
 
@@ -68,7 +71,7 @@ Everything in Starter, plus:
 | **Cost** | Free | Free | One-time (€49) |
 | **Duration** | 30 days | Unlimited | Unlimited |
 | **Activation** | Automatic | Automatic | Manual |
-| **Updates** (within the major version, e.g. v1.x) | ✓ | ✓ | ✓ |
+| **Updates** — one click, within the major version (e.g. v1.x) | ✓ | ✓ | ✓ |
 | **Profiles** | ✓ | ✓ | ✓ |
 | **Services** | ✓ | ✓ | ✓ |
 | **Software** | ✓ | ✓ | ✓ |
@@ -80,12 +83,13 @@ Everything in Starter, plus:
 | **Internet radio** | ✓ | ✓ | ✓ |
 | **Player — the box's music and the radio** | ✓ | ✓ | ✓ |
 | **Outputs — DAC and network speakers** | ✓ | ✓ | ✓ |
+| **AirPlay and casting to the box** | ✓ | ✓ | ✓ |
 | **Streaming — Qobuz, Tidal, HIGHRESAUDIO** | ✓ | — | ✓ |
 | **UPnP media servers** | ✓ | — | ✓ |
 | **Roon** | ✓ | — | ✓ |
 | **HQPlayer** | ✓ | — | ✓ |
 | **Listening history** | ✓ | — | ✓ |
-| **Level meter** | ✓ | — | ✓ |
+| **VU meters** | ✓ | — | ✓ |
 | **Audio Pipeline** | ✓ | — | ✓ |
 | **Audio Services Config** | ✓ | ✓ | ✓ |
 | **Guided provisioning** | ✓ | ✓ | ✓ |

@@ -80,10 +80,12 @@ What each edition opens — the trial opens everything:
 | **Internet radio** | ✓ | ✓ |
 | **Playback controls** — play, pause, skip, seek, volume, and the full-screen player with its sleep timer | ✓ | ✓ |
 | **Outputs** — the box's DAC, or a network renderer | ✓ | ✓ |
+| **AirPlay and casting** — play to the box from an iPhone, iPad or Mac, or from an app that casts to network speakers | ✓ | ✓ |
 | **Streaming** — Qobuz, Tidal and HIGHRESAUDIO | — | ✓ |
 | **UPnP media servers and Roon** — browse them, and control Roon's zones | — | ✓ |
 | **HQPlayer** — as the output, its filter and noise shaper, HQPlayer Embedded and the NAA | — | ✓ |
 | **Listening history** — what the box played: time, sources, sound quality, most played (on Starter, it can still be switched off and cleared) | — | ✓ |
+| **VU meters** — two needles in place of the cover in the full-screen player, or over the whole screen | — | ✓ |
 | **Pipeline** — the live signal path, from the source to the DAC | — | ✓ |
 | **Systemd** — real-time priorities and CPU pinning for the audio services | — | ✓ |
 | **Performance** — CPU governors and the latency test | — | ✓ |

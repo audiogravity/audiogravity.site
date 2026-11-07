@@ -297,59 +297,80 @@ after a few seconds, unless your pointer or your finger rests on it; a warning o
 stays until you close it with its <strong>×</strong>. An action that takes a while first says it is under
 way, and that same message then turns into the outcome.</p>
 <h2 id="7-trust-the-boxs-certificate-once-per-device">7. Trust the box's certificate (once per device)</h2>
-<p>HTTPS is the recommended mode, and the one the installer offers first: push
-notifications need it, and a browser treats an HTTPS page as a place it can install an app
-from. With it, the box created its own <strong>certificate authority</strong> and signed the
-interface's certificate with it. Your browser does not know that authority, so the first
-visit shows a security warning.</p>
-<p><strong>On an iPhone or iPad, there is no way round it.</strong> Safari offers no way past that
-warning, so the address does not open at all until the authority below is installed.
-Nothing is broken — it is simply how Safari treats an authority it does not know.</p>
-<p>On Android and on a computer, <strong>accepting the warning is enough to look around</strong>. It is
-<em>not</em> enough to install Audiogravi<sup>ty</sup> as an app: a phone only grants a site an
-app icon, an offline start and notifications once it <strong>trusts</strong> the certificate. So the
-step below is required on an iPhone and worth doing everywhere else. That is one
-operation per device, and it holds for years — the authority is created once and never replaced,
-even when the interface's own certificate is renewed or the box changes address.</p>
+<p>The box serves its interface over HTTPS, with a certificate it signed itself. Each phone,
+tablet or computer has to trust it <strong>once</strong>: there is nothing to redo afterwards, not even
+when the box changes address.</p>
+<ul>
+<li><strong>On an iPhone or iPad this is required</strong>: until it is done, Safari does not open the
+interface at all.</li>
+<li><strong>On Android and on a computer</strong> the interface opens after a warning, but the app does
+not install and notifications do not work until the certificate is trusted.</li>
+</ul>
+<p>Below, <code>&lt;name&gt;.local</code> is your box's name, the address the installer prints at the end —
+<code>musics.local</code> for a box called <code>musics</code>. No longer have it? See
+<a href="02-installation#find-your-boxs-name">2. Installation → Find your box's name</a>. If the
+name does not open on a device, use the box's address in its place, <code>192.168.1.30</code> for
+instance.</p>
+<h3 id="on-an-iphone-or-ipad">On an iPhone or iPad</h3>
 <ol>
-<li>
-<p>On the device, open <strong><code>http://&lt;box-address&gt;:8081/ca.crt</code></strong> — the installer prints this
-exact address at the end.</p>
-<blockquote>
-<p><strong>Note the <code>http://</code>, not <code>https://</code>.</strong> That port serves this one file and nothing
-else, and the address only works as written.</p>
-</blockquote>
-</li>
-<li>
-<p>Then, depending on the device:</p>
-</li>
+<li><strong>An Audiogravi<sup>ty</sup> icon is already on the Home Screen?</strong> Remove it first —
+touch and hold it, then remove it. You add it again at the end.</li>
+<li>In <strong>Safari</strong> — not another browser — open <code>http://&lt;name&gt;.local:8081/ca.crt</code>. Type
+<code>http://</code>, not <code>https://</code>: that address serves this one file.</li>
+<li>Safari asks whether to allow a configuration profile: tap <strong>Allow</strong>. If it asks which
+device, choose this one. Then tap <strong>Close</strong>.</li>
+<li>Open <strong>Settings</strong> right away and tap <strong>Profile Downloaded</strong>, near the top. Tap
+<strong>Install</strong>, enter your passcode, tap <strong>Install</strong> each time it is asked again, then
+<strong>Done</strong>. <em>No <strong>Profile Downloaded</strong> line? Look in <strong>General → VPN &amp; Device
+Management</strong>; not there either, start again at step 2.</em></li>
+<li>In <strong>Settings → General → About</strong>, scroll to the very bottom and tap <strong>Certificate Trust
+Settings</strong>. Under <strong>Enable full trust for root certificates</strong>, turn on <strong>Audiogravity
+Local CA</strong>, followed in brackets by your box's hostname — the one it had at its first
+install, if it was renamed since. Then tap <strong>Continue</strong>. <strong>This switch is the step that
+counts</strong>: installing the profile alone changes nothing.</li>
+<li>Check: in Safari, open <code>https://&lt;name&gt;.local</code>. The sign-in page opens, with no warning.
+Now add the app: <a href="#8-install-it-as-an-app-recommended-on-phones">8. Install it as an app</a>.</li>
 </ol>
-<div class="man-table"><table>
-<thead>
-<tr>
-<th>Device</th>
-<th>What to do</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>iPhone / iPad</strong></td>
-<td>Open the address in <strong>Safari</strong> and allow the download. Then <strong>Settings → Profile Downloaded → Install</strong>; if that line is no longer at the top of Settings, look under <strong>Settings → General → VPN &amp; Device Management</strong>, and if the profile is not there either, open the address again. That installs it — and installing is <em>not</em> trusting: go to <strong>Settings → General → About</strong>, scroll to the very bottom to <strong>Certificate Trust Settings</strong>, switch <strong>Audiogravity Local CA</strong> on (the entry carries the box's name after that, in brackets) and confirm with <strong>Continue</strong>. <strong>That last switch is the step that counts</strong>; without it nothing changes. Afterwards the interface opens with no warning and installs as an app.</td>
-</tr>
-<tr>
-<td><strong>Android</strong></td>
-<td>The goal is to install the file as a <strong>trusted certificate authority</strong> from the system settings — that is the only place Android allows it. Look under <strong>Security</strong> for <em>Encryption &amp; credentials</em>, then <em>Install a certificate</em> (or <em>Install from storage</em>) → <strong>CA certificate</strong>, and pick the file you downloaded. We give no exact path on purpose: it differs between Android versions and between manufacturers, so a fixed one would be wrong for most phones. Two things stop people: the phone must have a <strong>screen lock</strong> (PIN, pattern or password), or Android refuses to store an authority at all — set one first; and since Android 11 only the Settings app may start the install, so tapping the downloaded file in Chrome does nothing. Android then warns that a third party could inspect your traffic — here that third party is your own box.</td>
-</tr>
-<tr>
-<td><strong>macOS</strong></td>
-<td>Open the file in <strong>Keychain Access</strong>, then set it to <em>Always Trust</em>.</td>
-</tr>
-<tr>
-<td><strong>Windows</strong></td>
-<td>Install it into <strong>Trusted Root Certification Authorities</strong>.</td>
-</tr>
-</tbody>
-</table></div>
+<h3 id="on-android">On Android</h3>
+<ol>
+<li>The phone needs a <strong>screen lock</strong> — PIN, pattern or password: without one, Android
+refuses the certificate. Set one first if needed.</li>
+<li>In <strong>Chrome</strong>, open <code>http://&lt;name&gt;.local:8081/ca.crt</code> — <code>http://</code>, not <code>https://</code>. The
+file <code>audiogravity-ca.crt</code> downloads; if Chrome asks, accept the download. Tapping the
+file does nothing: carry on.</li>
+<li>Open <strong>Settings</strong>, tap the search field, type <code>CA certificate</code> and open
+<strong>CA certificate</strong>. On a Pixel, it is under <strong>Security &amp; privacy → More security
+settings → Encryption &amp; credentials → Install a certificate</strong>.</li>
+<li>Tap <strong>Install anyway</strong>, confirm with your screen lock, then pick
+<strong>audiogravity-ca.crt</strong> in <strong>Downloads</strong>. Android warns that a third party could see
+your traffic: here, that third party is your own box.</li>
+<li>Check: in Chrome, open <code>https://&lt;name&gt;.local</code>. It opens with no warning. Now add the
+app: <a href="#8-install-it-as-an-app-recommended-on-phones">8. Install it as an app</a>.</li>
+</ol>
+<h3 id="on-a-mac">On a Mac</h3>
+<ol>
+<li>Open <code>http://&lt;name&gt;.local:8081/ca.crt</code>: the file <code>audiogravity-ca.crt</code> lands in
+<strong>Downloads</strong>. If the browser asks, allow the download.</li>
+<li>Double-click it. Keychain Access asks where to add it: choose <strong>login</strong>, then <strong>Add</strong>.</li>
+<li>In Keychain Access, find <strong>Audiogravity Local CA</strong> with the search field, and
+double-click it.</li>
+<li>Open <strong>Trust</strong> and set <strong>When using this certificate</strong> to <strong>Always Trust</strong>. Close the
+window and enter your Mac's password.</li>
+</ol>
+<h3 id="on-a-windows-pc">On a Windows PC</h3>
+<ol>
+<li>Open <code>http://&lt;name&gt;.local:8081/ca.crt</code>: the file <code>audiogravity-ca.crt</code> lands in
+<strong>Downloads</strong>. If the browser asks, allow the download.</li>
+<li>Double-click it, click <strong>Install Certificate…</strong>, choose <strong>Current User</strong>, then
+<strong>Next</strong>.</li>
+<li>Choose <strong>Place all certificates in the following store</strong>, click <strong>Browse…</strong> and pick
+<strong>Trusted Root Certification Authorities</strong>, then <strong>OK</strong>, <strong>Next</strong> and <strong>Finish</strong>.
+Answer <strong>Yes</strong> to the security warning.</li>
+<li>Close the browser, and open it again.</li>
+</ol>
+<p><strong>Firefox</strong>, on any computer, keeps a list of its own: <strong>Settings → Privacy &amp; Security →
+Certificates → View Certificates… → Authorities → Import…</strong>, pick the file, then tick
+<strong>Trust this CA to identify websites</strong>.</p>
 <blockquote>
 <p><strong>Why not simply a real certificate?</strong> Because a public authority will not certify a
 private address like <code>192.168.1.30</code>. If you would rather have a certificate every
@@ -358,16 +379,46 @@ than the box's — give the box a domain name and a real certificate: see
 <a href="02-installation#a-real-domain--optional">2. Installation → A real domain</a>.</p>
 </blockquote>
 <h2 id="8-install-it-as-an-app-recommended-on-phones">8. Install it as an app (recommended on phones)</h2>
-<p>Audiogravi<sup>ty</sup> is an installable web app (PWA): added to your home screen it
-opens <strong>fullscreen</strong>, in its own window, with the app icon. On a self-signed setup,
-do step 7 first — an untrusted certificate is what stops the app from installing.</p>
-<blockquote>
-<p><strong>Phone on the box's network: add it from the box's name</strong> — <code>https://&lt;name&gt;.local</code>, the
-address the installer prints first and puts in its QR code (see
-<a href="02-installation#first-contact">2. Installation → First contact</a>). An installed app
+<p>Added to the Home Screen, Audiogravi<sup>ty</sup> opens <strong>fullscreen</strong>, in its own window,
+with its own icon — and on an iPhone or iPad, that is what lets it receive notifications.
+<strong>Do step 7 first on that device</strong>: until the certificate is trusted, the app does not
+install.</p>
+<p>Add it from the box's <strong>name</strong>, <code>https://&lt;name&gt;.local</code> — the address the installer prints
+first and puts in its QR code (lost it? see
+<a href="02-installation#find-your-boxs-name">2. Installation → Find your box's name</a>). An installed app
 reopens for ever the address it was added from, with no address bar to correct it: one
 added on the name follows the box when the router hands it a different address.</p>
-</blockquote>
+<h3 id="on-an-iphone">On an iPhone</h3>
+<ol>
+<li>In <strong>Safari</strong>, open <code>https://&lt;name&gt;.local</code>.</li>
+<li>Tap <strong>⋯</strong>, then <strong>Share</strong>. <em>With the tabs at the bottom or the top of the screen, tap
+<strong>Share</strong> directly.</em></li>
+<li>Scroll down the list and tap <strong>Add to Home Screen</strong>. <em>Not in the list? At its very
+bottom, tap <strong>Edit Actions</strong>, then add <strong>Add to Home Screen</strong>.</em></li>
+<li>Turn on <strong>Open as Web App</strong>.</li>
+<li>Tap <strong>Add</strong>, then open Audiogravi<sup>ty</sup> from its new icon.</li>
+</ol>
+<h3 id="on-an-ipad">On an iPad</h3>
+<ol>
+<li>In <strong>Safari</strong>, open <code>https://&lt;name&gt;.local</code>.</li>
+<li>Tap <strong>Share</strong>, then <strong>View More</strong>, then <strong>Add to Home Screen</strong>.</li>
+<li>Turn on <strong>Open as Web App</strong>, then tap <strong>Add</strong>.</li>
+</ol>
+<h3 id="on-android-1">On Android</h3>
+<ol>
+<li>In <strong>Chrome</strong>, open <code>https://&lt;name&gt;.local</code>.</li>
+<li>A bar says <strong>Add Audiogravi<sup>ty</sup> to your home screen</strong>: tap <strong>Install</strong>, then
+<strong>Install</strong> again. <em>No bar? Tap <strong>⋮</strong>, right of the address bar, then <strong>Install and
+create shortcut</strong>, then <strong>Install</strong>.</em></li>
+<li>Open Audiogravi<sup>ty</sup> from its new icon. The installed app also honours the
+<a href="04-listening#portrait-lock">Portrait Lock</a>.</li>
+</ol>
+<h3 id="on-a-computer">On a computer</h3>
+<p>Chrome and Edge show an install icon at the right of the address bar: click it, then
+<strong>Install</strong> — handy for an always-open controller window.</p>
+<p><strong>Notifications</strong> on an iPhone or iPad (iOS 16.4 or later) reach the installed app, never a
+Safari tab: turn them on from the app itself (see
+<a href="07-administration#push-notifications">7. Administration → Push notifications</a>).</p>
 <blockquote>
 <p><strong>Phone on another network</strong> — a separate Wi-Fi or VLAN for phones and computers: there,
 the name usually does not open (unless your router relays it between networks). Add the
@@ -376,17 +427,6 @@ in your router — look for <em>DHCP reservation</em>, <em>static lease</em> or 
 icon added on an address stops opening the day the address changes. See
 <a href="09-troubleshooting#a-bookmark-or-the-home-screen-icon-opens-on-nothing">9. Troubleshooting</a>.</p>
 </blockquote>
-<ul>
-<li><strong>Android</strong> — open the site in Chrome and accept the <strong>Install app</strong> prompt (or
-browser menu → <em>Add to Home screen</em>). The installed app also honours the
-<a href="04-listening#portrait-lock">Portrait Lock</a> at the OS level.</li>
-<li><strong>iPhone / iPad</strong> — in Safari, tap <strong>Share → Add to Home Screen</strong>. On iOS this is
-also <strong>required for push notifications</strong> (iOS 16.4 or later): Safari tabs can't receive
-them, the installed app can — turn them on from the app itself (see
-<a href="07-administration#push-notifications">7. Administration → Push notifications</a>).</li>
-<li><strong>Desktop</strong> — Chrome and Edge offer an install icon in the address bar; handy for
-a dedicated always-open controller window.</li>
-</ul>
 <h2 id="next">Next</h2>
 <p>Your box now plays. Head to <strong><a href="04-listening">4. Listening</a></strong> to start playing
 music, or <strong><a href="05-library-streaming">5. Library &amp; streaming</a></strong> to connect Qobuz,

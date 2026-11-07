@@ -348,6 +348,65 @@ As a last resort, clear the site's stored data for the box's address in your bro
 settings. Nothing of yours lives there: your accounts, licence and audio configuration
 are all on the box.
 
+## The page does not open — "refused to connect"
+
+The browser says *This site can't be reached* and *refused to connect* — in Safari, *can't
+connect to the server*; in Firefox, *Unable to connect*. Something answers at that address,
+but not the interface: the address now belongs to another device, the port or the
+`http`/`https` part is not the right one, or the interface is stopped.
+
+If the page waits instead, then gives up — *took too long to respond* — nothing answers at
+that address at all. Check that the box is on and connected, then find its address as below.
+
+**1. Ask the box.** On the box itself — in a terminal, with a keyboard and a screen plugged
+in, or over SSH from a computer — type these three commands:
+
+```bash
+ip route get 1.1.1.1
+pgrep -a avahi
+pgrep -af audiogravity-ui
+```
+
+- The first shows the box's **address** on your network: the number after `src`.
+- The second shows its **name**, between square brackets: `[musics.local]`.
+- The last shows how the interface is served: its port is the number right after
+  `--port` — not the one after `--ca-port`, nor the `8000` of `--core` — and `--ssl`
+  means HTTPS.
+
+**2. Open the address that matches the last line.**
+
+- `--port 443` and `--ssl` → `https://<name>.local`
+- `--port 8080`, without `--ssl` → `http://<name>.local:8080`
+- another port — `--port 9000`, say — and `--ssl` → `https://<name>.local:9000`; without
+  `--ssl` → `http://<name>.local:9000`
+- nothing → the interface is stopped: step 3
+
+If the name does not open, put the address after `src` in its place. In HTTPS, the
+browser may warn about the certificate first: see
+[The browser warns about the certificate](#the-browser-warns-about-the-certificate-or-the-app-wont-install).
+
+**3. If the interface is stopped, start it again**, then reload the page:
+
+```bash
+sudo systemctl restart ag-ui-server
+```
+
+If it still does not open, this command shows why — include what it shows when you write in
+(see [Getting help](#getting-help)):
+
+```bash
+sudo systemctl status ag-ui-server
+```
+
+When the answer is that `ag-ui-server.service` is not found, the interface is not installed
+on this box: install it, see [2. Installation](02-installation.md).
+
+**To serve it on its usual port again**, or to switch between HTTP and HTTPS, run the
+interface's installer again with `--https` (port 443) or `--http` (port 8080) — see
+[2. Installation → Optional flags (ui installer)](02-installation.md#optional-flags-ui-installer).
+A bookmark or a home-screen icon made on the old address then has to be made again: see the
+next entry.
+
 ## A bookmark, or the home-screen icon, opens on nothing
 
 Almost always, the router has given the box a new address, and your bookmark or icon
@@ -356,10 +415,14 @@ to correct and shows no error — it just opens on a blank page.
 
 Every box also answers to **its own name**, `https://<name>.local`, where `<name>` is
 the first part of its hostname — a box called `musics` answers to `musics.local`, and
-so does one called `musics.1`. That name follows the box when its address changes.
+so does one called `musics.1` ([find your box's name](02-installation.md#find-your-boxs-name)).
+That name follows the box when its address changes.
 **Add the app from the name rather than from the address** and the problem does not
 come back.
 
+- **The interface changed mode or port** — it was installed again in HTTP rather than
+  HTTPS, or the reverse, or on another port. The icon keeps opening the old address:
+  remove it, then add the app again from the new one. A bookmark, the same way.
 - **Two devices with the same name** — when another device on the network already
   answers to that name, the box takes the next free one, `musics-2.local`, and the
   interface's installer says so in yellow. Which of the two keeps the plain name can
@@ -372,7 +435,9 @@ come back.
   the router, and some access points filter multicast. On the same network it resolves
   with nothing to install on iOS, macOS and Windows, and on most Android versions.
 - **You still need the address** — your router's client list has it, and the installer
-  printed it at the end of the install.
+  printed it at the end of the install. On the box itself, `ip route get 1.1.1.1` shows
+  it, after `src` (see
+  [The page does not open](#the-page-does-not-open--refused-to-connect)).
 
 ## The browser warns about the certificate, or the app won't install
 
@@ -386,8 +451,15 @@ until you say so.
 - **A warning on every visit (Android, computer)** — accept it to look around; to stop
   the warnings and unlock the app install, trust the box's authority once per device,
   same step.
-- **Android's Chrome never offers "Install app"** — that prompt requires a trusted
-  certificate. Same fix. There is nothing wrong with the site itself.
+- **iPhone or iPad: still a warning after installing the profile** — installed is not
+  trusted. **Settings → General → About → Certificate Trust Settings**, turn on
+  **Audiogravity Local CA** — step 5 of
+  [3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device).
+- **Android: no *Install* bar, and no *Install and create shortcut* in Chrome's menu** —
+  both need a trusted certificate. Same fix. There is nothing wrong with the site itself.
+- **iPhone or iPad: the icon opens in Safari, with an address bar** — it was added with
+  **Open as Web App** off. Remove the icon and add it again, with that switch on:
+  [3. First run → 8](03-first-run.md#8-install-it-as-an-app-recommended-on-phones).
 - **The home-screen icon opens on an error** — the app window has no way to show the
   "accept the risk" page a browser tab does, so an untrusted certificate simply fails
   there. Trust the authority, then reopen the app.
@@ -542,6 +614,11 @@ wrong username or password, `mount error(2): No such file or directory` for a sh
 NAS does not know. Back in the picker, hit refresh — the share appears as a library choice.
 
 ## Locked out — no admin can log in
+
+**`admin` / `admin123` refused after installing again?** An install over an existing one
+keeps its accounts: sign in with the password chosen then. The installer says so at the
+end — *Accounts kept from the existing install*. The default account comes back only on a
+box that has no account.
 
 Accounts live in `/opt/audiogravity/core/users.json` on the box. If the admin
 password is lost, connect over SSH, remove that file, and re-run the installer

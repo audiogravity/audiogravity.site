@@ -27,12 +27,20 @@ This is the standard setup and the one one-click self-update fully supports.
 curl -fsSL https://audiogravity.app/install.sh | sudo bash
 ```
 
+On a new install, it asks **two questions about the interface**: press **Enter** at both. The interface is
+then served over **HTTPS** on port **443** — the setup this manual describes, and the one
+notifications and passkeys need.
+
 Then open, in any browser on your network, the address the installer prints at the end —
 the box by its name (see [First contact](#first-contact)):
 
 ```text nocopy
 https://<name>.local
 ```
+
+**On an iPhone or iPad, trust the box's certificate first**
+([3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)): until
+then, Safari does not open that address.
 
 ## Advanced — core and ui separately
 
@@ -155,10 +163,11 @@ Encrypt DNS-01 + reverse proxy" applies as-is.
 
 Open the address the installer prints at the end — the one its QR code carries:
 `https://<name>.local`. `<name>` is the first part of the box's hostname
-(`musics` → `musics.local`). The box announces that name on the network, and unlike its
+(`musics` → `musics.local`); lost it? [Find your box's name](#find-your-boxs-name). The box announces that name on the network, and unlike its
 address the name does not change when the router hands out a new lease, so it is the one
 to bookmark and the one to add the app from. Should it not open, the box's address,
-`https://<box-ip>`, is printed just below it.
+`https://<box-ip>`, is printed just below it. On an iPhone or iPad, trust the box's
+certificate first: [3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device).
 
 When another device on your network already answers to that name, the box takes
 `<name>-2.local`, and the installer says so in yellow. Such a name is not one to keep:
@@ -170,6 +179,26 @@ On first run, Audiogravi<sup>ty</sup> activates a
 **default admin account** (then change its password right away — see
 [3. First run](03-first-run.md#2-sign-in--and-secure-your-account)). Continue to
 **[3. First run](03-first-run.md)**.
+
+## Find your box's name
+
+The box answers to `<name>.local`, where `<name>` is the first part of its hostname —
+`musics.local` for a box called `musics`, and for one called `musics.1` too. The installer
+prints that address at the end. If you no longer have it, any of these gives it back:
+
+- **Your router's list of connected devices** shows the box under its hostname, with its
+  address beside it.
+- **In the app**, opened at the box's address from your router's list — `https://192.168.1.30`,
+  say: the **System** tab shows the **Hostname**. Signed in as an administrator,
+  **System › Actions › Support Report** gives the exact address to type, under *Web
+  interface* — `Address https://192.168.1.30 · also https://musics.local`.
+- **On the box itself** — keyboard and screen, or SSH — `pgrep -a avahi` shows the name
+  between square brackets: `[musics.local]`.
+
+A box nobody renamed is `raspberrypi.local` on Raspberry Pi OS — unless it was given a
+name in Raspberry Pi Imager — and `dietpi.local` on DietPi. When another device of the
+network already answers to the name, the box takes the next free one, `musics-2.local`:
+the support report and `pgrep -a avahi` show it, the hostname alone does not.
 
 ## Uninstalling
 

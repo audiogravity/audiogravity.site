@@ -64,12 +64,14 @@ major versions.
 ## How do I install Audiogravi<sup>ty</sup> on my phone?
 
 Audiogravi<sup>ty</sup> is a Progressive Web App — it installs from the browser,
-no app store needed. **On iOS**: open Safari, navigate to your
-Audiogravi<sup>ty</sup> URL, tap Share → Add to Home Screen. **On Android**: open
-Chrome, tap the three-dot menu → Install app. Either way, trust the box's certificate on
-the phone first ([3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)).
-It then runs fullscreen with its own icon, just like a native app — and on iOS (16.4 or
-later) the installed app is what receives push notifications. See
+no app store needed. First, trust the box's certificate on the phone
+([3. First run → 7](03-first-run.md#7-trust-the-boxs-certificate-once-per-device)). Then,
+**on an iPhone**: in Safari, open your Audiogravi<sup>ty</sup> address, tap **⋯** →
+**Share** → **Add to Home Screen**, turn on **Open as Web App** and tap **Add** — on an
+iPad, **Share** → **View More** → **Add to Home Screen**. **On Android**: in Chrome, tap
+**Install** on the bar the app shows, or **⋮** → **Install and create shortcut** →
+**Install**. It then runs fullscreen with its own icon, just like a native app — and on
+iOS (16.4 or later) the installed app is what receives push notifications. Step by step:
 [3. First run](03-first-run.md#8-install-it-as-an-app-recommended-on-phones).
 
 ## How do I connect Qobuz, Tidal or HIGHRESAUDIO?

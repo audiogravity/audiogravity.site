@@ -44,8 +44,10 @@
 - Unified transport across MPD, Roon, HQPlayer NAA, AirPlay and UPnP
 - UPnP Control Point — discover and cast to any network renderer (amplifiers, streamers, DLNA speakers) at full resolution, bit-perfect, with a live "Up next" queue
 - UPnP renderer mode via upmpdcli — drive Audiogravi<sup>ty</sup> from any UPnP control point (JPLAY, BubbleUPnP, mconnect); OpenHome controllers such as Kazoo once enabled in the upmpdcli config
-- Fullscreen Now Playing — cover art, seekable progress bar, transport controls, album tracklist, multi-source swipe, dynamic background
+- Fullscreen Now Playing — cover art, seekable progress bar, transport controls, album tracklist, multi-source swipe, dynamic background; on a phone held sideways, everything on one screen
+- VU meters — two needles in place of the cover, in step with what the DAC plays, and a showcase mode that gives them the whole screen
 - HQPlayer DSP remote — filter, shaper, output mode, volume with auto-discovery
+- HQPlayer as the output — the desktop application or HQPlayer Embedded, on the box or on another computer with the box as its NAA; Qobuz, Tidal and HIGHRESAUDIO stream through it
 - Output steering — USB, Toslink, HDMI
 - One-tap profile scenarios (switch entire audio chains instantly)
 - DSD protection — your DAC's own volume at full while it receives DSD, from any player
@@ -58,10 +60,10 @@
 **Library & Radio**
 - High-resolution browsing — Roon, MPD, MinimServer, Qobuz, Tidal, HIGHRESAUDIO
 - Cast your local NAS / USB library to a network UPnP renderer, just like the streaming services
-- Qobuz Hi-Res streaming up to 24-bit / 192 kHz — favourites, new releases, editorial playlists
-- Tidal streaming — Hi-Res FLAC up to 24-bit / 192 kHz — Favorites, New Releases, Charts, Editorial playlists, in-track seek
-- HIGHRESAUDIO streaming — FLAC at each album's own resolution — Favorites, Discover, Editor's Picks, Bestsellers, search
-- Internet radio — Radio Browser, custom stations, favourites
+- Qobuz Hi-Res streaming up to 24-bit / 192 kHz — favourites, purchases, new releases, editorial playlists, and your own playlists, created and edited from the app
+- Tidal streaming — Hi-Res FLAC up to 24-bit / 192 kHz — Favorites, New Releases, Charts, Editorial playlists, your own playlists, in-track seek
+- HIGHRESAUDIO streaming — FLAC at each album's own resolution — Favorites, the Vault (your purchases, played even without a subscription), Categories, Charts, editorial playlists and your own, created and filled from the app, Labels, Genres, and a search by artist, composer, label, year, audio format and mood
+- Internet radio — Radio Browser, custom stations, favourites, and a filter for the stations that stream lossless
 - UPnP server auto-discovery & browsing
 - Listening history — time listened per day or month, sources, outputs, sound quality, genres, most played artists, albums and tracks; kept on the box
 
@@ -108,7 +110,11 @@ Audiogravi<sup>ty</sup> doesn't replace the engines audiophiles trust — it **o
 | **4 · Orchestration** | Source switching · transport · volume · UPnP renderer control · monitoring | Owns |
 | **3 · Content sources** | NAS · Qobuz · Tidal · HIGHRESAUDIO · internet radio · MinimServer | Connects |
 | **2 · Audio engine** | MPD · Roon Bridge / Server · HQPlayer Embedded / NAA · AirPlay · upmpdcli · UPnP renderers | Installs, configures & drives |
-| **1 · OS / kernel** | RT scheduling · CPU pinning · IRQs · ALSA | Tunes |
+| **1 · OS / kernel** | RT scheduling · CPU pinning · ALSA | Tunes |
+
+<!-- No "IRQs" in layer 1: the app does not move interrupts. BACKLOG: see
+     audiogravity.ops/BACKLOG.md, "La box ne règle pas les interruptions". -->
+
 
 It **installs and configures** the engines that run on the box (MPD, AirPlay, upmpdcli, Roon Bridge or Roon Server, HQPlayer Embedded or its NAA), **drives** the ones that run elsewhere (a Roon Core, HQPlayer on another computer, network renderers), **connects** your content sources, and **tunes** the OS kernel underneath — without replacing or hiding any of them.
 
@@ -259,6 +265,9 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 ## Documentation
 
 - **[User Manual](docs/manual/)** — the complete guide: install, first-run setup, listening, streaming, outputs, administration, updating, troubleshooting
+- **[Guides](docs/guides/)** — answers to the questions audiophiles ask about Raspberry Pi and Linux streamers — DACs, libraries, streaming, Roon, HQPlayer, DSD — checked and dated
+- **[Blog](docs/blog/)** — hi-fi equipment, what it takes to use it with a streamer today, and news of Audiogravi<sup>ty</sup>
+- **Press release** — Audiogravi<sup>ty</sup> 1.0, in [English](press/Audiogravity-1.0-press-release.pdf) and [French](press/Audiogravity-1.0-communique-de-presse.pdf), each with its fact sheet; the nine screenshots full size in [a ZIP](press/audiogravity-1.0-screenshots.zip); all three presented on [the blog](docs/blog/audiogravity-1-0-press-release.md)
 - [RELEASE_NOTES.md](RELEASE_NOTES.md) — synthesized release notes per version
 - [CHANGELOG.md](CHANGELOG.md) — detailed changelog (single source of truth)
 - [EDITIONS.md](EDITIONS.md) · [EULA.md](EULA.md) — editions and end-user licence agreement
@@ -267,7 +276,9 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 ## Support
 
-- **Bug reports & questions** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues)
+- **Questions, ideas, your setup** — [GitHub Discussions](https://github.com/audiogravity/audiogravity.site/discussions), the owners' community
+- **Bug reports** — [open an issue](https://github.com/audiogravity/audiogravity.site/issues)
+- **Contact** — [contact@audiogravity.app](mailto:contact@audiogravity.app)
 - **Website** — [audiogravity.app](https://audiogravity.app)
 
 ## Roadmap
@@ -276,7 +287,7 @@ Audiogravi<sup>ty</sup> **1.0** is out — open to everyone, no invitation and n
 
 ## Contributing
 
-The interface — [audiogravity.ui](https://github.com/audiogravity/audiogravity.ui) — is **MIT-licensed**: read it, fork it, build on it. Pull requests are not accepted at this stage; to report a bug or suggest a feature, [open an issue](https://github.com/audiogravity/audiogravity.site/issues) here. The core engine is proprietary (shipped as a compiled binary).
+The interface — [audiogravity.ui](https://github.com/audiogravity/audiogravity.ui) — is **MIT-licensed**: read it, fork it, build on it. Pull requests are not accepted at this stage; to report a bug, [open an issue](https://github.com/audiogravity/audiogravity.site/issues) here, and to suggest a feature, post it in [Discussions → Ideas](https://github.com/audiogravity/audiogravity.site/discussions/categories/ideas). The core engine is proprietary (shipped as a compiled binary).
 
 ## License
 

@@ -2696,6 +2696,22 @@ footer {
     color: #fff
 }
 
+/* Two links on one line — Community / Issues, the press release in English / French: the line
+   sits as the column's links do, and its links, inline beside a slash or words, are told apart
+   by an underline. */
+.footer-line {
+    font-size: var(--font-size-sm);
+    color: #bcbcbc;
+    margin: 0 0 11px
+}
+
+.footer-col .footer-line a {
+    display: inline;
+    margin: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px
+}
+
 .footer-bottom {
     display: flex;
     justify-content: space-between;

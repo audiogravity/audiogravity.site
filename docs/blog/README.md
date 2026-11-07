@@ -1,8 +1,9 @@
 # Blog
 
-Stories about hi-fi equipment, and what it takes to use it with a streamer today, checked and
-dated like the guides.
+Stories about hi-fi equipment, what it takes to use it with a streamer today, and news of
+Audiogravi<sup>ty</sup>, checked and dated like the guides.
 
+- [Audiogravi<sup>ty</sup> 1.0: the press release](audiogravity-1-0-press-release.md) — 2026-11-07 — The press release for Audiogravi<sup>ty</sup> 1.0, in English and French, with its fact sheet and nine screenshots for anyone writing about it.
 - [The Rega Planar 3: the affordable turntable that set the standard](rega-planar-3.md) — 2026-11-02 — Rega's deck as the specialist press heard it, from 1984 to 2024: its rhythm, its tone, its limits, its generations, and how it plays on a NAIT 2.
 - [HIGHRESAUDIO, Qobuz and Tidal: who runs them, what artists get, what you hear](highresaudio-qobuz-tidal.md) — 2026-11-02 — Three hi-res streaming services compared: owners and countries, catalogue, formats, prices, pay per stream, AI music, and Audiogravi<sup>ty</sup>.
 - [The Quad 33 and 303: Peter Walker's transistor classic, and its return](quad-33-303.md) — 2026-10-31 — Quad's 1967 pre/power pair: what made it a classic, how the originals sound, what reviewers heard from the 2024 pair, and using one today.

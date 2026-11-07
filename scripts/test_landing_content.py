@@ -143,3 +143,63 @@ def test_the_back_to_top_control_says_where_it_goes():
     assert re.search(r"""(\.href\s*=\s*|setAttribute\(\s*['"]href['"]\s*,\s*)['"]#top['"]""", script), "no #top target"
     label = re.search(r"""setAttribute\(\s*['"]aria-label['"]\s*,\s*['"]([^'"]*)['"]\s*\)""", script)
     assert label and label.group(1).strip(), "the control has no accessible name"
+
+
+def _footer() -> str:
+    """The landing's footer, from its opening tag to the end of the page."""
+    page = PAGES["index.html"]
+    return page[page.index("<footer"):]
+
+
+def _footer_lines() -> list[str]:
+    """The footer's lines of two links, their inner HTML in page order."""
+    return re.findall(r'<p class="footer-line">(.*?)</p>', _footer(), re.S)
+
+
+def test_the_github_button_leads_to_the_project_repository():
+    """The top bar's GitHub button opens the site's repository (2026-11-07): its README presents
+    Audiogravity, and its Discussions, Issues and release notes are the footer's links. It said
+    "Releases" and opened the packages' page, which holds the install commands and nothing else."""
+    button = re.search(r'<a class="nav-gh" href="([^"]+)">(.*?)</a>', PAGES["index.html"], re.S)
+    assert button, "the top bar has no GitHub button"
+    assert button.group(1) == "https://github.com/audiogravity/audiogravity.site", button.group(1)
+    assert re.sub(r"<[^>]+>|\s+", " ", button.group(2)).strip() == "GitHub"
+
+
+def test_community_and_issues_share_one_line():
+    """"Community / Issues" (2026-11-07): the two places to talk about Audiogravity, one line."""
+    line = next((text for text in _footer_lines() if "/discussions" in text), None)
+    assert line, "Community is no longer on a line of its own with Issues"
+    links = re.findall(r'<a href="([^"]+)"[^>]*>([^<]*)</a>', line)
+    assert [text.strip() for _, text in links] == ["Community", "Issues"], links
+    assert links[0][0].endswith("/audiogravity.site/discussions"), links[0][0]
+    assert links[1][0].endswith("/audiogravity.site/issues"), links[1][0]
+
+
+def test_the_footer_leads_to_the_release_notes():
+    """"Release notes" opens RELEASE_NOTES.md. The link said "Releases" and opened the GitHub
+    releases page, which holds the install commands and the packages, not what changed (read
+    2026-11-07); the GitHub button in the top bar still leads there."""
+    link = re.search(r'<a href="([^"]+)">Release\s+notes</a>', _footer())
+    assert link, "no Release notes link in the footer"
+    assert link.group(1) == "https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md"
+    assert (ROOT / "RELEASE_NOTES.md").is_file()
+
+
+@pytest.mark.parametrize("name,lang", [("Audiogravity-1.0-press-release.pdf", "en"),
+                                       ("Audiogravity-1.0-communique-de-presse.pdf", "fr")])
+def test_the_footer_offers_the_press_release_in_english_and_french(name, lang):
+    """The 1.0 press release (2026-11-07) is linked from the footer on one line, "Press release
+    EN / FR", as asked for: each language a link of its own, named by its code.
+
+    Each link says its language to search engines and leads to a file on the site. The check of
+    every file a page loads looks under assets/ only, and press/ is beside it, so a renamed or
+    missing PDF would leave a dead link that nothing reports.
+    """
+    line = next((text for text in _footer_lines() if text.startswith("Press release")), None)
+    assert line, "no press release line in the footer"
+    link = re.search(rf'<a href="press/{re.escape(name)}"[^>]*>([^<]*)</a>', line)
+    assert link, f"the press release line no longer links {name}"
+    assert f'hreflang="{lang}"' in link.group(0), name
+    assert link.group(1).strip() == lang.upper(), f"{name} is not named {lang.upper()}"
+    assert (ROOT / "press" / name).is_file(), f"press/{name} is not on the site"

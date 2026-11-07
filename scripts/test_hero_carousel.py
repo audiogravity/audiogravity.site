@@ -29,12 +29,12 @@ CAROUSEL_JS = MAIN_JS[:MAIN_JS.index("// Sparklines")]
 def _one_screen_in_both_themes(picture: str) -> None:
     """A <picture> of the app: its dark capture marked for the theme script, its light one in
     the <img>, of the same screen, both on the site."""
-    dark = re.search(r'<source srcset="(assets/pics/[^"]+)-black\.webp" media="\(prefers-color-scheme: dark\)"'
+    dark = re.search(r'<source srcset="(assets/pics/[^"]+)-dark\.webp" media="\(prefers-color-scheme: dark\)"'
                      r' data-dark>', picture)
     light = re.search(r'<img [^>]*src="(assets/pics/[^"]+)-light\.webp"', picture)
     assert dark and light, picture
     assert dark.group(1) == light.group(1), f"two screens in one picture: {dark.group(1)} / {light.group(1)}"
-    for theme in ("black", "light"):
+    for theme in ("dark", "light"):
         assert (ROOT / f"{dark.group(1)}-{theme}.webp").is_file(), f"{dark.group(1)}-{theme}.webp"
 
 

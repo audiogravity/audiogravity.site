@@ -299,6 +299,12 @@ The new albums appear once the icon stops turning.
   plays that music and says *Streaming services are part of the Pro edition*. Library →
   Sources shows the three services with a padlock; they play again once a licence is
   activated (see [7. Administration → Licence](07-administration.md#licence)).
+- **A track is skipped as playback starts** — *Some tracks were skipped: HIGHRESAUDIO
+  could not provide “…”: the next track plays.* The service did not send that track,
+  which happens even with a subscription. The next track plays and the skipped one stays
+  in the queue. When none of the tracks could be had, playback does not start and a
+  message says so. If that happens with every track, open **Library → Sources**: the
+  service may need you to sign in again, or be out of reach.
 - Confirm the service is **Connected** in Library → Sources, and **read the line under
   the account name** — it states what the service will actually play, which is not the
   quality Audiogravi<sup>ty</sup> asks for (see

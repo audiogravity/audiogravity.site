@@ -25,6 +25,13 @@ The installer's last screen gives the same steps.
 read the box's address, name and port on the box itself; and how to find the box's name again
 when the installer's last screen is gone.
 
+### Streaming
+
+**A track a service cannot provide no longer stops the music.** When Qobuz, Tidal or
+HIGHRESAUDIO cannot provide a track — which happens even with a subscription —, the next one
+plays and a message names the one skipped; when none of them can be had, the message says so,
+in words. The app no longer shows the box's internal addresses, nor its key.
+
 ### On audiogravity.app
 
 **The landing shows the app as it is today.** Six screens of its carousel are captured anew —

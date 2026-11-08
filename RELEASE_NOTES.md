@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.1 — 2026-11-08
+
 ### Library
 
 **The Refresh tells you when it is done.** Once a Refresh of your library has read the music

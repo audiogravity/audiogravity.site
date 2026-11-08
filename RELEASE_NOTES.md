@@ -25,6 +25,23 @@ The installer's last screen gives the same steps.
 read the box's address, name and port on the box itself; and how to find the box's name again
 when the installer's last screen is gone.
 
+### Outputs
+
+**Your DAC stays your DAC.** Each service now names the sound card it plays on instead of
+using its number, which could change from one start of the box to the next: the music no
+longer moves to another card, and the DAC no longer disappears after a restart. The update
+converts your existing settings only where it can confirm which card they meant; any other
+keeps working as before, and is converted the next time you choose that output or run the
+guided setup.
+
+**The output switch where it works.** The UPnP renderer and Roon Bridge get their output
+pills on the phone; the NAA, whose output is chosen in HQPlayer, no longer offers a switch,
+and says so if asked. Spotify Connect, which Audiogravi<sup>ty</sup> never played, leaves the
+signal path of the boxes set up before July.
+
+**When a track does not play, the message says why.** *Track could not be reached* or *Track
+could not be read*, where the app said *Output unavailable* though the output was fine.
+
 ### Streaming
 
 **A track a service cannot provide no longer stops the music.** When Qobuz, Tidal or

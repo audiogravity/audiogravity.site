@@ -19,6 +19,15 @@ answer is usually on screen:
   makes bit-perfect playback possible), so only one player can hold it at a time.
   Stop the other one — often HQPlayer: turn its **Use as output** switch off and the
   card is released (see [6. Outputs & engines](06-outputs-engines.md)).
+- *"Track could not be reached"* — the box could not get the track from where it comes
+  from: an internet radio that is off the air, a box that has lost its internet
+  connection, or — for Qobuz, Tidal and HIGHRESAUDIO, whose tracks come through
+  Audiogravi<sup>ty</sup> — Audiogravi<sup>ty</sup> not running at that moment, just after a
+  restart or an update. Check that the box is online, then play the track again.
+- *"Track could not be read"* — the track was reached but could not be played: the radio
+  or the service refused it, or the file is damaged. Try another track; if every track
+  of a streaming service fails, see
+  [Streaming fails or a track won't play](#streaming-fails-or-a-track-wont-play).
 - *"HQPlayer Embedded runs on this box and holds its DAC"* — the box is on the Starter
   Edition, and HQPlayer comes with Pro: the HQPlayer Embedded running on the box keeps the
   DAC to itself. Stop it from **Services** to play on the DAC, or activate a licence (see

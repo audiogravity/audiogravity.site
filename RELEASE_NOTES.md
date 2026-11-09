@@ -48,6 +48,9 @@ signal path of the boxes set up before July.
 **When a track does not play, the message says why.** *Track could not be reached* or *Track
 could not be read*, where the app said *Output unavailable* though the output was fine.
 
+**The diagram's controllers light when they play.** With *Controllers* on, a phone app such
+as JPlay lights only while it really plays through the box — no longer whenever the box plays.
+
 ### Streaming
 
 **A track a service cannot provide no longer stops the music.** When Qobuz, Tidal or

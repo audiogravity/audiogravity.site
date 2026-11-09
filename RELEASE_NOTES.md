@@ -31,6 +31,10 @@ the library only once the previous drive was pulled out or the box restarted; it
 effect when you apply — and if the previous drive is still in use, *Guided* tells you what to
 close first.
 
+**An unplugged library drive no longer holds things up.** With the drive that holds your music
+library pulled out, whatever reads its folder — playback, a screen of the app — gives up within
+seconds, where it waited a minute and a half.
+
 ### Installation
 
 **The app on your phone, without guessing.** The manual's *First run* takes you through it

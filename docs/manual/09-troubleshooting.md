@@ -75,12 +75,13 @@ If nothing is displayed:
   renderer) selected?
 - In **Services**, confirm the relevant service (mpd, shairport-sync…) is **RUNNING**.
 - **Then open the support report rather than hunting.** Its *Audio stack* section
-  prints, for each service, the output Audiogravi<sup>ty</sup> pinned it to next to the one
-  that service's own configuration names, and marks the line when the two disagree.
-  A flagged line means the card index has drifted, usually after a hardware change:
-  re-run **Guided → output** and the pin is rewritten (the DAC index is normally pinned
-  automatically — see
-  [3. First run](03-first-run.md)).
+  prints, for each service, the output chosen for it in **Guided** next to the one that
+  service's own configuration names, and marks the line when the two lead to different
+  sound cards. A flagged line means the service plays elsewhere than chosen: after a
+  switch from the signal path, a configuration edited by hand, or — on a box set up
+  before version 1.0.1 — an output still written as a card number that now leads to
+  another card. If that is not what you want, choose its output again in
+  **Guided → output**: its configuration is rewritten.
 
 ## My DAC is not in the output list (Raspberry Pi HAT)
 

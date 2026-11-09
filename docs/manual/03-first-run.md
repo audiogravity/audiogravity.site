@@ -105,10 +105,10 @@ UPnP tile shows a **CONFIGURED** badge.
 
 ### The DAC stays put
 
-When you configure a USB DAC, Audiogravi<sup>ty</sup> **pins its sound-card index** at the OS
-level. Linux then always gives that DAC the same number, even after a reboot or a
-USB re-plug — so the output your services target never drifts and nothing needs
-re-checking at startup.
+Audiogravi<sup>ty</sup> knows each output by the **name of its sound card**, not by the number
+Linux gives the card — a number that can change from one start of the box to the next.
+So the output your services target never drifts, and nothing needs re-checking at
+startup.
 
 ### Per-service outputs
 

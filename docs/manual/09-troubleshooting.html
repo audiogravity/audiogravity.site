@@ -231,12 +231,13 @@ as soon as the music plays.</p>
 renderer) selected?</li>
 <li>In <strong>Services</strong>, confirm the relevant service (mpd, shairport-sync…) is <strong>RUNNING</strong>.</li>
 <li><strong>Then open the support report rather than hunting.</strong> Its <em>Audio stack</em> section
-prints, for each service, the output Audiogravi<sup>ty</sup> pinned it to next to the one
-that service's own configuration names, and marks the line when the two disagree.
-A flagged line means the card index has drifted, usually after a hardware change:
-re-run <strong>Guided → output</strong> and the pin is rewritten (the DAC index is normally pinned
-automatically — see
-<a href="03-first-run">3. First run</a>).</li>
+prints, for each service, the output chosen for it in <strong>Guided</strong> next to the one that
+service's own configuration names, and marks the line when the two lead to different
+sound cards. A flagged line means the service plays elsewhere than chosen: after a
+switch from the signal path, a configuration edited by hand, or — on a box set up
+before version 1.0.1 — an output still written as a card number that now leads to
+another card. If that is not what you want, choose its output again in
+<strong>Guided → output</strong>: its configuration is rewritten.</li>
 </ul>
 <h2 id="my-dac-is-not-in-the-output-list-raspberry-pi-hat">My DAC is not in the output list (Raspberry Pi HAT)</h2>
 <p>A <strong>HAT</strong> — a DAC board stacked on the Pi's GPIO header (HiFiBerry, IQaudIO, Allo,

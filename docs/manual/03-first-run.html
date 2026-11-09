@@ -200,10 +200,10 @@ at the OS level — see
 then come back here.</p>
 </blockquote>
 <h3 id="the-dac-stays-put">The DAC stays put</h3>
-<p>When you configure a USB DAC, Audiogravi<sup>ty</sup> <strong>pins its sound-card index</strong> at the OS
-level. Linux then always gives that DAC the same number, even after a reboot or a
-USB re-plug — so the output your services target never drifts and nothing needs
-re-checking at startup.</p>
+<p>Audiogravi<sup>ty</sup> knows each output by the <strong>name of its sound card</strong>, not by the number
+Linux gives the card — a number that can change from one start of the box to the next.
+So the output your services target never drifts, and nothing needs re-checking at
+startup.</p>
 <h3 id="per-service-outputs">Per-service outputs</h3>
 <p>Each service can target its <strong>own</strong> output. For example: MPD on your USB hi-res DAC,
 AirPlay on the optical out. Change any service's output later from the <strong>Guided</strong>

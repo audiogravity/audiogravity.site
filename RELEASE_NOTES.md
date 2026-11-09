@@ -35,6 +35,11 @@ close first.
 library pulled out, whatever reads its folder — playback, a screen of the app — gives up within
 seconds, where it waited a minute and a half.
 
+**The queue holds still, and keeps up.** A track you remove leaves the list under your finger
+and the rest stays where it is — no more flash, no more jump back to the top. The button beside
+the track playing now plays and pauses, and the queue moves on by itself when a track ends.
+*Outputs* and *Sources* no longer blank either when you switch an output or connect a service.
+
 ### Installation
 
 **The app on your phone, without guessing.** The manual's *First run* takes you through it

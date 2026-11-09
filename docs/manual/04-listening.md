@@ -119,6 +119,9 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   gesture used across the app's lists. **Clear** empties the queue, and respects the
   active filter. A Roon queue is changed from the Roon app: here it has no **Remove**
   button or swipe, and **Clear** is greyed out.
+- The button beside the track playing plays and pauses it. The queue keeps up on its
+  own: when a track ends, the list moves on. **Refresh** picks up changes made from
+  another device.
 - On **Starter**, a streaming service's track carries a padlock in place of its length:
   it will be skipped, since the streaming services come with Pro. A tap on the padlock
   opens the licence panel, and the track can still be removed.

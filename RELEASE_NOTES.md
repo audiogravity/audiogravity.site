@@ -20,6 +20,17 @@ folder and the list is back, a message says so: *Library refreshed* — or *Libr
 when the folder has not changed since it was last read, the sign to check that your new albums
 were copied where the box looks.
 
+**Know when a USB drive comes and goes.** Plug a USB drive into the box and a message tells
+you what became of it: the drive that holds your music library is mounted and ready — or the
+message says why not —; another drive tells you how to make it your library, or that it cannot
+be used. Pull one out and you are told too. The message arrives as a notification on the
+devices you subscribed, and in the app while it is open.
+
+**Changing the library's drive takes effect.** Choosing another USB drive in *Guided* replaced
+the library only once the previous drive was pulled out or the box restarted; it now takes
+effect when you apply — and if the previous drive is still in use, *Guided* tells you what to
+close first.
+
 ### Installation
 
 **The app on your phone, without guessing.** The manual's *First run* takes you through it

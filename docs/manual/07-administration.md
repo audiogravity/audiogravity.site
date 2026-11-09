@@ -93,7 +93,11 @@ something needs attention — even with the app closed:
   the **Admin** tab, where the update banner installs it;
 - a **software package update** is available;
 - a **profile** is activated from another device — the device you activate it from is not
-  notified.
+  notified;
+- a **USB drive** is plugged in or pulled out — for the drive that holds your music library,
+  whether it is mounted and ready, or why not; for another drive, how to make it your library
+  (**Config → MPD → Guided**), or that it cannot be used: only **ext4** and **exFAT** drives
+  can. An open app shows the same message.
 
 A new version, a package update and a disk that stays full are each reported once — not
 again when the box restarts.

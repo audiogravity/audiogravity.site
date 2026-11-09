@@ -23,7 +23,7 @@ system and play the music stored on it:
 - **Software** — install, update and remove audio packages, with a simulation before committing changes
 - **System** — hardware dashboard: CPU, temperature, memory, disk and network at a glance; full audio device inventory (ALSA cards, USB interfaces, subdevices)
 - **Users** — role-based access management (Admin, User, Guest) with WebAuthn / passkeys login
-- **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, the disk is nearly full, a Raspberry Pi's power supply is too weak, a new version of Audiogravi<sup>ty</sup> or an update of an audio package is available, or a profile is activated
+- **Push notifications** — iOS, Android and desktop alerts when a service goes down, the processor overheats, the disk is nearly full, a Raspberry Pi's power supply is too weak, a new version of Audiogravi<sup>ty</sup> or an update of an audio package is available, a profile is activated, or a USB drive is plugged in or pulled out — with whether the music library on it is ready
 - **One-click updates** — Audiogravi<sup>ty</sup> updates itself from the Admin page, core and interface together, and goes back to the previous version on its own if anything goes wrong (administrators)
 - **Audio Services Config** — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups (HQPlayer Embedded's, the NAA's and Roon's come with Pro)
 - **Guided provisioning** — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)

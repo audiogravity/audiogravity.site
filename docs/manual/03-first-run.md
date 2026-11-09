@@ -178,6 +178,10 @@ setting you touch is rewritten — the rest of your config is preserved. A **Res
 default** action regenerates a clean minimal config (admin password required; your
 current file is backed up first).
 
+Choosing another **USB drive** as the library takes the previous one out of use when you
+apply. If something still reads it — a terminal open in its folder, a renderer playing from
+it — Guided says so: close it, then apply again.
+
 <img src="images/ios-guided.webp" alt="The Guided editor: pick the audio output, how DSD reaches your DAC and its volume during DSD, and the music library in a couple of clicks" width="360">
 
 ## 6. Find your way around

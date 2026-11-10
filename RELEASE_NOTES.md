@@ -40,6 +40,11 @@ and the rest stays where it is — no more flash, no more jump back to the top. 
 the track playing now plays and pauses, and the queue moves on by itself when a track ends.
 *Outputs* and *Sources* no longer blank either when you switch an output or connect a service.
 
+**Arrange the queue, and play any track of it.** Hold a track by its handle and slide it where
+you want it — to the top of the list, it plays next; the list scrolls by itself as you near its
+edge. Tap a track and it plays. *Up next* now shows what is really coming: the tracks already
+played leave the list, and with repeat on, those that will play again follow the last one.
+
 ### Installation
 
 **The app on your phone, without guessing.** The manual's *First run* takes you through it

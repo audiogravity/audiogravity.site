@@ -115,10 +115,20 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   from, and a **filter bar** lets you view one source at a time. Filtering only
   changes what you *see*: nothing moves or stops playing, and the current track
   always stays in view.
+- **Up next** lists the tracks that come after the one playing. Those already played
+  stay in the queue, out of the list. With **repeat** on, the list goes on with the
+  tracks that play again once the last one has; in **random order**, it lists them all.
+- **Tap a track** to play it: the tracks above it are skipped. While the music goes out
+  through HQPlayer or a network speaker, the app says so instead: they do not play this
+  queue.
+- **Move a track** by its handle, at the left of the row: hold it and slide it up or
+  down — the list scrolls by itself near the top or the bottom of the screen. At the top
+  of the list, the track plays next. In random order the handles are greyed: the order
+  decides nothing then.
 - Remove an upcoming track with its **Remove** button or a **left-swipe** — the same
-  gesture used across the app's lists. **Clear** empties the queue, and respects the
-  active filter. A Roon queue is changed from the Roon app: here it has no **Remove**
-  button or swipe, and **Clear** is greyed out.
+  gesture used across the app's lists. **Clear** empties the queue, played tracks
+  included, and respects the active filter. A Roon queue is changed from the Roon app:
+  here it has no **Remove** button, swipe or handle, and **Clear** is greyed out.
 - The button beside the track playing plays and pauses it. The queue keeps up on its
   own: when a track ends, the list moves on. **Refresh** picks up changes made from
   another device.

@@ -19,10 +19,15 @@ on:
       - 'assets/**'
       - 'index.html'
       - '404.html'
+      - 'orange-ghost.html'
+      - 'hidden-gift.html'
       - 'scripts/test_landing_styles.py'
       - 'scripts/test_landing_content.py'
       - 'scripts/test_search_engines.py'
       - 'scripts/test_halloween.py'
+      - 'scripts/test_christmas.py'
+      - 'scripts/landing_days.py'
+      - 'scripts/test_days.py'
       - 'scripts/test_hero_carousel.py'
       - 'scripts/test_landing_motion.py'
       - 'scripts/test_landing_grids.py'
@@ -54,4 +59,4 @@ jobs:
       - run: pip install --quiet markdown-it-py==3.0.0 pytest==8.3.4
 
       - name: Test the landing's guards
-        run: python3 -m pytest scripts/test_landing_styles.py scripts/test_landing_content.py scripts/test_search_engines.py scripts/test_asset_versions.py scripts/test_halloween.py scripts/test_hero_carousel.py scripts/test_landing_motion.py scripts/test_landing_grids.py -q
+        run: python3 -m pytest scripts/test_landing_styles.py scripts/test_landing_content.py scripts/test_search_engines.py scripts/test_asset_versions.py scripts/test_halloween.py scripts/test_christmas.py scripts/test_days.py scripts/test_hero_carousel.py scripts/test_landing_motion.py scripts/test_landing_grids.py -q

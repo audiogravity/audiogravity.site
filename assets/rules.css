@@ -1,0 +1,26 @@
+/* ==========================================================================
+   THE RULES OF A DAY'S GAME — the pages the banner and the winner's window link to:
+   orange-ghost.html (Halloween), hidden-gift.html (Christmas). Loaded by those pages only, after
+   style.css, whose tokens they read.
+   ========================================================================== */
+
+.rules {
+    min-height: 100vh;
+    box-sizing: border-box;
+    max-width: 68ch;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: var(--font-size-md);
+    line-height: 1.65
+}
+
+.rules-kicker { font-size: var(--font-size-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--text4) }
+.rules h1 { margin: 8px 0 24px; font-size: var(--font-size-xxl); letter-spacing: -.02em; line-height: 1.2 }
+.rules h2 { margin: 32px 0 8px; font-size: var(--font-size-lg) }
+.rules p, .rules ol { margin: 0 0 12px; color: var(--text2) }
+.rules ol { padding-left: 22px }
+.rules a { color: inherit; text-decoration: underline }
+html { background: var(--bg) }

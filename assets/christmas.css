@@ -1,0 +1,962 @@
+/* ==========================================================================
+   CHRISTMAS — the landing on 24 and 25 December, every year, by the visitor's own clock
+   Fetched those days only: the theme script in index.html's <head> sets html.christmas, and
+   the loader at the end of <body> then asks for this sheet and for assets/christmas.js, which
+   builds the decoration. ?christmas in the address does the same on any day, to preview it.
+   Every rule below sits on the decoration's own elements, save seven that make room for it on
+   the page's, prefixed with .christmas: the hero, the panel it is laid in, the carousel's
+   controls and the words beside the phone, kept above it, the buttons' row on a phone, the
+   sections down the page and the footer.
+
+   A cartoon, after the mock-up chosen on 2026-11-10: round figures with soft volumes and no
+   outlines, drawn once each in assets/christmas/ and placed here. Their colours stay the same
+   in both themes; only the snow banks' edge and the tree's halo follow the page.
+
+   On the first screen a scene at the foot of the phone standing in the snow, snow falling
+   around the phone, baubles on red ribbons, holly in two corners, stars in the dark, and Santa's
+   sleigh crossing the band above the first line now and then. Down the page snow in the margins
+   beside the text, a bauble and a figure in one of them; on the footer's edge a last scene.
+
+   Cost: every animation moves transform or opacity only. Nothing is drawn in a part of the page
+   scrolled away (xm-paused, which christmas.js sets on the hero, a section or the footer), and
+   nothing moves for a visitor who asked for less motion: the snow and the sleigh go, the rest
+   stands still. Nothing asks for a layer of its own.
+   ========================================================================== */
+
+.xm-decor {
+    pointer-events: none
+}
+
+/* The snow banks' top edge: blue-grey on a light page, where white would not show, white on a
+   dark one. The tree's halo is warmer in the dark. */
+:root {
+    --xm-bank-edge: #b8c7d8;
+    --xm-halo: rgba(255, 217, 138, .22)
+}
+
+[data-theme="dark"] {
+    --xm-bank-edge: rgba(255, 255, 255, .7);
+    --xm-halo: rgba(255, 217, 138, .32)
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --xm-bank-edge: rgba(255, 255, 255, .7);
+        --xm-halo: rgba(255, 217, 138, .32)
+    }
+}
+
+.christmas .hero,
+.christmas .section,
+.christmas footer {
+    position: relative
+}
+
+/* The panel the phone stands in measures itself for the scene's layout (THE SCENE). It clips
+   as it always does, but with `clip` rather than `hidden`, which would make it a scroll box of
+   its own and keep the scene from resting on the bottom of the screen (see .xm-ground). */
+.christmas .hero-right {
+    container: xm-panel / inline-size;
+    overflow: clip
+}
+
+/* The carousel's controls stay above the snow bank the phone stands in, and the caption and
+   the notes beside the phone on a wide screen above the falling snow, which passes behind
+   their words. */
+.christmas .hero-controls {
+    position: relative;
+    z-index: 4
+}
+
+.christmas .hero-caption,
+.christmas .hero-note {
+    z-index: 4
+}
+
+/* --------------------------------------------------------------------------
+   SKIES — the band along the hero's top, above its first line (80px of padding on a wide
+   screen, 60px of margin on a phone), where the sleigh flies; and the panel the phone stands
+   in, whose overflow clips the snow and the ribbons. Container units give each path the same
+   shape at every width.
+   -------------------------------------------------------------------------- */
+
+.xm-sky {
+    position: absolute;
+    z-index: 3;
+    overflow: hidden;
+    container-type: size
+}
+
+.xm-sky-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px
+}
+
+/* The panel's sky reckons with the room beside the phone: --xm-gap, the width between the
+   phone and the panel's edge on either side, the phone being 380px wide (280px on a phone,
+   style.css). Its children read it, so its 100cqw is the panel's width. */
+.xm-sky-panel {
+    inset: 0;
+    container-name: xm-sky;
+    --xm-phone: 380px;
+    --xm-gap: calc((100cqw - var(--xm-phone)) / 2)
+}
+
+@media (max-width: 720px) {
+    .xm-sky-panel {
+        --xm-phone: 280px
+    }
+}
+
+/* SANTA'S SLEIGH — pulled by a reindeer with a red nose, Santa's hand raised to wave, every 18
+   seconds from the right edge of the screen to the left, 8 of them in the air (14 and 6 on a
+   phone). It moves whole, bobbing as it goes: its legs and its arm galloping and waving inside
+   the drawing kept a CPU slowed four times 14% busier on the first screen (Chromium, 2026-11-10),
+   for a reindeer 50px tall. */
+.xm-ride {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 113px;
+    animation: xm-ride 18s linear 1.2s infinite both
+}
+
+.xm-ride img {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+@media (max-width: 720px) {
+    .xm-ride {
+        animation-duration: 14s
+    }
+}
+
+@keyframes xm-ride {
+    0% { transform: translate(calc(100cqw + 10px), 5px) rotate(1deg) }
+    15% { transform: translate(calc(66cqw - 30px), 3px) rotate(.4deg) }
+    30% { transform: translate(calc(33cqw - 70px), 4px) rotate(-.6deg) }
+    45%, 100% { transform: translate(-125px, 5px) rotate(0deg) }
+}
+
+.xm-bob {
+    animation: xm-bob .5s ease-in-out infinite alternate
+}
+
+@keyframes xm-bob {
+    from { transform: translateY(-1.5px) }
+    to { transform: translateY(1.5px) }
+}
+
+/* SNOW — two planes of it falling through the panel, the phone included: each a tile of cartoon
+   snow (assets/christmas/snow-near.svg and snow-far.svg, set by christmas.js) repeated across the
+   panel and moved down by one tile's height a turn, so that the turn never shows; the far one
+   smaller, dimmer and slower. Two pieces that move: 48 flakes, each with its own fall and sway,
+   kept a CPU slowed four times 34% busier on the first screen (Chromium, 2026-11-10). The tiles'
+   rims are a blue that shows on both themes. */
+.xm-snow {
+    position: absolute;
+    inset: 0
+}
+
+.xm-plane {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-repeat: repeat
+}
+
+.xm-near {
+    top: -420px;
+    height: calc(100% + 420px);
+    background-size: 360px 420px;
+    animation: xm-fall-near 10s linear infinite
+}
+
+.xm-far {
+    top: -300px;
+    height: calc(100% + 300px);
+    background-size: 260px 300px;
+    opacity: .7;
+    animation: xm-fall-far 15s linear infinite
+}
+
+@keyframes xm-fall-near {
+    from { transform: translateY(0) }
+    to { transform: translateY(420px) }
+}
+
+@keyframes xm-fall-far {
+    from { transform: translateY(0) }
+    to { transform: translateY(300px) }
+}
+
+/* BAUBLES — hung on red ribbons from the panel's top, in the room beside the phone, each
+   swinging to its own rhythm: a small blue one near the edge and a large red one on the left,
+   a gold one on the right. Their places are shares of that room, as on the 1440 x 900 mock-up,
+   where it is 170px; the blue one needs 130px of it, the others 45px (30px on a phone). */
+.xm-hang {
+    position: absolute;
+    top: 0;
+    transform-origin: 50% 0;
+    animation: xm-sway 3.4s ease-in-out infinite alternate
+}
+
+.xm-hang img {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+.xm-ribbon {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    width: 2px;
+    border-radius: 1px;
+    background: #d62b33
+}
+
+.xm-h1 {
+    left: calc(var(--xm-gap) * .5 - 18px);
+    width: 36px;
+    animation-name: xm-sway-l;
+    animation-duration: 3.6s;
+    animation-delay: -1.9s
+}
+
+.xm-h1 .xm-ribbon { height: 196px }
+.xm-h1 img { top: 195px }
+
+.xm-h2 {
+    left: calc(100cqw - var(--xm-gap) * .73 - 15px);
+    width: 30px;
+    animation-duration: 3.1s;
+    animation-delay: -.2s
+}
+
+.xm-h2 .xm-ribbon { height: 128px }
+.xm-h2 img { top: 127px }
+
+.xm-h3 {
+    left: calc(var(--xm-gap) * .19 - 12px);
+    width: 24px;
+    animation-name: xm-sway-s;
+    animation-duration: 2.7s;
+    animation-delay: -.6s
+}
+
+.xm-h3 .xm-ribbon { height: 62px }
+.xm-h3 img { top: 61px }
+
+@keyframes xm-sway {
+    from { transform: rotate(-5deg) }
+    to { transform: rotate(5deg) }
+}
+
+@keyframes xm-sway-s {
+    from { transform: rotate(-6deg) }
+    to { transform: rotate(6deg) }
+}
+
+@keyframes xm-sway-l {
+    from { transform: rotate(-4deg) }
+    to { transform: rotate(4deg) }
+}
+
+@container xm-sky (max-width: 639px) {
+    .xm-h3 {
+        display: none
+    }
+}
+
+@media (min-width: 721px) {
+    @container xm-sky (max-width: 469px) {
+        .xm-hang {
+            display: none
+        }
+    }
+}
+
+/* Where the notes show beside the phone (style.css, .hero-note: from 1551px), the first of them
+   comes 158px or more under the panel's top: the red bauble hangs higher, above them all, as the
+   blue one already does. */
+@media (min-width: 1551px) {
+    .xm-h1 .xm-ribbon { height: 72px }
+    .xm-h1 img { top: 71px }
+}
+
+/* On a phone the two in the narrow strips beside the phone, smaller, as on the 390 x 844
+   mock-up: the red one high, the gold one lower. */
+@media (max-width: 720px) {
+    .xm-h1 {
+        left: calc(var(--xm-gap) * .5 - 13px);
+        width: 26px
+    }
+
+    .xm-h1 .xm-ribbon { height: 92px }
+    .xm-h1 img { top: 91px }
+
+    .xm-h2 {
+        left: calc(100cqw - var(--xm-gap) * .5 - 11px);
+        width: 22px
+    }
+
+    .xm-h2 .xm-ribbon { height: 150px }
+    .xm-h2 img { top: 149px }
+
+    @container xm-sky (max-width: 339px) {
+        .xm-hang {
+            display: none
+        }
+    }
+}
+
+/* STARS — in the dark only: on a light page there is no night for them. Beside the phone,
+   at shares of the room there, and one above it. The theme shows or hides them all at once
+   (.xm-stars); the room beside the phone, each one. */
+.xm-stars {
+    position: absolute;
+    inset: 0;
+    display: none
+}
+
+[data-theme="dark"] .xm-stars {
+    display: block
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .xm-stars {
+        display: block
+    }
+}
+
+.xm-star {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: xm-twinkle 3s ease-in-out infinite
+}
+
+@keyframes xm-twinkle {
+    0%, 100% { opacity: .35; transform: scale(.75) rotate(0deg) }
+    50% { opacity: 1; transform: scale(1.1) rotate(12deg) }
+}
+
+.xm-st1 { left: calc(var(--xm-gap) * .15); top: 25px; width: 11px; height: 11px; animation-delay: -.4s }
+.xm-st2 { left: calc(50cqw + 100px); top: 12px; width: 9px; height: 9px; animation-delay: -1.7s }
+.xm-st3 { right: calc(var(--xm-gap) * .13); top: 18.6%; width: 12px; height: 12px; animation-delay: -2.6s }
+.xm-st4 { right: calc(var(--xm-gap) * .84 - 8px); top: 30%; width: 8px; height: 8px; animation-delay: -.9s }
+.xm-st5 { left: calc(var(--xm-gap) * .12); top: 52%; animation-delay: -2.1s }
+.xm-st6 { left: calc(var(--xm-gap) * .82 - 8px); top: 64%; width: 8px; height: 8px; animation-delay: -1.3s }
+.xm-st7 { right: calc(var(--xm-gap) * .26); top: 58%; animation-delay: -2.9s }
+
+/* Beside the notes, the two lower stars on the left keep to the room the notes leave, as the
+   baubles do; the caption on the right is lower than the stars on that side. */
+@media (min-width: 1551px) {
+    .xm-st5 { left: calc((var(--xm-gap) - 144px) * .3) }
+    .xm-st6 { left: calc((var(--xm-gap) - 144px) * .7) }
+}
+
+@media (min-width: 721px) {
+    @container xm-sky (max-width: 439px) {
+        .xm-st1, .xm-st3, .xm-st4, .xm-st5, .xm-st6, .xm-st7 {
+            display: none
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    @container xm-sky (max-width: 339px) {
+        .xm-st1, .xm-st3, .xm-st4, .xm-st5, .xm-st6, .xm-st7 {
+            display: none
+        }
+    }
+}
+
+/* --------------------------------------------------------------------------
+   HOLLY — a sprig in two corners: the hero's top left, inside the room above its first line,
+   and the phone panel's top right, mirrored. They do not move.
+   -------------------------------------------------------------------------- */
+
+.xm-holly {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    aspect-ratio: 90 / 64
+}
+
+.xm-holly img {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.xm-holly-page {
+    top: 0;
+    left: 0;
+    width: 90px
+}
+
+.xm-holly-panel {
+    top: 0;
+    right: 0;
+    width: 90px;
+    transform: scaleX(-1)
+}
+
+@media (max-width: 900px) {
+    .xm-holly-page {
+        width: 56px
+    }
+
+    .xm-holly-panel {
+        width: 64px
+    }
+}
+
+/* --------------------------------------------------------------------------
+   THE SCENE — at the foot of the phone, standing in a bank of snow: on its left a decorated
+   tree whose bulbs blink, an elf carrying a present, a present and a snowman; on its right an
+   elf waving, a penguin and a polar bear. They stand on .xm-ground, a line as wide as the phone
+   laid just under it: left and width are shares of the phone's width, and so is bottom (cqw).
+   Places measured on the 1440 x 900 mock-up, where the phone is 380 wide.
+
+   On a screen too short to show the foot of the phone — 1280 x 800, 1366 x 768: the panel is
+   taller than the screen — the line holds to the bottom of the screen instead, 12px above it,
+   until the foot of the phone comes into view; there they settle and scroll away with it.
+   -------------------------------------------------------------------------- */
+
+.xm-ground {
+    position: sticky;
+    bottom: 12px;
+    z-index: 3;
+    width: 100%;
+    max-width: 380px;
+    height: 0;
+    margin: 0 auto;
+    container-type: inline-size
+}
+
+@media (max-width: 900px) {
+    .xm-ground {
+        position: relative;
+        bottom: auto
+    }
+}
+
+/* The phone is drawn smaller there (style.css, .hero-right .hero-carousel). */
+@media (max-width: 720px) {
+    .xm-ground {
+        max-width: 280px
+    }
+}
+
+.xm-fig {
+    position: absolute;
+    display: block;
+    height: auto
+}
+
+.xm-fig > img {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+/* The tree's bulbs lie over its drawing, in the same box, in four sets that blink apart. */
+.xm-treebox svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%
+}
+
+.xm-tw {
+    animation: xm-blink 2.2s ease-in-out infinite
+}
+
+.xm-tw2 { animation-duration: 2.9s; animation-delay: -.7s }
+.xm-tw3 { animation-duration: 2.5s; animation-delay: -1.4s }
+.xm-tw4 { animation-duration: 3.3s; animation-delay: -2.1s }
+
+@keyframes xm-blink {
+    0%, 100% { opacity: 1 }
+    45% { opacity: .3 }
+    60% { opacity: .95 }
+    80% { opacity: .5 }
+}
+
+/* The bank: a frame 1000 x 60 stretched across 400% of the ground, from 150% left of the phone,
+   so that it reaches both edges of the widest panel (1520px beside a 380px phone, a 3040px
+   screen); 15.6% of the phone high, as on the mock-up, its top line, 34 down the frame, on the
+   ground. */
+.xm-drift {
+    position: absolute;
+    left: -150%;
+    width: 400%;
+    height: 15.6cqw;
+    bottom: calc(-15.6cqw * 26 / 60)
+}
+
+.xm-drift svg,
+.xm-c-mound svg,
+.xm-m-mound svg,
+.xm-f-mound svg {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.xm-bank {
+    fill: url(#xm-bank-light)
+}
+
+[data-theme="dark"] .xm-bank {
+    fill: url(#xm-bank-dark)
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .xm-bank {
+        fill: url(#xm-bank-dark)
+    }
+}
+
+.xm-bank-edge {
+    fill: none;
+    stroke: var(--xm-bank-edge);
+    stroke-width: 1.2;
+    vector-effect: non-scaling-stroke
+}
+
+.xm-halo,
+.xm-c-halo {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--xm-halo) 0, rgba(255, 217, 138, 0) 70%)
+}
+
+.xm-halo { left: -51%; width: 42%; bottom: .5cqw }
+.xm-tree { left: -43.7%; width: 27.4%; bottom: -1.8cqw }
+.xm-gift { left: -30%; width: 5.8%; bottom: -1.6cqw }
+.xm-elf-gift { left: -44.7%; width: 13.2%; bottom: -1.3cqw; animation-delay: -1.3s }
+.xm-snowman { left: -21.1%; width: 19.5%; bottom: -.5cqw; animation-delay: -1s }
+.xm-elf-wave { left: 111.1%; width: 13.2%; bottom: -.8cqw; animation-delay: -.4s }
+.xm-penguin { left: 101.1%; width: 12.1%; bottom: -.3cqw }
+.xm-bear { left: 122.6%; width: 21.1%; bottom: -1.6cqw; animation-delay: -.6s }
+
+/* Their idle moves, whole figures only: a hop, a waddle, a sway. */
+.xm-bounce {
+    transform-origin: 50% 100%;
+    animation: xm-bounce 2.4s ease-in-out infinite
+}
+
+.xm-rock {
+    transform-origin: 50% 92%;
+    animation: xm-rock 1.6s ease-in-out infinite alternate
+}
+
+.xm-sway {
+    transform-origin: 50% 96%;
+    animation: xm-sway-fig 3s ease-in-out infinite alternate
+}
+
+@keyframes xm-bounce {
+    0%, 100% { transform: translateY(0) scale(1, 1) }
+    50% { transform: translateY(-3px) scale(.97, 1.03) }
+}
+
+@keyframes xm-rock {
+    from { transform: rotate(-5deg) }
+    to { transform: rotate(5deg) }
+}
+
+@keyframes xm-sway-fig {
+    from { transform: rotate(-2.5deg) }
+    to { transform: rotate(2.5deg) }
+}
+
+/* Less room beside the phone — the panel of a 1280 or 1366 screen: the scene by the phone's
+   corners, two on each side. The width a container query reads is the panel's content box,
+   inside its 32px of padding: 560px of it leave 122px beside the phone. */
+@container xm-panel (max-width: 649px) {
+    .xm-snowman,
+    .xm-gift,
+    .xm-elf-wave {
+        display: none
+    }
+
+    .xm-halo { left: -38%; width: 36% }
+    .xm-tree { left: -32%; width: 24% }
+    .xm-elf-gift { left: -33%; width: 12% }
+    .xm-penguin { left: 100.5%; width: 11.5% }
+    .xm-bear { left: 110%; width: 20% }
+}
+
+/* Too little room for a scene — two columns below 1260px, a phone: one figure at each of the
+   phone's lower corners, the tree and the bear; on a phone the penguin rather than the tree,
+   which already stands at the end of the buttons (below). */
+@container xm-panel (max-width: 559px) {
+    .xm-halo,
+    .xm-elf-gift,
+    .xm-penguin {
+        display: none
+    }
+
+    .xm-tree { left: -16%; width: 18% }
+    .xm-bear { left: 99%; width: 18% }
+}
+
+@media (max-width: 720px) {
+    @container xm-panel (max-width: 559px) {
+        .xm-tree {
+            display: none
+        }
+
+        .xm-penguin { display: block; left: -17%; width: 15.7% }
+        .xm-bear { left: 101%; width: 17.9% }
+    }
+}
+
+/* Under 340px a phone leaves 24px on either side of the capture: the two figures at its foot
+   would show cut in half by the screen's edges. */
+@media (max-width: 339px) {
+    .xm-ground .xm-penguin,
+    .xm-ground .xm-bear {
+        display: none
+    }
+}
+
+/* On a phone the foot of the phone is below the first screen: an elf, a snowman, a tree and a
+   present stand at the end of the hero's buttons, on a mound of snow, where the second button
+   leaves the row free. Distances from the row's lower right corner, measured on the 390 x 844
+   mock-up. */
+.xm-cta-patch {
+    display: none
+}
+
+@media (max-width: 900px) {
+    .christmas .hero-cta {
+        position: relative
+    }
+
+    .xm-cta-patch {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 3
+    }
+
+    .xm-c-mound { position: absolute; right: -24px; bottom: -19px; width: 170px; aspect-ratio: 170 / 40 }
+    .xm-c-halo { right: 4px; bottom: -4px; width: 80px }
+    .xm-c-elf { right: 112px; bottom: -11px; width: 38px; animation-delay: -.9s }
+    .xm-c-snowman { right: 64px; bottom: -12px; width: 40px; animation-delay: -1s }
+    .xm-c-tree { right: 22px; bottom: -13px; width: 44px }
+    .xm-c-gift { right: 4px; bottom: -14px; width: 20px }
+}
+
+/* The second button ends 565px from the left while it shares the row (721px to 900px), 188px
+   once it wraps under the first (a phone): below 761px, and below 375px, the elf would touch it,
+   below 340px the snowman too; the mound narrows with them. */
+@media (min-width: 721px) and (max-width: 760px) {
+    .xm-c-elf {
+        display: none
+    }
+
+    .xm-c-mound {
+        width: 130px
+    }
+}
+
+@media (max-width: 374px) {
+    .xm-c-elf {
+        display: none
+    }
+
+    .xm-c-mound {
+        width: 130px
+    }
+}
+
+@media (max-width: 339px) {
+    .xm-c-snowman {
+        display: none
+    }
+
+    .xm-c-mound {
+        width: 100px
+    }
+}
+
+/* --------------------------------------------------------------------------
+   DOWN THE PAGE — every section but the figures under "End the jitter" (christmas.js): in the
+   margins beside its text (days.css, --day-margin), from its top to its foot, snow falling, the
+   near plane alone: the far one's flakes, small and pale, hardly showed on a light page; in one
+   of the margins a bauble hung from the section's top, its ribbon as long as christmas.js says,
+   and a figure standing at the section's foot on a mound of snow. The margin clips them as the
+   panel clips its own: nothing of them ever reaches the text.
+   -------------------------------------------------------------------------- */
+
+.xm-sky-margin {
+    top: 0;
+    bottom: 0;
+    width: var(--day-margin)
+}
+
+.xm-margin-l {
+    left: 0
+}
+
+.xm-margin-r {
+    right: 0
+}
+
+.xm-mhang {
+    left: calc(50% - 15px);
+    width: 30px
+}
+
+/* The mound and the figure in the margin's middle; the figure a hair into the mound, on the
+   section's bottom edge. 60px wide, so that the narrowest margin, 96px, leaves 18px on either
+   side of it. */
+.xm-m-mound {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: min(112px, 100%);
+    margin: 0 auto;
+    aspect-ratio: 170 / 40
+}
+
+.xm-mfig {
+    left: calc(50% - 30px);
+    bottom: 2px;
+    width: 60px
+}
+
+/* On a phone the margins are 20px (style.css, .w): no snow there, and the bauble hangs in the
+   band above the section's label, smaller, near one edge of the screen — 56px of the 60px the
+   section leaves above its label. */
+.xm-sky-band {
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px
+}
+
+.xm-bhang {
+    width: 22px
+}
+
+.xm-bhang .xm-ribbon { height: 14px }
+.xm-bhang img { top: 13px }
+
+.xm-b0 { left: calc(14% - 11px) }
+.xm-b1 { left: calc(86% - 11px) }
+
+@media (max-width: 720px) {
+    .xm-sky-margin {
+        display: none
+    }
+
+    .xm-sky-band {
+        display: block
+    }
+}
+
+/* --------------------------------------------------------------------------
+   THE FOOT OF THE PAGE — figures standing on the footer's top edge, in the room the last section
+   leaves above it: its bottom padding, 100px (60px on a phone). At the right of the text column
+   a tree, two presents and the polar bear on a mound of snow, and from 721px the snowman and an
+   elf on another at its left. A last bauble hangs from the same edge into the footer's own empty
+   top, 64px (48px on a phone, style.css, footer). The footer is dark in both themes: the mounds'
+   white shows on it in both.
+   -------------------------------------------------------------------------- */
+
+/* The ground: the footer's top edge, as wide as the text column above it. */
+.xm-foot,
+.xm-sky-foot {
+    position: absolute;
+    top: 0;
+    left: var(--day-margin);
+    right: var(--day-margin)
+}
+
+.xm-foot {
+    z-index: 3;
+    height: 0
+}
+
+.xm-sky-foot {
+    height: 64px
+}
+
+/* Distances from the column's edges, the figures a hair into their mound. */
+.xm-f-mound {
+    position: absolute;
+    aspect-ratio: 170 / 40
+}
+
+.xm-f-mound-r { right: -14px; bottom: -14px; width: 232px }
+.xm-f-mound-l { left: calc(4% - 30px); bottom: -14px; width: 170px }
+.xm-f-tree { right: 96px; bottom: -6px; width: 62px }
+.xm-f-gift2 { right: 158px; bottom: -4px; width: 22px }
+.xm-f-gift { right: 74px; bottom: -5px; width: 26px }
+.xm-f-bear { right: 6px; bottom: -6px; width: 70px; animation-delay: -.8s }
+.xm-f-snowman { left: 4%; bottom: -4px; width: 62px; animation-delay: -1.7s }
+.xm-f-elf { left: calc(4% + 58px); bottom: -4px; width: 44px; animation-delay: -.5s }
+
+.xm-f-hang {
+    left: calc(34% - 13px);
+    width: 26px
+}
+
+.xm-f-hang .xm-ribbon { height: 16px }
+.xm-f-hang img { top: 15px }
+
+/* On a phone: the column's 20px of margin, 60px of room above the edge, 48px under it; the
+   group at the right, smaller, alone. */
+@media (max-width: 720px) {
+    .xm-foot,
+    .xm-sky-foot {
+        left: 20px;
+        right: 20px
+    }
+
+    .xm-sky-foot {
+        height: 48px
+    }
+
+    .xm-f-mound-r { right: -12px; bottom: -10px; width: 150px }
+    .xm-f-tree { right: 58px; bottom: -4px; width: 38px }
+    .xm-f-gift2 { right: 96px; bottom: -3px; width: 16px }
+    .xm-f-gift { right: 44px; bottom: -3px; width: 18px }
+    .xm-f-bear { right: 2px; bottom: -4px; width: 42px }
+
+    .xm-f-mound-l,
+    .xm-f-snowman,
+    .xm-f-elf {
+        display: none
+    }
+
+    .xm-f-hang { left: calc(34% - 10px); width: 20px }
+    .xm-f-hang .xm-ribbon { height: 10px }
+    .xm-f-hang img { top: 9px }
+}
+
+/* --------------------------------------------------------------------------
+   THE HIDDEN GIFT — the day's game (days.js, game; christmas.js gives its words): shown to one
+   visitor at a time on 24 December, in the band at the top of a section, above its label — 44px
+   from the band's top 6px, inside the 60px a phone leaves there — between 30% and 70% of its
+   width, clear of the baubles. A real button, 44px to the finger: a gold gift, unlike the
+   decoration's red and green ones, ringed in dark gold so that its shape stands out on the light
+   page (4.7:1 or more; the gold alone, 1.4:1) and in a golden glow. On the skies' level (3) and
+   laid after them in its section, so in front of them. It shakes now and then where it stands;
+   for a visitor who asked for less motion it stands still, and stays: it is the game, not a
+   decoration. The window it opens is the game's, in days.css.
+   -------------------------------------------------------------------------- */
+
+.xm-hidden-gift {
+    position: absolute;
+    top: 6px;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    padding: 4px;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transform-origin: 50% 90%;
+    animation: xm-wiggle 2.8s ease-in-out infinite
+}
+
+.xm-hidden-gift img {
+    display: block;
+    width: auto;
+    height: 36px;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 6px rgba(255, 196, 0, .75))
+}
+
+/* Christmas red, 4.9:1 on the light page, 3.8:1 or more on the dark one. */
+.xm-hidden-gift:focus-visible {
+    outline: 2px solid #d62b33;
+    outline-offset: 2px
+}
+
+@keyframes xm-wiggle {
+    0%, 64%, 100% { transform: rotate(0deg) }
+    70% { transform: rotate(-9deg) }
+    76% { transform: rotate(8deg) }
+    82% { transform: rotate(-6deg) }
+    88% { transform: rotate(4deg) }
+    94% { transform: rotate(-2deg) }
+}
+
+/* --------------------------------------------------------------------------
+   STILLNESS — a browser that cannot read container units (Safari before 16) drops the skies
+   and the scene at the foot of the phone, which they place; the holly, the buttons' patch and
+   the footer's figures stay. A visitor who asked for less motion keeps every figure, standing
+   still, without the snow and the sleigh. A part of the page scrolled away is not drawn.
+   -------------------------------------------------------------------------- */
+
+@supports not (width: 1cqw) {
+    .xm-sky,
+    .xm-ground {
+        display: none
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .xm-sky-top,
+    .xm-snow {
+        display: none
+    }
+
+    .xm-hang,
+    .xm-star,
+    .xm-tw,
+    .xm-bounce,
+    .xm-rock,
+    .xm-sway,
+    .xm-hidden-gift {
+        animation: none
+    }
+}
+
+/* A part of the page scrolled away (xm-paused, days.js, rest) loses its decoration until it
+   comes back, rather than holding it still. Held still was not enough: down the page, the page
+   draws a frame every frame on any day (the strip's equaliser, the marquee), and each piece of
+   the decoration, moving or not, added to every one of them. With #compare's top in view, a CPU
+   slowed four times was 44-47% busy with the pieces out of sight held still, 34-38% with them
+   gone, 28% on an ordinary day (Chromium, 2026-11-10). */
+.xm-paused .xm-decor {
+    display: none
+}
+
+/* The game's gift is not decoration: it stays, held still. */
+.xm-paused .xm-hidden-gift {
+    animation-play-state: paused
+}
+
+/* --------------------------------------------------------------------------
+   THE STRIP'S SOUND — the round button that plays an excerpt of the Nutcracker in the
+   strip that shows a track playing (days.js and days.css, shared with Halloween): Christmas red,
+   the icon white on it (4.9:1).
+   -------------------------------------------------------------------------- */
+
+.christmas {
+    --day-np-bg: #d62b33;
+    --day-np-ink: #fff;
+    --day-np-ring: #d62b33
+}

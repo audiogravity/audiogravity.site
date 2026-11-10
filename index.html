@@ -75,13 +75,23 @@
         (function () {
             const t = localStorage.getItem('ag-theme');
             if (t) document.documentElement.setAttribute('data-theme', t);
-            /* Halloween: every 31 October by the visitor's clock, or ?halloween to preview it.
-               The page opens dark that day unless the visitor chose a theme with the button;
-               nothing is stored, so the next day it follows their system again. The
-               decoration itself is fetched by the loader at the end of <body>. */
+            /* The days the page dresses up, by the visitor's clock: Halloween every 31 October,
+               Christmas every 24 and 25 December; ?halloween or ?christmas previews one on any
+               day. One day at a time — the one the address asks for, or else today's: two would
+               lay two decorations, two strips' buttons and two games. On such a day the page
+               opens dark unless the visitor chose a theme with the button; nothing is stored, so
+               the next day it follows their system again. Each day's decoration is fetched by the
+               loader at the end of <body>. */
             const d = new Date();
-            if ((d.getMonth() === 9 && d.getDate() === 31) || /[?&]halloween(?:[=&]|$)/.test(location.search)) {
-                document.documentElement.classList.add('halloween');
+            const days = {
+                halloween: d.getMonth() === 9 && d.getDate() === 31,
+                christmas: d.getMonth() === 11 && (d.getDate() === 24 || d.getDate() === 25)
+            };
+            const names = Object.keys(days);
+            const day = names.find((name) => new RegExp('[?&]' + name + '(?:[=&]|$)').test(location.search))
+                || names.find((name) => days[name]);
+            if (day) {
+                document.documentElement.classList.add(day);
                 if (!t) document.documentElement.setAttribute('data-theme', 'dark');
             }
         })();
@@ -120,8 +130,8 @@
            a badge, a sentence, and where a press leads — a page, or something the page does instead
            (open). No turn while the pointer is over the bar or the keyboard is in it, so that what is
            being read stays put; the next comes six seconds after they leave. Right after the bar, so
-           that the news is ready from the first paint. The Halloween script words it for the game of
-           31 October. */
+           that the news is ready from the first paint. Each day's script words it for its game
+           (days.js, game): Halloween's of 31 October, Christmas's of 24 December. */
         (function () {
             var bar = document.querySelector('.announce-bar');
             var release = bar && bar.querySelector('a:not(.announce-news)');
@@ -186,15 +196,15 @@
                 wait();
             };
         })();
-        /* Until Halloween 2026, by the visitor's own clock as the day itself is, the news says what
-           comes on the 31st. That day the Halloween script words it for the game; from 1 November
+        /* Until Christmas Eve 2026, by the visitor's own clock as the day itself is, the news says
+           what comes on the 24th. That day the Christmas script words it for the game; from the 25th
            there is no news, and the release's sentence stays alone. */
-        if (window.agAnnounce && new Date() < new Date(2026, 9, 31)) {
+        if (window.agAnnounce && new Date() < new Date(2026, 11, 24)) {
             window.agAnnounce({
-                badge: '31 OCT',
-                sentence: 'An orange ghost haunts this page on 31 October: ten lifetime licences to win',
-                short: 'Ten lifetime licences to win',
-                href: 'orange-ghost.html'
+                badge: '24 DEC',
+                sentence: 'A gift hides on this page on 24 December: five lifetime licences to win',
+                short: 'Five lifetime licences to win',
+                href: 'hidden-gift.html'
             });
         }
     </script>
@@ -2006,27 +2016,48 @@
     <script src="assets/theme-toggle.js?v=0a2ce0015f" defer></script>
     <script src="assets/main.js?v=134be56854"></script>
 
-    <!-- Halloween's decoration, asked for on 31 October only (html.halloween, set by the theme
-         script in <head>). A template keeps the two addresses here, where the version stamps
-         are kept up to date, without the browser fetching them on any other day. The script
-         comes once the sheet is in, so that nothing is drawn unstyled. -->
-    <template id="hw-assets">
-        <link rel="stylesheet" href="assets/halloween.css?v=76ce8fd858">
-        <script src="assets/halloween.js?v=814bdcc753"></script>
+    <!-- Each day's decoration, asked for on its day only: Halloween's when <html> has the class
+         halloween, Christmas's when it has christmas (both set by the theme script in <head>).
+         A template per day keeps its addresses here, where the version stamps are kept up to
+         date, without the browser fetching them on any other day; data-day names the class it
+         waits for. The scripts come once the sheets are in, so that nothing is drawn unstyled,
+         and run in the order written: the days' shared code (days.js), then the day's own. -->
+    <template id="hw-assets" data-day="halloween">
+        <link rel="stylesheet" href="assets/days.css?v=a997e2a907">
+        <link rel="stylesheet" href="assets/halloween.css?v=52295771ef">
+        <script src="assets/days.js?v=9c0254a92b"></script>
+        <script src="assets/halloween.js?v=107a6dcc41"></script>
+    </template>
+    <template id="xm-assets" data-day="christmas">
+        <link rel="stylesheet" href="assets/days.css?v=a997e2a907">
+        <link rel="stylesheet" href="assets/christmas.css?v=df89a39734">
+        <script src="assets/days.js?v=9c0254a92b"></script>
+        <script src="assets/christmas.js?v=c1465627fd"></script>
     </template>
     <script>
         (function () {
-            if (!document.documentElement.classList.contains('halloween')) return;
-            const assets = document.getElementById('hw-assets').content;
-            const sheet = document.createElement('link');
-            sheet.rel = 'stylesheet';
-            sheet.href = assets.querySelector('link').getAttribute('href');
-            sheet.onload = function () {
-                const script = document.createElement('script');
-                script.src = assets.querySelector('script').getAttribute('src');
-                document.body.appendChild(script);
-            };
-            document.head.appendChild(sheet);
+            [].forEach.call(document.querySelectorAll('template[data-day]'), function (template) {
+                if (!document.documentElement.classList.contains(template.getAttribute('data-day'))) return;
+                const assets = template.content;
+                const sheets = assets.querySelectorAll('link');
+                let waiting = sheets.length;
+                [].forEach.call(sheets, function (written) {
+                    const sheet = document.createElement('link');
+                    sheet.rel = 'stylesheet';
+                    sheet.href = written.getAttribute('href');
+                    sheet.onload = function () {
+                        if (--waiting) return;
+                        // Added scripts that are not async run in the order they are added.
+                        [].forEach.call(assets.querySelectorAll('script'), function (written) {
+                            const script = document.createElement('script');
+                            script.src = written.getAttribute('src');
+                            script.async = false;
+                            document.body.appendChild(script);
+                        });
+                    };
+                    document.head.appendChild(sheet);
+                });
+            });
         })();
     </script>
 

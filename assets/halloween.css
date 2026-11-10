@@ -99,20 +99,13 @@
     container-name: hw-sky
 }
 
-/* The margin beside the text column down the page: the section's 48px of padding, the column's
-   own 48px, and what the column's 1280px leave of the screen (style.css, .section and .w) —
-   96px from 721px, 128px at 1440, 258px at 1700. The 100% is that of the box it is used on,
-   as wide as the screen: the formula is carried as it is written, and worked out there. */
-.halloween {
-    --hw-margin: calc((100% - min(100% - 96px, 1280px)) / 2 + 48px)
-}
-
-/* The margins beside a section's text, from its top to its foot. The right one is the left
-   one mirrored, so that its bats come in from the right edge of the screen. */
+/* The margins beside a section's text, from its top to its foot (days.css, --day-margin). The
+   right one is the left one mirrored, so that its bats come in from the right edge of the
+   screen. */
 .hw-sky-margin {
     top: 0;
     bottom: 0;
-    width: var(--hw-margin)
+    width: var(--day-margin)
 }
 
 .hw-margin-l {
@@ -704,8 +697,8 @@
 .hw-sky-foot {
     position: absolute;
     top: 0;
-    left: var(--hw-margin);
-    right: var(--hw-margin)
+    left: var(--day-margin);
+    right: var(--day-margin)
 }
 
 .hw-foot {
@@ -759,61 +752,15 @@
 }
 
 /* --------------------------------------------------------------------------
-   THE STRIP'S SOUND — a round button before the time in the strip that shows a track playing,
-   which plays an excerpt of Danse macabre (halloween.js, listen). In the strip's own colours,
-   the same in both themes as the strip is: the accent of its bar, the icon in its black. The
-   only piece of the decoration that takes a press, so the only one with a focus ring.
+   THE STRIP'S SOUND — the round button that plays an excerpt of Danse macabre in the strip
+   that shows a track playing (days.js and days.css, shared with Christmas), in the strip's own
+   colours: the accent of its bar, the icon in its black.
    -------------------------------------------------------------------------- */
 
-/* The row it shares with the strip's time: beside the progress row, not in it, which assistive
-   technology reads as an image. Its 32px take no more height than the time's 16px, the margins
-   giving the rest back, so that nothing under the strip moves when it is put in — 8 to 16px did
-   (measured in Chromium, 390 to 1440px). The strip's own gap, 14px, keeps the 8px it overhangs. */
-.hw-np-row {
-    display: flex;
-    align-items: center;
-    gap: 12px
-}
-
-.hw-np-row .np-progress {
-    flex: 1;
-    min-width: 0
-}
-
-.hw-np-play {
-    flex: none;
-    width: 32px;
-    height: 32px;
-    margin: -8px 0;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: var(--warn);
-    color: #000;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer
-}
-
-.hw-np-play svg {
-    width: 14px;
-    height: 14px;
-    fill: currentColor
-}
-
-.hw-np-play .ic-pause,
-.hw-np-play.playing .ic-play {
-    display: none
-}
-
-.hw-np-play.playing .ic-pause {
-    display: inline
-}
-
-.hw-np-play:focus-visible {
-    outline: 2px solid var(--warn-line);
-    outline-offset: 3px
+.halloween {
+    --day-np-bg: var(--warn);
+    --day-np-ink: #000;
+    --day-np-ring: var(--warn-line)
 }
 
 /* --------------------------------------------------------------------------
@@ -863,86 +810,7 @@
     50% { transform: translateY(-4px) rotate(3deg) }
 }
 
-/* The window a caught ghost opens: the key, the three steps that activate it, the rules. In the
-   page's own colours and type, whichever theme it is in. Its margin given back: the browser
-   centres a modal window with `margin: auto`, which the page's reset (style.css, `*`) takes
-   away — it stood in the top left corner. */
-.hw-catch {
-    margin: auto;
-    width: min(440px, calc(100vw - 32px));
-    padding: 24px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font);
-    font-size: var(--font-size-md);
-    line-height: 1.55
-}
-
-.hw-catch::backdrop {
-    background: rgba(0, 0, 0, .55)
-}
-
-.hw-catch h2 {
-    margin: 0 0 12px;
-    font-size: var(--font-size-xl);
-    line-height: 1.25
-}
-
-.hw-catch p,
-.hw-catch ol {
-    margin: 0 0 12px
-}
-
-.hw-catch ol {
-    padding-left: 20px
-}
-
-/* Underlined: the page's links lose theirs (style.css, `a`), and these sit in a sentence. */
-.hw-catch a {
-    color: inherit;
-    text-decoration: underline
-}
-
-.hw-catch-key {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px
-}
-
-.hw-catch-key code {
-    font-family: var(--mono);
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    letter-spacing: .04em;
-    user-select: all
-}
-
-.hw-catch-note {
-    color: var(--text3);
-    font-size: var(--font-size-sm)
-}
-
-.hw-catch-copy,
-.hw-catch-close {
-    min-height: 44px;
-    padding: 0 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg2);
-    color: var(--text);
-    font-family: var(--font);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    cursor: pointer
-}
-
-.hw-catch form {
-    margin: 4px 0 0;
-    text-align: right
-}
+/* The window a caught ghost opens is the game's, in days.css (.day-catch). */
 
 /* --------------------------------------------------------------------------
    STILLNESS — a browser that cannot read container units (Safari before 16) drops every

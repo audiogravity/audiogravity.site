@@ -94,6 +94,13 @@ card shows the player on a phone held sideways, with its meters, and the showcas
 release, a fact sheet and nine screenshots — is on the site, presented by a blog post and linked
 from the landing's footer, *Press release EN / FR*.
 
+**Christmas on the landing, and a gift to find.** On 24 and 25 December, by your own clock,
+audiogravity.app dresses up for Christmas — a cartoon scene in the snow at the foot of the phone,
+falling snow, baubles, holly and Santa's sleigh — and the strip that shows a track playing plays
+the *Nutcracker*, with a button to hear an excerpt. On 24 December 2026, five lifetime licences
+hide on the page as gold gifts, one at a time through the day: the first visitor to come after one
+appears has twenty minutes to open it. The rules are on the site.
+
 ---
 
 ## 1.0.0 — 2026-11-06

@@ -100,3 +100,12 @@ class TestTheSite:
             page = (REPO_DIR / name).read_text(encoding="utf-8")
             assert re.search(r'\?v=[0-9a-f]{10}"', page), f"{name} names no stamped file"
             assert out_of_date(page, REPO_DIR) == [], f"{name}: run python3 scripts/asset_versions.py"
+
+    def test_the_landing_workflow_watches_every_hand_written_page(self):
+        """The guards run on the pushes that change a page they check: a rules page edited
+        alone (orange-ghost.html, hidden-gift.html) went unwatched, its tests unrun."""
+        workflow = (REPO_DIR / ".github" / "workflows" / "landing.yml").read_text(encoding="utf-8")
+        paths = re.search(r"paths:\n((?:\s+- '[^']+'\n)+)", workflow).group(1)
+        watched = set(re.findall(r"- '([^']+)'", paths))
+        for name in HAND_WRITTEN:
+            assert name in watched, f"{name} is not in the Landing workflow's paths"

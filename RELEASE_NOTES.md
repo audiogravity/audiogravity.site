@@ -37,7 +37,8 @@ seconds, where it waited a minute and a half.
 
 **The queue holds still, and keeps up.** A track you remove leaves the list under your finger
 and the rest stays where it is — no more flash, no more jump back to the top. The button beside
-the track playing now plays and pauses, and the queue moves on by itself when a track ends.
+the track playing now plays and pauses — its cover opens the full-screen player —, and the queue
+moves on by itself when a track ends.
 *Outputs* and *Sources* no longer blank either when you switch an output or connect a service.
 
 **Arrange the queue, and play any track of it.** Hold a track by its handle and slide it where

@@ -1,0 +1,154 @@
+/* ==========================================================================
+   THE DAYS — what the days the landing dresses up share: Halloween (halloween.css) and Christmas
+   (christmas.css). Fetched with each day's sheet, just before it, and on no other day (the
+   templates at the end of index.html): the margin beside the text, the strip's sound button,
+   and the window of the day's game.
+   ========================================================================== */
+
+/* THE MARGIN beside the text column down the page, where each day lays a section's margins and
+   the ends of its last scene on the footer's edge: the section's 48px of padding, the column's
+   own 48px, and what the column's 1280px leave of the screen (style.css, .section and .w) —
+   96px from 721px, 128px at 1440, 258px at 1700. The 100% is that of the box it is used on, as
+   wide as the screen: the formula is carried as it is written, and worked out there. */
+:root {
+    --day-margin: calc((100% - min(100% - 96px, 1280px)) / 2 + 48px)
+}
+
+/* THE STRIP'S SOUND — a round button before the time in the strip that shows a track playing,
+   which plays an excerpt of the day's record (days.js, listen). The day's sheet gives its
+   colours: --day-np-bg behind the icon, --day-np-ink for it, --day-np-ring for the focus ring;
+   the same in both themes, as the strip is. The only piece of a day's decoration that takes a
+   press, so the only one with a focus ring. */
+
+/* The row it shares with the strip's time: beside the progress row, not in it, which assistive
+   technology reads as an image. Its 32px take no more height than the time's 16px, the margins
+   giving the rest back, so that nothing under the strip moves when it is put in — 8 to 16px did
+   (measured in Chromium, 390 to 1440px). The strip's own gap, 14px, keeps the 8px it overhangs. */
+.day-np-row {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.day-np-row .np-progress {
+    flex: 1;
+    min-width: 0
+}
+
+.day-np-play {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    margin: -8px 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--day-np-bg);
+    color: var(--day-np-ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
+}
+
+.day-np-play svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor
+}
+
+.day-np-play .ic-pause,
+.day-np-play.playing .ic-play {
+    display: none
+}
+
+.day-np-play.playing .ic-pause {
+    display: inline
+}
+
+.day-np-play:focus-visible {
+    outline: 2px solid var(--day-np-ring);
+    outline-offset: 3px
+}
+
+/* THE GAME'S WINDOW — what a prize taken opens (days.js, game): the key, the three steps that
+   activate it, the rules; or one sentence, when the prize has gone. In the page's own colours
+   and type, whichever theme it is in, on either day. Its margin given back: the browser
+   centres a modal window with `margin: auto`, which the page's reset (style.css, `*`) takes
+   away — it stood in the top left corner. */
+.day-catch {
+    margin: auto;
+    width: min(440px, calc(100vw - 32px));
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: var(--font-size-md);
+    line-height: 1.55
+}
+
+.day-catch::backdrop {
+    background: rgba(0, 0, 0, .55)
+}
+
+.day-catch h2 {
+    margin: 0 0 12px;
+    font-size: var(--font-size-xl);
+    line-height: 1.25
+}
+
+.day-catch p,
+.day-catch ol {
+    margin: 0 0 12px
+}
+
+.day-catch ol {
+    padding-left: 20px
+}
+
+/* Underlined: the page's links lose theirs (style.css, `a`), and these sit in a sentence. */
+.day-catch a {
+    color: inherit;
+    text-decoration: underline
+}
+
+.day-catch-key {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px
+}
+
+.day-catch-key code {
+    font-family: var(--mono);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    letter-spacing: .04em;
+    user-select: all
+}
+
+.day-catch-note {
+    color: var(--text3);
+    font-size: var(--font-size-sm)
+}
+
+.day-catch-copy,
+.day-catch-close {
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg2);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer
+}
+
+.day-catch form {
+    margin: 4px 0 0;
+    text-align: right
+}

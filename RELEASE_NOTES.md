@@ -96,6 +96,15 @@ HIGHRESAUDIO cannot provide a track — which happens even with a subscription �
 plays and a message names the one skipped; when none of them can be had, the message says so,
 in words. The app no longer shows the box's internal addresses, nor its key.
 
+### Interface
+
+**The app opens in the snow at Christmas.** On 24 and 25 December, by your device's clock, the
+installed app opens on a Christmas screen: snow falling on its black ground, Santa's sleigh across
+the sky, a tree whose lights blink beside the icon with two gifts at its foot, red and gold waves —
+*Your audio chain, merrily controlled*. The sign-in page opens the same way. The screen stays no
+longer than on any other day, nothing moves if your device asks for less motion, and the rest of
+the app does not change.
+
 ### On audiogravity.app
 
 **The landing shows the app as it is today.** Six screens of its carousel are captured anew —

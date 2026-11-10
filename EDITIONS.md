@@ -30,7 +30,7 @@ system and play the music stored on it:
 - **DSD protection** — your DAC's own volume set to maximum while it receives DSD, then put back; switchable for a DAC that lowers DSD properly
 - **Library** — the music stored on the box: album browsing, full-text search and queue management
 - **Internet radio** — Radio Browser directory, custom stations, favourites, and a filter that keeps the stations that really stream lossless
-- **Player** — play/pause, seek, next/prev, volume, repeat/shuffle for the box's music and the radio, in the mini-player and the full-screen player, with its **sleep timer**
+- **Player** — play/pause, next/prev and volume for the box's music and the radio, in the mini-player and the full-screen player; seek, repeat/shuffle and the **sleep timer** in the full-screen player
 - **Outputs** — the box's DAC (USB, Toslink, HDMI…), switched without touching the streamer, or a DLNA/UPnP network speaker (**UPnP Control Point**)
 - **AirPlay and casting** — the box also plays what an iPhone, iPad or Mac sends it over AirPlay, or what a UPnP/DLNA app casts to it, and shows it in Now Playing
 - **Now Playing** — current track, cover art, format and progress across all sources

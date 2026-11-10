@@ -13,6 +13,18 @@ _Nothing yet._
 
 ## 1.0.1 — 2026-11-08
 
+### Listening
+
+**The mini-player's bar no longer moves your track.** The thin line along the bottom of the
+mini-player shows where the track is, and nothing more: a touch near the bottom edge of your
+phone — where the phone's own gestures start — no longer sends the music elsewhere in the track.
+To move within a track, open the full-screen player. A swipe on the mini-player now works from
+its very bottom too.
+
+**The album details hold still.** Tapping the cover opens the album's details without the bubble
+flickering as it opens and closes. Its tracklist names each track once — it repeated an album
+queued several times —, and an album on two discs reads disc by disc.
+
 ### Library
 
 **The Refresh tells you when it is done.** Once a Refresh of your library has read the music

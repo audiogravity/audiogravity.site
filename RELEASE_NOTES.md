@@ -101,6 +101,16 @@ HIGHRESAUDIO cannot provide a track — which happens even with a subscription �
 plays and a message names the one skipped; when none of them can be had, the message says so,
 in words. The app no longer shows the box's internal addresses, nor its key.
 
+### Audio Software
+
+***Restart required* restarts the right service, and only when it is needed.** After an update
+of Shairport Sync, the badge now restarts AirPlay, where it answered that the service was not
+managed — the same for HQPlayer NAA and Roon Bridge. It shows only while a service still runs the
+version from before an install or update: a package that restarts its service as it updates it
+no longer brings the badge, and a press no longer cuts the music for nothing. The badge goes out
+by itself once the service has restarted — from the Services page, or with the box — and every
+device shows the same.
+
 ### Interface
 
 **The app opens in the snow at Christmas.** On 24 and 25 December, by your device's clock, the
@@ -963,8 +973,7 @@ already gave it.
 **Simulate, and see it was a simulation.** The *DRY-RUN* switch is now *SIMULATE*, and a
 simulation says what it is from the first line of its log to the last: *the steps went
 through — nothing was changed*, or the step that failed. The card keeps its state, and no
-*Restart required* follows — nor after an update the box refused, or one run from another
-device.
+*Restart required* follows — nor after an update the box refused.
 
 **UPDATE when there is something to update.** The button shows when another version is offered
 — and always for Roon, whose installer fetches the current build — instead of on every

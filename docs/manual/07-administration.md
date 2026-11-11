@@ -370,9 +370,11 @@ shairport-sync, Roon Bridge…).
 - **Playback is interrupted** — updating a service restarts it, uninstalling stops it.
   The confirmation names the service that is about to be cut, so an update chosen in
   the middle of an album is a decision rather than a surprise.
-- **Restart required** — a pulsing badge appears when a service needs a restart after
-  install/update; click to restart it. HQPlayer Embedded is restarted for you once
-  installed, so it only shows the badge when that restart failed.
+- **Restart required** — a pulsing badge appears when a service still runs the version
+  it ran before an install or update, because nothing has restarted it since. Click it
+  to restart the service. The badge goes out by itself once the service has restarted,
+  whatever restarted it — the Services page, a restart of the box — and every device
+  shows the same.
 - **Documentation** — the book icon at the foot of a card opens the publisher's
   documentation in a new tab.
 - **Architecture** — the CPU badge lists the processor types the package is published

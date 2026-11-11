@@ -56,7 +56,22 @@ In **Sources**, Audiogravi<sup>ty</sup> lists the UPnP media servers it already 
 you run a **manual scan** to discover more (e.g. **MinimServer**); found servers are
 saved automatically, and a **left-swipe** removes a saved server you no longer use, once
 you confirm.
-Browse any server's tree; results play directly, with metadata and art.
+
+Browse any server's tree, with each entry's titles and cover art:
+
+- An **album** or a **playlist** of the server carries **Play** and **+** at the end of its
+  row: **Play** plays it whole, **+** adds it whole to the queue. Tap the row itself to
+  open it.
+- Inside an album or a playlist, **tap a track** — or its **Play** — to play the album
+  from that track on. The tracks before it are not queued. Its **+** adds that track
+  alone.
+- Anywhere else — in a folder, for instance — a track plays on its own. A folder only
+  opens.
+- A long list goes on as you scroll down. Past 1,000 entries, **Show more** at its foot
+  lists the next ones.
+
+An album or a playlist of more than 5,000 tracks does not play, whole or from one of its
+tracks: the message says how many it holds. A track's **+** still adds it alone.
 
 > **A scan only finds servers on the same network as the box.** A media server on
 > another network segment or another VLAN will not appear, however healthy it is — see

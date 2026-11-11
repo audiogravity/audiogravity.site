@@ -58,6 +58,11 @@ you want it — to the top of the list, it plays next; the list scrolls by itsel
 edge. Tap a track and it plays. *Up next* now shows what is really coming: the tracks already
 played leave the list, and with repeat on, those that will play again follow the last one.
 
+**Play a whole album from your media server.** On a media server such as MinimServer, albums
+and playlists now carry *Play* and *+*: play one whole, or add it to the queue. Open it and tap
+a track: the album plays from that track on. Long lists go on as you scroll — all your albums,
+where the list stopped at 200 —, and past 1,000 entries *Show more* lists the next ones.
+
 ### Installation
 
 **The app on your phone, without guessing.** The manual's *First run* takes you through it
@@ -104,6 +109,10 @@ the sky, a tree whose lights blink beside the icon with two gifts at its foot, r
 *Your audio chain, merrily controlled*. The sign-in page opens the same way. The screen stays no
 longer than on any other day, nothing moves if your device asks for less motion, and the rest of
 the app does not change.
+
+**One picture for a missing cover.** A track, an album or a playlist without artwork shows a
+music note, everywhere in the app; on a media server's lists, *Play* and *+* no longer touch.
+The full-screen player's *Queue* button now looks like the *Queue* tab.
 
 ### On audiogravity.app
 

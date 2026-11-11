@@ -367,14 +367,15 @@ shairport-sync, Roon Bridge…).
   is a separate step. The card says so while a service still runs on the
   settings its own package shipped, because it can then play to the wrong output while
   looking perfectly ready.
-- **Playback is interrupted** — updating a service restarts it, uninstalling stops it.
-  The confirmation names the service that is about to be cut, so an update chosen in
-  the middle of an album is a decision rather than a surprise.
+- **Playback is interrupted** — updating a service restarts it if it is running,
+  uninstalling stops it. The confirmation names the service that is about to be cut,
+  so an update chosen in the middle of an album is a decision rather than a surprise.
+  A service you stopped, or set to **DISABLED**, stays so after its update.
 - **Restart required** — a pulsing badge appears when a service still runs the version
-  it ran before an install or update, because nothing has restarted it since. Click it
-  to restart the service. The badge goes out by itself once the service has restarted,
-  whatever restarted it — the Services page, a restart of the box — and every device
-  shows the same.
+  it ran before an install or update, because it could not be restarted. Click it to
+  restart it. The badge goes out by itself once the service has restarted, whatever
+  restarted it — the Services page, a restart of the box — and every device shows the
+  same.
 - **Documentation** — the book icon at the foot of a card opens the publisher's
   documentation in a new tab.
 - **Architecture** — the CPU badge lists the processor types the package is published

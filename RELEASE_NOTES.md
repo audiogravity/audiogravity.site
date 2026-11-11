@@ -103,13 +103,17 @@ in words. The app no longer shows the box's internal addresses, nor its key.
 
 ### Audio Software
 
-***Restart required* restarts the right service, and only when it is needed.** After an update
-of Shairport Sync, the badge now restarts AirPlay, where it answered that the service was not
-managed — the same for HQPlayer NAA and Roon Bridge. It shows only while a service still runs the
-version from before an install or update: a package that restarts its service as it updates it
-no longer brings the badge, and a press no longer cuts the music for nothing. The badge goes out
-by itself once the service has restarted — from the Services page, or with the box — and every
-device shows the same.
+**An update leaves your services as they were.** A service that was running runs again once its
+update is over, on the new version — MPD used to stay stopped after its own update. One you
+stopped, or set to *DISABLED*, stays so, even when its package would turn it back on; and what you
+change on the Services page or with a profile while the update downloads is what you keep. The
+confirmation says *This restarts … if it is running*, and *REPAIR* warns you too.
+
+***Restart required* when it is needed, on the right service.** The badge now shows only when a
+service could not be restarted after its update — no longer after every update —, restarts the
+right service — it answered *not managed* for AirPlay, HQPlayer NAA and Roon Bridge —, goes out by
+itself once the service has restarted, from the Services page or with the box, and every device
+shows the same.
 
 ### Interface
 

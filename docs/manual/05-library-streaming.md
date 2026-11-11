@@ -70,6 +70,8 @@ Browse any server's tree, with each entry's titles and cover art:
 - A long list goes on as you scroll down. Past 1,000 entries, **Show more** at its foot
   lists the next ones.
 
+<img src="images/ios-media-server.webp" alt="A media server's albums: MinimServer's 474 albums, each row with its cover, title and artist, and the Play and + buttons that play or queue it whole" width="360">
+
 An album or a playlist of more than 5,000 tracks does not play, whole or from one of its
 tracks: the message says how many it holds. A track's **+** still adds it alone.
 

@@ -803,17 +803,85 @@ with, endorsed by or sponsored by Apple.
 The following software can be installed on the host by Audiogravi<sup>ty</sup>'s Audio
 Software Manager. Each package is fetched from the official Debian/DietPi
 repositories or from the vendor's official installer — none are bundled in
-Audiogravi<sup>ty</sup>'s distribution tarballs. Their respective licenses apply
-independently of Audiogravi<sup>ty</sup>.
+Audiogravi<sup>ty</sup>'s distribution tarballs —, with one exception: upmpdcli on ARM,
+which Audiogravi<sup>ty</sup> builds and distributes itself (see below). Their respective
+licenses apply independently of Audiogravi<sup>ty</sup>.
 
 | Software | License | Source |
 |---|---|---|
 | **MPD** (Music Player Daemon) | GPL-2.0 | https://musicpd.org |
-| **upmpdcli** | GPL-2.0 | https://www.lesbonscomptes.com/upmpdcli |
+| **upmpdcli** | LGPL-2.1-or-later, with parts under the GPL (see below) | https://www.lesbonscomptes.com/upmpdcli |
 | **shairport-sync** | MIT | https://github.com/mikebrady/shairport-sync |
 | **HQPlayer NAA** | Proprietary (Signalyst) | https://www.signalyst.com |
 | **Roon Bridge** | Proprietary (Roon Labs) | https://roonlabs.com |
 | **Roon Server** | Proprietary (Roon Labs) | https://roonlabs.com |
+
+### upmpdcli on ARM — built and distributed by Audiogravi<sup>ty</sup>
+
+Its author publishes no package for ARM (aarch64). For those boxes, Audiogravi<sup>ty</sup>
+builds upmpdcli and the two libraries it needs, libupnpp and libnpupnp, from the author's
+source archives, unmodified, and serves the three packages from
+https://audiogravity.app/packages/upmpdcli-arm64/.
+
+**Their source is served from the same place**: the archives they were built from,
+exactly as the author publishes them, and the script that builds and packages them, at
+https://audiogravity.app/packages/upmpdcli-arm64/source/ followed by the file name.
+https://audiogravity.app/packages/upmpdcli-arm64/source/SHA256SUMS lists them. The
+author's own downloads: https://www.lesbonscomptes.com/upmpdcli/downloads/.
+
+#### upmpdcli
+**Copyright** © Jean-Francois Dockes and contributors  
+**License** LGPL-2.1-or-later, with parts under other licenses  
+**Source** https://www.lesbonscomptes.com/upmpdcli  
+
+Most of upmpdcli is under the GNU Lesser General Public License, version 2.1 or later; its
+text is the `COPYING` file of the source archive. One file compiled into the program,
+`closefrom.cpp`, is under the GNU General Public License, version 2 or later. The media
+server plugins and the scripts installed with it are under the GNU General Public License,
+version 1, 2 or 3 or later, the GNU Lesser General Public License, version 2.1 or 3 or
+later, or the MIT license, as each file states. The GNU licenses are published at
+https://www.gnu.org/licenses/.
+
+#### libupnpp
+**Copyright** © 2006-2023 J.F. Dockes  
+**License** LGPL-2.1-or-later  
+**Source** https://www.lesbonscomptes.com/upmpdcli  
+
+Its text is the `COPYING` file of the source archive.
+
+#### libnpupnp
+**Copyright** © 2000-2003 Intel Corporation. All rights reserved.  
+**License** BSD-3-Clause  
+**Source** https://www.lesbonscomptes.com/upmpdcli  
+
+```text
+Copyright (c) 2000-2003 Intel Corporation
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this software
+  without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL INTEL OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
 
 ---
 

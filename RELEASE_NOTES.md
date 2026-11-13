@@ -115,6 +115,12 @@ right service — it answered *not managed* for AirPlay, HQPlayer NAA and Roon B
 itself once the service has restarted, from the Services page or with the box, and every device
 shows the same.
 
+**UPnP Bridge on an ARM box moves to upmpdcli 1.10.1**, its author's latest — mostly changes to
+the media server, according to the author: the Tidal and Subsonic plugins, icons for plugins,
+caching, and a crash fixed in OpenHome. The *Audio Software* tab offers it as an update: press
+*CHECK UPDATES* to see it at once, or let the box find it in its daily check. An x86 box already
+gets it from the author's repository.
+
 ### Interface
 
 **The app opens in the snow at Christmas.** On 24 and 25 December, by your device's clock, the

@@ -813,6 +813,7 @@ licenses apply independently of Audiogravi<sup>ty</sup>.
 | **upmpdcli** | LGPL-2.1-or-later, with parts under the GPL (see below) | https://www.lesbonscomptes.com/upmpdcli |
 | **shairport-sync** | MIT | https://github.com/mikebrady/shairport-sync |
 | **HQPlayer NAA** | Proprietary (Signalyst) | https://www.signalyst.com |
+| **HQPlayer Embedded** | Proprietary (Signalyst) | https://www.signalyst.com |
 | **Roon Bridge** | Proprietary (Roon Labs) | https://roonlabs.com |
 | **Roon Server** | Proprietary (Roon Labs) | https://roonlabs.com |
 

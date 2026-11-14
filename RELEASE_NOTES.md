@@ -101,6 +101,13 @@ HIGHRESAUDIO cannot provide a track — which happens even with a subscription �
 plays and a message names the one skipped; when none of them can be had, the message says so,
 in words. The app no longer shows the box's internal addresses, nor its key.
 
+**Signing in to Tidal, without a button — and in Chrome or Edge on a computer, without a
+paste.** Pasting Tidal's return address into its card completes the sign-in: the *Finish
+login* button is gone. In Chrome or Edge on a computer, on the box's https address, coming
+back to the app is enough: once the browser is allowed to share the clipboard, the card
+picks up Tidal's address — and nothing else. A closed or blocked Tidal page, or a refused
+address, no longer means reloading: *Reopen Tidal page* starts over.
+
 ### Audio Software
 
 **An update leaves your services as they were.** A service that was running runs again once its

@@ -135,8 +135,12 @@ genre, and the heading above the albums says where you are.
 
 Tidal uses the **PKCE** flow: tap **Connect**, sign in, and Tidal lands on a fixed
 redirect page (`tidal.com/android/login/auth?code=…`) that a web app can't intercept —
-so **copy that full URL** from the address bar, paste it back into the Tidal card and
-tap **Finish login**. You only do this once. Lossless FLAC (HiFi / HiFi Plus), with
+so **copy that full URL** from the address bar and paste it back into the Tidal card:
+the sign-in completes on its own. In Chrome or Edge on a computer, on the box's `https`
+address, you don't even paste: come back to the app and the card picks the copied URL
+up — allow clipboard access when the browser asks. If the Tidal page doesn't open, the
+card offers a link to it; if you closed it or the card asks you to reopen it, tap
+**Reopen Tidal page**. You only do this once. Lossless FLAC (HiFi / HiFi Plus), with
 in-track seek.
 
 #### Browsing Tidal

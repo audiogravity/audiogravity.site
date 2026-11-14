@@ -34,7 +34,7 @@ your phone.
 ---
 
 *This manual describes the current release. What changed in each one is in the
-[release notes](https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md).*
+[release notes](https://audiogravity.app/docs/releases/release-notes).*
 
 ---
 

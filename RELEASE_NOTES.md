@@ -1,13 +1,18 @@
 # Audiogravi<sup>ty</sup> — Release Notes
 
-Synthesized overview of each release. For the full line-by-line changelog, see
-[CHANGELOG.md](CHANGELOG.md).
+Synthesized overview of each release. Every change, line by line, is in
+[the changelog](CHANGELOG.md).
 
 ---
 
 ## Unreleased
 
-_Nothing yet._
+### On audiogravity.app
+
+**The license, the editions and the release notes, on the site.** The editions and plans, the
+end-user license agreement, the third-party notices, these release notes and the changelog each
+have their page on audiogravity.app, laid out as the manual is, their parts listed beside them —
+where the landing, the app and the license server opened GitHub's view of a file.
 
 ---
 

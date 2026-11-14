@@ -26,6 +26,12 @@ questions asked on audiophile forums, listed in their own README the way the man
 are in its Contents (see ``GUIDES``). So is the blog in ``docs/blog``: dated articles that are
 not answers to a question — a piece of equipment's story, say — listed newest first (``BLOG``).
 
+The documents kept at the repository's root are rendered on that shell too: the legal ones into
+``docs/legal`` (``LEGAL``), the release notes and the changelog into ``docs/releases``
+(``RELEASES``). The footer linked them on GitHub as well, a code host's view of a file — for the
+terms a buyer agrees to among others; their pages put them on the site's own domain. Their
+Markdown stays at the root, where the release scripts write it (``LEGAL_DOCS``, ``RELEASE_DOCS``).
+
 The chapter list comes from the manual's own README "Contents" list, the same single source of
 truth ``ag-manual-modal.js`` parses in the interface. Add a chapter there and it appears here.
 
@@ -67,6 +73,8 @@ REPO_DIR = Path(__file__).resolve().parent.parent
 MANUAL_DIR = REPO_DIR / "docs" / "manual"
 GUIDES_DIR = REPO_DIR / "docs" / "guides"
 BLOG_DIR = REPO_DIR / "docs" / "blog"
+LEGAL_DIR = REPO_DIR / "docs" / "legal"
+RELEASES_DIR = REPO_DIR / "docs" / "releases"
 
 #: The site's address, as the canonical links and the sitemap name it.
 SITE_URL = "https://audiogravity.app/"
@@ -137,6 +145,44 @@ BLOG = Section("docs/blog/", "Blog", "Audiogravity", "Blog posts", False, "All p
 
 #: The site's sections, in the order its top bars link to them.
 SECTIONS = (MANUAL, GUIDES, BLOG)
+
+#: The legal documents and the release documents: read in full and kept, not browsed — a family
+#: of their own, which the manual's, the guides' and the blog's bars do not link to, nor theirs to
+#: those. Kept out of SECTIONS, whose sections are listed by a README; these are listed by
+#: LEGAL_DOCS and RELEASE_DOCS.
+LEGAL = Section("docs/legal/", "Legal", "Audiogravity", "Legal documents", False, "All documents",
+                notice=False, prev_label="Previous document", next_label="Next document",
+                family="documents")
+RELEASES = Section("docs/releases/", "Releases", "Audiogravity", "Release documents", False,
+                   "All documents", notice=False, prev_label="Previous document",
+                   next_label="Next document", family="documents")
+
+#: The sections of the root documents, in the order their bars link to them.
+DOCUMENT_SECTIONS = (LEGAL, RELEASES)
+
+#: The documents of each section, as ``(page id, label, Markdown source)``, in the order they are
+#: listed. The sources stay at the repository's root, where the release scripts write them and
+#: where GitHub still shows them; the Manual workflow watches each of them
+#: (test_gen_manual_html.py checks it). The editions belong with the licence: the EULA grants the
+#: Starter Edition "within the Starter Edition functional limits", which EDITIONS.md sets out.
+LEGAL_DOCS = (
+    ("editions", "Editions and plans", REPO_DIR / "EDITIONS.md"),
+    ("eula", "End-User License Agreement", REPO_DIR / "EULA.md"),
+    ("third-party-notices", "Third-Party Notices", REPO_DIR / "THIRD_PARTY_NOTICES.md"),
+)
+RELEASE_DOCS = (
+    ("release-notes", "Release notes", REPO_DIR / "RELEASE_NOTES.md"),
+    ("changelog", "Changelog", REPO_DIR / "CHANGELOG.md"),
+)
+
+#: Where each root document is read on the site, from any page of these sections — so that a
+#: document linking to another (the release notes name CHANGELOG.md) reaches its page.
+ROOT_DOC_PAGES = {src.name: f"../{section.folder}/{doc_id}"
+                  for section, docs in ((LEGAL, LEGAL_DOCS), (RELEASES, RELEASE_DOCS))
+                  for doc_id, _, src in docs}
+
+#: A link to a root document by its file name, with or without an anchor.
+ROOT_DOC_LINK = re.compile(r'href="(?P<name>[A-Z_]+\.md)(?P<anchor>#[^"]*)?"')
 
 #: The chevron of the phone's menu (Lucide: chevron-down); the stylesheet turns it when open.
 CHEVRON = ('<svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">'
@@ -1117,8 +1163,10 @@ def page_url(canonical: str, section: Section = MANUAL) -> str:
 
 
 def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None,
-            posts: list[str] | None = None) -> str:
-    """The site's sitemap: the landing, the manual's contents then its chapters, the guides, the blog.
+            posts: list[str] | None = None, legal: list[str] | None = None,
+            releases: list[str] | None = None) -> str:
+    """The site's sitemap: the landing, the manual's contents then its chapters, the guides, the
+    blog, the legal documents, the release documents.
 
     Addresses only. Google ignores ``changefreq`` and ``priority``, and uses ``lastmod`` only
     where it proves accurate — which it could not be here, since every release rewrites each
@@ -1129,6 +1177,8 @@ def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None,
         guides: Guide ids, as parse_guides() reads them; the guides' contents page is listed
             only when there is at least one.
         posts: Post ids, as parse_posts() reads them; the blog's front page likewise.
+        legal: Legal document ids (LEGAL_DOCS); their front page likewise.
+        releases: Release document ids (RELEASE_DOCS); their front page likewise.
 
     Returns:
         A sitemap document.
@@ -1138,6 +1188,10 @@ def sitemap(toc: list[tuple[str, str]], guides: list[str] | None = None,
         urls += [page_url("", GUIDES)] + [page_url(gid, GUIDES) for gid in guides]
     if posts:
         urls += [page_url("", BLOG)] + [page_url(pid, BLOG) for pid in posts]
+    if legal:
+        urls += [page_url("", LEGAL)] + [page_url(lid, LEGAL) for lid in legal]
+    if releases:
+        urls += [page_url("", RELEASES)] + [page_url(rid, RELEASES) for rid in releases]
     entries = "\n".join(f"  <url><loc>{html.escape(u)}</loc></url>" for u in urls)
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -1824,6 +1878,75 @@ def build_blog() -> dict[Path, str]:
 NOTICE_MARK = "trademarks of their respective owners"
 
 
+def link_root_documents(rendered: str) -> str:
+    """Point a document's links to another root document at that document's page.
+
+    Args:
+        rendered: A document's body HTML.
+
+    Returns:
+        The body, a link such as ``href="CHANGELOG.md"`` now reaching ``../releases/changelog``;
+        a link to a file that has no page is left as it was.
+    """
+    def page_of(m: re.Match) -> str:
+        target = ROOT_DOC_PAGES.get(m.group("name"))
+        return f'href="{target}{m.group("anchor") or ""}"' if target else m.group(0)
+    return ROOT_DOC_LINK.sub(page_of, rendered)
+
+
+def build_documents(section: Section, folder: Path, docs: tuple[tuple[str, str, Path], ...],
+                    title: str, description: str) -> dict[Path, str]:
+    """Render one section's root documents, and their list as the section's front page.
+
+    Each document keeps its own words and layout: rendered as written, on the pages' shell,
+    with its parts in the outline. The front page is the list alone, since there is no README
+    for it to be built from.
+
+    Args:
+        section: The section the documents belong to.
+        folder: Where its pages are written.
+        docs: ``(page id, label, Markdown source)``, in the order they are listed.
+        title: The front page's title.
+        description: What a search result says of the front page.
+
+    Returns:
+        Mapping of output path to file contents.
+    """
+    md = markdown()
+    toc = [(doc_id, label) for doc_id, label, _ in docs]
+    out: dict[Path, str] = {}
+    for doc_id, label, src in docs:
+        body = link_root_documents(render_body(md, src.read_text(encoding="utf-8"), set()))
+        out[folder / f"{doc_id}.html"] = page(
+            label, body, toc, doc_id, doc_id, section, f"Audiogravity — {label}.",
+            sections=DOCUMENT_SECTIONS)
+    front = (f"<h1>{title}</h1>\n<ul>\n"
+             + "".join(f'<li><a href="{doc_id}">{label}</a></li>\n' for doc_id, label, _ in docs)
+             + "</ul>\n")
+    out[folder / "index.html"] = page(title, front, toc, "", "", section, description,
+                                      sections=DOCUMENT_SECTIONS)
+    return {path: stamp_assets(text, folder) for path, text in out.items()}
+
+
+def build_legal() -> dict[Path, str]:
+    """Render the legal documents (LEGAL_DOCS) and their front page.
+
+    Returns:
+        Mapping of output path to file contents.
+    """
+    return build_documents(LEGAL, LEGAL_DIR, LEGAL_DOCS, "Legal", "Audiogravity — legal documents.")
+
+
+def build_releases() -> dict[Path, str]:
+    """Render the release notes and the changelog (RELEASE_DOCS) and their front page.
+
+    Returns:
+        Mapping of output path to file contents.
+    """
+    return build_documents(RELEASES, RELEASES_DIR, RELEASE_DOCS, "Releases",
+                           "Audiogravity — release notes and changelog.")
+
+
 def _mentions_notice(path: Path) -> bool:
     """Whether a Markdown file carries the trademark notice, wherever its lines break.
 
@@ -1855,15 +1978,18 @@ def check_notice() -> list[str]:
 
 
 def outputs() -> dict[Path, str]:
-    """Everything a run writes: the manual's pages, the guides, the blog, and the sitemap.
+    """Everything a run writes: the manual's pages, the guides, the blog, the legal and release
+    documents, and the sitemap.
 
     Returns:
         Mapping of output path to file contents.
     """
-    files = build() | build_guides() | build_blog()
+    files = build() | build_guides() | build_blog() | build_legal() | build_releases()
     files[SITEMAP] = sitemap(parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8")),
                              [gid for gid, _, _ in read_guides()],
-                             [pid for pid, _, _, _ in read_posts()])
+                             [pid for pid, _, _, _ in read_posts()],
+                             [doc_id for doc_id, _, _ in LEGAL_DOCS],
+                             [doc_id for doc_id, _, _ in RELEASE_DOCS])
     return files
 
 
@@ -1893,12 +2019,15 @@ def main() -> int:
                 print(f"stale: {p.relative_to(REPO_DIR)}")
             print(f"\n{len(stale)} file(s) out of date — run scripts/gen_manual_html.py")
             return 1
-        print(f"{len(files) - 1} page(s) of the manual, the guides and the blog, and the sitemap, up to date")
+        print(f"{len(files) - 1} page(s) of the manual, the guides, the blog and the legal and release"
+              " documents, and the sitemap, up to date")
         return 0
 
     for p, content in files.items():
+        p.parent.mkdir(parents=True, exist_ok=True)   # docs/legal, docs/releases: no Markdown of their own
         p.write_text(content, encoding="utf-8")
-    print(f"wrote {len(files) - 1} page(s) to {MANUAL_DIR}, {GUIDES_DIR} and {BLOG_DIR}, and {SITEMAP.name}")
+    print(f"wrote {len(files) - 1} page(s) to {MANUAL_DIR}, {GUIDES_DIR}, {BLOG_DIR}, {LEGAL_DIR} and"
+          f" {RELEASES_DIR}, and {SITEMAP.name}")
     return 0
 
 

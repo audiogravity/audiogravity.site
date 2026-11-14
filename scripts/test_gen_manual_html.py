@@ -427,7 +427,8 @@ class TestSitemap:
         slash — sends search engines to an address the page itself disowns."""
         import gen_manual_html as g
         canonicals = {re.search(r'<link rel="canonical" href="([^"]+)">', text).group(1)
-                      for text in (g.build() | g.build_guides() | g.build_blog()).values()}
+                      for text in (g.build() | g.build_guides() | g.build_blog()
+                                   | g.build_legal() | g.build_releases()).values()}
         listed = set(re.findall(r"<loc>([^<]+)</loc>", g.outputs()[g.SITEMAP]))
         assert listed == canonicals | {g.SITE_URL}
 
@@ -457,7 +458,18 @@ class TestSitemap:
         import gen_manual_html as g
         files = g.outputs()
         assert g.SITEMAP == REPO_DIR / "sitemap.xml"
-        assert set(files) == set(g.build()) | set(g.build_guides()) | set(g.build_blog()) | {g.SITEMAP}
+        assert set(files) == (set(g.build()) | set(g.build_guides()) | set(g.build_blog())
+                              | set(g.build_legal()) | set(g.build_releases()) | {g.SITEMAP})
+
+    def test_lists_the_legal_then_the_release_documents_last(self):
+        import gen_manual_html as g
+        locs = re.findall(r"<loc>([^<]+)</loc>", g.sitemap(TOC, [], [], ["eula"], ["changelog"]))
+        assert locs[-4:] == ["https://audiogravity.app/docs/legal/",
+                             "https://audiogravity.app/docs/legal/eula",
+                             "https://audiogravity.app/docs/releases/",
+                             "https://audiogravity.app/docs/releases/changelog"]
+        assert "docs/legal" not in g.sitemap(TOC, [], [], [], [])
+        assert "docs/releases" not in g.sitemap(TOC, [], [], [], [])
 
     def test_the_committed_sitemap_is_current(self):
         """What --check holds a release to, and what the Manual workflow keeps true on a push."""
@@ -571,7 +583,9 @@ def links_that_land(pages: dict[Path, str], folder: Path, own: set[str]) -> int:
     import gen_manual_html as g
     chapters = {cid for cid, _ in parse_toc((MANUAL_DIR / "README.md").read_text(encoding="utf-8"))}
     sections = {"../guides/": {gid for gid, _, _ in g.read_guides()},
-                "../blog/": {pid for pid, _, _, _ in g.read_posts()}}
+                "../blog/": {pid for pid, _, _, _ in g.read_posts()},
+                "../legal/": {doc_id for doc_id, _, _ in g.LEGAL_DOCS},
+                "../releases/": {doc_id for doc_id, _, _ in g.RELEASE_DOCS}}
     checked = 0
     for path, text in pages.items():
         for target in re.findall(r'\s(?:href|src)="(?!https?:|mailto:|#)([^"]+)"', text):
@@ -597,6 +611,130 @@ def links_that_land(pages: dict[Path, str], folder: Path, own: set[str]) -> int:
                 assert where in own | {"", "./"}, f"{path.name}: {target}"
             checked += 1
     return checked
+
+
+class TestLegal:
+    """The legal documents on the site's own domain: the footer linked them on GitHub, a code
+    host's view of a file, for the terms a buyer agrees to (2026-11-14)."""
+
+    @pytest.fixture(scope="class")
+    def pages(self):
+        import gen_manual_html as g
+        return g.build_legal()
+
+    def test_renders_each_document_from_its_markdown_at_the_root(self, pages):
+        import gen_manual_html as g
+        for doc_id, label, src in g.LEGAL_DOCS:
+            out = pages[g.LEGAL_DIR / f"{doc_id}.html"]
+            assert src.parent == REPO_DIR, src
+            assert f"<title>{label} — Audiogravity</title>" in out
+            assert f'<link rel="canonical" href="https://audiogravity.app/docs/legal/{doc_id}">' in out
+            for heading in re.findall(r"^## (.+)$", src.read_text(encoding="utf-8"), re.M):
+                # A heading may carry inline markup (the brand); compare its text.
+                assert plain(heading) in plain_headings(out), (doc_id, heading)
+
+    def test_renders_the_eula_from_its_markdown_at_the_root(self, pages):
+        import gen_manual_html as g
+        eula = pages[g.LEGAL_DIR / "eula.html"]
+        source = (REPO_DIR / "EULA.md").read_text(encoding="utf-8")
+        assert "<title>End-User License Agreement — Audiogravity</title>" in eula
+        assert '<link rel="canonical" href="https://audiogravity.app/docs/legal/eula">' in eula
+        # Every article, in the words of the source.
+        articles = re.findall(r"^## (.+)$", source, re.M)
+        assert len(articles) == 8
+        for article in articles:
+            assert f">{html.escape(article, quote=False)}</h2>" in eula, article
+
+    def test_outlines_its_articles(self, pages):
+        import gen_manual_html as g
+        eula = pages[g.LEGAL_DIR / "eula.html"]
+        assert 'href="#1-ownership"' in eula and 'href="#8-general"' in eula
+
+    def test_stands_apart_from_the_manual_the_guides_and_the_blog(self, pages):
+        import gen_manual_html as g
+        eula = pages[g.LEGAL_DIR / "eula.html"]
+        bar = re.search(r'<nav class="man-sections"[^>]*>(.*?)</nav>', eula, re.S).group(1)
+        assert re.findall(r'href="([^"]+)"', bar) == ["../legal/", "../releases/"]
+        for other in (g.build() | g.build_guides() | g.build_blog()).values():
+            assert "../legal/" not in other and "../releases/" not in other
+
+    def test_carries_no_trademark_notice(self, pages):
+        # The notice speaks for the product's documentation (Section.notice), not for a contract.
+        assert all('class="man-notice"' not in text for text in pages.values())
+
+    def test_its_front_page_lists_the_documents(self, pages):
+        import gen_manual_html as g
+        front = pages[g.LEGAL_DIR / "index.html"]
+        for doc_id, label, _ in g.LEGAL_DOCS:
+            assert f'<a href="{doc_id}">{label}</a>' in front
+        assert '<link rel="canonical" href="https://audiogravity.app/docs/legal/">' in front
+
+    def test_every_link_lands(self, pages):
+        import gen_manual_html as g
+        assert links_that_land(pages, g.LEGAL_DIR, {doc_id for doc_id, _, _ in g.LEGAL_DOCS}) > 0
+
+
+def plain(fragment: str) -> str:
+    """A heading's text, its markup and entities gone."""
+    return html.unescape(re.sub(r"<[^>]+>", "", fragment)).strip()
+
+
+def plain_headings(out: str) -> set[str]:
+    """The text of a page's h2 headings."""
+    return {plain(h) for h in re.findall(r"<h2[^>]*>(.*?)</h2>", out, re.S)}
+
+
+class TestReleases:
+    """The release notes and the changelog on the site's domain, as the footer and the announce
+    bar now link them (2026-11-14). Both change with nearly every commit: no test here compares
+    the committed pages with their source — the Manual workflow runs the tests BEFORE it
+    renders, so such a test would fail every push that left the rendering to the workflow."""
+
+    @pytest.fixture(scope="class")
+    def pages(self):
+        import gen_manual_html as g
+        return g.build_releases()
+
+    def test_renders_the_release_notes_and_the_changelog(self, pages):
+        import gen_manual_html as g
+        notes = pages[g.RELEASES_DIR / "release-notes.html"]
+        changelog = pages[g.RELEASES_DIR / "changelog.html"]
+        assert "<title>Release notes — Audiogravity</title>" in notes
+        assert "<title>Changelog — Audiogravity</title>" in changelog
+        assert '<link rel="canonical" href="https://audiogravity.app/docs/releases/changelog">' in changelog
+        # Each version is a part of the page, and so in its outline.
+        assert any(h.startswith("1.0.1") for h in plain_headings(notes))
+        assert any(h.startswith("[1.0.1]") for h in plain_headings(changelog))
+
+    def test_the_release_notes_lead_to_the_changelog_page_not_its_markdown(self, pages):
+        import gen_manual_html as g
+        notes = pages[g.RELEASES_DIR / "release-notes.html"]
+        assert 'href="../releases/changelog"' in notes
+        assert 'href="CHANGELOG.md"' not in notes
+
+    def test_every_link_lands(self, pages):
+        import gen_manual_html as g
+        assert links_that_land(pages, g.RELEASES_DIR, {doc_id for doc_id, _, _ in g.RELEASE_DOCS}) > 0
+
+
+class TestRootDocuments:
+    """What the legal and the release documents share."""
+
+    def test_the_manual_workflow_rebuilds_and_commits_their_pages(self):
+        """Watched, an edit of a document regenerates its page; committed, the page is published."""
+        import gen_manual_html as g
+        workflow = (REPO_DIR / ".github" / "workflows" / "manual.yml").read_text(encoding="utf-8")
+        for _, _, src in g.LEGAL_DOCS + g.RELEASE_DOCS:
+            assert f"- '{src.relative_to(REPO_DIR)}'" in workflow, src.name
+        assert "git add docs/manual docs/guides docs/blog docs/legal docs/releases sitemap.xml" in workflow
+
+    def test_a_link_to_a_root_document_reaches_its_page(self):
+        import gen_manual_html as g
+        assert g.link_root_documents('<a href="EULA.md">x</a>') == '<a href="../legal/eula">x</a>'
+        assert (g.link_root_documents('<a href="CHANGELOG.md#anchor">x</a>')
+                == '<a href="../releases/changelog#anchor">x</a>')
+        # A file without a page is left alone.
+        assert g.link_root_documents('<a href="README.md">x</a>') == '<a href="README.md">x</a>'
 
 
 class TestPublishedGuides:

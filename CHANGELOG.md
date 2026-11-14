@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[site][ui][lic] The editions, the EULA, the third-party notices, the release notes and the changelog open on audiogravity.app.** Each of these Markdown documents, at the root of the site's repository, is rendered by the manual's generator into a page of the site — `docs/legal/` for the editions, the EULA and the third-party notices, `docs/releases/` for the release notes and the changelog —, with its parts in the outline. The landing's footer, announce bar and version, the app's *Proprietary License* link and sign-in page, the license server's release-notes address and the manual's front page opened GitHub's view of the file; they now open these pages. The Manual workflow regenerates a page when its document changes.
+
+### Changed
+- **[ops] A release keeps the footer's version and the documents' pages in step.** `changelog_rollover.py` finds the footer's version by the changelog page's link as well as by the former GitHub one — anchored on that one alone, the version would have stopped moving without a word —, and `release.sh prepare` commits `docs/legal` and `docs/releases` with the regenerated manual.
+- **[site] The EULA's definitions are a list.** The five definitions ran together as one paragraph; the words are unchanged.
+
 ## [1.0.1] - 2026-11-08
 
 ### Added

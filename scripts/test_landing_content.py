@@ -177,13 +177,25 @@ def test_community_and_issues_share_one_line():
 
 
 def test_the_footer_leads_to_the_release_notes():
-    """"Release notes" opens RELEASE_NOTES.md. The link said "Releases" and opened the GitHub
+    """"Release notes" opens the release notes. The link said "Releases" and opened the GitHub
     releases page, which holds the install commands and the packages, not what changed (read
-    2026-11-07); the GitHub button in the top bar still leads there."""
+    2026-11-07); the GitHub button in the top bar still leads there. Since 2026-11-14 it opens
+    their page on this site, not GitHub's view of RELEASE_NOTES.md."""
     link = re.search(r'<a href="([^"]+)">Release\s+notes</a>', _footer())
     assert link, "no Release notes link in the footer"
-    assert link.group(1) == "https://github.com/audiogravity/audiogravity.site/blob/main/RELEASE_NOTES.md"
-    assert (ROOT / "RELEASE_NOTES.md").is_file()
+    assert link.group(1) == "docs/releases/release-notes"
+    assert (ROOT / "docs" / "releases" / "release-notes.html").is_file()
+
+
+def test_the_documents_open_on_this_site_not_on_github():
+    """The footer and the announce bar sent a buyer to GitHub's view of a file — for the EULA
+    among others. Each now opens a page of this site, which exists (2026-11-14)."""
+    page = (ROOT / "index.html").read_text(encoding="utf-8")
+    assert "audiogravity.site/blob/main/" not in page
+    for target in ("docs/legal/editions", "docs/legal/eula", "docs/legal/third-party-notices",
+                   "docs/releases/release-notes", "docs/releases/changelog"):
+        assert f'href="{target}"' in page, target
+        assert (ROOT / f"{target}.html").is_file(), target
 
 
 @pytest.mark.parametrize("name,lang", [("Audiogravity-1.0-press-release.pdf", "en"),

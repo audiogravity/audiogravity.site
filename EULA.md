@@ -3,11 +3,11 @@
 By downloading, installing, or using this software, you agree to the following terms.
 If you do not accept them, you must not install or use the software.
 
-**"Software"** — Audiogravi<sup>ty</sup> and all its components.
-**"Starter Edition"** — the free tier activated after trial expiry.
-**"Pro License"** — the paid, perpetual single-machine license.
-**"License File"** — the cryptographically signed `.lic` file bound to your device.
-**"License Key"** — the unique order code used to activate and download the License File.
+- **"Software"** — Audiogravi<sup>ty</sup> and all its components.
+- **"Starter Edition"** — the free tier activated after trial expiry.
+- **"Pro License"** — the paid, perpetual single-machine license.
+- **"License File"** — the cryptographically signed `.lic` file bound to your device.
+- **"License Key"** — the unique order code used to activate and download the License File.
 
 ---
 

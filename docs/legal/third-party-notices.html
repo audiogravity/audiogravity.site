@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Third-Party Notices — Audiogravity</title>
+    <meta name="description" content="Audiogravity — Third-Party Notices.">
+    <link rel="canonical" href="https://audiogravity.app/docs/legal/third-party-notices">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=a6a100e850">
+    <link rel="stylesheet" href="../../assets/manual.css?v=f18f707d9f">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../legal/" aria-current="true">Legal</a><a href="../releases/">Releases</a></nav>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All documents</span><span class="man-menu-count">3</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Legal documents">
+            <a class="man-nav-item" href="editions"><span>Editions and plans</span></a>
+            <a class="man-nav-item" href="eula"><span>End-User License Agreement</span></a>
+            <a class="man-nav-item active" href="third-party-notices" aria-current="page"><span>Third-Party Notices</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Legal documents">
+            <a class="man-nav-item" href="editions"><span>Editions and plans</span></a>
+            <a class="man-nav-item" href="eula"><span>End-User License Agreement</span></a>
+            <a class="man-nav-item active" href="third-party-notices" aria-current="page"><span>Third-Party Notices</span></a>
+            <ul class="man-outline">
+                <li><a href="#ui--bundled-in-the-web-application">UI — bundled in the web application</a></li>
+                <li><a href="#fonts--shipped-with-the-interface-and-with-this-website">Fonts — shipped with the interface and with this website</a></li>
+                <li><a href="#core--bundled-in-the-audiogravity-binary">Core — bundled in the Audiogravi<sup>ty</sup> binary</a></li>
+                <li><a href="#runtime-system-binaries--invoked-at-runtime-not-bundled">Runtime system binaries — invoked at runtime, not bundled</a></li>
+                <li><a href="#external-api-services--called-at-runtime-no-code-bundled">External API services — called at runtime, no code bundled</a></li>
+                <li><a href="#audio-software--installable-via-the-audio-software-manager">Audio software — installable via the Audio Software Manager</a></li>
+                <li><a href="#trademarks">Trademarks</a></li>
+            </ul>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Third-Party Notices — Audiogravi<sup>ty</sup></h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">7</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#ui--bundled-in-the-web-application">UI — bundled in the web application</a></li>
+    <li><a href="#fonts--shipped-with-the-interface-and-with-this-website">Fonts — shipped with the interface and with this website</a></li>
+    <li><a href="#core--bundled-in-the-audiogravity-binary">Core — bundled in the Audiogravi<sup>ty</sup> binary</a></li>
+    <li><a href="#runtime-system-binaries--invoked-at-runtime-not-bundled">Runtime system binaries — invoked at runtime, not bundled</a></li>
+    <li><a href="#external-api-services--called-at-runtime-no-code-bundled">External API services — called at runtime, no code bundled</a></li>
+    <li><a href="#audio-software--installable-via-the-audio-software-manager">Audio software — installable via the Audio Software Manager</a></li>
+    <li><a href="#trademarks">Trademarks</a></li>
+</ul>
+</details>
+<p>Audiogravi<sup>ty</sup> incorporates open-source software. The following notices and
+license texts are required by those licenses. All copyright notices are
+reproduced verbatim as required.</p>
+<hr />
+<h2 id="ui--bundled-in-the-web-application">UI — bundled in the web application</h2>
+<h3 id="lit">Lit</h3>
+<p><strong>Copyright</strong> © Google LLC and contributors<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://lit.dev</p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer; redistributions in binary form
+must reproduce the above copyright notice, this list of conditions and the
+following disclaimer in the documentation and/or other materials provided with
+the distribution; neither the name of the copyright holder nor the names of its
+contributors may be used to endorse or promote products derived from this
+software without specific prior written permission.</p>
+<hr />
+<h3 id="litcontext">@lit/context</h3>
+<p><strong>Copyright</strong> © 2021 Google LLC. All rights reserved.<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://github.com/lit/lit/tree/main/packages/context</p>
+<p>Same BSD-3-Clause terms as above.</p>
+<hr />
+<h3 id="lucide-icons">Lucide Icons</h3>
+<p><strong>Copyright</strong> © 2020 Lucide Contributors<br />
+<strong>License</strong> ISC<br />
+<strong>Source</strong> https://lucide.dev</p>
+<p>Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.</p>
+<hr />
+<h3 id="marked">marked</h3>
+<p><strong>Copyright</strong> © 2018+ MarkedJS (https://github.com/markedjs/); © 2011–2018 Christopher Jeffrey<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/markedjs/marked</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions: The above copyright notice and this
+permission notice shall be included in all copies or substantial portions of
+the Software.</p>
+<hr />
+<h3 id="chartjs">Chart.js</h3>
+<p><strong>Copyright</strong> © 2014–2022 Chart.js Contributors<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://www.chartjs.org<br />
+<strong>Used by</strong> the latency and network graphs of the Performance tab</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="kurklecolor">@kurkle/color</h3>
+<p><strong>Copyright</strong> © 2018–2024 Jukka Kurkela<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/kurkle/color<br />
+<strong>Used by</strong> Chart.js — colour parsing and conversion</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="codemirror">CodeMirror</h3>
+<p><strong>Copyright</strong> © 2017 Marijn Haverbeke and others<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://codemirror.net<br />
+<strong>Used by</strong> the Expert configuration editor and the JSON editor</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="xtermjs">xterm.js</h3>
+<p><strong>Copyright</strong> © 2017–2019 The xterm.js authors; © 2014–2016 SourceLair Private Company; © 2012–2013 Christopher Jeffrey<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://xtermjs.org<br />
+<strong>Used by</strong> the terminal, with its fit addon (<code>@xterm/addon-fit</code>, © 2019 The xterm.js authors, same license)</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h2 id="fonts--shipped-with-the-interface-and-with-this-website">Fonts — shipped with the interface and with this website</h2>
+<p>Both families are served as files: by the interface on the box, and by this website
+for its pages and the manual. Neither is fetched from a font service. The license
+texts travel with the files, as <code>OFL-Inter.txt</code> and <code>OFL-JetBrains-Mono.txt</code>.</p>
+<h3 id="inter">Inter</h3>
+<p><strong>Copyright</strong> © 2016 The Inter Project Authors<br />
+<strong>License</strong> SIL Open Font License 1.1<br />
+<strong>Source</strong> https://rsms.me/inter</p>
+<p>Upright and italic. This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied at https://openfontlicense.org and is also available
+with a FAQ at https://openfontlicense.org/ofl-faq.</p>
+<hr />
+<h3 id="jetbrains-mono">JetBrains Mono</h3>
+<p><strong>Copyright</strong> © 2020 The JetBrains Mono Project Authors<br />
+<strong>License</strong> SIL Open Font License 1.1<br />
+<strong>Source</strong> https://www.jetbrains.com/lp/mono</p>
+<p>Same OFL 1.1 terms as above.</p>
+<hr />
+<h2 id="core--bundled-in-the-audiogravity-binary">Core — bundled in the Audiogravi<sup>ty</sup> binary</h2>
+<h3 id="fastapi">FastAPI</h3>
+<p><strong>Copyright</strong> © 2018 Sebastián Ramírez<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://fastapi.tiangolo.com</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="pydantic--pydantic-settings">Pydantic / pydantic-settings</h3>
+<p><strong>Copyright</strong> © 2017–2024 Samuel Colvin and other contributors<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://docs.pydantic.dev</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="starlette">Starlette</h3>
+<p><strong>Copyright</strong> © 2018 Encode OSS Ltd.<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://www.starlette.io</p>
+<p>Same BSD-3-Clause terms as above.</p>
+<hr />
+<h3 id="uvicorn">uvicorn</h3>
+<p><strong>Copyright</strong> © 2017-present Encode OSS Ltd.<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://www.uvicorn.org</p>
+<p>Same BSD-3-Clause terms as above.</p>
+<hr />
+<h3 id="uvloop">uvloop</h3>
+<p><strong>Copyright</strong> © 2016-present MagicStack Inc. and uvloop contributors<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/MagicStack/uvloop</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="dbus-fast">dbus-fast</h3>
+<p><strong>Copyright</strong> © Bluetooth Devices Authors<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/Bluetooth-Devices/dbus-fast</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="cryptography">cryptography</h3>
+<p><strong>Copyright</strong> © Individual contributors<br />
+<strong>License</strong> Apache-2.0 and BSD<br />
+<strong>Source</strong> https://github.com/pyca/cryptography</p>
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not
+use this file except in compliance with the License. You may obtain a copy of
+the License at https://www.apache.org/licenses/LICENSE-2.0</p>
+<hr />
+<h3 id="bcrypt">bcrypt</h3>
+<p><strong>Copyright</strong> © The Python Cryptographic Authority and individual contributors<br />
+<strong>License</strong> Apache-2.0<br />
+<strong>Source</strong> https://github.com/pyca/bcrypt</p>
+<p>Same Apache-2.0 terms as above.</p>
+<hr />
+<h3 id="passlib">passlib</h3>
+<p><strong>Copyright</strong> © 2008–2020 Eli Collins<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://passlib.readthedocs.io</p>
+<p>Same BSD-3-Clause terms as above.</p>
+<hr />
+<h3 id="py_webauthn">py_webauthn</h3>
+<p><strong>Copyright</strong> © 2019 Duo Security<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/duo-labs/py_webauthn</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="pywebpush">pywebpush</h3>
+<p><strong>Copyright</strong> © 2016 Mozilla<br />
+<strong>License</strong> Mozilla Public License 2.0<br />
+<strong>Source</strong> https://github.com/web-push-libs/pywebpush</p>
+<p>This Source Code Form is subject to the terms of the Mozilla Public License,
+v. 2.0. If a copy of the MPL was not distributed with this file, you can
+obtain one at https://mozilla.org/MPL/2.0/</p>
+<hr />
+<h3 id="py-vapid">py-vapid</h3>
+<p><strong>Copyright</strong> © 2017 Mozilla<br />
+<strong>License</strong> Mozilla Public License 2.0<br />
+<strong>Source</strong> https://github.com/mozilla-services/vapid</p>
+<p>Same MPL 2.0 terms as above.</p>
+<hr />
+<h3 id="python-jose">python-jose</h3>
+<p><strong>Copyright</strong> © 2014 Michael Davis<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/mpdavis/python-jose</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="orjson">orjson</h3>
+<p><strong>Copyright</strong> © ijl and contributors<br />
+<strong>License</strong> Apache-2.0 / MIT<br />
+<strong>Source</strong> https://github.com/ijl/orjson</p>
+<p>Same MIT and Apache-2.0 terms as above.</p>
+<hr />
+<h3 id="aiohttp">aiohttp</h3>
+<p><strong>Copyright</strong> © aio-libs contributors<br />
+<strong>License</strong> Apache-2.0<br />
+<strong>Source</strong> https://docs.aiohttp.org</p>
+<p>Same Apache-2.0 terms as above.</p>
+<hr />
+<h3 id="async-upnp-client">async-upnp-client</h3>
+<p><strong>Copyright</strong> © Steven Looman<br />
+<strong>License</strong> Apache-2.0<br />
+<strong>Source</strong> https://github.com/StevenLooman/async_upnp_client</p>
+<p>Same Apache-2.0 terms as above.</p>
+<hr />
+<h3 id="python-didl-lite">python-didl-lite</h3>
+<p><strong>Copyright</strong> © Steven Looman<br />
+<strong>License</strong> Apache-2.0<br />
+<strong>Source</strong> https://github.com/StevenLooman/python-didl-lite</p>
+<p>Same Apache-2.0 terms as above.</p>
+<hr />
+<h3 id="defusedxml">defusedxml</h3>
+<p><strong>Copyright</strong> © 2013–2022 Christian Heimes<br />
+<strong>License</strong> Python Software Foundation License 2.0 (PSFL)<br />
+<strong>Source</strong> https://github.com/tiran/defusedxml</p>
+<p>Same PSFL terms as the Python Software Foundation License 2.0.</p>
+<hr />
+<h3 id="voluptuous">voluptuous</h3>
+<p><strong>Copyright</strong> © 2010–2024 Alec Thomas<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://github.com/alecthomas/voluptuous</p>
+<p>Same BSD-3-Clause terms as above.</p>
+<hr />
+<h3 id="psutil">psutil</h3>
+<p><strong>Copyright</strong> © 2009 Jay Loden, Dave Daeschler, Giampaolo Rodola<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://github.com/giampaolo/psutil</p>
+<p>Same BSD-3-Clause terms as above.</p>
+<hr />
+<h3 id="roonapi">roonapi</h3>
+<p><strong>Copyright</strong> © 2017 pavoni<br />
+<strong>License</strong> Apache-2.0<br />
+<strong>Source</strong> https://github.com/pavoni/pyroon</p>
+<p>Same Apache-2.0 terms as above.</p>
+<hr />
+<h3 id="structlog">structlog</h3>
+<p><strong>Copyright</strong> © 2013 Hynek Schlawack<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://www.structlog.org</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="slowapi">slowapi</h3>
+<p><strong>Copyright</strong> © 2020 Laurent Savaete<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/laurents/slowapi</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="cbor2">cbor2</h3>
+<p><strong>Copyright</strong> © Alex Grönholm<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/agronholm/cbor2</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="pyyaml">PyYAML</h3>
+<p><strong>Copyright</strong> © 2017–2021 Ingy döt Net, Kirill Simonov<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://pyyaml.org</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<h3 id="requests">requests</h3>
+<p><strong>Copyright</strong> © 2019 Kenneth Reitz<br />
+<strong>License</strong> Apache-2.0<br />
+<strong>Source</strong> https://requests.readthedocs.io</p>
+<p>Same Apache-2.0 terms as above.</p>
+<hr />
+<h3 id="libconf">libconf</h3>
+<p><strong>Copyright</strong> © 2016 Christian Aichinger <a href="mailto:Greek0@gmx.net">Greek0@gmx.net</a><br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/Grk0/python-libconf</p>
+<p>Same MIT terms as above.</p>
+<hr />
+<p>Besides its Python packages, the binary carries the Python interpreter, the runtime of
+Nuitka — the compiler that turns the core into one binary — and system libraries copied from the
+machine it is built on.</p>
+<h3 id="python-cpython">Python (CPython)</h3>
+<p><strong>Copyright</strong> © 2001-2024 Python Software Foundation; All Rights Reserved<br />
+<strong>License</strong> Python Software Foundation License Version 2<br />
+<strong>Source</strong> https://www.python.org</p>
+<p>The binary carries the Python 3.13 interpreter — Debian's build, its code unchanged — and the
+modules of its standard library the core uses, which Nuitka compiles to C with the core. That
+compilation is the only change made to Python.</p>
+<pre><code class="language-text">PYTHON SOFTWARE FOUNDATION LICENSE VERSION 2
+
+1. This LICENSE AGREEMENT is between the Python Software Foundation
+(&quot;PSF&quot;), and the Individual or Organization (&quot;Licensee&quot;) accessing and
+otherwise using this software (&quot;Python&quot;) in source or binary form and
+its associated documentation.
+
+2. Subject to the terms and conditions of this License Agreement, PSF hereby
+grants Licensee a nonexclusive, royalty-free, world-wide license to reproduce,
+analyze, test, perform and/or display publicly, prepare derivative works,
+distribute, and otherwise use Python alone or in any derivative version,
+provided, however, that PSF's License Agreement and PSF's notice of copyright,
+i.e., &quot;Copyright (c) 2001-2024 Python Software Foundation; All Rights Reserved&quot;
+are retained in Python alone or in any derivative version prepared by Licensee.
+
+3. In the event Licensee prepares a derivative work that is based on
+or incorporates Python or any part thereof, and wants to make
+the derivative work available to others as provided herein, then
+Licensee hereby agrees to include in any such work a brief summary of
+the changes made to Python.
+
+4. PSF is making Python available to Licensee on an &quot;AS IS&quot;
+basis.  PSF MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR
+IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PSF MAKES NO AND
+DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS
+FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF PYTHON WILL NOT
+INFRINGE ANY THIRD PARTY RIGHTS.
+
+5. PSF SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON
+FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS
+A RESULT OF MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON,
+OR ANY DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.
+
+6. This License Agreement will automatically terminate upon a material
+breach of its terms and conditions.
+
+7. Nothing in this License Agreement shall be deemed to create any
+relationship of agency, partnership, or joint venture between PSF and
+Licensee.  This License Agreement does not grant permission to use PSF
+trademarks or trade name in a trademark sense to endorse or promote
+products or services of Licensee, or any third party.
+
+8. By copying, installing or otherwise using Python, Licensee
+agrees to be bound by the terms and conditions of this License
+Agreement.
+</code></pre>
+<p>Python incorporates further software, each under its own license, listed in Python's
+documentation:
+https://docs.python.org/3.13/license.html#licenses-and-acknowledgements-for-incorporated-software</p>
+<hr />
+<h3 id="nuitka-runtime">Nuitka runtime</h3>
+<p><strong>Copyright</strong> © 2008-2026 Kay Hayen<br />
+<strong>License</strong> AGPL-3.0, with the Nuitka Runtime Library Exception 1.0<br />
+<strong>Source</strong> https://nuitka.net</p>
+<p>Nuitka compiles the core into the Audiogravi<sup>ty</sup> binary and links its runtime library
+into it. The Nuitka Runtime Library Exception, version 1.0, grants: &quot;You have permission to
+propagate a work of Target Code formed by combining the Runtime Library with Independent
+Modules, even if such propagation would otherwise violate the terms of AGPLv3, provided that all
+Independent Modules are combined with the Runtime Library through the Compilation Process. You
+may then convey such a combination under terms of your choice.&quot;</p>
+<hr />
+<h3 id="openssl">OpenSSL</h3>
+<p><strong>Copyright</strong> © 1998-2026 The OpenSSL Project Authors; © 1995-1998 Eric A. Young, Tim J. Hudson. All rights reserved.<br />
+<strong>License</strong> Apache-2.0<br />
+<strong>Source</strong> https://www.openssl.org</p>
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except
+in compliance with the License. You may obtain a copy of the License at
+https://www.apache.org/licenses/LICENSE-2.0</p>
+<hr />
+<h3 id="libffi">libffi</h3>
+<p><strong>Copyright</strong> © 1996-2024 Anthony Green, Red Hat, Inc and others<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://github.com/libffi/libffi</p>
+<pre><code class="language-text">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+``Software''), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</code></pre>
+<hr />
+<h3 id="expat">Expat</h3>
+<p><strong>Copyright</strong> © 1998-2000 Thai Open Source Software Center Ltd and Clark Cooper; © 2001-2025 Expat maintainers<br />
+<strong>License</strong> MIT<br />
+<strong>Source</strong> https://libexpat.github.io</p>
+<pre><code class="language-text">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&quot;Software&quot;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</code></pre>
+<hr />
+<h3 id="zstandard-zstd">Zstandard (zstd)</h3>
+<p><strong>Copyright</strong> © Meta Platforms, Inc. and affiliates. All rights reserved.<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://github.com/facebook/zstd</p>
+<pre><code class="language-text">Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+ * Neither the name Facebook, nor Meta, nor the names of its contributors may
+   be used to endorse or promote products derived from this software without
+   specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</code></pre>
+<hr />
+<h3 id="libuuid-util-linux">libuuid (util-linux)</h3>
+<p><strong>Copyright</strong> © 1996, 1997, 1998, 1999, 2007 Theodore Ts'o; © 1999 Andreas Dilger<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://github.com/util-linux/util-linux</p>
+<pre><code class="language-text">Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, and the entire permission notice in its entirety,
+   including the disclaimer of warranties.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. The name of the author may not be used to endorse or promote
+   products derived from this software without specific prior
+   written permission.
+
+THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, ALL OF
+WHICH ARE HEREBY DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+USE OF THIS SOFTWARE, EVEN IF NOT ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.
+</code></pre>
+<hr />
+<h3 id="bzip2-libbzip2">bzip2 (libbzip2)</h3>
+<p><strong>Copyright</strong> © 1996-2019 Julian R Seward. All rights reserved.<br />
+<strong>License</strong> bzip2 license (BSD-style)<br />
+<strong>Source</strong> https://sourceware.org/bzip2/</p>
+<pre><code class="language-text">Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. The origin of this software must not be misrepresented; you must
+   not claim that you wrote the original software.  If you use this
+   software in a product, an acknowledgment in the product
+   documentation would be appreciated but is not required.
+
+3. Altered source versions must be plainly marked as such, and must
+   not be misrepresented as being the original software.
+
+4. The name of the author may not be used to endorse or promote
+   products derived from this software without specific prior written
+   permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</code></pre>
+<hr />
+<h3 id="liblzma-xz-utils">liblzma (XZ Utils)</h3>
+<p><strong>License</strong> 0BSD<br />
+<strong>Source</strong> https://tukaani.org/xz/</p>
+<pre><code class="language-text">Permission to use, copy, modify, and/or distribute this
+software for any purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL
+WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL
+THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
+NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+</code></pre>
+<hr />
+<h3 id="sqlite">SQLite</h3>
+<p><strong>License</strong> Public domain<br />
+<strong>Source</strong> https://sqlite.org</p>
+<p>All of the code and documentation in SQLite has been dedicated to the public domain by the
+authors.</p>
+<hr />
+<h2 id="runtime-system-binaries--invoked-at-runtime-not-bundled">Runtime system binaries — invoked at runtime, not bundled</h2>
+<p>These programs are not distributed with Audiogravi<sup>ty</sup> but are required (or
+optionally used) at runtime. They must be present on the host system.</p>
+<hr />
+<h3 id="ffmpeg">ffmpeg</h3>
+<p><strong>Copyright</strong> © FFmpeg contributors<br />
+<strong>License</strong> GNU General Public License v2.0 or later (GPL-2.0+)<br />
+<strong>Source</strong> https://ffmpeg.org<br />
+<strong>Used by</strong> Tidal streaming — remuxes DASH segments to FLAC; HQPlayer — converts to
+FLAC the radio stations and library files it cannot decode<br />
+<strong>Install</strong> <code>apt install ffmpeg</code></p>
+<p>FFmpeg's own code is LGPL-2.1+, but the build that Debian and Raspberry Pi OS
+ship enables FFmpeg's optional GPL parts (<code>--enable-gpl</code>), and FFmpeg's license
+then changes to GPL-2.0+ — that build is the program installed on the box.</p>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Full license: https://www.gnu.org/licenses/gpl-2.0.html</p>
+<hr />
+<h3 id="cyclictest-rt-tests">cyclictest (rt-tests)</h3>
+<p><strong>Copyright</strong> © Thomas Gleixner and contributors<br />
+<strong>License</strong> GNU General Public License v2.0 (GPL-2.0)<br />
+<strong>Source</strong> https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git<br />
+<strong>Used by</strong> Performance module — µs-scale RT latency benchmarks<br />
+<strong>Install</strong> <code>apt install rt-tests</code></p>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License. Full license:
+https://www.gnu.org/licenses/gpl-2.0.html</p>
+<hr />
+<h3 id="iperf3">iperf3</h3>
+<p><strong>Copyright</strong> © 2014–2023 The Regents of the University of California<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://github.com/esnet/iperf<br />
+<strong>Used by</strong> Performance module — TCP/UDP network throughput and jitter tests<br />
+<strong>Install</strong> <code>apt install iperf3</code></p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer; redistributions in binary form
+must reproduce the above copyright notice, this list of conditions and the
+following disclaimer in the documentation and/or other materials provided with
+the distribution; neither the name of the copyright holder nor the names of its
+contributors may be used to endorse or promote products derived from this
+software without specific prior written permission.</p>
+<hr />
+<h3 id="smartmontools-smartctl">smartmontools (smartctl)</h3>
+<p><strong>Copyright</strong> © Bruce Allen, Christian Franke, and contributors<br />
+<strong>License</strong> GNU General Public License v2.0 (GPL-2.0)<br />
+<strong>Source</strong> https://www.smartmontools.org<br />
+<strong>Used by</strong> Sysinfo module — disk temperature monitoring (optional; degraded gracefully if absent)<br />
+<strong>Install</strong> <code>apt install smartmontools</code></p>
+<p>Same GPL-2.0 terms as above.</p>
+<hr />
+<hr />
+<h2 id="external-api-services--called-at-runtime-no-code-bundled">External API services — called at runtime, no code bundled</h2>
+<p>These are third-party services accessed over the network. No library or binary
+is bundled in Audiogravi<sup>ty</sup> for these — attribution is provided as a courtesy.</p>
+<h3 id="radio-browser">Radio Browser</h3>
+<p><strong>License</strong> MIT (data and API)<br />
+<strong>Source</strong> https://www.radio-browser.info<br />
+<strong>Used by</strong> Internet radio module — community-driven catalogue of radio stations;
+servers are discovered by DNS, as the service's documentation prescribes</p>
+<p>The Radio Browser API is free and open. No API key is required. Data is
+contributed by the community under MIT terms. As the service asks of the software
+that uses it, Audiogravi<sup>ty</sup> reports the stations it plays so the catalogue's
+popularity ranking stays meaningful; the station identifier is all that is sent, and
+<code>RADIO_REPORT_PLAYS=false</code> switches it off.</p>
+<h3 id="musicbrainz">MusicBrainz</h3>
+<p><strong>License</strong> CC0 1.0 for the core data — supplementary data is CC BY-NC-SA 3.0<br />
+<strong>Source</strong> https://musicbrainz.org<br />
+<strong>Used by</strong> Cover art — a release is looked up to obtain its MusicBrainz identifier,
+which the Cover Art Archive is then queried with</p>
+<p>Audiogravi<sup>ty</sup> queries the release database (<code>/ws/2/release</code>), which is core
+data placed in the public domain under CC0; attribution is therefore not required and is
+given here as a courtesy. MusicBrainz asks every client to send a User-Agent identifying
+the application and offering a way to reach its maintainers, and measures each IP address
+against an average of one request per second. Audiogravi<sup>ty</sup> identifies itself as
+<code>Audiogravity/&lt;version&gt; (https://github.com/audiogravity)</code>, which follows the recommended
+form, caps itself at three concurrent external cover lookups and caches every answer for
+24 hours — including the answers that found nothing, so a missing cover is not asked for
+twice.</p>
+<hr />
+<h3 id="cover-art-archive">Cover Art Archive</h3>
+<p><strong>License</strong> No licence is asserted over the images themselves; the archive is governed by
+the Internet Archive's terms — https://archive.org/about/terms.php<br />
+<strong>Source</strong> https://coverartarchive.org<br />
+<strong>Used by</strong> Cover art — the front cover of the release identified through MusicBrainz</p>
+<p>The archive is a cooperation between the Internet Archive and MusicBrainz. Its images are
+collected for archival purposes and offered as-is, at the user's own risk; copyright in
+each cover remains with its owner. Audiogravi<sup>ty</sup> fetches a front cover to display
+beside the track being played and redistributes nothing.</p>
+<hr />
+<h3 id="itunes-search-api">iTunes Search API</h3>
+<p><strong>License</strong> Apple's terms of use for the Search API — no licence is granted over the
+content returned<br />
+<strong>Source</strong> https://performance-partners.apple.com/search-api<br />
+<strong>Used by</strong> Cover art — last-resort lookup when neither the local file nor the
+MusicBrainz / Cover Art Archive path yields a cover</p>
+<p>No API key is required. Apple states the Search API is limited to approximately twenty
+calls per minute and asks that promotional material obtained through it — album artwork
+included — be presented in connection with the corresponding store content. Audiogravi<sup>ty</sup>
+requests artwork only, never audio previews, and caches it for 24 hours. Apple, iTunes and
+the iTunes logo are trademarks of Apple Inc.; Audiogravi<sup>ty</sup> is not affiliated
+with, endorsed by or sponsored by Apple.</p>
+<hr />
+<h2 id="audio-software--installable-via-the-audio-software-manager">Audio software — installable via the Audio Software Manager</h2>
+<p>The following software can be installed on the host by Audiogravi<sup>ty</sup>'s Audio
+Software Manager. Each package is fetched from the official Debian/DietPi
+repositories or from the vendor's official installer — none are bundled in
+Audiogravi<sup>ty</sup>'s distribution tarballs —, with one exception: upmpdcli on ARM,
+which Audiogravi<sup>ty</sup> builds and distributes itself (see below). Their respective
+licenses apply independently of Audiogravi<sup>ty</sup>.</p>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th>Software</th>
+<th>License</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MPD</strong> (Music Player Daemon)</td>
+<td>GPL-2.0</td>
+<td>https://musicpd.org</td>
+</tr>
+<tr>
+<td><strong>upmpdcli</strong></td>
+<td>LGPL-2.1-or-later, with parts under the GPL (see below)</td>
+<td>https://www.lesbonscomptes.com/upmpdcli</td>
+</tr>
+<tr>
+<td><strong>shairport-sync</strong></td>
+<td>MIT</td>
+<td>https://github.com/mikebrady/shairport-sync</td>
+</tr>
+<tr>
+<td><strong>HQPlayer NAA</strong></td>
+<td>Proprietary (Signalyst)</td>
+<td>https://www.signalyst.com</td>
+</tr>
+<tr>
+<td><strong>HQPlayer Embedded</strong></td>
+<td>Proprietary (Signalyst)</td>
+<td>https://www.signalyst.com</td>
+</tr>
+<tr>
+<td><strong>Roon Bridge</strong></td>
+<td>Proprietary (Roon Labs)</td>
+<td>https://roonlabs.com</td>
+</tr>
+<tr>
+<td><strong>Roon Server</strong></td>
+<td>Proprietary (Roon Labs)</td>
+<td>https://roonlabs.com</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="upmpdcli-on-arm--built-and-distributed-by-audiogravity">upmpdcli on ARM — built and distributed by Audiogravi<sup>ty</sup></h3>
+<p>Its author publishes no package for ARM (aarch64). For those boxes, Audiogravi<sup>ty</sup>
+builds upmpdcli and the two libraries it needs, libupnpp and libnpupnp, from the author's
+source archives, unmodified, and serves the three packages from
+https://audiogravity.app/packages/upmpdcli-arm64/.</p>
+<p><strong>Their source is served from the same place</strong>: the archives they were built from,
+exactly as the author publishes them, and the script that builds and packages them, at
+https://audiogravity.app/packages/upmpdcli-arm64/source/ followed by the file name.
+https://audiogravity.app/packages/upmpdcli-arm64/source/SHA256SUMS lists them. The
+author's own downloads: https://www.lesbonscomptes.com/upmpdcli/downloads/.</p>
+<h4 id="upmpdcli">upmpdcli</h4>
+<p><strong>Copyright</strong> © Jean-Francois Dockes and contributors<br />
+<strong>License</strong> LGPL-2.1-or-later, with parts under other licenses<br />
+<strong>Source</strong> https://www.lesbonscomptes.com/upmpdcli</p>
+<p>Most of upmpdcli is under the GNU Lesser General Public License, version 2.1 or later; its
+text is the <code>COPYING</code> file of the source archive. One file compiled into the program,
+<code>closefrom.cpp</code>, is under the GNU General Public License, version 2 or later. The media
+server plugins and the scripts installed with it are under the GNU General Public License,
+version 1, 2 or 3 or later, the GNU Lesser General Public License, version 2.1 or 3 or
+later, or the MIT license, as each file states. The GNU licenses are published at
+https://www.gnu.org/licenses/.</p>
+<h4 id="libupnpp">libupnpp</h4>
+<p><strong>Copyright</strong> © 2006-2023 J.F. Dockes<br />
+<strong>License</strong> LGPL-2.1-or-later<br />
+<strong>Source</strong> https://www.lesbonscomptes.com/upmpdcli</p>
+<p>Its text is the <code>COPYING</code> file of the source archive.</p>
+<h4 id="libnpupnp">libnpupnp</h4>
+<p><strong>Copyright</strong> © 2000-2003 Intel Corporation. All rights reserved.<br />
+<strong>License</strong> BSD-3-Clause<br />
+<strong>Source</strong> https://www.lesbonscomptes.com/upmpdcli</p>
+<pre><code class="language-text">Copyright (c) 2000-2003 Intel Corporation
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this software
+  without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL INTEL OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</code></pre>
+<hr />
+<h2 id="trademarks">Trademarks</h2>
+<p>The following are third-party streaming services that Audiogravi<sup>ty</sup> integrates
+with over their networked APIs. <strong>No code or library from these services is
+bundled</strong> in Audiogravi<sup>ty</sup> — the integrations use private/official HTTP APIs and
+require the user's own active subscription. Their names and logos are used
+solely to identify the services (nominative use).</p>
+<ul>
+<li><strong>Qobuz</strong> — Qobuz and the Qobuz logo.</li>
+<li><strong>Tidal</strong> — TIDAL and the TIDAL logo.</li>
+<li><strong>HIGHRESAUDIO</strong> — HIGHRESAUDIO (HRA) and the HIGHRESAUDIO logo.</li>
+</ul>
+<p>These names and logos are trademarks of their respective owners. Audiogravi<sup>ty</sup> is
+<strong>not affiliated with, endorsed by, or sponsored by</strong> Qobuz or TIDAL.</p>
+<p>HIGHRESAUDIO is a separate case and is stated separately rather than left in the sentence
+above, which would no longer be accurate: HRA provided their API for this integration and
+saw early screenshots of it. That is a working arrangement between the two, not a
+commercial one — HRA does not sponsor Audiogravi<sup>ty</sup>, and no claim of partnership or
+endorsement is made here or on audiogravity.app.</p>
+<p>Audiogravi<sup>ty</sup> also <strong>drives audio engines that are separate products</strong>, named for the
+same reason — to identify what the software controls:</p>
+<ul>
+<li><strong>Roon</strong> — Roon, Roon Bridge, Roon Server and the Roon logo (Roon Labs).</li>
+<li><strong>HQPlayer</strong> — HQPlayer, HQPlayer NAA and the HQPlayer logo (Signalyst).</li>
+<li><strong>JPLAY</strong> — JPLAY and the JPLAY logo (JPLAY). Named only to say that Audiogravi<sup>ty</sup>'s
+UPnP renderer works with it: no JPLAY code is used, and no integration is specific to it.</li>
+<li><strong>AirPlay</strong> — AirPlay and the AirPlay logo (Apple). Audiogravi<sup>ty</sup> receives AirPlay
+through <strong>shairport-sync</strong>, the independent implementation listed above; it uses no Apple
+software and is not part of Apple's licensing programme.</li>
+</ul>
+<p>These names and logos are trademarks of their respective owners. Audiogravi<sup>ty</sup> is
+<strong>not affiliated with, endorsed by, or sponsored by</strong> any of them.</p>
+<hr />
+<p><em>This file is provided in compliance with the license terms of the above projects.
+For the full license texts, see the respective project repositories.</em></p>
+
+            </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="eula" rel="prev"><span class="man-pager-dir">← Previous document</span><span class="man-pager-title">End-User License Agreement</span></a></nav>
+            <footer class="man-foot">
+                <p class="man-foot-links"><a href="./">All documents</a><a href="../../index.html">← Back to audiogravity.app</a></p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

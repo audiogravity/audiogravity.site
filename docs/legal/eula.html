@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>End-User License Agreement — Audiogravity</title>
+    <meta name="description" content="Audiogravity — End-User License Agreement.">
+    <link rel="canonical" href="https://audiogravity.app/docs/legal/eula">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=a6a100e850">
+    <link rel="stylesheet" href="../../assets/manual.css?v=f18f707d9f">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../legal/" aria-current="true">Legal</a><a href="../releases/">Releases</a></nav>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All documents</span><span class="man-menu-count">3</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Legal documents">
+            <a class="man-nav-item" href="editions"><span>Editions and plans</span></a>
+            <a class="man-nav-item active" href="eula" aria-current="page"><span>End-User License Agreement</span></a>
+            <a class="man-nav-item" href="third-party-notices"><span>Third-Party Notices</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Legal documents">
+            <a class="man-nav-item" href="editions"><span>Editions and plans</span></a>
+            <a class="man-nav-item active" href="eula" aria-current="page"><span>End-User License Agreement</span></a>
+            <ul class="man-outline">
+                <li><a href="#1-ownership">1. Ownership</a></li>
+                <li><a href="#2-grant-of-license">2. Grant of License</a></li>
+                <li><a href="#3-trial-license">3. Trial License</a></li>
+                <li><a href="#4-restrictions">4. Restrictions</a></li>
+                <li><a href="#5-disclaimer--liability">5. Disclaimer &amp; Liability</a></li>
+                <li><a href="#6-license-validation-data">6. License Validation Data</a></li>
+                <li><a href="#7-governing-law">7. Governing Law</a></li>
+                <li><a href="#8-general">8. General</a></li>
+            </ul>
+            <a class="man-nav-item" href="third-party-notices"><span>Third-Party Notices</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>End-User License Agreement (EULA) — Audiogravi<sup>ty</sup></h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">8</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#1-ownership">1. Ownership</a></li>
+    <li><a href="#2-grant-of-license">2. Grant of License</a></li>
+    <li><a href="#3-trial-license">3. Trial License</a></li>
+    <li><a href="#4-restrictions">4. Restrictions</a></li>
+    <li><a href="#5-disclaimer--liability">5. Disclaimer &amp; Liability</a></li>
+    <li><a href="#6-license-validation-data">6. License Validation Data</a></li>
+    <li><a href="#7-governing-law">7. Governing Law</a></li>
+    <li><a href="#8-general">8. General</a></li>
+</ul>
+</details>
+<p>By downloading, installing, or using this software, you agree to the following terms.
+If you do not accept them, you must not install or use the software.</p>
+<ul>
+<li><strong>&quot;Software&quot;</strong> — Audiogravi<sup>ty</sup> and all its components.</li>
+<li><strong>&quot;Starter Edition&quot;</strong> — the free tier activated after trial expiry.</li>
+<li><strong>&quot;Pro License&quot;</strong> — the paid, perpetual single-machine license.</li>
+<li><strong>&quot;License File&quot;</strong> — the cryptographically signed <code>.lic</code> file bound to your device.</li>
+<li><strong>&quot;License Key&quot;</strong> — the unique order code used to activate and download the License File.</li>
+</ul>
+<hr />
+<h2 id="1-ownership">1. Ownership</h2>
+<p>The Software is licensed, not sold. All title, copyright, and intellectual property rights
+remain the exclusive property of the Licensor (Audiogravi<sup>ty</sup>).</p>
+<h2 id="2-grant-of-license">2. Grant of License</h2>
+<p><strong>Starter Edition</strong> — Non-exclusive, non-transferable, free and perpetual use within
+the Starter Edition functional limits.</p>
+<p><strong>Pro License</strong> — Perpetual, non-exclusive, non-transferable use of the Software
+and updates within the purchased major version, on one installation, one machine.
+Pro License holders receive a preferential upgrade price for new major versions.</p>
+<h2 id="3-trial-license">3. Trial License</h2>
+<p>A 30-day trial is automatically activated on first installation, providing full access.
+Upon expiry, the Software reverts to Starter Edition. Any attempt to bypass this mechanism
+constitutes a breach of this EULA.</p>
+<h2 id="4-restrictions">4. Restrictions</h2>
+<p>You may not: reverse-engineer or decompile the Software; distribute, sell, or transfer it;
+create derivative works; tamper with license enforcement; or share your License Key or License File
+with any third party.</p>
+<h2 id="5-disclaimer--liability">5. Disclaimer &amp; Liability</h2>
+<p>The Software is provided without warranty. The Licensor's total liability shall not exceed the
+amount paid by the Licensee. Indirect, incidental, or punitive damages are excluded to the extent
+permitted by law.</p>
+<h2 id="6-license-validation-data">6. License Validation Data</h2>
+<p>To bind a License to a single machine and to enforce this EULA, the Software contacts the
+Licensor's license server on activation and once every 24 hours. It transmits a derived device
+identifier, the primary MAC address, the operating system and architecture, the Software version,
+the current license status and, during the trial, its start date; the License File itself is
+transmitted when it is verified. The server records the network address the request arrives from.
+No personal content, music library data, or third-party service credentials are transmitted. This
+exchange is a functional requirement of the license and cannot be disabled.</p>
+<h2 id="7-governing-law">7. Governing Law</h2>
+<p>This EULA is governed by French law. Disputes are subject to the exclusive jurisdiction of
+French courts.</p>
+<h2 id="8-general">8. General</h2>
+<p>This EULA constitutes the entire agreement between the parties and supersedes all prior
+communications. If any provision is unenforceable, the remainder continues in effect.
+All rights not expressly granted are reserved by the Licensor.</p>
+<hr />
+<p><em>© 2026 Audiogravi<sup>ty</sup> — contact@audiogravity.app</em></p>
+
+            </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-prev" href="editions" rel="prev"><span class="man-pager-dir">← Previous document</span><span class="man-pager-title">Editions and plans</span></a><a class="man-pager-next" href="third-party-notices" rel="next"><span class="man-pager-dir">Next document →</span><span class="man-pager-title">Third-Party Notices</span></a></nav>
+            <footer class="man-foot">
+                <p class="man-foot-links"><a href="./">All documents</a><a href="../../index.html">← Back to audiogravity.app</a></p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

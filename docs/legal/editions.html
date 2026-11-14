@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Editions and plans — Audiogravity</title>
+    <meta name="description" content="Audiogravity — Editions and plans.">
+    <link rel="canonical" href="https://audiogravity.app/docs/legal/editions">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../../assets/style.css?v=a6a100e850">
+    <link rel="stylesheet" href="../../assets/manual.css?v=f18f707d9f">
+    <script>
+        /* Applied before first paint: reading the stored theme after the stylesheet has painted
+           shows a flash of the wrong one. Same key as the landing, so the toggle carries over. */
+        (function () {
+            try {
+                var t = localStorage.getItem('ag-theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* private mode: fall back to the media query */ }
+        })();
+    </script>
+    <script src="../../assets/manual-copy.js?v=994f51e4e3" defer></script>
+    <script src="../../assets/manual-outline.js?v=112b4d63b5" defer></script>
+    <script src="../../assets/to-top.js?v=61e28367a0" defer></script>
+    <script src="../../assets/theme-toggle.js?v=0a2ce0015f" defer></script>
+</head>
+
+<body class="man-body">
+    <header class="man-top">
+        <a class="man-home" href="../../index.html" aria-label="Audiogravity home">
+            <img class="man-home-icon" src="../../assets/icons/apple-touch-180.png" alt=""
+                 width="28" height="28" decoding="async"><span class="man-home-word">Audiogravi<sup>ty</sup></span></a>
+        <nav class="man-sections" aria-label="Sections"><a href="../legal/" aria-current="true">Legal</a><a href="../releases/">Releases</a></nav>
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"
+                aria-label="Toggle dark mode"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+    </header>
+
+    <details class="man-menu">
+        <summary><span>All documents</span><span class="man-menu-count">3</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="man-nav" aria-label="Legal documents">
+            <a class="man-nav-item active" href="editions" aria-current="page"><span>Editions and plans</span></a>
+            <a class="man-nav-item" href="eula"><span>End-User License Agreement</span></a>
+            <a class="man-nav-item" href="third-party-notices"><span>Third-Party Notices</span></a>
+        </nav>
+    </details>
+
+    <div class="man-shell">
+        <nav class="man-nav" aria-label="Legal documents">
+            <a class="man-nav-item active" href="editions" aria-current="page"><span>Editions and plans</span></a>
+            <ul class="man-outline">
+                <li><a href="#trial--30-days">Trial — 30 days</a></li>
+                <li><a href="#starter-edition--free">Starter Edition — Free</a></li>
+                <li><a href="#pro-license--one-time-payment-no-subscription">Pro License — one-time payment, no subscription</a></li>
+                <li><a href="#comparison">Comparison</a></li>
+                <li><a href="#how-to-purchase">How to Purchase</a></li>
+            </ul>
+            <a class="man-nav-item" href="eula"><span>End-User License Agreement</span></a>
+            <a class="man-nav-item" href="third-party-notices"><span>Third-Party Notices</span></a>
+        </nav>
+
+        <main class="man-main">
+            <article class="man-md">
+<h1>Editions / Plans — Audiogravi<sup>ty</sup></h1>
+<details class="man-outline-menu">
+<summary><span>On this page</span><span class="man-menu-count">5</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+<ul class="man-outline">
+    <li><a href="#trial--30-days">Trial — 30 days</a></li>
+    <li><a href="#starter-edition--free">Starter Edition — Free</a></li>
+    <li><a href="#pro-license--one-time-payment-no-subscription">Pro License — one-time payment, no subscription</a></li>
+    <li><a href="#comparison">Comparison</a></li>
+    <li><a href="#how-to-purchase">How to Purchase</a></li>
+</ul>
+</details>
+<p>Audiogravi<sup>ty</sup> comes in two editions — a free <strong>Starter Edition</strong> and a <strong>Pro License</strong> —
+and every install starts with a <strong>30-day trial</strong> of Pro.</p>
+<hr />
+<h2 id="trial--30-days">Trial — 30 days</h2>
+<p>Full access to every feature, automatically activated on first run. No action required.
+Days remaining are shown in <strong>Admin › License</strong>.</p>
+<hr />
+<h2 id="starter-edition--free">Starter Edition — Free</h2>
+<p>Activated automatically when the trial expires — no action required. It keeps receiving the
+updates of its major version (e.g. v1.x), as Pro does. Includes the essentials to run your audio
+system and play the music stored on it:</p>
+<ul>
+<li><strong>Profiles</strong> — one-click switching between pre-configured audio chain scenarios; activates required services and stops conflicting ones automatically</li>
+<li><strong>Services</strong> — real-time monitoring and control of audio services (start / stop / restart / enable at boot) with live CPU, memory and I/O metrics, each with a sparkline of its recent values</li>
+<li><strong>Software</strong> — install, update and remove audio packages, with a simulation before committing changes</li>
+<li><strong>System</strong> — hardware dashboard: CPU, temperature, memory, disk and network at a glance; full audio device inventory (ALSA cards, USB interfaces, subdevices)</li>
+<li><strong>Users</strong> — role-based access management (Admin, User, Guest) with WebAuthn / passkeys login</li>
+<li><strong>Push notifications</strong> — iOS, Android and desktop alerts when a service goes down, the processor overheats, the disk is nearly full, a Raspberry Pi's power supply is too weak, a new version of Audiogravi<sup>ty</sup> or an update of an audio package is available, a profile is activated, or a USB drive is plugged in or pulled out — with whether the music library on it is ready</li>
+<li><strong>One-click updates</strong> — Audiogravi<sup>ty</sup> updates itself from the Admin page, core and interface together, and goes back to the previous version on its own if anything goes wrong (administrators)</li>
+<li><strong>Audio Services Config</strong> — safe in-place editing of each audio service's own configuration file, with a diff before saving, a basic syntax check and automatic backups (HQPlayer Embedded's, the NAA's and Roon's come with Pro)</li>
+<li><strong>Guided provisioning</strong> — generate a minimal, correct configuration for the whole stack (output, music library, network mounts) in a few clicks, instead of editing each service by hand (administrators only)</li>
+<li><strong>DSD protection</strong> — your DAC's own volume set to maximum while it receives DSD, then put back; switchable for a DAC that lowers DSD properly</li>
+<li><strong>Library</strong> — the music stored on the box: album browsing, full-text search and queue management</li>
+<li><strong>Internet radio</strong> — Radio Browser directory, custom stations, favourites, and a filter that keeps the stations that really stream lossless</li>
+<li><strong>Player</strong> — play/pause, next/prev and volume for the box's music and the radio, in the mini-player and the full-screen player; seek, repeat/shuffle and the <strong>sleep timer</strong> in the full-screen player</li>
+<li><strong>Outputs</strong> — the box's DAC (USB, Toslink, HDMI…), switched without touching the streamer, or a DLNA/UPnP network speaker (<strong>UPnP Control Point</strong>)</li>
+<li><strong>AirPlay and casting</strong> — the box also plays what an iPhone, iPad or Mac sends it over AirPlay, or what a UPnP/DLNA app casts to it, and shows it in Now Playing</li>
+<li><strong>Now Playing</strong> — current track, cover art, format and progress across all sources</li>
+</ul>
+<p>What Pro adds stays in view on a Starter box, behind a padlock: a tap opens the licence panel.
+When the trial ends, streaming tracks still in the queue no longer play; the music on the box plays on.</p>
+<hr />
+<h2 id="pro-license--one-time-payment-no-subscription">Pro License — one-time payment, no subscription</h2>
+<p>Permanently unlocks all features. Bound to one installation on one machine; moving to another
+machine takes a licence reset, available on request.
+Includes all updates within the purchased major version (e.g. v1.x).
+Existing holders receive a <strong>preferential upgrade price</strong> for new major versions.</p>
+<p>Everything in Starter, plus:</p>
+<ul>
+<li><strong>Streaming</strong> — Qobuz, Tidal and HIGHRESAUDIO: album browsing, full-text search, queue, favourites and playlists</li>
+<li><strong>UPnP media servers</strong> — MinimServer and the other servers of your network, browsed and searched like the box's own library</li>
+<li><strong>Roon</strong> — your Roon library, its zones and their transport controls</li>
+<li><strong>HQPlayer</strong> — HQPlayer as the output, and its DSP remote: filter, noise shaper, output mode and volume from the couch, with automatic network discovery; HQPlayer Embedded's and the NAA's output and settings</li>
+<li><strong>Listening history</strong> — what the box played: time listened per day or month, sources, outputs, sound quality, genres, and the most played artists, albums and tracks; kept on the box, recorded on every edition and switched off or cleared from any of them</li>
+<li><strong>VU meters</strong> — two needles that follow what the box's own player plays, in step with the DAC: in the cover's place in the full-screen player, or over the whole screen in showcase mode</li>
+<li><strong>Audio Pipeline</strong> — interactive DAG visualisation of the full signal chain from source to DAC: full-resolution badge on the link to the DAC, format per link, real-time output steering without stopping playback</li>
+<li><strong>Systemd Configuration</strong> — fine-tune audio service drop-ins: CPU affinity, SCHED_FIFO / RR priority, MEMLOCK and RTPRIO — so the audio services keep the processor when the box is busy</li>
+<li><strong>Performance Optimization</strong> — per-core CPU governor control, real-time thermal throttle detection, µs-scale latency benchmarks (cyclictest), network tests (ping, iPerf3) and live RT process monitor</li>
+</ul>
+<blockquote>
+<p>Qobuz, Tidal and HIGHRESAUDIO require an active subscription to their respective services.
+Platform: Debian 13 (Trixie) or later — DietPi and Raspberry Pi OS included, in their Trixie release — on x86-64 and Raspberry Pi (aarch64). The core installer turns any other system down.</p>
+</blockquote>
+<hr />
+<h2 id="comparison">Comparison</h2>
+<div class="man-table"><table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">Trial</th>
+<th style="text-align:center">Starter</th>
+<th style="text-align:center">Pro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cost</strong></td>
+<td style="text-align:center">Free</td>
+<td style="text-align:center">Free</td>
+<td style="text-align:center">One-time (€49)</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td style="text-align:center">30 days</td>
+<td style="text-align:center">Unlimited</td>
+<td style="text-align:center">Unlimited</td>
+</tr>
+<tr>
+<td><strong>Activation</strong></td>
+<td style="text-align:center">Automatic</td>
+<td style="text-align:center">Automatic</td>
+<td style="text-align:center">Manual</td>
+</tr>
+<tr>
+<td><strong>Updates</strong> — one click, within the major version (e.g. v1.x)</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Profiles</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Services</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Software</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Users &amp; WebAuthn</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Push notifications</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Now Playing</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Library — the music on the box</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Internet radio</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Player — the box's music and the radio</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Outputs — DAC and network speakers</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>AirPlay and casting to the box</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Streaming — Qobuz, Tidal, HIGHRESAUDIO</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>UPnP media servers</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Roon</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>HQPlayer</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Listening history</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>VU meters</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Audio Pipeline</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Audio Services Config</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Guided provisioning</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Systemd Config</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>DSD protection</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td><strong>Sleep timer</strong></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="how-to-purchase">How to Purchase</h2>
+<ol>
+<li>Click <strong>Pay with PayPal</strong> in <strong>Admin › License</strong>.</li>
+<li>You will receive your <strong>license key</strong> by email within seconds.</li>
+<li>Click <strong>License Key</strong>, enter your key and activate this machine.</li>
+<li>All features are immediately available — no restart required.</li>
+</ol>
+<hr />
+<p><em>© 2026 Audiogravi<sup>ty</sup> — contact@audiogravity.app</em></p>
+
+            </article>
+            <nav class="man-pager" aria-label="Previous and next"><a class="man-pager-next" href="eula" rel="next"><span class="man-pager-dir">Next document →</span><span class="man-pager-title">End-User License Agreement</span></a></nav>
+            <footer class="man-foot">
+                <p class="man-foot-links"><a href="./">All documents</a><a href="../../index.html">← Back to audiogravity.app</a></p>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

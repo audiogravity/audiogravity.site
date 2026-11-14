@@ -63,6 +63,10 @@ and playlists now carry *Play* and *+*: play one whole, or add it to the queue. 
 a track: the album plays from that track on. Long lists go on as you scroll — all your albums,
 where the list stopped at 200 —, and past 1,000 entries *Show more* lists the next ones.
 
+**Edit a radio station from Favorites.** *Edit station* now opens its form in Favorites too,
+where the tap showed nothing — and the form comes into sight wherever the station sat in the
+list.
+
 ### Installation
 
 **The app on your phone, without guessing.** The manual's *First run* takes you through it

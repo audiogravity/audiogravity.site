@@ -15,6 +15,7 @@ and this landing) are documented here. Format based on
 ### Changed
 - **[ops] A release keeps the footer's version and the documents' pages in step.** `changelog_rollover.py` finds the footer's version by the changelog page's link as well as by the former GitHub one — anchored on that one alone, the version would have stopped moving without a word —, and `release.sh prepare` commits `docs/legal` and `docs/releases` with the regenerated manual.
 - **[site] The EULA's definitions are a list.** The five definitions ran together as one paragraph; the words are unchanged.
+- **[site] The blog's Quad 33 and 303 post opens on the sound, and adds Haute Fidélité's review.** Haute Fidélité (issue 275, June–July 2025) compared a restored pair of 1973 with the pair of 2024 on Rogers LS3/5a, and gave the new one its *Meilleur achat*: its side-by-side account, its hearing of the new pair and of its phono stage, the LS3/5a as a partner, the design team, the technical details and the French price join the post, attributed and translated. How the pairs sound now comes first, history after. The team replaces "engineers led by Peter Comeau", which no readable source supported: Quad's own history gives Jan Ertner as its electronics designer and Peter Comeau as head of acoustic design.
 
 ## [1.0.1] - 2026-11-08
 

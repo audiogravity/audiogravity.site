@@ -79,7 +79,9 @@ iOS (16.4 or later) the installed app is what receives push notifications. Step 
 With Pro, all three connect from **Library → Sources**: open the service's card and tap
 **Connect**. **Qobuz** signs in and redirects back automatically. **Tidal** lands
 on a fixed URL that a web app can't intercept — copy that full URL from the
-address bar, paste it back into the Tidal card and tap **Finish login**, once.
+address bar and paste it back into the Tidal card, once: the sign-in completes on
+its own (in Chrome or Edge on a computer, with the box's https address, coming back
+to the app is enough).
 **HIGHRESAUDIO** is simpler: enter your account email and password directly in
 its card. Tokens are then stored and refreshed for you. The full walkthroughs are
 in [5. Library & streaming](05-library-streaming.md#streaming-services).

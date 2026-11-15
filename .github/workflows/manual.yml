@@ -61,11 +61,12 @@ jobs:
 
       # The generator is the only thing standing between the Markdown and the published site,
       # and nothing else reviews what it emits — so its tests run before it does. Its own tests
-      # and those of the script its pages load to mark the part being read (run under Node,
-      # which the runner has) only: scripts/ also holds the landing's guards, which the Landing
-      # workflow runs, and a stylesheet regression must not hold the manual back.
+      # and those of the scripts its pages load — the one that marks the part being read, the
+      # one that opens a post's pictures full screen — (run under Node, which the runner has)
+      # only: scripts/ also holds the landing's guards, which the Landing workflow runs, and a
+      # stylesheet regression must not hold the manual back.
       - name: Test the generator
-        run: python3 -m pytest scripts/test_gen_manual_html.py scripts/test_asset_versions.py scripts/test_manual_outline.py -q
+        run: python3 -m pytest scripts/test_gen_manual_html.py scripts/test_asset_versions.py scripts/test_manual_outline.py scripts/test_image_viewer.py -q
 
       - name: Render the manual
         run: python3 scripts/gen_manual_html.py

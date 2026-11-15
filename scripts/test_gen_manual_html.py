@@ -919,6 +919,111 @@ class TestPublishedBlog:
         assert front.count('<img class="man-card-img"') == len(self._posts())
 
 
+class TestPictureViewer:
+    """A post's pictures open full screen (2026-11-15): each is a link to its own file, which
+    assets/image-viewer.js opens in a window over the page. The blog's alone for now."""
+
+    def test_a_picture_alone_becomes_a_link_to_its_own_file(self):
+        import gen_manual_html as g
+        assert g.link_images('<p>x</p>\n<img loading="lazy" src="images/a.webp" alt="A">\n<p>y</p>') == (
+            '<p>x</p>\n<a class="man-zoom" href="images/a.webp"><img loading="lazy" src="images/a.webp" '
+            'alt="A"></a>\n<p>y</p>')
+
+    def test_a_thumbnail_linking_to_its_large_file_has_its_link_marked(self):
+        import gen_manual_html as g
+        thumb = '<figure><a href="images/a.webp"><img src="images/a-small.webp" alt="A"></a></figure>'
+        assert g.link_images(thumb) == thumb.replace("<a ", '<a class="man-zoom" ')
+
+    def test_a_picture_in_any_other_link_stays_in_it(self):
+        import gen_manual_html as g
+        for linked in ('<a href="https://example.com/"><img src="images/a.webp" alt="A"></a>',
+                       '<a href="older-post">see <img src="images/a.webp" alt=""></a>',
+                       '<a class="x" href="images/a.webp"><img src="images/a.webp" alt=""></a>'):
+            assert g.link_images(linked) == linked
+
+    def test_a_picture_from_elsewhere_is_left_alone(self):
+        import gen_manual_html as g
+        for src in ("https://img.shields.io/badge/x", "//cdn.example.com/a.png", "data:image/png;base64,AA"):
+            assert g.link_images(f'<img src="{src}" alt="">') == f'<img src="{src}" alt="">'
+
+    def test_a_second_pass_changes_nothing(self):
+        import gen_manual_html as g
+        once = g.link_images('<img src="images/a.webp" alt="">\n'
+                             '<figure><a href="images/b.webp"><img src="images/b-small.webp" alt=""></a></figure>')
+        assert g.link_images(once) == once
+
+    def test_a_post_loads_the_viewer_and_the_blog_s_front_page_does_not(self):
+        import gen_manual_html as g
+        toc = [("a-post", "A post")]
+        post = g.page("A post", "<p>x</p>", toc, "a-post", "a-post", g.BLOG, "A post.")
+        front = g.page("Blog", "<p>x</p>", toc, "", "", g.BLOG, "The blog.")
+        assert '<script src="../../assets/image-viewer.js" defer></script>' in post
+        assert "image-viewer.js" not in front
+
+    def test_the_manual_and_the_guides_do_not_yet(self):
+        """Tracked in audiogravity.ops/BACKLOG.md: the blog first, as asked on 2026-11-15."""
+        import gen_manual_html as g
+        pages = build() | g.build_guides()
+        assert pages and not any("image-viewer.js" in text or "man-zoom" in text for text in pages.values())
+
+    def test_every_picture_of_every_post_opens_in_the_viewer(self):
+        import gen_manual_html as g
+        checked = 0
+        for path, text in g.build_blog().items():
+            body = re.search(r'<article class="man-md">(.*?)</article>', text, re.S).group(1)
+            if path.name == "index.html":
+                assert "man-zoom" not in body and "image-viewer.js" not in text
+                continue
+            assert body.count("<img ") == body.count('<a class="man-zoom" href="images/') > 0, path.name
+            assert "image-viewer.js" in text, path.name
+            checked += 1
+        assert checked == len(g.read_posts())
+
+    def test_the_viewer_script_is_on_the_site(self):
+        assert (REPO_DIR / "assets" / "image-viewer.js").is_file()
+
+
+class TestPressReleaseScreenshots:
+    """The press release's nine screenshots, shown on its post and opened full size there
+    (2026-11-15): until then the post described them and offered them in a ZIP only."""
+
+    @staticmethod
+    def _post() -> str:
+        import gen_manual_html as g
+        return g.build_blog()[g.BLOG_DIR / "audiogravity-1-0-press-release.html"]
+
+    def _shots(self) -> list[tuple[str, str, str, str]]:
+        return re.findall(r'<figure><a class="man-zoom" href="([^"]+)"><img [^>]*src="([^"]+)" alt="([^"]+)"'
+                          r'[^>]*></a><figcaption>(.*?)</figcaption></figure>', self._post())
+
+    def test_all_nine_are_there_in_the_press_release_s_order(self):
+        """Numbered and named as the ZIP's PNG files are, which the post says."""
+        import zipfile
+        names = sorted(Path(n).stem for n in zipfile.ZipFile(REPO_DIR / "press" / "audiogravity-1.0-screenshots.zip").namelist()
+                       if n.endswith(".png"))
+        shots = self._shots()
+        assert [Path(href).stem for href, _, _, _ in shots] == names and len(names) == 9
+        for k, (_, _, _, caption) in enumerate(shots, 1):
+            assert caption.startswith(f"<strong>{k}. "), caption
+
+    def test_each_shows_a_small_file_and_opens_its_large_one(self):
+        import gen_manual_html as g
+        for href, src, alt, _ in self._shots():
+            large, small = g.BLOG_DIR / href, g.BLOG_DIR / src
+            assert large.is_file() and small.is_file(), href
+            assert src == href.replace(".webp", "-small.webp")
+            assert small.stat().st_size < large.stat().st_size, src
+            assert len(alt) > 40, alt
+
+    def test_the_phones_held_sideways_are_set_apart(self):
+        """Three to a row upright, two sideways: the two shapes do not share a row."""
+        post = self._post()
+        upright = post[post.index('<div class="man-shots">'):post.index('<div class="man-shots is-wide">')]
+        sideways = post[post.index('<div class="man-shots is-wide">'):]
+        assert upright.count("<figure>") == 6 and "sideways" not in upright and "showcase" not in upright
+        assert sideways.count("<figure>") >= 3
+
+
 class TestGuideGroups:
     """The guides are filed under themes, the README's second-level headings (2026-11-01): a flat
     list of eighteen, numbered 1 to 18, said nothing of what each was about."""
@@ -1672,7 +1777,9 @@ class TestAssetStamps:
         for directory, pages in ((MANUAL_DIR, built), (g.GUIDES_DIR, g.build_guides()),
                                  (g.BLOG_DIR, g.build_blog())):
             for path, text in pages.items():
-                assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == 6, path.name
+                # A post loads the picture viewer as well (Section.viewer); its front page does not.
+                files = 7 if directory == g.BLOG_DIR and path.name != "index.html" else 6
+                assert len(re.findall(r'\.(?:css|js)\?v=[0-9a-f]{10}"', text)) == files, path.name
                 assert out_of_date(text, directory) == [], path.name
 
 

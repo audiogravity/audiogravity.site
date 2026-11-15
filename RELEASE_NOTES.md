@@ -14,6 +14,11 @@ end-user license agreement, the third-party notices, these release notes and the
 have their page on audiogravity.app, laid out as the manual is, their parts listed beside them —
 where the landing, the app and the license server opened GitHub's view of a file.
 
+**The blog's pictures, full screen.** A picture in a blog post opens over the page, as large as the
+screen allows, with its caption; the arrows, the keyboard or a swipe go through the post's other
+pictures. The press release's post now shows the nine screenshots of the app, with their captions,
+and they open in the same window.
+
 ---
 
 ## 1.0.1 — 2026-11-08

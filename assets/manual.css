@@ -1084,3 +1084,245 @@ nav.man-pager {
         transition: none
     }
 }
+
+/* ==========================================================================
+   PICTURES OF A POST, FULL SCREEN — assets/image-viewer.js
+   Each picture of a post is a link to its own file (gen_manual_html.link_images()), which the
+   script opens in a window over the page.
+   ========================================================================== */
+
+/* A block as wide as its picture: the focus ring goes round the picture, and a click beside it
+   opens nothing. The picture keeps its place: it stood alone on its line before, as it does in
+   the link. */
+.man-md a.man-zoom {
+    display: block;
+    width: -webkit-fit-content;
+    width: fit-content;
+    max-width: 100%;
+    cursor: zoom-in
+}
+
+.man-md a.man-zoom:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px
+}
+
+/* The window covers the screen, dark in either theme, as a photograph is looked at: its colours
+   are its own, not the theme's, as the landing's now-playing strip keeps its own. */
+.man-viewer {
+    --viewer-fg: #f5f5f5;
+    --viewer-fg2: #bdbdbd;
+    --viewer-btn: rgba(255, 255, 255, .14);
+    --viewer-btn-hover: rgba(255, 255, 255, .26);
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--viewer-fg);
+    overflow: hidden;
+    /* A swipe sideways is the script's; a pinch is the browser's where it can tell the two
+       apart. Safari does not know pinch-zoom and keeps the first line. */
+    touch-action: pan-y;
+    touch-action: pan-y pinch-zoom
+}
+
+/* The window holds the focus when it opens (image-viewer.js); a ring round the whole screen
+   would say nothing. Its buttons keep theirs. */
+.man-viewer:focus {
+    outline: none
+}
+
+/* At .92 the page's text still showed round the caption (Chromium, 2026-11-15). */
+.man-viewer::backdrop {
+    background: rgba(0, 0, 0, .95)
+}
+
+/* The page behind does not scroll while the window is open. */
+html.man-viewer-open {
+    overflow: hidden
+}
+
+/* The picture takes all the room the caption and the buttons leave, at its own proportions,
+   larger or smaller than its file. */
+.man-viewer-figure {
+    position: absolute;
+    inset: max(64px, env(safe-area-inset-top)) max(80px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(80px, env(safe-area-inset-left));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 0
+}
+
+.man-viewer-img {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    object-fit: contain;
+    border: 0;
+    border-radius: 0
+}
+
+.man-viewer-caption {
+    flex: 0 0 auto;
+    max-width: 72ch;
+    max-height: 30vh;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--viewer-fg2);
+    text-align: center
+}
+
+.man-viewer-count {
+    margin-right: 10px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--viewer-fg)
+}
+
+.man-viewer-caption strong,
+.man-viewer-caption a {
+    color: var(--viewer-fg)
+}
+
+.man-viewer-caption a {
+    text-decoration: underline
+}
+
+.man-viewer-btn {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--viewer-btn);
+    color: var(--viewer-fg);
+    cursor: pointer;
+    transition: background var(--ease), opacity var(--ease)
+}
+
+.man-viewer-btn[hidden] {
+    display: none
+}
+
+.man-viewer-btn svg {
+    width: 22px;
+    height: 22px
+}
+
+.man-viewer-btn[aria-disabled="true"] {
+    opacity: .3;
+    cursor: default
+}
+
+.man-viewer-btn:focus-visible {
+    outline: 2px solid var(--viewer-fg);
+    outline-offset: 2px
+}
+
+@media(hover:hover) {
+    .man-viewer-btn:not([aria-disabled="true"]):hover {
+        background: var(--viewer-btn-hover)
+    }
+}
+
+.man-viewer-close {
+    top: max(12px, env(safe-area-inset-top));
+    right: max(16px, env(safe-area-inset-right))
+}
+
+.man-viewer-prev,
+.man-viewer-next {
+    top: 50%;
+    margin-top: -22px
+}
+
+.man-viewer-prev {
+    left: max(16px, env(safe-area-inset-left))
+}
+
+.man-viewer-next {
+    right: max(16px, env(safe-area-inset-right))
+}
+
+/* On a phone the picture takes the width, and the arrows sit over its edges. */
+@media(max-width:600px) {
+    .man-viewer-figure {
+        inset: max(64px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left))
+    }
+
+    .man-viewer-prev {
+        left: max(8px, env(safe-area-inset-left))
+    }
+
+    .man-viewer-next {
+        right: max(8px, env(safe-area-inset-right))
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .man-viewer-btn {
+        transition: none
+    }
+}
+
+/* A set of screenshots — the press release's: thumbnails side by side, each with its caption,
+   each opening its large file in the window. The phone held upright three to a row, held
+   sideways two (is-wide), a lone last one centred; on a phone, two and one. */
+.man-md .man-shots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px 16px;
+    margin: 24px 0 32px
+}
+
+.man-md .man-shots figure {
+    flex: 0 0 calc((100% - 32px) / 3);
+    min-width: 0;
+    margin: 0
+}
+
+.man-md .man-shots.is-wide figure {
+    flex-basis: calc((100% - 16px) / 2)
+}
+
+.man-md .man-shots a.man-zoom {
+    width: auto
+}
+
+/* Each screen is a whole phone, drawn with its own frame on a transparent ground: no border. */
+.man-md .man-shots img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0;
+    border-radius: 0
+}
+
+.man-md .man-shots figcaption {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text3)
+}
+
+@media(max-width:600px) {
+    .man-md .man-shots figure {
+        flex-basis: calc((100% - 16px) / 2)
+    }
+
+    .man-md .man-shots.is-wide figure {
+        flex-basis: 100%
+    }
+}

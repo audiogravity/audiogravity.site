@@ -109,6 +109,9 @@ class Section:
             it, in its own words; the landing's bar links to all three.
         article: The schema.org type its pages are described as to search engines
             (share_head()); empty for a section whose pages carry no such description.
+        viewer: Whether a page's pictures open full screen over it: each is made a link to its
+            own file (link_images()), which assets/image-viewer.js, loaded by the page, opens in
+            a window with the page's other pictures a swipe or an arrow away.
     """
 
     path: str
@@ -122,6 +125,7 @@ class Section:
     next_label: str = "Next"
     family: str = "manual"
     article: str = ""
+    viewer: bool = False
 
     @property
     def folder(self) -> str:
@@ -139,9 +143,11 @@ GUIDES = Section("docs/guides/", "Guides", "Audiogravity", "Guides", False, "All
 #: A post is dated rather than numbered: its place in the list changes with every new one. Its
 #: tab reads "<its title> — Audiogravity", as a guide's does; the front page's, "Blog — Audiogravity".
 #: The list runs newest first, so the page before a post in it is a newer one.
+#: A post's pictures open full screen (Section.viewer), the blog's alone for now.
+#: BACKLOG: the manual's screenshots and the guides' pictures too — see audiogravity.ops/BACKLOG.md.
 BLOG = Section("docs/blog/", "Blog", "Audiogravity", "Blog posts", False, "All posts",
                notice=False, prev_label="Newer post", next_label="Older post",
-               family="articles", article="BlogPosting")
+               family="articles", article="BlogPosting", viewer=True)
 
 #: The site's sections, in the order its top bars link to them.
 SECTIONS = (MANUAL, GUIDES, BLOG)
@@ -823,6 +829,56 @@ def lazy_load_images(rendered: str) -> str:
 
 #: An image tag that already says how it loads.
 IMG_WITH_LOADING = re.compile(r"<img [^>]*\bloading=")
+
+#: A picture file, by its extension: where a link must lead for the viewer to open it.
+PICTURE_FILE = re.compile(r"\.(?:webp|png|jpe?g|gif|avif)$", re.I)
+
+#: What link_images() walks through, in page order: a link's start, a link's end, an image.
+LINK_OR_IMAGE = re.compile(r"<a\b[^>]*>|</a>|<img\b[^>]*>")
+
+#: An address that names its scheme, or starts from another host: a picture from elsewhere.
+ELSEWHERE = re.compile(r"(?:[a-z][a-z0-9+.-]*:|//)", re.I)
+
+
+def link_images(rendered: str) -> str:
+    """Make every picture of a page a link to its own file, which the image viewer opens.
+
+    A picture alone becomes a link to the file it shows, so a reader can open it full size in
+    any browser; assets/image-viewer.js, which the page loads (Section.viewer), takes the click
+    over and opens it in a window over the page instead. A picture already in a link that leads
+    to a picture file — a thumbnail linking to its large file, as the press release's
+    screenshots do — is the viewer's too: that link is marked. A picture in any other link is
+    left in it, and one from another site is left alone.
+
+    Args:
+        rendered: A page's body HTML.
+
+    Returns:
+        The body with each of its pictures in a ``man-zoom`` link.
+    """
+    out: list[str] = []
+    last = 0
+    depth = 0
+    for m in LINK_OR_IMAGE.finditer(rendered):
+        tag = m.group(0)
+        if tag == "</a>":
+            depth = max(0, depth - 1)
+            continue
+        if tag.startswith("<a"):
+            depth += 1
+            href = re.search(r'\shref="([^"]*)"', tag)
+            if (href and PICTURE_FILE.search(href.group(1)) and " class=" not in tag
+                    and re.match(r"\s*<img\b", rendered[m.end():])):
+                out += [rendered[last:m.start()], tag.replace("<a ", '<a class="man-zoom" ', 1)]
+                last = m.end()
+            continue
+        src = re.search(r'\ssrc="([^"]*)"', tag)
+        if depth or not src or ELSEWHERE.match(src.group(1)):
+            continue
+        out += [rendered[last:m.start()], f'<a class="man-zoom" href="{src.group(1)}">{tag}</a>']
+        last = m.end()
+    out.append(rendered[last:])
+    return "".join(out)
 
 
 def wrap_tables(rendered: str) -> str:
@@ -1588,6 +1644,10 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
               if active and section.notice else "")
     # The way back to the list, which a page of it now names at its foot as the phone's menu does.
     to_list = f'<a href="./">{section.menu}</a>' if active else ""
+    # A page's pictures open full screen (link_images()); the front page's are its cards, links
+    # to the pages, and it does without the script.
+    viewer = ('\n    <script src="../../assets/image-viewer.js" defer></script>'
+              if section.viewer and active else "")
     return f"""<!doctype html>
 <html lang="en">
 
@@ -1613,7 +1673,7 @@ def page(title: str, body: str, toc: list[tuple[str, str]], active: str, canonic
     <script src="../../assets/manual-copy.js" defer></script>
     <script src="../../assets/manual-outline.js" defer></script>
     <script src="../../assets/to-top.js" defer></script>
-    <script src="../../assets/theme-toggle.js" defer></script>
+    <script src="../../assets/theme-toggle.js" defer></script>{viewer}
 </head>
 
 <body class="man-body">
@@ -1787,8 +1847,10 @@ def build_listed(section: Section, folder: Path, entries: list[tuple[str, str, s
         src = folder / f"{pid}.md"
         if not src.exists():
             sys.exit(f"{src} is listed in {folder / 'README.md'} but does not exist")
-        body = bodies[pid] = lift_checked(box_short_answer(
-            render_body(md, src.read_text(encoding="utf-8"), known)))
+        body = lift_checked(box_short_answer(render_body(md, src.read_text(encoding="utf-8"), known)))
+        if section.viewer:
+            body = link_images(body)
+        bodies[pid] = body
         minutes[pid] = reading_minutes(body)
         description = plain_text(summary)
         head = ""

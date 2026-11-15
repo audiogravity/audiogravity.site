@@ -215,3 +215,31 @@ def test_the_footer_offers_the_press_release_in_english_and_french(name, lang):
     assert f'hreflang="{lang}"' in link.group(0), name
     assert link.group(1).strip() == lang.upper(), f"{name} is not named {lang.upper()}"
     assert (ROOT / "press" / name).is_file(), f"press/{name} is not on the site"
+
+
+#: The hero's press line, from its <figure> to its end.
+HERO_PRESS = re.search(r'<figure class="hero-press">.*?</figure>', PAGES["index.html"], re.S)
+SEMPRE = "https://www.sempre-audio.at/audiogravity-1-0-raspberry-pi-mini-pc-hifi-streamer/"
+
+
+def test_the_hero_quotes_its_press_and_says_where_from():
+    """The first press of 1.0 (sempre-audio.at, 2026-11-10) is quoted under the hero's figures.
+
+    The quotation is a translation, so the line says so and its link says the article's
+    language; the source is named and links the article itself.
+    """
+    assert HERO_PRESS, "no press line in the hero"
+    figure = HERO_PRESS.group(0)
+    assert f'<blockquote cite="{SEMPRE}">' in figure, "the quotation does not cite the article"
+    link = re.search(rf'<a href="{re.escape(SEMPRE)}"\s+hreflang="de">sempre-audio\.at</a>', figure)
+    assert link, "the source is not named, or does not link the article in German"
+    assert "translated from German" in figure, "the line no longer says it is a translation"
+
+
+def test_the_hero_never_calls_its_press_a_review():
+    """sempre-audio.at ran the press release and added its opinion; nobody there listened to
+    Audiogravity. "Review", "tested" or "rated" would claim what the article does not do."""
+    assert HERO_PRESS, "no press line in the hero"
+    text = re.sub(r"<[^>]+>", " ", HERO_PRESS.group(0)).lower()
+    for word in ("review", "tested", "rated", "award"):
+        assert word not in text, f"the press line says {word!r}"

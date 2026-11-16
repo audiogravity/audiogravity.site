@@ -1,14 +1,14 @@
 # Audiogravi<sup>ty</sup> — Test Report
 
-Generated: **2026-11-08 17:32 UTC**
+Generated: **2026-11-16 08:08 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **core** PASS | 7129 | 7129 | 0 | 0 | 196.1s |
-| **ui** PASS | 4400 | 4400 | 0 | 0 | 37.1s |
-| **Total** PASS | **11529** | **11529** | **0** | **0** | **233.3s** |
+| **core** PASS | 7603 | 7603 | 0 | 0 | 208.6s |
+| **ui** PASS | 4765 | 4765 | 0 | 0 | 47.1s |
+| **Total** PASS | **12368** | **12368** | **0** | **0** | **255.7s** |
 
 ## Detail
 
@@ -59,6 +59,13 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_entry_without_title_is_dropped
   - [+] test_album_filter_case_insensitive
   - [+] test_empty_input
+  - [+] test_an_album_queued_three_times_lists_each_track_once
+  - [+] test_two_editions_of_an_album_list_each_track_once
+  - [+] test_an_album_on_two_discs_reads_disc_by_disc
+  - [+] test_two_editions_tagged_apart_list_each_track_once
+  - [+] test_a_track_with_no_disc_is_on_the_first
+  - [+] test_tracks_without_a_number_are_told_apart_by_their_file
+  - [+] test_a_number_that_is_none_keeps_the_list
 
 **tests.test_album_tracks.TestGetAlbumTracks**
 
@@ -370,23 +377,23 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_all_three_routes_are_gone_when_off[/openapi.json] (0.01s)
   - [+] test_all_three_routes_answer_when_on[/docs] (0.01s)
   - [+] test_all_three_routes_answer_when_on[/redoc] (0.01s)
-  - [+] test_all_three_routes_answer_when_on[/openapi.json] (0.03s)
-  - [+] test_schema_describes_the_api_when_on (0.18s)
+  - [+] test_all_three_routes_answer_when_on[/openapi.json] (0.01s)
+  - [+] test_schema_describes_the_api_when_on (0.01s)
   - [+] test_entry_point_does_not_advertise_what_it_does_not_serve (0.01s)
   - [+] test_entry_point_advertises_the_reference_when_on (0.01s)
 
 **tests.test_app**
 
   - [+] test_coreapp_uses_default_json_response_class
-  - [+] test_responses_serialize_to_json (0.01s)
-  - [+] test_tab_stats_has_no_connected_users_counter (0.15s)
+  - [+] test_responses_serialize_to_json
+  - [+] test_tab_stats_has_no_connected_users_counter (0.09s)
 
 **tests.test_apply_audio_config.TestAFileTheCoreWouldLoad**
 
   - [+] test_it_is_applied_by_restarting_the_core (0.03s)
   - [+] test_the_core_checks_the_bytes_of_the_file_with_its_api_key (0.03s)
   - [+] test_its_warnings_are_shown_and_do_not_stop_it (0.03s)
-  - [+] test_check_only_never_restarts (0.03s)
+  - [+] test_check_only_never_restarts (0.02s)
   - [+] test_by_default_it_manages_the_file_the_installer_delivers (0.02s)
 
 **tests.test_apply_audio_config.TestACopy**
@@ -394,18 +401,18 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_it_is_checked_then_put_in_place (0.03s)
   - [+] test_the_live_file_keeps_its_mode (0.03s)
   - [+] test_checking_it_leaves_the_live_file_alone (0.02s)
-  - [+] test_a_refused_copy_leaves_the_live_file_alone (0.02s)
+  - [+] test_a_refused_copy_leaves_the_live_file_alone (0.03s)
   - [+] test_a_live_file_that_is_a_symlink_is_not_replaced (0.02s)
   - [+] test_a_live_file_that_is_missing_is_created (0.03s)
   - [+] test_it_keeps_the_owner_of_the_live_file (0.03s)
-  - [+] test_a_write_that_fails_leaves_the_live_file_as_it_was (0.03s)
+  - [+] test_a_write_that_fails_leaves_the_live_file_as_it_was (0.02s)
   - [+] test_a_copy_the_core_does_not_start_on_is_taken_back (0.03s)
-  - [+] test_a_copy_after_which_the_core_does_not_come_back_is_taken_back (0.04s)
+  - [+] test_a_copy_after_which_the_core_does_not_come_back_is_taken_back (0.05s)
 
 **tests.test_apply_audio_config.TestAFileTheCoreWouldRefuse**
 
   - [+] test_it_is_refused_entry_by_entry_and_nothing_restarts (0.02s)
-  - [+] test_a_file_that_is_not_json_gets_the_cores_reason (0.03s)
+  - [+] test_a_file_that_is_not_json_gets_the_cores_reason (0.02s)
   - [+] test_an_answer_that_is_not_a_verdict_says_so (0.02s)
 
 **tests.test_apply_audio_config.TestWhatItReadsAsRoot**
@@ -429,9 +436,9 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_it_needs_root (0.02s)
   - [+] test_a_wrong_command_line_is_refused (0.02s)
-  - [+] test_a_copy_named_with_a_dash_goes_after_a_double_dash (0.03s)
+  - [+] test_a_copy_named_with_a_dash_goes_after_a_double_dash (0.02s)
   - [+] test_the_root_hint_can_be_pasted (0.02s)
-  - [+] test_a_copy_that_is_not_there_is_said (0.02s)
+  - [+] test_a_copy_that_is_not_there_is_said (0.03s)
   - [+] test_help_says_what_it_does (0.02s)
 
 **tests.test_apply_audio_config**
@@ -445,7 +452,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_audio_app_config.TestPackageEventReload**
 
-  - [+] test_reload_on_package_events[package_state-True] (0.71s)
+  - [+] test_reload_on_package_events[package_state-True] (0.70s)
   - [+] test_reload_on_package_events[packages_updated-True] (0.70s)
   - [+] test_reload_on_package_events[some_other_event-False] (0.71s)
 
@@ -458,12 +465,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_audio_app_config.TestRestartServiceDedup**
 
-  - [+] test_restart_service_returns_success (0.01s)
+  - [+] test_restart_service_returns_success
   - [+] test_restart_service_returns_failed_on_error
 
 **tests.test_audio_app_config.TestRunCommandTimeout**
 
-  - [+] test_timeout_kills_hanging_process (1.01s)
+  - [+] test_timeout_kills_hanging_process (1.00s)
   - [+] test_successful_command_returns_output
 
 **tests.test_audio_app_config.TestListBackupsTotalCount**
@@ -511,7 +518,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_config_editing_works_without_a_licence (0.02s)
   - [+] test_guided_provisioning_works_without_a_licence_too (0.03s)
-  - [+] test_guided_provisioning_stays_admin_only (0.03s)
+  - [+] test_guided_provisioning_stays_admin_only (0.02s)
 
 **tests.test_audio_app_config.TestConfigTileInstallState**
 
@@ -526,7 +533,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_pipeline_refresh_builds_no_services_list
   - [+] test_a_card_named_by_its_id_is_given_its_number_as_it_stands
-  - [+] test_opting_out_skips_the_lookup_entirely
+  - [+] test_opting_out_skips_the_lookup_entirely (0.01s)
   - [+] test_the_default_still_answers_the_config_tab
 
 **tests.test_audio_app_config.TestConfigFileExists**
@@ -550,11 +557,11 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_the_block_on_the_target_s_card[hw:CARD=Abacus,DEV=0-usb]
   - [+] test_the_block_on_the_target_s_card[hw:CARD=HDMI,DEV=3-hdmi]
-  - [+] test_the_block_on_the_target_s_card[hw:CARD=HDMI,DEV=7-hdmi:2.7] (0.01s)
-  - [+] test_the_block_on_the_target_s_card[hw:2,7-hdmi:2.7] (0.01s)
+  - [+] test_the_block_on_the_target_s_card[hw:CARD=HDMI,DEV=7-hdmi:2.7]
+  - [+] test_the_block_on_the_target_s_card[hw:2,7-hdmi:2.7]
   - [+] test_the_block_on_the_target_s_card[hw:CARD=PCH,DEV=1-None]
   - [+] test_the_block_on_the_target_s_card[hw:CARD=Gone,DEV=0-None]
-  - [+] test_no_mpd_configuration_no_block
+  - [+] test_no_mpd_configuration_no_block (0.01s)
 
 **tests.test_audio_app_config.TestTheConfigurationsReadEveryCycle**
 
@@ -563,6 +570,44 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_changed_file_is_read_again
   - [+] test_mpd_s_global_format_for_the_level_meter
   - [+] test_a_file_that_cannot_be_read_says_no
+
+**tests.test_audio_config_services.TestTheServices**
+
+  - [+] test_the_declared_services
+  - [+] test_nothing_from_a_file_never_read
+  - [+] test_a_change_is_read
+  - [+] test_a_replacement_of_the_same_size_is_read
+  - [+] test_a_file_saved_with_a_mistake_keeps_the_last_good_read
+  - [+] test_a_file_gone_keeps_the_last_good_read
+  - [+] test_parsed_as_the_core_parses_the_file_everywhere
+  - [+] test_each_file_on_its_own
+  - [+] test_two_spellings_of_one_file_are_one_read
+  - [+] test_one_reader_at_a_time (0.30s)
+  - [+] test_the_reads_kept_are_bounded
+
+**tests.test_audio_config_services.TestTheUnit**
+
+  - [+] test_the_unit_declared[shairport-sync.service-shairport-sync.service]
+  - [+] test_the_unit_declared[mpd-mpd.service]
+  - [+] test_the_unit_declared[upmpdcli.socket-upmpdcli.socket]
+  - [+] test_none_for_a_key_that_declares_none[entry0]
+  - [+] test_none_for_a_key_that_declares_none[entry1]
+  - [+] test_none_for_a_key_that_declares_none[entry2]
+  - [+] test_none_for_a_key_the_file_does_not_hold
+
+**tests.test_audio_config_services.TestEveryModuleFindsTheSameUnit**
+
+  - [+] test_for_every_key_of_the_delivered_file
+  - [+] test_roon_bridge_is_roonbridge_everywhere
+  - [+] test_a_unit_edited_since_start_up_is_the_one_profiles_act_on
+  - [+] test_the_profiles_fall_back_on_their_copy_when_the_file_cannot_be_read
+  - [+] test_a_key_the_file_no_longer_declares_has_no_unit_for_the_profiles
+  - [+] test_the_profile_status_names_the_unit_its_state_was_read_on
+  - [+] test_the_services_module_lists_its_units_by_the_rule
+  - [+] test_the_audio_configuration_loads_nothing_from_no_file
+  - [+] test_the_audio_configuration_keeps_the_last_good_read_of_a_file_gone
+  - [+] test_the_test_double_follows_the_rule_on_the_delivered_file
+  - [+] test_the_audio_configuration_guesses_only_for_a_key_declaring_no_unit
 
 **tests.test_audio_hw.TestAudioDeviceListModel**
 
@@ -607,7 +652,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_devices_response_shape (0.01s)
   - [+] test_devices_returns_empty_when_no_proc
   - [+] test_force_refresh_param_accepted
-  - [+] test_mock_route_via_conftest_fixture (0.01s)
+  - [+] test_mock_route_via_conftest_fixture
 
 **tests.test_audio_hw.TestClassifyOutputType**
 
@@ -664,6 +709,13 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_build_mount_unit_ext4
   - [+] test_build_mount_unit_exfat_world_readable_no_uid_pinning
   - [+] test_build_automount_unit
+  - [+] test_top_mount_is_the_last_entry_at_the_point
+  - [+] test_a_table_that_cannot_be_read_is_never_nothing_mounted
+  - [+] test_another_drive_is_unmounted
+  - [+] test_the_drive_wanted_and_an_empty_point_are_left_alone[mounted0]
+  - [+] test_the_drive_wanted_and_an_empty_point_are_left_alone[mounted1]
+  - [+] test_another_drive_held_stays
+  - [+] test_the_table_is_believed_not_the_stop_s_answer
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
@@ -732,7 +784,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_audio_pipeline.TestTopologySaveValidation**
 
   - [+] test_non_dict_topology_returns_400 (0.02s)
-  - [+] test_valid_dict_topology_is_accepted (0.03s)
+  - [+] test_valid_dict_topology_is_accepted (0.02s)
 
 **tests.test_audio_pipeline.TestTopologyCycleDetection**
 
@@ -965,25 +1017,25 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_provision_missing_password_returns_401 (0.03s)
   - [+] test_provision_regenerate_missing_password_returns_401 (0.03s)
   - [+] test_provision_passes_library_usb_fields (0.03s)
-  - [+] test_provision_value_error_returns_400 (0.03s)
-  - [+] test_provision_missing_card_name_returns_422 (0.03s)
-  - [+] test_patch_output_200_no_password_required (0.03s)
+  - [+] test_provision_value_error_returns_400 (0.02s)
+  - [+] test_provision_missing_card_name_returns_422 (0.02s)
+  - [+] test_patch_output_200_no_password_required (0.02s)
   - [+] test_patch_output_missing_card_name_returns_422 (0.02s)
-  - [+] test_patch_output_value_error_returns_400 (0.03s)
-  - [+] test_patch_library_200_no_password_required (0.03s)
+  - [+] test_patch_output_value_error_returns_400 (0.02s)
+  - [+] test_patch_library_200_no_password_required (0.02s)
 
 **tests.test_audio_stack_router.TestTheDopSwitch**
 
   - [+] test_200_no_password_required (0.03s)
   - [+] test_the_value_is_required (0.03s)
   - [+] test_a_refusal_is_a_400_with_its_reason (0.02s)
-  - [+] test_a_reset_carries_it (0.03s)
+  - [+] test_a_reset_carries_it (0.02s)
   - [+] test_a_reset_that_says_nothing_leaves_it_off (0.03s)
 
 **tests.test_audio_stack_router.TestTheDsdFullVolumeSwitch**
 
-  - [+] test_200_no_password_required (0.03s)
-  - [+] test_the_value_is_required (0.04s)
+  - [+] test_200_no_password_required (0.02s)
+  - [+] test_the_value_is_required (0.02s)
   - [+] test_a_refusal_is_a_400_with_its_reason (0.02s)
 
 **tests.test_auth.TestGetApiKeyNotifyExemption**
@@ -995,14 +1047,14 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.40s)
-  - [+] test_login_wrong_password (0.39s)
+  - [+] test_login_valid (0.39s)
+  - [+] test_login_wrong_password (0.38s)
   - [+] test_login_unknown_user (0.39s)
 
 **tests.test_auth.TestUsersCRUD**
 
   - [+] test_list_users (0.02s)
-  - [+] test_create_and_delete_user (0.39s)
+  - [+] test_create_and_delete_user (0.40s)
   - [+] test_update_user_role (0.40s)
   - [+] test_cannot_delete_self (0.02s)
 
@@ -1010,24 +1062,24 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_user_model_has_protected_field
   - [+] test_create_user_accepts_protected_flag (0.37s)
-  - [+] test_unprotected_user_has_protected_false_by_default (0.36s)
+  - [+] test_unprotected_user_has_protected_false_by_default (0.37s)
   - [+] test_delete_guard_rejects_protected (0.37s)
   - [+] test_update_disable_guard_rejects_protected (0.37s)
   - [+] test_cannot_delete_self (0.02s)
-  - [+] test_unprotected_account_can_be_deleted (0.39s)
-  - [+] test_unprotected_account_can_be_disabled (0.40s)
+  - [+] test_unprotected_account_can_be_deleted (0.40s)
+  - [+] test_unprotected_account_can_be_disabled (0.39s)
 
 **tests.test_auth.TestChangesThatWouldLockAnAdminOut**
 
-  - [+] test_own_account_cannot_be_disabled (0.59s)
+  - [+] test_own_account_cannot_be_disabled (0.38s)
   - [+] test_own_role_cannot_change (0.39s)
   - [+] test_own_role_sent_unchanged_is_accepted (0.39s)
-  - [+] test_protected_account_keeps_its_role (0.39s)
+  - [+] test_protected_account_keeps_its_role (0.53s)
   - [+] test_another_admin_can_still_be_demoted_and_disabled (0.76s)
 
 **tests.test_auth.TestCreateUserReturns201**
 
-  - [+] test_create_user_returns_201 (0.38s)
+  - [+] test_create_user_returns_201 (0.39s)
 
 **tests.test_auth.TestUpdateUserEmptyPassword**
 
@@ -1045,11 +1097,11 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_auth.TestCreateUserWhitespacePassword**
 
   - [+] test_whitespace_only_password_rejected_on_create (0.02s)
-  - [+] test_normal_password_accepted_on_create (0.39s)
+  - [+] test_normal_password_accepted_on_create (0.40s)
 
 **tests.test_auth.TestDisabledUserTimingOracle**
 
-  - [+] test_disabled_user_returns_401 (0.77s)
+  - [+] test_disabled_user_returns_401 (0.75s)
 
 **tests.test_auth.TestWebAuthnChallengeIsolation**
 
@@ -1058,7 +1110,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_auth.TestUpdateUserReturnsUpdatedState**
 
-  - [+] test_update_returns_new_role (0.39s)
+  - [+] test_update_returns_new_role (0.41s)
 
 **tests.test_auth.TestVerifyAdminPassword**
 
@@ -1073,7 +1125,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_auth.TestUsersFilePermissions**
 
-  - [+] test_users_json_is_0600 (0.37s)
+  - [+] test_users_json_is_0600 (0.36s)
 
 **tests.test_auth.TestApiKeyNonAscii**
 
@@ -1108,7 +1160,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_broadcast.TestPublicConfigCache**
 
-  - [+] test_refresh_caches_commercial_config
+  - [+] test_refresh_caches_commercial_config (0.01s)
   - [+] test_failed_fetch_keeps_last_known
 
 **tests.test_broadcast.TestPublicConfigProxy**
@@ -1134,7 +1186,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_a_queued_track_is_given_the_codec_of_what_is_served[qobuz] (0.01s)
   - [+] test_a_queued_track_is_given_the_codec_of_what_is_served[hra] (0.01s)
-  - [+] test_a_track_nobody_queued_gets_no_entry[qobuz] (0.02s)
+  - [+] test_a_track_nobody_queued_gets_no_entry[qobuz] (0.01s)
   - [+] test_a_track_nobody_queued_gets_no_entry[hra] (0.01s)
 
 **tests.test_cdn_stream_endpoint.TestWhatAnUnauthenticatedCallerCanDo**
@@ -1145,27 +1197,27 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_an_empty_id_never_reaches_the_service[qobuz] (0.01s)
   - [+] test_an_empty_id_never_reaches_the_service[hra] (0.01s)
   - [+] test_a_multi_segment_path_is_not_a_track_either[qobuz] (0.01s)
-  - [+] test_a_multi_segment_path_is_not_a_track_either[hra] (0.01s)
+  - [+] test_a_multi_segment_path_is_not_a_track_either[hra] (0.02s)
 
 **tests.test_cdn_stream_endpoint.TestTheRendererPath**
 
-  - [+] test_a_full_request_returns_200_and_the_body[qobuz] (0.02s)
+  - [+] test_a_full_request_returns_200_and_the_body[qobuz] (0.01s)
   - [+] test_a_full_request_returns_200_and_the_body[hra] (0.01s)
   - [+] test_a_range_request_is_forwarded_and_its_headers_relayed[qobuz] (0.01s)
-  - [+] test_a_range_request_is_forwarded_and_its_headers_relayed[hra] (0.01s)
-  - [+] test_the_signed_url_is_sent_byte_for_byte[qobuz] (0.01s)
+  - [+] test_a_range_request_is_forwarded_and_its_headers_relayed[hra] (0.02s)
+  - [+] test_the_signed_url_is_sent_byte_for_byte[qobuz] (0.02s)
   - [+] test_the_signed_url_is_sent_byte_for_byte[hra] (0.01s)
 
 **tests.test_cdn_stream_endpoint.TestTheFormatOfWhatARendererIsRelayed**
 
-  - [+] test_a_relay_from_the_start_registers_the_format_its_head_names[qobuz] (0.02s)
-  - [+] test_a_relay_from_the_start_registers_the_format_its_head_names[hra] (0.02s)
+  - [+] test_a_relay_from_the_start_registers_the_format_its_head_names[qobuz] (0.01s)
+  - [+] test_a_relay_from_the_start_registers_the_format_its_head_names[hra] (0.01s)
   - [+] test_a_relay_asked_from_byte_zero_counts_as_the_start[qobuz] (0.01s)
   - [+] test_a_relay_asked_from_byte_zero_counts_as_the_start[hra] (0.01s)
-  - [+] test_a_seek_reads_no_head[qobuz] (0.02s)
-  - [+] test_a_seek_reads_no_head[hra] (0.01s)
-  - [+] test_bytes_naming_no_format_are_relayed_all_the_same[qobuz] (0.02s)
-  - [+] test_bytes_naming_no_format_are_relayed_all_the_same[hra] (0.02s)
+  - [+] test_a_seek_reads_no_head[qobuz] (0.01s)
+  - [+] test_a_seek_reads_no_head[hra] (0.03s)
+  - [+] test_bytes_naming_no_format_are_relayed_all_the_same[qobuz] (0.01s)
+  - [+] test_bytes_naming_no_format_are_relayed_all_the_same[hra] (0.01s)
 
 **tests.test_cdn_stream_endpoint.TestWhatFailureLooksLike**
 
@@ -1175,8 +1227,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_reason_a_resolver_failed_goes_to_the_journal_not_to_the_caller[hra] (0.01s)
   - [+] test_a_refusing_cdn_keeps_its_own_status[qobuz] (0.01s)
   - [+] test_a_refusing_cdn_keeps_its_own_status[hra] (0.01s)
-  - [+] test_a_refusing_cdn_is_written_down[qobuz] (0.03s)
-  - [+] test_a_refusing_cdn_is_written_down[hra] (0.02s)
+  - [+] test_a_refusing_cdn_is_written_down[qobuz] (0.01s)
+  - [+] test_a_refusing_cdn_is_written_down[hra] (0.01s)
   - [+] test_an_unreachable_cdn_answers_503[qobuz] (0.01s)
   - [+] test_an_unreachable_cdn_answers_503[hra] (0.01s)
   - [+] test_the_failure_log_names_the_track[qobuz] (0.01s)
@@ -1275,12 +1327,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_config_validation.TestTheRouteReadsTheBodyAsTheCoreReadsTheFile**
 
-  - [+] test_what_the_loader_cannot_read_is_refused[{"services": {}, "profiles": {}, "_comment": NaN}] (0.01s)
+  - [+] test_what_the_loader_cannot_read_is_refused[{"services": {}, "profiles": {}, "_comment": NaN}]
   - [+] test_what_the_loader_cannot_read_is_refused[{"services": {}, "profiles": {}, "_comment": Infinity}] (0.01s)
-  - [+] test_what_the_loader_cannot_read_is_refused[{"services": {}, "profiles": {}, "_comment": "\ud800"}] (0.01s)
+  - [+] test_what_the_loader_cannot_read_is_refused[{"services": {}, "profiles": {}, "_comment": "\ud800"}]
   - [+] test_what_the_loader_cannot_read_is_refused[{"services": {,}] (0.01s)
   - [+] test_a_document_that_is_not_an_object_is_refused (0.01s)
-  - [+] test_the_shipped_file_passes_as_its_bytes (0.02s)
+  - [+] test_the_shipped_file_passes_as_its_bytes (0.01s)
 
 **tests.test_config_validation.TestCriticalConsistencyWarnings**
 
@@ -1339,7 +1391,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_core.TestTTLCache**
 
   - [+] test_valid_within_ttl
-  - [+] test_expired_after_ttl (0.06s)
+  - [+] test_expired_after_ttl (0.05s)
   - [+] test_get_stale_returns_after_expiry (0.05s)
   - [+] test_invalidate_clears_value
 
@@ -1417,14 +1469,14 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_cover_under_the_limit_comes_in_one_request[readpicture]
   - [+] test_a_larger_cover_comes_in_pieces_of_the_limit (0.01s)
   - [+] test_an_mpd_that_refuses_the_limit_still_gives_the_whole_picture (0.02s)
-  - [+] test_every_request_is_acknowledged_at_once (0.01s)
+  - [+] test_every_request_is_acknowledged_at_once (0.03s)
 
 **tests.test_cover_art.TestAlbumCacheNeverBlocksADirectSource**
 
-  - [+] test_a_negative_album_entry_does_not_stop_the_url_being_fetched
+  - [+] test_a_negative_album_entry_does_not_stop_the_url_being_fetched (0.01s)
   - [+] test_a_success_repairs_the_album_entry_for_the_other_tracks
   - [+] test_a_positive_album_entry_still_answers_without_fetching
-  - [+] test_a_negative_album_entry_still_spares_the_slow_lookups
+  - [+] test_a_negative_album_entry_still_spares_the_slow_lookups (0.01s)
   - [+] test_a_token_carrying_no_artist_and_album_is_untouched
   - [+] test_a_known_miss_is_not_re_stamped_by_another_failing_track
 
@@ -1461,7 +1513,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_cpu_throttle.TestOnlyTheTickLooks**
 
-  - [+] test_the_tick_gets_the_flags (0.04s)
+  - [+] test_the_tick_gets_the_flags (0.05s)
   - [+] test_a_plain_request_does_not_look (0.04s)
 
 **tests.test_cpu_throttle.TestRaspberryPiSupplyAlarm**
@@ -1512,7 +1564,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_restart_and_reload_go_to_the_manager
   - [+] test_a_refused_restart_is_false_for_the_fallback
-  - [+] test_the_real_manager_offers_them_under_these_names (0.03s)
+  - [+] test_the_real_manager_offers_them_under_these_names (0.01s)
   - [+] test_the_boot_state_is_read_from_the_bus (0.01s)
 
 **tests.test_dbus_client.TestOnePropertyOfOneUnit**
@@ -1535,7 +1587,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_one_unit_is_a_list_of_one
   - [+] test_a_main_pid_is_read_from_the_service
   - [+] test_the_real_bus_lists_a_running_unit_and_not_an_unknown_one (0.01s)
-  - [+] test_on_the_real_bus_only_the_interfaces_asked_are_read (0.03s)
+  - [+] test_on_the_real_bus_only_the_interfaces_asked_are_read (0.02s)
   - [+] test_on_the_real_bus_systemd_loads_nothing_to_answer (0.33s)
 
 **tests.test_dbus_client.TestTheUnitFiles**
@@ -1545,7 +1597,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_all_in_one_call
   - [+] test_nothing_asked_nothing_called
   - [+] test_a_bus_that_cannot_answer_gives_none
-  - [+] test_the_real_bus_lists_an_installed_unit_and_not_an_unknown_one (0.02s)
+  - [+] test_the_real_bus_lists_an_installed_unit_and_not_an_unknown_one (0.01s)
 
 **tests.test_dbus_client.TestStatesWithTheirResult**
 
@@ -1639,7 +1691,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_dpkg_is_read_in_the_c_locale
   - [+] test_an_answer_with_no_readable_candidate_is_no_verdict
   - [+] test_an_empty_answer_still_means_apt_knows_none_of_them
-  - [+] test_the_real_apt_cache_names_a_candidate (2.83s)
+  - [+] test_the_real_apt_cache_names_a_candidate (2.73s)
 
 **tests.test_deb_depends.TestWhatIsInstalledIsNotAskedOfApt**
 
@@ -1681,7 +1733,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_it_reads_a_small_package_whole
   - [+] test_it_reads_only_the_window_of_a_large_one (0.57s)
-  - [+] test_the_window_is_enough_for_a_real_control_member (1.21s)
+  - [+] test_the_window_is_enough_for_a_real_control_member (1.22s)
   - [+] test_a_missing_file_raises
 
 **tests.test_deb_file.TestHostileHeaders**
@@ -1757,7 +1809,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_dpkg_state.TestLockHolders**
 
-  - [+] test_a_real_lock_is_seen_without_root (0.02s)
+  - [+] test_a_real_lock_is_seen_without_root (0.03s)
   - [+] test_either_lock_counts
   - [+] test_a_process_waiting_for_the_lock_does_not_hold_it
   - [+] test_a_lock_on_another_file_is_not_dpkgs
@@ -1858,16 +1910,16 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_dsd_volume.TestDsdDetection**
 
-  - [+] test_dsd_format_starts_a_session (0.01s)
+  - [+] test_dsd_format_starts_a_session
   - [+] test_pcm_does_not_start_a_session
   - [+] test_hqplayer_item_excluded_from_dsd_detection
-  - [+] test_the_card_is_looked_for_among_its_players_holders (0.01s)
+  - [+] test_the_card_is_looked_for_among_its_players_holders
 
 **tests.test_dsd_volume.TestADsdOnANetworkRenderer**
 
   - [+] test_it_holds_no_card_of_the_box
   - [+] test_its_item_does_not_stand_for_dsd_on_the_box
-  - [+] test_a_dsd_moving_to_the_speaker_gives_the_dac_back (0.01s)
+  - [+] test_a_dsd_moving_to_the_speaker_gives_the_dac_back
   - [+] test_a_dsd_on_the_box_is_held_as_before[local]
   - [+] test_a_dsd_on_the_box_is_held_as_before[None] (0.01s)
 
@@ -1888,7 +1940,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_known_conversion_leaves_the_dac_alone_at_start
   - [+] test_conversion_known_later_gives_the_volume_back
   - [+] test_dsd_reaching_the_dac_as_dsd_stays_held
-  - [+] test_a_dac_seen_converting_at_that_rate_is_not_brought_to_full (0.01s)
+  - [+] test_a_dac_seen_converting_at_that_rate_is_not_brought_to_full
   - [+] test_held_at_once_when_it_turns_out_not_converted
   - [+] test_remembered_for_its_player_only
   - [+] test_remembered_for_that_rate_only
@@ -1899,7 +1951,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_dsd_volume.TestTicksWhileDsdPlays**
 
   - [+] test_a_heard_card_is_not_read_at_each_tick
-  - [+] test_without_a_monitor_each_tick_reads_the_volume
+  - [+] test_without_a_monitor_each_tick_reads_the_volume (0.01s)
   - [+] test_a_dac_left_alone_is_not_read_at_each_tick
   - [+] test_a_card_not_playing_yet_is_looked_for_again
   - [+] test_the_dac_setting_applies_at_once
@@ -1948,14 +2000,14 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_dsd_volume.TestExceptionHandler**
 
-  - [+] test_hqplayer_guard_catches_any_exception (0.01s)
+  - [+] test_hqplayer_guard_catches_any_exception
 
 **tests.test_edition_guards**
 
   - [+] test_every_router_module_is_classified
   - [+] test_a_pro_module_is_guarded_as_a_whole (0.01s)
-  - [+] test_every_mixed_route_says_which_edition (0.07s)
-  - [+] test_starter_routes_are_not_stale (0.06s)
+  - [+] test_every_mixed_route_says_which_edition (0.06s)
+  - [+] test_starter_routes_are_not_stale (0.07s)
   - [+] test_scan_sees_every_kind_of_edition_guard[router = APIRouter()\n@router.get("/x")\nasync def x(): ...-expected0]
   - [+] test_scan_sees_every_kind_of_edition_guard[router = APIRouter()\n@router.get("/x", dependencies=[Depends(require_full_license)])\nasync def x(): ...-expected1]
   - [+] test_scan_sees_every_kind_of_edition_guard[def a():\n    router = APIRouter(dependencies=[Depends(require_full_license)])\n    @router.get("/x")\n    async def x(): ...\ndef b():\n    router = APIRouter()\n    @router.get("/y")\n    async def y(): ...-expected2]
@@ -2030,57 +2082,58 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_pro_source_is_refused_without_pro[tampered-src_roon-True]
   - [+] test_a_pro_source_is_refused_without_pro[lifetime-src_qobuz-False]
   - [+] test_a_pro_source_is_refused_without_pro[trial-src_hqplayer-False]
-  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/qobuz-shelves-None] (0.25s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/tidal-shelves-None] (0.47s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/highresaudio-categories-None] (0.24s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/qobuz-shelves-None] (0.48s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/qobuz-playlist-tags-None] (0.24s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/tidal-shelves-None] (0.25s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/highresaudio-categories-None] (0.25s)
   - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/roon-zones-None] (0.24s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/upnp-known-servers-None] (0.26s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/albums?source_id=src_tidal-None] (0.24s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/search?source_id=src_qobuz&q=miles-None] (0.25s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/upnp-known-servers-None] (0.24s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/albums?source_id=src_tidal-None] (0.25s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/search?source_id=src_qobuz&q=miles-None] (0.24s)
   - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/library/queue?source_id=src_mono-sgen-None] (0.24s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[POST-/library/queue-body8] (0.24s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[POST-/player/control-body9] (0.24s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[POST-/player/source-body10] (0.62s)
-  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/hqplayer/status-None] (0.25s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[POST-/library/queue-body9] (0.68s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[POST-/player/control-body10] (0.25s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[POST-/player/source-body11] (0.25s)
+  - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/hqplayer/status-None] (0.24s)
   - [+] test_a_starter_box_is_refused_the_pro_routes[GET-/services/mpd/properties-None] (0.24s)
   - [+] test_an_id_without_its_prefix_is_refused_as_well[POST-/player/control-body0] (0.24s)
-  - [+] test_an_id_without_its_prefix_is_refused_as_well[POST-/player/source-body1] (0.24s)
+  - [+] test_an_id_without_its_prefix_is_refused_as_well[POST-/player/source-body1] (0.25s)
   - [+] test_an_id_without_its_prefix_is_refused_as_well[POST-/library/queue-body2] (0.24s)
-  - [+] test_an_id_without_its_prefix_is_refused_as_well[GET-/library/albums?source_id=qobuz-None] (0.25s)
-  - [+] test_a_starter_box_plays_the_music_on_the_box (0.24s)
+  - [+] test_an_id_without_its_prefix_is_refused_as_well[GET-/library/albums?source_id=qobuz-None] (0.24s)
+  - [+] test_a_starter_box_plays_the_music_on_the_box (0.69s)
   - [+] test_a_command_to_no_target_is_checked_against_the_active_source (0.24s)
-  - [+] test_a_box_with_pro_is_refused_nothing (0.64s)
+  - [+] test_a_box_with_pro_is_refused_nothing (0.26s)
   - [+] test_the_box_s_own_queue_takes_no_streaming_track_for_a_file[http://127.0.0.1:8000/qobuz/stream/12345-True] (0.24s)
-  - [+] test_the_box_s_own_queue_takes_no_streaming_track_for_a_file[https://streaming-qobuz-std.akamaized.net/file?uid=1&eid=55555&fmt=27-True] (0.25s)
-  - [+] test_the_box_s_own_queue_takes_no_streaming_track_for_a_file[Pink Floyd/The Wall/01 In the Flesh.flac-False] (0.27s)
+  - [+] test_the_box_s_own_queue_takes_no_streaming_track_for_a_file[https://streaming-qobuz-std.akamaized.net/file?uid=1&eid=55555&fmt=27-True] (0.24s)
+  - [+] test_the_box_s_own_queue_takes_no_streaming_track_for_a_file[Pink Floyd/The Wall/01 In the Flesh.flac-False] (0.26s)
   - [+] test_a_box_with_pro_queues_a_relay_as_it_pleases (0.25s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/upnp-renderer/uuid:speaker/play-body0] (0.11s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/steering/switch-output-body1] (0.10s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/upnp-renderer/uuid:speaker/play-body0] (0.12s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/steering/switch-output-body1] (0.11s)
   - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/steering/switch-output-body2] (0.11s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/steering/switch-output-body3] (0.12s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/steering/switch-output-body4] (0.10s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio-stack/output-body5] (0.19s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[GET-/audio_app_config/hqplayerd/config-None] (0.21s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/steering/switch-output-body3] (0.10s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/steering/switch-output-body4] (0.52s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio-stack/output-body5] (0.10s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[GET-/audio_app_config/hqplayerd/config-None] (0.11s)
   - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio_app_config/hqplayerd/config-body7] (0.11s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[GET-/audio_app_config/naa/backups-None] (0.11s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio_app_config/naa/backups/networkaudiod.xml.bak/restore-None] (0.51s)
-  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio_pipeline/control-body10] (0.11s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[GET-/audio_app_config/naa/backups-None] (0.10s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio_app_config/naa/backups/networkaudiod.xml.bak/restore-None] (0.12s)
+  - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio_pipeline/control-body10] (0.10s)
   - [+] test_a_starter_box_keeps_off_pro_settings_and_tracks[POST-/audio_pipeline/control-body11] (0.11s)
   - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/upnp-renderer/uuid:speaker/play-body0] (0.11s)
   - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/steering/switch-output-body1] (0.10s)
-  - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/steering/switch-output-body2] (0.11s)
-  - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/audio-stack/output-body3] (0.11s)
-  - [+] test_a_starter_box_sets_and_plays_the_rest[GET-/audio_app_config/mpd/config-None] (0.10s)
+  - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/steering/switch-output-body2] (0.12s)
+  - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/audio-stack/output-body3] (0.23s)
+  - [+] test_a_starter_box_sets_and_plays_the_rest[GET-/audio_app_config/mpd/config-None] (0.14s)
   - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/audio_app_config/upmpdcli/config-body5] (0.11s)
   - [+] test_a_starter_box_sets_and_plays_the_rest[POST-/audio_pipeline/control-body6] (0.10s)
-  - [+] test_a_box_with_pro_sets_hqplayer_and_casts_a_relay (0.12s)
-  - [+] test_a_station_is_judged_on_its_address[http://127.0.0.1:8000/qobuz/stream/12345-True] (0.12s)
-  - [+] test_a_station_is_judged_on_its_address[http://icecast.radiofrance.fr/fip-hifi.aac-False] (0.12s)
+  - [+] test_a_box_with_pro_sets_hqplayer_and_casts_a_relay (0.11s)
+  - [+] test_a_station_is_judged_on_its_address[http://127.0.0.1:8000/qobuz/stream/12345-True] (0.10s)
+  - [+] test_a_station_is_judged_on_its_address[http://icecast.radiofrance.fr/fip-hifi.aac-False] (0.11s)
   - [+] test_the_radio_judges_the_address_it_resolved_before_playing
   - [+] test_a_starter_box_relays_no_streaming_track[/qobuz/stream/12345] (0.03s)
-  - [+] test_a_starter_box_relays_no_streaming_track[/highresaudio/stream/a1b2_c3d4] (0.04s)
+  - [+] test_a_starter_box_relays_no_streaming_track[/highresaudio/stream/a1b2_c3d4] (0.03s)
   - [+] test_a_starter_box_relays_no_streaming_track[/tidal/stream/987] (0.03s)
-  - [+] test_a_box_with_pro_relays_them[/qobuz/stream/12345] (0.03s)
+  - [+] test_a_box_with_pro_relays_them[/qobuz/stream/12345] (0.37s)
   - [+] test_a_box_with_pro_relays_them[/highresaudio/stream/a1b2_c3d4] (0.03s)
   - [+] test_a_box_with_pro_relays_them[/tidal/stream/987] (0.03s)
   - [+] test_a_media_server_track_converted_for_hqplayer_is_pro[starter_licence-True] (0.24s)
@@ -2098,15 +2151,23 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_editions.TestHQPlayerOnAStarterBox**
 
-  - [+] test_a_starter_box_plays_on_its_own_player (0.32s)
+  - [+] test_a_starter_box_plays_on_its_own_player
   - [+] test_a_box_with_pro_plays_on_hqplayer
   - [+] test_the_box_s_own_hqplayer_holding_the_dac_is_said_and_refused
-  - [+] test_it_is_a_refusal_for_want_of_pro
+  - [+] test_it_is_a_refusal_for_want_of_pro (0.01s)
   - [+] test_queueing_alone_is_not_refused
   - [+] test_a_network_speaker_still_plays
   - [+] test_the_player_does_not_take_hqplayer_for_the_output
   - [+] test_the_player_takes_it_for_the_output_with_pro
   - [+] test_the_player_asks_for_a_host_as_the_plays_do
+
+**tests.test_editions.TestATrackOfTheQueuePlayedFromIt**
+
+  - [+] test_plays_on_the_box_when_the_music_goes_out_there
+  - [+] test_hqplayer_as_the_output_refuses_it_naming_it
+  - [+] test_a_network_speaker_refuses_it_naming_the_speaker
+  - [+] test_a_starter_box_never_sends_hqplayer_anything_and_plays_it
+  - [+] test_the_box_s_own_hqplayer_holding_the_dac_is_said_as_by_the_play_button
 
 **tests.test_editions.TestThePlayButtonOnAStarterBox**
 
@@ -2187,7 +2248,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_answers_none_for_an_unusable_key_on_read[../escape]
   - [+] test_answers_none_for_an_unusable_key_on_read[a/b]
   - [+] test_answers_none_for_an_unusable_key_on_read[]
-  - [+] test_accepts_a_digest_or_an_id[abc123] (0.02s)
+  - [+] test_accepts_a_digest_or_an_id[abc123] (0.01s)
   - [+] test_accepts_a_digest_or_an_id[a_b] (0.01s)
   - [+] test_accepts_a_digest_or_an_id[a-b] (0.01s)
   - [+] test_accepts_a_digest_or_an_id[A1] (0.01s)
@@ -2240,7 +2301,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_header_in_front_costs_one_block
   - [+] test_a_header_after_the_audio_costs_two
   - [+] test_a_64_bit_size_is_followed
-  - [+] test_audio_running_to_the_end_leaves_no_header_after_it
+  - [+] test_audio_running_to_the_end_leaves_no_header_after_it (0.01s)
   - [+] test_a_header_beyond_the_budget_is_given_up
   - [+] test_a_failing_read_is_not_mistaken_for_an_answer
 
@@ -2269,7 +2330,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_the_header_is_read_once_then_its_codec_answered
   - [+] test_the_listeners_hear_a_codec_in_their_order
-  - [+] test_a_header_naming_none_is_kept_and_told_to_nobody (0.01s)
+  - [+] test_a_header_naming_none_is_kept_and_told_to_nobody
   - [+] test_a_failed_reading_waits_before_another
   - [+] test_a_listener_failing_does_not_silence_the_others
   - [+] test_nothing_is_read_outside_an_event_loop
@@ -2732,12 +2793,12 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_highresaudio_library.TestOneRequestPerMemo**
 
   - [+] test_five_readers_cause_one_fetch[categories] (0.01s)
-  - [+] test_five_readers_cause_one_fetch[genres] (0.01s)
-  - [+] test_five_readers_cause_one_fetch[labels] (0.01s)
+  - [+] test_five_readers_cause_one_fetch[genres] (0.02s)
+  - [+] test_five_readers_cause_one_fetch[labels] (0.02s)
   - [+] test_five_readers_cause_one_fetch[search filters] (0.02s)
-  - [+] test_five_readers_cause_one_fetch[playlist groups] (0.01s)
-  - [+] test_five_readers_cause_one_fetch_even_when_it_is_not_memoised[categories] (0.01s)
-  - [+] test_five_readers_cause_one_fetch_even_when_it_is_not_memoised[genres] (0.01s)
+  - [+] test_five_readers_cause_one_fetch[playlist groups] (0.02s)
+  - [+] test_five_readers_cause_one_fetch_even_when_it_is_not_memoised[categories] (0.02s)
+  - [+] test_five_readers_cause_one_fetch_even_when_it_is_not_memoised[genres] (0.02s)
   - [+] test_five_readers_cause_one_fetch_even_when_it_is_not_memoised[labels] (0.02s)
   - [+] test_five_readers_cause_one_fetch_even_when_it_is_not_memoised[search filters] (0.02s)
   - [+] test_five_readers_cause_one_fetch_even_when_it_is_not_memoised[playlist groups] (0.02s)
@@ -2824,8 +2885,10 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_refused[upnp:uuid:x-track]
   - [+] test_taken_where_it_is_honoured[album-src_highresaudio]
   - [+] test_taken_where_it_is_honoured[album-src_qobuz]
+  - [+] test_taken_where_it_is_honoured[album-upnp:uuid:x]
   - [+] test_taken_where_it_is_honoured[playlist-src_highresaudio]
   - [+] test_taken_where_it_is_honoured[playlist-src_qobuz]
+  - [+] test_taken_where_it_is_honoured[playlist-upnp:uuid:x]
   - [+] test_no_start_is_never_refused
 
 **tests.test_highresaudio_library.TestHraAccountPlaylistIsReadStrictly**
@@ -2933,7 +2996,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_hqplayer.TestNaaAvailableInConnection**
 
   - [+] test_naa_available_true_when_service_active (0.04s)
-  - [+] test_naa_available_false_when_service_inactive (0.05s)
+  - [+] test_naa_available_false_when_service_inactive (0.39s)
 
 **tests.test_hqplayer.TestHQPlayerHasNoDirectPushRoute**
 
@@ -2964,7 +3027,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_an_unanswered_status_is_never_a_verdict (0.32s)
   - [+] test_a_silent_warm_up_that_finally_plays_is_not_reported (0.05s)
   - [+] test_a_confirmed_stopped_is_reported (0.31s)
-  - [+] test_a_track_stuck_in_pause_is_reported (0.31s)
+  - [+] test_a_track_stuck_in_pause_is_reported (0.32s)
   - [+] test_pausing_after_it_played_is_a_success
   - [+] test_a_spurious_exchange_error_is_ignored_when_audio_flows (0.02s)
   - [+] test_a_failed_exchange_is_not_excused_by_the_previous_track (0.13s)
@@ -2976,7 +3039,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_stopped_ending_is_not_blamed_on_the_sound_card (0.31s)
   - [+] test_the_window_covers_the_measured_dsd_warm_up
   - [+] test_the_patience_covers_the_measured_radio_start
-  - [+] test_a_frozen_position_is_still_caught_before_the_window_ends (0.34s)
+  - [+] test_a_frozen_position_is_still_caught_before_the_window_ends (0.35s)
 
 **tests.test_hqplayer.TestPlaybackWatchLifecycle**
 
@@ -3088,7 +3151,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_hqplayer.TestLengthSurvivesATransientStop**
 
-  - [+] test_a_transient_zero_keeps_the_scale_and_the_scrubber (0.01s)
+  - [+] test_a_transient_zero_keeps_the_scale_and_the_scrubber
   - [+] test_a_stream_with_no_length_stays_unseekable
 
 **tests.test_hqplayer.TestRememberedLengthDiesWithItsTrack**
@@ -3168,7 +3231,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_hqplayer.TestBatchSurvivesALostConnection**
 
   - [+] test_a_write_failure_mid_batch_becomes_an_hqplayer_error
-  - [+] test_a_refusal_stops_a_batch_that_asks_so (0.01s)
+  - [+] test_a_refusal_stops_a_batch_that_asks_so
   - [+] test_without_it_a_refusal_does_not_stop_the_batch
   - [+] test_a_play_keeps_going_when_the_batch_dies
 
@@ -3339,7 +3402,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_hqplayer.TestProbeSpeaksToARealSocket**
 
   - [+] test_both_answers_arrive_on_one_connection (0.20s)
-  - [+] test_two_answers_glued_into_one_read_are_still_separated (0.20s)
+  - [+] test_two_answers_glued_into_one_read_are_still_separated (0.21s)
   - [+] test_an_instance_that_ignores_the_second_question_still_identifies (0.20s)
 
 **tests.test_hqplayer_embedded_output.TestTheFileEdit**
@@ -3496,7 +3559,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_read_in_flight_for_one_instance_is_not_handed_to_the_other
   - [+] test_the_naa_follows_the_card_s_instance_never_the_box_own
   - [+] test_the_card_s_major_is_kept_a_while
-  - [+] test_another_card_choice_is_asked_again (0.02s)
+  - [+] test_another_card_choice_is_asked_again (0.01s)
   - [+] test_no_card_choice_means_nothing_to_follow
   - [+] test_without_the_box_own_it_is_the_usual_major
   - [+] test_the_packages_module_asks_for_the_card_s_major
@@ -3507,7 +3570,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_unreachable_still_says_whose_it_is
   - [+] test_it_names_the_web_port_of_the_box_s_own
   - [+] test_no_web_port_for_an_hqplayer_on_the_network
-  - [+] test_no_web_port_when_the_package_declares_no_interface (0.29s)
+  - [+] test_no_web_port_when_the_package_declares_no_interface
   - [+] test_the_card_s_instance_as_before
 
 **tests.test_hqplayer_staged_push.TestStaging**
@@ -3678,8 +3741,8 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_library.TestLibrary**
 
   - [+] test_upnp_known_servers_route_exists (0.18s)
-  - [+] test_search_route_exists (0.19s)
-  - [+] test_queue_route_exists (0.18s)
+  - [+] test_search_route_exists (0.18s)
+  - [+] test_queue_route_exists (0.17s)
 
 **tests.test_library.TestUpnpSearchTrackId**
 
@@ -3690,13 +3753,13 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_library.TestUpnpSearchQueue**
 
-  - [+] test_track_add_calls_mpd_add
+  - [+] test_track_add_calls_mpd_add (0.01s)
   - [+] test_track_play_uses_mpd_batch_with_clear
   - [+] test_no_mpd_port_raises
   - [+] test_album_no_known_server_raises
   - [+] test_album_browses_children_and_adds_all
   - [+] test_album_play_clears_queue
-  - [+] test_an_album_sent_to_hqplayer_answers_what_it_kept (0.02s)
+  - [+] test_an_album_sent_to_hqplayer_answers_what_it_kept
   - [+] test_album_no_tracks_raises
   - [+] test_unsupported_item_type_raises
   - [+] test_queue_tags_radio_origin_and_station_logo
@@ -3707,35 +3770,50 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_title_registered_with_a_stations_address_is_kept
   - [+] test_queue_local_track_origin_library
 
+**tests.test_library.TestUpnpAlbumWhole**
+
+  - [+] test_reads_every_page_of_a_long_album (0.01s)
+  - [+] test_reads_on_to_an_empty_page_when_the_server_gives_no_count (0.01s)
+  - [+] test_refuses_at_the_first_page_a_container_announced_past_the_bound
+  - [+] test_takes_a_container_of_exactly_the_bound_when_no_count_is_given (0.09s)
+  - [+] test_refuses_a_container_past_the_bound_when_no_count_is_given (0.01s)
+  - [+] test_a_container_too_long_answers_400_not_503 (0.18s)
+  - [+] test_a_failed_browse_is_an_error_not_an_empty_album
+  - [+] test_plays_from_the_track_asked_for_leaving_the_ones_before_out
+  - [+] test_starts_where_the_track_now_is_when_it_moved
+  - [+] test_refuses_a_start_on_a_track_no_longer_there
+  - [+] test_a_playlist_of_the_server_is_read_as_an_album
+  - [+] test_hqplayer_too_is_handed_the_album_from_the_track_asked_for
+
 **tests.test_library.TestUnknownSourceIsNotAnEmptyOne**
 
   - [+] test_an_id_no_source_carries_is_a_bad_request[/library/albums?source_id=src_nope] (0.17s)
-  - [+] test_an_id_no_source_carries_is_a_bad_request[/library/search?source_id=src_nope&q=a] (0.17s)
-  - [+] test_a_real_source_with_no_local_catalogue_answers_empty_albums (0.18s)
+  - [+] test_an_id_no_source_carries_is_a_bad_request[/library/search?source_id=src_nope&q=a] (0.50s)
+  - [+] test_a_real_source_with_no_local_catalogue_answers_empty_albums (0.17s)
   - [+] test_a_real_source_with_no_local_catalogue_answers_empty_search (0.18s)
 
 **tests.test_library.TestTheRefreshParameterReachesTheService**
 
   - [+] test_refresh_true_is_forwarded (0.18s)
-  - [+] test_an_ordinary_page_asks_for_no_refresh (0.17s)
+  - [+] test_an_ordinary_page_asks_for_no_refresh (0.18s)
 
 **tests.test_library.TestTheRescanRoutes**
 
   - [+] test_post_starts_a_scan (0.18s)
   - [+] test_get_only_waits (0.17s)
-  - [+] test_a_scan_still_running_is_said (0.53s)
-  - [+] test_whether_the_scan_changed_the_library_is_relayed[post-True] (0.17s)
-  - [+] test_whether_the_scan_changed_the_library_is_relayed[post-False] (0.17s)
+  - [+] test_a_scan_still_running_is_said (0.18s)
+  - [+] test_whether_the_scan_changed_the_library_is_relayed[post-True] (0.18s)
+  - [+] test_whether_the_scan_changed_the_library_is_relayed[post-False] (0.18s)
   - [+] test_whether_the_scan_changed_the_library_is_relayed[get-True] (0.17s)
-  - [+] test_whether_the_scan_changed_the_library_is_relayed[get-False] (0.17s)
-  - [+] test_an_unknown_source_is_refused (0.33s)
+  - [+] test_whether_the_scan_changed_the_library_is_relayed[get-False] (0.19s)
+  - [+] test_an_unknown_source_is_refused (0.18s)
   - [+] test_a_source_without_a_folder_is_refused (0.17s)
-  - [+] test_what_the_reader_can_act_on_is_relayed[error0] (0.18s)
-  - [+] test_what_the_reader_can_act_on_is_relayed[error1] (0.17s)
+  - [+] test_what_the_reader_can_act_on_is_relayed[error0] (0.17s)
+  - [+] test_what_the_reader_can_act_on_is_relayed[error1] (0.54s)
   - [+] test_an_mpd_that_fails_mid_way_is_a_503[error0] (0.17s)
-  - [+] test_an_mpd_that_fails_mid_way_is_a_503[error1] (0.19s)
-  - [+] test_an_mpd_that_fails_mid_way_is_a_503[error2] (0.17s)
-  - [+] test_anything_else_is_logged_and_answered_as_albums_does (0.17s)
+  - [+] test_an_mpd_that_fails_mid_way_is_a_503[error1] (0.17s)
+  - [+] test_an_mpd_that_fails_mid_way_is_a_503[error2] (0.18s)
+  - [+] test_anything_else_is_logged_and_answered_as_albums_does (0.18s)
 
 **tests.test_library.TestMpdRescan**
 
@@ -3763,19 +3841,19 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_press_after_the_cores_scan_began_queues_another
   - [+] test_a_restarted_mpd_has_lost_the_queue
   - [+] test_asking_is_bounded_too (0.21s)
-  - [+] test_a_source_that_is_not_mpd_is_refused
+  - [+] test_a_source_that_is_not_mpd_is_refused (0.01s)
   - [+] test_one_request_stays_inside_the_ui_servers_minute
 
 **tests.test_library.TestRadioQueueRouting**
 
-  - [+] test_radio_reads_the_shared_mpd_queue (0.18s)
-  - [+] test_a_source_with_no_local_queue_still_short_circuits (0.57s)
+  - [+] test_radio_reads_the_shared_mpd_queue (0.20s)
+  - [+] test_a_source_with_no_local_queue_still_short_circuits (0.18s)
 
 **tests.test_library.TestUpnpQueueRouting**
 
   - [+] test_upnp_source_routes_to_upnp_queue (0.18s)
   - [+] test_mpd_source_still_routes_to_mpd_queue (0.17s)
-  - [+] test_an_unclassified_source_is_refused_with_501 (0.20s)
+  - [+] test_an_unclassified_source_is_refused_with_501 (0.18s)
 
 **tests.test_library.TestQueueRequestValidation**
 
@@ -3841,12 +3919,49 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_library.TestMpdQueueListReadPath**
 
   - [+] test_streaming_source_falls_back_to_engine_port
+  - [+] test_says_whether_the_queue_plays_in_random_order[song: 1\nstate: play\nrandom: 1\n-True]
+  - [+] test_says_whether_the_queue_plays_in_random_order[song: 1\nstate: stop\nrandom: 1\n-True]
+  - [+] test_says_whether_the_queue_plays_in_random_order[song: 1\nstate: play\nrandom: 0\n-False]
+  - [+] test_says_whether_the_queue_plays_in_random_order[state: stop\n-False]
+  - [+] test_says_whether_the_queue_starts_over_after_its_last_track[song: 1\nstate: play\nrepeat: 1\nrandom: 0\n-True-False]
+  - [+] test_says_whether_the_queue_starts_over_after_its_last_track[song: 1\nstate: stop\nrepeat: 1\n-True-False]
+  - [+] test_says_whether_the_queue_starts_over_after_its_last_track[song: 1\nstate: play\nrepeat: 0\nrandom: 1\n-False-True]
+  - [+] test_says_whether_the_queue_starts_over_after_its_last_track[song: 1\nstate: play\nrepeat: 1\nrandom: 1\n-True-True]
+  - [+] test_says_whether_the_queue_starts_over_after_its_last_track[state: stop\n-False-False]
   - [+] test_no_engine_returns_empty_not_error
   - [+] test_limit_windows_playlistinfo_with_absolute_positions
 
 **tests.test_library.TestMpdQueueRemoveFallback**
 
-  - [+] test_streaming_source_removes_by_id_via_engine_port
+  - [+] test_streaming_source_removes_by_id_via_engine_port (0.01s)
+
+**tests.test_library.TestMpdQueueMove**
+
+  - [+] test_reads_both_places_then_moves_the_track_beside_its_neighbour[1-neighbour0-4]
+  - [+] test_reads_both_places_then_moves_the_track_beside_its_neighbour[8-neighbour1-5]
+  - [+] test_reads_both_places_then_moves_the_track_beside_its_neighbour[1-neighbour2-5]
+  - [+] test_reads_both_places_then_moves_the_track_beside_its_neighbour[8-neighbour3-6]
+  - [+] test_reads_both_places_then_moves_the_track_beside_its_neighbour[4-neighbour4-4]
+  - [+] test_reads_both_places_then_moves_the_track_beside_its_neighbour[6-neighbour5-6]
+  - [+] test_the_places_are_read_when_the_track_moves_not_as_shown
+  - [+] test_a_source_with_a_node_uses_its_own_port
+  - [+] test_a_track_gone_is_mpds_refusal_and_nothing_moves
+  - [+] test_an_answer_without_the_places_moves_nothing
+  - [+] test_a_refused_move_raises_with_mpds_reason
+  - [+] test_one_neighbour_other_than_itself_or_nothing_is_sent[neighbours0]
+  - [+] test_one_neighbour_other_than_itself_or_nothing_is_sent[neighbours1]
+  - [+] test_one_neighbour_other_than_itself_or_nothing_is_sent[neighbours2]
+  - [+] test_one_neighbour_other_than_itself_or_nothing_is_sent[neighbours3]
+  - [+] test_no_mpd_engine_is_a_value_error_and_nothing_is_sent
+
+**tests.test_library.TestMpdQueuePlay**
+
+  - [+] test_reads_the_address_of_the_track
+  - [+] test_a_track_gone_is_mpds_refusal
+  - [+] test_an_answer_naming_no_file_is_no_address
+  - [+] test_plays_the_track_by_its_song_id_in_a_batch
+  - [+] test_a_refused_play_raises_with_mpds_reason
+  - [+] test_no_mpd_engine_is_a_value_error
 
 **tests.test_library.TestParseCurrentPos**
 
@@ -3857,7 +3972,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_track_play_routes_to_renderer
   - [+] test_add_bypasses_renderer_goes_to_mpd
-  - [+] test_no_renderer_uses_mpd (0.02s)
+  - [+] test_no_renderer_uses_mpd
   - [+] test_album_queues_all_tracks_via_play_queue
   - [+] test_album_proxy_url_is_lan_reachable
 
@@ -3949,7 +4064,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_nothing_queued_raises_with_the_reason
   - [+] test_partial_abort_keeps_ok_with_the_real_count
   - [+] test_refused_tags_do_not_fail_a_successful_enqueue
-  - [+] test_refused_playid_raises_after_a_successful_add (0.26s)
+  - [+] test_refused_playid_raises_after_a_successful_add
 
 **tests.test_library.TestAStreamingPlayWhoseFirstTrackIsRefused**
 
@@ -3966,7 +4081,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_one_track_not_provided_is_named
   - [+] test_another_refusal_keeps_mpds_reason_and_never_the_key
   - [+] test_still_opening_a_later_track_at_the_deadline_reports_what_was_skipped
-  - [+] test_mpd_out_of_reach_after_the_refusal_says_why_it_refused
+  - [+] test_mpd_out_of_reach_after_the_refusal_says_why_it_refused (0.34s)
   - [+] test_an_accepted_play_watches_nothing
 
 **tests.test_library.TestTheStreamAddressMpdIsGiven**
@@ -3978,8 +4093,29 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_library.TestQueueRefusalHttpContract**
 
   - [+] test_upnp_play_refusal_is_a_503_with_mpds_reason (0.17s)
-  - [+] test_remove_refusal_is_a_503_with_mpds_reason (0.17s)
-  - [+] test_remove_unreachable_is_a_503_not_a_500 (0.17s)
+  - [+] test_remove_refusal_is_a_503_with_mpds_reason (0.18s)
+  - [+] test_remove_unreachable_is_a_503_not_a_500 (0.18s)
+  - [+] test_remove_of_a_non_mpd_source_is_a_400 (0.17s)
+  - [+] test_remove_failing_otherwise_is_a_500 (0.18s)
+  - [+] test_move_answers_the_moved_track[body0-neighbours0] (0.17s)
+  - [+] test_move_answers_the_moved_track[body1-neighbours1] (0.18s)
+  - [+] test_move_answers_the_moved_track[body2-neighbours2] (0.18s)
+  - [+] test_move_refusal_is_a_503_with_mpds_reason (0.18s)
+  - [+] test_move_unreachable_is_a_503 (0.19s)
+  - [+] test_move_beside_itself_is_a_400 (0.18s)
+  - [+] test_move_failing_otherwise_is_a_500 (0.18s)
+  - [+] test_move_wants_exactly_one_neighbour_by_its_song_id[body0] (0.18s)
+  - [+] test_move_wants_exactly_one_neighbour_by_its_song_id[body1] (0.64s)
+  - [+] test_move_wants_exactly_one_neighbour_by_its_song_id[body2] (0.17s)
+  - [+] test_move_wants_exactly_one_neighbour_by_its_song_id[body3] (0.18s)
+  - [+] test_move_wants_exactly_one_neighbour_by_its_song_id[body4] (0.18s)
+  - [+] test_move_wants_exactly_one_neighbour_by_its_song_id[body5] (0.18s)
+  - [+] test_move_needs_the_source (0.20s)
+  - [+] test_play_starts_the_track (0.18s)
+  - [+] test_play_while_the_music_goes_out_elsewhere_is_a_409_saying_where (0.18s)
+  - [+] test_play_refused_for_where_the_music_goes_asks_mpd_nothing (0.18s)
+  - [+] test_play_of_a_streaming_track_without_pro_is_the_licences_403 (0.18s)
+  - [+] test_play_of_a_track_gone_is_a_503_with_mpds_reason (0.17s)
 
 **tests.test_library.TestMpdAddOrPlayUrls**
 
@@ -3993,16 +4129,16 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_track_without_one_stays_none
   - [+] test_browse_carries_it_through_the_service
   - [+] test_search_maps_it_on_BOTH_branches
-  - [+] test_search_maps_it_onto_the_track
+  - [+] test_search_maps_it_onto_the_track (0.01s)
 
 **tests.test_library.TestStoppedMpdIsNamedByTheRoutes**
 
-  - [+] test_playing_says_MPD_is_not_running (0.18s)
-  - [+] test_searching_says_it_too (0.20s)
+  - [+] test_playing_says_MPD_is_not_running (0.17s)
+  - [+] test_searching_says_it_too (0.18s)
   - [+] test_browsing_says_it_rather_than_showing_an_empty_library (0.18s)
-  - [+] test_the_queue_says_it_too (0.18s)
+  - [+] test_the_queue_says_it_too (0.17s)
   - [+] test_another_kind_of_unreachable_still_answers_an_empty_list (0.17s)
-  - [+] test_the_status_is_503_not_500 (0.17s)
+  - [+] test_the_status_is_503_not_500 (0.65s)
 
 **tests.test_library.TestNoLibraryIsNotAnEmptyLibrary**
 
@@ -4018,9 +4154,9 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_library.TestTheErrorContractIsTheSameOnEveryProviderRoute**
 
-  - [+] test_a_slow_hra_answers_504_on_a_shelf_not_only_on_the_search (0.63s)
-  - [+] test_an_unreachable_provider_still_answers_503 (0.17s)
-  - [+] test_an_unexpected_failure_names_the_service (0.17s)
+  - [+] test_a_slow_hra_answers_504_on_a_shelf_not_only_on_the_search (0.18s)
+  - [+] test_an_unreachable_provider_still_answers_503 (0.18s)
+  - [+] test_an_unexpected_failure_names_the_service (0.18s)
   - [+] test_a_deliberate_http_answer_is_not_swallowed (0.18s)
 
 **tests.test_library.TestUpnpProbeAddressesAnIpv6Host**
@@ -4031,14 +4167,20 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_library.TestTheMusicFolderGuard**
 
   - [+] test_a_folder_is_read_for_real
-  - [+] test_an_empty_folder_is_refused_while_the_library_holds_music
+  - [+] test_an_empty_folder_is_refused_while_the_library_holds_music (0.01s)
   - [+] test_a_missing_folder_is_refused_too
   - [+] test_a_folder_holding_music_passes
   - [+] test_an_empty_library_is_not_looked_at
   - [+] test_a_box_without_a_folder_is_left_to_mpd
   - [+] test_a_share_that_does_not_answer_is_refused_in_time_on_one_thread (0.41s)
   - [+] test_no_scan_is_asked_for_when_refused
-  - [+] test_the_refusal_reaches_the_reader_on_its_own_status (0.18s)
+  - [+] test_the_refusal_reaches_the_reader_on_its_own_status (0.17s)
+
+**tests.test_library.TestATrackNumberIsReadOnce**
+
+  - [+] test_a_number_and_a_number_of_a_total
+  - [+] test_no_number_is_none
+  - [+] test_the_library_does_not_parse_it_on_its_own
 
 **tests.test_library_album_sort.TestAddedField**
 
@@ -4076,7 +4218,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_cached_list_still_answers_in_the_requested_order
   - [+] test_refresh_re_scans
   - [+] test_the_first_page_alone_no_longer_re_scans
-  - [+] test_readers_arriving_together_share_one_walk
+  - [+] test_readers_arriving_together_share_one_walk (0.01s)
   - [+] test_a_refresh_joining_a_running_walk_does_not_start_a_second
   - [+] test_a_refresh_on_one_artist_leaves_the_other_lists_alone
 
@@ -4092,6 +4234,31 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_daemon_publishing_no_stamp_keeps_the_old_blind_lifetime
   - [+] test_a_stamp_of_zero_is_not_a_stamp
   - [+] test_a_stopped_daemon_is_an_error_rather_than_an_old_list
+
+**tests.test_library_drive_wait**
+
+  - [+] test_the_dropin_bounds_the_device_unit_wait
+  - [+] test_the_wait_and_the_unit_name_the_same_device
+  - [+] test_the_device_unit_is_named_by_systemd_escape
+  - [+] test_a_failed_escape_names_no_unit
+  - [+] test_a_missing_dropin_is_written
+  - [+] test_a_dropin_as_it_should_be_is_left_alone
+  - [+] test_a_dropin_that_says_something_else_is_rewritten
+  - [+] test_a_refused_folder_writes_nothing
+  - [+] test_the_previous_drives_lose_theirs_and_the_library_keeps_its (0.01s)
+  - [+] test_drop_ins_that_are_not_ags_are_left_alone (0.01s)
+  - [+] test_a_device_folder_sudo_does_not_grant_is_left_alone
+  - [+] test_a_refused_removal_keeps_the_folder_and_goes_on
+  - [+] test_every_removal_refused_calls_for_no_reload
+  - [+] test_no_units_folder_removes_nothing
+  - [+] test_the_uuid_is_read_from_the_unit
+  - [+] test_no_unit_or_no_uuid_reads_none
+  - [+] test_every_command_of_the_bound_is_granted (0.01s)
+  - [+] test_the_new_grants_name_ags_file_and_no_other
+  - [+] test_an_extra_argument_passes_all_the_same
+  - [+] test_the_core_start_bounds_an_existing_library (0.02s)
+  - [+] test_without_audio_hw_there_is_no_library_to_bound (0.01s)
+  - [+] test_the_uninstaller_takes_the_same_file_back
 
 **tests.test_library_files.TestLocalLibraryRoots**
 
@@ -4124,8 +4291,8 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_library_files.TestStreamEndpoint**
 
   - [+] test_full_get_returns_all_bytes (0.18s)
-  - [+] test_range_returns_206_partial (0.18s)
-  - [+] test_head_returns_headers_no_body (0.17s)
+  - [+] test_range_returns_206_partial (0.17s)
+  - [+] test_head_returns_headers_no_body (0.18s)
   - [+] test_bad_signature_rejected (0.17s)
   - [+] test_missing_signature_rejected (0.17s)
   - [+] test_missing_file_returns_404 (0.17s)
@@ -4137,26 +4304,26 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_renderer_url_keeps_slashes_quotes_the_rest_and_signs_the_raw_path
   - [+] test_hqplayer_url_ends_with_the_extension
   - [+] test_one_signature_opens_every_library_route
-  - [+] test_the_route_serves_the_url_it_was_handed[album/track.flac-library_stream_url] (0.17s)
-  - [+] test_the_route_serves_the_url_it_was_handed[album/track.flac-library_signed_path_url] (0.20s)
-  - [+] test_the_route_serves_the_url_it_was_handed[Bj\xf6rk/Homogenic/01 Hunter.dsf-library_stream_url] (0.17s)
+  - [+] test_the_route_serves_the_url_it_was_handed[album/track.flac-library_stream_url] (0.18s)
+  - [+] test_the_route_serves_the_url_it_was_handed[album/track.flac-library_signed_path_url] (0.62s)
+  - [+] test_the_route_serves_the_url_it_was_handed[Bj\xf6rk/Homogenic/01 Hunter.dsf-library_stream_url] (0.18s)
   - [+] test_the_route_serves_the_url_it_was_handed[Bj\xf6rk/Homogenic/01 Hunter.dsf-library_signed_path_url] (0.17s)
-  - [+] test_the_route_serves_the_url_it_was_handed[Various/Album #1/100% Hits? (Live).wav-library_stream_url] (0.65s)
-  - [+] test_the_route_serves_the_url_it_was_handed[Various/Album #1/100% Hits? (Live).wav-library_signed_path_url] (0.17s)
-  - [+] test_the_route_serves_the_url_it_was_handed[x/50%41.flac-library_stream_url] (0.17s)
+  - [+] test_the_route_serves_the_url_it_was_handed[Various/Album #1/100% Hits? (Live).wav-library_stream_url] (0.18s)
+  - [+] test_the_route_serves_the_url_it_was_handed[Various/Album #1/100% Hits? (Live).wav-library_signed_path_url] (0.18s)
+  - [+] test_the_route_serves_the_url_it_was_handed[x/50%41.flac-library_stream_url] (0.18s)
   - [+] test_the_route_serves_the_url_it_was_handed[x/50%41.flac-library_signed_path_url] (0.17s)
   - [+] test_the_route_serves_the_url_it_was_handed[x/100%2F200.flac-library_stream_url] (0.18s)
   - [+] test_the_route_serves_the_url_it_was_handed[x/100%2F200.flac-library_signed_path_url] (0.18s)
   - [+] test_the_type_follows_the_requested_name_not_the_link_target (0.18s)
-  - [+] test_the_file_is_resolved_off_the_event_loop (0.18s)
+  - [+] test_the_file_is_resolved_off_the_event_loop (0.17s)
 
 **tests.test_library_files.TestHqplayerGetsMp3WithoutASize**
 
   - [+] test_get_streams_the_whole_file_without_a_size (0.18s)
-  - [+] test_head_announces_no_size_either (0.17s)
-  - [+] test_head_does_not_read_the_file (0.17s)
+  - [+] test_head_announces_no_size_either (0.18s)
+  - [+] test_head_does_not_read_the_file (0.18s)
   - [+] test_other_formats_keep_their_size_for_hqplayer (0.17s)
-  - [+] test_renderers_keep_a_sized_mp3 (0.18s)
+  - [+] test_renderers_keep_a_sized_mp3 (0.61s)
 
 **tests.test_library_files.TestId3v2Length**
 
@@ -4166,16 +4333,16 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_library_files.TestHqplayerGetsMp3WithoutItsTag**
 
-  - [+] test_hqplayer_gets_the_audio_from_its_first_frame (0.17s)
-  - [+] test_a_file_without_tag_is_sent_whole (0.17s)
-  - [+] test_renderers_still_get_the_file_as_it_is (0.58s)
+  - [+] test_hqplayer_gets_the_audio_from_its_first_frame (0.18s)
+  - [+] test_a_file_without_tag_is_sent_whole (0.18s)
+  - [+] test_renderers_still_get_the_file_as_it_is (0.17s)
 
 **tests.test_library_files.TestTheSignedRoutesNeedNoApiKey**
 
-  - [+] test_hqplayer_route_refuses_a_wrong_signature[deadbeef] (0.17s)
-  - [+] test_hqplayer_route_refuses_a_wrong_signature[another file's signature] (0.16s)
+  - [+] test_hqplayer_route_refuses_a_wrong_signature[deadbeef] (0.18s)
+  - [+] test_hqplayer_route_refuses_a_wrong_signature[another file's signature] (0.17s)
   - [+] test_every_signed_route_is_covered_by_a_public_prefix (0.09s)
-  - [+] test_a_signed_url_passes_the_real_guard (0.19s)
+  - [+] test_a_signed_url_passes_the_real_guard (0.20s)
 
 **tests.test_library_files.TestServeFileContentType**
 
@@ -4208,7 +4375,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_converts_what_hqplayer_cannot_decode[a.opus]
   - [+] test_converts_what_hqplayer_cannot_decode[a.wma]
   - [+] test_converts_what_hqplayer_cannot_decode[a.ape]
-  - [+] test_converts_what_hqplayer_cannot_decode[a.aac]
+  - [+] test_converts_what_hqplayer_cannot_decode[a.aac] (0.01s)
   - [+] test_converts_what_hqplayer_cannot_decode[Artist/Album/01 Song.m4a]
   - [+] test_leaves_alone_what_it_can[a.flac]
   - [+] test_leaves_alone_what_it_can[a.wav]
@@ -4227,6 +4394,18 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_quotes_the_path_but_keeps_its_slashes
   - [+] test_the_route_template_carries_the_suffix (0.09s)
 
+**tests.test_library_flac.TestWhichRouteServedAnAddress**
+
+  - [+] test_each_route_as_its_builder_writes_it[<lambda>-library/stream]
+  - [+] test_each_route_as_its_builder_writes_it[<lambda>-library/signed]
+  - [+] test_each_route_as_its_builder_writes_it[<lambda>-library/flac]
+  - [+] test_each_route_as_its_builder_writes_it[<lambda>-library/remote-flac]
+  - [+] test_behind_a_proxy_prefix
+  - [+] test_the_first_route_wins_over_a_folder_named_like_one
+  - [+] test_none_for_any_other_address[http://10.0.0.42:9790/minimserver/*/Music/01.flac]
+  - [+] test_none_for_any_other_address[http://icecast.radiofrance.fr/fip-hifi.aac]
+  - [+] test_none_for_any_other_address[http://box:8000/library/]
+
 **tests.test_library_flac.TestHowMuchTheCacheMayHold**
 
   - [+] test_takes_a_share_of_what_is_actually_free
@@ -4243,9 +4422,9 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_library_flac.TestConverting**
 
-  - [+] test_produces_a_flac_and_caches_it (0.80s)
-  - [+] test_serves_the_cached_conversion_the_second_time (0.24s)
-  - [+] test_converts_once_for_two_simultaneous_requests (0.24s)
+  - [+] test_produces_a_flac_and_caches_it (0.23s)
+  - [+] test_serves_the_cached_conversion_the_second_time (0.23s)
+  - [+] test_converts_once_for_two_simultaneous_requests (0.23s)
   - [+] test_reports_a_missing_file
   - [+] test_refuses_a_path_outside_the_library
   - [+] test_leaves_no_half_written_file_behind_on_failure (0.12s)
@@ -4254,13 +4433,13 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_library_flac.TestTheRoute**
 
-  - [+] test_head_announces_a_size_and_byte_ranges (0.41s)
-  - [+] test_serves_a_byte_range (0.41s)
+  - [+] test_head_announces_a_size_and_byte_ranges (0.42s)
+  - [+] test_serves_a_byte_range (0.40s)
   - [+] test_refuses_a_bad_signature (0.28s)
-  - [+] test_refuses_a_signature_made_for_another_file (0.31s)
-  - [+] test_refuses_a_path_that_escapes_the_library (0.17s)
+  - [+] test_refuses_a_signature_made_for_another_file (0.29s)
+  - [+] test_refuses_a_path_that_escapes_the_library (0.18s)
   - [+] test_reports_a_missing_file (0.18s)
-  - [+] test_reports_a_conversion_that_failed (0.28s)
+  - [+] test_reports_a_conversion_that_failed (0.73s)
   - [+] test_refuses_to_convert_what_it_must_never_convert (0.17s)
   - [+] test_is_reachable_without_an_api_key
 
@@ -4326,50 +4505,50 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_library_playlists_router.TestListing**
 
-  - [+] test_the_account_playlists_are_listed (0.61s)
-  - [+] test_a_source_not_written_yet_is_a_bad_request_saying_which (0.19s)
-  - [+] test_the_source_is_required (0.17s)
+  - [+] test_the_account_playlists_are_listed (0.18s)
+  - [+] test_a_source_not_written_yet_is_a_bad_request_saying_which (0.18s)
+  - [+] test_the_source_is_required (0.18s)
 
 **tests.test_library_playlists_router.TestCreation**
 
-  - [+] test_a_playlist_is_created (0.18s)
+  - [+] test_a_playlist_is_created (0.17s)
   - [+] test_a_name_out_of_bounds_is_refused_before_the_service[] (0.18s)
-  - [+] test_a_name_out_of_bounds_is_refused_before_the_service[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx] (0.17s)
-  - [+] test_a_refusal_is_a_bad_request (0.17s)
+  - [+] test_a_name_out_of_bounds_is_refused_before_the_service[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx] (0.18s)
+  - [+] test_a_refusal_is_a_bad_request (0.18s)
 
 **tests.test_library_playlists_router.TestAdding**
 
   - [+] test_the_counts_come_back (0.18s)
   - [+] test_only_tracks_and_albums_can_be_added (0.17s)
   - [+] test_a_refused_item_is_a_bad_request (0.18s)
-  - [+] test_a_slow_provider_is_not_blamed_on_the_box (0.17s)
+  - [+] test_a_slow_provider_is_not_blamed_on_the_box (0.63s)
   - [+] test_a_refusal_from_the_provider_says_its_reason (0.18s)
 
 **tests.test_library_playlists_router.TestGuests**
 
-  - [+] test_every_write_is_closed_to_guests (0.19s)
-  - [+] test_a_playlist_s_tracks_are_read_like_the_rest_of_the_browse (0.19s)
+  - [+] test_every_write_is_closed_to_guests (0.20s)
+  - [+] test_a_playlist_s_tracks_are_read_like_the_rest_of_the_browse (0.17s)
 
 **tests.test_library_playlists_router.TestStep2Routes**
 
-  - [+] test_a_track_is_removed (0.62s)
-  - [+] test_a_playlist_is_renamed_with_its_description (0.17s)
-  - [+] test_a_rename_that_names_no_description_asks_to_keep_it (0.18s)
+  - [+] test_a_track_is_removed (0.18s)
+  - [+] test_a_playlist_is_renamed_with_its_description (0.18s)
+  - [+] test_a_rename_that_names_no_description_asks_to_keep_it (0.19s)
   - [+] test_a_missing_account_playlist_s_tracks_are_a_bad_request (0.18s)
-  - [+] test_a_failed_read_of_the_tracks_is_the_provider_s (0.18s)
-  - [+] test_the_older_tracks_route_refuses_a_missing_playlist_too (0.17s)
+  - [+] test_a_failed_read_of_the_tracks_is_the_provider_s (0.17s)
+  - [+] test_the_older_tracks_route_refuses_a_missing_playlist_too (0.18s)
   - [+] test_a_start_the_path_would_drop_is_refused_before_anything_plays (0.18s)
   - [+] test_a_rename_without_a_name_never_reaches_the_service (0.18s)
-  - [+] test_a_playlist_is_deleted (0.20s)
-  - [+] test_the_tracks_are_listed (0.18s)
-  - [+] test_a_refusal_is_a_bad_request_with_its_reason[<lambda>0] (0.18s)
-  - [+] test_a_refusal_is_a_bad_request_with_its_reason[<lambda>1] (0.17s)
+  - [+] test_a_playlist_is_deleted (0.18s)
+  - [+] test_the_tracks_are_listed (0.17s)
+  - [+] test_a_refusal_is_a_bad_request_with_its_reason[<lambda>0] (0.69s)
+  - [+] test_a_refusal_is_a_bad_request_with_its_reason[<lambda>1] (0.18s)
   - [+] test_a_refusal_is_a_bad_request_with_its_reason[<lambda>2] (0.18s)
-  - [+] test_a_refusal_is_a_bad_request_with_its_reason[<lambda>3] (0.17s)
+  - [+] test_a_refusal_is_a_bad_request_with_its_reason[<lambda>3] (0.18s)
 
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.08s)
+  - [+] test_no_license (0.07s)
   - [+] test_valid_lifetime_license (0.02s)
   - [+] test_beta_version_accepts_v1_scope (0.02s)
   - [+] test_release_candidate_follows_its_release[1.0.0-rc.1-lifetime] (0.02s)
@@ -4395,20 +4574,20 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_license.TestTimeLimitedLicenceStatus**
 
-  - [+] test_a_running_term_says_when_it_ends (0.05s)
-  - [+] test_an_ended_term_does_not_accuse_the_customer (0.06s)
+  - [+] test_a_running_term_says_when_it_ends (0.07s)
+  - [+] test_an_ended_term_does_not_accuse_the_customer (0.05s)
   - [+] test_a_lifetime_licence_carries_no_end_date (0.02s)
-  - [+] test_a_version_locked_licence_keeps_its_details (0.06s)
-  - [+] test_a_paid_term_is_not_called_a_trial (0.07s)
+  - [+] test_a_version_locked_licence_keeps_its_details (0.05s)
+  - [+] test_a_paid_term_is_not_called_a_trial (0.06s)
   - [+] test_a_perpetual_licence_is_still_called_lifetime (0.02s)
-  - [+] test_a_genuinely_tampered_file_is_still_called_tampered (0.05s)
+  - [+] test_a_genuinely_tampered_file_is_still_called_tampered (0.06s)
 
 **tests.test_license.TestUploadLicense**
 
   - [+] test_upload_valid_lic (0.02s)
-  - [+] test_upload_invalid_signature (0.03s)
+  - [+] test_upload_invalid_signature (0.02s)
   - [+] test_an_ended_licence_is_refused_with_its_own_date (0.02s)
-  - [+] test_a_licence_for_another_device_says_so (0.49s)
+  - [+] test_a_licence_for_another_device_says_so (0.02s)
   - [+] test_a_time_limited_licence_with_no_date_is_named_as_such (0.02s)
   - [+] test_an_unreadable_date_is_named_as_such (0.02s)
   - [+] test_a_forged_file_still_gets_the_verification_message (0.02s)
@@ -4437,7 +4616,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_license.TestOnlineFetchStatusHandling**
 
-  - [+] test_401_bad_verify_key_is_unreachable_not_invalid
+  - [+] test_401_bad_verify_key_is_unreachable_not_invalid (0.01s)
   - [+] test_429_rate_limited_is_unreachable_not_invalid
   - [+] test_403_is_not_mistaken_for_a_revoked_verdict
   - [+] test_5xx_is_unreachable
@@ -4465,7 +4644,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_gate_applies_the_published_verdict[tampered-False]
   - [+] test_the_gate_applies_the_published_verdict[trial-True]
   - [+] test_the_gate_applies_the_published_verdict[version_expired-False]
-  - [+] test_the_route_carries_the_verdict (0.06s)
+  - [+] test_the_route_carries_the_verdict (0.05s)
 
 **tests.test_license.TestTheClockAndALicenceWithNoEnd**
 
@@ -4544,7 +4723,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_same_music_seen_after_the_restart_goes_on_with_the_same_listen
   - [+] test_nothing_seen_it_is_ended_once_the_grace_is_over
   - [+] test_a_stop_longer_than_the_grace_ends_it_at_once
-  - [+] test_what_it_keeps_survives_json
+  - [+] test_what_it_keeps_survives_json (0.01s)
   - [+] test_a_listen_kept_by_a_version_without_slices_keeps_its_time_so_far
   - [+] test_slices_kept_damaged_are_replaced_not_a_failure[slices0]
   - [+] test_slices_kept_damaged_are_replaced_not_a_failure[slices1]
@@ -4639,7 +4818,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_listening.TestTheStore**
 
   - [+] test_the_file_is_the_cores_own_and_in_wal_mode
-  - [+] test_opening_twice_keeps_what_it_holds (0.01s)
+  - [+] test_opening_twice_keeps_what_it_holds
   - [+] test_beyond_the_cap_the_oldest_rows_go_and_their_totals_stay (0.01s)
   - [+] test_the_all_time_ranking_keeps_the_most_listened (0.01s)
   - [+] test_past_a_year_a_days_shares_are_folded_into_its_month (0.01s)
@@ -4659,8 +4838,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_days_are_local_and_empty_ones_are_listed
   - [+] test_a_listen_outside_the_period_is_left_out_of_it_but_not_of_recent
   - [+] test_twelve_months_and_all_go_by_month (0.01s)
-  - [+] test_sources_outputs_quality
-  - [+] test_six_genres_then_the_others_then_none
+  - [+] test_sources_outputs_quality (0.01s)
+  - [+] test_six_genres_then_the_others_then_none (0.01s)
   - [+] test_a_name_is_the_same_whatever_its_case_accents_included (0.01s)
   - [+] test_the_most_played_leave_stations_out[30d]
   - [+] test_the_most_played_leave_stations_out[all]
@@ -4670,17 +4849,17 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_listening.TestTheCovers**
 
-  - [+] test_the_most_played_and_the_latest_carry_their_cover[30d] (0.01s)
-  - [+] test_the_most_played_and_the_latest_carry_their_cover[all] (0.01s)
+  - [+] test_the_most_played_and_the_latest_carry_their_cover[30d]
+  - [+] test_the_most_played_and_the_latest_carry_their_cover[all]
   - [+] test_an_artist_shows_its_most_listened_album_that_has_a_cover[30d]
   - [+] test_an_artist_shows_its_most_listened_album_that_has_a_cover[all]
   - [+] test_an_album_shows_the_cover_of_its_latest_listen_that_had_one[7d]
-  - [+] test_an_album_shows_the_cover_of_its_latest_listen_that_had_one[all] (0.01s)
+  - [+] test_an_album_shows_the_cover_of_its_latest_listen_that_had_one[all]
   - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue-url:file:///tmp/shairport-sync/.cache/coverart/cover-1.jpg|Miles Davis|Kind of Blue-mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue]
-  - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[url:file:///tmp/shairport-sync/.cache/coverart/cover-1.jpg|Miles Davis|Kind of Blue-mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue-mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue]
-  - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue-mb:Miles Davis:Kind of Blue-mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue] (0.01s)
+  - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[url:file:///tmp/shairport-sync/.cache/coverart/cover-1.jpg|Miles Davis|Kind of Blue-mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue-mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue] (0.01s)
+  - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue-mb:Miles Davis:Kind of Blue-mpd:Miles Davis/Kind of Blue/01 So What.flac|Miles Davis|Kind of Blue]
   - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[mb:Miles Davis:Kind of Blue-url:file:///tmp/shairport-sync/.cache/coverart/cover-1.jpg|Miles Davis|Kind of Blue-mb:Miles Davis:Kind of Blue]
-  - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[url:file:///tmp/shairport-sync/.cache/coverart/cover-1.jpg|Miles Davis|Kind of Blue-mb:Miles Davis:Kind of Blue-mb:Miles Davis:Kind of Blue] (0.01s)
+  - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[url:file:///tmp/shairport-sync/.cache/coverart/cover-1.jpg|Miles Davis|Kind of Blue-mb:Miles Davis:Kind of Blue-mb:Miles Davis:Kind of Blue]
   - [+] test_an_album_keeps_the_surest_cover_its_listens_gave[url:file:///tmp/shairport-sync/.cache/coverart/cover-1.jpg|Miles Davis|Kind of Blue-url:file:///tmp/shairport-sync/.cache/coverart/cover-2.jpg|Miles Davis|Kind of Blue-url:file:///tmp/shairport-sync/.cache/coverart/cover-2.jpg|Miles Davis|Kind of Blue]
   - [+] test_a_latest_listen_without_a_title_shows_its_albums_cover (0.01s)
   - [+] test_an_artists_picture_is_its_most_listened_album_whatever_the_period (0.01s)
@@ -4692,24 +4871,24 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_listening.TestTheHoursOfTheWeek**
 
-  - [+] test_the_hours_are_the_local_clock_s_even_half_an_hour_off_utc (0.01s)
+  - [+] test_the_hours_are_the_local_clock_s_even_half_an_hour_off_utc
   - [+] test_a_listen_fills_the_hours_it_played
   - [+] test_a_pause_fills_nothing
   - [+] test_past_midnight_the_next_day_gets_its_share_and_the_bar_stays_on_the_first
   - [+] test_a_listen_kept_without_slices_counts_from_its_start
   - [+] test_the_night_the_clocks_go_back_the_hour_that_comes_twice_counts_twice
   - [+] test_the_night_the_clocks_go_forward_the_missing_hour_gets_nothing
-  - [+] test_the_view_gives_the_average_per_week
+  - [+] test_the_view_gives_the_average_per_week (0.01s)
   - [+] test_a_history_younger_than_its_period_is_averaged_over_its_own_weeks (0.01s)
-  - [+] test_seven_days_show_each_hour_once
+  - [+] test_seven_days_show_each_hour_once (0.01s)
   - [+] test_past_a_year_the_week_hours_are_folded_with_their_weekday (0.01s)
 
 **tests.test_listening.TestTheService**
 
   - [+] test_it_hears_the_player_uncounted_and_writes_what_ended (0.02s)
-  - [+] test_switched_off_it_records_nothing_and_drops_what_plays (0.01s)
+  - [+] test_switched_off_it_records_nothing_and_drops_what_plays (0.02s)
   - [+] test_the_switch_survives_a_restart (0.01s)
-  - [+] test_a_stop_keeps_what_plays_and_the_next_start_takes_it_up (0.01s)
+  - [+] test_a_stop_keeps_what_plays_and_the_next_start_takes_it_up (0.02s)
   - [+] test_a_listen_held_is_written_when_its_grace_is_over (0.31s)
   - [+] test_an_erase_forgets_what_was_kept_at_the_stop (0.01s)
   - [+] test_erase_waits_for_a_write_on_its_way (0.01s)
@@ -4719,8 +4898,8 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_listening.TestTheRoutes**
 
   - [+] test_summary (0.02s)
-  - [+] test_summary_defaults_to_thirty_days_and_refuses_another_period (0.03s)
-  - [+] test_settings_switch_and_erase (0.04s)
+  - [+] test_summary_defaults_to_thirty_days_and_refuses_another_period (0.02s)
+  - [+] test_settings_switch_and_erase (0.03s)
   - [+] test_the_latest_say_which_listens_are_in_progress (0.03s)
   - [+] test_the_most_played_and_the_latest_carry_their_cover (0.02s)
 
@@ -4738,7 +4917,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_listening.TestTheSummaryCountsThemNeverWritesThem**
 
-  - [+] test_every_figure_counts_them_and_the_latest_mark_them (0.02s)
+  - [+] test_every_figure_counts_them_and_the_latest_mark_them (0.01s)
   - [+] test_nothing_of_them_reaches_the_file (0.01s)
   - [+] test_a_reading_that_fails_writes_nothing_either
   - [+] test_a_play_over_but_not_written_yet_is_counted_unmarked
@@ -4751,8 +4930,8 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_the_view_and_the_count_see_what_plays_the_file_does_not (0.01s)
   - [+] test_a_listen_ending_as_the_view_reads_is_counted_once (0.21s)
-  - [+] test_a_listen_ended_just_before_the_view_reads_is_in_it (0.21s)
-  - [+] test_a_stop_lets_the_writes_on_their_way_finish (0.21s)
+  - [+] test_a_listen_ended_just_before_the_view_reads_is_in_it (0.22s)
+  - [+] test_a_stop_lets_the_writes_on_their_way_finish (0.23s)
   - [+] test_switched_off_nothing_is_in_progress (0.01s)
 
 **tests.test_log_space.TestDeclaration**
@@ -4793,7 +4972,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_second_run_runs_nothing_privileged (0.02s)
   - [+] test_a_space_that_went_down_is_brought_back (0.02s)
   - [+] test_without_a_unit_the_service_is_not_tied (0.01s)
-  - [+] test_a_mount_that_fails_ties_nothing_and_leaves_the_config (0.01s)
+  - [+] test_a_mount_that_fails_ties_nothing_and_leaves_the_config (0.02s)
   - [+] test_a_full_tmp_is_a_failure_said_not_an_exception (0.01s)
   - [+] test_a_drop_in_directory_that_cannot_be_made_is_said (0.01s)
   - [+] test_a_config_that_cannot_be_written_is_left_whole (0.01s)
@@ -4815,7 +4994,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_log_space.TestThroughTheManager**
 
   - [+] test_one_restart_for_the_log_and_the_credentials (0.04s)
-  - [+] test_a_package_without_credentials_still_gets_its_space (0.05s)
+  - [+] test_a_package_without_credentials_still_gets_its_space (0.04s)
   - [+] test_nothing_changed_means_no_restart (0.04s)
   - [+] test_a_failed_space_is_a_warning_on_an_installed_package (0.04s)
   - [+] test_a_full_tmp_leaves_the_install_installed_and_the_rest_done (0.04s)
@@ -4823,8 +5002,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_reason_reaches_the_cores_own_log (0.04s)
   - [+] test_an_update_gives_an_older_install_its_space (0.04s)
   - [+] test_an_update_of_an_equipped_box_runs_nothing_privileged (0.08s)
-  - [+] test_the_space_goes_after_the_package (0.07s)
-  - [+] test_a_dry_run_touches_nothing (0.01s)
+  - [+] test_the_space_goes_after_the_package (0.05s)
+  - [+] test_a_dry_run_touches_nothing
   - [+] test_an_update_with_a_failed_space_is_a_warning (0.04s)
   - [+] test_a_clean_install_carries_no_warning (0.04s)
 
@@ -4834,7 +5013,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_service_already_on_is_restarted_as_before (0.05s)
   - [+] test_a_service_that_cannot_be_turned_on_is_a_warning (0.04s)
   - [+] test_the_stop_is_bounded_before_the_restart (0.04s)
-  - [+] test_the_stop_bound_goes_with_the_package (0.05s)
+  - [+] test_the_stop_bound_goes_with_the_package (0.07s)
   - [+] test_an_update_never_turns_it_on (0.04s)
   - [+] test_hqplayer_embedded_declares_it
 
@@ -4880,7 +5059,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_mpd_s_file_is_found_by_the_core_s_own_table
   - [+] test_a_file_it_cannot_replace_is_a_failure_and_left_whole
   - [+] test_both_migrations_run_in_one_pass
-  - [+] test_it_runs_beside_the_binary_without_the_core (0.14s)
+  - [+] test_it_runs_beside_the_binary_without_the_core (0.13s)
 
 **tests.test_migrate_audio_config.TestWhatTheReviewAsked**
 
@@ -4903,7 +5082,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_file_without_ag_s_mark_is_not_touched
   - [+] test_it_does_nothing_twice
   - [+] test_no_file_is_nothing_to_do
-  - [+] test_the_arm_test_box_gets_both_steps_in_one_pass (0.01s)
+  - [+] test_the_arm_test_box_gets_both_steps_in_one_pass
   - [+] test_an_output_not_confirmed_decides_nothing
   - [+] test_the_cards_are_named_before_the_dsd_step_reads_them (0.01s)
   - [+] test_two_copies_in_the_same_second_keep_the_older_file
@@ -4972,7 +5151,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_migrate_audio_config.TestTheGuidedSetupsChoiceIsTrusted**
 
   - [+] test_numbers_that_agree_with_the_choice_are_named (0.01s)
-  - [+] test_a_chosen_card_that_is_not_there_names_nothing
+  - [+] test_a_chosen_card_that_is_not_there_names_nothing (0.01s)
   - [+] test_the_older_single_choice_stands_for_mpd_and_airplay (0.01s)
   - [+] test_a_choice_of_another_device_vouches_for_nothing (0.01s)
   - [+] test_a_choice_whose_service_is_already_named_does_not_hold_the_others (0.01s)
@@ -4984,22 +5163,22 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_an_airplay_moved_by_the_output_switch_holds_nothing_back (0.01s)
   - [+] test_a_raspberry_pi_is_confirmed_by_its_blocks (0.01s)
   - [+] test_a_raspberry_pi_whose_jack_and_hdmi_swapped (0.01s)
-  - [+] test_a_block_named_after_a_declared_port_says_its_kind
+  - [+] test_a_block_named_after_a_declared_port_says_its_kind (0.01s)
   - [+] test_a_block_named_after_its_card[layout0-ids0-True]
   - [+] test_a_block_named_after_its_card[layout1-ids1-False]
   - [+] test_a_block_whose_name_says_nothing_needs_a_choice[None-False]
   - [+] test_a_block_whose_name_says_nothing_needs_a_choice[topology1-True]
-  - [+] test_a_chosen_card_away_holds_back_only_the_service_that_numbers_it (0.01s)
-  - [+] test_another_usb_dac_at_the_number_of_the_one_chosen_and_away (0.01s)
-  - [+] test_a_block_named_after_another_card_there_now_is_not_overruled
-  - [+] test_the_reserved_number_alone_vouches_for_the_dac[layout0-ids0]
-  - [+] test_the_reserved_number_alone_vouches_for_the_dac[layout1-ids1]
+  - [+] test_a_chosen_card_away_holds_back_only_the_service_that_numbers_it
+  - [+] test_another_usb_dac_at_the_number_of_the_one_chosen_and_away
+  - [+] test_a_block_named_after_another_card_there_now_is_not_overruled (0.01s)
+  - [+] test_the_reserved_number_alone_vouches_for_the_dac[layout0-ids0] (0.01s)
+  - [+] test_the_reserved_number_alone_vouches_for_the_dac[layout1-ids1] (0.01s)
   - [+] test_the_reserved_number_on_a_device_the_dac_has_not (0.01s)
   - [+] test_the_reserved_number_of_a_dac_kept_out_on_a_device_it_has_not (0.01s)
 
 **tests.test_migrate_audio_config.TestTheReservationAndFilesWrittenByHand**
 
-  - [+] test_it_stays_while_a_file_written_by_hand_numbers_the_reserved_card
+  - [+] test_it_stays_while_a_file_written_by_hand_numbers_the_reserved_card (0.01s)
 
 **tests.test_minimal_configs**
 
@@ -5036,7 +5215,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_directive_is_omitted_not_left_empty
   - [+] test_no_library_is_the_default
   - [+] test_the_rest_of_the_config_is_untouched
-  - [+] test_it_still_round_trips_through_the_parser (0.01s)
+  - [+] test_it_still_round_trips_through_the_parser
   - [+] test_a_library_is_still_written_when_there_is_one
   - [+] test_the_library_stays_the_first_directive
 
@@ -5065,7 +5244,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_resuming_pause_forms_are_prefixed[pause]
   - [+] test_resuming_pause_forms_are_prefixed[pause 0]
   - [+] test_pause_1_only_suspends_and_is_not_prefixed
-  - [+] test_bare_pause_in_a_list_is_prefixed_inside_it
+  - [+] test_bare_pause_in_a_list_is_prefixed_inside_it (0.01s)
 
 **tests.test_mpd_client.TestRefusalReason**
 
@@ -5130,7 +5309,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_refused_connection_says_what_to_do (1.01s)
   - [+] test_a_command_list_says_the_same (1.01s)
   - [+] test_it_is_still_an_OSError
-  - [+] test_an_mpd_being_restarted_is_not_called_stopped (0.01s)
+  - [+] test_an_mpd_being_restarted_is_not_called_stopped
   - [+] test_a_refusal_is_only_named_after_being_confirmed
   - [+] test_a_wedged_daemon_is_not_called_stopped
 
@@ -5150,6 +5329,11 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_outputset_names_the_output_and_the_value
   - [+] test_a_refusal_is_raised_with_its_reason
   - [+] test_a_cut_answer_is_not_a_success
+
+**tests.test_mpd_client.TestTagNumber**
+
+  - [+] test_a_number_and_a_number_of_a_total
+  - [+] test_a_tag_that_names_no_number_is_none
 
 **tests.test_mpd_client.TestUpdatingJob**
 
@@ -5416,7 +5600,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_no_lab_addresses**
 
-  - [+] test_no_test_hardcodes_a_host_address (0.21s)
+  - [+] test_no_test_hardcodes_a_host_address (0.08s)
   - [+] test_guard_catches_a_reintroduction[10.0.4.254]
   - [+] test_guard_catches_a_reintroduction[10.0.4.189]
   - [+] test_guard_ignores_a_clean_tree
@@ -5516,7 +5700,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_now_playing.TestARadioThatNamesNoSong**
 
-  - [+] test_a_station_that_names_no_song_is_titled_with_its_name
+  - [+] test_a_station_that_names_no_song_is_titled_with_its_name (0.01s)
   - [+] test_a_station_that_names_its_song_keeps_it
   - [+] test_a_stream_no_station_plays_stays_untitled
   - [+] test_a_station_another_app_started_is_titled_with_the_name_it_announces
@@ -5531,7 +5715,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_mpd_keeps_the_queues_genre_for_qobuz_and_tidal[http://127.0.0.1:8001/tidal/stream/2178486?api_key=k]
   - [+] test_a_streaming_track_the_box_knows_no_genre_of_is_asked_about
   - [+] test_a_track_without_one_has_its_service_asked_once
-  - [+] test_a_file_without_a_tag_asks_nobody (0.01s)
+  - [+] test_a_file_without_a_tag_asks_nobody
 
 **tests.test_now_playing.TestWhatTheItemCallsLive**
 
@@ -5562,48 +5746,48 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_now_playing.TestRendererAsSource**
 
-  - [+] test_item_for_native_playing_renderer
-  - [+] test_a_cast_highresaudio_track_is_named (0.01s)
-  - [+] test_the_codec_of_a_cast_track_is_read_as_mpds_is[http://10.0.0.42:9791/a3f9/music/Album/01%20Track.flac-FLAC] (0.01s)
-  - [+] test_the_codec_of_a_cast_track_is_read_as_mpds_is[http://192.168.1.20:8000/library/stream/Album/01.dsf?sig=abc-DSD] (0.01s)
+  - [+] test_item_for_native_playing_renderer (0.01s)
+  - [+] test_a_cast_highresaudio_track_is_named
+  - [+] test_the_codec_of_a_cast_track_is_read_as_mpds_is[http://10.0.0.42:9791/a3f9/music/Album/01%20Track.flac-FLAC]
+  - [+] test_the_codec_of_a_cast_track_is_read_as_mpds_is[http://192.168.1.20:8000/library/stream/Album/01.dsf?sig=abc-DSD]
   - [+] test_the_codec_of_a_cast_track_is_read_as_mpds_is[http://192.168.1.20:8000/highresaudio/stream/50198d00-cd23-4ea0-82b7-da1b2da89b17_cfe9636e-8d3b-4433-9258-352ddaec4d2c?mode=redirect-None] (0.01s)
-  - [+] test_a_cast_relay_track_has_the_codec_its_service_serves (0.01s)
+  - [+] test_a_cast_relay_track_has_the_codec_its_service_serves
   - [+] test_a_cast_mp4_has_the_codec_its_header_names (0.01s)
-  - [+] test_a_cast_files_format_is_its_headers (0.01s)
-  - [+] test_a_cast_relay_tracks_format_is_what_its_registration_says (0.01s)
+  - [+] test_a_cast_files_format_is_its_headers
+  - [+] test_a_cast_relay_tracks_format_is_what_its_registration_says
   - [+] test_a_cast_stations_bitrate_is_its_catalogues
   - [+] test_a_cast_dsd_file_is_named_by_its_rate
-  - [+] test_an_address_naming_no_readable_file_is_not_read[http://srv/stream/live] (0.01s)
+  - [+] test_an_address_naming_no_readable_file_is_not_read[http://srv/stream/live]
   - [+] test_an_address_naming_no_readable_file_is_not_read[http://srv/music/01.mp3]
-  - [+] test_a_codec_alone_leaves_the_format_cells_empty
+  - [+] test_a_codec_alone_leaves_the_format_cells_empty (0.01s)
   - [+] test_live_on_a_renderer_is_ags_word_only[radio-None-True]
-  - [+] test_live_on_a_renderer_is_ags_word_only[radio-300.0-True]
+  - [+] test_live_on_a_renderer_is_ags_word_only[radio-300.0-True] (0.01s)
   - [+] test_live_on_a_renderer_is_ags_word_only[qobuz-0.0-False]
-  - [+] test_live_on_a_renderer_is_ags_word_only[None-0.0-None] (0.01s)
+  - [+] test_live_on_a_renderer_is_ags_word_only[None-0.0-None]
   - [+] test_live_on_a_renderer_is_ags_word_only[None-None-None]
-  - [+] test_live_on_a_renderer_is_ags_word_only[None-245.0-None]
+  - [+] test_live_on_a_renderer_is_ags_word_only[None-245.0-None] (0.01s)
   - [+] test_a_cast_media_server_track_names_no_track
-  - [+] test_a_cast_media_server_track_names_its_server (0.01s)
-  - [+] test_the_genre_of_a_cast_track_is_the_queues_else_asked (0.01s)
+  - [+] test_a_cast_media_server_track_names_its_server
+  - [+] test_the_genre_of_a_cast_track_is_the_queues_else_asked (0.02s)
   - [+] test_no_item_when_stopped_or_unreachable (0.01s)
   - [+] test_no_item_when_no_active_renderer
-  - [+] test_paused_maps_to_paused (0.01s)
+  - [+] test_paused_maps_to_paused
   - [+] test_stopped_returns_none_by_default
   - [+] test_cast_item_is_rebadged_with_content_identity
   - [+] test_origin_derived_from_uri (0.02s)
   - [+] test_control_toggle_pauses_when_playing
   - [+] test_control_toggle_resumes_when_stopped
-  - [+] test_control_play_pause_intents[PLAYING-pause-pause]
-  - [+] test_control_play_pause_intents[PLAYING-play-None]
-  - [+] test_control_play_pause_intents[STOPPED-play-resume]
-  - [+] test_control_play_pause_intents[STOPPED-pause-None] (0.01s)
-  - [+] test_control_play_pause_intents[PAUSED_PLAYBACK-play-resume]
-  - [+] test_control_play_pause_intents[PAUSED_PLAYBACK-pause-None] (0.01s)
+  - [+] test_control_play_pause_intents[PLAYING-pause-pause] (0.01s)
+  - [+] test_control_play_pause_intents[PLAYING-play-None] (0.01s)
+  - [+] test_control_play_pause_intents[STOPPED-play-resume] (0.01s)
+  - [+] test_control_play_pause_intents[STOPPED-pause-None]
+  - [+] test_control_play_pause_intents[PAUSED_PLAYBACK-play-resume] (0.01s)
+  - [+] test_control_play_pause_intents[PAUSED_PLAYBACK-pause-None]
   - [+] test_control_play_pause_intents[NO_MEDIA_PRESENT-pause-None]
   - [+] test_control_play_pause_intents[TRANSITIONING-pause-pause]
-  - [+] test_control_play_pause_intents[None-pause-pause]
-  - [+] test_control_play_pause_intents[PLAYING-toggle-pause]
-  - [+] test_control_play_pause_intents[STOPPED-toggle-resume]
+  - [+] test_control_play_pause_intents[None-pause-pause] (0.01s)
+  - [+] test_control_play_pause_intents[PLAYING-toggle-pause] (0.01s)
+  - [+] test_control_play_pause_intents[STOPPED-toggle-resume] (0.01s)
   - [+] test_control_next_seek_volume (0.01s)
   - [+] test_control_no_renderer_false
   - [+] test_mpd_control_goes_straight_to_mpd
@@ -5611,12 +5795,12 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_now_playing.TestHqplayerAsProcessor**
 
   - [+] test_a_station_pushed_to_hqplayer_is_live_by_ags_word (0.01s)
-  - [+] test_a_station_played_alone_offers_neither_next_nor_previous (0.01s)
-  - [+] test_pushed_track_badged_with_content_origin (0.01s)
+  - [+] test_a_station_played_alone_offers_neither_next_nor_previous (0.02s)
+  - [+] test_pushed_track_badged_with_content_origin
   - [+] test_a_pushed_highresaudio_track_is_named
   - [+] test_a_playback_started_from_hqplayer_itself_names_no_track
   - [+] test_the_cover_is_the_token_the_source_carries
-  - [+] test_without_a_token_the_art_url_then_a_lookup (0.02s)
+  - [+] test_without_a_token_the_art_url_then_a_lookup (0.01s)
   - [+] test_pushed_track_without_origin_defaults_to_library
   - [+] test_external_playback_falls_back_to_processor_active_format
 
@@ -5641,6 +5825,81 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_kept_while_mpd_is_stopped_on_it
   - [+] test_gone_once_mpd_plays_again
   - [+] test_forgotten_after_a_while
+
+**tests.test_package_restart_owed.TestTheUnitToRestart**
+
+  - [+] test_a_key_that_is_not_its_unit_gets_its_unit
+  - [+] test_a_bare_unit_name_is_completed_as_the_actions_complete_it
+  - [+] test_a_package_with_no_service_has_no_unit (0.01s)
+  - [+] test_a_key_the_file_does_not_declare_has_no_unit
+  - [+] test_no_services_module_no_unit
+  - [+] test_the_unit_given_is_one_the_actions_accept
+
+**tests.test_package_restart_owed.TestTheServiceIsLeftAsItStood**
+
+  - [+] test_one_its_package_stopped_is_started_again (0.01s)
+  - [+] test_one_left_on_the_previous_program_is_restarted (0.01s)
+  - [+] test_one_its_package_restarted_is_not_restarted_again (0.01s)
+  - [+] test_one_that_was_stopped_stays_stopped (0.01s)
+  - [+] test_one_stopped_and_left_alone_is_left_alone (0.01s)
+  - [+] test_one_off_at_boot_stays_off (0.01s)
+  - [+] test_one_on_at_boot_stays_on (0.01s)
+  - [+] test_boot_states_ag_never_sets_are_left_as_the_package_leaves_them[static-enabled] (0.01s)
+  - [+] test_boot_states_ag_never_sets_are_left_as_the_package_leaves_them[enabled-masked] (0.01s)
+  - [+] test_nothing_is_restarted_by_an_update_that_changed_nothing (0.01s)
+  - [+] test_an_update_that_replaced_it_restarts_it[versions0] (0.01s)
+  - [+] test_an_update_that_replaced_it_restarts_it[versions1] (0.02s)
+  - [+] test_an_install_over_a_running_one_restarts_it (0.01s)
+  - [+] test_an_install_that_changed_nothing_restarts_nothing (0.01s)
+  - [+] test_a_first_install_is_left_to_its_package (0.01s)
+  - [+] test_an_install_does_not_turn_on_a_service_that_stood_off (0.01s)
+  - [+] test_nothing_is_done_by_a_simulation (0.01s)
+  - [+] test_nothing_is_done_for_a_package_with_no_service (0.01s)
+  - [+] test_nothing_is_done_when_systemd_could_not_say_before (0.01s)
+  - [+] test_a_start_refused_is_said (0.01s)
+  - [+] test_a_start_that_does_not_hold_is_said (0.01s)
+  - [+] test_a_stop_refused_is_said (0.01s)
+  - [+] test_one_caught_as_it_stopped_counts_as_stopped (0.01s)
+  - [+] test_no_version_is_read_for_a_package_with_no_service (0.01s)
+
+**tests.test_package_restart_owed.TestWhatWasAskedDuringTheOperation**
+
+  - [+] test_a_stop_asked_meanwhile_is_kept (0.01s)
+  - [+] test_a_start_asked_meanwhile_is_kept (0.02s)
+  - [+] test_a_boot_setting_asked_meanwhile_is_kept (0.01s)
+  - [+] test_what_was_asked_before_the_operation_is_not_a_wish_for_it (0.01s)
+
+**tests.test_package_restart_owed.TestARestartIsOwed**
+
+  - [+] test_when_the_restart_was_refused (0.01s)
+  - [+] test_not_to_a_service_that_does_not_run[inactive] (0.01s)
+  - [+] test_not_to_a_service_that_does_not_run[failed] (0.01s)
+  - [+] test_not_to_a_service_that_does_not_run[activating] (0.01s)
+  - [+] test_not_to_a_service_that_does_not_run[deactivating] (0.01s)
+  - [+] test_said_when_systemd_cannot_say (0.01s)
+  - [+] test_a_reading_that_raises_is_that_step_not_done (0.01s)
+  - [+] test_update_all_carries_it (0.01s)
+
+**tests.test_package_restart_owed.TestTheBadgeIsTheCores**
+
+  - [+] test_the_package_says_it_after_an_operation_that_left_it (0.01s)
+  - [+] test_the_list_says_it_too (0.01s)
+  - [+] test_it_goes_out_once_the_service_restarted_whatever_restarted_it (0.01s)
+  - [+] test_it_goes_out_once_the_service_stopped (0.02s)
+  - [+] test_it_is_kept_while_systemd_cannot_say (0.01s)
+  - [+] test_shown_once_systemd_can_tell_after_an_operation_it_could_not (0.01s)
+  - [+] test_systemd_is_asked_only_while_one_is_owed (0.01s)
+  - [+] test_a_later_update_that_changed_nothing_keeps_it (0.02s)
+  - [+] test_a_later_moment_is_never_relaxed (0.01s)
+  - [+] test_one_owed_while_systemd_was_asked_is_kept (0.01s)
+  - [+] test_forgotten_without_a_unit_to_restart (0.01s)
+
+**tests.test_package_restart_owed.TestTheInstalledVersion**
+
+  - [+] test_dpkg_for_an_apt_package (0.01s)
+  - [+] test_the_package_name_defaults_to_its_key (0.01s)
+  - [+] test_the_version_file_for_a_script_package (0.01s)
+  - [+] test_none_for_a_type_that_keeps_none (0.01s)
 
 **tests.test_packages.TestPackages**
 
@@ -5676,11 +5935,11 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (5.52s)
+  - [+] test_runs_standalone_without_package_context (5.24s)
 
 **tests.test_packages.TestArchFallback**
 
-  - [+] test_fallback_used_when_arch_missing (0.01s)
+  - [+] test_fallback_used_when_arch_missing
   - [+] test_no_fallback_when_official_covers_arch
   - [+] test_no_fallback_for_arch_without_entry
 
@@ -5692,14 +5951,14 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_parse_sha256sums
   - [+] test_sha256_file
-  - [+] test_valid_checksum_installs (0.01s)
-  - [+] test_mismatch_aborts
+  - [+] test_valid_checksum_installs
+  - [+] test_mismatch_aborts (0.01s)
   - [+] test_missing_entry_aborts
 
 **tests.test_packages.TestScriptInstallerUninstall**
 
   - [+] test_runs_all_commands_in_order_continue_on_failure (0.01s)
-  - [+] test_does_not_double_prefix_sudo (0.01s)
+  - [+] test_does_not_double_prefix_sudo
 
 **tests.test_packages.TestScriptInstallerDryRun**
 
@@ -5709,14 +5968,14 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_packages.TestAptDebSingle**
 
-  - [+] test_the_file_is_installed_by_apt_with_its_dependencies
+  - [+] test_the_file_is_installed_by_apt_with_its_dependencies (0.01s)
   - [+] test_its_output_is_relayed_as_it_comes_and_bounded (0.01s)
-  - [+] test_an_older_build_is_allowed (0.01s)
+  - [+] test_an_older_build_is_allowed
   - [+] test_the_file_is_made_readable_by_apt
-  - [+] test_a_failed_install_is_a_failure_with_no_repair_attempt (0.01s)
+  - [+] test_a_failed_install_is_a_failure_with_no_repair_attempt
   - [+] test_success_is_what_dpkg_says_not_an_exit_code
   - [+] test_dpkg_is_asked_even_when_everything_exited_zero
-  - [+] test_a_normal_install_logs_no_error (0.01s)
+  - [+] test_a_normal_install_logs_no_error
 
 **tests.test_packages.TestScriptInstallerNoShellInjection**
 
@@ -5755,8 +6014,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_notices_say_when_they_could_not_be_read (0.03s)
   - [+] test_an_unpublished_version_is_a_400 (0.03s)
   - [+] test_an_unknown_package_is_a_404 (0.03s)
-  - [+] test_guests_are_kept_out_of_both (0.03s)
-  - [+] test_install_passes_the_acceptance_through (0.04s)
+  - [+] test_guests_are_kept_out_of_both (0.04s)
+  - [+] test_install_passes_the_acceptance_through (0.03s)
 
 **tests.test_packages.TestPackageLogsRoute**
 
@@ -5779,7 +6038,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_timeout_returns_a_verdict_instead_of_raising (1.01s)
   - [+] test_timeout_holds_when_the_command_forks (1.01s)
   - [+] test_newline_less_output_does_not_grow_without_bound (0.05s)
-  - [+] test_reading_the_log_while_a_worker_appends_never_raises (0.17s)
+  - [+] test_reading_the_log_while_a_worker_appends_never_raises (0.14s)
 
 **tests.test_packages.TestPackagesManagerCleanup**
 
@@ -5799,7 +6058,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_rejects_oversized_content_length
   - [+] test_a_stop_abandons_the_download
-  - [+] test_aborts_when_stream_exceeds_limit
+  - [+] test_aborts_when_stream_exceeds_limit (0.01s)
 
 **tests.test_packages.TestScriptLayoutResolution**
 
@@ -5824,7 +6083,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_apt_deb_404_is_unsupported
   - [+] test_apt_deb_reachable_but_empty_is_unsupported
   - [+] test_apt_deb_published_for_another_arch_says_so
-  - [+] test_apt_repo_unreachable_is_unknown
+  - [+] test_apt_repo_unreachable_is_unknown (0.01s)
   - [+] test_apt_repo_404_is_unsupported
 
 **tests.test_packages.TestAptSimpleProbe**
@@ -5978,7 +6237,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_packages.TestAptListsAreRefreshedBeforeBeingRead**
 
-  - [+] test_fresh_lists_are_left_alone (0.01s)
+  - [+] test_fresh_lists_are_left_alone
   - [+] test_stale_lists_are_refreshed
   - [+] test_the_invocation_matches_what_sudoers_grants
   - [+] test_a_box_with_no_lists_at_all_refreshes
@@ -5998,8 +6257,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_news_nobody_received_is_announced_again (0.01s)
   - [+] test_a_newer_version_is_announced_again (0.01s)
   - [+] test_installing_it_lets_a_later_one_be_announced (0.01s)
-  - [+] test_a_status_that_could_not_be_read_keeps_the_record (0.02s)
-  - [+] test_installing_it_clears_its_record (0.01s)
+  - [+] test_a_status_that_could_not_be_read_keeps_the_record (0.01s)
+  - [+] test_installing_it_clears_its_record (0.02s)
   - [+] test_a_package_gone_from_the_configuration_takes_its_record (0.01s)
 
 **tests.test_packages.TestOversizedIndexIsNotReadAsTruncated**
@@ -6034,7 +6293,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_packages.TestAnUpgradeKeepsTheConfigurationAlreadyThere**
 
-  - [+] test_apt_repo_install_and_update_keep_it (0.01s)
+  - [+] test_apt_repo_install_and_update_keep_it
   - [+] test_a_single_deb_keeps_it (0.01s)
   - [+] test_the_bundle_keeps_it
 
@@ -6099,7 +6358,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_refuses_when_the_installed_version_cannot_be_read[not-a-version]
   - [+] test_refuses_when_the_installed_version_cannot_be_read[nightly]
   - [+] test_refuses_when_the_installed_version_cannot_be_read[?]
-  - [+] test_real_debian_versions_keep_the_pin[1:5.1.8-68-5]
+  - [+] test_real_debian_versions_keep_the_pin[1:5.1.8-68-5] (0.01s)
   - [+] test_real_debian_versions_keep_the_pin[5.1.8-68+deb13u1-5]
   - [+] test_real_debian_versions_keep_the_pin[5.1.8-68~bpo12+1-5]
   - [+] test_real_debian_versions_keep_the_pin[5.2-70-5]
@@ -6207,8 +6466,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_refusal_names_the_version (0.01s)
   - [+] test_a_satisfiable_package_with_room_passes (0.01s)
   - [+] test_apt_that_cannot_be_asked_does_not_refuse (0.01s)
-  - [+] test_an_unreadable_header_hands_over_to_the_downloaded_file (0.01s)
-  - [+] test_room_is_refused_before_the_download_starts (0.01s)
+  - [+] test_an_unreadable_header_hands_over_to_the_downloaded_file
+  - [+] test_room_is_refused_before_the_download_starts (0.02s)
 
 **tests.test_packages.TestAnUpdateRefused**
 
@@ -6275,10 +6534,10 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_unreadable_notices_are_reported_as_such
   - [+] test_a_package_with_terms_is_not_installed_without_acceptance
   - [+] test_it_installs_once_they_are_accepted (0.06s)
-  - [+] test_terms_that_could_not_be_read_still_need_acceptance (0.01s)
+  - [+] test_terms_that_could_not_be_read_still_need_acceptance
   - [+] test_a_package_with_nothing_to_accept_installs_as_before (0.06s)
   - [+] test_a_dry_run_does_not_ask_for_acceptance (0.03s)
-  - [+] test_a_refusal_is_shown_as_it_is (0.04s)
+  - [+] test_a_refusal_is_shown_as_it_is (0.05s)
   - [+] test_a_refusal_leaves_the_package_as_it_was (0.04s)
   - [+] test_notices_for_an_unknown_package_are_not_found
   - [+] test_the_package_info_says_who_may_choose
@@ -6290,8 +6549,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_source_is_asked_again[uninstall] (0.01s)
   - [+] test_the_operation_answers_before_the_source_does (0.01s)
   - [+] test_a_source_that_does_not_answer_leaves_no_stale_offer (0.01s)
-  - [+] test_a_dry_run_asks_nothing[install] (0.02s)
-  - [+] test_a_dry_run_asks_nothing[update] (0.01s)
+  - [+] test_a_dry_run_asks_nothing[install] (0.01s)
+  - [+] test_a_dry_run_asks_nothing[update] (0.02s)
   - [+] test_a_dry_run_asks_nothing[uninstall] (0.01s)
   - [+] test_an_apt_package_keeps_apts_answer (0.01s)
 
@@ -6302,7 +6561,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_an_interrupted_dpkg_says_how_to_repair_it[uninstall] (0.01s)
   - [+] test_a_busy_dpkg_is_another_installation_not_an_interruption (0.01s)
   - [+] test_a_stopping_core_starts_nothing (0.01s)
-  - [+] test_nothing_starts_while_audiogravity_updates_itself
+  - [+] test_nothing_starts_while_audiogravity_updates_itself (0.01s)
   - [+] test_a_second_request_waits_for_the_first_instead_of_being_turned_down (0.01s)
   - [+] test_a_vendor_script_goes_ahead (0.01s)
   - [+] test_a_dry_run_goes_ahead (0.01s)
@@ -6339,8 +6598,8 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_packages_simulation**
 
-  - [+] test_the_card_gets_back_what_it_showed[through-install-not_installed-not_installed] (0.02s)
-  - [+] test_the_card_gets_back_what_it_showed[through-update-installed-installed] (0.02s)
+  - [+] test_the_card_gets_back_what_it_showed[through-install-not_installed-not_installed] (0.01s)
+  - [+] test_the_card_gets_back_what_it_showed[through-update-installed-installed] (0.01s)
   - [+] test_the_card_gets_back_what_it_showed[through-uninstall-installed-installed] (0.01s)
   - [+] test_the_card_gets_back_what_it_showed[fails-install-not_installed-not_installed] (0.01s)
   - [+] test_the_card_gets_back_what_it_showed[fails-update-installed-installed] (0.01s)
@@ -6348,14 +6607,14 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_card_gets_back_what_it_showed[raises-install-not_installed-not_installed] (0.01s)
   - [+] test_the_card_gets_back_what_it_showed[raises-update-installed-installed] (0.01s)
   - [+] test_the_card_gets_back_what_it_showed[raises-uninstall-installed-installed] (0.01s)
-  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[True-install] (0.01s)
+  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[True-install] (0.02s)
   - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[True-update] (0.01s)
   - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[True-uninstall] (0.01s)
-  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[False-install] (0.01s)
-  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[False-update] (0.02s)
-  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[False-uninstall] (0.01s)
+  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[False-install] (0.02s)
+  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[False-update] (0.01s)
+  - [+] test_a_repaired_failure_is_not_shown_again_after_a_simulation[False-uninstall] (0.02s)
   - [+] test_a_repaired_failure_is_not_shown_again_after_a_refusal[install] (0.01s)
-  - [+] test_a_repaired_failure_is_not_shown_again_after_a_refusal[update] (0.02s)
+  - [+] test_a_repaired_failure_is_not_shown_again_after_a_refusal[update] (0.01s)
   - [+] test_the_answer_says_the_steps_went_through[install] (0.01s)
   - [+] test_the_answer_says_the_steps_went_through[update] (0.01s)
   - [+] test_the_answer_says_the_steps_went_through[uninstall] (0.01s)
@@ -6367,10 +6626,10 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_every_installer_type_is_simulated_below
   - [+] test_no_installer_writes_an_outcome_in_a_simulation[install-AptSimpleInstaller] (0.01s)
   - [+] test_no_installer_writes_an_outcome_in_a_simulation[install-AptDebInstaller] (0.01s)
-  - [+] test_no_installer_writes_an_outcome_in_a_simulation[install-AptRepoInstaller] (0.01s)
+  - [+] test_no_installer_writes_an_outcome_in_a_simulation[install-AptRepoInstaller] (0.02s)
   - [+] test_no_installer_writes_an_outcome_in_a_simulation[install-ScriptInstaller] (0.01s)
   - [+] test_no_installer_writes_an_outcome_in_a_simulation[install-DummyInstaller] (0.01s)
-  - [+] test_no_installer_writes_an_outcome_in_a_simulation[update-AptSimpleInstaller] (0.02s)
+  - [+] test_no_installer_writes_an_outcome_in_a_simulation[update-AptSimpleInstaller] (0.01s)
   - [+] test_no_installer_writes_an_outcome_in_a_simulation[update-AptDebInstaller] (0.01s)
   - [+] test_no_installer_writes_an_outcome_in_a_simulation[update-AptRepoInstaller] (0.01s)
   - [+] test_no_installer_writes_an_outcome_in_a_simulation[update-ScriptInstaller] (0.01s)
@@ -6387,12 +6646,12 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_performance.TestPerformance**
 
   - [+] test_cpu_info_route (0.06s)
-  - [+] test_rt_processes (0.04s)
+  - [+] test_rt_processes (0.43s)
 
 **tests.test_performance.TestGovernorBootScript**
 
   - [+] test_boot_script_does_not_import_orjson
-  - [+] test_boot_script_python_is_valid (0.02s)
+  - [+] test_boot_script_python_is_valid
   - [+] test_systemd_unit_is_oneshot
 
 **tests.test_performance.TestCyclictestParsing**
@@ -6409,7 +6668,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_performance.TestSetCpuGovernorReview**
 
   - [+] test_unknown_cpu_id_returns_error_not_raise
-  - [+] test_write_cpu_file_uses_async_sudo_tee
+  - [+] test_write_cpu_file_uses_async_sudo_tee (0.01s)
 
 **tests.test_performance.TestLatencyPercentilesAreMeasured**
 
@@ -6478,12 +6737,57 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_pipeline_broadcast.TestTheDashboardStream**
 
-  - [+] test_a_joining_screen_gets_the_pipeline_first (0.02s)
+  - [+] test_a_joining_screen_gets_the_pipeline_first (0.01s)
 
 **tests.test_pipeline_broadcast.TestTheTimestamp**
 
   - [+] test_a_pipeline_is_stamped_in_universal_time
   - [+] test_a_build_is_stamped_in_universal_time
+
+**tests.test_pipeline_controllers.TestJPlayThroughTheRenderer**
+
+  - [+] test_dark_while_the_renderer_is_stopped
+  - [+] test_dark_while_the_renderer_is_stopped_whatever_mpd_plays
+  - [+] test_dark_while_mpd_plays_what_ag_alone_hands_it[http://127.0.0.1:8000/highresaudio/stream/70756949-2d4b-4d85-a71e-46863970c44a_e2ecd997-899c-4c6c-bda1-feebfd0adcb7?mode=redirect]
+  - [+] test_dark_while_mpd_plays_what_ag_alone_hands_it[Pink Floyd/Animals/01 Pigs on the Wing.flac]
+  - [+] test_lit_when_upmpdcli_confirms_a_control_point_handed_the_track
+  - [+] test_dark_when_upmpdcli_does_not_confirm[Handed.NO]
+  - [+] test_dark_when_upmpdcli_does_not_confirm[Handed.UNKNOWN]
+  - [+] test_dark_and_nobody_asked_when_mpd_plays_nothing
+  - [+] test_a_failed_question_darkens_the_app_only
+
+**tests.test_pipeline_controllers.TestOneQuestionPerPlay**
+
+  - [+] test_asked_once_while_the_play_lasts (0.01s)
+  - [+] test_asked_again_for_a_new_play_of_the_same_track
+  - [+] test_asked_again_while_the_answer_is_unknown
+  - [+] test_the_app_keeps_its_state_while_the_question_runs (0.01s)
+  - [+] test_dark_while_asked_with_nothing_before
+
+**tests.test_pipeline_controllers.TestTheOtherApps**
+
+  - [+] test_an_app_commanding_mpd_itself_is_lit_as_before
+  - [+] test_a_renderer_no_app_commands_is_never_asked
+
+**tests.test_pipeline_controllers.TestTheChainRule**
+
+  - [+] test_through_a_relay_that_carries_the_track
+  - [+] test_not_through_a_relay_that_carries_nothing
+  - [+] test_a_service_commanded_directly_is_unaffected
+  - [+] test_another_reference_still_counts
+
+**tests.test_pipeline_controllers.TestTheIdleRelays**
+
+  - [+] test_only_a_relay_of_the_box_is_judged
+  - [+] test_a_stopped_relay
+  - [+] test_a_running_renderer_while_mpd_plays_what_ag_alone_hands_it[http://127.0.0.1:8000/highresaudio/stream/70756949-2d4b-4d85-a71e-46863970c44a_e2ecd997-899c-4c6c-bda1-feebfd0adcb7?mode=redirect]
+  - [+] test_a_running_renderer_while_mpd_plays_what_ag_alone_hands_it[Pink Floyd/Animals/01 Pigs on the Wing.flac]
+  - [+] test_a_running_renderer_carrying_a_control_points_track
+  - [+] test_a_state_not_read_is_no_stop
+  - [+] test_a_topology_edited_by_hand
+  - [+] test_mpd_is_no_relay_of_itself
+  - [+] test_the_apps_another_device_commands
+  - [+] test_a_service_of_the_same_device_commands_no_relay
 
 **tests.test_pipeline_network_interfaces.TestTheKernelsSide**
 
@@ -6547,7 +6851,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_pipeline_systemd_reads.TestTheRunningServicesProcesses**
 
   - [+] test_one_call_for_the_states_a_process_read_for_the_running_only
-  - [+] test_a_running_one_without_process_is_not_cached
+  - [+] test_a_running_one_without_process_is_not_cached (0.01s)
   - [+] test_a_bus_that_cannot_answer_gives_no_process_and_forgets_none
 
 **tests.test_pipeline_systemd_reads.TestTheInputsPresence**
@@ -6603,9 +6907,9 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_plain_stream_server.TestTheAnswer**
 
   - [+] test_a_stream_is_http_1_0_with_no_length_and_ends_with_the_connection[asyncio]
-  - [+] test_a_stream_is_http_1_0_with_no_length_and_ends_with_the_connection[uvloop] (0.01s)
+  - [+] test_a_stream_is_http_1_0_with_no_length_and_ends_with_the_connection[uvloop]
   - [+] test_it_carries_the_headers_of_the_program_that_held[asyncio]
-  - [+] test_it_carries_the_headers_of_the_program_that_held[uvloop]
+  - [+] test_it_carries_the_headers_of_the_program_that_held[uvloop] (0.01s)
   - [+] test_head_answers_the_shape_and_no_body[asyncio]
   - [+] test_head_answers_the_shape_and_no_body[uvloop]
   - [+] test_a_body_handed_with_a_head_is_closed_unread[asyncio]
@@ -6637,20 +6941,20 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_plain_stream_server.TestTheEndOfAStream**
 
-  - [+] test_a_client_that_stops_reading_is_let_go[asyncio] (0.33s)
+  - [+] test_a_client_that_stops_reading_is_let_go[asyncio] (0.32s)
   - [+] test_a_client_that_stops_reading_is_let_go[uvloop] (0.32s)
   - [+] test_a_client_that_leaves_ends_its_stream[asyncio] (0.12s)
-  - [+] test_a_client_that_leaves_ends_its_stream[uvloop] (0.17s)
+  - [+] test_a_client_that_leaves_ends_its_stream[uvloop] (0.16s)
   - [+] test_a_failing_source_ends_its_stream_with_what_it_sent[asyncio]
-  - [+] test_a_failing_source_ends_its_stream_with_what_it_sent[uvloop] (0.01s)
+  - [+] test_a_failing_source_ends_its_stream_with_what_it_sent[uvloop]
   - [+] test_a_handler_that_fails_costs_its_connection_only[asyncio] (0.01s)
-  - [+] test_a_handler_that_fails_costs_its_connection_only[uvloop]
+  - [+] test_a_handler_that_fails_costs_its_connection_only[uvloop] (0.01s)
 
 **tests.test_plain_stream_server.TestStartAndStop**
 
   - [+] test_stop_ends_every_stream_and_stops_listening[asyncio] (0.01s)
-  - [+] test_stop_ends_every_stream_and_stops_listening[uvloop]
-  - [+] test_a_port_taken_gives_way_to_a_free_one[asyncio]
+  - [+] test_stop_ends_every_stream_and_stops_listening[uvloop] (0.01s)
+  - [+] test_a_port_taken_gives_way_to_a_free_one[asyncio] (0.01s)
   - [+] test_a_port_taken_gives_way_to_a_free_one[uvloop]
   - [+] test_a_stop_before_any_start_does_nothing[asyncio]
   - [+] test_a_stop_before_any_start_does_nothing[uvloop]
@@ -6678,7 +6982,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_player.TestBuildStateSignalPathEnrichment**
 
-  - [+] test_connector_inserted_before_dac (0.02s)
+  - [+] test_connector_inserted_before_dac (0.01s)
   - [+] test_no_renderer_step_when_no_active_service (0.01s)
   - [+] test_source_prepended_from_origin (0.01s)
   - [+] test_full_chain_no_renderer (0.01s)
@@ -6686,9 +6990,9 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_upnp_uses_server_name_from_origin_name (0.01s)
   - [+] test_renderer_active_output_label_is_renderer_not_local_dac (0.01s)
   - [+] test_upnp_falls_back_to_upnp_label_when_no_server_name (0.01s)
-  - [+] test_native_renderer_signal_path_ends_at_renderer (0.01s)
+  - [+] test_native_renderer_signal_path_ends_at_renderer (0.02s)
   - [+] test_native_renderer_with_source_prepended (0.01s)
-  - [+] test_renderer_unreachable_does_not_appear_in_signal_path (0.02s)
+  - [+] test_renderer_unreachable_does_not_appear_in_signal_path (0.01s)
 
 **tests.test_player.TestBuildSourcesVirtual**
 
@@ -6727,7 +7031,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_only_the_inputs_are_asked_about
   - [+] test_a_missing_input_is_left_out_an_installed_one_says_if_it_runs
   - [+] test_a_running_input_says_so
-  - [+] test_a_reading_that_failed_hides_no_input
+  - [+] test_a_reading_that_failed_hides_no_input (0.01s)
   - [+] test_an_input_that_plays_is_kept_whatever_an_old_reading_says
   - [+] test_only_an_input_is_ever_left_out
   - [+] test_the_published_state_carries_it[False] (0.01s)
@@ -6776,15 +7080,15 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_player.TestControlRouting**
 
   - [+] test_explicit_renderer_source_routed_to_now_playing (0.16s)
-  - [+] test_stopped_renderer_still_controllable (0.16s)
+  - [+] test_stopped_renderer_still_controllable (0.17s)
   - [+] test_stopped_mpd_still_controllable (0.16s)
   - [+] test_stopped_mpd_takes_the_intents[play] (0.16s)
   - [+] test_stopped_mpd_takes_the_intents[pause] (0.16s)
   - [+] test_stopped_mpd_is_not_reached_while_hqplayer_is_the_output (0.01s)
-  - [+] test_a_stopped_player_that_is_no_mpd_is_not_reached
-  - [+] test_stopped_mpd_takes_nothing_else[set_volume-40]
+  - [+] test_a_stopped_player_that_is_no_mpd_is_not_reached (0.01s)
+  - [+] test_stopped_mpd_takes_nothing_else[set_volume-40] (0.01s)
   - [+] test_stopped_mpd_takes_nothing_else[next-None]
-  - [+] test_stopped_mpd_takes_nothing_else[prev-None]
+  - [+] test_stopped_mpd_takes_nothing_else[prev-None] (0.01s)
   - [+] test_stopped_mpd_takes_nothing_else[seek-30]
   - [+] test_unknown_source_returns_false
   - [+] test_no_source_resolves_active (0.16s)
@@ -6792,12 +7096,12 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_player.TestPlayer**
 
   - [+] test_snapshot (0.02s)
-  - [+] test_control (0.03s)
+  - [+] test_control (0.02s)
   - [+] test_the_local_library_is_not_offered_as_a_content_only_source
   - [+] test_a_change_of_content_source_alone_is_published
   - [+] test_the_source_fingerprint_follows_the_content_source
   - [+] test_a_change_of_track_alone_is_published
-  - [+] test_origins_returns_all_known_keys (0.03s)
+  - [+] test_origins_returns_all_known_keys (0.02s)
   - [+] test_sleep_timer_get (0.02s)
 
 **tests.test_player.TestGetOutputs**
@@ -6813,7 +7117,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_unknown_output_id_returns_404 (0.03s)
   - [+] test_refused_enable_is_a_503_not_success (0.03s)
   - [+] test_stale_active_udn_cleared_not_raised (0.03s)
-  - [+] test_stale_active_udn_calls_save_config (0.03s)
+  - [+] test_stale_active_udn_calls_save_config (0.04s)
 
 **tests.test_player.TestControlIdRouting**
 
@@ -6824,14 +7128,14 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_player.TestBuildOutputs**
 
-  - [+] test_local_only_when_no_renderer_selected (0.02s)
+  - [+] test_local_only_when_no_renderer_selected (0.01s)
   - [+] test_selected_renderer_carries_state_and_wins_active
-  - [+] test_the_error_a_stopped_mpd_stopped_on_reaches_the_local_output
+  - [+] test_the_error_a_stopped_mpd_stopped_on_reaches_the_local_output (0.01s)
   - [+] test_a_playing_output_does_not_take_a_stopped_mpds_error
   - [+] test_stopped_selected_renderer_visible_in_outputs
-  - [+] test_unreachable_renderer_kept_with_unknown_state_local_active
+  - [+] test_unreachable_renderer_kept_with_unknown_state_local_active (0.01s)
   - [+] test_playing_local_wins_over_an_idle_renderer
-  - [+] test_a_local_error_stays_visible_when_the_renderer_is_idle
+  - [+] test_a_local_error_stays_visible_when_the_renderer_is_idle (0.01s)
   - [+] test_a_playing_renderer_still_wins_over_local (0.01s)
   - [+] test_idle_everywhere_keeps_the_selected_renderer_visible (0.01s)
   - [+] test_a_paused_local_source_also_holds_the_active_spot (0.01s)
@@ -6846,22 +7150,22 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_busy_dac_error_lands_on_the_local_output
   - [+] test_no_error_in_the_normal_case
-  - [+] test_error_from_a_non_local_item_is_ignored
+  - [+] test_error_from_a_non_local_item_is_ignored (0.01s)
   - [+] test_a_failed_hqplayer_push_is_explained_with_no_item_left
-  - [+] test_an_engine_error_still_wins_over_the_hqplayer_verdict
-  - [+] test_an_unreachable_speaker_says_so_instead_of_going_quiet
+  - [+] test_an_engine_error_still_wins_over_the_hqplayer_verdict (0.01s)
+  - [+] test_an_unreachable_speaker_says_so_instead_of_going_quiet (0.01s)
   - [+] test_the_local_chain_is_always_reachable
   - [+] test_state_changed_detects_an_appearing_output_error
 
 **tests.test_player.TestIdleStateKeepsTheRendererControllable**
 
   - [+] test_handle_is_derived_from_outputs_after_a_core_restart
-  - [+] test_handle_is_derived_after_another_source_played (0.01s)
+  - [+] test_handle_is_derived_after_another_source_played
   - [+] test_the_local_output_points_play_at_the_box_mpd
   - [+] test_the_last_source_decides[src_mpd-src_mpd]
   - [+] test_the_last_source_decides[src_shairport-sync-None]
   - [+] test_the_last_source_decides[src_mono-sgen-None]
-  - [+] test_no_handle_while_hqplayer_is_the_output
+  - [+] test_no_handle_while_hqplayer_is_the_output (0.01s)
   - [+] test_no_handle_without_an_mpd
   - [+] test_the_selected_output_still_shows_its_name_while_idle
 
@@ -6879,12 +7183,12 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_a_slower_earlier_control_does_not_publish_last (0.16s)
   - [+] test_it_never_moves_the_watermark_backwards (0.16s)
-  - [+] test_a_fresh_control_publishes_and_raises_the_watermark (0.17s)
+  - [+] test_a_fresh_control_publishes_and_raises_the_watermark (0.16s)
 
 **tests.test_player.TestEveryPublisherIsGuarded**
 
-  - [+] test_no_publish_site_is_left_unguarded
-  - [+] test_every_guarded_site_raises_the_watermark_with_max
+  - [+] test_no_publish_site_is_left_unguarded (0.01s)
+  - [+] test_every_guarded_site_raises_the_watermark_with_max (0.01s)
 
 **tests.test_player.TestDsdEndNeedsProof**
 
@@ -6923,7 +7227,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_mono_stream
   - [+] test_what_the_meter_cannot_read[None]
   - [+] test_what_the_meter_cannot_read[]
-  - [+] test_what_the_meter_cannot_read[44100:12:2] (0.01s)
+  - [+] test_what_the_meter_cannot_read[44100:12:2]
   - [+] test_what_the_meter_cannot_read[44100:16]
   - [+] test_what_the_meter_cannot_read[0:16:2]
   - [+] test_what_the_meter_cannot_read[44100:16:0]
@@ -6975,7 +7279,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_player_levels.TestDsdLevels**
 
   - [+] test_a_sine_of_known_level[dsd64:2] (0.09s)
-  - [+] test_a_sine_of_known_level[384000:dsd:2] (0.09s)
+  - [+] test_a_sine_of_known_level[384000:dsd:2] (0.10s)
   - [+] test_dsd_silence_is_silence
   - [+] test_all_ones_is_full_scale
   - [+] test_each_channel_is_read_on_its_own_bytes
@@ -7019,7 +7323,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_configuration_without_the_copy
   - [+] test_mpd_out_of_reach
   - [+] test_a_pipe_mpd_has_not_made
-  - [+] test_mpd_gone_closes_the_pipe
+  - [+] test_mpd_gone_closes_the_pipe (0.01s)
   - [+] test_bytes_before_the_format_wait_for_it (0.01s)
   - [+] test_the_copy_left_on_by_a_stopped_core_is_turned_off (0.01s)
   - [+] test_not_while_a_session_runs
@@ -7068,9 +7372,9 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_first_byte_ends_the_rest[uvloop] (0.06s)
   - [+] test_without_a_byte_it_wakes_after_its_time[asyncio] (0.06s)
   - [+] test_without_a_byte_it_wakes_after_its_time[uvloop] (0.06s)
-  - [+] test_the_pipe_closed_during_the_rest[asyncio] (0.05s)
+  - [+] test_the_pipe_closed_during_the_rest[asyncio] (0.04s)
   - [+] test_the_pipe_closed_during_the_rest[uvloop] (0.04s)
-  - [+] test_what_rest_is (0.01s)
+  - [+] test_what_rest_is
   - [+] test_at_rest_it_does_not_tick[asyncio] (0.71s)
   - [+] test_at_rest_it_does_not_tick[uvloop] (0.71s)
 
@@ -7081,13 +7385,13 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_player_meter.TestTheLastScreenLeavingUnderStarlette**
 
-  - [+] test_the_cleanup_runs_to_its_end (0.08s)
+  - [+] test_the_cleanup_runs_to_its_end (0.07s)
 
 **tests.test_player_watch.TestWhatTheWatchReads**
 
   - [+] test_for_a_screen_it_reads_the_diagram_too_and_asks_nothing_else (0.01s)
   - [+] test_a_subscriber_of_the_player_channel_is_followed_like_a_screen
-  - [+] test_an_uncounted_subscriber_of_the_player_channel_is_not
+  - [+] test_an_uncounted_subscriber_of_the_player_channel_is_not (0.01s)
   - [+] test_a_subscriber_of_another_channel_is_not
   - [+] test_with_no_screen_and_nothing_to_protect_it_reads_nothing
   - [+] test_while_dsd_plays_it_reads_every_second_without_the_diagram (0.01s)
@@ -7096,7 +7400,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_roon_endpoint_running_here_keeps_it_reading[roonserver.service]
   - [+] test_a_roon_endpoint_that_failed_does_not (0.01s)
   - [+] test_a_bus_that_cannot_answer_keeps_it_reading
-  - [+] test_no_bus_at_all_keeps_it_reading
+  - [+] test_no_bus_at_all_keeps_it_reading (0.01s)
 
 **tests.test_player_watch.TestTheLastScreenLeaving**
 
@@ -7109,7 +7413,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_wake_cuts_the_pause_short_and_is_spent (0.02s)
   - [+] test_a_pause_nothing_wakes_lasts_its_time (0.06s)
   - [+] test_a_screen_joining_wakes_it_and_makes_sure_it_runs
-  - [+] test_a_dsd_start_the_watch_finds_itself_does_not_wake_it (0.02s)
+  - [+] test_a_dsd_start_the_watch_finds_itself_does_not_wake_it (0.01s)
   - [+] test_mpd_starting_a_dsd_file_wakes_it[dsd-starts] (0.01s)
   - [+] test_mpd_starting_a_dsd_file_wakes_it[pcm] (0.01s)
   - [+] test_mpd_starting_a_dsd_file_wakes_it[dsd-goes-on] (0.01s)
@@ -7134,20 +7438,20 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_player_watch.TestAGenreArrivingLate**
 
-  - [+] test_the_sources_are_read_again_and_the_state_published
+  - [+] test_the_sources_are_read_again_and_the_state_published (0.01s)
   - [+] test_a_read_that_fails_is_dropped_quietly
-  - [+] test_a_read_older_than_the_last_publish_is_not_published
-  - [+] test_the_module_wires_the_player_to_the_genres_and_the_codecs (0.02s)
+  - [+] test_a_read_older_than_the_last_publish_is_not_published (0.01s)
+  - [+] test_the_module_wires_the_player_to_the_genres_and_the_codecs (0.03s)
 
 **tests.test_player_watch.TestAScreenOpening**
 
-  - [+] test_the_snapshot_leaves_what_went_out_alone
+  - [+] test_the_snapshot_leaves_what_went_out_alone (0.01s)
   - [+] test_so_does_a_source_s_own_snapshot
   - [+] test_the_watch_then_publishes_what_the_screen_saw
 
 **tests.test_player_watch.TestAPackageChange**
 
-  - [+] test_an_install_or_a_removal_refreshes_the_inputs_at_once
+  - [+] test_an_install_or_a_removal_refreshes_the_inputs_at_once (0.01s)
   - [+] test_another_dashboard_event_forgets_nothing (0.51s)
 
 **tests.test_player_watch.TestTheSleepTimer**
@@ -7230,9 +7534,9 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_private_state_files.TestLicenceFile**
 
   - [+] test_an_uploaded_licence_is_readable_by_the_core_only (0.02s)
-  - [+] test_an_uploaded_licence_replaces_the_previous_one_whole (0.02s)
-  - [+] test_an_activated_licence_is_readable_by_the_core_only (0.03s)
-  - [+] test_a_licence_activated_in_a_relative_config_dir_is_written (0.03s)
+  - [+] test_an_uploaded_licence_replaces_the_previous_one_whole (0.03s)
+  - [+] test_an_activated_licence_is_readable_by_the_core_only (0.02s)
+  - [+] test_a_licence_activated_in_a_relative_config_dir_is_written (0.02s)
 
 **tests.test_private_state_files.TestNarrowedAtEachStart**
 
@@ -7245,12 +7549,12 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_another_accounts_file_is_left_as_it_is_and_said
   - [+] test_a_change_refused_is_said_and_the_others_still_narrowed
   - [+] test_the_list_holds_where_each_secret_is_kept
-  - [+] test_their_names_are_written_here_only (0.05s)
+  - [+] test_their_names_are_written_here_only (0.06s)
   - [+] test_the_start_narrows_them_before_loading_the_modules
 
 **tests.test_proc.TestRunBounded**
 
-  - [+] test_exit_code_and_both_streams (0.01s)
+  - [+] test_exit_code_and_both_streams
   - [+] test_merged_streams_keep_their_order
   - [+] test_input_reaches_the_command
   - [+] test_without_input_stdin_is_closed
@@ -7258,7 +7562,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_environment_is_passed
   - [+] test_a_command_past_its_deadline_is_stopped (0.31s)
   - [+] test_a_child_holding_the_pipe_does_not_hold_the_caller (0.51s)
-  - [+] test_a_command_run_through_sudo_is_stopped_through_it (0.44s)
+  - [+] test_a_command_run_through_sudo_is_stopped_through_it (0.42s)
 
 **tests.test_proc.TestCLocale**
 
@@ -7267,7 +7571,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.03s)
+  - [+] test_activate (0.02s)
   - [+] test_deactivate (0.02s)
 
 **tests.test_profiles.TestTheProfileNotification**
@@ -7280,13 +7584,13 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_profiles.TestTheActivationSaysWhichDeviceAsked**
 
   - [+] test_the_endpoint_reaches_the_manager (0.02s)
-  - [+] test_without_it_every_device_is_told[no body] (0.02s)
+  - [+] test_without_it_every_device_is_told[no body] (0.03s)
   - [+] test_without_it_every_device_is_told[empty body] (0.02s)
   - [+] test_an_endpoint_past_any_real_length_is_refused (0.02s)
 
 **tests.test_profiles.TestTheFileBelongsToAudiogravity**
 
-  - [+] test_there_is_no_import (0.02s)
+  - [+] test_there_is_no_import (0.03s)
   - [+] test_there_is_no_export (0.02s)
 
 **tests.test_profiles.TestProfileCriticalityIsDerived**
@@ -7299,14 +7603,14 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_profiles.TestProfilesGatherTimeout**
 
-  - [+] test_stop_timeout_does_not_raise (0.01s)
+  - [+] test_stop_timeout_does_not_raise
 
 **tests.test_profiles.TestFailedOnlyForTheProfileInEffect**
 
   - [+] test_a_dead_mpd_fails_only_the_profile_in_use
   - [+] test_a_profile_whose_only_service_died_is_failed
   - [+] test_a_dead_service_it_stops_counts_as_stopped
-  - [+] test_a_service_it_stops_restarting_in_a_loop_fails_it (0.02s)
+  - [+] test_a_service_it_stops_restarting_in_a_loop_fails_it
   - [+] test_a_profile_not_in_effect_keeps_its_reading
 
 **tests.test_profiles.TestStopListServiceNotInstalled**
@@ -7317,7 +7621,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_profiles.TestAServiceRestartingInALoop**
 
   - [+] test_the_profiles_naming_it_are_not_left_pending
-  - [+] test_stop_all_stops_it
+  - [+] test_stop_all_stops_it (0.01s)
   - [+] test_a_service_starting_is_stopped_too
   - [+] test_a_service_already_stopped_is_left_alone
 
@@ -7332,18 +7636,42 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_provision_mpd_without_library_is_allowed (0.01s)
   - [+] test_regenerate_mpd_reuses_existing_library (0.01s)
   - [+] test_regenerate_mpd_without_existing_config_generates_libraryless (0.01s)
-  - [+] test_provision_airplay_only_without_library_ok (0.01s)
+  - [+] test_provision_airplay_only_without_library_ok
   - [+] test_unresolved_device_raises
   - [+] test_persists_stable_id_not_hw (0.01s)
   - [+] test_persist_preserves_existing_topology (0.01s)
-  - [+] test_ensure_usb_library_writes_units_and_enables
-  - [+] test_ensure_usb_library_exfat_installs_exfatprogs
+  - [+] test_ensure_usb_library_writes_units_and_enables (0.01s)
+  - [+] test_ensure_usb_library_bounds_the_wait_before_the_reload (0.01s)
+  - [+] test_ensure_usb_library_takes_the_bound_off_the_previous_drive (0.01s)
+  - [+] test_no_previous_bound_no_second_reload (0.01s)
+  - [+] test_a_refused_reload_after_the_removal_is_only_logged (0.01s)
+  - [+] test_a_bound_that_cannot_be_written_does_not_stop_the_drive (0.01s)
+  - [+] test_a_full_tmp_does_not_stop_the_drive (0.01s)
+  - [+] test_a_drive_that_cannot_be_named_is_still_set_up (0.01s)
+  - [+] test_start_bounds_the_wait_of_a_library_chosen_before (0.01s)
+  - [+] test_start_leaves_a_bound_in_place_alone (0.01s)
+  - [+] test_start_without_a_usb_library_asks_nothing_of_root (0.01s)
+  - [+] test_start_goes_on_when_the_bound_cannot_be_set (0.01s)
+  - [+] test_another_drive_mounted_is_unmounted_before_the_new_one (0.01s)
+  - [+] test_mpd_playing_from_it_is_stopped_then_started_on_the_new_drive (0.01s)
+  - [+] test_a_drive_still_held_refuses_the_change_and_mpd_runs_again (0.01s)
+  - [+] test_held_while_mpd_is_stopped_refuses_without_starting_it (0.01s)
+  - [+] test_a_stop_that_says_done_while_the_drive_stays_is_not_believed (0.01s)
+  - [+] test_the_chosen_drive_already_mounted_is_left_alone (0.01s)
+  - [+] test_the_chosen_drive_mounted_from_a_device_gone_is_unmounted (0.01s)
+  - [+] test_nothing_mounted_touches_nothing (0.01s)
+  - [+] test_the_previous_drive_mounted_again_before_the_reload_is_unmounted_again (0.01s)
+  - [+] test_mounted_again_and_held_refuses_with_the_new_unit_written (0.01s)
+  - [+] test_guided_full_apply_refused_pins_no_output (0.01s)
+  - [+] test_a_mount_table_that_cannot_be_read_writes_nothing (0.01s)
+  - [+] test_guided_apply_refused_changes_nothing (0.01s)
+  - [+] test_ensure_usb_library_exfat_installs_exfatprogs (0.01s)
   - [+] test_provision_with_usb_library_uses_mountpoint (0.01s)
   - [+] test_per_service_outputs_are_independent (0.01s)
   - [+] test_read_outputs_migrates_legacy_single_pin
   - [+] test_persist_output_preserves_other_service_on_legacy_migration
-  - [+] test_discover_library_sources_usb_and_network (0.01s)
-  - [+] test_status_includes_library_sources
+  - [+] test_discover_library_sources_usb_and_network
+  - [+] test_status_includes_library_sources (0.01s)
   - [+] test_status_reports_outputs_and_config_state (0.01s)
   - [+] test_status_reports_the_device_each_config_actually_names (0.01s)
   - [+] test_a_pin_still_resolves_when_the_card_was_renamed (0.01s)
@@ -7356,24 +7684,24 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_patch_library_changes_music_directory_only (0.01s)
   - [+] test_patch_library_with_usb_uuid_mounts (0.01s)
   - [+] test_patch_library_with_no_path_detaches_the_library
-  - [+] test_patch_library_adds_the_directive_when_there_is_none
+  - [+] test_patch_library_adds_the_directive_when_there_is_none (0.01s)
   - [+] test_detaching_does_not_ask_mpd_to_rescan
   - [+] test_provision_rejects_music_dir_with_quote
   - [+] test_patch_library_rejects_music_dir_with_quote (0.01s)
   - [+] test_patch_output_mpd_uses_native_enable (0.01s)
   - [+] test_patch_output_mpd_enables_the_block_on_the_chosen_card (0.01s)
-  - [+] test_patch_output_mpd_falls_back_on_the_output_id
+  - [+] test_patch_output_mpd_falls_back_on_the_output_id (0.01s)
   - [+] test_patch_output_mpd_falls_back_to_restart (0.01s)
   - [+] test_patch_output_hqplayerd_sets_its_output (0.01s)
   - [+] test_hqplayerd_is_never_provisioned_nor_migrated
   - [+] test_status_lists_hqplayerd_for_its_output_alone (0.01s)
-  - [+] test_status_leaves_out_an_hqplayerd_the_box_does_not_declare
+  - [+] test_status_leaves_out_an_hqplayerd_the_box_does_not_declare (0.01s)
   - [+] test_patch_library_triggers_mpd_rescan (0.01s)
   - [+] test_provision_triggers_mpd_rescan_when_mpd_generated (0.01s)
   - [+] test_provision_airplay_only_does_not_rescan
   - [+] test_mpd_port_from_config_parses_and_defaults
   - [+] test_patch_library_rescan_uses_configured_port (0.01s)
-  - [+] test_trigger_mpd_rescan_is_best_effort
+  - [+] test_trigger_mpd_rescan_is_best_effort (0.01s)
   - [+] test_library_scan_status_reports_scanning
   - [+] test_library_scan_status_reports_idle
   - [+] test_library_scan_status_tolerates_mpd_down
@@ -7395,7 +7723,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_bad_path_is_refused_with_a_readable_reason[relative/path-must be absolute]
   - [+] test_a_bad_path_is_refused_with_a_readable_reason[/does/not/exist/anywhere-does not exist] (0.01s)
   - [+] test_a_bad_path_is_refused_with_a_readable_reason[/tmp/with"quote-double-quote]
-  - [+] test_a_file_is_not_a_library
+  - [+] test_a_file_is_not_a_library (0.01s)
   - [+] test_a_directory_mpd_cannot_read_is_refused (0.01s)
   - [+] test_an_undetermined_permission_does_not_block (0.01s)
 
@@ -7403,9 +7731,9 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_provisioning_without_a_library_keeps_the_one_already_set (0.01s)
   - [+] test_a_path_with_a_backslash_is_applied_literally (0.01s)
-  - [+] test_both_branches_agree_on_a_backslash_path
-  - [+] test_a_bad_path_is_refused_before_anything_is_applied
-  - [+] test_a_bare_unit_name_still_reaches_the_readability_check
+  - [+] test_both_branches_agree_on_a_backslash_path (0.01s)
+  - [+] test_a_bad_path_is_refused_before_anything_is_applied (0.02s)
+  - [+] test_a_bare_unit_name_still_reaches_the_readability_check (0.01s)
 
 **tests.test_provisioning.TestFoundBySecondCodeReview**
 
@@ -7438,9 +7766,9 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_the_output_mpd_plays_on_takes_it_in_its_file_and_at_once (0.01s)
   - [+] test_a_file_that_already_says_it_is_not_written_again (0.01s)
-  - [+] test_the_old_alias_goes_with_it
+  - [+] test_the_old_alias_goes_with_it (0.01s)
   - [+] test_the_port_is_the_one_mpd_listens_on (0.01s)
-  - [+] test_mpd_stopped_is_said_and_nothing_written
+  - [+] test_mpd_stopped_is_said_and_nothing_written (0.01s)
   - [+] test_two_outputs_at_once_is_refused (0.01s)
   - [+] test_an_output_the_file_does_not_name_is_refused (0.01s)
   - [+] test_mpd_refusing_it_at_runtime_is_restarted_to_read_its_file (0.01s)
@@ -7459,7 +7787,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_turned_off_it_is_kept_for_the_dac_and_shown (0.01s)
   - [+] test_turned_back_on_the_same_entry_changes (0.01s)
   - [+] test_no_output_chosen_for_mpd_is_refused
-  - [+] test_an_unreadable_topology_is_left_as_it_is
+  - [+] test_an_unreadable_topology_is_left_as_it_is (0.01s)
   - [+] test_the_status_says_nothing_when_no_output_is_chosen (0.01s)
 
 **tests.test_provisioning.TestDsdTurnedIntoPcmBeforeTheVolume**
@@ -7480,12 +7808,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_push.TestSubscribe**
 
-  - [+] test_subscribe (0.01s)
+  - [+] test_subscribe (0.02s)
 
 **tests.test_push.TestOneBoundForAnEndpoint**
 
   - [+] test_subscribing_is_bounded (0.01s)
-  - [+] test_the_longest_endpoint_subscribed_is_named_everywhere (0.04s)
+  - [+] test_the_longest_endpoint_subscribed_is_named_everywhere (0.03s)
 
 **tests.test_push.TestUnsubscribe**
 
@@ -7523,7 +7851,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_other_refusals_keep_the_subscription[403] (0.01s)
   - [+] test_other_refusals_keep_the_subscription[413] (0.01s)
   - [+] test_other_refusals_keep_the_subscription[429] (0.01s)
-  - [+] test_other_refusals_keep_the_subscription[500]
+  - [+] test_other_refusals_keep_the_subscription[500] (0.01s)
   - [+] test_other_refusals_keep_the_subscription[503] (0.01s)
   - [+] test_failure_before_any_answer_keeps_the_subscription (0.01s)
   - [+] test_save_writes_0600_file
@@ -7531,7 +7859,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_push.TestWhoGetsIt**
 
   - [+] test_everyone_by_default (0.01s)
-  - [+] test_skip_leaves_one_device_out
+  - [+] test_skip_leaves_one_device_out (0.01s)
   - [+] test_only_picks_one
   - [+] test_the_only_device_being_the_one_skipped_sends_nothing
   - [+] test_skipping_an_unknown_device_skips_nobody (0.01s)
@@ -7539,10 +7867,10 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_push.TestTheTestNotification**
 
-  - [+] test_sent_to_that_device_alone
+  - [+] test_sent_to_that_device_alone (0.01s)
   - [+] test_a_device_not_subscribed
-  - [+] test_no_keys (0.01s)
-  - [+] test_refused_by_the_push_service (0.01s)
+  - [+] test_no_keys
+  - [+] test_refused_by_the_push_service
   - [+] test_an_expired_subscription_is_forgotten_and_said[404] (0.01s)
   - [+] test_an_expired_subscription_is_forgotten_and_said[410] (0.01s)
   - [+] test_no_answer_at_all (0.01s)
@@ -7651,20 +7979,20 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_connection_cut_while_downloading_says_so[failing0]
   - [+] test_a_connection_cut_while_downloading_says_so[failing1]
   - [+] test_an_answer_far_larger_than_the_web_player_is_refused
-  - [+] test_the_wait_is_bounded_by_a_stall_not_by_the_whole_download
+  - [+] test_the_wait_is_bounded_by_a_stall_not_by_the_whole_download (0.01s)
 
 **tests.test_qobuz.TestQobuzOAuthServicePersistence**
 
   - [+] test_loads_config_on_init
   - [+] test_not_connected_when_no_config
-  - [+] test_disconnect_removes_file
+  - [+] test_disconnect_removes_file (0.01s)
   - [+] test_disconnect_noop_when_no_file
   - [+] test_save_config_roundtrip
-  - [+] test_corrupt_config_is_handled
+  - [+] test_corrupt_config_is_handled (0.01s)
 
 **tests.test_qobuz.TestQobuzOAuthFlow**
 
-  - [+] test_start_oauth_builds_url
+  - [+] test_start_oauth_builds_url (0.01s)
 
 **tests.test_qobuz.TestQobuzModels**
 
@@ -7675,7 +8003,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_qobuz.TestQobuzRouter**
 
   - [+] test_get_connection_connected (0.02s)
-  - [+] test_delete_connection (0.02s)
+  - [+] test_delete_connection (0.03s)
   - [+] test_get_connection_after_disconnect (0.02s)
   - [+] test_oauth_callback_no_code (0.02s)
   - [+] test_oauth_callback_with_code (0.02s)
@@ -7686,20 +8014,20 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_persistent_401_raises_rotated
   - [+] test_persistent_403_raises_rotated
-  - [+] test_rotation_error_message_mentions_rotated (0.02s)
+  - [+] test_rotation_error_message_mentions_rotated (0.01s)
   - [+] test_rotation_logs_error
   - [+] test_first_401_triggers_retry_not_rotation
 
 **tests.test_qobuz.TestQobuzOAuthEdgeCases**
 
   - [+] test_handle_callback_returns_false_when_no_secret (0.01s)
-  - [+] test_user_id_is_none_when_json_id_is_null
-  - [+] test_user_id_is_none_when_id_key_absent
+  - [+] test_user_id_is_none_when_json_id_is_null (0.01s)
+  - [+] test_user_id_is_none_when_id_key_absent (0.01s)
 
 **tests.test_qobuz.TestSignedFileUrlParams**
 
   - [+] test_the_signature_is_the_documented_string
-  - [+] test_the_five_parameters_are_all_there (0.01s)
+  - [+] test_the_five_parameters_are_all_there
   - [+] test_the_timestamp_signed_is_the_timestamp_sent
   - [+] test_each_call_takes_its_own_timestamp
   - [+] test_the_secret_signed_is_the_one_passed_not_the_one_stored
@@ -7708,7 +8036,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_raises_when_not_connected
   - [+] test_happy_path_returns_cdn_url (0.01s)
-  - [+] test_non_200_raises_runtime_error
+  - [+] test_non_200_raises_runtime_error (0.01s)
   - [+] test_missing_url_in_response_raises (0.01s)
 
 **tests.test_qobuz.TestQobuzCallbackErrorHandling**
@@ -7748,7 +8076,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_qobuz_library.TestQobuzFeaturedAlbums**
 
-  - [+] test_parses_albums (0.01s)
+  - [+] test_parses_albums
   - [+] test_skips_items_without_id
   - [+] test_handles_missing_release_date
   - [+] test_empty_response
@@ -7761,35 +8089,43 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_qobuz_library.TestQobuzPlaylistTracks**
 
-  - [+] test_parses_tracks (0.01s)
-  - [+] test_performer_fallback_to_artist (0.01s)
-  - [+] test_album_fallback_to_playlist_name (0.01s)
-  - [+] test_skips_tracks_without_id (0.01s)
+  - [+] test_parses_tracks
+  - [+] test_performer_fallback_to_artist
+  - [+] test_album_fallback_to_playlist_name
+  - [+] test_skips_tracks_without_id
 
 **tests.test_qobuz_library.TestQobuzSearch**
 
-  - [+] test_reads_every_bucket_from_one_request (0.01s)
+  - [+] test_reads_every_bucket_from_one_request
 
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
-  - [+] test_shelves (0.20s)
-  - [+] test_genres (0.54s)
+  - [+] test_shelves (0.18s)
+  - [+] test_genres (0.19s)
   - [+] test_genre_grid (0.18s)
-  - [+] test_genre_requires_a_path (0.17s)
-  - [+] test_purchases (0.19s)
+  - [+] test_genre_requires_a_path (0.18s)
+  - [+] test_purchases (0.18s)
   - [+] test_playlists_default_to_the_editorial_tree (0.18s)
   - [+] test_playlists_can_ask_for_the_account_tree (0.18s)
-  - [+] test_playlists_refuse_an_unknown_tree (0.18s)
-  - [+] test_featured_albums (0.17s)
-  - [+] test_featured_albums_default_type (0.20s)
+  - [+] test_playlists_refuse_an_unknown_tree (0.20s)
+  - [+] test_playlists_default_to_no_category (0.67s)
+  - [+] test_playlists_pass_the_category_through (0.18s)
+  - [+] test_playlists_refuse_an_oversized_category (0.19s)
+  - [+] test_playlists_default_to_no_genre (0.18s)
+  - [+] test_playlists_pass_the_genre_through (0.17s)
+  - [+] test_playlists_refuse_an_oversized_genre (0.18s)
+  - [+] test_playlist_tags (0.18s)
+  - [+] test_playlist_tags_when_qobuz_is_down (0.19s)
+  - [+] test_featured_albums (0.38s)
+  - [+] test_featured_albums_default_type (0.18s)
   - [+] test_playlists (0.18s)
   - [+] test_playlist_tracks (0.18s)
-  - [+] test_playlist_tracks_missing_id (0.18s)
-  - [+] test_featured_service_error (0.18s)
+  - [+] test_playlist_tracks_missing_id (0.19s)
+  - [+] test_featured_service_error (0.74s)
 
 **tests.test_qobuz_library.TestQobuzQueueHelper**
 
-  - [+] test_adds_tracks_as_stable_redirect_proxy_urls
+  - [+] test_adds_tracks_as_stable_redirect_proxy_urls (0.01s)
   - [+] test_play_action_triggers_playid
   - [+] test_persists_metadata_as_durable_mpd_tags
 
@@ -7820,12 +8156,57 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_editorial_asks_the_featured_endpoint
   - [+] test_mine_asks_the_user_endpoint
-  - [+] test_unknown_kind_reads_as_editorial
+  - [+] test_unknown_kind_reads_as_editorial (0.01s)
+  - [+] test_a_category_narrows_the_editorial_tree
+  - [+] test_a_category_is_ignored_for_the_account_tree
+  - [+] test_a_genre_narrows_the_editorial_tree
+  - [+] test_a_genre_and_a_category_combine
+
+**tests.test_qobuz_library.TestQobuzPlaylistBanners**
+
+  - [+] test_the_editorial_tree_shows_the_landscape_artwork
+  - [+] test_the_banner_is_read_defensively[extra0-https://static.qobuz.com/images/playlists/23221519_118b_rectangle.jpg]
+  - [+] test_the_banner_is_read_defensively[extra1-https://static.qobuz.com/images/playlists/23221519_118b_rectangle.jpg]
+  - [+] test_the_banner_is_read_defensively[extra2-https://static.qobuz.com/images/covers/5b/u5/avaqxlcueu55b_300.jpg]
+  - [+] test_the_banner_is_read_defensively[extra3-https://static.qobuz.com/images/covers/5b/u5/avaqxlcueu55b_300.jpg]
+  - [+] test_the_banner_is_read_defensively[extra4-https://static.qobuz.com/images/covers/5b/u5/avaqxlcueu55b_300.jpg]
+  - [+] test_the_banner_is_read_defensively[extra5-https://static.qobuz.com/images/covers/5b/u5/avaqxlcueu55b_300.jpg]
+  - [+] test_the_banner_is_read_defensively[extra6-https://static.qobuz.com/images/covers/5b/u5/avaqxlcueu55b_300.jpg]
+  - [+] test_the_banner_is_read_defensively[extra7-https://static.qobuz.com/images/playlists/23221519_118b_rectangle.jpg]
+  - [+] test_the_banner_is_read_defensively[extra8-https://static.qobuz.com/images/playlists/23221519_118b_rectangle.jpg]
+  - [+] test_without_banner_the_square_cover_is_kept
+  - [+] test_the_account_tree_keeps_square_covers
+
+**tests.test_qobuz_library.TestQobuzPlaylistTags**
+
+  - [+] test_lists_the_categories_in_qobuz_order
+  - [+] test_the_title_is_the_slug_and_the_label_the_english_name
+  - [+] test_names_given_as_an_object_are_read_too
+  - [+] test_a_category_without_an_english_name_is_labelled_by_its_slug[None]
+  - [+] test_a_category_without_an_english_name_is_labelled_by_its_slug[]
+  - [+] test_a_category_without_an_english_name_is_labelled_by_its_slug[{not json]
+  - [+] test_a_category_without_an_english_name_is_labelled_by_its_slug[[]]
+  - [+] test_a_category_without_an_english_name_is_labelled_by_its_slug[{"fr": "Humeurs"}] (0.01s)
+  - [+] test_a_category_without_an_english_name_is_labelled_by_its_slug[{"en": ""}] (0.01s)
+  - [+] test_a_category_without_an_english_name_is_labelled_by_its_slug[{"en": 12}] (0.01s)
+  - [+] test_a_category_without_a_usable_slug_is_dropped
+  - [+] test_a_repeated_slug_is_listed_once
+  - [+] test_of_a_repeated_slug_the_one_qobuz_ranks_higher_is_kept (0.01s)
+  - [+] test_an_unranked_category_goes_last_in_the_order_received (0.01s)
+  - [+] test_an_empty_or_malformed_answer_is_an_empty_list[answer0]
+  - [+] test_an_empty_or_malformed_answer_is_an_empty_list[answer1]
+  - [+] test_an_empty_or_malformed_answer_is_an_empty_list[answer2]
+  - [+] test_an_empty_or_malformed_answer_is_an_empty_list[answer3]
+  - [+] test_an_empty_or_malformed_answer_is_an_empty_list[answer4]
+  - [+] test_the_list_is_memoised
+  - [+] test_an_empty_list_is_not_memoised
+  - [+] test_concurrent_readers_share_one_request
+  - [+] test_a_failure_reaches_the_caller
 
 **tests.test_qobuz_library.TestQobuzPurchases**
 
   - [+] test_lists_bought_albums_only
-  - [+] test_id_carries_no_marker (0.02s)
+  - [+] test_id_carries_no_marker
   - [+] test_no_purchases_is_an_empty_list
 
 **tests.test_qobuz_library.TestQobuzGenres**
@@ -7868,8 +8249,8 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_an_unlisted_shelf_is_refused_before_the_request
   - [+] test_the_genre_shelf_is_one_of_the_published_shelves
-  - [+] test_the_route_answers_400_not_503 (0.17s)
-  - [+] test_shelves_report_a_disconnected_account_like_every_sibling (0.19s)
+  - [+] test_the_route_answers_400_not_503 (0.18s)
+  - [+] test_shelves_report_a_disconnected_account_like_every_sibling (0.18s)
 
 **tests.test_qobuz_library.TestTitleSortKey**
 
@@ -7885,7 +8266,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_qobuz_playlists.TestSplitFamily**
 
   - [+] test_a_known_family_is_split_off
-  - [+] test_an_unknown_prefix_is_part_of_the_id
+  - [+] test_an_unknown_prefix_is_part_of_the_id (0.01s)
   - [+] test_a_bare_id_names_no_family
 
 **tests.test_qobuz_playlists.TestListing**
@@ -7915,7 +8296,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_bare_id_and_the_mine_family_read_the_same_playlist
   - [+] test_a_playlist_that_is_gone_is_refused_not_shown_empty
   - [+] test_an_answer_without_its_tracks_is_a_failure_not_an_empty_playlist
-  - [+] test_a_line_read_twice_across_two_pages_is_kept_once (0.55s)
+  - [+] test_a_line_read_twice_across_two_pages_is_kept_once (0.01s)
   - [+] test_an_empty_playlist_reads_as_empty
   - [+] test_an_answer_that_never_reaches_its_end_is_a_failure_not_a_short_playlist (0.01s)
 
@@ -8007,14 +8388,14 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_radio.TestRadioSavedStationDatetime**
 
-  - [+] test_added_at_is_timezone_aware
+  - [+] test_added_at_is_timezone_aware (0.01s)
 
 **tests.test_radio.TestRadioResolveRobustness**
 
-  - [+] test_resolve_falls_back_to_saved_on_rbi_failure
+  - [+] test_resolve_falls_back_to_saved_on_rbi_failure (0.01s)
   - [+] test_resolve_returns_none_when_the_catalogue_does_not_know_it
   - [+] test_resolve_reports_an_unreachable_catalogue_instead_of_not_found
-  - [+] test_a_saved_station_still_wins_over_an_unreachable_catalogue
+  - [+] test_a_saved_station_still_wins_over_an_unreachable_catalogue (0.01s)
 
 **tests.test_radio.TestRadioApplyEntryUpdate**
 
@@ -8026,9 +8407,9 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_radio.TestRadioPlayRendererRouting**
 
-  - [+] test_play_routes_to_renderer_when_active
+  - [+] test_play_routes_to_renderer_when_active (0.01s)
   - [+] test_play_cover_token_none_when_no_favicon (0.01s)
-  - [+] test_play_uses_mpd_when_the_routing_says_local
+  - [+] test_play_uses_mpd_when_the_routing_says_local (0.01s)
   - [+] test_play_relays_mpds_refusal (0.01s)
   - [+] test_play_propagates_renderer_error_without_mpd_fallback
 
@@ -8056,9 +8437,9 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_radio.TestRadioHonoursOutputSelection**
 
   - [+] test_station_is_pushed_to_hqplayer_when_it_is_the_output (0.01s)
-  - [+] test_hqplayer_push_carries_the_radio_identity (0.01s)
+  - [+] test_hqplayer_push_carries_the_radio_identity (0.02s)
   - [+] test_hqplayer_push_never_touches_mpd (0.01s)
-  - [+] test_local_output_still_goes_to_mpd (0.02s)
+  - [+] test_local_output_still_goes_to_mpd (0.01s)
   - [+] test_routing_refusal_propagates
 
 **tests.test_radio.TestRadioHqplayerFailureIsNotA500**
@@ -8074,15 +8455,15 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_radio.TestRadioCodecGate**
 
   - [+] test_an_aac_station_goes_through_as_the_flac_it_is_sent (0.01s)
-  - [+] test_a_refusal_keeps_its_own_status
-  - [+] test_the_station_codec_is_forwarded_to_the_guard (0.01s)
-  - [+] test_an_mp3_station_goes_through
+  - [+] test_a_refusal_keeps_its_own_status (0.01s)
+  - [+] test_the_station_codec_is_forwarded_to_the_guard (0.02s)
+  - [+] test_an_mp3_station_goes_through (0.01s)
   - [+] test_an_unknown_codec_is_still_attempted (0.01s)
 
 **tests.test_radio.TestRadioCatalogueBackoff**
 
-  - [+] test_stops_after_two_attempts_and_spaces_them
-  - [+] test_server_error_message_is_written_for_a_listener
+  - [+] test_stops_after_two_attempts_and_spaces_them (0.01s)
+  - [+] test_server_error_message_is_written_for_a_listener (0.01s)
   - [+] test_a_server_error_does_not_silence_later_searches (0.01s)
   - [+] test_429_stops_immediately_and_sends_nothing_afterwards
   - [+] test_retry_after_defaults_and_is_capped
@@ -8091,18 +8472,18 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_radio.TestRadioMirrorDiscovery**
 
   - [+] test_a_single_mirror_is_tried_once_not_retried (0.01s)
-  - [+] test_distinct_mirrors_still_get_a_failover
+  - [+] test_distinct_mirrors_still_get_a_failover (0.01s)
 
 **tests.test_radio.TestRadioDnsDiscovery**
 
   - [+] test_one_machine_on_two_ip_families_is_one_server
   - [+] test_address_without_reverse_dns_is_dropped
   - [+] test_dns_failure_keeps_the_fallback_server (0.01s)
-  - [+] test_empty_dns_answer_does_not_wipe_the_server_list
+  - [+] test_empty_dns_answer_does_not_wipe_the_server_list (0.01s)
 
 **tests.test_radio.TestRadioStaleSearchFallback**
 
-  - [+] test_serves_the_previous_answer_when_the_catalogue_is_down
+  - [+] test_serves_the_previous_answer_when_the_catalogue_is_down (0.01s)
   - [+] test_a_search_never_run_before_still_reports_the_failure
 
 **tests.test_radio.TestRadioPlayReporting**
@@ -8116,9 +8497,9 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_a_rate_limited_play_report_never_silences_search (0.01s)
   - [+] test_a_cooldown_still_stops_the_optional_call_too
-  - [+] test_a_refusal_from_the_only_server_is_asked_once
-  - [+] test_a_silent_failure_from_the_only_server_is_asked_again
-  - [+] test_a_reverse_lookup_outside_the_catalogue_domain_is_refused
+  - [+] test_a_refusal_from_the_only_server_is_asked_once (0.01s)
+  - [+] test_a_silent_failure_from_the_only_server_is_asked_again (0.01s)
+  - [+] test_a_reverse_lookup_outside_the_catalogue_domain_is_refused (0.01s)
   - [+] test_a_wrong_reverse_lookup_leaves_the_working_server_in_place (0.01s)
   - [+] test_discovery_gives_up_rather_than_hanging_startup (5.01s)
   - [+] test_shutdown_cancels_the_play_reports_still_in_flight
@@ -8146,7 +8527,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_radio.TestTheStationLookupReachesThePipeline**
 
-  - [+] test_register_binds_it (0.04s)
+  - [+] test_register_binds_it (0.03s)
 
 **tests.test_radio.TestTheStationIndexByAddress**
 
@@ -8170,7 +8551,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_radio.TestTheLosslessSearchReadsNoMoreThanItNeeds**
 
   - [+] test_the_reading_stops_once_the_page_is_full
-  - [+] test_a_complete_answer_is_kept_and_a_cut_short_one_is_not (0.01s)
+  - [+] test_a_complete_answer_is_kept_and_a_cut_short_one_is_not
   - [+] test_a_station_found_by_the_filter_is_kept_without_its_streams_format
 
 **tests.test_radio.TestTheStationThePlayerLooksUp**
@@ -8221,12 +8602,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_radio_relay.TestConverted**
 
-  - [+] test_an_aac_station_is_served_as_flac (0.27s)
-  - [+] test_a_station_it_cannot_reach_is_a_502 (0.11s)
+  - [+] test_an_aac_station_is_served_as_flac (0.26s)
+  - [+] test_a_station_it_cannot_reach_is_a_502 (0.12s)
 
 **tests.test_radio_relay.TestTheRelayServer**
 
-  - [+] test_a_station_is_answered_in_http_1_0_and_stopped_with_the_core (0.05s)
+  - [+] test_a_station_is_answered_in_http_1_0_and_stopped_with_the_core (0.06s)
   - [+] test_the_radio_module_starts_it (0.04s)
   - [+] test_the_core_stops_it_before_the_pool_it_fetches_through (0.01s)
 
@@ -8237,7 +8618,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_declares_what_it_actually_sends (0.01s)
   - [+] test_relays_a_station_hqplayer_reads_as_it_is_sent (0.01s)
   - [+] test_a_flac_station_is_relayed_as_sent_not_converted (0.01s)
-  - [+] test_a_format_nobody_named_is_converted_too[None] (0.02s)
+  - [+] test_a_format_nobody_named_is_converted_too[None] (0.01s)
   - [+] test_a_format_nobody_named_is_converted_too[] (0.01s)
   - [+] test_a_format_nobody_named_is_converted_too[UNKNOWN] (0.01s)
   - [+] test_a_format_nobody_named_is_converted_too[OGG] (0.01s)
@@ -8258,14 +8639,14 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_readable_by_user**
 
-  - [+] test_root_reads_everything
+  - [+] test_root_reads_everything (0.01s)
 
 **tests.test_renderer_manager.TestLoadConfig**
 
   - [+] test_no_config_file_leaves_empty_state
   - [+] test_reads_known_renderers
   - [+] test_active_flag_sets_active_udn
-  - [+] test_only_first_active_entry_wins (0.01s)
+  - [+] test_only_first_active_entry_wins
   - [+] test_migration_from_legacy_config
   - [+] test_migration_skipped_when_new_config_exists
   - [+] test_migrate_drops_local_renderer_and_clears_active
@@ -8273,7 +8654,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_renderer_manager.TestGetKnown**
 
-  - [+] test_no_service_reachable_false (0.01s)
+  - [+] test_no_service_reachable_false
   - [+] test_live_reachable_from_service
 
 **tests.test_renderer_manager.TestGetService**
@@ -8292,9 +8673,9 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_renderer_manager.TestConnect**
 
   - [+] test_connect_sets_active_udn
-  - [+] test_connect_calls_svc_connect
+  - [+] test_connect_calls_svc_connect (0.01s)
   - [+] test_connect_stops_previous_active (0.01s)
-  - [+] test_connect_upserts_known_list
+  - [+] test_connect_upserts_known_list (0.01s)
   - [+] test_connect_rejects_local_renderer
 
 **tests.test_renderer_manager.TestDisconnect**
@@ -8311,16 +8692,16 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_an_mpd_stopped_on_purpose_is_not_reported_as_a_failure
   - [+] test_an_unreachable_mpd_never_sinks_the_cast (0.01s)
   - [+] test_a_refusal_in_the_reply_is_noticed
-  - [+] test_a_truncated_reply_is_noticed_too
+  - [+] test_a_truncated_reply_is_noticed_too (0.01s)
 
 **tests.test_renderer_takes_over_local.TestHandOffIsWired**
 
-  - [+] test_play_queue_silences_the_local_output_before_pushing
+  - [+] test_play_queue_silences_the_local_output_before_pushing (0.01s)
   - [+] test_play_silences_the_local_output_before_pushing
   - [+] test_play_clears_the_queue_before_it_awaits_anything (0.01s)
   - [+] test_an_empty_queue_touches_nothing
   - [+] test_advancing_to_the_next_track_does_not_stop_mpd_again
-  - [+] test_a_failing_resolver_leaves_the_local_music_alone
+  - [+] test_a_failing_resolver_leaves_the_local_music_alone (0.01s)
   - [+] test_a_lost_renderer_leaves_the_local_music_alone
 
 **tests.test_resource_fences**
@@ -8351,7 +8732,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_roon_client.TestWhenRoonEngagesAtAll**
 
-  - [+] test_no_endpoint_no_connection[stopped] (0.01s)
+  - [+] test_no_endpoint_no_connection[stopped]
   - [+] test_no_endpoint_no_connection[not-installed]
   - [+] test_the_retired_keys_stay_retired[roon_enabled]
   - [+] test_the_retired_keys_stay_retired[roon_core_port]
@@ -8361,7 +8742,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_either_endpoint_opens_the_door[server]
   - [+] test_the_endpoints_are_read_in_one_call
   - [+] test_a_bus_that_cannot_answer_is_no_answer
-  - [+] test_the_client_weighs_no_answer_as_no_endpoint
+  - [+] test_the_client_weighs_no_answer_as_no_endpoint (0.01s)
 
 **tests.test_roon_client.TestARetryIsStillPossible**
 
@@ -8420,7 +8801,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_route_guards**
 
   - [+] test_no_write_route_is_left_unguarded (0.12s)
-  - [+] test_open_by_design_is_not_stale (0.12s)
+  - [+] test_open_by_design_is_not_stale (0.11s)
   - [+] test_scan_sees_every_kind_of_guard[router = APIRouter()\n@router.post("/x")\nasync def x(): ...-expected0]
   - [+] test_scan_sees_every_kind_of_guard[router = APIRouter()\n@router.post("/x")\nasync def x(_=Depends(restrict_guest_access)): ...-expected1]
   - [+] test_scan_sees_every_kind_of_guard[router = APIRouter()\n@router.put("/x", dependencies=[Depends(require_admin)])\nasync def x(): ...-expected2]
@@ -8431,9 +8812,9 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_self_update.TestState**
 
   - [+] test_read_state_idle_when_absent
-  - [+] test_write_initial_and_read_roundtrip
-  - [+] test_write_initial_none_version_is_latest
-  - [+] test_is_in_progress
+  - [+] test_write_initial_and_read_roundtrip (0.01s)
+  - [+] test_write_initial_none_version_is_latest (0.01s)
+  - [+] test_is_in_progress (0.01s)
   - [+] test_read_state_tolerates_corrupt_file
   - [+] test_stale_in_progress_is_ignored
   - [+] test_fresh_in_progress_without_timestamp_is_conservative
@@ -8459,10 +8840,10 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_self_update.TestLaunchTokenFallback**
 
-  - [+] test_falls_back_to_configured_token
+  - [+] test_falls_back_to_configured_token (0.01s)
   - [+] test_explicit_token_wins_over_configured
-  - [+] test_launcher_failure_marks_state_failed
-  - [+] test_a_silent_launcher_failure_still_reads_as_a_sentence
+  - [+] test_launcher_failure_marks_state_failed (0.01s)
+  - [+] test_a_silent_launcher_failure_still_reads_as_a_sentence (0.01s)
   - [+] test_a_launcher_message_on_several_lines_stays_on_one
   - [+] test_launcher_success_keeps_starting
 
@@ -8475,8 +8856,8 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_self_update.TestNoStopWhileDpkgWorks**
 
-  - [+] test_a_restart_is_refused (0.04s)
-  - [+] test_a_reboot_is_refused (0.05s)
+  - [+] test_a_restart_is_refused (0.05s)
+  - [+] test_a_reboot_is_refused (0.04s)
   - [+] test_an_update_is_refused (0.04s)
   - [+] test_a_download_does_not_hold_a_restart (0.01s)
   - [+] test_an_install_run_from_outside_holds_a_reboot_not_a_restart
@@ -8488,8 +8869,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_restart_after_a_crash_is_a_failure
   - [+] test_a_restart_after_a_clean_exit_is_not
   - [+] test_a_service_stopped_on_purpose_is_not
-  - [+] test_a_crash_first_seen_while_systemd_starts_it_again_is_announced
-  - [+] test_a_failure_seen_after_it_was_stopping_is_announced (0.01s)
+  - [+] test_a_crash_first_seen_while_systemd_starts_it_again_is_announced (0.01s)
+  - [+] test_a_failure_seen_after_it_was_stopping_is_announced
   - [+] test_stopped_on_purpose_then_failing_to_start_is_not_news
   - [+] test_a_service_failed_before_anyone_watched_is_not_news
   - [+] test_the_core_s_own_services_are_watched_too
@@ -8499,7 +8880,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_a_crash_systemd_restarts_within_a_second_is_announced
   - [+] test_it_is_announced_as_soon_as_it_is_heard
-  - [+] test_two_crashes_between_two_passes_are_one_alert
+  - [+] test_two_crashes_between_two_passes_are_one_alert (0.01s)
   - [+] test_a_clean_exit_restarted_at_once_is_not_a_failure
   - [+] test_a_start_whose_result_is_not_known_yet_is_not_judged
 
@@ -8511,17 +8892,17 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_service_failure_alert.TestWhatIsAsked**
 
   - [+] test_a_pass_with_nothing_to_announce_reads_nothing_from_systemd
-  - [+] test_the_machine_s_state_is_read_when_an_alert_is_due (0.01s)
-  - [+] test_the_watch_listens_to_the_watched_units_but_the_core_s_own (0.01s)
-  - [+] test_a_failure_while_the_watch_could_not_listen_is_told_when_it_can (0.01s)
-  - [+] test_without_a_client_to_ask_whether_the_machine_stops_it_goes_out (0.01s)
+  - [+] test_the_machine_s_state_is_read_when_an_alert_is_due
+  - [+] test_the_watch_listens_to_the_watched_units_but_the_core_s_own
+  - [+] test_a_failure_while_the_watch_could_not_listen_is_told_when_it_can
+  - [+] test_without_a_client_to_ask_whether_the_machine_stops_it_goes_out
 
 **tests.test_service_failure_alert.TestAfterAPause**
 
-  - [+] test_nobody_to_tell_lets_go_of_the_watch_and_of_what_it_knew (0.01s)
-  - [+] test_states_known_before_a_pause_are_not_compared_with (0.01s)
-  - [+] test_a_failure_heard_just_before_the_core_stops_is_not_lost (0.02s)
-  - [+] test_an_id_that_now_names_another_unit_is_not_compared_with (0.01s)
+  - [+] test_nobody_to_tell_lets_go_of_the_watch_and_of_what_it_knew
+  - [+] test_states_known_before_a_pause_are_not_compared_with
+  - [+] test_a_failure_heard_just_before_the_core_stops_is_not_lost
+  - [+] test_an_id_that_now_names_another_unit_is_not_compared_with
 
 **tests.test_service_failure_alert.TestWhatIsWatched**
 
@@ -8530,10 +8911,10 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_service_failure_alert.TestOneAlertPerCooldown**
 
-  - [+] test_a_service_crashing_again_and_again_alerts_once_per_cooldown (0.01s)
+  - [+] test_a_service_crashing_again_and_again_alerts_once_per_cooldown
   - [+] test_a_service_that_stays_failed_is_announced_once (0.01s)
-  - [+] test_the_cooldown_is_per_service
-  - [+] test_a_failed_send_is_not_retried_before_the_cooldown
+  - [+] test_the_cooldown_is_per_service (0.01s)
+  - [+] test_a_failed_send_is_not_retried_before_the_cooldown (0.01s)
 
 **tests.test_service_failure_alert.TestTheDashboardLoopNoLongerSendsIt**
 
@@ -8545,11 +8926,11 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_services.TestServiceInfo**
 
-  - [+] test_get_service (0.04s)
+  - [+] test_get_service (0.05s)
 
 **tests.test_services.TestServiceActions**
 
-  - [+] test_restart_service (0.05s)
+  - [+] test_restart_service (0.04s)
   - [+] test_stop_service (0.04s)
   - [+] test_start_service (0.04s)
 
@@ -8557,20 +8938,20 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_valid_name_accepted (0.04s)
   - [+] test_semicolon_rejected (0.04s)
-  - [+] test_slash_rejected (0.04s)
-  - [+] test_ampersand_rejected (0.06s)
+  - [+] test_slash_rejected (0.05s)
+  - [+] test_ampersand_rejected (0.04s)
 
 **tests.test_services.TestEnumComparison**
 
-  - [+] test_fifo_policy_triggers_warning
+  - [+] test_fifo_policy_triggers_warning (0.01s)
   - [+] test_realtime_io_triggers_warning
 
 **tests.test_services.TestMpdOwnSoundThreads**
 
   - [+] test_mpd_at_the_old_presets_fifo_80_is_warned
   - [+] test_mpd_below_its_sound_threads_is_not
-  - [+] test_a_priority_without_a_real_time_policy_is_not (0.01s)
-  - [+] test_another_service_at_80_is_not
+  - [+] test_a_priority_without_a_real_time_policy_is_not
+  - [+] test_another_service_at_80_is_not (0.01s)
   - [+] test_the_properties_say_what_mpd_gives_its_sound_threads (0.01s)
 
 **tests.test_services.TestDbusTimeout**
@@ -8580,10 +8961,10 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_services.TestIsServiceActive**
 
   - [+] test_returns_true_when_active
-  - [+] test_returns_false_when_inactive
-  - [+] test_appends_service_suffix (0.01s)
-  - [+] test_returns_false_on_dbus_error
-  - [+] test_returns_false_when_the_bus_cannot_answer
+  - [+] test_returns_false_when_inactive (0.01s)
+  - [+] test_appends_service_suffix
+  - [+] test_returns_false_on_dbus_error (0.01s)
+  - [+] test_returns_false_when_the_bus_cannot_answer (0.01s)
   - [+] test_returns_false_when_dbus_unavailable
 
 **tests.test_services.TestCgroupFdEviction**
@@ -8596,7 +8977,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_cpu_affinity_accepts_valid
   - [+] test_cpu_affinity_rejects_newline_between_indices
   - [+] test_count_fields_reject_injection
-  - [+] test_count_fields_accept_int_and_infinity (0.01s)
+  - [+] test_count_fields_accept_int_and_infinity
   - [+] test_memory_rejects_multiline
 
 **tests.test_services.TestManagedUnitGuard**
@@ -8632,12 +9013,12 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_core_is_refused[restart] (0.05s)
   - [+] test_the_core_is_refused[stop] (0.04s)
   - [+] test_the_core_is_refused[reload] (0.05s)
-  - [+] test_through_the_generic_action_too (0.06s)
-  - [+] test_properties_applied_at_once_too (0.05s)
-  - [+] test_settings_put_back_too[delete-properties/override-remove_service_override] (0.05s)
-  - [+] test_settings_put_back_too[post-properties/restore-restore_service_backup] (0.05s)
+  - [+] test_through_the_generic_action_too (0.05s)
+  - [+] test_properties_applied_at_once_too (0.04s)
+  - [+] test_settings_put_back_too[delete-properties/override-remove_service_override] (0.04s)
+  - [+] test_settings_put_back_too[post-properties/restore-restore_service_backup] (0.04s)
   - [+] test_another_service_goes_ahead (0.04s)
-  - [+] test_the_core_goes_ahead_when_nothing_installs (0.04s)
+  - [+] test_the_core_goes_ahead_when_nothing_installs (0.06s)
 
 **tests.test_services.TestSchedulingTheKernelRefuses**
 
@@ -8650,11 +9031,11 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_accepted[rr-1]
   - [+] test_accepted[rr-50]
   - [+] test_accepted[fifo-99]
-  - [+] test_accepted[rr-None]
-  - [+] test_accepted[fifo-None]
-  - [+] test_accepted[None-0]
+  - [+] test_accepted[rr-None] (0.01s)
+  - [+] test_accepted[fifo-None] (0.01s)
+  - [+] test_accepted[None-0] (0.01s)
   - [+] test_accepted[other-0]
-  - [+] test_accepted[batch-0]
+  - [+] test_accepted[batch-0] (0.01s)
   - [+] test_accepted[idle-None]
   - [+] test_accepted[None-None]
   - [+] test_the_validation_says_so
@@ -8669,7 +9050,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_cpu_list_reads_as_systemd_and_the_kernel_write_it[0-3-cpus4]
   - [+] test_a_cpu_list_reads_as_systemd_and_the_kernel_write_it[0-1,3-cpus5]
   - [+] test_a_cpu_list_reads_as_systemd_and_the_kernel_write_it[0-3,8-9\n-cpus6]
-  - [+] test_a_list_that_cannot_be_read_raises[3-1] (0.02s)
+  - [+] test_a_list_that_cannot_be_read_raises[3-1]
   - [+] test_a_list_that_cannot_be_read_raises[0 - 3]
   - [+] test_a_list_that_cannot_be_read_raises[0--3]
   - [+] test_the_box_cpus_come_from_the_kernel
@@ -8733,12 +9114,37 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_d_bus_first
   - [+] test_systemctl_when_the_bus_does_not_answer (0.01s)
 
+**tests.test_services.TestStartedBefore**
+
+  - [+] test_a_running_unit_is_judged_on_its_start[999999999-True] (0.01s)
+  - [+] test_a_running_unit_is_judged_on_its_start[1000000000-False] (0.01s)
+  - [+] test_a_running_unit_is_judged_on_its_start[1003000000-False] (0.01s)
+  - [+] test_a_unit_reloading_its_settings_still_runs
+  - [+] test_a_unit_that_does_not_run_starts_on_what_is_on_disk[inactive] (0.01s)
+  - [+] test_a_unit_that_does_not_run_starts_on_what_is_on_disk[failed] (0.01s)
+  - [+] test_a_unit_that_does_not_run_starts_on_what_is_on_disk[activating] (0.01s)
+  - [+] test_a_unit_that_does_not_run_starts_on_what_is_on_disk[deactivating]
+  - [+] test_through_systemctl_when_the_bus_does_not_answer (0.01s)
+  - [+] test_none_when_systemd_cannot_say[answer0] (0.01s)
+  - [+] test_none_when_systemd_cannot_say[answer1] (0.01s)
+  - [+] test_none_when_systemd_cannot_say[answer2] (0.01s)
+  - [+] test_none_when_systemd_cannot_say[answer3] (0.01s)
+
+**tests.test_services.TestUnitOf**
+
+  - [+] test_the_unit_of_a_key_that_is_not_its_name
+  - [+] test_none_when_the_file_declares_none[services0]
+  - [+] test_none_when_the_file_declares_none[services1]
+  - [+] test_none_when_the_file_declares_none[services2]
+  - [+] test_none_when_the_file_declares_none[services3]
+  - [+] test_none_when_the_file_declares_none[services4]
+
 **tests.test_services.TestSavingDependsOnHowTheServiceStood**
 
   - [+] test_running_it_gets_its_previous_settings_back_and_runs_again (0.01s)
-  - [+] test_running_without_previous_settings_the_new_ones_are_removed (0.02s)
-  - [+] test_running_it_fails_once_without_restarts_and_is_caught_too (0.02s)
-  - [+] test_running_it_fails_on_the_old_settings_too_and_is_stopped (0.02s)
+  - [+] test_running_without_previous_settings_the_new_ones_are_removed (0.01s)
+  - [+] test_running_it_fails_once_without_restarts_and_is_caught_too (0.01s)
+  - [+] test_running_it_fails_on_the_old_settings_too_and_is_stopped (0.01s)
   - [+] test_running_and_the_old_settings_cannot_come_back_it_is_stopped (0.01s)
   - [+] test_running_and_systemd_does_not_reload_it_is_stopped (0.01s)
   - [+] test_running_and_it_cannot_be_restarted_on_the_old_settings_it_is_stopped (0.01s)
@@ -8764,7 +9170,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_saves_of_one_service_run_one_after_the_other
   - [+] test_the_reset_and_the_restore_share_the_lock
   - [+] test_a_name_it_does_not_manage_takes_no_lock
-  - [+] test_the_lock_registry_is_made_once
+  - [+] test_the_lock_registry_is_made_once (0.01s)
 
 **tests.test_services.TestRestoreTheBackup**
 
@@ -8797,7 +9203,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_first_sample_rate_is_zero_only_where_a_counter_exists[systemctl] (0.01s)
   - [+] test_a_unit_missing_from_systemctl_output_is_none (0.01s)
   - [+] test_a_unit_systemd_does_not_list_reads_stopped_and_is_not_asked (0.01s)
-  - [+] test_only_the_service_interface_is_read_and_the_result_with_it
+  - [+] test_only_the_service_interface_is_read_and_the_result_with_it (0.01s)
   - [+] test_the_bus_path_starts_no_systemctl (0.01s)
   - [+] test_the_bus_not_answering_falls_back_to_one_systemctl (0.01s)
   - [+] test_a_running_unit_the_bus_cannot_read_sends_all_to_systemctl (0.01s)
@@ -8806,11 +9212,11 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_detail_network_totals_absent_when_not_accounted (0.01s)
   - [+] test_the_metrics_read_a_loop_as_failed[bus] (0.01s)
   - [+] test_the_metrics_read_a_loop_as_failed[systemctl] (0.01s)
-  - [+] test_the_metrics_ask_systemctl_for_the_result
+  - [+] test_the_metrics_ask_systemctl_for_the_result (0.01s)
   - [+] test_the_detail_reads_a_loop_as_failed (0.03s)
   - [+] test_the_detail_keeps_a_restart_after_a_clean_exit_as_starting (0.01s)
   - [+] test_the_states_the_profiles_read_say_failed_too
-  - [+] test_the_state_is_not_replaced_by_the_unit_file_state
+  - [+] test_the_state_is_not_replaced_by_the_unit_file_state (0.01s)
 
 **tests.test_services_states.TestTheStatesTheProfilesRead**
 
@@ -8818,17 +9224,17 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_names_with_or_without_their_suffix
   - [+] test_a_restart_loop_reads_failed
   - [+] test_a_restart_after_a_clean_exit_stays_starting
-  - [+] test_the_result_is_asked_of_a_starting_unit_only
+  - [+] test_the_result_is_asked_of_a_starting_unit_only (0.01s)
   - [+] test_a_start_whose_result_is_unread_is_left_out
   - [+] test_an_instance_is_installed_when_its_template_is
-  - [+] test_a_silent_bus_falls_back_to_one_light_systemctl
+  - [+] test_a_silent_bus_falls_back_to_one_light_systemctl (0.01s)
   - [+] test_unit_files_unanswered_fall_back_too (0.01s)
   - [+] test_no_bus_client_falls_back_too (0.01s)
   - [+] test_the_fallback_reads_what_systemctl_says (0.01s)
 
 **tests.test_services_states.TestAPassOfTheProfilesWatch**
 
-  - [+] test_starts_no_process
+  - [+] test_starts_no_process (0.01s)
   - [+] test_a_silent_bus_keeps_the_states_known_before (0.01s)
 
 **tests.test_services_states.TestTheControlGroupAlreadyRead**
@@ -8851,43 +9257,43 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_session_revocation.TestChangesThatEndSessions**
 
-  - [+] test_new_password (0.76s)
-  - [+] test_new_role (0.41s)
+  - [+] test_new_password (0.77s)
+  - [+] test_new_role (0.39s)
   - [+] test_same_role_again_keeps_sessions (0.39s)
   - [+] test_disabled_then_enabled_again (0.39s)
-  - [+] test_deleted_account (0.39s)
+  - [+] test_deleted_account (0.40s)
   - [+] test_persistence_change_keeps_sessions (0.39s)
 
 **tests.test_session_revocation.TestTokensFromBeforeTheUpgrade**
 
-  - [+] test_token_without_version_or_key (0.77s)
+  - [+] test_token_without_version_or_key (0.76s)
 
 **tests.test_session_revocation.TestTheAccountBehindTheName**
 
-  - [+] test_every_account_gets_its_own_key (0.74s)
-  - [+] test_account_created_again_under_the_same_name (0.75s)
-  - [+] test_account_from_before_the_upgrade_created_again (0.94s)
+  - [+] test_every_account_gets_its_own_key (0.73s)
+  - [+] test_account_created_again_under_the_same_name (0.77s)
+  - [+] test_account_from_before_the_upgrade_created_again (0.76s)
   - [+] test_token_for_another_role (0.39s)
 
 **tests.test_session_revocation.TestSelfServiceChange**
 
-  - [+] test_own_password_returns_a_replacement (0.39s)
+  - [+] test_own_password_returns_a_replacement (0.41s)
   - [+] test_someone_elses_password_returns_none (0.75s)
   - [+] test_own_persistence_returns_none (0.03s)
 
 **tests.test_session_revocation.TestOptionalUser**
 
-  - [+] test_ended_session_reads_as_anonymous (0.41s)
+  - [+] test_ended_session_reads_as_anonymous (0.39s)
 
 **tests.test_session_revocation.TestTheTerminal**
 
   - [+] test_refuses_a_non_admin (0.40s)
   - [+] test_refuses_an_ended_session (0.40s)
-  - [+] test_stays_open_while_the_session_stands (0.34s)
-  - [+] test_a_running_command_ends_with_the_terminal (0.45s)
+  - [+] test_stays_open_while_the_session_stands (0.40s)
+  - [+] test_a_running_command_ends_with_the_terminal (0.47s)
   - [+] test_a_command_ignoring_the_hang_up_ends_with_the_terminal (0.46s)
   - [+] test_closes_once_the_session_ends (0.44s)
-  - [+] test_an_idle_terminal_sends_nothing (0.36s)
+  - [+] test_an_idle_terminal_sends_nothing (0.35s)
 
 **tests.test_session_revocation.TestOneCheckPerRequest**
 
@@ -8898,8 +9304,8 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_an_ended_session_is_refused_on_a_route_that_does_not_ask (0.38s)
   - [+] test_no_token_is_left_to_the_route (0.01s)
-  - [+] test_signing_in_and_public_paths_ignore_a_leftover_token (0.76s)
-  - [+] test_without_jwt_nothing_is_checked (0.38s)
+  - [+] test_signing_in_and_public_paths_ignore_a_leftover_token (0.73s)
+  - [+] test_without_jwt_nothing_is_checked (0.37s)
   - [+] test_the_core_app_checks_them (0.01s)
 
 **tests.test_shairport_parser.TestWhatIsRead**
@@ -8962,8 +9368,8 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_mpds_sound_threads_by_name
   - [+] test_its_other_threads_are_not
-  - [+] test_mpd_is_found_by_process_and_by_unit
-  - [+] test_a_program_that_does_not_raise_its_threads_is_none (0.01s)
+  - [+] test_mpd_is_found_by_process_and_by_unit (0.01s)
+  - [+] test_a_program_that_does_not_raise_its_threads_is_none
 
 **tests.test_sound_threads.TestOutranksSound**
 
@@ -8993,7 +9399,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_ssdp.TestMulticastFailureDoesNotCancelUnicast**
 
-  - [+] test_unicast_probes_still_go_out (0.06s)
+  - [+] test_unicast_probes_still_go_out (0.48s)
   - [+] test_nothing_sent_means_no_pointless_wait (0.01s)
 
 **tests.test_sse_channels**
@@ -9011,8 +9417,8 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_steering.TestAlsaDeviceValidation**
 
-  - [+] test_shell_metachar_rejected
-  - [+] test_newline_rejected
+  - [+] test_shell_metachar_rejected (0.01s)
+  - [+] test_newline_rejected (0.01s)
   - [+] test_a_card_name_cannot_carry_a_quote
   - [+] test_an_address_that_names_its_card_is_written (0.01s)
 
@@ -9042,8 +9448,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_upnp_renderer_uses_mpd_s_native_switch (0.01s)
   - [+] test_mpd_enables_the_block_on_the_target_s_card (0.01s)
   - [+] test_mpd_native_error_reports_failure_no_fallback (0.01s)
-  - [+] test_mpd_fallback_uses_restart (0.02s)
-  - [+] test_airplay_uses_restart_path (0.02s)
+  - [+] test_mpd_fallback_uses_restart (0.01s)
+  - [+] test_airplay_uses_restart_path (0.01s)
 
 **tests.test_steering.TestVerifyAlsaDevice**
 
@@ -9056,17 +9462,17 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_hardware_without_topology_match_falls_back_to_type (0.01s)
   - [+] test_active_flag_reflects_running_pcm (0.01s)
   - [+] test_an_output_that_names_its_card_is_lit_by_the_kernel_s_numbers (0.01s)
-  - [+] test_a_service_s_device_is_given_as_the_output_list_names_it (0.02s)
+  - [+] test_a_service_s_device_is_given_as_the_output_list_names_it (0.01s)
   - [+] test_mpd_is_read_once_for_itself_and_the_upnp_renderer (0.01s)
   - [+] test_switch_resolves_live_hw_and_targets_output_by_name (0.01s)
   - [+] test_switch_not_applied_reports_failure (0.01s)
 
 **tests.test_steering.TestMpdNativeSwitch**
 
-  - [+] test_enables_target_and_disables_others_atomically (0.01s)
-  - [+] test_unknown_output_name_falls_back
+  - [+] test_enables_target_and_disables_others_atomically
+  - [+] test_unknown_output_name_falls_back (0.01s)
   - [+] test_mpd_ack_is_a_real_error (0.01s)
-  - [+] test_no_outputs_falls_back
+  - [+] test_no_outputs_falls_back (0.01s)
 
 **tests.test_steering.TestConfirmAudioFlow**
 
@@ -9075,7 +9481,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_steering.TestReplaceMpdDeviceScoped**
 
-  - [+] test_replaces_only_the_alsa_block (0.01s)
+  - [+] test_replaces_only_the_alsa_block
   - [+] test_refuses_multiple_alsa_blocks
   - [+] test_none_when_no_alsa_device
 
@@ -9111,7 +9517,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_anything_but_a_streaming_track_of_the_box_is_not[None]
   - [+] test_anything_but_a_streaming_track_of_the_box_is_not[]
   - [+] test_anything_but_a_streaming_track_of_the_box_is_not[Music/Artist/Album/01.flac]
-  - [+] test_anything_but_a_streaming_track_of_the_box_is_not[http://radio.example/stream.mp3]
+  - [+] test_anything_but_a_streaming_track_of_the_box_is_not[http://radio.example/stream.mp3] (0.01s)
   - [+] test_anything_but_a_streaming_track_of_the_box_is_not[https://streaming.qobuz.com/file.flac?eid=98765]
   - [+] test_anything_but_a_streaming_track_of_the_box_is_not[http://10.0.0.5:8001/library/stream/A/b.flac?sig=x]
   - [+] test_the_service_is_asked_with_the_track_id_its_proxy_names
@@ -9160,11 +9566,11 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_stream_hqplayer.TestTidalCodecIsTheOneActuallyServed**
 
   - [+] test_a_lossless_tier_serving_aac_is_still_refused (0.01s)
-  - [+] test_the_message_names_a_remedy_that_can_actually_work (0.02s)
+  - [+] test_the_message_names_a_remedy_that_can_actually_work (0.01s)
   - [+] test_one_manifest_is_fetched_for_a_whole_album (0.01s)
   - [+] test_a_cached_track_costs_no_request_at_all (0.01s)
   - [+] test_a_track_absent_from_the_cache_still_asks_tidal (0.01s)
-  - [+] test_no_cache_registered_is_not_an_error (0.01s)
+  - [+] test_no_cache_registered_is_not_an_error (0.02s)
   - [+] test_the_album_is_resolved_once_not_twice (0.01s)
   - [+] test_an_unreadable_manifest_falls_back_to_the_tier (0.01s)
   - [+] test_an_unreadable_manifest_on_a_lossy_tier_still_refuses (0.01s)
@@ -9174,15 +9580,15 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_stream_hqplayer.TestQueueRouteDispatch**
 
-  - [+] test_a_qobuz_item_goes_to_its_own_service (0.62s)
-  - [+] test_a_media_server_item_goes_to_the_upnp_path (0.18s)
-  - [+] test_the_local_library_still_resolves_through_mpd (0.17s)
+  - [+] test_a_qobuz_item_goes_to_its_own_service (0.19s)
+  - [+] test_a_media_server_item_goes_to_the_upnp_path (0.19s)
+  - [+] test_the_local_library_still_resolves_through_mpd (0.18s)
 
 **tests.test_stream_hqplayer.TestLocalLibraryToHqplayer**
 
   - [+] test_each_file_ends_its_url_and_carries_its_own_metadata (0.01s)
-  - [+] test_each_file_carries_the_length_the_library_knows (0.02s)
-  - [+] test_each_file_brings_its_own_cover (0.01s)
+  - [+] test_each_file_carries_the_length_the_library_knows (0.01s)
+  - [+] test_each_file_brings_its_own_cover (0.02s)
   - [+] test_nothing_is_registered_for_now_playing (0.01s)
   - [+] test_a_track_mpd_does_not_know_is_refused_before_any_push (0.01s)
   - [+] test_a_file_hqplayer_cannot_decode_is_converted_rather_than_refused (0.01s)
@@ -9191,11 +9597,11 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_stream_meta.TestBuildStreamMeta**
 
-  - [+] test_keeps_the_known_keys_and_only_those (0.01s)
-  - [+] test_no_genre_is_none (0.01s)
-  - [+] test_empty_and_whitespace_text_becomes_none (0.01s)
-  - [+] test_track_number_is_stored_as_str (0.01s)
-  - [+] test_duration_normalisation[183-183.0] (0.01s)
+  - [+] test_keeps_the_known_keys_and_only_those
+  - [+] test_no_genre_is_none
+  - [+] test_empty_and_whitespace_text_becomes_none
+  - [+] test_track_number_is_stored_as_str
+  - [+] test_duration_normalisation[183-183.0]
   - [+] test_duration_normalisation[90.221-90.221]
   - [+] test_duration_normalisation[0-None]
   - [+] test_duration_normalisation[-5-None]
@@ -9204,7 +9610,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_duration_normalisation[live-None]
   - [+] test_duration_normalisation[None-None]
   - [+] test_duration_normalisation[True-None]
-  - [+] test_duration_normalisation[False-None] (0.01s)
+  - [+] test_duration_normalisation[False-None]
 
 **tests.test_stream_meta.TestTheTitleShown**
 
@@ -9214,7 +9620,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_nothing_to_name_is_none[None]
   - [+] test_nothing_to_name_is_none[]
   - [+] test_a_title_of_separators_alone_names_nothing[ - ]
-  - [+] test_a_title_of_separators_alone_names_nothing[-] (0.01s)
+  - [+] test_a_title_of_separators_alone_names_nothing[-]
   - [+] test_a_title_of_separators_alone_names_nothing[ \u2013 ]
   - [+] test_a_title_of_separators_alone_names_nothing[\u2014]
   - [+] test_a_title_of_separators_alone_names_nothing[   ]
@@ -9247,17 +9653,17 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_identical_reregister_schedules_no_write
   - [+] test_flush_is_debounced_inside_an_event_loop (0.06s)
   - [+] test_stale_timer_from_a_dead_loop_does_not_block_future_flushes (0.06s)
-  - [+] test_shutdown_flush_rescues_a_burst_still_in_the_debounce_window (0.01s)
+  - [+] test_shutdown_flush_rescues_a_burst_still_in_the_debounce_window
   - [+] test_shutdown_flush_writes_nothing_when_never_used
   - [+] test_shutdown_flush_writes_nothing_after_read_only_use
 
 **tests.test_stream_meta.TestQueueDurationFallback**
 
   - [+] test_stream_without_mpd_duration_falls_back_to_registry (0.01s)
-  - [+] test_zero_duration_from_mpd_counts_as_unknown
-  - [+] test_mpd_known_duration_wins_over_the_registry
+  - [+] test_zero_duration_from_mpd_counts_as_unknown (0.01s)
+  - [+] test_mpd_known_duration_wins_over_the_registry (0.01s)
   - [+] test_upnp_play_registers_the_ui_sent_duration (0.01s)
-  - [+] test_radio_stream_stays_without_duration
+  - [+] test_radio_stream_stays_without_duration (0.01s)
 
 **tests.test_stream_meta.TestIsLiveStream**
 
@@ -9301,9 +9707,28 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_nothing_to_say[None]
   - [+] test_nothing_to_say[]
 
+**tests.test_stream_meta.TestAnAddressOnlyAGHands**
+
+  - [+] test_ags_own[http://127.0.0.1:8000/highresaudio/stream/70756949-2d4b-4d85-a71e-46863970c44a_e2ecd997-899c-4c6c-bda1-feebfd0adcb7?mode=redirect]
+  - [+] test_ags_own[http://127.0.0.1:8000/qobuz/stream/59954868?mode=redirect]
+  - [+] test_ags_own[http://127.0.0.1:8000/tidal/stream/77646170]
+  - [+] test_ags_own[http://192.0.2.10:8000/library/stream/Pink%20Floyd/Animals/01.flac?sig=0a1b]
+  - [+] test_ags_own[http://192.0.2.10:8000/library/signed/0a1b/Pink%20Floyd/Animals/01.flac]
+  - [+] test_ags_own[http://192.0.2.10:8000/library/flac/0a1b/Pink%20Floyd/Animals/01.flac]
+  - [+] test_ags_own[http://192.0.2.10:8000/ag/library/remote-flac/0a1b/http%3A%2F%2F10.0.0.42%2Fx.flac]
+  - [+] test_ags_own[Pink Floyd/Animals/01 Pigs on the Wing.flac]
+  - [+] test_ags_own[  Pink Floyd/Animals/01 Pigs on the Wing.flac  ]
+  - [+] test_anyones[http://10.0.0.42:9790/minimserver/*/Music/Pink*20Floyd/Animals/01.flac]
+  - [+] test_anyones[http://icecast.radiofrance.fr/fip-hifi.aac]
+  - [+] test_anyones[https://streaming-qobuz-std.akamaized.net/file?uid=1&eid=59954868&fmt=27]
+  - [+] test_anyones[http://127.0.0.1:8000/qobuz/stream/]
+  - [+] test_anyones[]
+  - [+] test_anyones[   ]
+  - [+] test_anyones[None]
+
 **tests.test_stream_renderer.TestStreamQueueRendererBase**
 
-  - [+] test_pushes_entries_and_returns_count
+  - [+] test_pushes_entries_and_returns_count (0.01s)
   - [+] test_empty_entries_raises_and_does_not_play
 
 **tests.test_stream_renderer.TestStreamTrackEntry**
@@ -9334,7 +9759,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_unknown_is_empty
   - [+] test_none_names_the_state_itself
-  - [+] test_active_keeps_the_service_wording
+  - [+] test_active_keeps_the_service_wording (0.01s)
   - [+] test_active_without_a_name
 
 **tests.test_streaming_provider.TestSubscriptionFields**
@@ -9344,24 +9769,24 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_streaming_provider.TestSubscriptionTracker**
 
-  - [+] test_reads_once_then_serves_the_memo
-  - [+] test_a_failed_read_keeps_what_is_known
+  - [+] test_reads_once_then_serves_the_memo (0.01s)
+  - [+] test_a_failed_read_keeps_what_is_known (0.01s)
   - [+] test_a_failed_read_is_not_re_probed_immediately
   - [+] test_a_failed_read_is_retried_soon
-  - [+] test_a_plan_that_ended_is_picked_up (0.01s)
+  - [+] test_a_plan_that_ended_is_picked_up
   - [+] test_a_provider_without_a_reader_never_calls_anything
   - [+] test_apply_reports_whether_anything_changed
   - [+] test_apply_ignores_an_unknown
   - [+] test_unknown_reads_as_subscribed_before_anything_is_known
   - [+] test_invalidate_forgets_and_forces_a_re_read
   - [+] test_default_ttl_is_hours_not_minutes
-  - [+] test_concurrent_callers_share_one_read (0.01s)
+  - [+] test_concurrent_callers_share_one_read
   - [+] test_it_survives_a_second_event_loop
 
 **tests.test_support_report**
 
   - [+] test_harmless_values_are_not_redacted[the account MPD runs as]
-  - [+] test_harmless_values_are_not_redacted[the library path] (0.01s)
+  - [+] test_harmless_values_are_not_redacted[the library path]
   - [+] test_harmless_values_are_not_redacted[a sticker file path]
   - [+] test_harmless_values_are_not_redacted[an XML flag ending in a digit]
   - [+] test_harmless_values_are_not_redacted[a word merely containing "key"]
@@ -9410,7 +9835,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_redacted_directive_keeps_its_name
   - [+] test_run_as_user_is_not_redacted
   - [+] test_comments_are_dropped_and_counted
-  - [+] test_ag_marker_comment_is_kept (0.01s)
+  - [+] test_ag_marker_comment_is_kept
   - [+] test_hand_written_config_shows_no_marker
   - [+] test_xml_comments_are_dropped_across_lines
   - [+] test_xml_trailing_comment_does_not_ride_along
@@ -9421,17 +9846,17 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_long_config_is_capped_and_says_so
   - [+] test_truncation_is_never_silent
   - [+] test_empty_config
-  - [+] test_every_section_is_named_with_its_own_collector
-  - [+] test_report_carries_every_declared_section
+  - [+] test_every_section_is_named_with_its_own_collector (0.01s)
+  - [+] test_report_carries_every_declared_section (0.01s)
   - [+] test_a_failing_section_does_not_sink_the_report
   - [+] test_a_failing_section_leaves_the_others_intact
   - [+] test_every_section_keeps_its_own_name
   - [+] test_sections_are_collected_concurrently (0.06s)
   - [+] test_a_section_returning_nothing_is_still_reported
   - [+] test_report_version_is_2
-  - [+] test_web_ui_probe_reads_the_served_certificate (0.20s)
-  - [+] test_journal_lines_are_redacted
-  - [+] test_journal_lines_come_out_ordered_and_folded
+  - [+] test_web_ui_probe_reads_the_served_certificate (0.06s)
+  - [+] test_journal_lines_are_redacted (0.01s)
+  - [+] test_journal_lines_come_out_ordered_and_folded (0.01s)
   - [+] test_packages_say_why_one_cannot_be_installed (0.01s)
   - [+] test_speed_while_the_pi_is_short_of_power_is_not_given
   - [+] test_speed_is_given_when_the_pi_alarm_is_quiet
@@ -9446,10 +9871,10 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_support_report.TestCertificateSummary**
 
-  - [+] test_identity_validity_and_san_coverage (0.08s)
-  - [+] test_the_issue_date_travels_with_the_summary (0.04s)
-  - [+] test_a_box_that_changed_address_is_flagged (0.10s)
-  - [+] test_unknown_lan_ip_reports_null_not_false (0.06s)
+  - [+] test_identity_validity_and_san_coverage (0.04s)
+  - [+] test_the_issue_date_travels_with_the_summary (0.07s)
+  - [+] test_a_box_that_changed_address_is_flagged (0.07s)
+  - [+] test_unknown_lan_ip_reports_null_not_false (0.10s)
 
 **tests.test_support_report.TestTcpProbe**
 
@@ -9491,11 +9916,11 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_support_report.TestCollectNetwork**
 
-  - [+] test_gateway_clock_and_probes_from_canned_output
+  - [+] test_gateway_clock_and_probes_from_canned_output (0.01s)
 
 **tests.test_support_report.TestCollectSelfUpdate**
 
-  - [+] test_accessible_repo_carries_the_latest_version
+  - [+] test_accessible_repo_carries_the_latest_version (0.01s)
   - [+] test_404_is_no_access_but_403_stays_inconclusive
   - [+] test_the_address_shown_is_the_one_the_updater_carries
 
@@ -9511,7 +9936,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_support_report.TestInterfaceLinks**
 
-  - [+] test_wired_iface_shape_lo_excluded (0.02s)
+  - [+] test_wired_iface_shape_lo_excluded (0.01s)
   - [+] test_a_wifi_link_as_iw_printed_it (0.01s)
   - [+] test_a_wifi_without_link_claims_nothing_and_starts_nothing (0.01s)
   - [+] test_iw_not_installed_is_said (0.01s)
@@ -9520,9 +9945,9 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_a_connected_account_is_reported_as_connected
   - [+] test_a_disconnected_account_is_reported_as_disconnected
-  - [+] test_a_disabled_module_is_unknown_not_disconnected (0.01s)
-  - [+] test_a_raising_probe_is_unknown_and_names_its_error
-  - [+] test_roon_reads_its_token_file
+  - [+] test_a_disabled_module_is_unknown_not_disconnected
+  - [+] test_a_raising_probe_is_unknown_and_names_its_error (0.01s)
+  - [+] test_roon_reads_its_token_file (0.01s)
   - [+] test_probes_are_declared_for_every_streaming_service
 
 **tests.test_support_report.TestJournalPresentation**
@@ -9540,7 +9965,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_support_report.TestAddressOrigin**
 
-  - [+] test_leased_and_hand_configured_addresses_are_told_apart (0.01s)
+  - [+] test_leased_and_hand_configured_addresses_are_told_apart
   - [+] test_one_call_covers_every_interface
   - [+] test_an_interface_with_no_address_is_absent_not_static
 
@@ -9552,8 +9977,8 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_support_report.TestAuthoritySummary**
 
-  - [+] test_the_authority_carries_its_creation_date_and_fingerprint (0.20s)
-  - [+] test_two_authorities_never_share_a_fingerprint (0.08s)
+  - [+] test_the_authority_carries_its_creation_date_and_fingerprint (0.16s)
+  - [+] test_two_authorities_never_share_a_fingerprint (0.14s)
 
 **tests.test_support_report.TestProbeDeadlines**
 
@@ -9569,19 +9994,19 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_what_the_settings_seed_is_not_what_it_reports (0.01s)
   - [+] test_the_box_own_while_it_runs_with_the_card_s_alongside (0.01s)
   - [+] test_the_box_own_with_nothing_chosen_in_the_card (0.01s)
-  - [+] test_an_instance_that_does_not_answer_still_says_whose_it_is
+  - [+] test_an_instance_that_does_not_answer_still_says_whose_it_is (0.01s)
   - [+] test_an_instance_that_does_not_answer_is_asked_once (0.01s)
-  - [+] test_nothing_chosen_nothing_running_is_not_configured
-  - [+] test_without_the_module_nothing_is_claimed (0.01s)
+  - [+] test_nothing_chosen_nothing_running_is_not_configured (0.01s)
+  - [+] test_without_the_module_nothing_is_claimed
   - [+] test_a_failing_service_degrades_inside_the_section (0.01s)
 
 **tests.test_sysinfo.TestMetrics**
 
-  - [+] test_metrics (0.03s)
+  - [+] test_metrics (0.04s)
 
 **tests.test_sysinfo.TestDetectCpuModel**
 
-  - [+] test_x86_uses_model_name (0.01s)
+  - [+] test_x86_uses_model_name
   - [+] test_arm_falls_back_to_lscpu
   - [+] test_unknown_when_nothing_found
   - [+] test_never_raises_on_error
@@ -9593,7 +10018,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_sysinfo.TestSysinfoGrepPatternValidation**
 
   - [+] test_invalid_regex_returns_400 (0.04s)
-  - [+] test_valid_regex_accepted (0.07s)
+  - [+] test_valid_regex_accepted (0.06s)
 
 **tests.test_sysinfo.TestSysinfoSyslogIdentifierFormat**
 
@@ -9607,7 +10032,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_systemd_s_rule[a_b.service-a_5fb_2eservice]
   - [+] test_systemd_s_rule[1password.service-_31password_2eservice]
   - [+] test_systemd_s_rule[ip6tables.service-ip6tables_2eservice]
-  - [+] test_systemd_s_rule[caf\xe9.service-caf_c3_a9_2eservice]
+  - [+] test_systemd_s_rule[caf\xe9.service-caf_c3_a9_2eservice] (0.01s)
   - [+] test_the_paths_systemd_itself_gives (0.01s)
 
 **tests.test_systemd_watch.TestWhatIsHeard**
@@ -9623,7 +10048,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_systemd_watch.TestSystemdSName**
 
   - [+] test_a_systemd_back_under_a_new_name_is_followed
-  - [+] test_its_old_name_is_no_longer_believed
+  - [+] test_its_old_name_is_no_longer_believed (0.01s)
   - [+] test_it_is_subscribed_to_again_and_its_units_looked_at_anew
   - [+] test_a_new_systemd_that_refuses_the_subscription_drops_the_connection
   - [+] test_a_forged_announcement_is_ignored
@@ -9649,17 +10074,43 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_unit_dropped_from_the_list_is_no_longer_listened_to (0.02s)
   - [+] test_a_pass_with_the_same_units_makes_no_call (0.02s)
   - [+] test_a_unit_whose_first_look_failed_is_looked_at_again (0.02s)
-  - [+] test_a_subscription_refused_at_the_start_is_tried_again (0.02s)
-  - [+] test_a_watcher_that_takes_up_a_known_unit_is_told_its_state (0.03s)
+  - [+] test_a_subscription_refused_at_the_start_is_tried_again (0.03s)
+  - [+] test_a_watcher_that_takes_up_a_known_unit_is_told_its_state (0.02s)
   - [+] test_a_unit_dropped_while_the_connection_was_lost_comes_back_as_new (0.03s)
+
+**tests.test_systemd_watch.TestUnitsComingAndGoing**
+
+  - [+] test_a_unit_loaded_then_let_go_of_is_told_both_ways
+  - [+] test_every_unit_is_told_the_watcher_keeps_what_it_needs
+  - [+] test_a_signal_not_systemd_s_own_is_ignored[forged0]
+  - [+] test_a_signal_not_systemd_s_own_is_ignored[forged1]
+  - [+] test_a_signal_not_systemd_s_own_is_ignored[forged2]
+  - [+] test_a_malformed_body_is_ignored
+  - [+] test_a_watcher_that_fails_does_not_keep_the_others_from_hearing
+  - [+] test_the_state_watchers_hear_nothing_of_it
+
+**tests.test_systemd_watch.TestTheLifeRules**
+
+  - [+] test_asked_for_once_while_someone_hears
+  - [+] test_taken_away_when_the_last_hearer_goes_the_connection_kept_for_the_others
+  - [+] test_a_state_watcher_going_leaves_the_drives_listened_to
+  - [+] test_the_last_watcher_of_any_kind_closes_the_connection
+  - [+] test_a_rule_the_bus_refused_is_asked_for_again
+  - [+] test_after_one_rule_refused_only_that_one_is_asked_for_again
+  - [+] test_a_rule_not_taken_away_is_taken_away_at_the_next_sync (0.01s)
+  - [+] test_a_lost_connection_asks_for_them_again_on_the_new_one
+
+**tests.test_systemd_watch.TestUnitLifeOnTheRealBus**
+
+  - [+] test_a_unit_systemd_loads_then_drops_is_heard_both_ways (0.07s)
 
 **tests.test_temperature_alert.TestTheAlert**
 
-  - [+] test_a_critical_temperature_is_sent (0.01s)
+  - [+] test_a_critical_temperature_is_sent
   - [+] test_the_threshold_itself_is_not_critical
-  - [+] test_an_unknown_temperature_sends_nothing
+  - [+] test_an_unknown_temperature_sends_nothing (0.01s)
   - [+] test_once_per_cooldown_while_it_stays_hot
-  - [+] test_it_can_go_out_just_after_the_machine_started
+  - [+] test_it_can_go_out_just_after_the_machine_started (0.01s)
   - [+] test_a_failed_send_is_not_retried_before_the_cooldown
 
 **tests.test_temperature_alert.TestTheDashboardLoopNoLongerSendsIt**
@@ -9679,7 +10130,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_command_left_behind_by_the_shell_is_killed (0.42s)
   - [+] test_a_shell_holding_on_is_killed (0.34s)
   - [+] test_cut_short_it_kills_at_once (0.24s)
-  - [+] test_a_shell_already_ended_is_sent_nothing (0.01s)
+  - [+] test_a_shell_already_ended_is_sent_nothing
   - [+] test_a_group_that_may_not_be_signalled_is_logged (0.11s)
   - [+] test_a_shell_still_there_after_sigkill_is_logged (0.11s)
 
@@ -9695,7 +10146,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_loads_config_on_init
   - [+] test_not_connected_when_no_config
-  - [+] test_disconnect_removes_file (0.01s)
+  - [+] test_disconnect_removes_file
   - [+] test_save_config_roundtrip
   - [+] test_corrupt_config_is_handled
 
@@ -9725,7 +10176,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_fetch_manifest_401_raises_rotated (0.01s)
   - [+] test_fetch_manifest_403_raises_rotated (0.01s)
-  - [+] test_fetch_manifest_404_returns_none
+  - [+] test_fetch_manifest_404_returns_none (0.01s)
   - [+] test_refresh_401_logs_rotation_hint (0.01s)
   - [+] test_stream_endpoint_returns_503_on_rotation (0.02s)
   - [+] test_a_remux_that_produced_nothing_is_an_error_not_an_empty_success (0.02s)
@@ -9766,10 +10217,10 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_reads_premium_access_not_status (0.01s)
   - [+] test_reports_a_subscribed_account (0.01s)
   - [+] test_an_unreachable_tidal_is_unknown_never_lapsed (0.01s)
-  - [+] test_a_disconnected_service_asks_nothing
+  - [+] test_a_disconnected_service_asks_nothing (0.01s)
   - [+] test_disconnect_forgets_the_plan
   - [+] test_connection_endpoint_carries_the_plan (0.02s)
-  - [+] test_connection_endpoint_reports_an_ended_plan (0.02s)
+  - [+] test_connection_endpoint_reports_an_ended_plan (0.03s)
   - [+] test_disconnected_endpoint_reports_unknown (0.02s)
 
 **tests.test_tidal.TestReadingTheStateRenewsTheTokenLikeEveryoneElse**
@@ -9781,7 +10232,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_cover_uuid_to_url
   - [+] test_map_track
   - [+] test_map_album
-  - [+] test_search_maps_all_kinds
+  - [+] test_search_maps_all_kinds (0.01s)
 
 **tests.test_tidal_library.TestTidalQueue**
 
@@ -9789,33 +10240,33 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_tidal_library.TestExtStreamKey**
 
-  - [+] test_tidal_proxy_url_keys_on_track_id
+  - [+] test_tidal_proxy_url_keys_on_track_id (0.01s)
 
 **tests.test_tidal_library.TestTidalStreamProxy**
 
-  - [+] test_fetch_manifest_none_when_not_connected
-  - [+] test_promotion_happens_at_ffmpeg_exit_not_at_client_pace (0.01s)
+  - [+] test_fetch_manifest_none_when_not_connected (0.01s)
+  - [+] test_promotion_happens_at_ffmpeg_exit_not_at_client_pace (0.02s)
   - [+] test_stream_track_remuxes_to_seekable_file_and_caches (0.01s)
-  - [+] test_early_disconnect_after_ffmpeg_exit_keeps_the_promoted_file (0.02s)
+  - [+] test_early_disconnect_after_ffmpeg_exit_keeps_the_promoted_file (0.01s)
   - [+] test_promote_failure_is_logged_not_swallowed (0.01s)
   - [+] test_stream_track_discards_incomplete_on_ffmpeg_failure (0.01s)
   - [+] test_cache_keeps_only_most_recent (0.01s)
   - [+] test_cache_rejects_bad_track_id
-  - [+] test_stream_serves_cached_file_with_range (0.04s)
+  - [+] test_stream_serves_cached_file_with_range (0.03s)
 
 **tests.test_tidal_library.TestTidalDiscovery**
 
   - [+] test_featured_extracts_album_lists_deduped (0.01s)
   - [+] test_featured_no_pagination
-  - [+] test_charts_read_the_page_not_the_heading
+  - [+] test_charts_read_the_page_not_the_heading (0.01s)
   - [+] test_a_renamed_row_no_longer_empties_the_shelf
   - [+] test_editorial_drops_the_charts_it_used_to_swallow
   - [+] test_editorial_no_pagination
 
 **tests.test_tidal_library.TestTidalFavoritesPlaylists**
 
-  - [+] test_favorites_albums_unwraps_item_wrapper
-  - [+] test_playlists_maps_uuid_to_album
+  - [+] test_favorites_albums_unwraps_item_wrapper (0.01s)
+  - [+] test_playlists_maps_uuid_to_album (0.01s)
 
 **tests.test_tidal_library.TestTidalCoverGuard**
 
@@ -9830,49 +10281,49 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_tidal_library.TestTidalBrowsableLists**
 
-  - [+] test_an_entry_that_answers_nothing_is_dropped (0.01s)
-  - [+] test_an_entry_holding_playlists_is_kept_not_dropped
-  - [+] test_the_strip_is_ordered_by_what_it_displays
+  - [+] test_an_entry_that_answers_nothing_is_dropped
+  - [+] test_an_entry_holding_playlists_is_kept_not_dropped (0.01s)
+  - [+] test_the_strip_is_ordered_by_what_it_displays (0.01s)
   - [+] test_an_accented_label_sorts_where_a_reader_looks (0.01s)
   - [+] test_genres_are_one_level_and_keep_an_opaque_path
   - [+] test_the_list_is_read_once
   - [+] test_an_empty_list_is_not_memoised
   - [+] test_an_unknown_path_yields_an_empty_grid_not_an_error
-  - [+] test_the_grid_carries_offset_and_limit_to_tidal
+  - [+] test_the_grid_carries_offset_and_limit_to_tidal (0.01s)
 
 **tests.test_tidal_library.TestTidalListResilience**
 
   - [+] test_a_rate_limit_does_not_delete_a_genre_for_good (0.01s)
   - [+] test_a_network_failure_is_not_read_as_an_empty_shelf (0.01s)
-  - [+] test_a_404_is_an_answer_and_is_kept
-  - [+] test_concurrent_readers_load_the_list_once
-  - [+] test_at_most_three_probes_run_together
-  - [+] test_editorial_survives_a_dead_charts_page
+  - [+] test_a_404_is_an_answer_and_is_kept (0.01s)
+  - [+] test_concurrent_readers_load_the_list_once (0.01s)
+  - [+] test_at_most_three_probes_run_together (0.01s)
+  - [+] test_editorial_survives_a_dead_charts_page (0.01s)
   - [+] test_editorial_still_fails_when_its_own_page_does
   - [+] test_the_http_error_stays_a_runtime_error
 
 **tests.test_tidal_library.TestTidalExplore**
 
   - [+] test_the_groups_are_flattened_in_tidal_s_own_order (0.01s)
-  - [+] test_a_path_of_the_wrong_shape_never_enters_the_list
-  - [+] test_the_page_parameters_are_always_sent
+  - [+] test_a_path_of_the_wrong_shape_never_enters_the_list (0.01s)
+  - [+] test_the_page_parameters_are_always_sent (0.01s)
   - [+] test_a_page_separates_what_leads_on_from_what_holds_content (0.01s)
   - [+] test_a_section_with_no_key_of_its_own_is_left_out (0.01s)
   - [+] test_a_page_path_is_matched_not_trusted (0.01s)
-  - [+] test_a_section_key_is_matched_not_trusted
-  - [+] test_a_section_grid_renders_albums_and_playlists_alike
-  - [+] test_the_grid_pages_through_the_section_key
+  - [+] test_a_section_key_is_matched_not_trusted (0.01s)
+  - [+] test_a_section_grid_renders_albums_and_playlists_alike (0.01s)
+  - [+] test_the_grid_pages_through_the_section_key (0.01s)
 
 **tests.test_tidal_library.TestTidalSectionRendering**
 
-  - [+] test_an_album_carrying_its_own_duration_still_renders
+  - [+] test_an_album_carrying_its_own_duration_still_renders (0.01s)
   - [+] test_albums_and_playlists_share_the_grid (0.01s)
-  - [+] test_only_the_types_the_grid_can_render_become_sections
+  - [+] test_only_the_types_the_grid_can_render_become_sections (0.01s)
 
 **tests.test_tidal_library.TestTidalProbeSettling**
 
   - [+] test_a_kind_that_answers_after_another_failed_is_not_frozen (0.01s)
-  - [+] test_a_grid_page_does_not_re_run_the_probe
+  - [+] test_a_grid_page_does_not_re_run_the_probe (0.01s)
 
 **tests.test_transcode.TestSpawn**
 
@@ -9881,8 +10332,8 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_transcode.TestToFlacFile**
 
-  - [+] test_converts_alac_to_a_complete_flac (0.35s)
-  - [+] test_drops_a_cover_art_stream (0.37s)
+  - [+] test_converts_alac_to_a_complete_flac (0.33s)
+  - [+] test_drops_a_cover_art_stream (0.34s)
   - [+] test_reports_a_missing_source_with_ffmpegs_own_words (0.12s)
   - [+] test_gives_up_on_a_source_that_never_answers (0.12s)
   - [+] test_reports_a_missing_ffmpeg_rather_than_crashing (0.01s)
@@ -9891,7 +10342,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_yields_flac_bytes (0.23s)
   - [+] test_kills_ffmpeg_when_the_listener_leaves (0.23s)
-  - [+] test_kills_ffmpeg_when_the_listener_is_cancelled (0.33s)
+  - [+] test_kills_ffmpeg_when_the_listener_is_cancelled (0.34s)
   - [+] test_reports_a_missing_ffmpeg_rather_than_crashing (0.01s)
   - [+] test_sends_the_http_options_only_to_an_http_source[http://radio.example/s.aac-True] (0.01s)
   - [+] test_sends_the_http_options_only_to_an_http_source[HTTPS://radio.example/s.aac-True] (0.01s)
@@ -9901,7 +10352,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_transcode.TestCopyRelay**
 
   - [+] test_an_mp3_stays_mp3_frames_with_nothing_added (0.23s)
-  - [+] test_a_flac_stays_flac (0.22s)
+  - [+] test_a_flac_stays_flac (0.23s)
   - [+] test_a_format_it_copies_no_relay_of_is_refused_at_the_call
   - [+] test_it_copies_every_format_the_radio_relays_as_sent
 
@@ -9954,8 +10405,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_paused_streamed_flac_resumes_where_it_was (0.01s)
   - [+] test_paused_library_file_resumes_where_it_was (0.01s)
   - [+] test_no_song_id_falls_back_to_a_plain_unpause (0.01s)
-  - [+] test_unreadable_state_sends_nothing (0.02s)
-  - [+] test_refused_reopen_is_reported (0.02s)
+  - [+] test_unreadable_state_sends_nothing (0.01s)
+  - [+] test_refused_reopen_is_reported (0.01s)
   - [+] test_a_stopped_queue_starts_with_play[on-a-song-play] (0.01s)
   - [+] test_a_stopped_queue_starts_with_play[on-a-song-toggle] (0.01s)
   - [+] test_a_stopped_queue_starts_with_play[queue-played-through-play] (0.01s)
@@ -9999,9 +10450,9 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_hqplayer[playing-play-None] (0.01s)
   - [+] test_hqplayer[paused-play-<Play/>] (0.01s)
   - [+] test_hqplayer[paused-pause-None] (0.01s)
-  - [+] test_hqplayer[stopped-play-<Play/>] (0.01s)
+  - [+] test_hqplayer[stopped-play-<Play/>] (0.02s)
   - [+] test_hqplayer[stopped-pause-None] (0.01s)
-  - [+] test_hqplayer[playing-toggle-<Pause/>] (0.02s)
+  - [+] test_hqplayer[playing-toggle-<Pause/>] (0.01s)
   - [+] test_hqplayer[paused-toggle-<Play/>] (0.01s)
   - [+] test_a_station_is_reopened_never_resumed[paused-play] (0.01s)
   - [+] test_a_station_is_reopened_never_resumed[paused-toggle] (0.01s)
@@ -10029,7 +10480,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_incomplete_remux_refuses_rather_than_restarting (0.01s)
   - [+] test_failed_reopen_compensates_position_and_pause (0.01s)
   - [+] test_non_tidal_stream_gets_no_reopen (0.01s)
-  - [+] test_cache_rejected_id_refuses_without_replay (0.02s)
+  - [+] test_cache_rejected_id_refuses_without_replay (0.01s)
   - [+] test_tidal_module_absent_refuses_cleanly (0.01s)
   - [+] test_other_mpd_refusals_do_not_trigger_the_fallback (0.01s)
   - [+] test_never_raises_even_on_unexpected_errors (0.01s)
@@ -10044,7 +10495,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_override_below_floor_is_ignored (0.01s)
   - [+] test_forged_value_fails_signature (0.01s)
   - [+] test_wrong_signer_is_rejected (0.01s)
-  - [+] test_none_key_returns_floor
+  - [+] test_none_key_returns_floor (0.01s)
   - [+] test_days_remaining_honours_effective_duration
 
 **tests.test_trial_override.TestRefreshTrialConfig**
@@ -10053,7 +10504,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_trial_override.TestEffectiveTrialAnchor**
 
-  - [+] test_no_cache_returns_none
+  - [+] test_no_cache_returns_none (0.01s)
   - [+] test_valid_signed_anchor_returned (0.01s)
   - [+] test_wrong_device_id_ignored (0.01s)
   - [+] test_forged_value_fails_signature (0.01s)
@@ -10086,32 +10537,32 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_ttl_cache.TestTTLDictCacheOrder**
 
   - [+] test_values_come_in_the_order_their_keys_were_added (0.01s)
-  - [+] test_a_key_removed_and_set_again_goes_last
+  - [+] test_a_key_removed_and_set_again_goes_last (0.01s)
   - [+] test_pruning_keeps_the_order_of_what_remains (0.02s)
 
 **tests.test_undervoltage_alert.TestFindingTheFlag**
 
   - [+] test_the_watch_asks_the_lookup_the_throttled_badge_uses
-  - [+] test_a_path_as_the_lookup_gives_it
+  - [+] test_a_path_as_the_lookup_gives_it (0.01s)
 
 **tests.test_undervoltage_alert.TestTheWatch**
 
   - [+] test_the_state_found_at_the_start_is_told_at_once (0.01s)
   - [+] test_each_change_is_told (0.01s)
-  - [+] test_waits_on_the_priority_event_only
+  - [+] test_waits_on_the_priority_event_only (0.01s)
   - [+] test_a_second_start_does_nothing (0.01s)
   - [+] test_stopped_it_hears_nothing_and_holds_nothing (0.01s)
-  - [+] test_a_stop_with_nothing_to_stop_costs_nothing
+  - [+] test_a_stop_with_nothing_to_stop_costs_nothing (0.01s)
   - [+] test_restarted_after_a_stop (0.01s)
-  - [+] test_no_flag_no_watch
-  - [+] test_a_flag_that_cannot_be_opened_is_not_watched
+  - [+] test_no_flag_no_watch (0.01s)
+  - [+] test_a_flag_that_cannot_be_opened_is_not_watched (0.01s)
   - [+] test_a_file_that_cannot_be_waited_on_is_not_asked_again (0.01s)
   - [+] test_a_read_that_fails_stops_the_watch_rather_than_spin (0.01s)
 
 **tests.test_undervoltage_alert.TestTheAlert**
 
   - [+] test_a_drop_is_announced_and_kept (0.01s)
-  - [+] test_the_voltage_coming_back_says_nothing
+  - [+] test_the_voltage_coming_back_says_nothing (0.01s)
   - [+] test_dozens_of_drops_in_a_day_are_one_alert (0.01s)
   - [+] test_a_restart_does_not_make_it_news_again (0.01s)
   - [+] test_told_again_the_next_day (0.01s)
@@ -10136,10 +10587,10 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_update_notification.TestWhatIsAnOffer**
 
-  - [+] test_not_an_offer[offer0]
-  - [+] test_not_an_offer[offer1]
+  - [+] test_not_an_offer[offer0] (0.01s)
+  - [+] test_not_an_offer[offer1] (0.01s)
   - [+] test_not_an_offer[offer2] (0.01s)
-  - [+] test_not_an_offer[offer3]
+  - [+] test_not_an_offer[offer3] (0.01s)
   - [+] test_not_an_offer[None] (0.01s)
 
 **tests.test_update_notification.TestOnlyAServerThatAnsweredCanWithdrawIt**
@@ -10161,34 +10612,75 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_update_notification.TestWhereItRuns**
 
-  - [+] test_after_each_daily_check
-  - [+] test_after_a_check_on_demand
+  - [+] test_after_each_daily_check (0.01s)
+  - [+] test_after_a_check_on_demand (0.01s)
 
 **tests.test_update_notification.TestWhatTheNotificationSays**
 
-  - [+] test_the_version_and_where_to_install_it
+  - [+] test_the_version_and_where_to_install_it (0.01s)
 
 **tests.test_upmpdcli_cover.TestParseAvtUrl**
 
   - [+] test_returns_control_url_for_avt_service (0.01s)
+  - [+] test_upmpdcli_is_known_by_its_model_name (0.01s)
+  - [+] test_or_by_its_model_url (0.01s)
   - [+] test_returns_none_when_no_avt_service (0.01s)
   - [+] test_returns_none_on_http_error (0.01s)
 
-**tests.test_upmpdcli_cover.TestSoapGetArt**
+**tests.test_upmpdcli_cover.TestSoapGetPosition**
 
-  - [+] test_extracts_album_art_uri (0.01s)
-  - [+] test_returns_none_when_no_track_metadata (0.01s)
+  - [+] test_reads_the_track_and_its_metadata (0.01s)
   - [+] test_returns_none_on_soap_error (0.01s)
+
+**tests.test_upmpdcli_cover.TestAlbumArt**
+
+  - [+] test_extracts_album_art_uri
+  - [+] test_returns_none_when_no_track_metadata
+  - [+] test_returns_none_without_art
 
 **tests.test_upmpdcli_cover.TestGetArtForMpdUrl**
 
-  - [+] test_returns_art_url_from_avt (0.01s)
+  - [+] test_returns_art_url_from_avt (0.02s)
   - [+] test_result_is_cached_no_second_soap_call (0.01s)
   - [+] test_returns_none_when_no_renderer_found (0.01s)
   - [+] test_miss_is_cached_no_repeated_discovery (0.01s)
   - [+] test_avt_url_cache_reused_for_different_track (0.01s)
   - [+] test_cache_expires_and_retries (0.01s)
   - [+] test_miss_url_cache_prevents_ssdp_on_per_track_expiry (0.01s)
+  - [+] test_no_art_from_an_answer_about_another_track (0.01s)
+
+**tests.test_upmpdcli_cover.TestWhoseTrack**
+
+  - [+] test_a_control_points_track (0.01s)
+  - [+] test_a_track_queued_in_mpd_by_another_client (0.01s)
+  - [+] test_a_control_point_that_sent_no_metadata (0.01s)
+  - [+] test_an_answer_about_another_track_tells_nothing (0.01s)
+  - [+] test_the_same_address_differently_escaped_is_the_same_track (0.01s)
+  - [+] test_no_renderer_tells_nothing (0.01s)
+  - [+] test_a_failed_question_tells_nothing_and_never_raises (0.01s)
+  - [+] test_one_question_serves_the_art_and_the_answer (0.01s)
+  - [+] test_an_answer_about_another_track_is_asked_again_soon_then_less_often (0.01s)
+  - [+] test_the_count_of_such_answers_stops (0.02s)
+  - [+] test_the_wait_never_exceeds_the_usual_one
+  - [+] test_an_answer_about_the_track_holds_the_usual_time (0.01s)
+
+**tests.test_upmpdcli_cover.TestHandedNow**
+
+  - [+] test_pending_then_the_answer (0.01s)
+  - [+] test_one_question_at_a_time (0.01s)
+  - [+] test_an_answer_from_before_the_play_is_asked_again (0.01s)
+  - [+] test_a_failed_question_does_not_stay_pending (0.01s)
+
+**tests.test_upmpdcli_cover.TestTheRendererKept**
+
+  - [+] test_kept_past_the_search_delay (0.01s)
+  - [+] test_looked_for_again_once_it_stops_answering (0.01s)
+
+**tests.test_upmpdcli_cover.TestTheRendererAsked**
+
+  - [+] test_upmpdcli_rather_than_a_renderer_listed_before_it (0.01s)
+  - [+] test_the_first_local_renderer_without_upmpdcli (0.01s)
+  - [+] test_a_renderer_elsewhere_is_never_asked (0.01s)
 
 **tests.test_upmpdcli_cover.TestLocalIps**
 
@@ -10204,9 +10696,9 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_serialize_never_writes_a_blank_avfriendlyname
   - [+] test_parse_backfills_avfriendlyname_for_legacy_configs
   - [+] test_parse_backfill_strips_the_av_runtime_suffix_once
-  - [+] test_parse_backfill_preserves_a_chosen_oh_ending
+  - [+] test_parse_backfill_preserves_a_chosen_oh_ending (0.01s)
   - [+] test_parse_backfills_over_a_blank_avfriendlyname
-  - [+] test_parse_never_overrides_an_explicit_avfriendlyname (0.01s)
+  - [+] test_parse_never_overrides_an_explicit_avfriendlyname
   - [+] test_legacy_config_migrates_on_a_structured_roundtrip
 
 **tests.test_upmpdcli_parser.TestBooleans**
@@ -10230,15 +10722,15 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_upnp_renderer.TestAgNotifyServer**
 
   - [+] test_callback_url
-  - [+] test_async_start_stop_are_noops
-  - [+] test_handle_incoming_no_handler_returns_503
+  - [+] test_async_start_stop_are_noops (0.01s)
+  - [+] test_handle_incoming_no_handler_returns_503 (0.01s)
   - [+] test_handle_incoming_delegates_to_event_handler (0.01s)
 
 **tests.test_upnp_renderer.TestRendererServiceConfig**
 
-  - [+] test_load_config_missing_file (0.01s)
-  - [+] test_load_config_valid (0.01s)
-  - [+] test_load_config_invalid_json (0.01s)
+  - [+] test_load_config_missing_file
+  - [+] test_load_config_valid
+  - [+] test_load_config_invalid_json
   - [+] test_disconnect_clears_state_and_config (0.01s)
   - [+] test_disconnect_calls_async_stop_before_unsubscribe (0.01s)
 
@@ -10254,8 +10746,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_third_party_station_gets_its_own_description_back (0.01s)
   - [+] test_third_party_station_without_a_description_gets_a_minimal_one (0.02s)
   - [+] test_a_playlist_description_is_not_reused_for_its_track (0.01s)
-  - [+] test_no_play_action_loads_nothing (0.02s)
-  - [+] test_third_party_stream_without_any_length_resumes (0.01s)
+  - [+] test_no_play_action_loads_nothing (0.01s)
+  - [+] test_third_party_stream_without_any_length_resumes (0.02s)
   - [+] test_paused_remote_file_resumes_where_it_was (0.01s)
   - [+] test_queueless_media_server_track_resumes_where_it_was (0.01s)
   - [+] test_paused_ag_on_demand_stream_resumes_where_it_was (0.01s)
@@ -10276,26 +10768,26 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_status_no_dmr_returns_disconnected (0.01s)
   - [+] test_status_with_dmr_returns_state (0.01s)
   - [+] test_status_exposes_queue_next_track (0.01s)
-  - [+] test_status_marks_a_streaming_next_track[qobuz] (0.02s)
-  - [+] test_status_marks_a_streaming_next_track[tidal] (0.01s)
+  - [+] test_status_marks_a_streaming_next_track[qobuz] (0.01s)
+  - [+] test_status_marks_a_streaming_next_track[tidal] (0.02s)
   - [+] test_status_marks_a_streaming_next_track[hra] (0.01s)
   - [+] test_status_marks_a_streaming_next_track[a file of the box] (0.01s)
   - [+] test_status_marks_a_streaming_next_track[a station] (0.01s)
   - [+] test_status_marks_a_streaming_next_track[a media server's track] (0.01s)
-  - [+] test_remaining_uris_start_at_the_track_it_is_on
-  - [+] test_status_queue_next_is_none_at_end (0.01s)
-  - [+] test_status_cover_token_from_active_queue_entry (0.01s)
-  - [+] test_status_cover_token_none_when_no_queue (0.01s)
-  - [+] test_status_can_seek_true_when_abs_time_supported (0.01s)
+  - [+] test_remaining_uris_start_at_the_track_it_is_on (0.01s)
+  - [+] test_status_queue_next_is_none_at_end (0.04s)
+  - [+] test_status_cover_token_from_active_queue_entry (0.04s)
+  - [+] test_status_cover_token_none_when_no_queue (0.03s)
+  - [+] test_status_can_seek_true_when_abs_time_supported (0.04s)
   - [+] test_status_can_seek_false_when_unsupported (0.01s)
   - [+] test_status_dsd_uri_sets_format (0.01s)
-  - [+] test_status_pcm_uri_format_is_none (0.01s)
-  - [+] test_status_queue_fields_none_when_no_queue (0.01s)
+  - [+] test_status_pcm_uri_format_is_none (0.02s)
+  - [+] test_status_queue_fields_none_when_no_queue (0.02s)
 
 **tests.test_upnp_renderer.TestMinimalDidl**
 
-  - [+] test_builds_valid_xml
-  - [+] test_escapes_special_chars
+  - [+] test_builds_valid_xml (0.01s)
+  - [+] test_escapes_special_chars (0.01s)
   - [+] test_empty_title_falls_back_to_uri
 
 **tests.test_upnp_renderer.TestPublishStatus**
@@ -10326,8 +10818,8 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_discover_route_exists (0.04s)
   - [+] test_known_route_exists (0.04s)
-  - [+] test_connection_route_exists (0.05s)
-  - [+] test_status_route_exists (0.04s)
+  - [+] test_connection_route_exists (0.04s)
+  - [+] test_status_route_exists (0.05s)
   - [+] test_notify_route_exists (0.04s)
   - [+] test_bypass_route_removed (0.04s)
   - [+] test_remove_renderer_route_exists (0.04s)
@@ -10349,10 +10841,10 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_play_queue_lazy_resolver_called_at_play_time (0.01s)
   - [+] test_play_queue_on_play_called_with_resolved_uri (0.01s)
   - [+] test_advance_queue_stopped_plays_next (0.01s)
-  - [+] test_advance_queue_uri_changed_registers_metadata_only (0.02s)
+  - [+] test_advance_queue_uri_changed_registers_metadata_only (0.01s)
   - [+] test_advance_queue_at_end_clears_queue (0.01s)
   - [+] test_advance_queue_guard_prevents_concurrent_advances (0.01s)
-  - [+] test_check_queue_advance_playing_to_stopped_schedules_task (0.01s)
+  - [+] test_check_queue_advance_playing_to_stopped_schedules_task (0.02s)
   - [+] test_check_queue_advance_uri_change_while_playing_schedules_task (0.01s)
   - [+] test_check_queue_advance_no_trigger_when_queue_empty (0.01s)
   - [+] test_check_queue_advance_deduplicates_when_task_pending (0.01s)
@@ -10372,7 +10864,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_success_recovers_reachable_and_returns_true
   - [+] test_failure_increments_counter
   - [+] test_failure_flips_reachable_false_at_threshold
-  - [+] test_failure_below_threshold_does_not_flip
+  - [+] test_failure_below_threshold_does_not_flip (0.01s)
   - [+] test_failure_already_unreachable_does_not_return_changed
 
 **tests.test_upnp_renderer.TestQueueNavigation**
@@ -10405,7 +10897,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_upnp_renderer.TestResubscribeRestoresReachability**
 
-  - [+] test_resubscribe_restores_reachable_after_successful_update (0.02s)
+  - [+] test_resubscribe_restores_reachable_after_successful_update (0.01s)
   - [+] test_resubscribe_marks_unreachable_on_update_failure (0.01s)
 
 **tests.test_upnp_renderer.TestAutoReconnectRaceGuard**
@@ -10433,14 +10925,128 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_discover_calls_the_stateless_helper_directly (0.01s)
   - [+] test_discovery_leaves_no_temporary_file_behind (0.01s)
 
+**tests.test_usb_drives.TestTheUnitsOfADisk**
+
+  - [+] test_a_disk_and_its_partitions[dev-sdb.device-sdb]
+  - [+] test_a_disk_and_its_partitions[dev-sdb1.device-sdb]
+  - [+] test_a_disk_and_its_partitions[dev-sdb12.device-sdb]
+  - [+] test_a_disk_and_its_partitions[dev-sdaa.device-sdaa]
+  - [+] test_nothing_else[dev-disk-by\\x2duuid-b3e6d63e\\x2df00e\\x2d499e\\x2d8fc8\\x2db9200ac7c6d2.device]
+  - [+] test_nothing_else[sys-devices-pci0000:00-0000:00:14.0-usb2-2\\x2d3-2\\x2d3:1.0-host1-target1:0:0-1:0:0:0-block-sdb.device] (0.01s)
+  - [+] test_nothing_else[dev-loop0.device]
+  - [+] test_nothing_else[dev-mmcblk0.device]
+  - [+] test_nothing_else[dev-nvme0n1.device]
+  - [+] test_nothing_else[mpd.service]
+  - [+] test_nothing_else[mnt-aglibrary.mount]
+  - [+] test_nothing_else[dev-sdb.mount]
+
+**tests.test_usb_drives.TestTheLibrarySUnit**
+
+  - [+] test_the_uuid_it_mounts
+  - [+] test_none_when_it_mounts_no_filesystem_by_uuid[[Mount]\nWhat=//10.0.0.42/musics\nWhere=/mnt/nas-musics\nType=cifs\n]
+  - [+] test_none_when_it_mounts_no_filesystem_by_uuid[]
+  - [+] test_none_when_it_mounts_no_filesystem_by_uuid[None]
+
+**tests.test_usb_drives.TestTheMountSComplaint**
+
+  - [+] test_the_mount_program_s_own_words
+  - [+] test_the_last_one
+  - [+] test_none_without_one[]
+  - [+] test_none_without_one[None]
+  - [+] test_none_without_one[Mounted mnt-aglibrary.mount.]
+
+**tests.test_usb_drives.TestDescribingDrives**
+
+  - [+] test_the_real_drive_holding_the_library
+  - [+] test_the_same_drive_when_the_library_is_elsewhere
+  - [+] test_a_disk_not_on_usb_is_left_out
+  - [+] test_an_ntfs_stick
+  - [+] test_a_filesystem_on_the_whole_disk
+  - [+] test_a_drive_with_no_filesystem (0.01s)
+  - [+] test_a_card_reader_with_no_card_is_no_drive (0.01s)
+  - [+] test_what_a_drive_is_called[Micron  -CT2000X6SSD9-None-Micron CT2000X6SSD9] (0.01s)
+  - [+] test_what_a_drive_is_called[Samsung -Samsung Portable SSD T7-None-Samsung Portable SSD T7]
+  - [+] test_what_a_drive_is_called[-Flash Disk-None-Flash Disk]
+  - [+] test_what_a_drive_is_called[Generic --None-Generic]
+  - [+] test_what_a_drive_is_called[None-None-MUSIC-MUSIC]
+  - [+] test_what_a_drive_is_called[None-None-None-USB drive]
+  - [+] test_unreadable_output[]
+  - [+] test_unreadable_output[not json]
+  - [+] test_unreadable_output[None]
+
+**tests.test_usb_drives.TestWhatIsSaid**
+
+  - [+] test_the_library_s_drive_mounted_and_read
+  - [+] test_the_library_s_drive_mounted_while_mpd_reads_elsewhere
+  - [+] test_the_library_s_drive_not_mounted_with_the_reason
+  - [+] test_the_library_s_drive_not_mounted_without_one
+  - [+] test_another_drive_ag_can_mount
+  - [+] test_a_drive_in_a_format_ag_does_not_mount[fstypes0-formatted NTFS,]
+  - [+] test_a_drive_in_a_format_ag_does_not_mount[fstypes1-formatted FAT and NTFS,]
+  - [+] test_a_drive_in_a_format_ag_does_not_mount[fstypes2-formatted HFS+, APFS and FAT,]
+  - [+] test_a_drive_in_a_format_ag_does_not_mount[fstypes3-formatted zfs_member,]
+  - [+] test_a_drive_with_no_filesystem
+  - [+] test_the_library_s_drive_pulled_out_while_read
+  - [+] test_any_other_drive_pulled_out[drive0-False]
+  - [+] test_any_other_drive_pulled_out[drive1-False]
+  - [+] test_the_event_the_apps_receive
+
+**tests.test_usb_drives.TestListening**
+
+  - [+] test_only_while_someone_can_be_told (0.01s)
+  - [+] test_letting_go_of_a_reason_it_did_not_have_changes_nothing (0.01s)
+  - [+] test_the_alert_watch_and_the_dashboard_stream_hooks (0.01s)
+  - [+] test_drives_already_plugged_in_are_not_told (0.06s)
+  - [+] test_a_drive_heard_while_nobody_listens_is_not_told (0.06s)
+  - [+] test_a_drive_waiting_to_be_told_is_dropped_when_nobody_listens (0.01s)
+  - [+] test_an_app_left_open_calls_the_watch_again (0.12s)
+  - [+] test_the_devices_subscribed_alone_leave_it_to_the_alert_watch (0.06s)
+  - [+] test_the_last_app_closing_stops_calling_again_a_device_still_subscribed (0.06s)
+
+**tests.test_usb_drives.TestADrivePluggedIn**
+
+  - [+] test_the_library_s_drive_is_mounted_and_told (0.04s)
+  - [+] test_the_library_s_drive_that_does_not_mount_says_why (0.04s)
+  - [+] test_the_reason_the_folder_gave_when_the_journal_has_none (0.04s)
+  - [+] test_a_mount_left_behind_on_a_device_gone_is_not_mounted (0.04s)
+  - [+] test_a_mount_left_behind_is_taken_away_and_the_drive_mounted (0.04s)
+  - [+] test_a_mount_left_behind_that_stays_is_never_called_mounted (0.04s)
+  - [+] test_a_mount_table_that_cannot_be_read_is_never_said_empty (0.04s)
+  - [+] test_a_telling_under_way_goes_to_its_end (0.11s)
+  - [+] test_tellings_take_turns (0.11s)
+  - [+] test_the_unit_s_name_is_asked_of_systemd_once (0.08s)
+  - [+] test_the_drive_s_own_mount_is_left_alone (0.04s)
+  - [+] test_the_library_s_drive_while_mpd_reads_elsewhere (0.04s)
+  - [+] test_another_drive_is_not_mounted (0.04s)
+  - [+] test_a_drive_ag_cannot_read (0.04s)
+  - [+] test_a_disk_not_on_usb_is_not_told (0.04s)
+  - [+] test_its_partitions_and_itself_make_one_notice (0.04s)
+  - [+] test_the_toast_goes_out_when_no_device_can_be_notified (0.04s)
+  - [+] test_a_card_pushed_into_a_reader_already_plugged_in (0.08s)
+
+**tests.test_usb_drives.TestADrivePulledOut**
+
+  - [+] test_the_library_s_drive_while_mpd_reads_it (0.04s)
+  - [+] test_another_drive (0.04s)
+  - [+] test_the_former_library_s_drive_after_guided_chose_another (0.04s)
+  - [+] test_a_drive_guided_made_the_library_since_it_was_plugged_in (0.04s)
+  - [+] test_a_drive_never_told_tells_nothing_when_it_goes (0.04s)
+  - [+] test_pulled_out_and_back_at_once_tells_nothing (0.10s)
+  - [+] test_another_drive_back_under_the_same_name (0.05s)
+
+**tests.test_usb_drives.TestTheNotification**
+
+  - [+] test_the_push_service_says_the_toast_s_words (0.01s)
+  - [+] test_a_notice_is_frozen
+
 **tests.test_utils_atomic_write_json.TestWhoMayReadTheFile**
 
-  - [+] test_a_file_is_readable_by_everyone_by_default
+  - [+] test_a_file_is_readable_by_everyone_by_default (0.01s)
   - [+] test_a_private_file_is_readable_by_its_owner_only
-  - [+] test_a_private_file_replacing_one_readable_by_everyone_becomes_private
+  - [+] test_a_private_file_replacing_one_readable_by_everyone_becomes_private (0.01s)
   - [+] test_a_write_that_fails_says_so_and_keeps_the_file[public] (0.01s)
   - [+] test_a_write_that_fails_says_so_and_keeps_the_file[private] (0.01s)
-  - [+] test_the_backup_of_a_private_file_is_private_too
+  - [+] test_the_backup_of_a_private_file_is_private_too (0.01s)
 
 **tests.test_utils_atomic_write_json.TestHowManyBackupsStay**
 
@@ -10461,8 +11067,8 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_declared_path_kept_when_it_exists (0.01s)
   - [+] test_falls_back_when_declared_missing (0.01s)
-  - [+] test_subdirectory_below_the_prefix_is_preserved (0.01s)
-  - [+] test_unchanged_when_nothing_found (0.01s)
+  - [+] test_subdirectory_below_the_prefix_is_preserved
+  - [+] test_unchanged_when_nothing_found
   - [+] test_empty_path_passthrough
   - [+] test_etc_is_searched_before_usr_local
   - [+] test_its_callers_still_find_it_where_they_import_it
@@ -10471,7 +11077,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_the_name_carries_the_file_the_time_and_the_kind
   - [+] test_names_sort_by_time
-  - [+] test_the_editor_uses_it_and_its_folder
+  - [+] test_the_editor_uses_it_and_its_folder (0.01s)
 
 **tests.test_utils_fingerprint**
 
@@ -10487,29 +11093,29 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_utils_mounts.TestParse**
 
-  - [+] test_the_fields_are_decoded
+  - [+] test_the_fields_are_decoded (0.01s)
   - [+] test_the_order_is_the_tables
   - [+] test_malformed_lines_are_skipped
 
 **tests.test_utils_mounts.TestRead**
 
-  - [+] test_the_real_table_has_a_root
+  - [+] test_the_real_table_has_a_root (0.01s)
   - [+] test_a_table_that_cannot_be_read_is_none_not_empty
   - [+] test_a_file_is_read_as_utf8
 
 **tests.test_utils_owned_file.TestSetAttributeAroundComments**
 
   - [+] test_a_commented_mention_is_refused_by_default
-  - [+] test_ignoring_comments_edits_the_real_element
-  - [+] test_an_element_only_in_a_comment_is_absent
-  - [+] test_two_real_elements_are_still_refused
-  - [+] test_an_element_without_comments_is_edited_either_way
+  - [+] test_ignoring_comments_edits_the_real_element (0.01s)
+  - [+] test_an_element_only_in_a_comment_is_absent (0.01s)
+  - [+] test_two_real_elements_are_still_refused (0.01s)
+  - [+] test_an_element_without_comments_is_edited_either_way (0.01s)
 
 **tests.test_utils_owned_file.TestGetAttribute**
 
-  - [+] test_the_real_element_s_value
-  - [+] test_a_commented_mention_is_refused_by_default
-  - [+] test_an_attribute_the_tag_does_not_carry
+  - [+] test_the_real_element_s_value (0.01s)
+  - [+] test_a_commented_mention_is_refused_by_default (0.01s)
+  - [+] test_an_attribute_the_tag_does_not_carry (0.01s)
   - [+] test_the_value_comes_back_unescaped
 
 **tests.test_utils_owned_file.TestWriteFileAs**
@@ -10526,8 +11132,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_a_document_is_returned_as_an_object
   - [+] test_a_missing_file_reads_as_absent_and_says_nothing
   - [+] test_a_malformed_document_reads_as_absent_and_is_logged (0.01s)
-  - [+] test_a_document_that_is_not_an_object_reads_as_absent
-  - [+] test_an_empty_file_reads_as_absent
+  - [+] test_a_document_that_is_not_an_object_reads_as_absent (0.01s)
+  - [+] test_an_empty_file_reads_as_absent (0.01s)
 
 **tests.test_utils_root_file.TestPlaceRootFile**
 
@@ -10559,7 +11165,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_every_spelling_of_no_value[None]
   - [+] test_every_spelling_of_no_value[]
   - [+] test_every_spelling_of_no_value[[not set]]
-  - [+] test_every_spelling_of_no_value[[no data]] (0.01s)
+  - [+] test_every_spelling_of_no_value[[no data]]
   - [+] test_every_spelling_of_no_value[18446744073709551615_0]
   - [+] test_every_spelling_of_no_value[18446744073709551615_1]
   - [+] test_real_values_are_set[0_0]
@@ -10567,7 +11173,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_real_values_are_set[8495104]
   - [+] test_real_values_are_set[infinity]
   - [+] test_real_values_are_set[yes]
-  - [+] test_real_values_are_set[4294967295] (0.01s)
+  - [+] test_real_values_are_set[4294967295]
 
 **tests.test_utils_systemd.TestIsInfinity**
 
@@ -10575,8 +11181,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_finite_or_absent_is_not_infinity[None]
   - [+] test_finite_or_absent_is_not_infinity[]
   - [+] test_finite_or_absent_is_not_infinity[[not set]]
-  - [+] test_finite_or_absent_is_not_infinity[4110]
-  - [+] test_finite_or_absent_is_not_infinity[0]
+  - [+] test_finite_or_absent_is_not_infinity[4110] (0.01s)
+  - [+] test_finite_or_absent_is_not_infinity[0] (0.02s)
 
 **tests.test_utils_systemd.TestIntOrNone**
 
@@ -10609,14 +11215,14 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_nice_is_read_from_the_property_systemd_publishes
   - [+] test_systemd_defaults_read_as_not_configured
   - [+] test_scheduling_policy_reported_as_a_number_is_read
-  - [+] test_finite_and_absent_limits
+  - [+] test_finite_and_absent_limits (0.01s)
 
 **tests.test_utils_systemd.TestInstalledUnits**
 
   - [+] test_a_unit_with_its_file_is_installed_one_without_is_not (0.01s)
   - [+] test_an_instance_is_installed_by_its_template_in_the_same_call (0.01s)
-  - [+] test_a_bus_that_cannot_answer_says_nothing
-  - [+] test_nothing_asked_asks_nothing
+  - [+] test_a_bus_that_cannot_answer_says_nothing (0.01s)
+  - [+] test_nothing_asked_asks_nothing (0.01s)
   - [+] test_the_template_of_an_instance[getty@tty1.service-getty@.service]
   - [+] test_the_template_of_an_instance[getty@.service-None]
   - [+] test_the_template_of_an_instance[mpd.service-None]
@@ -10624,12 +11230,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_utils_topology.TestTheRealTopologies**
 
-  - [+] test_come_out_whole[audio-topology.json.example]
+  - [+] test_come_out_whole[audio-topology.json.example] (0.01s)
   - [+] test_come_out_whole[etc-dev/audio-topology.json] (0.01s)
 
 **tests.test_utils_topology.TestWhatIsSetAside**
 
-  - [+] test_a_device_that_is_no_object
+  - [+] test_a_device_that_is_no_object (0.01s)
   - [+] test_a_field_of_another_type_and_only_it
   - [+] test_an_entry_of_a_map_that_is_no_object
   - [+] test_controls_a_text_or_a_list_of_texts[box.mpd-box.mpd-None]
@@ -10651,7 +11257,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_utils_topology.TestEmptyValues**
 
   - [+] test_where_the_model_allows_one_it_reads_as_absent
-  - [+] test_where_the_model_allows_none_it_is_set_aside
+  - [+] test_where_the_model_allows_none_it_is_set_aside (0.01s)
 
 **tests.test_utils_topology.TestWhatIsKept**
 
@@ -10681,7 +11287,7 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_utils_topology.TestTheLoad**
 
   - [+] test_reads_the_file_cut
-  - [+] test_a_missing_or_broken_file_raises_for_the_caller
+  - [+] test_a_missing_or_broken_file_raises_for_the_caller (0.01s)
 
 **tests.test_utils_topology.TestTheLog**
 
@@ -10693,10 +11299,10 @@ Generated: **2026-11-08 17:32 UTC**
 **tests.test_utils_topology.TestTheSharedCopy**
 
   - [+] test_read_once_while_the_file_does_not_change
-  - [+] test_read_again_once_it_changed[True]
-  - [+] test_read_again_once_it_changed[False]
+  - [+] test_read_again_once_it_changed[True] (0.01s)
+  - [+] test_read_again_once_it_changed[False] (0.01s)
   - [+] test_same_time_other_size_is_a_change
-  - [+] test_same_time_and_size_another_file_is_a_change
+  - [+] test_same_time_and_size_another_file_is_a_change (0.01s)
   - [+] test_a_file_that_cannot_be_parsed_keeps_the_last_good_copy (0.01s)
   - [+] test_a_missing_file_reads_empty_and_is_read_once_it_appears
   - [+] test_reload_loads_now
@@ -10705,18 +11311,18 @@ Generated: **2026-11-08 17:32 UTC**
 
 **tests.test_utils_write_private_file**
 
-  - [+] test_a_secret_is_written_readable_by_its_owner_only
+  - [+] test_a_secret_is_written_readable_by_its_owner_only (0.01s)
   - [+] test_a_leftover_temporary_file_does_not_pass_its_mode_on
   - [+] test_nothing_is_left_behind
-  - [+] test_a_write_that_fails_keeps_the_previous_secret_whole
+  - [+] test_a_write_that_fails_keeps_the_previous_secret_whole (0.01s)
   - [+] test_the_temporary_file_is_made_next_to_the_secret[absolute] (0.01s)
-  - [+] test_the_temporary_file_is_made_next_to_the_secret[relative]
+  - [+] test_the_temporary_file_is_made_next_to_the_secret[relative] (0.01s)
   - [+] test_a_mode_asked_for_is_set
 
 **tests.test_version**
 
   - [+] test_product_version_is_semver
-  - [+] test_backend_version_matches_product_version (0.01s)
+  - [+] test_backend_version_matches_product_version
 
 **tests.test_web_credentials.TestPasswordRules**
 
@@ -10727,8 +11333,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_an_unusable_password_is_explained[has a space-no spaces]
   - [+] test_an_unusable_password_is_explained[accentu\xe912-no spaces or accented]
   - [+] test_an_unusable_password_is_explained[tab\there12-no spaces]
-  - [+] test_an_unusable_password_is_explained[new\nline12-no spaces]
-  - [+] test_an_unusable_password_is_explained[-sneaky123-cannot start with a dash]
+  - [+] test_an_unusable_password_is_explained[new\nline12-no spaces] (0.01s)
+  - [+] test_an_unusable_password_is_explained[-sneaky123-cannot start with a dash] (0.01s)
   - [+] test_the_bounds_themselves_are_accepted
 
 **tests.test_web_credentials.TestDeclaration**
@@ -10754,22 +11360,22 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] test_no_password_and_none_on_the_box_is_refused_before_installing (0.01s)
   - [+] test_an_unusable_password_is_refused_before_installing (0.01s)
-  - [+] test_a_password_for_a_package_that_asks_none_is_refused (0.01s)
-  - [+] test_the_password_is_set_after_the_install (0.04s)
+  - [+] test_a_password_for_a_package_that_asks_none_is_refused (0.02s)
+  - [+] test_the_password_is_set_after_the_install (0.05s)
   - [+] test_the_password_reaches_no_log_and_no_result (0.04s)
   - [+] test_a_password_for_credentials_already_there_is_refused_before_installing (0.01s)
   - [+] test_existing_credentials_need_no_password (0.04s)
   - [+] test_a_failure_to_set_them_is_a_warning_on_an_installed_package (0.04s)
-  - [+] test_a_failed_restart_reads_as_one_sentence (0.05s)
-  - [+] test_a_restart_that_worked_is_not_asked_again (0.05s)
-  - [+] test_a_dry_run_asks_for_nothing_and_sets_nothing (0.04s)
-  - [+] test_the_package_info_carries_the_view (0.03s)
-  - [+] test_the_package_info_says_whether_settings_survive_an_uninstall (0.03s)
+  - [+] test_a_failed_restart_reads_as_one_sentence (0.04s)
+  - [+] test_a_restart_that_worked_is_not_asked_again (0.04s)
+  - [+] test_a_dry_run_asks_for_nothing_and_sets_nothing (0.01s)
+  - [+] test_the_package_info_carries_the_view (0.01s)
+  - [+] test_the_package_info_says_whether_settings_survive_an_uninstall (0.01s)
 
 **tests.test_web_credentials.TestSetOnAnInstalledPackage**
 
-  - [+] test_it_is_set_then_the_service_restarted (0.04s)
-  - [+] test_the_password_reaches_no_log_and_no_result (0.06s)
+  - [+] test_it_is_set_then_the_service_restarted (0.01s)
+  - [+] test_the_password_reaches_no_log_and_no_result (0.01s)
   - [+] test_a_refusal_says_why_and_runs_nothing[mpd-Zq7Rk2Lm9Tx4Wp1N-False-True-no web interface password to set] (0.01s)
   - [+] test_a_refusal_says_why_and_runs_nothing[hqplayerd-Zq7Rk2Lm9Tx4Wp1N-False-False-is not installed] (0.01s)
   - [+] test_a_refusal_says_why_and_runs_nothing[hqplayerd-Zq7Rk2Lm9Tx4Wp1N-True-True-already has a password] (0.01s)
@@ -10784,15 +11390,15 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] test_the_password_travels_in_the_body (0.03s)
   - [+] test_an_empty_body_sends_none (0.03s)
   - [+] test_no_body_at_all_still_installs (0.03s)
-  - [+] test_a_password_in_the_query_string_is_not_read (0.04s)
-  - [+] test_a_password_for_an_installed_package_travels_in_the_body (0.03s)
+  - [+] test_a_password_in_the_query_string_is_not_read (0.03s)
+  - [+] test_a_password_for_an_installed_package_travels_in_the_body (0.04s)
   - [+] test_its_query_string_is_not_read_either (0.03s)
 
 **tests.test_web_credentials.TestRegistry**
 
-  - [+] test_hqplayer_embedded_declares_its_credentials
+  - [+] test_hqplayer_embedded_declares_its_credentials (0.01s)
   - [+] test_the_resolver_keeps_the_declaration
-  - [+] test_the_command_is_what_sudoers_grants (0.16s)
+  - [+] test_the_command_is_what_sudoers_grants (0.17s)
 
 ### ui
 
@@ -10953,7 +11559,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/badge-frame.test.js**
 
-  - [+] a badge that is not a button > has no frame (0.02s)
+  - [+] a badge that is not a button > has no frame
   - [+] a badge that is not a button > takes the tint of its variant, the neutral one without
   - [+] a badge you can press > is a <button> or carries .clickable, so it keeps its frame (0.03s)
   - [+] a tag of any family > draws no frame, whatever rule draws it (0.98s)
@@ -10968,11 +11574,11 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/button-sizes.test.js**
 
-  - [+] the compact buttons > take their one height from a single token of the theme
+  - [+] the compact buttons > take their one height from a single token of the theme (0.01s)
   - [+] the compact buttons > share one box, declared once in components/compact-box.css: height, padding, 11px type at 600, letter spacing, line height, corners
   - [+] the compact buttons > keep their label on one line: the height is fixed, a second line ran out of the frame at 320 and 360px
   - [+] the compact buttons > leave the pressable badges out of a title's tag shape, which would undo their box
-  - [+] the compact buttons > leave no place its own box for a pressable badge — the list by place missed four
+  - [+] the compact buttons > leave no place its own box for a pressable badge — the list by place missed four (0.01s)
   - [+] the compact buttons > — the tiles' buttons — are in that rule, and restate none of it
   - [+] the compact buttons > — the panels' compact buttons — are in that rule, and restate none of it
   - [+] the compact buttons > — the .action-btn compact buttons — are in that rule, and restate none of it
@@ -10992,7 +11598,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the chosen one of a row of selectors > — .lib-src-badge.active — is in that rule, at rest and under the mouse, and no rule of its family paints it again
   - [+] the chosen one of a row of selectors > — .lib-radio-tab.on — is in that rule, at rest and under the mouse, and no rule of its family paints it again
   - [+] what the clean-up took out stays out > the tiles' alias has no copy of its own of the base, hover and disabled rules: it shares .btn-action's
-  - [+] what the clean-up took out stays out > .clear-btn is gone: Clear is an .action-btn, whose look it copied (0.03s)
+  - [+] what the clean-up took out stays out > .clear-btn is gone: Clear is an .action-btn, whose look it copied (0.05s)
   - [+] what the clean-up took out stays out > no variant that no button wears: --error, .info, .ghost
   - [+] what the clean-up took out stays out > the footer of a dialog is drawn once, in modal.css
   - [+] what the clean-up took out stays out > no rule for the tab bar's stats button, which no screen renders
@@ -11002,9 +11608,9 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] a dialog's buttons > take their one height from a single token of the theme: 29px
   - [+] a dialog's buttons > share one box, both systems: height, padding, 12px type at 600, letter spacing, corners
   - [+] a dialog's buttons > stay at 29px on a phone: the touch rule's 44px is undone (user's cap)
-  - [+] a dialog's buttons > are framed, as the confirmation's: the grey system is for tiles and panels (0.03s)
+  - [+] a dialog's buttons > are framed, as the confirmation's: the grey system is for tiles and panels (0.02s)
   - [+] a dialog's buttons > look and act unavailable when announced unavailable, as the grey ones do
-  - [+] a dialog's buttons > leave an unavailable one alone under the mouse, in every stylesheet (0.02s)
+  - [+] a dialog's buttons > leave an unavailable one alone under the mouse, in every stylesheet (0.03s)
   - [+] a dialog's buttons > declare the filled one once, in components/button.css (0.02s)
   - [+] a radio station's Edit and Remove > keep the compact padding: no rule of the Radio view widens it again
   - [+] Library › Sources' Scan renderers and Scan network > keep the width of their label: their column stretched them across the card, 327px on a phone
@@ -11024,6 +11630,39 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] what sits beside a compact button > keeps its height: the Config tile's download icon, square
   - [+] what sits beside a compact button > keeps its box: the network test's service state, beside its START button
   - [+] what sits beside a compact button > lends that box to the test's verdict: one rule, so the two tags cannot drift apart
+
+**js/christmas.test.js**
+
+  - [+] the figures > tree: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > lights-warm: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > lights-cool: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > gift-red: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > gift-green: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > sleigh: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > snow-far: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > snow-near: one drawing, in its frame, painted by the stylesheet
+  - [+] the figures > frames each one as its drawing is framed
+  - [+] the figures > hangs the tree's bulbs in two strings that share none
+  - [+] the splash screen > index.html carries the snow, the sleigh, the tree, the gifts and the day's line
+  - [+] the splash screen > login.html carries the snow, the sleigh, the tree, the gifts and the day's line
+  - [+] the splash screen > shows them on those days only, and the everyday line every other day
+  - [+] the splash screen > draws and fetches nothing another day: every rule behind the day's class
+  - [+] the splash screen > flies the sleigh above the tree's star at every height, a phone held sideways included
+  - [+] the splash screen > lets the screen clip what crosses its edges, once for every day: no day's stylesheet says it again
+  - [+] the colours > the waves red, then gold — the theme's, declared once — and as strong as Halloween's orange
+  - [+] the colours > writes no colour as a value, but in the snow's mask, which reads only how opaque it is
+  - [+] motion > .ag-xm-far names its timing for the screen's exemption from the app's Animations setting
+  - [+] motion > .ag-xm-near names its timing for the screen's exemption from the app's Animations setting
+  - [+] motion > .splash-sleigh names its timing for the screen's exemption from the app's Animations setting
+  - [+] motion > .splash-sleigh::before names its timing for the screen's exemption from the app's Animations setting
+  - [+] motion > .ag-xm-lights names its timing for the screen's exemption from the app's Animations setting
+  - [+] motion > .splash-gift names its timing for the screen's exemption from the app's Animations setting
+  - [+] motion > repeats only what loops — the sleigh's bob, the bulbs — and says so for the exemption
+  - [+] motion > moves nothing for a viewer who asks for less motion: the snow, the bulbs and the gifts still, no sleigh
+  - [+] motion > moves whole elements only: no SVG group, no shadow, no size animated
+  - [+] motion > lets no pointer land on a piece
+  - [+] nothing else wears it > dresses the splash screen's pieces and line only
+  - [+] nothing else wears it > is read by no script of the app: the stylesheet draws all of it (0.03s)
 
 **js/colors.test.js**
 
@@ -11068,8 +11707,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] colours — the browser's own controls take the theme's > gives the controls the text colour, from body
   - [+] colours — the browser's own controls take the theme's > draws them in the palette in force — light, and dark under .dark-mode
   - [+] colours — the browser's own controls take the theme's > lets no component set a colour of its own on them (0.02s)
-  - [+] colours — components read roles, never values (règle 6) > declares no colour literal as a var() fallback (0.02s)
-  - [+] colours — components read roles, never values (règle 6) > keeps the base semantic tokens out of JavaScript, whatever route they take (0.06s)
+  - [+] colours — components read roles, never values (règle 6) > declares no colour literal as a var() fallback (0.03s)
+  - [+] colours — components read roles, never values (règle 6) > keeps the base semantic tokens out of JavaScript, whatever route they take (0.08s)
   - [+] colours — components read roles, never values (règle 6) > explains every text colour still written as a value
   - [+] colours — components read roles, never values (règle 6) > fades nothing that is read at rest
   - [+] colours — components read roles, never values (règle 6) > paints text with a text-safe token, never a base semantic one (0.02s)
@@ -11123,7 +11762,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the controls' border > — the switches — draw their outline with it
   - [+] the controls' border > — Radio's country and genre lists — draw their outline with it
   - [+] the controls' border > — a UPnP server row's Play, Add to queue and Add to playlist — draw their outline with it
-  - [+] the controls' border > outline no other control in the cards' colour (0.04s)
+  - [+] the controls' border > outline no other control in the cards' colour (0.03s)
   - [+] the controls' border > outline no control of a template in the cards' colour through a style attribute
   - [+] the controls' border > reads the classes the templates put on their controls
   - [+] the controls' border > names only rules that exist and still draw an outline, so an exception cannot outlive its reason
@@ -11131,9 +11770,9 @@ Generated: **2026-11-08 17:32 UTC**
 **js/date-names.test.js**
 
   - [+] day and month names > are British English, asked of the browser nowhere but utils-lit.js (0.09s)
-  - [+] day and month names > are written nowhere else: every other date or number is digits, in the browser's way (0.09s)
+  - [+] day and month names > are written nowhere else: every other date or number is digits, in the browser's way (0.08s)
   - [+] day and month names > reads what it should refuse
-  - [+] day and month names > are written in British English, a time beside them in the browser's own way (0.03s)
+  - [+] day and month names > are written in British English, a time beside them in the browser's own way (0.02s)
   - [+] a moment > carries its year when it is not this one's
   - [+] a moment > reads -- for null
   - [+] a moment > reads -- for undefined
@@ -11151,7 +11790,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/delete-color.test.js**
 
-  - [+] the controls that delete > are never written in the red variant, in any screen (0.04s)
+  - [+] the controls that delete > are never written in the red variant, in any screen (0.03s)
   - [+] the controls that delete > are never painted red, in any stylesheet (0.02s)
   - [+] the controls that delete > turn orange under the pointer when that is all the colour they have
   - [+] the controls that delete > carry the orange in their label, not in their border alone
@@ -11199,7 +11838,35 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the scan > counts a class set by an expression or a property as a class
   - [+] the scan > reads the element a rule styles, not its ancestors
 
-**js/halloween-boot.test.js**
+**js/halloween.test.js**
+
+  - [+] the figures > the spider: one drawing, framed as the stylesheet frames it
+  - [+] the figures > the bat: one drawing, framed as the stylesheet frames it
+  - [+] the figures > the ghost: one drawing, framed as the stylesheet frames it
+  - [+] the figures > paints them in the page's ink, and no colour is written as a value
+  - [+] the figures > lets no pointer land on a figure
+  - [+] the sign-in page > hangs the app's spiders behind the card: before it in the page, at no level of their own
+  - [+] the fullscreen player's lantern > glows on the cover alone — the stand-in inside it would double it — in its own file
+  - [+] the splash screen > index.html carries the spider and the day's line, and the name as everywhere
+  - [+] the splash screen > login.html carries the spider and the day's line, and the name as everywhere
+  - [+] the splash screen > shows them on that day only, and the everyday line every other day
+  - [+] the splash screen > keeps them under the screen's exemption from the app's Animations setting
+  - [+] the empty pages a ghost haunts > a history with nothing in it (0.05s)
+  - [+] the empty pages a ghost haunts > ag-system-page.js: <div class="history-empty ag-hw-haunt">No events recorded</div>
+  - [+] the empty pages a ghost haunts > ag-library-queue.js: <div class="lib-empty ag-hw-haunt">Queue is empty</div>
+  - [+] the empty pages a ghost haunts > ag-library-queue.js: <div class="lib-empty ag-hw-haunt">No upcoming ${originLabel(activeFilter)} tracks</div>
+  - [+] the empty pages a ghost haunts > ag-library-upnp-browser.js: <div class="lib-empty ag-hw-haunt">No items</div>
+  - [+] the empty pages a ghost haunts > ag-library-stats.js: <p class="lib-stats-empty ag-hw-haunt">Nothing recorded yet.
+  - [+] the empty pages a ghost haunts > ag-library-search.js: <div class="lib-empty ag-hw-haunt">                     ${_query ? `No results for
+  - [+] the empty pages a ghost haunts > ag-library-browse.js: <div class="lib-empty ${awaitingEntry ? '' : 'ag-hw-haunt'}">${awaitingEntry ? 'Loading…' : 'No albums found'}</div>
+  - [+] the empty pages a ghost haunts > ag-library-radio.js: <div class="lib-radio-empty ${this._view === 'search' ? '' : 'ag-hw-haunt'}">${this._emptyMessage()}</div>
+  - [+] the empty pages a ghost haunts > never haunts a wait or an error
+  - [+] the empty pages a ghost haunts > draws the ghost above the message and the line under it, on that day only
+  - [+] less motion, and the app's animations off > hides everything that moves for a viewer who asks for less motion, and on paper
+  - [+] less motion, and the app's animations off > hides the app's moving figures when its own Animations setting is off
+  - [+] less motion, and the app's animations off > moves whole elements only: no SVG group, no shadow, no size animated
+
+**js/holiday-boot.test.js**
 
   - [+] the day > Sat Oct 31 2026 00:00:01 GMT+0100 (Central European Standard Time): true
   - [+] the day > Sat Oct 31 2026 23:59:59 GMT+0100 (Central European Standard Time): true
@@ -11218,36 +11885,24 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] kept right while the page stays open > reads it again at midnight, for a screen left on all night
   - [+] kept right while the page stays open > sees within the hour a clock set right after the page opened
   - [+] kept right while the page stays open > keeps one timer waiting, however often the page comes back
+  - [+] Christmas > Thu Dec 24 2026 00:00:01 GMT+0100 (Central European Standard Time): true
+  - [+] Christmas > Fri Dec 25 2026 23:59:59 GMT+0100 (Central European Standard Time): true
+  - [+] Christmas > Wed Dec 24 2031 12:00:00 GMT+0100 (Central European Standard Time): true
+  - [+] Christmas > Wed Dec 23 2026 23:59:59 GMT+0100 (Central European Standard Time): false
+  - [+] Christmas > Sat Dec 26 2026 00:00:00 GMT+0100 (Central European Standard Time): false
+  - [+] Christmas > Wed Jun 24 2026 12:00:00 GMT+0200 (Central European Summer Time): false
+  - [+] Christmas > Sun Jan 25 2026 12:00:00 GMT+0100 (Central European Standard Time): false
+  - [+] Christmas > a look on another day, "?christmas": true
+  - [+] Christmas > a look on another day, "?christmas=1": true
+  - [+] Christmas > a look on another day, "?tab=library&christmas": true
+  - [+] Christmas > a look on another day, "?christmasx": false
+  - [+] Christmas > a look on another day, "?nochristmas": false
+  - [+] Christmas > a look on another day, "": false
+  - [+] Christmas > wears its own class, never the other day's
+  - [+] Christmas > comes on at midnight on the 24th and goes at midnight after the 25th, for a screen left on
+  - [+] Christmas > reads the date again when the page comes back into view, both days with one timer
   - [+] where it runs > index.html loads it as a plain script, before the stylesheet
   - [+] where it runs > login.html loads it as a plain script, before the stylesheet
-
-**js/halloween.test.js**
-
-  - [+] the figures > the spider: one drawing, framed as the stylesheet frames it
-  - [+] the figures > the bat: one drawing, framed as the stylesheet frames it
-  - [+] the figures > the ghost: one drawing, framed as the stylesheet frames it
-  - [+] the figures > paints them in the page's ink, and no colour is written as a value
-  - [+] the figures > lets no pointer land on a figure
-  - [+] the sign-in page > hangs the app's spiders behind the card: before it in the page, at no level of their own
-  - [+] the fullscreen player's lantern > glows on the cover alone — the stand-in inside it would double it — in its own file
-  - [+] the splash screen > index.html carries the spider and the day's line, and the name as everywhere
-  - [+] the splash screen > login.html carries the spider and the day's line, and the name as everywhere
-  - [+] the splash screen > shows them on that day only, and the everyday line every other day
-  - [+] the splash screen > keeps them under the screen's exemption from the app's Animations setting
-  - [+] the empty pages a ghost haunts > a history with nothing in it (0.04s)
-  - [+] the empty pages a ghost haunts > ag-system-page.js: <div class="history-empty ag-hw-haunt">No events recorded</div>
-  - [+] the empty pages a ghost haunts > ag-library-queue.js: <div class="lib-empty ag-hw-haunt">Queue is empty</div>
-  - [+] the empty pages a ghost haunts > ag-library-queue.js: <div class="lib-empty ag-hw-haunt">No upcoming ${originLabel(activeFilter)} tracks</div>
-  - [+] the empty pages a ghost haunts > ag-library-upnp-browser.js: <div class="lib-empty ag-hw-haunt">No items</div>
-  - [+] the empty pages a ghost haunts > ag-library-stats.js: <p class="lib-stats-empty ag-hw-haunt">Nothing recorded yet.
-  - [+] the empty pages a ghost haunts > ag-library-search.js: <div class="lib-empty ag-hw-haunt">                     ${_query ? `No results for
-  - [+] the empty pages a ghost haunts > ag-library-browse.js: <div class="lib-empty ${awaitingEntry ? '' : 'ag-hw-haunt'}">${awaitingEntry ? 'Loading…' : 'No albums found'}</div>
-  - [+] the empty pages a ghost haunts > ag-library-radio.js: <div class="lib-radio-empty ${this._view === 'search' ? '' : 'ag-hw-haunt'}">${this._emptyMessage()}</div>
-  - [+] the empty pages a ghost haunts > never haunts a wait or an error
-  - [+] the empty pages a ghost haunts > draws the ghost above the message and the line under it, on that day only
-  - [+] less motion, and the app's animations off > hides everything that moves for a viewer who asks for less motion, and on paper
-  - [+] less motion, and the app's animations off > hides the app's moving figures when its own Animations setting is off
-  - [+] less motion, and the app's animations off > moves whole elements only: no SVG group, no shadow, no size animated
 
 **js/hover-media.test.js**
 
@@ -11260,7 +11915,6 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] a touch screen shows the press instead > leaves a busy button still
   - [+] a touch screen shows the press instead > leaves a card still while a button inside it is pressed
   - [+] a touch screen shows the press instead > has one home, which the pages load where base.css held it
-  - [+] a touch screen shows the press instead > leaves the Now Playing cover still while its details bubble is touched
   - [+] the check > refuses a hover rule on its own
   - [+] the check > accepts it under @media (hover: hover), nested in another query too
   - [+] the check > refuses it under another query alone
@@ -11343,6 +11997,9 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] playlist helpers > deletes without retrying — a retried deletion would answer "no longer exists"
   - [+] playlist helpers > announces nothing when a write fails
   - [+] playlist helpers > shows the core's own words for a failure, and a sentence when there are none
+  - [+] moveQueueItem > moves the track by its song id beside the track named, for the source browsed
+  - [+] moveQueueItem > escapes the source in the address
+  - [+] playQueueItem > plays the track by its song id, for the source browsed
 
 **js/library-store.favorites.test.js**
 
@@ -11409,6 +12066,10 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] getQobuzGenres > fetches the tree from its own endpoint
   - [+] getQobuzGenres > keeps its own cache, separate from the HIGHRESAUDIO tree
   - [+] getQobuzGenres > answers with an empty list rather than throwing when the core is unreachable
+  - [+] getQobuzPlaylistTags > reads the categories from their own endpoint
+  - [+] getQobuzPlaylistTags > serves the cached list once it has one
+  - [+] getQobuzPlaylistTags > asks the core again after an empty answer
+  - [+] getQobuzPlaylistTags > answers with an empty list rather than throwing when the core is unreachable
   - [+] the three Tidal lists > each reads its own endpoint
   - [+] the three Tidal lists > keeps three separate caches, so one never serves under another
   - [+] the three Tidal lists > answer with an empty list rather than throwing when the core is unreachable
@@ -11565,8 +12226,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the review page > says how each figure compares
   - [+] the review page > escapes an attribute's quotes on top of the app's own escaping
   - [+] the review page > embeds both images, and lists what failed with its reason
-  - [+] capture.js, run as a command > prints its usage (0.08s)
-  - [+] capture.js, run as a command > lists every figure it can take (0.07s)
+  - [+] capture.js, run as a command > prints its usage (0.07s)
+  - [+] capture.js, run as a command > lists every figure it can take (0.08s)
   - [+] capture.js, run as a command > refuses a figure it has no recipe for (0.07s)
   - [+] capture.js, run as a command > refuses a figure taken from what plays now unless the lab is staged for it (0.07s)
   - [+] capture.js, run as a command > refuses an option it does not know (0.08s)
@@ -11575,13 +12236,13 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/modal-paragraph-reset.test.js**
 
-  - [+] modal paragraph reset > no stylesheet targets modal paragraphs with the weight of a class (0.03s)
+  - [+] modal paragraph reset > no stylesheet targets modal paragraphs with the weight of a class
   - [+] modal paragraph reset > still resets plain paragraphs, so they do not take the browser margin
 
 **js/module-imports.test.js**
 
   - [+] every module comes from this server > finds the sources
-  - [+] every module comes from this server > imports nothing over http (0.11s)
+  - [+] every module comes from this server > imports nothing over http (0.05s)
   - [+] every module comes from this server > mocks the specifier the code actually imports (0.02s)
   - [+] every module comes from this server > keeps one copy of @lit/context, at the declared version (0.03s)
   - [+] nothing else comes from another host either > finds the pages
@@ -11679,12 +12340,12 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] no undeclared identifier anywhere in the tree > reports no error
   - [+] no undeclared identifier anywhere in the tree > reports no stale eslint-disable directive
-  - [+] no undeclared identifier anywhere in the tree > actually looked at the application, rather than at nothing (0.01s)
+  - [+] no undeclared identifier anywhere in the tree > actually looked at the application, rather than at nothing
   - [+] no undeclared identifier anywhere in the tree > does not lint generated output that git already refuses to track
   - [+] each file is checked against its own platform, not against every platform > gives the service worker its own globals and not the browser DOM
   - [+] each file is checked against its own platform, not against every platform > gives the build config Node and not the DOM
   - [+] each file is checked against its own platform, not against every platform > gives the application the DOM and not Node
-  - [+] each file is checked against its own platform, not against every platform > knows the Storybook preview runs in a browser, unlike Storybook's own config
+  - [+] each file is checked against its own platform, not against every platform > knows the Storybook preview runs in a browser, unlike Storybook's own config (0.01s)
   - [+] each file is checked against its own platform, not against every platform > knows the Storybook setup file runs in Chromium, despite looking like a test helper
   - [+] each file is checked against its own platform, not against every platform > accepts the names the compatibility layer publishes, and still catches a typo
   - [+] each file is checked against its own platform, not against every platform > no longer accepts Chart or CodeMirror as globals
@@ -11867,12 +12528,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/real-buttons.test.js**
 
-  - [+] what acts as a button is a <button> > role="button" sits on the two elements that cannot be buttons, and nowhere else (0.04s)
+  - [+] what acts as a button is a <button> > role="button" sits on the element that cannot be a button, and nowhere else (0.04s)
   - [+] the check > recognises an exception by the whole name of its class
 
 **js/session-boot.test.js**
 
-  - [+] a launch with no session > leaves for the sign-in page, replacing this one in the history (0.01s)
+  - [+] a launch with no session > leaves for the sign-in page, replacing this one in the history
   - [+] a launch with no session > saves where to come back, as requireAuth() does
   - [+] a launch with no session > keeps the view the app was opened on
   - [+] a launch with no session > leaves with an expired session too
@@ -11892,7 +12553,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the type scale is one closed scale > declares seven steps, in one place
   - [+] the type scale is one closed scale > gives every step a different value
   - [+] the type scale is one closed scale > orders the steps by their names
-  - [+] the type scale is one closed scale > names no step it does not declare (0.02s)
+  - [+] the type scale is one closed scale > names no step it does not declare (0.03s)
   - [+] sizes come from the scale > finds the sources
   - [+] sizes come from the scale > writes no size as a value, unless it says why (0.03s)
   - [+] sizes come from the scale > is documented with the values it actually has
@@ -11943,7 +12604,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] once per opening of the app > a page about to leave for the other one marks the next as skipped, with the time
   - [+] once per opening of the app > a sign-out, on the way to the sign-in page
   - [+] once per opening of the app > a sign-in, on the way to the app
-  - [+] iOS's launch images > — index.html — one per declared screen, at that screen's size (0.03s)
+  - [+] iOS's launch images > — index.html — one per declared screen, at that screen's size
   - [+] iOS's launch images > — login.html — one per declared screen, at that screen's size
   - [+] iOS's launch images > are the plain ground the entrance starts from — the default theme's dark ground, nothing on it (0.07s)
   - [+] iOS's launch images > the script reads a screen's size from its media query, landscape included
@@ -11969,10 +12630,14 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] closing the stream > asks the worker to close its stream
   - [+] closing the stream > keeps the worker: a page that stays after all gets its stream back through it
   - [+] closing the stream > is what the app runs on its way out
+  - [+] the worker and the page know the same events > finds both lists
+  - [+] the worker and the page know the same events > has the worker listen to every event the page routes
+  - [+] the worker and the page know the same events > has the page route every event the worker forwards
+  - [+] usb_drive routing > shows the core's notice whatever page is open
 
 **js/state-colours.test.js**
 
-  - [+] colour kept for states > — START, ACTIVATE — reads its role, whose default is the colour it had
+  - [+] colour kept for states > — START, ACTIVATE — reads its role, whose default is the colour it had (0.01s)
   - [+] colour kept for states > — their words — reads its role, whose default is the colour it had
   - [+] colour kept for states > — a confirming button — reads its role, whose default is the colour it had
   - [+] colour kept for states > — its words — reads its role, whose default is the colour it had
@@ -12060,20 +12725,20 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the shell can start offline right after an update > precaches /theme-boot.js
   - [+] the shell can start offline right after an update > precaches /session-boot.js
   - [+] the shell can start offline right after an update > precaches /splash-boot.js
-  - [+] the shell can start offline right after an update > precaches /halloween-boot.js
+  - [+] the shell can start offline right after an update > precaches /holiday-boot.js
   - [+] the shell can start offline right after an update > still serves /ag-config.js when the network is gone
   - [+] the shell can start offline right after an update > still serves /js/sse-worker.js when the network is gone
   - [+] the shell can start offline right after an update > still serves /theme-boot.js when the network is gone
   - [+] the shell can start offline right after an update > still serves /session-boot.js when the network is gone
   - [+] the shell can start offline right after an update > still serves /splash-boot.js when the network is gone
-  - [+] the shell can start offline right after an update > still serves /halloween-boot.js when the network is gone
+  - [+] the shell can start offline right after an update > still serves /holiday-boot.js when the network is gone
   - [+] the shell can start offline right after an update > refuses a shell entry that the box does not ship
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /pics/qobuz.webp, then never again
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /pics/splash/apple-splash-1125-2436.png, then never again
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /theme-boot.js, then never again
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /session-boot.js, then never again
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /splash-boot.js, then never again
-  - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /halloween-boot.js, then never again
+  - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /holiday-boot.js, then never again
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /pics/halloween/spider.svg, then never again
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /docs/manual/README.md, then never again
   - [+] unhashed static files ride on the cache rename, not on revalidation > asks the network once for /docs/manual/04-listening.md, then never again
@@ -12129,10 +12794,10 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] syncManual > refuses a folder with no table of contents, and touches nothing
   - [+] syncManual > looks for the manual in the site repository beside this one
   - [+] syncManual > reads the manual from AG_MANUAL_SRC when it is set, as an absolute path
-  - [+] sync-manual, run as a command > stops a build that would ship without the manual (0.06s)
+  - [+] sync-manual, run as a command > stops a build that would ship without the manual (0.07s)
   - [+] sync-manual, run as a command > stops a build whose README lost the trademark notice, before copying anything (0.06s)
   - [+] sync-manual, run as a command > stops the build too when started through a symbolic link (0.06s)
-  - [+] sync-manual, run as a command > only warns in development, where the window then says it cannot load (0.07s)
+  - [+] sync-manual, run as a command > only warns in development, where the window then says it cannot load (0.06s)
   - [+] the build scripts carry the manual > copies it before every build, and a missing manual stops the build
   - [+] the build scripts carry the manual > copies it before the development server starts
 
@@ -12219,13 +12884,13 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] getUserFriendlyError > returns error.message for unknown errors
   - [+] getUserFriendlyError > returns default for empty error
   - [+] showToast — the type comes first, and a wrong one is said aloud > coerces an unknown type and reports the call (0.05s)
-  - [+] showToast — three at most, no twin, said once, a handle for the result > keeps three on screen: a fourth sends the oldest away (0.03s)
+  - [+] showToast — three at most, no twin, said once, a handle for the result > keeps three on screen: a fourth sends the oldest away (0.02s)
   - [+] showToast — three at most, no twin, said once, a handle for the result > sends away the toast said longest ago, not the first on the page (0.02s)
   - [+] showToast — three at most, no twin, said once, a handle for the result > counts an update as said: an operation's result is not the first to go (0.01s)
   - [+] showToast — three at most, no twin, said once, a handle for the result > does not add a toast identical to one on screen: that one starts its time over (0.01s)
-  - [+] showToast — three at most, no twin, said once, a handle for the result > adds a toast that differs in its words or its type (0.01s)
+  - [+] showToast — three at most, no twin, said once, a handle for the result > adds a toast that differs in its words or its type
   - [+] showToast — three at most, no twin, said once, a handle for the result > says each toast once, an error in the region that interrupts (0.02s)
-  - [+] showToast — three at most, no twin, said once, a handle for the result > says both of two toasts that come together — emptying the region dropped the first (0.01s)
+  - [+] showToast — three at most, no twin, said once, a handle for the result > says both of two toasts that come together — emptying the region dropped the first
   - [+] showToast — three at most, no twin, said once, a handle for the result > keeps the last three lines a region said, no more (0.02s)
   - [+] showToast — three at most, no twin, said once, a handle for the result > has the page say only the line added: its two regions are not atomic
   - [+] showToast — three at most, no twin, said once, a handle for the result > says a notice updated before it shows once, in its new words
@@ -12272,7 +12937,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/version.test.js**
 
-  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (1.0.1)
+  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (1.0.2)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > js/core/config.js UI_VERSION matches VERSION (UI display)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > sw.js CACHE_NAME matches VERSION (PWA cache busting)
 
@@ -12305,7 +12970,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/component-imports.test.js**
 
-  - [+] component import graph > every <ag-*> tag used in a component template is imported by that component (0.23s)
+  - [+] component import graph > every <ag-*> tag used in a component template is imported by that component (0.22s)
 
 **js/components/library-constants.test.js**
 
@@ -12429,6 +13094,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/utils-lit.test.js**
 
+  - [+] loadWithState > holds _loading while the read is out, and hands back its result
+  - [+] loadWithState > keeps the message of a failed read, and logs it
+  - [+] loadWithState > an earlier read ending first leaves _loading to the latest, still out
+  - [+] loadWithState > an overtaken read that fails late writes no error over the latest's success
+  - [+] loadWithState > tells its work whether it is still the latest read, for the answer to be dropped
+  - [+] loadWithState > keeps each host to its own reads
   - [+] svgIcon > wraps an icon in a sized <svg> with the Lucide stroke convention
   - [+] svgIcon > honours a custom size
   - [+] safeToFixed > formats valid numbers
@@ -12513,6 +13184,29 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] CodeMirrorController > re-renders its host at each change, after the update under way
   - [+] CodeMirrorController > sends the user to a reload, the one thing that loads it again
 
+**js/core/DragToReorderController.test.js**
+
+  - [+] DragToReorderController > registers itself with the host
+  - [+] DragToReorderController > lifts the held row and readies the others to slide (0.16s)
+  - [+] DragToReorderController > drops a row moved down past the next one's middle one place lower, that one sliding up (0.01s)
+  - [+] DragToReorderController > passes no row a little short of half a row, either way
+  - [+] DragToReorderController > drops the last row moved up to the top at index 0, the others sliding down
+  - [+] DragToReorderController > commits nothing for a row dropped where it was, and puts it back (0.01s)
+  - [+] DragToReorderController > keeps the lift of a row taken while the one let go before still slides back (0.02s)
+  - [+] DragToReorderController > puts the rows sliding back at rest at once when the list leaves the page
+  - [+] DragToReorderController > commits nothing when the system takes the touch (pointercancel)
+  - [+] DragToReorderController > holds one row at a time, and only the finger that took it moves it
+  - [+] DragToReorderController > takes no secondary button, and no handle outside a row
+  - [+] DragToReorderController > lets go when its handle stops being one, or the list leaves the page (0.01s)
+  - [+] DragToReorderController > scrolls the list by itself near its bottom edge, the held row along with it
+  - [+] DragToReorderController > scrolls the list from just above what covers its bottom, the finger in reach
+  - [+] DragToReorderController > starts the list under a sticky header the host names
+  - [+] DragToReorderController > stops its frames with the gesture
+  - [+] dragHandle directive > wires the four pointer listeners and takes the touch whole
+  - [+] dragHandle directive > disabled, wires nothing and leaves the touch to the list
+  - [+] dragHandle directive > turned off, or out of the page, unwires and lets the gesture go
+  - [+] dragHandle directive > throws when used outside an element binding
+
 **js/core/FavoritesController.test.js**
 
   - [+] FavoritesController > registers with the host
@@ -12569,6 +13263,18 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] HalloweenController > costs its host no render when another class of <html> changes
   - [+] HalloweenController > tells a removed host nothing, and reads the day again when it comes back
 
+**js/core/InfiniteScrollController.test.js**
+
+  - [+] InfiniteScrollController > registers itself with its host
+  - [+] InfiniteScrollController > asks for the next page when the sentinel comes into reach, and only then (0.01s)
+  - [+] InfiniteScrollController > looks 200 px ahead of the end by default, so the page lands before the reader
+  - [+] InfiniteScrollController > attaches once, whatever the number of renders
+  - [+] InfiniteScrollController > stops watching once the list is complete, and watches again when it grows
+  - [+] InfiniteScrollController > waits for the sentinel when the host has not rendered it yet
+  - [+] InfiniteScrollController > looks at the end again once a page has landed
+  - [+] InfiniteScrollController > waits for the reader when no page landed — no asking a failing server in a loop
+  - [+] InfiniteScrollController > lets go of the observer when the host leaves the page
+
 **js/core/LicenseController.test.js**
 
   - [+] LicenseController > starts from the licence already read
@@ -12595,6 +13301,11 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] PlayerChangeController > a view opened on a track just started reads again once it counts
   - [+] PlayerChangeController > calls back when the page comes back
   - [+] PlayerChangeController > stops with the view, timers too, and takes up again when it returns
+  - [+] PlayerChangeController — for a view that shows what plays > keeps the last state, and none before the first nor once stopped
+  - [+] PlayerChangeController — for a view that shows what plays > asks the view to render at once on the first state and on each change, not on a tick
+  - [+] PlayerChangeController — for a view that shows what plays > counts the changes, and keeps counting across a stop — never back to an old count
+  - [+] PlayerChangeController — what counts as a change, the view's call > takes the signature a view gives it
+  - [+] PlayerChangeController — what counts as a change, the view's call > keeps what plays as its signature otherwise: a toggle of the random order is no change
 
 **js/core/ScrollEdgesController.test.js**
 
@@ -12636,6 +13347,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] SwipeToDismissController > interactive-target guard (row action buttons) > still arms when the gesture starts on the row itself
   - [+] SwipeToDismissController > interactive-target guard (row action buttons) > ignores an interactive ancestor that sits OUTSIDE the swiped row
   - [+] SwipeToDismissController > interactive-target guard (row action buttons) > still ignores a control that IS inside the swiped row
+  - [+] SwipeToDismissController > interactive-target guard (row action buttons) > arms on the row's own content drawn as one button, marked to let the swipe through
+  - [+] SwipeToDismissController > interactive-target guard (row action buttons) > still ignores a button of the row that is not so marked
   - [+] SwipeToDismissController > interactive-target guard (row action buttons) > arms when the event carries no DOM target (synthetic events must not throw)
   - [+] SwipeToDismissController > multi-touch / pointer isolation > ignores a second concurrent pointerdown and never mixes their state
   - [+] SwipeToDismissController > multi-touch / pointer isolation > ignores move/end from a foreign pointerId
@@ -12750,7 +13463,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] keepInView > animates by default, instantly on first or with animations off (0.01s)
   - [+] keepInView > is a no-op without an element or without a designed scroller
   - [+] scrollParent — the container that really scrolls > skips a wrapper that grows with its content, and finds the one that scrolls (0.01s)
-  - [+] scrollParent — the container that really scrolls > answers null while nothing overflows (0.01s)
+  - [+] scrollParent — the container that really scrolls > answers null while nothing overflows (0.02s)
   - [+] scrollParent — the container that really scrolls > never answers a clipping container
 
 **js/core/latest-throttle.test.js**
@@ -12871,7 +13584,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] reloadIfStale > asks the box itself, with a query no cached entry carries
   - [+] reloadIfStale > does not reload when the version in place is this one
   - [+] reloadIfStale > does not reload when the box does not answer, or answers an error
-  - [+] reloadIfStale > reloads once a minute at most
+  - [+] reloadIfStale > reloads once a minute at most (0.01s)
   - [+] reloadIfStale > takes a reload dated in the future for a long past one
   - [+] reloadIfStale > does not reload without session storage to guard against a loop
   - [+] startBundle > reads the module script of a page, however its tag is written
@@ -13024,6 +13737,21 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the page > hands its registration over once registered, and tells a waiting worker at each check
   - [+] SKIP_WAITING > is the message sw.js answers with skipWaiting()
 
+**js/core/usb-drive-notice.test.js**
+
+  - [+] a USB drive notice > is shown as the core words it
+  - [+] a USB drive notice > keeps the kind success
+  - [+] a USB drive notice > keeps the kind info
+  - [+] a USB drive notice > keeps the kind warning
+  - [+] a USB drive notice > keeps the kind error
+  - [+] a USB drive notice > shows an unknown kind as info rather than not at all
+  - [+] a USB drive notice > has a title even when the core sent none
+  - [+] a USB drive notice > shows nothing for nothing
+  - [+] a USB drive notice > shows nothing for null
+  - [+] a USB drive notice > shows nothing for a string
+  - [+] a USB drive notice > shows nothing for no words at all
+  - [+] a USB drive notice > shows nothing for words that are not text
+
 **js/core/versions.test.js**
 
   - [+] bareVersion > reads "0.9.65" as "0.9.65"
@@ -13040,149 +13768,6 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] bareVersion > is empty for undefined
   - [+] bareVersion > is empty for ""
 
-**js/components/atoms/ag-badge.test.js**
-
-  - [+] a clickable badge > is a button of type "button", drawn as a badge, carrying its label (0.04s)
-  - [+] a clickable badge > fires badge-click with its type and label
-  - [+] a clickable badge > does not submit the form around it
-  - [+] a badge that is not clickable > is plain text: no button, nothing fired
-  - [+] a badge that is not clickable > becomes a button when it turns clickable
-
-**js/components/atoms/ag-dsd-delivery.test.js**
-
-  - [+] ag-dsd-delivery > says nothing when the DAC receives DSD
-  - [+] ag-dsd-delivery > says nothing while the core cannot tell
-  - [+] ag-dsd-delivery > tags DoP, neutrally
-  - [+] ag-dsd-delivery > warns of a conversion to PCM
-  - [+] ag-dsd-delivery > knows no other way
-
-**js/components/atoms/ag-halloween-spiders.test.js**
-
-  - [+] ag-halloween-spiders > draws nothing on another day (0.02s)
-  - [+] ag-halloween-spiders > lets its spiders down on Halloween, out of reach of pointers and screen readers (0.04s)
-  - [+] ag-halloween-spiders > lets them down when the day comes and takes them in when it ends, without a reload
-  - [+] ag-halloween-spiders > draws, measures and watches nothing for a viewer who asks for less motion
-  - [+] ag-halloween-spiders > lets its threads out below what is fixed at the top, measured, and again on a resize (0.01s)
-  - [+] ag-halloween-spiders > measures again at the next frame: the bar is drawn by a component of its own, later
-  - [+] ag-halloween-spiders > follows the offline banner as it comes and goes, and the tabs as they change shape
-  - [+] ag-halloween-spiders > stops watching once the spiders are gone, and once removed
-  - [+] ag-halloween-spiders > measures nothing while the app's Animations setting is off, and again once it is on
-  - [+] ag-halloween-spiders > measures nothing and listens to no resize on another day
-  - [+] ag-halloween-spiders — its stylesheet and its place > hangs from the top of the content, clipped there, at the page layer's lowest step, and takes no pointer
-  - [+] ag-halloween-spiders — its stylesheet and its place > lives in the page's own layer: a window opened in a page covers it
-  - [+] ag-halloween-spiders — its stylesheet and its place > shows no spider to a viewer who asks for less motion, nor on paper
-  - [+] ag-halloween-spiders — its stylesheet and its place > draws in the page's ink, spins no web, and moves whole elements only
-  - [+] ag-halloween-spiders — its stylesheet and its place > is loaded with the app
-
-**js/components/atoms/ag-library-cover.test.js**
-
-  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.04s)
-  - [+] ag-library-cover — deferred image loading > still points at the requested cover
-  - [+] ag-library-cover — deferred image loading > draws the note behind a row of the listening history (0.01s)
-  - [+] ag-library-cover — deferred image loading > renders no image at all when there is no cover, so nothing is requested
-  - [+] ag-library-cover — deferred image loading > drops the image once it has failed, instead of retrying on every render
-  - [+] ag-library-cover — banner artwork > is square by default: the height matches the width
-  - [+] ag-library-cover — banner artwork > halves the height when the artwork is a banner
-  - [+] ag-library-cover — banner artwork > recomputes the height when the size alone changes on a cell already wide
-  - [+] ag-library-cover — banner artwork > restores a square cell when the artwork stops being a banner
-
-**js/components/atoms/ag-library-playlist-btn.test.js**
-
-  - [+] ag-library-playlist-btn > reports the tap as playlist-add, to a listener above it (0.04s)
-  - [+] ag-library-playlist-btn > never lets the tap reach the card that plays the album
-  - [+] ag-library-playlist-btn > draws the row variant with its own class
-  - [+] ag-library-playlist-btn > draws the card variant with its own class
-  - [+] ag-library-playlist-btn > draws the player variant with its own class
-  - [+] ag-library-playlist-btn > falls back to the row look for an unknown variant
-  - [+] ag-library-playlist-btn > is named for assistive technology, and the name can be changed
-  - [+] ag-library-playlist-btn — its three modes > the add mode fires playlist-add and is named "Add to playlist"
-  - [+] ag-library-playlist-btn — its three modes > the remove mode fires playlist-remove and is named "Remove from the playlist"
-  - [+] ag-library-playlist-btn — its three modes > the open mode fires playlist-open and is named "Open the playlist"
-  - [+] ag-library-playlist-btn — its three modes > takes the bottom-left corner of a cover to open a playlist, which has no ★ there
-  - [+] ag-library-playlist-btn — its three modes > keeps the row look in every mode, beside the other row controls
-  - [+] ag-library-playlist-btn — its three modes > falls back to "add" for an unknown mode
-  - [+] ag-library-playlist-btn — its three modes > never lets an "open" reach the card that plays the playlist
-
-**js/components/atoms/ag-license-badge.test.js**
-
-  - [+] ag-license-badge > says Lifetime for a perpetual licence (0.02s)
-  - [+] ag-license-badge > does not say Lifetime for a licence bought with an end date
-  - [+] ag-license-badge > names an ended term instead of falling through to "No license"
-  - [+] ag-license-badge > paints an ended term as a warning, never as critical (0.01s)
-  - [+] ag-license-badge > still paints a tampered file as critical
-  - [+] ag-license-badge > counts down the trial
-  - [+] ag-license-badge > falls back to "No license" only for an unknown status
-
-**js/components/atoms/ag-pipeline-link.test.js**
-
-  - [+] the latency a link writes > — 35 µs — takes the text colour of its band, excellent (0.09s)
-  - [+] the latency a link writes > — 125 µs — takes the text colour of its band, good (0.01s)
-  - [+] the latency a link writes > — 350 µs — takes the text colour of its band, average
-  - [+] the latency a link writes > — 720 µs — takes the text colour of its band, critical
-  - [+] the latency a link writes > is never written in a bar colour (0.03s)
-  - [+] the buffer fill a link writes > — 45 % healthy — takes the text colour of its band, undefined
-  - [+] the buffer fill a link writes > — 85 % warning — takes the text colour of its band, undefined (0.01s)
-  - [+] the buffer fill a link writes > — 95 % critical — takes the text colour of its band, undefined
-
-**js/components/atoms/ag-pipeline-node.test.js**
-
-  - [+] serviceFormatLabel > writes the bit depth of a lossless file
-  - [+] serviceFormatLabel > writes the bitrate of a lossy stream, which has no bit depth
-  - [+] serviceFormatLabel > keeps what it has when part of it is missing
-  - [+] serviceFormatLabel > writes nothing when nothing is known
-  - [+] renderPipelineNode — the format a device node writes > writes a server's now-playing with the label a service row uses
-  - [+] renderPipelineNode — the format a device node writes > writes a lossy stream's bitrate on the service row that plays it
-
-**js/components/atoms/ag-sparkline.test.js**
-
-  - [+] placeOnSlots — a window with a width of its own > puts the newest measurement in the last slot
-  - [+] placeOnSlots — a window with a width of its own > skips what was not measured but keeps its slot
-  - [+] placeOnSlots — a window with a width of its own > keeps only the newest values when there are more than slots
-  - [+] placeOnSlots — a window with a width of its own > uses one slot per value without a window
-  - [+] placeOnSlots — a window with a width of its own > survives no data at all
-  - [+] measuredRuns — a gap splits the line > cuts where a slot has no measurement
-  - [+] monotonePath — smooth, never beyond a measurement > keeps every control point within the measured range
-  - [+] monotonePath — smooth, never beyond a measurement > draws a straight segment between two points
-  - [+] 'area' variant > draws the first measurements on the right, not across the chart (0.06s)
-  - [+] 'area' variant > leaves a gap where a measurement is missing
-  - [+] 'area' variant > starts its scale at zero: a stable value is a line high up, not mid-chart (0.01s)
-  - [+] 'area' variant > draws the second series as a thin line in its own colour (0.02s)
-  - [+] 'area' variant > takes its colours as CSS, so a var() resolves without JS
-  - [+] 'area' variant > draws a measurement alone between two gaps as a point
-  - [+] 'area' variant > draws a lone point of the second series too
-  - [+] 'area' variant > marks no current value when the newest slot is empty
-  - [+] 'area' variant > lines both series up on the right when no window is set
-  - [+] 'area' variant > draws nothing but its base line before the first measurement
-  - [+] 'bars' variant > draws one bar per measured value, the latest marked
-  - [+] 'bars' variant > keeps a 1 px bar for a measured zero, and none for a gap
-  - [+] 'bars' variant > marks no bar as current when the newest slot is empty
-  - [+] 'bars' variant > places its bars from the right of the window
-  - [+] 'bars' variant > prints its captions above the bars
-  - [+] 'line' variant — unchanged for the charts that use it > keeps its 2px stroke and its gradient fill by default (0.13s)
-  - [+] 'line' variant — unchanged for the charts that use it > still honours an explicit width
-  - [+] 'line' variant — unchanged for the charts that use it > is what a sparkline without a variant draws
-
-**js/components/atoms/ag-stat-box.test.js**
-
-  - [+] a stat box > writes its unit after the value, not in the label (0.04s)
-  - [+] the stat boxes of the app > never put "µ" in a label, which capitals turn into an M (0.04s)
-
-**js/components/atoms/ag-switch-filter-bar.test.js**
-
-  - [+] ag-switch > names its checkbox with its label (0.03s)
-  - [+] ag-switch > adds no name when it has no label
-  - [+] ag-filter-bar > says which option is chosen (0.02s)
-
-**js/components/atoms/ag-theme-toggle.test.js**
-
-  - [+] ag-theme-toggle > takes its initial state from the document, not from a default (0.04s)
-  - [+] ag-theme-toggle > offers the appearance you are not in
-  - [+] ag-theme-toggle > hands the click to the shared switch (0.01s)
-  - [+] ag-theme-toggle > follows the page when Automatic turns it dark under the form
-  - [+] ag-theme-toggle > stops following once gone
-  - [+] ag-theme-toggle > stores a palette of its own choosing, which leaves Automatic
-  - [+] ag-theme-toggle > announces the change to whoever is listening
-
 **js/components/molecules/ag-announcement-banner.test.js**
 
   - [+] ag-announcement-banner — localStorage helpers > getDismissed returns empty Set when storage is empty
@@ -13198,7 +13783,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] ag-back-to-top > is a real button with a name, hidden while it follows nothing (0.05s)
   - [+] ag-back-to-top > shows once the pane has scrolled by more than its own height, not before (0.01s)
-  - [+] ag-back-to-top > draws the share of the pane read as the ring, out of 100
+  - [+] ag-back-to-top > draws the share of the pane read as the ring, out of 100 (0.01s)
   - [+] ag-back-to-top > paints once per frame, however many scroll events arrive before it
   - [+] ag-back-to-top > keeps an empty ring and stays hidden on a pane with nothing to scroll
   - [+] ag-back-to-top > takes the pane back to its top, smoothly, and gives it the focus
@@ -13251,7 +13836,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/molecules/ag-format-strip.test.js**
 
-  - [+] ag-format-strip — the hi-res highlight > highlights the format and the rate of a hi-res file (0.05s)
+  - [+] ag-format-strip — the hi-res highlight > highlights the format and the rate of a hi-res file (0.04s)
   - [+] ag-format-strip — the hi-res highlight > highlights nothing for a lossy stream, whatever its rate
   - [+] ag-format-strip — how a DSD track reaches the DAC > says nothing more when the DAC receives DSD (0.01s)
   - [+] ag-format-strip — how a DSD track reaches the DAC > warns under the format when the DSD was converted to PCM (0.02s)
@@ -13407,9 +13992,9 @@ Generated: **2026-11-08 17:32 UTC**
 **js/components/molecules/ag-lib-tabbar.test.js**
 
   - [+] ag-lib-tabbar — a source is only offered what it can serve > shows the six tabs when no restriction is given (0.07s)
-  - [+] ag-lib-tabbar — a source is only offered what it can serve > drops the tabs a radio cannot answer (0.01s)
+  - [+] ag-lib-tabbar — a source is only offered what it can serve > drops the tabs a radio cannot answer
   - [+] ag-lib-tabbar — a source is only offered what it can serve > keeps the declared order, not the order it was asked in
-  - [+] ag-lib-tabbar — a bar whose tabs ran onto a new line says so > marks the bar when its last tab sits below its first (0.01s)
+  - [+] ag-lib-tabbar — a bar whose tabs ran onto a new line says so > marks the bar when its last tab sits below its first
   - [+] ag-lib-tabbar — a bar whose tabs ran onto a new line says so > leaves a bar that fits on one line unmarked, and unmarks one that fits again (0.01s)
   - [+] ag-lib-tabbar — a bar whose tabs ran onto a new line says so > only the copy in the tab menu watches its size: the page's bars never wrap (0.02s)
   - [+] ag-lib-tabbar — a bar whose tabs ran onto a new line says so > looks again when its tabs change — the radio offers four (0.02s)
@@ -13430,7 +14015,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-library-list-row — the cover cell > keeps the row height and doubles the width for a banner (0.05s)
   - [+] ag-library-list-row — the cover cell > is a square cell of the usual size otherwise
   - [+] ag-library-list-row — the cover cell > gives the cover column no width of its own, so the cell decides
-  - [+] ag-library-list-row — the trailing controls > puts the star and the + in one cell, so the row stays on three items (0.03s)
+  - [+] ag-library-list-row — the trailing controls > puts the star and the + in one cell, so the row stays on three items (0.02s)
   - [+] ag-library-list-row — the trailing controls > adds no empty cell to a row that carries neither
   - [+] ag-library-list-row — the trailing controls > keeps the grid at three columns
   - [+] ag-library-list-row — "Add to playlist" > sits between the ★ and the "+ add" when asked for (0.02s)
@@ -13502,19 +14087,19 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] _priceDisplay — price formatting > hands back a non-numeric price verbatim — it does not sanitise
   - [+] _priceDisplay — price formatting > hands back null unchanged
   - [+] the purchase sentence — price as text node > embeds a valid price string correctly
-  - [+] the purchase sentence when the licence server gives no price > keeps a whole sentence — no dangling comma (0.10s)
+  - [+] the purchase sentence when the licence server gives no price > keeps a whole sentence — no dangling comma (0.11s)
   - [+] the purchase sentence when the licence server gives no price > states the price when there is one (0.02s)
   - [+] the purchase sentence when the licence server gives no price > states the price once, not again in the steps (0.02s)
   - [+] the purchase sentence when the licence server gives no price > renders a hostile price as inert text (0.02s)
   - [+] the purchase sentence when the licence server gives no price > states the price in the steps once the trial has ended (0.03s)
-  - [+] the purchase sentence on a Starter box > says a licence brings the Pro features back, not that the box stops (0.01s)
+  - [+] the purchase sentence on a Starter box > says a licence brings the Pro features back, not that the box stops (0.02s)
   - [+] the panel's header > offers the licence key alone on a running trial (0.02s)
   - [+] the panel's header > offers the licence key alone on Starter (0.02s)
   - [+] the panel's header > offers the licence key alone on a lifetime licence (0.03s)
-  - [+] the button that deletes the licence > is orange on a lifetime licence (0.02s)
+  - [+] the button that deletes the licence > is orange on a lifetime licence (0.01s)
   - [+] the button that deletes the licence > is orange on a licence that has ended (0.04s)
-  - [+] the trial tile says the day count once > keeps the badge and the bar caption, drops the relayed sentence (0.02s)
-  - [+] the trial tile says the day count once > still relays the message for a state the tile does not otherwise explain (0.02s)
+  - [+] the trial tile says the day count once > keeps the badge and the bar caption, drops the relayed sentence (0.01s)
+  - [+] the trial tile says the day count once > still relays the message for a state the tile does not otherwise explain
   - [+] the portal link > is offered for an https address (0.03s)
   - [+] the portal link > is dropped for a javascript: address (0.01s)
   - [+] importing a licence file > tells the app the licence changed, so the padlocks follow without a reload
@@ -13559,37 +14144,40 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-package-card — availability > marks an unreachable source as unknown, not as incompatible
   - [+] ag-package-card — availability > marks a genuinely unsupported package as an error
   - [+] ag-package-card — availability > does not repeat itself: no bare "Not Supported" badge next to the banner (0.01s)
-  - [+] ag-package-card — availability > keeps the plain badge when the architecture alone is the reason (0.01s)
-  - [+] ag-package-card — availability > draws Not Supported and Test Package as tints, beside the buttons of the same row (0.02s)
+  - [+] ag-package-card — availability > keeps the plain badge when the architecture alone is the reason
+  - [+] ag-package-card — availability > draws Not Supported and Test Package as tints, beside the buttons of the same row (0.01s)
   - [+] ag-package-card — availability > falls back to a generic sentence when the core sends no reason (0.01s)
-  - [+] ag-package-card — availability > does not blame the vendor for a local conflict with no reason attached (0.01s)
-  - [+] ag-package-card — availability > stays neutral for a state it does not know yet (0.02s)
-  - [+] ag-package-card — availability > keeps a compact signal on an installed package the box cannot install (0.04s)
+  - [+] ag-package-card — availability > does not blame the vendor for a local conflict with no reason attached
+  - [+] ag-package-card — availability > stays neutral for a state it does not know yet
+  - [+] ag-package-card — availability > keeps a compact signal on an installed package the box cannot install (0.02s)
   - [+] ag-package-card — availability > says nothing on an installed package, whatever the verdict (0.05s)
   - [+] ag-package-card — availability > never calls a source that could not be asked "Not Supported" (0.05s)
   - [+] ag-package-card — availability > lists no architecture as Unknown rather than as nothing (0.01s)
-  - [+] ag-package-card — availability > lists the architectures it knows (0.01s)
+  - [+] ag-package-card — availability > lists the architectures it knows (0.02s)
   - [+] ag-package-card — actions > offers a disabled INSTALL for something unavailable and not installed
   - [+] ag-package-card — actions > offers no UNINSTALL on a package the box cannot work without
   - [+] ag-package-card — actions > offers REPAIR when a required package failed while installed
   - [+] ag-package-card — actions > offers no REPAIR on a required package that is simply installed (0.01s)
   - [+] ag-package-card — actions > still offers UNINSTALL on everything else (0.01s)
-  - [+] ag-package-card — actions > keeps UPDATE and UNINSTALL on an installed package the core marks unavailable
-  - [+] ag-package-card — actions > offers a retry after a failed install, not actions on absent software
+  - [+] ag-package-card — actions > keeps UPDATE and UNINSTALL on an installed package the core marks unavailable (0.02s)
+  - [+] ag-package-card — actions > offers a retry after a failed install, not actions on absent software (0.01s)
   - [+] ag-package-card — actions > leaves a way out after a failed operation
   - [+] ag-package-card — actions > still offers INSTALL normally when everything is fine
   - [+] ag-package-card — UPDATE only when it would do something > is not offered on a package already at the version available (0.02s)
-  - [+] ag-package-card — UPDATE only when it would do something > is offered when a newer version exists
-  - [+] ag-package-card — UPDATE only when it would do something > is offered for the older version the core proposes, to bring a held package back in line (0.01s)
-  - [+] ag-package-card — UPDATE only when it would do something > waits for a check when the version available is not known yet (0.01s)
+  - [+] ag-package-card — UPDATE only when it would do something > is offered when a newer version exists (0.01s)
+  - [+] ag-package-card — UPDATE only when it would do something > is offered for the older version the core proposes, to bring a held package back in line
+  - [+] ag-package-card — UPDATE only when it would do something > waits for a check when the version available is not known yet (0.02s)
   - [+] ag-package-card — UPDATE only when it would do something > stays for a vendor that publishes no version — its installer is run again
   - [+] ag-package-card — UPDATE only when it would do something > leaves a required package that is up to date with no action at all
   - [+] ag-package-card — configuration state > says so when AG has not written the configuration
-  - [+] ag-package-card — configuration state > says it as a tint, unlike the badges beside it that are buttons (0.01s)
+  - [+] ag-package-card — configuration state > says it as a tint, unlike the badges beside it that are buttons
   - [+] ag-package-card — configuration state > says nothing once it is configured
   - [+] ag-package-card — configuration state > says nothing when the state could not be read
   - [+] ag-package-card — configuration state > says nothing about a package that is not installed
   - [+] ag-package-card — configuration state > says nothing about a package AG does not drive
+  - [+] ag-package-card — Restart required > asks to restart the unit, not the package's key (0.01s)
+  - [+] ag-package-card — Restart required > is not offered without a unit to restart
+  - [+] ag-package-card — Restart required > is not offered while no restart is owed
   - [+] ag-package-card — which way the offered version goes > calls a newer version an update
   - [+] ag-package-card — which way the offered version goes > does not call an older version an update
   - [+] ag-package-card — which way the offered version goes > says nothing at all when the two versions match
@@ -13601,12 +14189,12 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-package-card — a failed operation that left the software in place > updating with version 1.0: on the box = false
   - [+] ag-package-card — a failed operation that left the software in place > still says it is not configured
   - [+] ag-package-card — a failed operation that left the software in place > still offers to set the web password
-  - [+] ag-package-card — a web interface with no password > offers to set it (0.01s)
+  - [+] ag-package-card — a web interface with no password > offers to set it
   - [+] ag-package-card — a web interface with no password > offers nothing once one is set
   - [+] ag-package-card — a web interface with no password > offers nothing before the package is installed
   - [+] ag-package-card — a web interface with no password > offers nothing for a package without a web interface
   - [+] ag-package-card — a web interface with no password > offers nothing to a guest
-  - [+] ag-package-card — a vendor trial limit > says what the vendor limits, once it is installed
+  - [+] ag-package-card — a vendor trial limit > says what the vendor limits, once it is installed (0.02s)
   - [+] ag-package-card — a vendor trial limit > carries no badge asserting a trial
   - [+] ag-package-card — a vendor trial limit > keeps saying it while the package is updating
   - [+] ag-package-card — a vendor trial limit > leaves it to the install dialog before then
@@ -13618,8 +14206,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-package-install-dialog > what it asks the core for > does not ask for versions when the package offers no choice (0.01s)
   - [+] ag-package-install-dialog > what it asks the core for > asks for versions when the package offers the choice (0.02s)
   - [+] ag-package-install-dialog > accepting the licence > keeps Install out of reach until the terms are accepted (0.02s)
-  - [+] ag-package-install-dialog > accepting the licence > allows Install once they are (0.01s)
-  - [+] ag-package-install-dialog > accepting the licence > asks for nothing when the package ships no notice
+  - [+] ag-package-install-dialog > accepting the licence > allows Install once they are (0.02s)
+  - [+] ag-package-install-dialog > accepting the licence > asks for nothing when the package ships no notice (0.01s)
   - [+] ag-package-install-dialog > accepting the licence > shows the licence text it was given
   - [+] ag-package-install-dialog > accepting the licence > forgets an acceptance when it closes (0.01s)
   - [+] ag-package-install-dialog > choosing a version > preselects the newest line when nothing is installed (0.02s)
@@ -13627,35 +14215,37 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-package-install-dialog > choosing a version > reads the major through a Debian epoch
   - [+] ag-package-install-dialog > choosing a version > falls back to the newest when the installed line is gone
   - [+] ag-package-install-dialog > choosing a version > sends the version that is selected (0.02s)
-  - [+] ag-package-install-dialog > choosing a version > sends no version for a package that offers no choice
+  - [+] ag-package-install-dialog > choosing a version > sends no version for a package that offers no choice (0.01s)
   - [+] ag-package-install-dialog > choosing a version > names the chosen version on the button
-  - [+] ag-package-install-dialog > when the terms cannot be read > says the terms could not be read
-  - [+] ag-package-install-dialog > when the terms cannot be read > still asks for acceptance before Install
-  - [+] ag-package-install-dialog > when the terms cannot be read > treats a request that failed outright the same way (0.02s)
-  - [+] ag-package-install-dialog > when the terms cannot be read > points at where the vendor publishes them (0.03s)
-  - [+] ag-package-install-dialog > lines this box cannot install > names them with what they lack (0.01s)
-  - [+] ag-package-install-dialog > lines this box cannot install > does not offer them as a choice (0.02s)
+  - [+] ag-package-install-dialog > when the terms cannot be read > says the terms could not be read (0.02s)
+  - [+] ag-package-install-dialog > when the terms cannot be read > still asks for acceptance before Install (0.02s)
+  - [+] ag-package-install-dialog > when the terms cannot be read > treats a request that failed outright the same way (0.01s)
+  - [+] ag-package-install-dialog > when the terms cannot be read > points at where the vendor publishes them (0.02s)
+  - [+] ag-package-install-dialog > lines this box cannot install > names them with what they lack (0.02s)
+  - [+] ag-package-install-dialog > lines this box cannot install > does not offer them as a choice
   - [+] ag-package-install-dialog > lines this box cannot install > sits in the version section, under the choices
   - [+] ag-package-install-dialog > lines this box cannot install > keeps a section of its own when no line can be installed
-  - [+] ag-package-install-dialog > when the version list cannot be fetched > says so
+  - [+] ag-package-install-dialog > when the version list cannot be fetched > says so (0.01s)
   - [+] ag-package-install-dialog > dismisses without installing
   - [+] ag-package-install-dialog > the web interface password > comes prefilled with a random password, shown in clear (0.02s)
   - [+] ag-package-install-dialog > the web interface password > names the user and where to sign in
   - [+] ag-package-install-dialog > the web interface password > sends the password that is in the field (0.01s)
-  - [+] ag-package-install-dialog > the web interface password > keeps Install out of reach while the password is unusable, and says why (0.01s)
+  - [+] ag-package-install-dialog > the web interface password > keeps Install out of reach while the password is unusable, and says why
   - [+] ag-package-install-dialog > the web interface password > asks for nothing when the box already has credentials
-  - [+] ag-package-install-dialog > the web interface password > draws a new one each time it opens (0.01s)
-  - [+] ag-package-install-dialog > the web interface password > is not asked for a package without a web interface (0.01s)
+  - [+] ag-package-install-dialog > the web interface password > draws a new one each time it opens (0.02s)
+  - [+] ag-package-install-dialog > the web interface password > is not asked for a package without a web interface
   - [+] ag-package-install-dialog > keeps its buttons in the footer, out of the part that scrolls
-  - [+] ag-package-install-dialog — a vendor trial limit > says it before anything is installed (0.01s)
+  - [+] ag-package-install-dialog — a vendor trial limit > says it before anything is installed
   - [+] ag-package-install-dialog — a vendor trial limit > says nothing for a package the vendor does not limit
   - [+] ag-package-install-dialog — a vendor trial limit > still says nothing is configured by installing it
+  - [+] ag-package-install-dialog — what an install over a package interrupts > says it when the page gives it
+  - [+] ag-package-install-dialog — what an install over a package interrupts > says nothing of the kind otherwise
 
 **js/components/molecules/ag-package-uninstall-dialog.test.js**
 
   - [+] ag-package-uninstall-dialog > asks the question and says what the uninstall interrupts (0.05s)
   - [+] ag-package-uninstall-dialog > offers to delete the settings, unticked, and says they are kept otherwise (0.02s)
-  - [+] ag-package-uninstall-dialog > makes Uninstall orange, as the tile's UNINSTALL and every confirmation that deletes (0.01s)
+  - [+] ag-package-uninstall-dialog > makes Uninstall orange, as the tile's UNINSTALL and every confirmation that deletes
   - [+] ag-package-uninstall-dialog > a plain confirmation keeps the settings (0.01s)
   - [+] ag-package-uninstall-dialog > ticked, it asks for the deletion and says what it costs (0.01s)
   - [+] ag-package-uninstall-dialog > never carries the choice over to the next package (0.01s)
@@ -13676,12 +14266,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/molecules/ag-passkey-manager.test.js**
 
-  - [+] removing a passkey > shows the device name as text in the question (0.02s)
+  - [+] removing a passkey > shows the device name as text in the question (0.03s)
   - [+] removing a passkey > removes nothing when the question is declined
 
 **js/components/molecules/ag-playback-controls.test.js**
 
-  - [+] a track > offers the five buttons (0.05s)
+  - [+] a track > offers the five buttons (0.06s)
   - [+] a track > greys Previous and Next when unavailable, and only them
   - [+] a live broadcast > played alone, greys everything but Play / Pause
   - [+] a live broadcast > played alone, keeps a mode left on live, so it can be turned off (0.02s)
@@ -13693,7 +14283,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the row never changes, whatever plays > a station alone: the same five buttons, in the same order
   - [+] the row never changes, whatever plays > a station with tracks behind: the same five buttons, in the same order
   - [+] the row never changes, whatever plays > draws a greyed button as inert, its hover included
-  - [+] what the buttons send > emits the action of the button pressed (0.02s)
+  - [+] what the buttons send > emits the action of the button pressed (0.01s)
   - [+] what the buttons send > sends the mode to set from Repeat and Shuffle
   - [+] what the buttons send > sends nothing from a greyed button
 
@@ -13704,59 +14294,61 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-playlist-details — a new playlist > creates on Enter, from either field (0.02s)
   - [+] ag-playlist-details — a new playlist > stays open on a failure, with the core's reason, and can be tried again (0.02s)
   - [+] ag-playlist-details — a new playlist > belongs to its write until the service has answered (0.03s)
-  - [+] ag-playlist-details — renaming > opens on the playlist's name and description (0.02s)
+  - [+] ag-playlist-details — renaming > opens on the playlist's name and description (0.01s)
   - [+] ag-playlist-details — renaming > sends the description back with the new name, since the service replaces both (0.02s)
   - [+] ag-playlist-details — renaming > says "saved" when only the description changed (0.02s)
   - [+] ag-playlist-details — renaming > writes nothing when nothing changed (0.02s)
   - [+] ag-playlist-details — renaming > forgets what was typed and cancelled: it reopens on the playlist (0.03s)
-  - [+] ag-playlist-details — renaming > never gives two dialogs on one screen the same field ids (0.04s)
+  - [+] ag-playlist-details — renaming > never gives two dialogs on one screen the same field ids (0.03s)
 
 **js/components/molecules/ag-playlist-page.test.js**
 
   - [+] describeTracks / describeDeletion > counts the tracks and sums their minutes
   - [+] describeTracks / describeDeletion > leaves the duration out when no track carries one, and never says 0 min
   - [+] describeTracks / describeDeletion > says what a deletion takes and what it leaves
-  - [+] ag-playlist-page — what it shows > reads the tracks of its playlist and numbers them, with their durations (0.18s)
-  - [+] ag-playlist-page — what it shows > heads the page with the playlist, counted from its tracks (0.05s)
+  - [+] ag-playlist-page — what it shows > reads the tracks of its playlist and numbers them, with their durations (0.16s)
+  - [+] ag-playlist-page — what it shows > draws the music note at its head when the playlist has no artwork (0.05s)
+  - [+] ag-playlist-page — what it shows > heads the page with the playlist, counted from its tracks (0.06s)
   - [+] ag-playlist-page — what it shows > names a track's album, unless it is only the playlist's own name (0.06s)
-  - [+] ag-playlist-page — what it shows > says the playlist is being read, then why it could not be, with a retry (0.09s)
+  - [+] ag-playlist-page — what it shows > says the playlist is being read, then why it could not be, with a retry (0.07s)
   - [+] ag-playlist-page — what it shows > says an empty playlist is empty, and offers nothing to play (0.03s)
-  - [+] ag-playlist-page — what it shows > goes back when asked (0.05s)
+  - [+] ag-playlist-page — what it shows > goes back when asked (0.04s)
   - [+] ag-playlist-page — playing > plays the playlist from the track tapped, and opens the player (0.05s)
-  - [+] ag-playlist-page — playing > plays the whole of it from Play, and queues the whole of it from Queue (0.05s)
+  - [+] ag-playlist-page — playing > plays the whole of it from Play, and queues the whole of it from Queue (0.09s)
   - [+] ag-playlist-page — playing > does not open the player when the play was refused (0.08s)
-  - [+] ag-playlist-page — the account's own playlist > renders its dialogs on <body>, where the tab's stacking cannot bury them (0.04s)
-  - [+] ag-playlist-page — the account's own playlist > offers Rename, Delete, and a removal on every track (0.07s)
-  - [+] ag-playlist-page — the account's own playlist > takes a track out at once — every copy of it, as the service does (0.07s)
-  - [+] ag-playlist-page — the account's own playlist > says so when the track had already gone, and takes it off the page all the same (0.04s)
-  - [+] ag-playlist-page — the account's own playlist > keeps the track when the removal failed, and says why (0.03s)
+  - [+] ag-playlist-page — the account's own playlist > renders its dialogs on <body>, where the tab's stacking cannot bury them (0.03s)
+  - [+] ag-playlist-page — the account's own playlist > offers Rename, Delete, and a removal on every track (0.04s)
+  - [+] ag-playlist-page — the account's own playlist > takes a track out at once — every copy of it, as the service does (0.05s)
+  - [+] ag-playlist-page — the account's own playlist > says so when the track had already gone, and takes it off the page all the same (0.03s)
+  - [+] ag-playlist-page — the account's own playlist > keeps the track when the removal failed, and says why (0.04s)
   - [+] ag-playlist-page — the account's own playlist > sends one removal for a track tapped twice while the first is on its way (0.04s)
   - [+] ag-playlist-page — the account's own playlist > opens the rename dialog on the playlist, and shows the new name once saved (0.05s)
-  - [+] ag-playlist-page — the account's own playlist > asks with an orange Delete, like every button that deletes (0.04s)
-  - [+] ag-playlist-page — the account's own playlist > deletes it once confirmed, never retried, and goes back (0.04s)
+  - [+] ag-playlist-page — the account's own playlist > asks with an orange Delete, like every button that deletes (0.03s)
+  - [+] ag-playlist-page — the account's own playlist > deletes it once confirmed, never retried, and goes back (0.05s)
   - [+] ag-playlist-page — the account's own playlist > stays on the page when the deletion failed, with the reason (0.04s)
   - [+] ag-playlist-page — the service's own selection > offers no writes of its own, and each track to one of the account's playlists (0.03s)
   - [+] ag-playlist-page — the service's own selection > hands a track to the picker, with what it shows (0.03s)
-  - [+] ag-playlist-page — changes made elsewhere > reads its tracks again, without blanking them, after a change to its playlist (0.04s)
-  - [+] ag-playlist-page — changes made elsewhere > ignores a change to another playlist, or on another source (0.03s)
+  - [+] ag-playlist-page — changes made elsewhere > reads its tracks again, without blanking them, after a change to its playlist (0.03s)
+  - [+] ag-playlist-page — changes made elsewhere > ignores a change to another playlist, or on another source (0.04s)
   - [+] ag-playlist-page — changes made elsewhere > stops listening once it is gone (0.03s)
 
 **js/components/molecules/ag-playlist-picker.test.js**
 
-  - [+] ag-playlist-picker — the list > opens on request and lists the account playlists of the item's source (0.10s)
-  - [+] ag-playlist-picker — the list > says when the account has no playlist yet (0.02s)
+  - [+] ag-playlist-picker — the list > opens on request and lists the account playlists of the item's source (0.09s)
+  - [+] ag-playlist-picker — the list > draws the music note behind a playlist without artwork, as for any missing cover (0.02s)
+  - [+] ag-playlist-picker — the list > says when the account has no playlist yet (0.01s)
   - [+] ag-playlist-picker — the list > says why the list could not be read, and reads it again on Retry (0.03s)
   - [+] ag-playlist-picker — the list > never shows the list answered for a previous item (0.03s)
-  - [+] ag-playlist-picker — adding > adds to the playlist picked, never retried behind the person's back, and says so (0.04s)
+  - [+] ag-playlist-picker — adding > adds to the playlist picked, never retried behind the person's back, and says so (0.02s)
   - [+] ag-playlist-picker — adding > says when the track was already there (0.02s)
   - [+] ag-playlist-picker — adding > announces an add that changed the playlist, and only that one (0.03s)
   - [+] ag-playlist-picker — adding > keeps the dialog open on a failure, with the core's reason (0.02s)
-  - [+] ag-playlist-picker — adding > belongs to its item until the service has answered (0.03s)
+  - [+] ag-playlist-picker — adding > belongs to its item until the service has answered (0.04s)
   - [+] ag-playlist-picker — a new playlist > offers "Create and add" only once a name is typed (0.03s)
   - [+] ag-playlist-picker — a new playlist > creates the playlist, then adds the item to it — neither retried automatically (0.03s)
-  - [+] ag-playlist-picker — a new playlist > shows the core's list as it is, in its order — no copy of its own (0.02s)
+  - [+] ag-playlist-picker — a new playlist > shows the core's list as it is, in its order — no copy of its own (0.03s)
   - [+] ag-playlist-picker — a new playlist > writes nothing else when the creation fails (0.03s)
-  - [+] ag-playlist-picker — a new playlist > lists the new playlist when the add after it fails, so one tap retries (0.03s)
+  - [+] ag-playlist-picker — a new playlist > lists the new playlist when the add after it fails, so one tap retries (0.04s)
   - [+] describeAdd — the words for what the core answered > track { added: 1, already: +0 } → success
   - [+] describeAdd — the words for what the core answered > track { added: +0, already: 1 } → info
   - [+] describeAdd — the words for what the core answered > album { added: 8, already: +0 } → success
@@ -13805,9 +14397,9 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] a new track > keeps the track through a title blank for a moment
   - [+] a new track > takes a title after a blank for the new track it is
   - [+] a new track > takes a new length under the same title for a new track, on a source with no position
-  - [+] a new track > keeps the track when its length is the same, or when the source gives positions
-  - [+] a new track > does not resume a source's former track on its new one (0.01s)
-  - [+] a bar created again > picks the track up where the last bar left it
+  - [+] a new track > keeps the track when its length is the same, or when the source gives positions (0.01s)
+  - [+] a new track > does not resume a source's former track on its new one (0.02s)
+  - [+] a bar created again > picks the track up where the last bar left it (0.01s)
   - [+] a bar created again > sees that the source went back while no bar showed it
   - [+] a bar created again > remembers one track per source: the one it played last
 
@@ -13876,21 +14468,21 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] a tap on a radio card > plays the station (0.06s)
   - [+] a tap on a radio card > on the star toggles the favourite, and plays nothing (0.01s)
-  - [+] a tap on a radio card > on the plus adds the station to My Live Radio, and plays nothing
+  - [+] a tap on a radio card > on the plus adds the station to My Live Radio, and plays nothing (0.01s)
   - [+] a tap on a radio card > on "more" unfolds the actions, and plays nothing (0.01s)
   - [+] the actions a row shows > in My Live Radio: star and more, no plus and no check mark
   - [+] the actions a row shows > a search result not saved yet: plus and star, nothing to fold
-  - [+] the actions a row shows > a search result already in My Live Radio: more offers only the removal (0.02s)
-  - [+] the actions a row shows > a favourite outside My Live Radio: plus, and more offers only Edit (0.01s)
+  - [+] the actions a row shows > a search result already in My Live Radio: more offers only the removal (0.01s)
+  - [+] the actions a row shows > a favourite outside My Live Radio: plus, and more offers only Edit (0.02s)
   - [+] the unfolded actions > say whether they are open, and point at them only while they exist (0.02s)
   - [+] the unfolded actions > can be shown open from the first render
   - [+] the unfolded actions > fold when "more" has nothing left to offer, and do not unfold on their own (0.01s)
-  - [+] the unfolded actions > fold back on a second tap on "more"
-  - [+] the unfolded actions > Edit asks to edit the station, folds the actions, and plays nothing (0.01s)
-  - [+] the unfolded actions > Remove is orange, like every button that deletes
+  - [+] the unfolded actions > fold back on a second tap on "more" (0.01s)
+  - [+] the unfolded actions > Edit asks to edit the station, folds the actions, and plays nothing (0.02s)
+  - [+] the unfolded actions > Remove is orange, like every button that deletes (0.02s)
   - [+] the unfolded actions > Edit and Remove are compact buttons, as a tile's actions: at 44px they were the view's only large buttons
-  - [+] the unfolded actions > Remove takes the station out of My Live Radio, folds the actions, and plays nothing
-  - [+] the unfolded actions > fold when the row starts showing another station
+  - [+] the unfolded actions > Remove takes the station out of My Live Radio, folds the actions, and plays nothing (0.01s)
+  - [+] the unfolded actions > fold when the row starts showing another station (0.01s)
   - [+] the unfolded actions > stay open when the same station is handed again
   - [+] what a row says of the stream > gives the catalogue codec and bitrate when nothing was read in the stream
   - [+] what a row says of the stream > gives what the stream says where the catalogue lists FLAC as OGG, and its resolution
@@ -13959,7 +14551,7 @@ Generated: **2026-11-08 17:32 UTC**
 **js/components/molecules/ag-sleep-timer.test.js**
 
   - [+] the header button > shows the clock alone while no timer is set (0.04s)
-  - [+] the header button > keeps the clock and shows the time left beside it while counting (0.01s)
+  - [+] the header button > keeps the clock and shows the time left beside it while counting
   - [+] the header button > counts the time left down
   - [+] the header button > goes back to the clock alone once the timer is cleared
   - [+] the popover > offers the presets and sends the one chosen (0.02s)
@@ -13989,13 +14581,13 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-stats-recent > says when nothing played
   - [+] ag-stats-recent > a track shows its cover, a station its logo, else the note or the radio (0.02s)
   - [+] ag-stats-recent > marks a listen still going where the others say when they started (0.02s)
-  - [+] ag-stats-hours > draws seven rows of 24 squares, each a button saying its day, hour and time (0.07s)
-  - [+] ag-stats-hours > the busiest hour is the strongest step, any time at all at least the first, nothing the pale tint (0.12s)
-  - [+] ag-stats-hours > a tap puts the square in the readout, a new week clears it (0.09s)
+  - [+] ag-stats-hours > draws seven rows of 24 squares, each a button saying its day, hour and time (0.09s)
+  - [+] ag-stats-hours > the busiest hour is the strongest step, any time at all at least the first, nothing the pale tint (0.10s)
+  - [+] ag-stats-hours > a tap puts the square in the readout, a new week clears it (0.08s)
   - [+] ag-stats-hours > the keyboard reaches a square as a tap does (0.05s)
   - [+] ag-stats-hours > a week of nothing, or none at all, draws nothing
   - [+] ag-stats-hours > a short or damaged week reads its missing hours as nothing (0.06s)
-  - [+] ag-stats-hours > its legend runs from nothing to the strongest step (0.05s)
+  - [+] ag-stats-hours > its legend runs from nothing to the strongest step (0.06s)
 
 **js/components/molecules/ag-system-actions.test.js**
 
@@ -14032,46 +14624,46 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-tabs — the layout the screen gives > gives a computer the bar even where the column had been chosen (0.01s)
   - [+] ag-tabs — the layout the screen gives > gives a phone the column, in either orientation (0.02s)
   - [+] ag-tabs — the layout the screen gives > counts a screen whose short side is 768 px as a phone (0.01s)
-  - [+] ag-tabs — the layout the screen gives > ends the bar on Manual, so its automatic margin pushes Manual alone to the right (0.01s)
-  - [+] ag-tabs — the layout the screen gives > offers no Switch button, on a computer or a phone (0.04s)
-  - [+] ag-tabs — the layout follows the screen > goes to the column on a small screen, and back to the bar on a large one (0.01s)
-  - [+] ag-tabs — the layout follows the screen > shows the bar it comes back to, though the column had been closed (0.01s)
+  - [+] ag-tabs — the layout the screen gives > ends the bar on Manual, so its automatic margin pushes Manual alone to the right (0.02s)
+  - [+] ag-tabs — the layout the screen gives > offers no Switch button, on a computer or a phone (0.03s)
+  - [+] ag-tabs — the layout follows the screen > goes to the column on a small screen, and back to the bar on a large one (0.02s)
+  - [+] ag-tabs — the layout follows the screen > shows the bar it comes back to, though the column had been closed (0.02s)
   - [+] ag-tabs — the layout follows the screen > stops following once gone (0.02s)
   - [+] ag-tabs — the layout follows the screen > brings the column back as it was left: closed (0.02s)
-  - [+] ag-tabs — the layout follows the screen > brings the column back as it was left: open, when it was left open (0.02s)
-  - [+] ag-tabs — the layout follows the screen > keeps an open column open through a resize that keeps the screen a phone (0.01s)
-  - [+] ag-tabs — the layout follows the screen > keeps a column set on a computer through a resize that keeps the screen a computer
+  - [+] ag-tabs — the layout follows the screen > brings the column back as it was left: open, when it was left open (0.01s)
+  - [+] ag-tabs — the layout follows the screen > keeps an open column open through a resize that keeps the screen a phone
+  - [+] ag-tabs — the layout follows the screen > keeps a column set on a computer through a resize that keeps the screen a computer (0.02s)
   - [+] ag-tabs — the layout follows the screen > drops an auto-close pending when the layout changes: the bar is not marked hidden (0.02s)
 
 **js/components/molecules/ag-tabs-library-row.test.js**
 
-  - [+] ag-tabs — the library's tab bar in the column > sits right under the Library entry, once a tap has unfolded it (0.13s)
+  - [+] ag-tabs — the library's tab bar in the column > sits right under the Library entry, once a tap has unfolded it (0.14s)
   - [+] ag-tabs — the library's tab bar in the column > is folded until Library is tapped — even with Library shown (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > a tap on Library unfolds it, without opening the page nor closing the column (0.05s)
+  - [+] ag-tabs — the library's tab bar in the column > a tap on Library unfolds it, without opening the page nor closing the column (0.04s)
   - [+] ag-tabs — the library's tab bar in the column > a second tap folds it (0.03s)
   - [+] ag-tabs — the library's tab bar in the column > folds whenever the column closes, so the column opens on Library folded (0.03s)
-  - [+] ag-tabs — the library's tab bar in the column > folds by every path that closes the column: a tab chosen, the toggle, the pointer leaving (0.10s)
+  - [+] ag-tabs — the library's tab bar in the column > folds by every path that closes the column: a tab chosen, the toggle, the pointer leaving (0.09s)
   - [+] ag-tabs — the library's tab bar in the column > folds when the tabs change layout, and comes back folded (0.03s)
   - [+] ag-tabs — the library's tab bar in the column > folds while Library cannot unfold, and does not come back unfolded with no tap (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > keeps a state set before its first render: that render is no change of layout (0.01s)
+  - [+] ag-tabs — the library's tab bar in the column > keeps a state set before its first render: that render is no change of layout (0.02s)
   - [+] ag-tabs — the library's tab bar in the column > brings the unfolded views into view: Library is the last tab, on a short screen they land below (0.03s)
-  - [+] ag-tabs — the library's tab bar in the column > says what it unfolds to a screen reader (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > from another tab, the view the page was left on brings the page back as it was left (0.03s)
-  - [+] ag-tabs — the library's tab bar in the column > another view from another tab, or the same view with Library shown, goes to the page as a tab (0.09s)
+  - [+] ag-tabs — the library's tab bar in the column > says what it unfolds to a screen reader (0.03s)
+  - [+] ag-tabs — the library's tab bar in the column > from another tab, the view the page was left on brings the page back as it was left (0.05s)
+  - [+] ag-tabs — the library's tab bar in the column > another view from another tab, or the same view with Library shown, goes to the page as a tab (0.08s)
   - [+] ag-tabs — the library's tab bar in the column > offers the six tabs before the page has said anything (0.03s)
   - [+] ag-tabs — the library's tab bar in the column > leaves the horizontal bar alone — the page's own bar sits under the Library tab there (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > is offered on a Starter box: Library is open on every edition (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > nor when the Library tab is hidden, even left unfolded
-  - [+] ag-tabs — the library's tab bar in the column > shows what the page's bar shows: four tabs for the radio (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > highlights nothing while another tab is shown (0.03s)
-  - [+] ag-tabs — the library's tab bar in the column > reads the page's bar on connecting, when the page was there first (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > a tap hands the page a tab, not a view (0.01s)
-  - [+] ag-tabs — the library's tab bar in the column > and closes the column, even with Library already shown — folded for next time (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > an arrow key moves the app nowhere, wherever it is pressed (0.02s)
-  - [+] ag-tabs — the library's tab bar in the column > stops listening to the page once removed (0.03s)
-  - [+] ag-tabs — what a screen reader is told > is a navigation named Main navigation, with no tablist nor tab inside — the column, Library unfolded (0.04s)
-  - [+] ag-tabs — what a screen reader is told > is a navigation named Main navigation, with no tablist nor tab inside — the horizontal bar
-  - [+] ag-tabs — what a screen reader is told > marks the page shown, and only it
+  - [+] ag-tabs — the library's tab bar in the column > is offered on a Starter box: Library is open on every edition (0.03s)
+  - [+] ag-tabs — the library's tab bar in the column > nor when the Library tab is hidden, even left unfolded (0.02s)
+  - [+] ag-tabs — the library's tab bar in the column > shows what the page's bar shows: four tabs for the radio (0.03s)
+  - [+] ag-tabs — the library's tab bar in the column > highlights nothing while another tab is shown (0.02s)
+  - [+] ag-tabs — the library's tab bar in the column > reads the page's bar on connecting, when the page was there first (0.01s)
+  - [+] ag-tabs — the library's tab bar in the column > a tap hands the page a tab, not a view (0.02s)
+  - [+] ag-tabs — the library's tab bar in the column > and closes the column, even with Library already shown — folded for next time (0.04s)
+  - [+] ag-tabs — the library's tab bar in the column > an arrow key moves the app nowhere, wherever it is pressed (0.03s)
+  - [+] ag-tabs — the library's tab bar in the column > stops listening to the page once removed
+  - [+] ag-tabs — what a screen reader is told > is a navigation named Main navigation, with no tablist nor tab inside — the column, Library unfolded (0.02s)
+  - [+] ag-tabs — what a screen reader is told > is a navigation named Main navigation, with no tablist nor tab inside — the horizontal bar (0.01s)
+  - [+] ag-tabs — what a screen reader is told > marks the page shown, and only it (0.02s)
   - [+] ag-tabs — what a screen reader is told > lets Tab reach every entry, not the page shown alone
 
 **js/components/molecules/ag-tabs.test.js**
@@ -14125,6 +14717,62 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgTidalConnection connected description > replaces the tier when the plan has ended
   - [+] AgTidalConnection connected description > says it without a country when the core reports none
   - [+] AgTidalConnection connected description > reads an unknown answer as subscribed
+  - [+] tidalSignInCode — the rule of the core > reads the code of Tidal's return address
+  - [+] tidalSignInCode — the rule of the core > accepts a bare code, as the core does
+  - [+] tidalSignInCode — the rule of the core > does not mistake the sign-in page for the return page
+  - [+] tidalSignInCode — the rule of the core > finds nothing in an empty or short value
+  - [+] tidalSignInCode — the rule of the core > finds nothing in an address without a code, or with an empty one
+  - [+] tidalSignInCode — the rule of the core > ignores surrounding blanks and a fragment, like the core
+  - [+] tidalSignInCode — the rule of the core > does not take a pasted sentence for a bare code
+  - [+] tidalReturnCode — Tidal's own return address, and nothing else > reads the code of Tidal's return address
+  - [+] tidalReturnCode — Tidal's own return address, and nothing else > takes no bare code: a password copied to sign in looks like one
+  - [+] tidalReturnCode — Tidal's own return address, and nothing else > takes no other site's address, even one carrying a code
+  - [+] tidalReturnCode — Tidal's own return address, and nothing else > finds nothing on the sign-in page, or on a return address without a code
+  - [+] clipboardReadAllowed — Chromium, over https, until refused > says yes before the user is asked, and once allowed
+  - [+] clipboardReadAllowed — Chromium, over https, until refused > says no once the user has refused, so the prompt never comes back
+  - [+] clipboardReadAllowed — Chromium, over https, until refused > says no where the permission does not exist — Firefox, Safari
+  - [+] clipboardReadAllowed — Chromium, over https, until refused > says no over plain http, without asking anything
+  - [+] clipboardReadAllowed — Chromium, over https, until refused > says no without the clipboard or the permissions API
+  - [+] AgTidalConnection sign-in step > completes the login from the paste alone
+  - [+] AgTidalConnection sign-in step > replaces what the field held instead of gluing the paste to it
+  - [+] AgTidalConnection sign-in step > says why nothing happens when the paste has no code, and sends nothing
+  - [+] AgTidalConnection sign-in step > lets the browser insert when the paste carries no text, then reads the field
+  - [+] AgTidalConnection sign-in step > never submits while typing, even once the address is whole
+  - [+] AgTidalConnection sign-in step > takes a chunk inserted in one go for a paste — a drop, a keyboard suggestion
+  - [+] AgTidalConnection sign-in step > sends whatever the field holds on Enter, and nothing on other keys
+  - [+] AgTidalConnection sign-in step > lets the Enter that ends a composition only end it
+  - [+] AgTidalConnection sign-in step > sends one request at a time
+  - [+] AgTidalConnection sign-in step > sends nothing while a new sign-in is starting — the address belongs to the old one
+  - [+] AgTidalConnection sign-in step > keeps waiting and points to Reopen when the core refuses
+  - [+] AgTidalConnection sign-in step > says the same when the core answers without connecting
+  - [+] AgTidalConnection sign-in step > asks to retry, not to reopen, when the box does not answer
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > completes the login with nothing to paste
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > leaves anything else alone, without a word
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > never takes a password, or another site's address, from the clipboard
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > reads nothing unless the card waits for Tidal
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > reads nothing once the account is connected some other way
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > stops waiting when a refresh finds the account connected
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > reads nothing until the page has the focus — Chromium refuses a read without it
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > reads nothing while a paste is being sent, or a new sign-in starts
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > never sends a code twice on its own — a refused code stays refused
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > does not resend a code the user pasted, but takes a new one
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > does not resend after a reload a code refused before it, and keeps no code
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > sends again, on the next return, a code that never reached the box
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > turns the hint back to the paste when the user refuses the prompt
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > reads nothing where the browser does not offer it — the hint asks for a paste
+  - [+] AgTidalConnection — back in the app, the copied address is picked up > listens from connection to removal, on focus and on visibility
+  - [+] AgTidalConnection — Reopen Tidal page > is at hand while the card waits, and starts the sign-in afresh
+  - [+] AgTidalConnection — Reopen Tidal page > waits while an address is being sent, and shows it
+  - [+] AgTidalConnection — Reopen Tidal page > cuts the Tidal tab's handle on the app, so Tidal's page cannot send it elsewhere
+  - [+] AgTidalConnection — Reopen Tidal page > still waits for Tidal when the handle cannot be cut
+  - [+] AgTidalConnection — Reopen Tidal page > offers the page as a link when the browser refuses to open it
+  - [+] AgTidalConnection — Reopen Tidal page > stops saying the page did not open once the link has opened it
+  - [+] AgTidalConnection — Reopen Tidal page > drops the link once a page did open
+  - [+] AgTidalConnection — Reopen Tidal page > starts one sign-in at a time
+  - [+] AgTidalConnection — Reopen Tidal page > keeps the card waiting, and a new try possible, when the start fails
+  - [+] AgTidalConnection — Reopen Tidal page > tells the hint whether the browser will pick the address up
+  - [+] AgTidalConnection waiting card > has no Finish button: the connection completes on its own
+  - [+] AgTidalConnection waiting card > says it is connecting while the request runs
 
 **js/components/molecules/ag-toast-notification.test.js**
 
@@ -14142,14 +14790,14 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] setMessage — an operation's result in place of its notice > keeps the same toast and shows the new words and type
   - [+] setMessage — an operation's result in place of its notice > gives the result its own time: a success leaves, an error stays
   - [+] setMessage — an operation's result in place of its notice > keeps its own duration when the update names none
-  - [+] the words of a toast > are written once: no hidden copy for screen readers, no live region of its own (0.01s)
+  - [+] the words of a toast > are written once: no hidden copy for screen readers, no live region of its own
   - [+] the words of a toast > are said with their type, for what the colour and the icon show
   - [+] the words of a toast > show an error with a circled X, not the bare X of the close button
   - [+] the stylesheet > starts the toasts of a computer below the tab bar, or the title bar beside a column of tabs
   - [+] the stylesheet > starts the toasts of a phone below the top bar and its notch, the offline banner and a tab bar
   - [+] the stylesheet > gives the X a finger's 44px, as the app's touch size, and keeps its drawing
   - [+] the stylesheet > gives a phone's toast the whole width between even margins
-  - [+] the stylesheet > draws the card with the page's hairline, the type on its left edge and its icon
+  - [+] the stylesheet > draws the card with the page's hairline, the type on its left edge and its icon (0.01s)
   - [+] the stylesheet > leaves the toasts no colours of their own in the themes — Minimal's information is its black
 
 **js/components/molecules/ag-update-banner.test.js**
@@ -14170,18 +14818,18 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-update-banner — mounted > the progress polling > keeps polling while the update is starting (0.02s)
   - [+] ag-update-banner — mounted > the progress polling > keeps polling while the update is downloading (0.01s)
   - [+] ag-update-banner — mounted > the progress polling > keeps polling while the update is installing (0.01s)
-  - [+] ag-update-banner — mounted > the progress polling > keeps polling while the update is verifying (0.02s)
-  - [+] ag-update-banner — mounted > the progress polling > stops at rolled_back and offers the update again (0.03s)
+  - [+] ag-update-banner — mounted > the progress polling > keeps polling while the update is verifying (0.03s)
+  - [+] ag-update-banner — mounted > the progress polling > stops at rolled_back and offers the update again (0.02s)
   - [+] ag-update-banner — mounted > the progress polling > stops at failed and offers the update again (0.02s)
   - [+] ag-update-banner — mounted > the progress polling > stops at done and says so before reloading (0.01s)
   - [+] ag-update-banner — mounted > an update that does not go through says why > says nothing before an attempt
   - [+] ag-update-banner — mounted > an update that does not go through says why > leaves the reason under the banner, which still offers the update (0.02s)
-  - [+] ag-update-banner — mounted > an update that does not go through says why > sets the brand in the reason as the interface sets it (0.02s)
+  - [+] ag-update-banner — mounted > an update that does not go through says why > sets the brand in the reason as the interface sets it (0.04s)
   - [+] ag-update-banner — mounted > an update that does not go through says why > says only what happened when the box gave no reason (0.02s)
-  - [+] ag-update-banner — mounted > an update that does not go through says why > gives the next failure its own words, not the previous reason (0.04s)
-  - [+] ag-update-banner — mounted > an update that does not go through says why > does not show the previous reason after an attempt that never ended (0.02s)
+  - [+] ag-update-banner — mounted > an update that does not go through says why > gives the next failure its own words, not the previous reason (0.03s)
+  - [+] ag-update-banner — mounted > an update that does not go through says why > does not show the previous reason after an attempt that never ended (0.03s)
   - [+] ag-update-banner — mounted > opened after an attempt > reads back why the last attempt at this version did not go through
-  - [+] ag-update-banner — mounted > opened after an attempt > takes "v0.9.65" on offer and "0.9.65" attempted for the same version
+  - [+] ag-update-banner — mounted > opened after an attempt > takes "v0.9.65" on offer and "0.9.65" attempted for the same version (0.01s)
   - [+] ag-update-banner — mounted > opened after an attempt > takes "0.9.65" on offer and "v0.9.65-dev" attempted for the same version
   - [+] ag-update-banner — mounted > opened after an attempt > takes "0.9.65" on offer and "0.9.65+build.7" attempted for the same version
   - [+] ag-update-banner — mounted > opened after an attempt > neither asks the box nor shows a reason to a user who is not an admin
@@ -14189,13 +14837,34 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-update-banner — mounted > opened after an attempt > says nothing of a release candidate attempted when "1.0.0" is on offer
   - [+] ag-update-banner — mounted > opened after an attempt > says nothing of a release candidate attempted when "1.0.0-rc.2" is on offer
   - [+] ag-update-banner — mounted > opened after an attempt > reads back a failed attempt at the release candidate on offer
-  - [+] ag-update-banner — mounted > opened after an attempt > says nothing after {"phase":"done","to":"0.9.65"} (0.02s)
+  - [+] ag-update-banner — mounted > opened after an attempt > says nothing after {"phase":"done","to":"0.9.65"} (0.01s)
   - [+] ag-update-banner — mounted > opened after an attempt > says nothing after {"phase":"idle"}
   - [+] ag-update-banner — mounted > opened after an attempt > says nothing after null
   - [+] ag-update-banner — mounted > opened after an attempt > does not ask when no update is on offer
   - [+] ag-update-banner — mounted > opened after an attempt > writes nothing once unmounted while the offer is on its way
   - [+] ag-update-banner — mounted > opened after an attempt > writes no reason once unmounted while the last attempt is read
   - [+] ag-update-banner — mounted > opened after an attempt > is not hurt by a box that cannot answer
+
+**js/components/molecules/ag-upnp-item.test.js**
+
+  - [+] upnpFallback — the kind of entry named to the cover > names a track a track
+  - [+] upnpFallback — the kind of entry named to the cover > names an album an album, so a coverless one gets the note and not the folder
+  - [+] upnpFallback — the kind of entry named to the cover > keeps a photo album a folder: it holds no music
+  - [+] upnpFallback — the kind of entry named to the cover > names a playlist a playlist
+  - [+] upnpFallback — the kind of entry named to the cover > keeps the folder for what is opened rather than played
+  - [+] upnpFallback — the kind of entry named to the cover > keeps the folder for a container whose class the server left out
+  - [+] upnpFallback — the kind of entry named to the cover > goes by the hint first: an entry that is not a container is a track
+  - [+] ag-upnp-item — a row on screen > draws the music note behind a track sent without artwork (0.05s)
+  - [+] ag-upnp-item — a row on screen > draws the music note behind an album sent without artwork
+  - [+] ag-upnp-item — a row on screen > offers Play, then Add to queue drawn as the library's "+" (0.01s)
+  - [+] isPlayableContainer — what plays whole from its row > is an album or a playlist of the server
+  - [+] isPlayableContainer — what plays whole from its row > is never a folder, an artist, a genre, a photo album, nor a track
+  - [+] ag-upnp-item — an album or a playlist of the server > carries Play and "+" instead of the chevron
+  - [+] ag-upnp-item — an album or a playlist of the server > plays or queues it whole from those buttons
+  - [+] ag-upnp-item — an album or a playlist of the server > still opens on a tap of the row, to pick a track in it
+  - [+] ag-upnp-item — an album or a playlist of the server > gives the same buttons to a playlist of the server
+  - [+] ag-upnp-item — an album or a playlist of the server > leaves a folder with its chevron alone: it opens, it does not play
+  - [+] ag-upnp-item — the space between Play and "+" > puts the other library rows' gap between the buttons of a row
 
 **js/components/molecules/ag-upnp-renderer-card.test.js**
 
@@ -14261,7 +14930,7 @@ Generated: **2026-11-08 17:32 UTC**
 
   - [+] ag-volume-popover live-value release > shows the dragged value while the hold lasts (0.13s)
   - [+] ag-volume-popover live-value release > falls back to the prop after the hold — a refused volume snaps back (0.01s)
-  - [+] ag-volume-popover live-value release > is invisible when the change was confirmed before the release (0.01s)
+  - [+] ag-volume-popover live-value release > is invisible when the change was confirmed before the release
   - [+] ag-volume-popover live-value release > rearms on every interaction — no snap-back mid-drag
   - [+] ag-volume-popover live-value release > step buttons hold and release the same way
   - [+] ag-volume-popover live-value release > closing releases immediately and cancels the timer
@@ -14272,13 +14941,13 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-volume-popover volume-change damping > a touch the browser takes back sends the value reached
   - [+] ag-volume-popover volume-change damping > a touch cancelled sends the value reached
   - [+] ag-volume-popover volume-change damping > a tap on the track sends its value once
-  - [+] ag-volume-popover volume-change damping > a drag down to 0 ends on 0 (0.02s)
+  - [+] ag-volume-popover volume-change damping > a drag down to 0 ends on 0 (0.01s)
   - [+] ag-volume-popover volume-change damping > the keyboard sends each step at once, as before
   - [+] ag-volume-popover volume-change damping > a pointer pressed without a release leaves nothing held — a right click
   - [+] ag-volume-popover volume-change damping > step buttons send each tap at once
-  - [+] ag-volume-popover volume-change damping > nothing is sent once a gesture has ended — it could reach another source (0.01s)
+  - [+] ag-volume-popover volume-change damping > nothing is sent once a gesture has ended — it could reach another source
   - [+] ag-volume-popover volume-change damping > closing the popover mid-drag sends the value reached at once
-  - [+] ag-volume-popover volume-change damping > listens on the window only while open (0.01s)
+  - [+] ag-volume-popover volume-change damping > listens on the window only while open
   - [+] ag-volume-popover volume-change damping > a value still waiting when the popover goes away is dropped, not sent later
 
 **js/components/molecules/ag-vu-meter.test.js**
@@ -14293,12 +14962,12 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-vu-meter > hands the stylesheet its drawing's proportions, from the drawing itself (0.03s)
   - [+] ag-vu-meter > follows the stream while it is in the page, and leaves it when it goes (0.01s)
   - [+] ag-vu-meter > leaves the stream while the page is hidden: the box turns the copy off (0.01s)
-  - [+] ag-vu-meter > fed by hand, follows nothing (0.02s)
+  - [+] ag-vu-meter > fed by hand, follows nothing (0.01s)
   - [+] ag-vu-meter > turns its needles with the levels, without rendering (0.02s)
-  - [+] ag-vu-meter > turns its needles without looking for them in the page at each frame (0.02s)
-  - [+] ag-vu-meter > draws nothing through digital silence once its needles rest (0.01s)
-  - [+] ag-vu-meter > lets its needles fall when the levels stop, then asks for no more frames (0.02s)
-  - [+] ag-vu-meter > lights its peak lamp when a level goes into the red (0.01s)
+  - [+] ag-vu-meter > turns its needles without looking for them in the page at each frame (0.01s)
+  - [+] ag-vu-meter > draws nothing through digital silence once its needles rest (0.02s)
+  - [+] ag-vu-meter > lets its needles fall when the levels stop, then asks for no more frames (0.03s)
+  - [+] ag-vu-meter > lights its peak lamp when a level goes into the red
   - [+] ag-vu-meter > says why when the box cannot measure (0.02s)
   - [+] ag-vu-meter — the dials' layout > gives a dial no flex basis of its own: stacked, it takes its drawing's height
   - [+] ag-vu-meter — the dials' layout > shares the width between the dials side by side
@@ -14393,13 +15062,19 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/organisms/ag-audio-software-page.animations.test.js**
 
-  - [+] the audio software page and the Animations switch > redraws when animations are switched (0.05s)
+  - [+] the audio software page and the Animations switch > redraws when animations are switched (0.07s)
   - [+] the audio software page and the Animations switch > no longer listens once removed
+
+**js/components/organisms/ag-audio-software-page.cards.test.js**
+
+  - [+] the restart badge a card is handed > is the one the core gives with the package (0.06s)
+  - [+] the restart badge a card is handed > is none when the core gives none (0.01s)
 
 **js/components/organisms/ag-audio-software-page.dialog.test.js**
 
   - [+] the install dialog of the audio software page > lives on <body>, outside the content area (0.06s)
   - [+] the install dialog of the audio software page > opens on the package whose install was asked for
+  - [+] the install dialog of the audio software page > is told what a REPAIR interrupts: the install of a package still there
   - [+] the install dialog of the audio software page > closes when the dialog is dismissed
   - [+] the install dialog of the audio software page > installs what the dialog confirmed, with the terms accepted
   - [+] the install dialog of the audio software page > takes the dialog away with the page
@@ -14408,7 +15083,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the uninstall dialog of the audio software page > opens on the package, told what the uninstall interrupts
   - [+] the uninstall dialog of the audio software page > uninstalls what the dialog confirmed, deleting the settings when ticked
   - [+] the uninstall dialog of the audio software page > closes when the dialog is dismissed
-  - [+] the uninstall dialog of the audio software page > takes the dialog away with the page, and never leaves two (0.02s)
+  - [+] the uninstall dialog of the audio software page > takes the dialog away with the page, and never leaves two (0.01s)
 
 **js/components/organisms/ag-audio-software-page.install.test.js**
 
@@ -14451,24 +15126,34 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/organisms/ag-audio-software-page.results.test.js**
 
-  - [+] the restart badge > is not shown for a package the core restarts itself
-  - [+] the restart badge > is still shown for a package the core does not restart
+  - [+] the restart badge > is not shown when the core says nothing is owed
+  - [+] the restart badge > is not shown after an update whose package restarted its service
+  - [+] the restart badge > is not shown on a success the core gave no word on
+  - [+] the restart badge > is shown at once where the service still runs the previous version
   - [+] the restart badge > is not shown after a simulation, whatever it found
   - [+] the restart badge > is not shown after an update the box refused
-  - [+] the restart badge > is not shown for an operation run from another device
+  - [+] the restart badge > is not lit by the state turning "installed"
+  - [+] the restart badge > is the core's, whichever device ran the operation
+  - [+] the restart badge > goes out when the core describes the package without it
   - [+] the restart badge > is not shown after an uninstall
   - [+] the restart badge > is shown when the restart the core owed failed
+  - [+] the packages read again when the tab is shown > while a card shows "Restart required": its service may have restarted since
+  - [+] the packages read again when the tab is shown > not otherwise
+  - [+] the restart button > restarts the unit, not the package's key in audio-config.json
+  - [+] the restart button > asks the core first whether the restart is still owed
+  - [+] the restart button > restarts nothing another device already restarted
+  - [+] the restart button > restarts when the listing could only be read from before going offline
   - [+] the restart button > says so when the core could not restart the service
+  - [+] the restart button > names the package when the core gives no reason
   - [+] the restart button > clears the badge once it worked
+  - [+] the badges this browser kept > are dropped once: the core holds them now
   - [+] update all > says an update whose next step was left is incomplete, with what is left
   - [+] update all > says "Updates complete" for updates with nothing left
-  - [+] update all > shows the restart badge where the restart failed
-  - [+] update all > shows the restart badge where the core restarts nothing itself
-  - [+] update all > shows no restart badge after simulated updates
+  - [+] update all > shows the restart badges the core gives with the packages read again
   - [+] setting the web interface password from the card > opens the dialog on the package
   - [+] setting the web interface password from the card > sends the password in the body, never in the URL
   - [+] setting the web interface password from the card > says why it was not set
-  - [+] setting the web interface password from the card > shows the restart badge when the restart after it failed
+  - [+] setting the web interface password from the card > shows the restart badge the core gives when the restart after it failed
   - [+] one toast for an operation in progress, which becomes its outcome > turns "Checking for updates" into the number of updates found
   - [+] one toast for an operation in progress, which becomes its outcome > says when every package is at its latest version
   - [+] one toast for an operation in progress, which becomes its outcome > turns it into the reason when the check fails (0.01s)
@@ -14493,7 +15178,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] Playback warning in the confirmation > leaves the label raw: the confirmation shows its message as text
   - [+] Playback warning in the confirmation > gives the uninstall dialog plain text, which Lit escapes itself
   - [+] Reading which services AG has configured > does not ask when the session is not an admin
-  - [+] Reading which services AG has configured > reads it for an admin, and says nothing when the read fails (3.04s)
+  - [+] Reading which services AG has configured > reads it for an admin, and says nothing when the read fails (3.06s)
   - [+] the INSTALLED filter > keeps what is on the box, a failed update included
   - [+] the INSTALLED filter > shows everything unfiltered
 
@@ -14536,7 +15221,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] _refreshSources > preserves the user DAC pick and never flips the loading flag
   - [+] _refreshSources > re-anchors a card selection by identity when the list shifts
   - [+] _refreshSources > clears a card selection whose source is gone
-  - [+] _refreshSources > keeps the current view on a transient fetch failure
+  - [+] _refreshSources > keeps the current view on a transient fetch failure (0.01s)
 
 **js/components/organisms/ag-config-editor.test.js**
 
@@ -14557,23 +15242,23 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgConfigEditor — originals capture on parent reload (guided-apply safety) > re-captures originals when the parent reloads the config (both props change)
   - [+] AgConfigEditor — originals capture on parent reload (guided-apply safety) > does not re-capture originals on a single-mode edit (only one prop changes)
   - [+] AgConfigEditor — a service with no form (HQPlayer Embedded) > offers Guided and Expert, not Structured (0.06s)
-  - [+] AgConfigEditor — a service with no form (HQPlayer Embedded) > leaves Structured to a service that has a form (0.01s)
+  - [+] AgConfigEditor — a service with no form (HQPlayer Embedded) > leaves Structured to a service that has a form
   - [+] AgConfigEditor — a service with no form (HQPlayer Embedded) > without a guided view, opens in the raw editor with nothing to switch to (0.03s)
   - [+] AgConfigEditor — a service with no form (HQPlayer Embedded) > tells the guided view whether to offer Reset to default (0.01s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > builds the editor on the textarea, in the file's mode, once the library has loaded (0.02s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > refuses to save when the library could not be loaded (0.02s)
-  - [+] AgConfigEditor — the Expert editor is loaded on demand > says the editor is loading while it loads (0.01s)
+  - [+] AgConfigEditor — the Expert editor is loaded on demand > says the editor is loading while it loads (0.02s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > refuses to save while the library is still loading (0.01s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > builds nothing for a view left while the library was loading (0.02s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > builds nothing once the editor has left the page
   - [+] AgConfigEditor — the Expert editor is loaded on demand > leaves a call made during a load to the load under way (0.01s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > shows the file read-only until the editor takes over (0.01s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > says a retry is loading, not that the previous attempt failed (0.03s)
-  - [+] AgConfigEditor — the Expert editor is loaded on demand > tries again when Expert is opened again after a failure in another view (0.03s)
+  - [+] AgConfigEditor — the Expert editor is loaded on demand > tries again when Expert is opened again after a failure in another view (0.02s)
   - [+] AgConfigEditor — the Expert editor is loaded on demand > builds the editor again when it comes back to the page in Expert mode (0.03s)
-  - [+] AgConfigEditor — the Expert editor is loaded on demand > says so when the editor fails to build, rather than loading for ever (0.03s)
+  - [+] AgConfigEditor — the Expert editor is loaded on demand > says so when the editor fails to build, rather than loading for ever (0.02s)
   - [+] AgConfigEditor — the backup name in the restore question > puts the file name raw
-  - [+] AgConfigEditor — whether MPD's volume acts on DSD > is handed to the guided view (0.01s)
+  - [+] AgConfigEditor — whether MPD's volume acts on DSD > is handed to the guided view
 
 **js/components/organisms/ag-config-page.test.js**
 
@@ -14605,7 +15290,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] Settings — Top Bar Metrics > takes the top bar with it, without a reload (0.05s)
   - [+] Settings — Top Bar Metrics > shows the state of this device when the panel opens (0.02s)
   - [+] Settings — Animations > switched off, is remembered on this device and stops the motion (0.02s)
-  - [+] Settings — Animations > is announced to what animates on its own (0.02s)
+  - [+] Settings — Animations > is announced to what animates on its own (0.01s)
   - [+] Settings — Animations > takes the log viewer with it, without a reload (0.04s)
   - [+] Settings — Portrait Lock > switched off, is remembered on this device (0.01s)
   - [+] Settings — Appearance > offers Automatic, Light and Dark — Automatic on a device that never chose (0.01s)
@@ -14625,12 +15310,12 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/organisms/ag-config-panel.push.test.js**
 
-  - [+] Settings — Notifications > turned on, says a test notification is on its way (0.10s)
-  - [+] Settings — Notifications > on a core too old to send a test, says so — and stays on (0.03s)
+  - [+] Settings — Notifications > turned on, says a test notification is on its way (0.09s)
+  - [+] Settings — Notifications > on a core too old to send a test, says so — and stays on (0.02s)
   - [+] Settings — Notifications > a failure says why, and the switch goes back off (0.03s)
   - [+] Settings — Notifications > a failure to turn them off leaves the switch on (0.02s)
   - [+] Settings — Notifications > a second turn while the first is on its way is not acted on (0.02s)
-  - [+] Settings — Notifications > an error with no words of its own still says something (0.01s)
+  - [+] Settings — Notifications > an error with no words of its own still says something (0.02s)
 
 **js/components/organisms/ag-config-panel.test.js**
 
@@ -14650,7 +15335,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] what the confirm dialog focuses once shown > OK, so that Enter confirms (0.02s)
   - [+] what the confirm dialog focuses once shown > Cancel when OK deletes, so that Enter does not
   - [+] what the confirm dialog focuses once shown > OK in an information dialog, destructive or not: there is no Cancel
-  - [+] what the confirm dialog focuses once shown > the field when the message holds one — the password of a password confirm
+  - [+] what the confirm dialog focuses once shown > the field when the message holds one — the password of a password confirm (0.01s)
   - [+] the confirmations that delete or remove > — js,common.js, 'Clear History' — declare it: OK is orange and Cancel is focused
   - [+] the confirmations that delete or remove > — js,components,molecules,ag-passkey-manager.js, 'Remove Passkey' — declare it: OK is orange and Cancel is focused
   - [+] the confirmations that delete or remove > — js,components,molecules,ag-license-status.js, 'Delete License' — declare it: OK is orange and Cancel is focused
@@ -14681,7 +15366,7 @@ Generated: **2026-11-08 17:32 UTC**
 
 **js/components/organisms/ag-guided-config.test.js**
 
-  - [+] descriptor > mpd has output + DoP + the DAC's volume + library, airplay has output, upmpdcli none (0.02s)
+  - [+] descriptor > mpd has output + DoP + the DAC's volume + library, airplay has output, upmpdcli none
   - [+] HQPlayer Embedded — its output alone > has the output as its only guided field
   - [+] HQPlayer Embedded — its output alone > has its output changed like any player's
   - [+] HQPlayer Embedded — its output alone > is offered no Reset to default
@@ -14873,7 +15558,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-library-browse — the ★ is offered only where the grid holds albums > shows one glyph for one coverless item, card and row alike
   - [+] ag-library-browse — banner covers > marks HRA editorial artwork as a banner, card and row alike
   - [+] ag-library-browse — banner covers > leaves the account's own HRA playlists square — their artwork has no measured shape
-  - [+] ag-library-browse — banner covers > leaves Qobuz and Tidal playlists square — their covers are square
+  - [+] ag-library-browse — banner covers > draws Qobuz's selections as banners too — the core hands over their landscape artwork
+  - [+] ag-library-browse — banner covers > leaves the account's own Qobuz playlists and Tidal's square — their covers are square
   - [+] ag-library-browse — banner covers > leaves the HRA album grids square — only the playlists are banners
   - [+] ag-library-browse — HIGHRESAUDIO editorial shelves > offers All ahead of the four shelves — nothing can be hidden
   - [+] ag-library-browse — HIGHRESAUDIO editorial shelves > asks HRA for the shelf rather than filtering 1762 here
@@ -14923,7 +15609,32 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-library-browse — Qobuz playlists > carries the chosen tree to the core
   - [+] ag-library-browse — Qobuz playlists > offers exactly two trees — Qobuz has no third
   - [+] ag-library-browse — Qobuz playlists > queues a playlist as a playlist
-  - [+] ag-library-browse — Qobuz playlists > has no shelf strip under its trees, unlike HRA
+  - [+] ag-library-browse — Qobuz playlists > is not HRA's editorial tree — that one also decides the 2:1 artwork
+  - [+] ag-library-browse — Qobuz playlist categories > offers All ahead of the categories, in the order the core listed them
+  - [+] ag-library-browse — Qobuz playlist categories > shows no strip until the list has arrived — All alone chooses nothing
+  - [+] ag-library-browse — Qobuz playlist categories > shows no strip over the account's own tree, nor on another pill
+  - [+] ag-library-browse — Qobuz playlist categories > asks Qobuz for the category by its slug rather than filtering here
+  - [+] ag-library-browse — Qobuz playlist categories > sends no category on All
+  - [+] ag-library-browse — Qobuz playlist categories > sends none for the account's own tree, whatever is left in the state
+  - [+] ag-library-browse — Qobuz playlist categories > picking a category reloads; leaving the editorial tree drops it
+  - [+] ag-library-browse — Qobuz playlist categories > the chosen category names the grid, by its label
+  - [+] ag-library-browse — Qobuz playlist categories > never prints a slug as a heading, should the list not hold it
+  - [+] ag-library-browse — Qobuz playlist categories > draws the selections as banners whatever narrows them
+  - [+] ag-library-browse — Qobuz playlist categories > a playlist opened from the grid keeps the banner shape on its own page
+  - [+] ag-library-browse — Qobuz playlist categories > fills the strip when the list lands, without reloading the grid already up
+  - [+] ag-library-browse — Qobuz playlist categories > does not fill the strip when the source changed while the list was in flight
+  - [+] ag-library-browse — Qobuz playlist categories > asks for the list on every load while it is missing — Refresh repairs the strip
+  - [+] ag-library-browse — Qobuz playlist categories > does not ask for it once it is there, nor where the strip is not shown
+  - [+] ag-library-browse — Qobuz playlists by genre > offers All genres, then the top-level genres in the order the core listed them
+  - [+] ag-library-browse — Qobuz playlists by genre > offers no sub-genre — they almost never hold a selection
+  - [+] ag-library-browse — Qobuz playlists by genre > shows no strip before the tree has arrived, over Mine, or on another pill
+  - [+] ag-library-browse — Qobuz playlists by genre > asks Qobuz for the genre by its path
+  - [+] ag-library-browse — Qobuz playlists by genre > crosses the genre with the category in one request
+  - [+] ag-library-browse — Qobuz playlists by genre > sends no genre on All genres, nor for the account tree
+  - [+] ag-library-browse — Qobuz playlists by genre > is not narrowed by the genre browsed under the Genres pill — that is another pill's
+  - [+] ag-library-browse — Qobuz playlists by genre > picking a genre reloads; leaving the editorial tree drops it
+  - [+] ag-library-browse — Qobuz playlists by genre > names the grid after the category and the genre, in the order of the strips
+  - [+] ag-library-browse — Qobuz playlists by genre > asks for the genre tree on every load while it is missing, and only on Editorial
   - [+] ag-library-browse — Qobuz genres > offers the genres while none is chosen
   - [+] ag-library-browse — Qobuz genres > offers the genre as "All", then its sub-genres
   - [+] ag-library-browse — Qobuz genres > stays on the genre of the chosen sub-genre
@@ -15012,6 +15723,13 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-library-browse — Refresh has MPD read the music folder first > gives up waiting after ten minutes, reloads, and stops turning
   - [+] ag-library-browse — Refresh has MPD read the music folder first > the section title's Refresh says when it is at work
   - [+] ag-library-browse — Refresh has MPD read the music folder first > the section title's Refresh goes through refresh(), not a bare reload
+  - [+] ag-library-browse — the next page, as the reader nears the end > watches its sentinel while more albums remain
+  - [+] ag-library-browse — the next page, as the reader nears the end > stops watching once the grid holds every album
+  - [+] ag-library-browse — the next page, as the reader nears the end > lets go of it on a reload
+  - [+] ag-library-browse — _loadMore tells whether a page landed > answers true when the next page is appended
+  - [+] ag-library-browse — _loadMore tells whether a page landed > answers false for a page that a reload made stale, and keeps it out
+  - [+] ag-library-browse — _loadMore tells whether a page landed > answers false when the page failed, so nothing asks again in a loop
+  - [+] ag-library-browse — _loadMore tells whether a page landed > answers false with nothing left to load
 
 **js/components/organisms/ag-library-outputs.test.js**
 
@@ -15029,6 +15747,8 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the outputs of a Pro source on a Starter box > gives the cards that show the padlock the Pro tint, not the active one
   - [+] the outputs of a Pro source on a Starter box > shows READY and no padlock when the source is free
   - [+] the outputs of a Pro source on a Starter box > defaults to unlocked
+  - [+] the outputs read again > says "Loading…" only while there is nothing to show
+  - [+] the output asked for, while the list is read again > says SWITCHING until the list has come back, and READY nowhere meanwhile (0.05s)
 
 **js/components/organisms/ag-library-page.test.js**
 
@@ -15133,7 +15853,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-library-queue — Clear respects the filter > _clear with no filter clears every up-next item
   - [+] ag-library-queue — _load prunes a stale filter > drops a filter whose source is no longer up-next
   - [+] ag-library-queue — _load prunes a stale filter > keeps a filter whose source is still up-next
-  - [+] ag-library-queue — truthful removal > _remove relays the refusal as a toast and re-syncs the list (0.01s)
+  - [+] ag-library-queue — truthful removal > _remove relays the refusal as a toast and re-syncs the list (0.02s)
   - [+] ag-library-queue — truthful removal > _remove stays silent on success
   - [+] ag-library-queue — truthful removal > _clear sweeps past failures and summarises them in ONE toast
   - [+] ag-library-queue — truthful removal > _clear stays silent when every removal succeeds
@@ -15149,6 +15869,83 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-library-queue — a streaming track on a box without Pro > does not open the panel at the end of a swipe
   - [+] ag-library-queue — a streaming track on a box without Pro > draws its padlock as a real button, in the padlock button's one style
   - [+] ag-library-queue — a streaming track on a box without Pro > gives that small mark a finger's room, without moving the row
+  - [+] ag-library-queue — the list stays on screen while it is read again > says "Loading…" only while there is nothing to show
+  - [+] ag-library-queue — the list stays on screen while it is read again > takes a removed track off at once, before the box answers, then reads the queue
+  - [+] ag-library-queue — the list stays on screen while it is read again > a refused removal puts the track back, with the box's reason
+  - [+] ag-library-queue — the list stays on screen while it is read again > drops the answer of a read that left before a removal
+  - [+] ag-library-queue — the list stays on screen while it is read again > drops it too when it answers while the removal is still on its way
+  - [+] ag-library-queue — the list stays on screen while it is read again > keeps out a track whose removal is still on its way from a reading started after it
+  - [+] ag-library-queue — the list stays on screen while it is read again > keeps the tracks of a Clear out of a reading made during the sweep
+  - [+] ag-library-queue — the list stays on screen while it is read again > keeps a Clear's track out of a reading that left before the box took it, answered after
+  - [+] ag-library-queue — the list stays on screen while it is read again > keeps the newest read when an older one answers last
+  - [+] ag-library-queue — the list stays on screen while it is read again > Clear takes the shown tracks off at once, and keeps the one playing
+  - [+] ag-library-queue — the list stays on screen while it is read again > keys each row by its song id — a Roon row, which has none, by its position
+  - [+] ag-library-queue — the list stays on screen while it is read again > lets go of what it shows for another queue, not between the box's own sources
+  - [+] ag-library-queue — the list stays on screen while it is read again > drops a reading of the queue it has left, answering after the move
+  - [+] ag-library-queue — the list stays on screen while it is read again > greys Refresh while its reading is out, and a second tap meanwhile reads nothing
+  - [+] ag-library-queue — the list stays on screen while it is read again > wires the Refresh button to that reading
+  - [+] ag-library-queue — the list stays on screen while it is read again > follows the player only while shown
+  - [+] ag-library-queue — up next is what comes after the track playing > lists the tracks after the current one, and counts them alone
+  - [+] ag-library-queue — up next is what comes after the track playing > lists every other track in random order, any of which can come next
+  - [+] ag-library-queue — up next is what comes after the track playing > lists the whole queue when nothing is current
+  - [+] ag-library-queue — up next is what comes after the track playing > goes on, when the queue repeats, with the tracks before the current one: they play again after the last
+  - [+] ag-library-queue — up next is what comes after the track playing > lists the queue in its own order when it repeats in random order, or with nothing current
+  - [+] ag-library-queue — up next is what comes after the track playing > still offers Clear when only played tracks are left, and Clear takes them
+  - [+] ag-library-queue — moving a track by its handle > gives each row of the box's queue a handle — a real button
+  - [+] ag-library-queue — moving a track by its handle > greys the handles in random order
+  - [+] ag-library-queue — moving a track by its handle > wires the handle's gesture to the row's track, and off in random order
+  - [+] ag-library-queue — moving a track by its handle > gives a Roon row none, the cover taking its column
+  - [+] ag-library-queue — moving a track by its handle > lays the handle out in a column of its own, 44px to the finger, and nothing else
+  - [+] ag-library-queue — moving a track by its handle > draws the handle's dots as Lucide does, for its svg's stroke to reach them
+  - [+] ag-library-queue — moving a track by its handle > dropNeighbour — the track a dropped one lands beside > to the top: before the first, right after the current one
+  - [+] ag-library-queue — moving a track by its handle > dropNeighbour — the track a dropped one lands beside > down past one
+  - [+] ag-library-queue — moving a track by its handle > dropNeighbour — the track a dropped one lands beside > to the end: after the last
+  - [+] ag-library-queue — moving a track by its handle > dropNeighbour — the track a dropped one lands beside > up past one
+  - [+] ag-library-queue — moving a track by its handle > dropNeighbour — the track a dropped one lands beside > the last but one to the end
+  - [+] ag-library-queue — moving a track by its handle > dropNeighbour — the track a dropped one lands beside > names a shown track: those a filter hides keep their places around it
+  - [+] ag-library-queue — moving a track by its handle > dropNeighbour — the track a dropped one lands beside > names none when no other row is shown
+  - [+] ag-library-queue — moving a track by its handle > movedItems — the queue as the box will hold it > moves the track before its neighbour and numbers every position again
+  - [+] ag-library-queue — moving a track by its handle > movedItems — the queue as the box will hold it > moves the track after its neighbour, from above it or below it
+  - [+] ag-library-queue — moving a track by its handle > movedItems — the queue as the box will hold it > leaves the queue alone for a track, or a neighbour, it does not hold
+  - [+] ag-library-queue — moving a track by its handle > moves the track at once, before the box answers, then reads the queue
+  - [+] ag-library-queue — moving a track by its handle > does nothing when dropped where it was
+  - [+] ag-library-queue — moving a track by its handle > a refused move puts the track back, with the box's reason
+  - [+] ag-library-queue — moving a track by its handle > when the queue repeats > moves a track that plays again after the last to the top: it plays next
+  - [+] ag-library-queue — moving a track by its handle > when the queue repeats > moves a track to the end: it plays last, once the queue has started over
+  - [+] ag-library-queue — moving a track by its handle > holds a reading back while a row is held, asks the box nothing, and reads once it is let go (0.05s)
+  - [+] ag-library-queue — moving a track by its handle > holds back the answer of a reading that left before a row was taken
+  - [+] ag-library-queue — moving a track by its handle > holds back a reading that left before a move: it would show the old order
+  - [+] ag-library-queue — moving a track by its handle > asks the box nothing for a reading wanted while a move is on its way, and reads after it
+  - [+] ag-library-queue — moving a track by its handle > tells a toggle of the random order, or of the repeat, as a change, for the list to follow it
+  - [+] ag-library-queue — a tap on a track plays it > makes the cover and the words of a row of the box's queue one real button
+  - [+] ag-library-queue — a tap on a track plays it > hears the click on the row: a mouse's, which the row's swipe sends to the row
+  - [+] ag-library-queue — a tap on a track plays it > plays at a click on the cover or the words — a finger's, the keyboard's — once
+  - [+] ag-library-queue — a tap on a track plays it > leaves the row's other buttons their clicks: the handle, the arrow that removes, the padlock
+  - [+] ag-library-queue — a tap on a track plays it > leaves a Roon row's words as words, and plays nothing from it
+  - [+] ag-library-queue — a tap on a track plays it > plays the track by its song id, then reads the queue (0.05s)
+  - [+] ag-library-queue — a tap on a track plays it > plays nothing at the end of a swipe
+  - [+] ag-library-queue — a tap on a track plays it > leads a locked track to the licence panel, as its padlock does
+  - [+] ag-library-queue — a tap on a track plays it > says why it was not played — where the music goes out, the box's reason
+  - [+] ag-library-queue — a tap on a track plays it > says a play refused for want of Pro as the players do
+  - [+] ag-library-queue — the play/pause button of the track playing > is drawn in the block of the track playing
+  - [+] ag-library-queue — the play/pause button of the track playing > shows Pause while the box plays, Play while it is paused
+  - [+] ag-library-queue — the play/pause button of the track playing > reads the box's own player, whatever else plays
+  - [+] ag-library-queue — the play/pause button of the track playing > is greyed in its place, and does nothing, while the player state is not known
+  - [+] ag-library-queue — the play/pause button of the track playing > offers Play on a box whose player was stopped with a track still current
+  - [+] ag-library-queue — the play/pause button of the track playing > stays greyed for a Roon zone that plays nothing: Roon is reached through what it plays
+  - [+] ag-library-queue — the play/pause button of the track playing > takes the finger over 44px while drawn at 36, without moving anything
+  - [+] ag-library-queue — the play/pause button of the track playing > sends the intent it shows, to the player of the queue
+  - [+] ag-library-queue — the play/pause button of the track playing > turns at once, and holds until the box tells a change
+  - [+] ag-library-queue — the play/pause button of the track playing > a second tap while the first is on its way does nothing
+  - [+] ag-library-queue — the play/pause button of the track playing > refused for want of Pro: back to what the box says, with the reason
+  - [+] ag-library-queue — the play/pause button of the track playing > declined by the device: back to what the box says, silently
+  - [+] ag-library-queue — the play/pause button of the track playing > acts on the Roon zone shown, for a Roon queue
+  - [+] ag-library-queue — the play/pause button of the track playing > leaves the full-screen player to the cover: the button plays and pauses, nothing else
+  - [+] ag-library-queue — the cover of the track playing opens the full-screen player > makes the cover a real button, named for what it does
+  - [+] ag-library-queue — the cover of the track playing opens the full-screen player > opens it on the box's own player, whatever else plays
+  - [+] ag-library-queue — the cover of the track playing opens the full-screen player > opens it on the Roon zone shown, for a Roon queue
+  - [+] ag-library-queue — the cover of the track playing opens the full-screen player > opens it on what it shows by itself while the player's state is not known
+  - [+] ag-library-queue — the cover of the track playing opens the full-screen player > stays the cover in its 54px column: a flex button, no line box under it
 
 **js/components/organisms/ag-library-radio.test.js**
 
@@ -15191,6 +15988,18 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the Halloween stations, on 31 October > offers a button above the search, and the genre among the others, on the day
   - [+] the Halloween stations, on 31 October > lists every station tagged halloween, whatever was typed or chosen before (0.05s)
   - [+] the Halloween stations, on 31 October > keeps the genre in the list while it is still chosen after midnight
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > opens the edit form in Favorites, filled with the station
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > draws no form in Favorites until Edit is tapped, and no Add there
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > saves an edit made in Favorites, then shows Favorites again
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > reloads My Live Radio after an edit made there
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > closes an open form when the tab changes: an Edit begun in Favorites stays there
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > brings the form into sight after each Edit, by taking its pane back to the top
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > moves nothing for Add, at the top already, nor where no pane scrolls
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > closes the form when its station leaves the list shown
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > keeps it open when the station leaves the other list only
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > leaves the next form open when a save succeeds after the reader moved on
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > lets a save that ends after the reader moved on leave the next form, and that tab, alone
+  - [+] ag-library-radio — Edit station, from Favorites too, and in sight > closes the form it saved, and shows its failure, when the reader stayed
 
 **js/components/organisms/ag-library-search.test.js**
 
@@ -15271,24 +16080,25 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgLibrarySources — the Pro sections on each edition > shows the real cards with Pro
   - [+] AgLibrarySources — the Pro sections on each edition > asks for the media servers once the licence opens them, not on a Starter box
   - [+] AgLibrarySources — the Pro sections on each edition > keeps whether each source is Pro, as the core publishes it
+  - [+] the screen read again after a connection changed > says "Loading…" only while there is nothing to show
 
 **js/components/organisms/ag-library-stats.test.js**
 
-  - [+] ag-library-stats — with Pro > reads the summary of 30 days when shown, and draws its sections (0.30s)
-  - [+] ag-library-stats — with Pro > the week is drawn from the summary, and left out when it brings none (0.22s)
-  - [+] ag-library-stats — with Pro > asks the routes of the history, and nothing else (0.11s)
-  - [+] ag-library-stats — with Pro > reads nothing while hidden, its settings included (0.01s)
+  - [+] ag-library-stats — with Pro > reads the summary of 30 days when shown, and draws its sections (0.29s)
+  - [+] ag-library-stats — with Pro > the week is drawn from the summary, and left out when it brings none (0.29s)
+  - [+] ag-library-stats — with Pro > asks the routes of the history, and nothing else (0.08s)
+  - [+] ag-library-stats — with Pro > reads nothing while hidden, its settings included (0.02s)
   - [+] ag-library-stats — with Pro > while shown, reads again when what plays changes, and stops following once hidden (0.09s)
-  - [+] ag-library-stats — with Pro > another period reads its own summary (0.08s)
-  - [+] ag-library-stats — with Pro > an older answer never replaces a newer one (0.06s)
+  - [+] ag-library-stats — with Pro > another period reads its own summary (0.09s)
+  - [+] ag-library-stats — with Pro > an older answer never replaces a newer one (0.07s)
   - [+] ag-library-stats — with Pro > a period with nothing says so, and keeps the switch (0.01s)
-  - [+] ag-library-stats — with Pro > a refused read is said, not drawn as an empty history (0.01s)
-  - [+] ag-library-stats — with Pro > the switch or the erase reads the summary again (0.06s)
-  - [+] ag-library-stats — with Pro > says at the top when the recording is off, and leads to the switch (0.07s)
+  - [+] ag-library-stats — with Pro > a refused read is said, not drawn as an empty history (0.02s)
+  - [+] ag-library-stats — with Pro > the switch or the erase reads the summary again (0.07s)
+  - [+] ag-library-stats — with Pro > says at the top when the recording is off, and leads to the switch (0.08s)
   - [+] ag-library-stats — with Pro > says nothing while the box records (0.07s)
   - [+] ag-library-stats — with Pro > the genres that name nothing are named and greyed
-  - [+] ag-library-stats — on a Starter box > reads no summary, shows the padlock, and keeps the recording (0.01s)
-  - [+] ag-library-stats — on a Starter box > reads the summary as soon as a licence opens Pro, and follows the player from then (0.07s)
+  - [+] ag-library-stats — on a Starter box > reads no summary, shows the padlock, and keeps the recording (0.02s)
+  - [+] ag-library-stats — on a Starter box > reads the summary as soon as a licence opens Pro, and follows the player from then (0.06s)
   - [+] ag-library-stats — before the licence is read > reads nothing and shows no padlock
   - [+] ag-stats-recording > shows the switch as the core has it, with what the history holds
   - [+] ag-stats-recording > switching writes, and announces it
@@ -15297,6 +16107,25 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-stats-recording > the erase asks first, and does nothing when cancelled
   - [+] ag-stats-recording > confirmed, it erases, reads the settings again and announces it
   - [+] ag-stats-recording > an empty history has nothing to erase
+
+**js/components/organisms/ag-library-upnp-browser.test.js**
+
+  - [+] ag-library-upnp-browser — an album or a playlist, whole > plays an album whole from its row, and opens the player (0.12s)
+  - [+] ag-library-upnp-browser — an album or a playlist, whole > queues an album whole with "+", and says so, without leaving the list (0.04s)
+  - [+] ag-library-upnp-browser — an album or a playlist, whole > names a playlist of the server a playlist (0.03s)
+  - [+] ag-library-upnp-browser — an album or a playlist, whole > still opens the album on a tap of its row, playing nothing (0.06s)
+  - [+] ag-library-upnp-browser — a track inside an album > plays the album from the track tapped: the ones after it follow (0.09s)
+  - [+] ag-library-upnp-browser — a track inside an album > does the same from the track's Play button (0.06s)
+  - [+] ag-library-upnp-browser — a track inside an album > adds that track alone with "+" (0.05s)
+  - [+] ag-library-upnp-browser — a track inside an album > starts at the copy tapped when a playlist holds a track twice under one id (0.04s)
+  - [+] ag-library-upnp-browser — a track inside an album > plays a track alone where the level is not an album — "[untagged]", a folder (0.04s)
+  - [+] ag-library-upnp-browser — a level longer than a page > lists the rest as the reader nears the end, page after page (1.38s)
+  - [+] ag-library-upnp-browser — a level longer than a page > lists the next pages on a tap of "Show more" past the rows that load on their own (5.39s)
+  - [+] ag-library-upnp-browser — a level longer than a page > shows no sentinel for a level that fits in one page (0.05s)
+  - [+] ag-library-upnp-browser — a level longer than a page > reads on while a server that gives no count hands out full pages (0.49s)
+  - [+] ag-library-upnp-browser — a level longer than a page > drops a page that lands once the reader has opened something else (0.41s)
+  - [+] ag-library-upnp-browser — a level longer than a page > asks a failing server again only when the reader scrolls, not in a loop (0.43s)
+  - [+] ag-library-upnp-browser — two levels asked for in quick succession > keeps the level opened last when the one opened before answers after it (0.04s)
 
 **js/components/organisms/ag-logs-escaping.test.js**
 
@@ -15321,15 +16150,15 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-manual-modal > parseToc (live TOC from README.md) > parses numbered contents entries, including chapter 0, stripping label markup
   - [+] ag-manual-modal > parseToc (live TOC from README.md) > returns empty for markdown with no contents list
   - [+] ag-manual-modal > the trademark notice, once under each chapter > shows it under the chapter on screen (0.11s)
-  - [+] ag-manual-modal > the trademark notice, once under each chapter > shows nothing when a chapter could not load (0.02s)
+  - [+] ag-manual-modal > the trademark notice, once under each chapter > shows nothing when a chapter could not load (0.03s)
   - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > replaces the fallback with the parsed live TOC
   - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback (and allows a retry) when the fetch fails
   - [+] ag-manual-modal > _loadToc (sidebar derived from the published README) > keeps the fallback when the README has no parsable contents list
   - [+] ag-manual-modal > starts closed
   - [+] ag-manual-modal > open() shows the modal and loads the default (first) chapter (0.01s)
   - [+] ag-manual-modal > open(id) loads the requested chapter (0.03s)
-  - [+] ag-manual-modal > auto-loads a chapter when opened via the is-open property (not open()) (0.02s)
-  - [+] ag-manual-modal > does not double-load: open() sets _loading so updated() skips the auto-load (0.01s)
+  - [+] ag-manual-modal > auto-loads a chapter when opened via the is-open property (not open()) (0.01s)
+  - [+] ag-manual-modal > does not double-load: open() sets _loading so updated() skips the auto-load (0.02s)
   - [+] ag-manual-modal > fetches the right URL, renders via marked, and caches (no refetch)
   - [+] ag-manual-modal > de-duplicates concurrent loads of the same uncached chapter (single fetch)
   - [+] ag-manual-modal > shows an error state on a non-OK response and logs it (not swallowed)
@@ -15363,11 +16192,11 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-manual-modal > back to the top of a chapter > puts the button last in the reading pane, and leaves the pane out of the focus order (0.02s)
   - [+] ag-manual-modal > back to the top of a chapter > is not there while the window is closed
   - [+] ag-manual-modal > code blocks (colour, frame, copy button) > colours a block and frames it for its button (0.02s)
-  - [+] ag-manual-modal > code blocks (colour, frame, copy button) > leaves a nocopy block coloured but unframed, so it never gets a button (0.02s)
+  - [+] ag-manual-modal > code blocks (colour, frame, copy button) > leaves a nocopy block coloured but unframed, so it never gets a button (0.03s)
   - [+] ag-manual-modal > code blocks (colour, frame, copy button) > is idempotent — re-enhancing does not nest a second frame
-  - [+] ag-manual-modal > code blocks (colour, frame, copy button) > puts one named button with both icons on each framed block, once (0.02s)
+  - [+] ag-manual-modal > code blocks (colour, frame, copy button) > puts one named button with both icons on each framed block, once (0.04s)
   - [+] ag-manual-modal > code blocks (colour, frame, copy button) > routes a click anywhere on the button to the copy (0.02s)
-  - [+] ag-manual-modal > code blocks (colour, frame, copy button) > copies the block without its trailing newline, then confirms (0.05s)
+  - [+] ag-manual-modal > code blocks (colour, frame, copy button) > copies the block without its trailing newline, then confirms (0.03s)
   - [+] ag-manual-modal > code blocks (colour, frame, copy button) > says so when the clipboard refuses, instead of confirming (0.03s)
 
 **js/components/organisms/ag-mobile-pipeline.test.js**
@@ -15424,7 +16253,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the jitter chart > draws itself again in the colours of the mode a switch puts in force (0.15s)
   - [+] the jitter chart > redraws on a theme change and on a light/dark switch alike (0.04s)
   - [+] the jitter chart > draws one bar per second of the run, in the theme's network colour
-  - [+] the servers suggested under the field > keep only a server the core took: one it refuses (422) is not suggested again (0.01s)
+  - [+] the servers suggested under the field > keep only a server the core took: one it refuses (422) is not suggested again
 
 **js/components/organisms/ag-now-playing-fullscreen.test.js**
 
@@ -15494,7 +16323,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgNowPlayingFullscreen — volume in flight (real _control) > an older command failing does not undo a newer one
   - [+] the badge agrees with the mini player it is opened from > never resolves a badge with the name thrown away
   - [+] the badge agrees with the mini player it is opened from > uses the shared resolver, so both screens answer from one rule
-  - [+] AgNowPlayingFullscreen — "Add to playlist" for the track playing now > is offered for a HIGHRESAUDIO track the box can name (0.05s)
+  - [+] AgNowPlayingFullscreen — "Add to playlist" for the track playing now > is offered for a HIGHRESAUDIO track the box can name (0.03s)
   - [+] AgNowPlayingFullscreen — "Add to playlist" for the track playing now > is offered for a Qobuz track the box can name
   - [+] AgNowPlayingFullscreen — "Add to playlist" for the track playing now > is not offered for a purchase
   - [+] AgNowPlayingFullscreen — "Add to playlist" for the track playing now > is not offered for a track the box cannot name
@@ -15517,18 +16346,18 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgNowPlayingFullscreen — two columns on a wide screen > puts everything else in one block in the right column, the format strip included
   - [+] AgNowPlayingFullscreen — two columns on a wide screen > centres that column on the cover whatever it holds — no count of rows
   - [+] AgNowPlayingFullscreen — two columns on a wide screen > leaves a phone held upright as it was: the block is no box
-  - [+] AgNowPlayingFullscreen — two columns on a wide screen > holds every part beside the cover in that block, and not the cover (0.09s)
+  - [+] AgNowPlayingFullscreen — two columns on a wide screen > holds every part beside the cover in that block, and not the cover (0.08s)
   - [+] AgNowPlayingFullscreen — a live station has no progress to show > turns the bar into a Live marker for a radio station
   - [+] AgNowPlayingFullscreen — a live station has no progress to show > keeps the bar for a track
   - [+] AgNowPlayingFullscreen — a live station has no progress to show > tells the transport controls a station plays live (0.01s)
   - [+] AgNowPlayingFullscreen — a live station has no progress to show > leaves the transport controls as they were for a track (0.01s)
   - [+] AgNowPlayingFullscreen — a live station has no progress to show > does not tell them a stopped station is live (0.02s)
-  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > starts the next track at 0:00 when it starts at 0 (0.06s)
-  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > keeps counting through a 0 on the same track (0.03s)
-  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > reopened, picks the track up where its bar left it (0.05s)
-  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > reopened, sees the track restarted while it was closed (0.08s)
-  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > reopened, does not hand its bar the position it kept from its close (0.05s)
-  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > tells its bar the source, and no position as none (0.01s)
+  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > starts the next track at 0:00 when it starts at 0 (0.05s)
+  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > keeps counting through a 0 on the same track (0.04s)
+  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > reopened, picks the track up where its bar left it (0.04s)
+  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > reopened, sees the track restarted while it was closed (0.07s)
+  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > reopened, does not hand its bar the position it kept from its close (0.09s)
+  - [+] AgNowPlayingFullscreen — its bar after Next, through a 0, reopened > tells its bar the source, and no position as none (0.03s)
   - [+] AgNowPlayingFullscreen — a play/pause tap sends the intent (real _control) > the screen showing playing=true sends pause, then flips
   - [+] AgNowPlayingFullscreen — a play/pause tap sends the intent (real _control) > the screen showing playing=false sends play, then flips
   - [+] AgNowPlayingFullscreen — a play/pause tap sends the intent (real _control) > sends play when nothing is shown at all
@@ -15549,17 +16378,17 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgNowPlayingFullscreen — a next track the box will skip > wears the Pro tint and the padlock, a real button, on a box without Pro
   - [+] AgNowPlayingFullscreen — a next track the box will skip > is a track like any other with Pro
   - [+] AgNowPlayingFullscreen — a next track the box will skip > is a track like any other while the licence is not read yet
-  - [+] AgNowPlayingFullscreen — a next track the box will skip > is a track like any other for what a Starter box plays (0.01s)
+  - [+] AgNowPlayingFullscreen — a next track the box will skip > is a track like any other for what a Starter box plays
   - [+] AgNowPlayingFullscreen — a next track the box will skip > is a track like any other from a core that does not mark it
-  - [+] AgNowPlayingFullscreen — a next track the box will skip > marks a network speaker's next track as the core marks it (0.01s)
+  - [+] AgNowPlayingFullscreen — a next track the box will skip > marks a network speaker's next track as the core marks it
   - [+] AgNowPlayingFullscreen — a next track the box will skip > leads its padlock to the licence panel
   - [+] AgNowPlayingFullscreen — follows the box's licence > starts from the licence already read, and takes each new reading
-  - [+] AgNowPlayingFullscreen — the panel stays in place once open > does not play the entry slide-in again when the inset cover swaps the covers (0.06s)
+  - [+] AgNowPlayingFullscreen — the panel stays in place once open > does not play the entry slide-in again when the inset cover swaps the covers (0.02s)
   - [+] AgNowPlayingFullscreen — the panel stays in place once open > does not either when a new track brings another cover after a touch (0.01s)
-  - [+] AgNowPlayingFullscreen — the panel stays in place once open > still tints the panel from its cover, and drops the tint for another source (0.03s)
-  - [+] AgNowPlayingFullscreen — the panel stays in place once open > drops the entry slide-in once played, and a new render does not bring it back (0.01s)
-  - [+] AgNowPlayingFullscreen — the panel stays in place once open > keeps it at another animation's end: one inside the panel, or another name (0.02s)
-  - [+] AgNowPlayingFullscreen — the panel stays in place once open > puts the panel back when the system cancels a drag, and closes nothing (0.03s)
+  - [+] AgNowPlayingFullscreen — the panel stays in place once open > still tints the panel from its cover, and drops the tint for another source (0.02s)
+  - [+] AgNowPlayingFullscreen — the panel stays in place once open > drops the entry slide-in once played, and a new render does not bring it back (0.02s)
+  - [+] AgNowPlayingFullscreen — the panel stays in place once open > keeps it at another animation's end: one inside the panel, or another name (0.01s)
+  - [+] AgNowPlayingFullscreen — the panel stays in place once open > puts the panel back when the system cancels a drag, and closes nothing (0.02s)
   - [+] the slider or the DSD padlock comes from the shared helpers > shows them as showsVolumeControl and showsDsdLock say
   - [+] the slider or the DSD padlock comes from the shared helpers > decides nothing of its own about DSD and the volume
   - [+] AgNowPlayingFullscreen — the level meter in the cover's place > offers the switch and the showcase where the meter can follow what plays
@@ -15571,9 +16400,11 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgNowPlayingFullscreen — the level meter in the cover's place > hears the showcase open and close
   - [+] AgNowPlayingFullscreen — the level meter in the cover's place > keeps the player in its two blocks with the meter shown
   - [+] AgNowPlayingFullscreen — the level meter is Pro > shows a box without Pro its padlock, and the cover whatever the device chose
-  - [+] AgNowPlayingFullscreen — the level meter is Pro > leads a box without Pro to the licence panel
+  - [+] AgNowPlayingFullscreen — the level meter is Pro > leads a box without Pro to the licence panel (0.02s)
   - [+] AgNowPlayingFullscreen — the level meter is Pro > opens it for a box with Pro
   - [+] AgNowPlayingFullscreen — the level meter is Pro > shows neither the meter nor its padlock while the licence is not read
+  - [+] AgNowPlayingFullscreen — the Queue button wears the Queue tab's drawing > draws the Queue tab's icon (0.16s)
+  - [+] AgNowPlayingFullscreen — the Queue button wears the Queue tab's drawing > no longer draws the Browse tab's (0.03s)
 
 **js/components/organisms/ag-now-playing.test.js**
 
@@ -15620,11 +16451,11 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgNowPlaying — a play/pause tap sends the intent (real _sendControl) > an item shown Playing sends pause, then flips
   - [+] AgNowPlaying — a play/pause tap sends the intent (real _sendControl) > an item shown Paused sends play, then flips
   - [+] AgNowPlaying — a play/pause tap sends the intent (real _sendControl) > still undoes the flip when the core refuses
-  - [+] the bar greys Previous / Next rather than dropping them > keeps both where they can go (0.06s)
+  - [+] the bar greys Previous / Next rather than dropping them > keeps both where they can go (0.07s)
   - [+] the bar greys Previous / Next rather than dropping them > greys Next on the last track of an album, in its place
   - [+] the bar greys Previous / Next rather than dropping them > greys both on a station played alone, each in its place
-  - [+] the bar greys Previous / Next rather than dropping them > lights Next on a station another entry follows
-  - [+] the bar greys Previous / Next rather than dropping them > draws a progress bar for a track only when it is no broadcast (0.02s)
+  - [+] the bar greys Previous / Next rather than dropping them > lights Next on a station another entry follows (0.01s)
+  - [+] the bar greys Previous / Next rather than dropping them > draws a progress bar for a track only when it is no broadcast (0.01s)
   - [+] the bar greys Previous / Next rather than dropping them > draws a progress bar for a broadcast whose player reports a length only when it is no broadcast
   - [+] the bar greys Previous / Next rather than dropping them > draws a progress bar for a broadcast with no length only when it is no broadcast
   - [+] the bar greys Previous / Next rather than dropping them > tells its bar the source, and no position as none
@@ -15636,13 +16467,20 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] AgNowPlaying — follows the box's licence > starts from the licence already read, and takes each new reading
   - [+] the slider or the DSD padlock comes from the shared helpers > shows them as showsVolumeControl and showsDsdLock say
   - [+] the slider or the DSD padlock comes from the shared helpers > decides nothing of its own about DSD and the volume
+  - [+] the bar shows the position, and moving in the track is the full player's > gives its bar no seek, even on a source that can seek
+  - [+] the bar shows the position, and moving in the track is the full player's > moves nothing when a finger presses and drags along its bar (0.02s)
+  - [+] the bar shows the position, and moving in the track is the full player's > does nothing on a tap of its bar
+  - [+] the bar shows the position, and moving in the track is the full player's > lets a swipe start on its bar, and keeps the buttons and the cover for a tap
+  - [+] the cover opens the album details, and only the cover takes the press > makes the cover a button that says whether the details are open (0.02s)
+  - [+] the cover opens the album details, and only the cover takes the press > hangs the bubble beside the cover button, inside nothing that takes the press (0.02s)
+  - [+] the cover opens the album details, and only the cover takes the press > puts no block inside the button when there is no cover to show (0.02s)
 
 **js/components/organisms/ag-orientation-gate.test.js**
 
-  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.20s)
-  - [+] ag-orientation-gate > renders the rotate prompt and a landscape escape hatch (0.02s)
-  - [+] ag-orientation-gate > _dismiss turns the lock off (state + persisted) and applies it (0.01s)
-  - [+] ag-orientation-gate > _setBackgroundInert inerts sibling top-level elements but never itself (0.02s)
+  - [+] ag-orientation-gate > tags itself with the .orientation-gate CSS hook on connect (0.17s)
+  - [+] ag-orientation-gate > renders the rotate prompt and a landscape escape hatch (0.01s)
+  - [+] ag-orientation-gate > _dismiss turns the lock off (state + persisted) and applies it
+  - [+] ag-orientation-gate > _setBackgroundInert inerts sibling top-level elements but never itself
 
 **js/components/organisms/ag-perf-monitor.test.js**
 
@@ -15661,7 +16499,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] Apply All > offers the governor just chosen on a card
   - [+] Apply All > offers the first core's governor when none was chosen
   - [+] Apply All > falls back to performance when nothing is known
-  - [+] Apply All > does not offer a choice the box refused (0.01s)
+  - [+] Apply All > does not offer a choice the box refused
   - [+] Apply All > puts the governor the box reports raw
   - [+] the load of each core > keeps the newest samples of the window, per core
   - [+] the load of each core > opens a gap in every core after a pause in the stream
@@ -15674,7 +16512,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-pipeline-page topology save > blocks the save and shows the modal on structural errors
   - [+] ag-pipeline-page topology save > asks for confirmation before persisting when there are warnings
   - [+] ag-pipeline-page topology save > persists once the warning confirmation callback runs
-  - [+] ag-pipeline-page topology save > falls through to the save when validation is unreachable (0.02s)
+  - [+] ag-pipeline-page topology save > falls through to the save when validation is unreachable (0.01s)
   - [+] ag-pipeline-page topology save > reports a backend save failure without closing the modal
   - [+] the mobile view can reach the configuration > offers CONFIG on a phone, as the desktop view does
   - [+] the mobile view can reach the configuration > withholds it from a guest, exactly as the desktop view does
@@ -15750,7 +16588,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] the this binding through ag-modal > does not close the modal element instead of itself
   - [+] the this binding through ag-modal > copies its own text when the handler is invoked by the modal
   - [+] the this binding through ag-modal > binds the handlers to the instance, not merely to some function
-  - [+] collecting the report > asks the core only when the window opens
+  - [+] collecting the report > asks the core only when the window opens (0.01s)
   - [+] collecting the report > does not collect a second time on reopen
   - [+] collecting the report > shows the failure instead of an empty window
   - [+] collecting the report > clears the loading flag on success
@@ -15824,7 +16662,7 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-top-bar — machine metrics > names each figure, in words short enough for a phone (0.01s)
   - [+] ag-top-bar — how the figures read (layout.css) > gives a figure in its normal range no colour — it comes past a threshold
   - [+] ag-top-bar — how the figures read (layout.css) > lays each name on its figure's line, not centred against it
-  - [+] ag-top-bar — how the figures read (layout.css) > puts the same space between every name and its figure, the uptime included (0.01s)
+  - [+] ag-top-bar — how the figures read (layout.css) > puts the same space between every name and its figure, the uptime included (0.02s)
   - [+] ag-top-bar — how the figures read (layout.css) > keeps two pairs further apart than a name from its figure, at every inline width
   - [+] ag-top-bar — how the figures read (layout.css) > keeps the stacked phone layout's spacing
   - [+] ag-top-bar — how the figures read (layout.css) > reads each name inline on a computer: "CPU: 12%"
@@ -15838,23 +16676,23 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-top-bar — the connection state, as an attribute > carries the state on the indicator's attribute, and follows the stream (0.01s)
   - [+] ag-top-bar — the "Top Bar Metrics" setting > shows nothing on a device where it is off, and handles no reading
   - [+] ag-top-bar — the "Top Bar Metrics" setting > keeps the middle of the bar, so its buttons stay at the right-hand end
-  - [+] ag-top-bar — the "Top Bar Metrics" setting > hides the figures and stops handling readings when switched off (0.01s)
+  - [+] ag-top-bar — the "Top Bar Metrics" setting > hides the figures and stops handling readings when switched off
   - [+] ag-top-bar — the "Top Bar Metrics" setting > shows the last reading of the stream at once when switched back on, and asks the core nothing (0.01s)
   - [+] ag-top-bar — the "Top Bar Metrics" setting > never shows a figure from before it was switched off
   - [+] ag-top-bar — the "Top Bar Metrics" setting > shows dashes, not old figures, when the stream closed in between
   - [+] ag-top-bar — the "Top Bar Metrics" setting > keeps nothing of the core's own answer, only the stream's readings
   - [+] ag-top-bar — the "Top Bar Metrics" setting > keeps the reading as sent, whatever a view does to the one it is handed
-  - [+] ag-top-bar — the "Top Bar Metrics" setting > does the same when the property itself is switched, not only the setting (0.01s)
+  - [+] ag-top-bar — the "Top Bar Metrics" setting > does the same when the property itself is switched, not only the setting (0.02s)
   - [+] ag-top-bar — the "Top Bar Metrics" setting > keeps the figures it is given before its first render
   - [+] ag-top-bar — the "Top Bar Metrics" setting > takes no order from an attribute: a Boolean attribute is true whatever it says
   - [+] ag-top-bar — the "Top Bar Metrics" setting > hands the other views nothing extra when switched back on
-  - [+] ag-top-bar — the "Top Bar Metrics" setting > follows the readings again once switched back on
-  - [+] ag-top-bar — the "Top Bar Metrics" setting > listens once, however often the same value is applied
-  - [+] ag-top-bar — the "Top Bar Metrics" setting > leaves nothing listening once removed
+  - [+] ag-top-bar — the "Top Bar Metrics" setting > follows the readings again once switched back on (0.01s)
+  - [+] ag-top-bar — the "Top Bar Metrics" setting > listens once, however often the same value is applied (0.02s)
+  - [+] ag-top-bar — the "Top Bar Metrics" setting > leaves nothing listening once removed (0.01s)
 
 **js/components/organisms/ag-user-modal.test.js**
 
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.02s)
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.01s)
   - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (tabs) is rejected
   - [+] AgUserModal._handleSave — password trim (Fix P3) > valid password passes validation
   - [+] AgUserModal._handleSave — password trim (Fix P3) > password with surrounding spaces is trimmed before sending
@@ -15869,12 +16707,12 @@ Generated: **2026-11-08 17:32 UTC**
 **js/components/organisms/ag-vu-showcase.test.js**
 
   - [+] ag-vu-showcase > shows nothing, and follows nothing, until it is opened (0.02s)
-  - [+] ag-vu-showcase > opens on the source the player follows, with two dials side by side in landscape (0.07s)
-  - [+] ag-vu-showcase > draws no dial before it knows what plays
+  - [+] ag-vu-showcase > opens on the source the player follows, with two dials side by side in landscape (0.08s)
+  - [+] ag-vu-showcase > draws no dial before it knows what plays (0.01s)
   - [+] ag-vu-showcase > keeps the screen on and lifts the portrait lock while it is open
   - [+] ag-vu-showcase > gives back the screen and the portrait lock on exit, as the device says
   - [+] ag-vu-showcase > asks for the screen again when the page comes back: the browser dropped it
-  - [+] ag-vu-showcase > shows what plays (0.02s)
+  - [+] ag-vu-showcase > shows what plays (0.03s)
   - [+] ag-vu-showcase > says so when what plays is not the box's own player, and follows no level (0.01s)
   - [+] ag-vu-showcase > draws the dials once the box's player plays again (0.02s)
   - [+] ag-vu-showcase > says when it opens and closes, for the player under it to pause its own meter
@@ -15885,3 +16723,157 @@ Generated: **2026-11-08 17:32 UTC**
   - [+] ag-vu-showcase — a phone on its side > moves Exit to the end of the track's line
   - [+] ag-vu-showcase — a phone on its side > keeps clear of the notch
   - [+] ag-vu-showcase — Pro > leads a box without Pro to the licence panel instead of opening
+
+**js/components/atoms/ag-badge.test.js**
+
+  - [+] a clickable badge > is a button of type "button", drawn as a badge, carrying its label (0.04s)
+  - [+] a clickable badge > fires badge-click with its type and label
+  - [+] a clickable badge > does not submit the form around it
+  - [+] a badge that is not clickable > is plain text: no button, nothing fired
+  - [+] a badge that is not clickable > becomes a button when it turns clickable
+
+**js/components/atoms/ag-dsd-delivery.test.js**
+
+  - [+] ag-dsd-delivery > says nothing when the DAC receives DSD
+  - [+] ag-dsd-delivery > says nothing while the core cannot tell
+  - [+] ag-dsd-delivery > tags DoP, neutrally
+  - [+] ag-dsd-delivery > warns of a conversion to PCM
+  - [+] ag-dsd-delivery > knows no other way
+
+**js/components/atoms/ag-halloween-spiders.test.js**
+
+  - [+] ag-halloween-spiders > draws nothing on another day (0.02s)
+  - [+] ag-halloween-spiders > lets its spiders down on Halloween, out of reach of pointers and screen readers (0.04s)
+  - [+] ag-halloween-spiders > lets them down when the day comes and takes them in when it ends, without a reload
+  - [+] ag-halloween-spiders > draws, measures and watches nothing for a viewer who asks for less motion
+  - [+] ag-halloween-spiders > lets its threads out below what is fixed at the top, measured, and again on a resize (0.01s)
+  - [+] ag-halloween-spiders > measures again at the next frame: the bar is drawn by a component of its own, later
+  - [+] ag-halloween-spiders > follows the offline banner as it comes and goes, and the tabs as they change shape
+  - [+] ag-halloween-spiders > stops watching once the spiders are gone, and once removed
+  - [+] ag-halloween-spiders > measures nothing while the app's Animations setting is off, and again once it is on
+  - [+] ag-halloween-spiders > measures nothing and listens to no resize on another day
+  - [+] ag-halloween-spiders — its stylesheet and its place > hangs from the top of the content, clipped there, at the page layer's lowest step, and takes no pointer
+  - [+] ag-halloween-spiders — its stylesheet and its place > lives in the page's own layer: a window opened in a page covers it
+  - [+] ag-halloween-spiders — its stylesheet and its place > shows no spider to a viewer who asks for less motion, nor on paper
+  - [+] ag-halloween-spiders — its stylesheet and its place > draws in the page's ink, spins no web, and moves whole elements only
+  - [+] ag-halloween-spiders — its stylesheet and its place > is loaded with the app
+
+**js/components/atoms/ag-library-cover.test.js**
+
+  - [+] ag-library-cover — deferred image loading > marks the cover image as lazy so off-screen rows cost nothing (0.04s)
+  - [+] ag-library-cover — deferred image loading > still points at the requested cover
+  - [+] ag-library-cover — deferred image loading > draws the note behind a row of the listening history (0.01s)
+  - [+] ag-library-cover — deferred image loading > renders no image at all when there is no cover, so nothing is requested
+  - [+] ag-library-cover — deferred image loading > drops the image once it has failed, instead of retrying on every render
+  - [+] ag-library-cover — missing artwork > draws the music note behind a coverless album
+  - [+] ag-library-cover — missing artwork > draws the music note behind a coverless playlist
+  - [+] ag-library-cover — missing artwork > draws the music note behind a coverless track
+  - [+] ag-library-cover — missing artwork > draws the music note behind a coverless note
+  - [+] ag-library-cover — missing artwork > draws it too once a cover has failed to load
+  - [+] ag-library-cover — missing artwork > keeps its own picture for a container, which is not artwork
+  - [+] ag-library-cover — missing artwork > keeps its own picture for a radio, which is not artwork
+  - [+] ag-library-cover — missing artwork > keeps its own picture for a list, which is not artwork
+  - [+] ag-library-cover — missing artwork > keeps its own picture for a next, which is not artwork
+  - [+] ag-library-cover — missing artwork > keeps its own picture for a queue, which is not artwork
+  - [+] ag-library-cover — missing artwork > keeps its own picture for a play, which is not artwork
+  - [+] ag-library-cover — banner artwork > is square by default: the height matches the width
+  - [+] ag-library-cover — banner artwork > halves the height when the artwork is a banner
+  - [+] ag-library-cover — banner artwork > recomputes the height when the size alone changes on a cell already wide
+  - [+] ag-library-cover — banner artwork > restores a square cell when the artwork stops being a banner
+
+**js/components/atoms/ag-library-playlist-btn.test.js**
+
+  - [+] ag-library-playlist-btn > reports the tap as playlist-add, to a listener above it (0.04s)
+  - [+] ag-library-playlist-btn > never lets the tap reach the card that plays the album
+  - [+] ag-library-playlist-btn > draws the row variant with its own class
+  - [+] ag-library-playlist-btn > draws the card variant with its own class
+  - [+] ag-library-playlist-btn > draws the player variant with its own class
+  - [+] ag-library-playlist-btn > falls back to the row look for an unknown variant
+  - [+] ag-library-playlist-btn > is named for assistive technology, and the name can be changed
+  - [+] ag-library-playlist-btn — its three modes > the add mode fires playlist-add and is named "Add to playlist"
+  - [+] ag-library-playlist-btn — its three modes > the remove mode fires playlist-remove and is named "Remove from the playlist"
+  - [+] ag-library-playlist-btn — its three modes > the open mode fires playlist-open and is named "Open the playlist"
+  - [+] ag-library-playlist-btn — its three modes > takes the bottom-left corner of a cover to open a playlist, which has no ★ there
+  - [+] ag-library-playlist-btn — its three modes > keeps the row look in every mode, beside the other row controls
+  - [+] ag-library-playlist-btn — its three modes > falls back to "add" for an unknown mode
+  - [+] ag-library-playlist-btn — its three modes > never lets an "open" reach the card that plays the playlist
+
+**js/components/atoms/ag-license-badge.test.js**
+
+  - [+] ag-license-badge > says Lifetime for a perpetual licence (0.02s)
+  - [+] ag-license-badge > does not say Lifetime for a licence bought with an end date
+  - [+] ag-license-badge > names an ended term instead of falling through to "No license"
+  - [+] ag-license-badge > paints an ended term as a warning, never as critical (0.01s)
+  - [+] ag-license-badge > still paints a tampered file as critical
+  - [+] ag-license-badge > counts down the trial
+  - [+] ag-license-badge > falls back to "No license" only for an unknown status
+
+**js/components/atoms/ag-pipeline-link.test.js**
+
+  - [+] the latency a link writes > — 35 µs — takes the text colour of its band, excellent (0.08s)
+  - [+] the latency a link writes > — 125 µs — takes the text colour of its band, good
+  - [+] the latency a link writes > — 350 µs — takes the text colour of its band, average
+  - [+] the latency a link writes > — 720 µs — takes the text colour of its band, critical
+  - [+] the latency a link writes > is never written in a bar colour (0.03s)
+  - [+] the buffer fill a link writes > — 45 % healthy — takes the text colour of its band, undefined (0.01s)
+  - [+] the buffer fill a link writes > — 85 % warning — takes the text colour of its band, undefined (0.02s)
+  - [+] the buffer fill a link writes > — 95 % critical — takes the text colour of its band, undefined
+
+**js/components/atoms/ag-pipeline-node.test.js**
+
+  - [+] serviceFormatLabel > writes the bit depth of a lossless file
+  - [+] serviceFormatLabel > writes the bitrate of a lossy stream, which has no bit depth
+  - [+] serviceFormatLabel > keeps what it has when part of it is missing
+  - [+] serviceFormatLabel > writes nothing when nothing is known
+  - [+] renderPipelineNode — the format a device node writes > writes a server's now-playing with the label a service row uses
+  - [+] renderPipelineNode — the format a device node writes > writes a lossy stream's bitrate on the service row that plays it
+
+**js/components/atoms/ag-sparkline.test.js**
+
+  - [+] placeOnSlots — a window with a width of its own > puts the newest measurement in the last slot
+  - [+] placeOnSlots — a window with a width of its own > skips what was not measured but keeps its slot
+  - [+] placeOnSlots — a window with a width of its own > keeps only the newest values when there are more than slots
+  - [+] placeOnSlots — a window with a width of its own > uses one slot per value without a window
+  - [+] placeOnSlots — a window with a width of its own > survives no data at all
+  - [+] measuredRuns — a gap splits the line > cuts where a slot has no measurement
+  - [+] monotonePath — smooth, never beyond a measurement > keeps every control point within the measured range
+  - [+] monotonePath — smooth, never beyond a measurement > draws a straight segment between two points
+  - [+] 'area' variant > draws the first measurements on the right, not across the chart (0.05s)
+  - [+] 'area' variant > leaves a gap where a measurement is missing
+  - [+] 'area' variant > starts its scale at zero: a stable value is a line high up, not mid-chart
+  - [+] 'area' variant > draws the second series as a thin line in its own colour (0.02s)
+  - [+] 'area' variant > takes its colours as CSS, so a var() resolves without JS
+  - [+] 'area' variant > draws a measurement alone between two gaps as a point
+  - [+] 'area' variant > draws a lone point of the second series too
+  - [+] 'area' variant > marks no current value when the newest slot is empty
+  - [+] 'area' variant > lines both series up on the right when no window is set
+  - [+] 'area' variant > draws nothing but its base line before the first measurement
+  - [+] 'bars' variant > draws one bar per measured value, the latest marked
+  - [+] 'bars' variant > keeps a 1 px bar for a measured zero, and none for a gap
+  - [+] 'bars' variant > marks no bar as current when the newest slot is empty
+  - [+] 'bars' variant > places its bars from the right of the window
+  - [+] 'bars' variant > prints its captions above the bars
+  - [+] 'line' variant — unchanged for the charts that use it > keeps its 2px stroke and its gradient fill by default (0.13s)
+  - [+] 'line' variant — unchanged for the charts that use it > still honours an explicit width
+  - [+] 'line' variant — unchanged for the charts that use it > is what a sparkline without a variant draws
+
+**js/components/atoms/ag-stat-box.test.js**
+
+  - [+] a stat box > writes its unit after the value, not in the label (0.04s)
+  - [+] the stat boxes of the app > never put "µ" in a label, which capitals turn into an M (0.03s)
+
+**js/components/atoms/ag-switch-filter-bar.test.js**
+
+  - [+] ag-switch > names its checkbox with its label (0.03s)
+  - [+] ag-switch > adds no name when it has no label
+  - [+] ag-filter-bar > says which option is chosen (0.02s)
+
+**js/components/atoms/ag-theme-toggle.test.js**
+
+  - [+] ag-theme-toggle > takes its initial state from the document, not from a default (0.04s)
+  - [+] ag-theme-toggle > offers the appearance you are not in
+  - [+] ag-theme-toggle > hands the click to the shared switch (0.01s)
+  - [+] ag-theme-toggle > follows the page when Automatic turns it dark under the form
+  - [+] ag-theme-toggle > stops following once gone
+  - [+] ag-theme-toggle > stores a palette of its own choosing, which leaves Automatic
+  - [+] ag-theme-toggle > announces the change to whoever is listening

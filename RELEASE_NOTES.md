@@ -7,6 +7,12 @@ Synthesized overview of each release. Every change, line by line, is in
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.2 — 2026-11-16
+
 ### Streaming
 
 **Qobuz's playlists, sorted the way Qobuz sorts them.** Qobuz's editorial playlists no longer

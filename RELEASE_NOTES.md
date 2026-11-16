@@ -7,6 +7,13 @@ Synthesized overview of each release. Every change, line by line, is in
 
 ## Unreleased
 
+### Streaming
+
+**Qobuz's playlists, sorted the way Qobuz sorts them.** Qobuz's editorial playlists no longer
+come as one long list: a strip offers Qobuz's own categories — Hi-Res, New Releases, Focus,
+Moods, Artists and the others —, a second the main genres, and the two combine: the Hi-Res jazz
+selections, for instance. Each selection shows the wide picture Qobuz made for it.
+
 ### On audiogravity.app
 
 **The license, the editions and the release notes, on the site.** The editions and plans, the

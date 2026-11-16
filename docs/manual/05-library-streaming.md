@@ -124,6 +124,14 @@ button, at the bottom left of the cover, shows what it holds: see *A playlist's 
 below. You can also add tracks and albums to the playlists you made, and create new
 ones, from the box: see *Adding to your playlists*.
 
+The editorial collection is large, so two more strips sort it the way Qobuz does. The
+first holds Qobuz's own categories — **Hi-Res**, **New Releases**, **Focus**, **Moods**,
+**Artists** and more — with **All** at the front, where it opens. The second holds the
+main genres, with **All genres** at the front. The two combine: pick **Hi-Res**, then
+**Jazz**, for the Hi-Res jazz selections — the heading above them says *Hi-Res · Jazz*.
+Each selection shows the wide picture Qobuz made for it; your own playlists keep a
+square cover.
+
 **Genres** is Qobuz's second way of arranging the same catalogue. Pick a genre and the
 strip becomes that genre plus its own subdivisions, with **All** standing for the whole
 genre, and the heading above the albums says where you are.

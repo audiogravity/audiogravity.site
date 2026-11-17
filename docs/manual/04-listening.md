@@ -120,9 +120,7 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
 - **Up next** lists the tracks that come after the one playing. Those already played
   stay in the queue, out of the list. With **repeat** on, the list goes on with the
   tracks that play again once the last one has; in **random order**, it lists them all.
-- **Tap a track** to play it: the tracks above it are skipped. While the music goes out
-  through HQPlayer or a network speaker, the app says so instead: they do not play this
-  queue.
+- **Tap a track** to play it: the tracks above it are skipped.
 - **Move a track** by its handle, at the left of the row: hold it and slide it up or
   down — the list scrolls by itself near the top or the bottom of the screen. At the top
   of the list, the track plays next. In random order the handles are greyed: the order
@@ -137,6 +135,12 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
 - On **Starter**, a streaming service's track carries a padlock in place of its length:
   it will be skipped, since the streaming services come with Pro. A tap on the padlock
   opens the licence panel, and the track can still be removed.
+- **While the music goes out through HQPlayer or a network speaker**, the Queue shows
+  the list you sent there, under its name: the track playing, then what comes next. That
+  list is for reading: its tracks cannot be tapped, moved or removed, and there is no
+  **Clear**. **+** on an album or a track adds it at the end. When the app has no list
+  of yours to show there — after the box restarts, once the list has ended, or when
+  another app changed it — it says so.
 
 <img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
 

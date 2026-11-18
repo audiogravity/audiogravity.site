@@ -104,7 +104,7 @@ server's own audio path.
   A **left-swipe** on a renderer removes it from the known list, once you confirm (a
   renderer still on the network simply reappears at the next scan).
 - A live **"Up next"** strip shows the track being loaded onto the renderer, and the
-  **Queue** lists everything you sent to it.
+  **Queue** lists everything you sent to it: tap a track there to play it.
 - **+** adds an album or a track at the end of what the renderer plays. When it plays
   nothing you sent — stopped, or playing from another app — **+** starts it at once.
 - Transport (next / prev / pause / seek / volume) is routed through the renderer that
@@ -223,8 +223,8 @@ once, and adding to the queue tells you when a track was lost.
 **What the player shows while HQPlayer is your output.** The progress bar works: it knows
 how long the track is, it advances, and you can drag it to move around inside the track —
 HQPlayer is asked to jump, exactly as your local output would be. This holds track by
-track through an album. The **Queue** lists the tracks you sent to HQPlayer, and the
-full-screen player shows the one that comes next.
+track through an album. The **Queue** lists the tracks you sent to HQPlayer — tap one to
+play it —, and the full-screen player shows the one that comes next.
 
 The title, the artist and the cover follow the track too, all the way through an album —
 as long as the album was started from Audiogravi<sup>ty</sup>. Two cases show no title,

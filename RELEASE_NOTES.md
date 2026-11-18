@@ -17,8 +17,8 @@ _Nothing yet._
 
 **The Queue follows the music to HQPlayer and to your speakers.** When the music goes out
 through HQPlayer or a network speaker, the Queue lists what you sent there — the track playing,
-then what comes next, with covers and lengths — and the full-screen player shows what comes next
-on HQPlayer too. Adding an album or a track while a speaker plays puts it at the end of that
+then what comes next, with covers and lengths —, a tap on a track plays it there, and the
+full-screen player shows what comes next on HQPlayer too. Adding an album or a track while a speaker plays puts it at the end of that
 list, as it does on HQPlayer.
 
 ### Streaming

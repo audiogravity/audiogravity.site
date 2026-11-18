@@ -136,9 +136,9 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   it will be skipped, since the streaming services come with Pro. A tap on the padlock
   opens the licence panel, and the track can still be removed.
 - **While the music goes out through HQPlayer or a network speaker**, the Queue shows
-  the list you sent there, under its name: the track playing, then what comes next. That
-  list is for reading: its tracks cannot be tapped, moved or removed, and there is no
-  **Clear**. **+** on an album or a track adds it at the end. When the app has no list
+  the list you sent there, under its name: the track playing, then what comes next. **Tap
+  a track** to play it there: the tracks above it are skipped. Its tracks cannot be moved
+  or removed, and there is no **Clear**. **+** on an album or a track adds it at the end. When the app has no list
   of yours to show there — after the box restarts, once the list has ended, or when
   another app changed it — it says so.
 

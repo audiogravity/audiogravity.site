@@ -111,6 +111,13 @@ server's own audio path.
   owns the queue.
 - You can **cast your local NAS/USB library** to a network renderer too, exactly like
   a streaming service.
+- **The signal path** under the cover shows the way the music takes to the speaker. A
+  track from Qobuz, Tidal, HIGHRESAUDIO or your library goes through the box: *Qobuz →
+  Music Streamer*, then the network's icon in place of an arrow, then the speaker. A media
+  server's track or a radio station goes to the speaker straight from where it is: the
+  server or the station, the network's icon, the speaker. The box carries the name your
+  chain gives it (**Pipeline → CONFIG**), and reads *This box* when the chain describes no
+  box, or more than one.
 - **Casting hands the room over.** What was playing on the box's own DAC stops as the
   speaker starts — one piece of music, in one place. The hand-over happens at the last
   moment, so a speaker that has left the network, or a streaming link that expires while
@@ -197,8 +204,9 @@ versions instead of letting the music fail without a word.
 With the switch on, playing an album routes it to HQPlayer, which processes it and
 sends it back to your DAC through the NAA. The player badges the track with where the
 music actually comes from — **Library** — and the signal path shows the full chain, with
-HQPlayer under the name it gives itself: *Library → HQPlayer Desktop → HQPlayer NAA → your
-DAC*. HQPlayer is a **processor** in that chain, not the source of the music.
+HQPlayer under the name it gives itself: *Library → HQPlayer Desktop*, then the network's
+icon — the music crosses your network to reach the box —, then *HQPlayer NAA → your DAC*.
+HQPlayer is a **processor** in that chain, not the source of the music.
 
 The setting lives **on the box, not in your browser**: turn it on from your phone and
 your laptop shows it on too. Turning it off releases the sound card so local playback

@@ -21,6 +21,13 @@ then what comes next, with covers and lengths —, a tap on a track plays it the
 full-screen player shows what comes next on HQPlayer too. Adding an album or a track while a speaker plays puts it at the end of that
 list, as it does on HQPlayer.
 
+**The signal path shows where your music crosses the network.** Under the full-screen player's
+cover, a small network icon now stands in the arrow's place wherever the music travels over your
+network: to a network speaker, or from HQPlayer on your computer to the box. And it tells you
+whether the box is on the way — a Qobuz, Tidal or HIGHRESAUDIO track, or one from your library,
+reaches the speaker through the box, which is named in the line; a media server's track or a
+radio station goes to the speaker straight from where it is.
+
 ### Streaming
 
 **Qobuz's playlists, sorted the way Qobuz sorts them.** Qobuz's editorial playlists no longer

@@ -142,7 +142,7 @@ including **Qobuz, Tidal and HIGHRESAUDIO** albums, with their real titles and a
   of yours to show there — after the box restarts, once the list has ended, or when
   another app changed it — it says so.
 
-<img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz then the speaker's name, and the output bar names the speaker" width="360">
+<img src="images/ios-cast-renderer.webp" alt="A Qobuz album cast to a network speaker: the cover is badged Qobuz, the signal path reads Qobuz, then the box, then the network's icon before the speaker's name, and the output bar names the speaker" width="360">
 
 Casting hands the audio over: what was playing on your DAC stops, and the speaker
 becomes the output. A network speaker reports no format back: the hi-fi readout shows

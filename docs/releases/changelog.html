@@ -267,6 +267,7 @@ and this landing) are documented here. Format based on
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
+<li><strong>[core] The core's tests pass on a machine started less than an hour ago.</strong> A stand-in for systemd dated its service's start an hour back; on a machine up for less, that start fell before the boot, which systemd never reports and the core rightly reads as unknown, so eleven tests failed and the release build stopped — on the ARM build machine, restarted eleven minutes before. The stand-in's start now never falls before the boot.</li>
 <li><strong>[core] The full-screen player's signal path follows a change made while nothing else moves.</strong> The player sent the screen a new state only when one of the fields it compares changed, and the signal path was not among them: a device renamed in the chain of <strong>Pipeline → CONFIG</strong> while the music was paused kept its old name under the cover until the track or its state changed. A change of the signal path is now sent on its own.</li>
 <li><strong>[core] A finished latency or network test no longer stays in the core's memory.</strong> Its status and thread were kept until the core restarted, one entry per test run; they are dropped when the test ends. Cancelling a test at the moment it ends no longer raises an error.</li>
 </ul>

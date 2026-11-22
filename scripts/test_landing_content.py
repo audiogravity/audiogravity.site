@@ -217,9 +217,11 @@ def test_the_footer_offers_the_press_release_in_english_and_french(name, lang):
     assert (ROOT / "press" / name).is_file(), f"press/{name} is not on the site"
 
 
-#: The hero's press line, from its <figure> to its end.
-HERO_PRESS = re.search(r'<figure class="hero-press">.*?</figure>', PAGES["index.html"], re.S)
+#: The hero's press, from its block to its end: one <figure> per quotation, no <div> inside.
+HERO_PRESS = re.search(r'<div class="hero-press">.*?</div>', PAGES["index.html"], re.S)
 SEMPRE = "https://www.sempre-audio.at/audiogravity-1-0-raspberry-pi-mini-pc-hifi-streamer/"
+AFDIGITALE = ("https://www.afdigitale.it/audiogravity-1-0-trasforma-raspberry-pi-e-mini-pc-in-"
+              "streamer-hi-fi-qobuz-roon-e-hqplayer-sotto-lo-stesso-tetto/")
 
 
 def test_the_hero_quotes_its_press_and_says_where_from():
@@ -236,10 +238,47 @@ def test_the_hero_quotes_its_press_and_says_where_from():
     assert "translated from German" in figure, "the line no longer says it is a translation"
 
 
+def test_the_hero_quotes_afdigitale_and_says_where_from():
+    """The second press of 1.0 (afdigitale.it, 2026-11-11), under the first.
+
+    Its own figure, its own source: a quotation translated from Italian, its link in Italian.
+    """
+    assert HERO_PRESS, "no press line in the hero"
+    figures = re.findall(r"<figure>.*?</figure>", HERO_PRESS.group(0), re.S)
+    assert len(figures) == 2, "each quotation is no longer a figure of its own"
+    figure = figures[1]
+    assert f'<blockquote cite="{AFDIGITALE}">' in figure, "the quotation does not cite the article"
+    link = re.search(rf'<a href="{re.escape(AFDIGITALE)}"\s+hreflang="it">afdigitale\.it</a>', figure)
+    assert link, "the source is not named, or does not link the article in Italian"
+    assert "translated from Italian" in figure, "the line no longer says it is a translation"
+    assert "extremely versatile" in re.sub(r"\s+", " ", figure), "the article's words are gone"
+
+
 def test_the_hero_never_calls_its_press_a_review():
-    """sempre-audio.at ran the press release and added its opinion; nobody there listened to
-    Audiogravity. "Review", "tested" or "rated" would claim what the article does not do."""
+    """sempre-audio.at ran the press release and added its opinion; afdigitale.it wrote an article
+    from it and the site. Nobody at either listened to Audiogravity. "Review", "tested" or "rated"
+    would claim what the articles do not do."""
     assert HERO_PRESS, "no press line in the hero"
     text = re.sub(r"<[^>]+>", " ", HERO_PRESS.group(0)).lower()
     for word in ("review", "tested", "rated", "award"):
         assert word not in text, f"the press line says {word!r}"
+
+
+#: The press of 1.0, in the order it appeared: the site's name, its language, the article.
+PRESS = [
+    ("sempre-audio.at", "de", SEMPRE),                                          # 2026-11-10
+    ("afdigitale.it", "it", AFDIGITALE),                                        # 2026-11-11
+    ("hi-fi.ru", "ru", "https://www.hi-fi.ru/news/stereo/detail/audiogravity-10-prilozhen/"),  # 11-20
+]
+
+
+def test_the_footer_lists_the_press_in_the_order_it_appeared():
+    """"In the press" (2026-11-22): one line, each article named by its site, in its language,
+    the oldest first — the line under the press release's, where the press is looked for."""
+    lines = _footer_lines()
+    line = next((text for text in lines if text.startswith("In the press")), None)
+    assert line, "no In the press line in the footer"
+    links = re.findall(r'<a href="([^"]+)"\s+hreflang="([a-z]+)">([^<]+)</a>', line)
+    assert [(name.strip(), lang, href) for href, lang, name in links] == PRESS
+    press_release = next(i for i, text in enumerate(lines) if text.startswith("Press release"))
+    assert lines.index(line) == press_release + 1, "it no longer follows the press release"

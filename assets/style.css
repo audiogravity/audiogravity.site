@@ -873,13 +873,19 @@ nav {
     margin-top: 4px
 }
 
-/* The press under the four figures: one quotation, and its source written like the figures'
+/* The press under the four figures: each quotation, and its source written like the figures'
    labels (the rule above). Small, and set off by the same line as the figures, so that it adds
-   a voice to the hero without weighing it down. */
+   voices to the hero without weighing it down. */
 .hero-press {
     margin-top: 28px;
     padding-top: 20px;
     border-top: 1px solid var(--border)
+}
+
+/* One line for all of them: a quotation follows the last one's source, closer than the line
+   is to the figures. */
+.hero-press figure + figure {
+    margin-top: 16px
 }
 
 /* The width is the quotation's, not the figure's: the line above stays as long as the

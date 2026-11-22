@@ -176,3 +176,10 @@ def test_every_preloaded_font_is_one_the_stylesheet_declares():
     preloads = re.findall(r'<link rel="preload" href="assets/([^"]+)" as="font"', html)
     assert preloads, "the first screen's faces are no longer preloaded"
     assert set(preloads) <= {f["url"] for f in _faces(_css())}
+
+
+def test_each_press_quotation_is_set_off_from_the_one_before():
+    """The hero's press: one line above all its quotations, and some air between two — run
+    together, two quotations read as one."""
+    rule = re.search(r"\.hero-press figure \+ figure\s*\{([^}]*)\}", _css())
+    assert rule and "margin-top" in rule.group(1), "two quotations would run together"

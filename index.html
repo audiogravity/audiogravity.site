@@ -69,7 +69,7 @@
          Both come from this site, like every font on it (the FONTS block of style.css). -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/style.css?v=b8bcc83a00">
+    <link rel="stylesheet" href="assets/style.css?v=fc980e3e13">
     <script>
         /* Apply saved theme before first paint to avoid flash */
         (function () {
@@ -280,17 +280,32 @@
                     <div class="l" style="color:var(--ok-text)">Subscription · ever</div>
                 </div>
             </div>
-            <!-- The first press of 1.0: sempre-audio.at, an Austrian hi-fi magazine, on
-                 2026-11-10. It ran the press release and added its own opinion, "Wir meinen…";
-                 this is that opinion's first sentence, translated from German and stopped at its
-                 comma. Nobody there listened to Audiogravity: never call it a review. -->
-            <figure class="hero-press">
-                <blockquote cite="https://www.sempre-audio.at/audiogravity-1-0-raspberry-pi-mini-pc-hifi-streamer/">“The
-                    idea of coordinating established audio engines such as MPD, Roon and HQPlayer under one
-                    interface seems genuinely appealing.”</blockquote>
-                <figcaption><a href="https://www.sempre-audio.at/audiogravity-1-0-raspberry-pi-mini-pc-hifi-streamer/"
-                        hreflang="de">sempre-audio.at</a> · Austria · translated from German</figcaption>
-            </figure>
+            <!-- The press of 1.0, each quotation with its source. Nobody in either listened to
+                 Audiogravity: never call one a review.
+                 - sempre-audio.at, an Austrian hi-fi magazine, on 2026-11-10. It ran the press
+                   release and added its own opinion, "Wir meinen…"; this is that opinion's first
+                   sentence, translated from German and stopped at its comma.
+                 - afdigitale.it, an Italian technology magazine, on 2026-11-11 (Francesco Destri):
+                   an article of its own, written from the press release and the site. The words
+                   are its opening sentence's — "un software capace di trasformare un Raspberry Pi
+                   o un mini PC Linux in uno streamer Hi-Fi estremamente versatile" —, translated
+                   from Italian and stopped at its comma. -->
+            <div class="hero-press">
+                <figure>
+                    <blockquote cite="https://www.sempre-audio.at/audiogravity-1-0-raspberry-pi-mini-pc-hifi-streamer/">“The
+                        idea of coordinating established audio engines such as MPD, Roon and HQPlayer under one
+                        interface seems genuinely appealing.”</blockquote>
+                    <figcaption><a href="https://www.sempre-audio.at/audiogravity-1-0-raspberry-pi-mini-pc-hifi-streamer/"
+                            hreflang="de">sempre-audio.at</a> · Austria · translated from German</figcaption>
+                </figure>
+                <figure>
+                    <blockquote cite="https://www.afdigitale.it/audiogravity-1-0-trasforma-raspberry-pi-e-mini-pc-in-streamer-hi-fi-qobuz-roon-e-hqplayer-sotto-lo-stesso-tetto/">“Software
+                        capable of turning a Raspberry Pi or a Linux mini PC into an extremely versatile hi-fi
+                        streamer.”</blockquote>
+                    <figcaption><a href="https://www.afdigitale.it/audiogravity-1-0-trasforma-raspberry-pi-e-mini-pc-in-streamer-hi-fi-qobuz-roon-e-hqplayer-sotto-lo-stesso-tetto/"
+                            hreflang="it">afdigitale.it</a> · Italy · translated from Italian</figcaption>
+                </figure>
+            </div>
         </div>
 
         <div class="hero-right">
@@ -1999,6 +2014,17 @@
                             hreflang="en">EN</a> /
                         <a href="press/Audiogravity-1.0-communique-de-presse.pdf" type="application/pdf"
                             hreflang="fr">FR</a></p>
+                    <!-- What the press wrote about 1.0, in the order it appeared, each named by its
+                         site and linking the article in its own language: sempre-audio.at (Austria,
+                         2026-11-10) and afdigitale.it (Italy, 2026-11-11), both quoted in the hero,
+                         and hi-fi.ru (Russia, 2026-11-20), a news item with no opinion to quote. -->
+                    <p class="footer-line">In the press
+                        <a href="https://www.sempre-audio.at/audiogravity-1-0-raspberry-pi-mini-pc-hifi-streamer/"
+                            hreflang="de">sempre-audio.at</a> /
+                        <a href="https://www.afdigitale.it/audiogravity-1-0-trasforma-raspberry-pi-e-mini-pc-in-streamer-hi-fi-qobuz-roon-e-hqplayer-sotto-lo-stesso-tetto/"
+                            hreflang="it">afdigitale.it</a> /
+                        <a href="https://www.hi-fi.ru/news/stereo/detail/audiogravity-10-prilozhen/"
+                            hreflang="ru">hi-fi.ru</a></p>
                 </div>
                 <div class="footer-col">
                     <h4>Legal</h4>

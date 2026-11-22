@@ -50,7 +50,7 @@
             <a class="man-nav-item active" href="changelog" aria-current="page"><span>Changelog</span></a>
             <ul class="man-outline">
                 <li><a href="#unreleased">[Unreleased]</a></li>
-                <li><a href="#102---2026-11-16">[1.0.2] - 2026-11-16</a></li>
+                <li><a href="#102---2026-11-22">[1.0.2] - 2026-11-22</a></li>
                 <li><a href="#101---2026-11-08">[1.0.1] - 2026-11-08</a></li>
                 <li><a href="#100---2026-11-06">[1.0.0] - 2026-11-06</a></li>
                 <li><a href="#100-rc4---2026-11-02">[1.0.0-rc.4] - 2026-11-02</a></li>
@@ -147,7 +147,7 @@
 <summary><span>On this page</span><span class="man-menu-count">88</span><svg class="man-menu-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
 <ul class="man-outline">
     <li><a href="#unreleased">[Unreleased]</a></li>
-    <li><a href="#102---2026-11-16">[1.0.2] - 2026-11-16</a></li>
+    <li><a href="#102---2026-11-22">[1.0.2] - 2026-11-22</a></li>
     <li><a href="#101---2026-11-08">[1.0.1] - 2026-11-08</a></li>
     <li><a href="#100---2026-11-06">[1.0.0] - 2026-11-06</a></li>
     <li><a href="#100-rc4---2026-11-02">[1.0.0-rc.4] - 2026-11-02</a></li>
@@ -242,7 +242,7 @@ and this landing) are documented here. Format based on
 <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <hr />
 <h2 id="unreleased">[Unreleased]</h2>
-<h2 id="102---2026-11-16">[1.0.2] - 2026-11-16</h2>
+<h2 id="102---2026-11-22">[1.0.2] - 2026-11-22</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li><strong>[core][ui][manual] The Queue shows what plays on HQPlayer and on a network speaker.</strong> With HQPlayer as the output or a speaker selected, the Queue showed the box's own queue, which neither of them plays, or nothing. It now lists what Audiogravi<sup>ty</sup> sent there, under the output's name: the track playing, then what comes next, each with its cover, artist, album, length and source badge. A tap on a track plays it there, the tracks above it skipped; nothing moves or removes one, and there is no <em>Clear</em>. When Audiogravi<sup>ty</sup> follows no list there (nothing sent since a restart, the list ended, another app changed it) the Queue says so instead of <em>Queue is empty</em>. The full-screen player shows the next track on HQPlayer too. Qobuz, Tidal, HIGHRESAUDIO and media server tracks sent to HQPlayer or a speaker carry their length, a media server's tracks their artist and album, and a track with no title reads <em>Unknown track</em>. <code>GET /library/queue</code> gains <code>output</code>, <code>output_name</code> and <code>known</code>; <code>POST /library/queue/output/{position}/play</code> plays a track of that list; <code>PlayerState.queue_next</code> names HQPlayer's next track. The manual describes it.</li>
@@ -267,6 +267,7 @@ and this landing) are documented here. Format based on
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
+<li><strong>[ops] A release is dated the day it goes out.</strong> <code>release.sh prepare</code> dated a release the day it rolled it, and nothing moved that date afterwards: a release first published as a prerelease kept it once it went out — 1.0.2 read 16 Nov 2026 in its release notes, its changelog and the landing's announce bar, though it went out on the 22nd. <code>release.sh verify</code> now dates the release the day it promotes it, in those three places, and regenerates the release pages; the landing is then committed and pushed with its tag, as before.</li>
 <li><strong>[core] The core's tests pass on a machine started less than an hour ago.</strong> A stand-in for systemd dated its service's start an hour back; on a machine up for less, that start fell before the boot, which systemd never reports and the core rightly reads as unknown, so eleven tests failed and the release build stopped — on the ARM build machine, restarted eleven minutes before. The stand-in's start now never falls before the boot.</li>
 <li><strong>[core] The full-screen player's signal path follows a change made while nothing else moves.</strong> The player sent the screen a new state only when one of the fields it compares changed, and the signal path was not among them: a device renamed in the chain of <strong>Pipeline → CONFIG</strong> while the music was paused kept its old name under the cover until the track or its state changed. A change of the signal path is now sent on its own.</li>
 <li><strong>[core] A finished latency or network test no longer stays in the core's memory.</strong> Its status and thread were kept until the core restarted, one entry per test run; they are dropped when the test ends. Cancelling a test at the moment it ends no longer raises an error.</li>

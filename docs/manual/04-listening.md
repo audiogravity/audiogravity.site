@@ -7,11 +7,12 @@ of controls.
 ## The Now Playing bar
 
 A sticky **Now Playing** bar sits above the footer and shows **all active audio
-sources** at once, with quick transport — previous, play/pause, next, and volume.
-Repeat and shuffle are in the fullscreen player — and on a phone, previous too: there
-the bar gives its room to the title and the artist, a line each. The thin line along the
-bottom of the bar shows how far the track has played; to move within the track, open the
-fullscreen player.
+sources** at once, with quick transport — previous, play/pause, next, and volume, on a
+phone as on a computer. Previous and next are greyed where they would do nothing, as in
+the fullscreen player: on a station played alone, for instance. Repeat and shuffle are
+in the fullscreen player. On a phone the bar gives the title and the artist a line each.
+The thin line along the bottom of the bar shows how far the track has played; to move
+within the track, open the fullscreen player.
 
 **Opening the fullscreen player.** There are three ways in, and tapping the bar
 itself is not one of them:

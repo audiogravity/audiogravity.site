@@ -7,7 +7,13 @@ Synthesized overview of each release. Every change, line by line, is in
 
 ## Unreleased
 
-_Nothing yet._
+### Listening
+
+**Previous is back in the mini-player on a phone, and the bar holds still.** The mini-player
+shows Previous beside Play and Next on a phone too, greyed where it would do nothing, as in the
+full-screen player: on a radio station played alone, Previous and Next both are. Swiping the
+bar up to open the full-screen player no longer lifts it off the bottom of the screen, and a
+swipe your phone interrupts no longer leaves it out of place.
 
 ---
 

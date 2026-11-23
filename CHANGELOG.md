@@ -9,6 +9,13 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Changed
+- **[ui][manual] On a phone, the mini-player shows Previous again.** Since 0.9.66 a bar narrower than 480 px — a phone — left Previous to the full-screen player, to give the title room. It is back beside Play and Next, greyed where it would do nothing, from the same answer of the box as the full-screen player's buttons: on a station played alone, Previous and Next are both greyed; with other stations queued, they move from one to the next. Repeat and Shuffle stay in the full-screen player. Title and artist keep a line each, 44 px narrower: about 112 pt instead of 156 on a 375 pt iPhone (measured on a capture of the bar).
+
+### Fixed
+- **[ui] The mini-player stays at the bottom of the screen when it is swiped up.** Swiping the bar up to open the full-screen player lifted it with the finger, by a third of the distance, and showed a strip of the page under it — 14 pt on an iPhone capture, where nothing else had moved. It now stays where it is; the full-screen player still opens when the finger is lifted.
+- **[ui] A swipe on the mini-player that the phone takes over no longer leaves the bar out of place.** When the system took a touch over mid-swipe — the swipe home starts at the bottom edge, where the bar sits; a call; Control Center — the bar stayed where the finger had dragged it, down or sideways, until it was touched again (found reading the code). It now slides back, and the interrupted swipe neither folds the bar, nor changes the source, nor opens the full-screen player.
+
 ## [1.0.2] - 2026-11-22
 
 ### Added

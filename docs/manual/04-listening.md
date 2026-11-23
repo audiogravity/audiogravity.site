@@ -25,7 +25,7 @@ itself is not one of them:
 Tapping the **cover art** does something else: it opens the album's details —
 Album, Artist, Year, Genre, Format, Position, Source — and its tracklist.
 
-<img src="images/ios-nowplaying-bar.webp" alt="The Now Playing bar on a phone: cover art, the stream-origin and output badges, the title and the artist on a line each, and the transport — play/pause, next and volume" width="360">
+<img src="images/ios-nowplaying-bar.webp" alt="The Now Playing bar on a phone: cover art, the stream-origin and output badges, the title and the artist on a line each, and the transport — previous, play/pause, next and volume" width="360">
 
 ## The fullscreen player
 

@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-11-23
+
 ### Changed
 - **[ui][manual] On a phone, the mini-player shows Previous again.** Since 0.9.66 a bar narrower than 480 px — a phone — left Previous to the full-screen player, to give the title room. It is back beside Play and Next, greyed where it would do nothing, from the same answer of the box as the full-screen player's buttons: on a station played alone, Previous and Next are both greyed; with other stations queued, they move from one to the next. Repeat and Shuffle stay in the full-screen player. Title and artist keep a line each, 44 px narrower: about 112 pt instead of 156 on a 375 pt iPhone (measured on a capture of the bar). The manual's three figures that show the bar — on its own, under the queue, under the signal path — are retaken with it.
 

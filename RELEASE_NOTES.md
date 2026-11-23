@@ -7,6 +7,12 @@ Synthesized overview of each release. Every change, line by line, is in
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 1.0.3 — 2026-11-23
+
 ### Listening
 
 **Previous is back in the mini-player on a phone, and the bar holds still.** The mini-player

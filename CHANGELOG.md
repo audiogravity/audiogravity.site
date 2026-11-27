@@ -9,6 +9,9 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[site] A blog post on the Elipson 402 Tribute.** Elipson's spherical speaker of 1966 and its remake of 2024 with Supravox drive units: its sound, from The Ear's review and Son-Vidéo's test, quoted, translated where needed and compared, the post saying that Son-Vidéo was founded by the two men who took Elipson over in 2008; what to drive it with; how to set it up, from Elipson's manual; how it is built, down to the tweeter set back for time alignment and the patent Joseph Léon filed in 1962; the original 402's story, from Elipson's history; what to know before buying one, new or original. The photographs come from Elipson's press kit.
+
 ## [1.0.3] - 2026-11-23
 
 ### Changed

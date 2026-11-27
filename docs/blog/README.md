@@ -3,6 +3,7 @@
 Stories about hi-fi equipment, what it takes to use it with a streamer today, and news of
 Audiogravi<sup>ty</sup>, checked and dated like the guides.
 
+- [The Musical Fidelity A1: the class A integrated of 1985, made again](musical-fidelity-a1.md) — 2026-11-27 — Musical Fidelity's class A integrated of 1985, remade in 2023: how the press heard it, what it measures, what to drive with it, and the original's story.
 - [The Elipson 402 Tribute: the French sphere of 1966, made again](elipson-402-tribute.md) — 2026-11-27 — Elipson's sphere of 1966, remade in 2024 with Supravox: how the press heard it, what to drive it with, how it is built, and the original's story.
 - [The Naim NAC 52: the pre-amplifier at the top of Naim's range in the 1990s](naim-nac-52.md) — 2026-11-15 — Naim's top pre-amplifier from 1990 to 2002: its sound in a Naim system, how it is built, its power supplies, and what followed it.
 - [Audiogravi<sup>ty</sup> 1.0: the press release](audiogravity-1-0-press-release.md) — 2026-11-07 — The press release for Audiogravi<sup>ty</sup> 1.0, in English and French, with its fact sheet and nine screenshots for anyone writing about it.

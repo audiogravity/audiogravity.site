@@ -16,9 +16,9 @@ Checked on 2026-11-27 against the reviews of Stereophile, Hi-Fi News, StereoNET,
 Ear and hi-fi+ (2023–2024), with Stereophile's and Hi-Fi News's measurements, Musical Fidelity's
 product page, information sheet and manual (2023), and Mark Hennessy's pages on the original.
 
-<img src="images/musical-fidelity-a1.webp" alt="A black Musical Fidelity A1 of 2023 seen from the front: a long, low case with a ribbed top, the words Musical Fidelity A1 Integrated Class A Amplifier in blue, a blue power button at the left, a volume knob, Normal and Direct buttons, and an input selector marked Phono, CD, Tuner, Aux 1, Aux 2 and Tape" width="600" height="169">
+<img src="images/musical-fidelity-a1-2023.webp" alt="A black Musical Fidelity A1 of 2023 seen from the front, on a dark sideboard against a wall lit in blue: its power button glowing white at the left, the words Musical Fidelity A1 Integrated Class A Amplifier, a volume knob, Normal and Direct buttons, and an input selector marked CD, Tuner, Aux 1, Aux 2, Tape and Phono" width="1500" height="1000">
 
-*The A1 of 2023. Photo: Musical Fidelity.*
+*The A1 of 2023. Photo published by Audio Marketing Services.*
 
 ## How it sounds
 
@@ -185,6 +185,12 @@ less into 4 ohms, and distortion that is mostly second harmonic.
   the PCB by the transistors' legs", Miller writes. Quarry could bias it "a bit higher than some of
   the later originals". The tape monitor button became the Direct switch, and a motorised ALPS RK
   potentiometer made the remote possible.
+
+<img src="images/musical-fidelity-a1-inside-detail.webp" alt="A close-up inside a Musical Fidelity A1 of 2023, its top plate removed, seen from above the front panel: a silver motor with red wires behind the volume knob, a blue circuit board crowded with small transistors and red and green capacitors and marked Musical Fidelity Integrated, the toroidal transformer at the back, and the silver alloy block at the right" width="676" height="451">
+
+*Behind the front panel of an A1 of 2023: the motorised volume control, the circuit board, and the
+transformer at the back. Photo: Musical Fidelity.*
+
 - **Not quite the original pre-amplifier.** Musical Fidelity's page says the pre-amplifier "is the same
   as the original 1985 design". Not entirely, Quarry told What Hi-Fi?: the original's active volume
   control, which amplified the mismatch between the two tracks of its potentiometer, "was deemed
@@ -340,5 +346,7 @@ to the original specification, and used it as his guide.
   [related models](https://markhennessy.co.uk/mf_a1/others.htm), read on 2026-11-27.
 - Wikipedia, ["Musical Fidelity"](https://en.wikipedia.org/wiki/Musical_Fidelity), for the firm's
   founding.
-- The photographs: Musical Fidelity, from the A1's page; the original's, a Musical Fidelity press
+- The photographs: at the head of this post, from Audio Marketing Services'
+  [post on Facebook](https://www.facebook.com/audiomarketingservices/posts/musical-fidelity-a1-le-retour-dun-classique-de-la-haute-fidélité-eisa-2024-2025-/1225279058929738/)
+  on the A1; the two of the inside, from Musical Fidelity's A1 page; the original, a Musical Fidelity press
   photograph, in the copy What Hi-Fi? published with "That Was Then...".
